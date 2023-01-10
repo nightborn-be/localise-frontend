@@ -1,0 +1,7 @@
+{
+    "name": "gateways",
+    "dependencies": {
+        "@tanstack/react-query": "^4.22.0",
+        "axios": "^1.2.2"
+    }
+}
