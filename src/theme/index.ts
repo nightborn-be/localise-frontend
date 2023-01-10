@@ -1,24 +1,31 @@
-
 // theme/index.js
-import { extendTheme } from '@chakra-ui/react'
+import { extendTheme, type ThemeConfig } from '@chakra-ui/react';
 
 // Global style overrides
-import styles from './styles'
+import styles from './styles';
 
 // Foundational style overrides
-import borders from './foundations/borders'
+import borders from './foundations/borders';
 
 // Component style overrides
-import ButtonStyle from './components/inputs/button'
+import Button from './components/inputs/button';
 
-const overrides = {
-  styles,
-  borders,
-  // Other foundational style overrides go here
-  components: {
-    ButtonStyle,
-    // Other components go here
-  },
+// Add your color mode config
+const config: ThemeConfig = {
+    initialColorMode: 'system',
+    useSystemColorMode: false,
 }
 
-export default extendTheme(overrides)
+const overrides = {
+    styles,
+    borders,
+    // Other foundational style overrides go here
+    components: {
+        Button,
+        // Other components go here
+    },
+};
+
+const theme = extendTheme(overrides);
+
+export default theme

@@ -1,11 +1,11 @@
 const border = {
     color: {
-        secondary: '#5F43E2'
+        secondary: '#5F43E2',
     },
     secondaryDashed: {
         borderColor: '#5F43E2',
-        borderStyle: 'dashed'
-    }
-}
+        borderStyle: 'dashed',
+    },
+};
 
-export default border
+export default border;

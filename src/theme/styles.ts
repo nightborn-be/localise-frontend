@@ -7,8 +7,8 @@ const styles = {
         bg: '#F8F9FC',
         tag: '#F2F4F9',
         white: '#FFFFFF',
-        black: '#393360'
-    }
-}
+        black: '#393360',
+    },
+};
 
-export default styles
+export default styles;

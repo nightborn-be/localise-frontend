@@ -1,10 +1,10 @@
-import { Button as ChakraButton } from "@chakra-ui/react";
-import ButtonProps from "./props";
+import { Button as ChakraButton, useStyleConfig } from '@chakra-ui/react';
+import ButtonProps from './props';
 
-export const Button = (props: ButtonProps) => {
+export const Button = ({label, variant, ...rest}: ButtonProps) => {
 	// Attributes
-	const {label} = props
+	const styles = useStyleConfig('Card', { variant })
 	
-	// Render
-	return <ChakraButton {...props} >{label}</ChakraButton>;
+    // Render
+    return <ChakraButton __css={styles} {...rest}>{label}</ChakraButton>;
 };
