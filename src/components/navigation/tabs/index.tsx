@@ -8,7 +8,7 @@ const Tabs = ({ children, activeKey, onChange }: ITabsProps): JSX.Element => {
 	const renderTabs = (): ReactNode => {
 		return Children.map(children, (child: ReactElement<ITabProps>, index) => {
 			if (!child) return;
-			const key = child.key ?? (index as React.Key);
+			const key = index as React.Key;
 
 			return React.cloneElement(child, {
 				key,
