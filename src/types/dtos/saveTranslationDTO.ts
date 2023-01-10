@@ -9,6 +9,6 @@
  * A translation object to save
  */
 export interface SaveTranslationDTO {
-  /** The translation of a term for a language */
-  translation?: string;
+    /** The translation of a term for a language */
+    translation?: string;
 }

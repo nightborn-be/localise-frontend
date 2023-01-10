@@ -4,26 +4,22 @@
  * Localize Backend API
  * OpenAPI spec version: v1
  */
-import {
-  useQuery,
-  useMutation
-} from '@tanstack/react-query'
+import { useQuery, useMutation } from '@tanstack/react-query';
 import type {
-  UseQueryOptions,
-  UseMutationOptions,
-  QueryFunction,
-  MutationFunction,
-  UseQueryResult,
-  QueryKey
-} from '@tanstack/react-query'
+    UseQueryOptions,
+    UseMutationOptions,
+    QueryFunction,
+    MutationFunction,
+    UseQueryResult,
+    QueryKey,
+} from '@tanstack/react-query';
 import type {
-  TranslationWithMetaPagingDTO,
-  GetTranslationsParams,
-  TranslationDTO,
-  SaveTranslationDTO
-} from '../../types/dtos'
+    TranslationWithMetaPagingDTO,
+    GetTranslationsParams,
+    TranslationDTO,
+    SaveTranslationDTO,
+} from '../../types/dtos';
 import { customInstance } from '.././config';
-
 
 /**
  * Returns the translations of a term (even if there is no translation for a specific language)
@@ -31,47 +27,62 @@ import { customInstance } from '.././config';
 export const getTranslations = (
     termId: string,
     params?: GetTranslationsParams,
- signal?: AbortSignal
+    signal?: AbortSignal,
 ) => {
-      return customInstance<TranslationWithMetaPagingDTO>(
-      {url: `/terms/${termId}/languages`, method: 'get',
-        params, signal
+    return customInstance<TranslationWithMetaPagingDTO>({
+        url: `/terms/${termId}/languages`,
+        method: 'get',
+        params,
+        signal,
+    });
+};
+
+export const getGetTranslationsQueryKey = (
+    termId: string,
+    params?: GetTranslationsParams,
+) => [`/terms/${termId}/languages`, ...(params ? [params] : [])];
+
+export type GetTranslationsQueryResult = NonNullable<
+    Awaited<ReturnType<typeof getTranslations>>
+>;
+export type GetTranslationsQueryError = unknown;
+
+export const useGetTranslations = <
+    TData = Awaited<ReturnType<typeof getTranslations>>,
+    TError = unknown,
+>(
+    termId: string,
+    params?: GetTranslationsParams,
+    options?: {
+        query?: UseQueryOptions<
+            Awaited<ReturnType<typeof getTranslations>>,
+            TError,
+            TData
+        >;
     },
-      );
-    }
-  
+): UseQueryResult<TData, TError> & { queryKey: QueryKey } => {
+    const { query: queryOptions } = options ?? {};
 
-export const getGetTranslationsQueryKey = (termId: string,
-    params?: GetTranslationsParams,) => [`/terms/${termId}/languages`, ...(params ? [params]: [])];
+    const queryKey =
+        queryOptions?.queryKey ?? getGetTranslationsQueryKey(termId, params);
 
-    
-export type GetTranslationsQueryResult = NonNullable<Awaited<ReturnType<typeof getTranslations>>>
-export type GetTranslationsQueryError = unknown
+    const queryFn: QueryFunction<
+        Awaited<ReturnType<typeof getTranslations>>
+    > = ({ signal }) => getTranslations(termId, params, signal);
 
-export const useGetTranslations = <TData = Awaited<ReturnType<typeof getTranslations>>, TError = unknown>(
- termId: string,
-    params?: GetTranslationsParams, options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getTranslations>>, TError, TData>, }
+    const query = useQuery<
+        Awaited<ReturnType<typeof getTranslations>>,
+        TError,
+        TData
+    >(queryKey, queryFn, {
+        enabled: !!termId,
+        ...queryOptions,
+    }) as UseQueryResult<TData, TError> & { queryKey: QueryKey };
 
-  ):  UseQueryResult<TData, TError> & { queryKey: QueryKey } => {
+    query.queryKey = queryKey;
 
-  const {query: queryOptions} = options ?? {};
-
-  const queryKey =  queryOptions?.queryKey ?? getGetTranslationsQueryKey(termId,params);
-
-  
-
-
-  const queryFn: QueryFunction<Awaited<ReturnType<typeof getTranslations>>> = ({ signal }) => getTranslations(termId,params, signal);
-
-
-  
-
-  const query = useQuery<Awaited<ReturnType<typeof getTranslations>>, TError, TData>(queryKey, queryFn, {enabled: !!(termId), ...queryOptions}) as  UseQueryResult<TData, TError> & { queryKey: QueryKey };
-
-  query.queryKey = queryKey;
-
-  return query;
-}
+    return query;
+};
 
 /**
  * Save a translation for a language of a term
@@ -80,38 +91,47 @@ export const saveTranslation = (
     termId: string,
     languageId: string,
     saveTranslationDTO: SaveTranslationDTO,
- ) => {
-      return customInstance<TranslationDTO>(
-      {url: `/terms/${termId}/languages/${languageId}`, method: 'post',
-      headers: {'Content-Type': 'application/json', },
-      data: saveTranslationDTO
-    },
-      );
-    }
-  
-
-
-    export type SaveTranslationMutationResult = NonNullable<Awaited<ReturnType<typeof saveTranslation>>>
-    export type SaveTranslationMutationBody = SaveTranslationDTO
-    export type SaveTranslationMutationError = unknown
-
-    export const useSaveTranslation = <TError = unknown,
-    
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof saveTranslation>>, TError,{termId: string;languageId: string;data: SaveTranslationDTO}, TContext>, }
 ) => {
-      const {mutation: mutationOptions} = options ?? {};
+    return customInstance<TranslationDTO>({
+        url: `/terms/${termId}/languages/${languageId}`,
+        method: 'post',
+        headers: { 'Content-Type': 'application/json' },
+        data: saveTranslationDTO,
+    });
+};
 
-      
+export type SaveTranslationMutationResult = NonNullable<
+    Awaited<ReturnType<typeof saveTranslation>>
+>;
+export type SaveTranslationMutationBody = SaveTranslationDTO;
+export type SaveTranslationMutationError = unknown;
 
+export const useSaveTranslation = <
+    TError = unknown,
+    TContext = unknown,
+>(options?: {
+    mutation?: UseMutationOptions<
+        Awaited<ReturnType<typeof saveTranslation>>,
+        TError,
+        { termId: string; languageId: string; data: SaveTranslationDTO },
+        TContext
+    >;
+}) => {
+    const { mutation: mutationOptions } = options ?? {};
 
-      const mutationFn: MutationFunction<Awaited<ReturnType<typeof saveTranslation>>, {termId: string;languageId: string;data: SaveTranslationDTO}> = (props) => {
-          const {termId,languageId,data} = props ?? {};
+    const mutationFn: MutationFunction<
+        Awaited<ReturnType<typeof saveTranslation>>,
+        { termId: string; languageId: string; data: SaveTranslationDTO }
+    > = (props) => {
+        const { termId, languageId, data } = props ?? {};
 
-          return  saveTranslation(termId,languageId,data,)
-        }
+        return saveTranslation(termId, languageId, data);
+    };
 
-        
-
-      return useMutation<Awaited<ReturnType<typeof saveTranslation>>, TError, {termId: string;languageId: string;data: SaveTranslationDTO}, TContext>(mutationFn, mutationOptions);
-    }
-    
+    return useMutation<
+        Awaited<ReturnType<typeof saveTranslation>>,
+        TError,
+        { termId: string; languageId: string; data: SaveTranslationDTO },
+        TContext
+    >(mutationFn, mutationOptions);
+};

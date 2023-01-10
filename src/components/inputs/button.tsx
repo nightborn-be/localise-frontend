@@ -1,5 +1,5 @@
-import { Button as ChakraButton } from "@chakra-ui/react";
+import { Button as ChakraButton } from '@chakra-ui/react';
 
 export const Button = ({ label }: { label: string }) => {
-	return <ChakraButton>{label}</ChakraButton>;
+    return <ChakraButton>{label}</ChakraButton>;
 };
