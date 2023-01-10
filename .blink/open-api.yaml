@@ -125,7 +125,7 @@ paths:
           description: Success
 
   # Projects
-  /organisations/:organisationId/projects:
+  /organisations/{organisationId}/projects:
     get:
       description: Returns the projects of an organisation
       tags:

@@ -23,7 +23,7 @@ const Tabs = ({ children, activeKey, onChange }: ITabsProps): JSX.Element => {
 		return Children.map(children, (child: ReactElement<ITabProps>, index) => {
 			if (!child) return;
 
-			const key = child.key ?? (index as React.Key);
+			const key = index as React.Key;
 			const isActive = key === activeKey;
 
 			if (!isActive) return;

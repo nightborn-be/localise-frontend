@@ -30,41 +30,44 @@ import { customInstance } from '.././config';
  * Returns the projects of an organisation
  */
 export const getProjects = (
+    organisationId: string,
     params?: GetProjectsParams,
  signal?: AbortSignal
 ) => {
       return customInstance<ProjectPagingDTO>(
-      {url: `/organisations/:organisationId/projects`, method: 'get',
+      {url: `/organisations/${organisationId}/projects`, method: 'get',
         params, signal
     },
       );
     }
   
 
-export const getGetProjectsQueryKey = (params?: GetProjectsParams,) => [`/organisations/:organisationId/projects`, ...(params ? [params]: [])];
+export const getGetProjectsQueryKey = (organisationId: string,
+    params?: GetProjectsParams,) => [`/organisations/${organisationId}/projects`, ...(params ? [params]: [])];
 
     
 export type GetProjectsQueryResult = NonNullable<Awaited<ReturnType<typeof getProjects>>>
 export type GetProjectsQueryError = unknown
 
 export const useGetProjects = <TData = Awaited<ReturnType<typeof getProjects>>, TError = unknown>(
- params?: GetProjectsParams, options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getProjects>>, TError, TData>, }
+ organisationId: string,
+    params?: GetProjectsParams, options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getProjects>>, TError, TData>, }
 
   ):  UseQueryResult<TData, TError> & { queryKey: QueryKey } => {
 
   const {query: queryOptions} = options ?? {};
 
-  const queryKey =  queryOptions?.queryKey ?? getGetProjectsQueryKey(params);
+  const queryKey =  queryOptions?.queryKey ?? getGetProjectsQueryKey(organisationId,params);
 
   
 
 
-  const queryFn: QueryFunction<Awaited<ReturnType<typeof getProjects>>> = ({ signal }) => getProjects(params, signal);
+  const queryFn: QueryFunction<Awaited<ReturnType<typeof getProjects>>> = ({ signal }) => getProjects(organisationId,params, signal);
 
 
   
 
-  const query = useQuery<Awaited<ReturnType<typeof getProjects>>, TError, TData>(queryKey, queryFn, queryOptions) as  UseQueryResult<TData, TError> & { queryKey: QueryKey };
+  const query = useQuery<Awaited<ReturnType<typeof getProjects>>, TError, TData>(queryKey, queryFn, {enabled: !!(organisationId), ...queryOptions}) as  UseQueryResult<TData, TError> & { queryKey: QueryKey };
 
   query.queryKey = queryKey;
 
@@ -75,10 +78,11 @@ export const useGetProjects = <TData = Awaited<ReturnType<typeof getProjects>>, 
  * Create a project in an organisation
  */
 export const createProject = (
+    organisationId: string,
     createProjectDTO: CreateProjectDTO,
  ) => {
       return customInstance<ProjectDTO>(
-      {url: `/organisations/:organisationId/projects`, method: 'post',
+      {url: `/organisations/${organisationId}/projects`, method: 'post',
       headers: {'Content-Type': 'application/json', },
       data: createProjectDTO
     },
@@ -93,22 +97,22 @@ export const createProject = (
 
     export const useCreateProject = <TError = unknown,
     
-    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof createProject>>, TError,{data: CreateProjectDTO}, TContext>, }
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof createProject>>, TError,{organisationId: string;data: CreateProjectDTO}, TContext>, }
 ) => {
       const {mutation: mutationOptions} = options ?? {};
 
       
 
 
-      const mutationFn: MutationFunction<Awaited<ReturnType<typeof createProject>>, {data: CreateProjectDTO}> = (props) => {
-          const {data} = props ?? {};
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof createProject>>, {organisationId: string;data: CreateProjectDTO}> = (props) => {
+          const {organisationId,data} = props ?? {};
 
-          return  createProject(data,)
+          return  createProject(organisationId,data,)
         }
 
         
 
-      return useMutation<Awaited<ReturnType<typeof createProject>>, TError, {data: CreateProjectDTO}, TContext>(mutationFn, mutationOptions);
+      return useMutation<Awaited<ReturnType<typeof createProject>>, TError, {organisationId: string;data: CreateProjectDTO}, TContext>(mutationFn, mutationOptions);
     }
     /**
  * Update a project

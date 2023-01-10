@@ -4,6 +4,7 @@ import Tabs from "@components/navigation/tabs";
 import Tab from "@components/navigation/tabs/tab";
 import { useRouter } from "next/router";
 import { Key, useMemo } from "react";
+import { useGetProjects } from "src/services/projects/projects";
 
 const PROJECT_ROUTES = ["glossary", "settings", "statistics", "history"];
 
@@ -14,6 +15,8 @@ export default function ProjectHeader() {
 		asPath,
 		query: { projectId },
 	} = useRouter();
+
+	const {} = useGetProjects("2a510101-7a88-4ac7-83a7-c5662434f564");
 
 	const routes = useMemo(() => {
 		return {
@@ -42,7 +45,7 @@ export default function ProjectHeader() {
 			<Tabs activeKey={activeTab} onChange={handleChangeTab}>
 				{Object.keys(routes).map((route) => (
 					<Tab key={route} title={route}>
-						{routes[route]}
+						{routes[route as any] as any}
 					</Tab>
 				))}
 			</Tabs>
