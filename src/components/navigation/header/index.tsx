@@ -15,11 +15,20 @@ export default function ProjectHeader() {
 		query: { projectId },
 	} = useRouter();
 
+	const routes = useMemo(() => {
+		return {
+			glossary: <div>test</div>,
+			settings: <div>test</div>,
+			statistics: <div>test</div>,
+			history: <div>sefd</div>,
+		};
+	}, []);
+
 	const activeTab = useMemo(() => {
 		const lastSegment = asPath.split("/").pop();
 		if (!lastSegment) return 0;
-		return PROJECT_ROUTES.indexOf(lastSegment);
-	}, [asPath]);
+		return Object.keys(routes).indexOf(lastSegment);
+	}, [asPath, routes]);
 
 	// Functions
 	const handleChangeTab = (activeTab: Key) => {
@@ -31,10 +40,11 @@ export default function ProjectHeader() {
 		<Stack spacing={0} w="-webkit-fill-available">
 			<Breadcrumb elements={[{ label: "Projects" }, { label: "Mobile Application" }]} />
 			<Tabs activeKey={activeTab} onChange={handleChangeTab}>
-				<Tab title="Glossary"></Tab>
-				<Tab title="Settings"></Tab>
-				<Tab title="Statistics"></Tab>
-				<Tab title="History"></Tab>
+				{Object.keys(routes).map((route) => (
+					<Tab key={route} title={route}>
+						{routes[route]}
+					</Tab>
+				))}
 			</Tabs>
 		</Stack>
 	);
