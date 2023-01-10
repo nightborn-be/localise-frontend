@@ -1,5 +1,5 @@
-import ProjectLayout from "@components/navigation/layout";
+import ProjectLayout from '@components/navigation/layout';
 
 export default function Home() {
-	return <ProjectLayout />;
+    return <ProjectLayout />;
 }

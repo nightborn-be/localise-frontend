@@ -4,28 +4,81 @@
  * Localize Backend API
  * OpenAPI spec version: v1
  */
-import {
-  rest
-} from 'msw'
-import {
-  faker
-} from '@faker-js/faker'
+import { rest } from 'msw';
+import { faker } from '@faker-js/faker';
 
-export const getGetTranslationsMock = () => ({data: faker.helpers.arrayElement([Array.from({ length: faker.datatype.number({ min: 1, max: 10 }) }, (_, i) => i + 1).map(() => ({languageId: faker.helpers.arrayElement([faker.datatype.uuid(), undefined]), termId: faker.helpers.arrayElement([faker.datatype.uuid(), undefined]), translation: faker.helpers.arrayElement([faker.random.word(), undefined]),language: {name: faker.helpers.arrayElement([faker.random.word(), undefined]), abbreviation: faker.helpers.arrayElement([faker.random.word(), undefined]), isSource: faker.helpers.arrayElement([faker.datatype.boolean(), undefined])}})), undefined]), nbPages: faker.helpers.arrayElement([faker.datatype.number({min: undefined, max: undefined}), undefined]), page: faker.helpers.arrayElement([faker.datatype.number({min: undefined, max: undefined}), undefined]), size: faker.helpers.arrayElement([faker.datatype.number({min: undefined, max: undefined}), undefined]), totalAmount: faker.helpers.arrayElement([faker.datatype.number({min: undefined, max: undefined}), undefined])})
+export const getGetTranslationsMock = () => ({
+    data: faker.helpers.arrayElement([
+        Array.from(
+            { length: faker.datatype.number({ min: 1, max: 10 }) },
+            (_, i) => i + 1,
+        ).map(() => ({
+            languageId: faker.helpers.arrayElement([
+                faker.datatype.uuid(),
+                undefined,
+            ]),
+            termId: faker.helpers.arrayElement([
+                faker.datatype.uuid(),
+                undefined,
+            ]),
+            translation: faker.helpers.arrayElement([
+                faker.random.word(),
+                undefined,
+            ]),
+            language: {
+                name: faker.helpers.arrayElement([
+                    faker.random.word(),
+                    undefined,
+                ]),
+                abbreviation: faker.helpers.arrayElement([
+                    faker.random.word(),
+                    undefined,
+                ]),
+                isSource: faker.helpers.arrayElement([
+                    faker.datatype.boolean(),
+                    undefined,
+                ]),
+            },
+        })),
+        undefined,
+    ]),
+    nbPages: faker.helpers.arrayElement([
+        faker.datatype.number({ min: undefined, max: undefined }),
+        undefined,
+    ]),
+    page: faker.helpers.arrayElement([
+        faker.datatype.number({ min: undefined, max: undefined }),
+        undefined,
+    ]),
+    size: faker.helpers.arrayElement([
+        faker.datatype.number({ min: undefined, max: undefined }),
+        undefined,
+    ]),
+    totalAmount: faker.helpers.arrayElement([
+        faker.datatype.number({ min: undefined, max: undefined }),
+        undefined,
+    ]),
+});
 
-export const getSaveTranslationMock = () => ({languageId: faker.helpers.arrayElement([faker.datatype.uuid(), undefined]), termId: faker.helpers.arrayElement([faker.datatype.uuid(), undefined]), translation: faker.helpers.arrayElement([faker.random.word(), undefined])})
+export const getSaveTranslationMock = () => ({
+    languageId: faker.helpers.arrayElement([faker.datatype.uuid(), undefined]),
+    termId: faker.helpers.arrayElement([faker.datatype.uuid(), undefined]),
+    translation: faker.helpers.arrayElement([faker.random.word(), undefined]),
+});
 
 export const getTranslationsMSW = () => [
-rest.get('*/terms/:termId/languages', (_req, res, ctx) => {
+    rest.get('*/terms/:termId/languages', (_req, res, ctx) => {
         return res(
-          ctx.delay(1000),
-          ctx.status(200, 'Mocked status'),
-ctx.json(getGetTranslationsMock()),
-        )
-      }),rest.post('*/terms/:termId/languages/:languageId', (_req, res, ctx) => {
+            ctx.delay(1000),
+            ctx.status(200, 'Mocked status'),
+            ctx.json(getGetTranslationsMock()),
+        );
+    }),
+    rest.post('*/terms/:termId/languages/:languageId', (_req, res, ctx) => {
         return res(
-          ctx.delay(1000),
-          ctx.status(200, 'Mocked status'),
-ctx.json(getSaveTranslationMock()),
-        )
-      }),]
+            ctx.delay(1000),
+            ctx.status(200, 'Mocked status'),
+            ctx.json(getSaveTranslationMock()),
+        );
+    }),
+];

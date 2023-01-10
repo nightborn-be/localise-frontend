@@ -10,14 +10,14 @@ import type { ProjectDTO } from './projectDTO';
  * A paging
  */
 export interface ProjectPagingDTO {
-  /** The projects */
-  data?: ProjectDTO[];
-  /** The number of pages */
-  nbPages?: number;
-  /** The current page */
-  page?: number;
-  /** The current size */
-  size?: number;
-  /** The total amount of projects */
-  totalAmount?: number;
+    /** The projects */
+    data?: ProjectDTO[];
+    /** The number of pages */
+    nbPages?: number;
+    /** The current page */
+    page?: number;
+    /** The current size */
+    size?: number;
+    /** The total amount of projects */
+    totalAmount?: number;
 }
