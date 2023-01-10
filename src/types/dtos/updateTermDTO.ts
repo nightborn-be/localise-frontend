@@ -9,7 +9,7 @@
  * A term object to update
  */
 export interface UpdateTermDTO {
-  /** The (unique) name of the term */
-  name: string;
-  description?: string | null;
+    /** The (unique) name of the term */
+    name: string;
+    description?: string | null;
 }
