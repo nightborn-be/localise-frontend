@@ -9,7 +9,7 @@
  * An organisation object to create
  */
 export interface CreateOrganisationDTO {
-  /** The (unique) name of the organisation */
-  name: string;
-  pictureContent?: string | null;
+    /** The (unique) name of the organisation */
+    name: string;
+    pictureContent?: string | null;
 }

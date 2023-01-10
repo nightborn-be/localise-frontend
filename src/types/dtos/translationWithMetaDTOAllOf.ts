@@ -7,5 +7,5 @@
 import type { TranslationLanguageMetaDTO } from './translationLanguageMetaDTO';
 
 export type TranslationWithMetaDTOAllOf = {
-  language: TranslationLanguageMetaDTO;
+    language: TranslationLanguageMetaDTO;
 };

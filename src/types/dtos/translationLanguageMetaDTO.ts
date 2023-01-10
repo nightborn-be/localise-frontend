@@ -9,7 +9,7 @@
  * The language linked to a translation
  */
 export interface TranslationLanguageMetaDTO {
-  name?: string;
-  abbreviation?: string;
-  isSource?: boolean;
+    name?: string;
+    abbreviation?: string;
+    isSource?: boolean;
 }

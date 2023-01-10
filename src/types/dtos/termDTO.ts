@@ -9,10 +9,10 @@
  * A term of a project
  */
 export interface TermDTO {
-  id?: string;
-  createdAt?: string;
-  modifiedAt?: string;
-  name?: string;
-  description?: string | null;
-  projectId?: string;
+    id?: string;
+    createdAt?: string;
+    modifiedAt?: string;
+    name?: string;
+    description?: string | null;
+    projectId?: string;
 }
