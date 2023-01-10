@@ -4,41 +4,113 @@
  * Localize Backend API
  * OpenAPI spec version: v1
  */
-import {
-  rest
-} from 'msw'
-import {
-  faker
-} from '@faker-js/faker'
+import { rest } from 'msw';
+import { faker } from '@faker-js/faker';
 
-export const getGetTermsMock = () => ({data: faker.helpers.arrayElement([Array.from({ length: faker.datatype.number({ min: 1, max: 10 }) }, (_, i) => i + 1).map(() => ({id: faker.helpers.arrayElement([faker.datatype.uuid(), undefined]), createdAt: faker.helpers.arrayElement([`${faker.date.past().toISOString().split('.')[0]}Z`, undefined]), modifiedAt: faker.helpers.arrayElement([`${faker.date.past().toISOString().split('.')[0]}Z`, undefined]), name: faker.helpers.arrayElement([faker.random.word(), undefined]), description: faker.helpers.arrayElement([faker.helpers.arrayElement([faker.random.word(), null]), undefined]), projectId: faker.helpers.arrayElement([faker.datatype.uuid(), undefined])})), undefined]), nbPages: faker.helpers.arrayElement([faker.datatype.number({min: undefined, max: undefined}), undefined]), page: faker.helpers.arrayElement([faker.datatype.number({min: undefined, max: undefined}), undefined]), size: faker.helpers.arrayElement([faker.datatype.number({min: undefined, max: undefined}), undefined]), totalAmount: faker.helpers.arrayElement([faker.datatype.number({min: undefined, max: undefined}), undefined])})
+export const getGetTermsMock = () => ({
+    data: faker.helpers.arrayElement([
+        Array.from(
+            { length: faker.datatype.number({ min: 1, max: 10 }) },
+            (_, i) => i + 1,
+        ).map(() => ({
+            id: faker.helpers.arrayElement([faker.datatype.uuid(), undefined]),
+            createdAt: faker.helpers.arrayElement([
+                `${faker.date.past().toISOString().split('.')[0]}Z`,
+                undefined,
+            ]),
+            modifiedAt: faker.helpers.arrayElement([
+                `${faker.date.past().toISOString().split('.')[0]}Z`,
+                undefined,
+            ]),
+            name: faker.helpers.arrayElement([faker.random.word(), undefined]),
+            description: faker.helpers.arrayElement([
+                faker.helpers.arrayElement([faker.random.word(), null]),
+                undefined,
+            ]),
+            projectId: faker.helpers.arrayElement([
+                faker.datatype.uuid(),
+                undefined,
+            ]),
+        })),
+        undefined,
+    ]),
+    nbPages: faker.helpers.arrayElement([
+        faker.datatype.number({ min: undefined, max: undefined }),
+        undefined,
+    ]),
+    page: faker.helpers.arrayElement([
+        faker.datatype.number({ min: undefined, max: undefined }),
+        undefined,
+    ]),
+    size: faker.helpers.arrayElement([
+        faker.datatype.number({ min: undefined, max: undefined }),
+        undefined,
+    ]),
+    totalAmount: faker.helpers.arrayElement([
+        faker.datatype.number({ min: undefined, max: undefined }),
+        undefined,
+    ]),
+});
 
-export const getCreateTermMock = () => ({id: faker.helpers.arrayElement([faker.datatype.uuid(), undefined]), createdAt: faker.helpers.arrayElement([`${faker.date.past().toISOString().split('.')[0]}Z`, undefined]), modifiedAt: faker.helpers.arrayElement([`${faker.date.past().toISOString().split('.')[0]}Z`, undefined]), name: faker.helpers.arrayElement([faker.random.word(), undefined]), description: faker.helpers.arrayElement([faker.helpers.arrayElement([faker.random.word(), null]), undefined]), projectId: faker.helpers.arrayElement([faker.datatype.uuid(), undefined])})
+export const getCreateTermMock = () => ({
+    id: faker.helpers.arrayElement([faker.datatype.uuid(), undefined]),
+    createdAt: faker.helpers.arrayElement([
+        `${faker.date.past().toISOString().split('.')[0]}Z`,
+        undefined,
+    ]),
+    modifiedAt: faker.helpers.arrayElement([
+        `${faker.date.past().toISOString().split('.')[0]}Z`,
+        undefined,
+    ]),
+    name: faker.helpers.arrayElement([faker.random.word(), undefined]),
+    description: faker.helpers.arrayElement([
+        faker.helpers.arrayElement([faker.random.word(), null]),
+        undefined,
+    ]),
+    projectId: faker.helpers.arrayElement([faker.datatype.uuid(), undefined]),
+});
 
-export const getUpdateTermMock = () => ({id: faker.helpers.arrayElement([faker.datatype.uuid(), undefined]), createdAt: faker.helpers.arrayElement([`${faker.date.past().toISOString().split('.')[0]}Z`, undefined]), modifiedAt: faker.helpers.arrayElement([`${faker.date.past().toISOString().split('.')[0]}Z`, undefined]), name: faker.helpers.arrayElement([faker.random.word(), undefined]), description: faker.helpers.arrayElement([faker.helpers.arrayElement([faker.random.word(), null]), undefined]), projectId: faker.helpers.arrayElement([faker.datatype.uuid(), undefined])})
+export const getUpdateTermMock = () => ({
+    id: faker.helpers.arrayElement([faker.datatype.uuid(), undefined]),
+    createdAt: faker.helpers.arrayElement([
+        `${faker.date.past().toISOString().split('.')[0]}Z`,
+        undefined,
+    ]),
+    modifiedAt: faker.helpers.arrayElement([
+        `${faker.date.past().toISOString().split('.')[0]}Z`,
+        undefined,
+    ]),
+    name: faker.helpers.arrayElement([faker.random.word(), undefined]),
+    description: faker.helpers.arrayElement([
+        faker.helpers.arrayElement([faker.random.word(), null]),
+        undefined,
+    ]),
+    projectId: faker.helpers.arrayElement([faker.datatype.uuid(), undefined]),
+});
 
 export const getTermsMSW = () => [
-rest.get('*/projects/:projectId/terms', (_req, res, ctx) => {
+    rest.get('*/projects/:projectId/terms', (_req, res, ctx) => {
         return res(
-          ctx.delay(1000),
-          ctx.status(200, 'Mocked status'),
-ctx.json(getGetTermsMock()),
-        )
-      }),rest.post('*/projects/:projectId/terms', (_req, res, ctx) => {
+            ctx.delay(1000),
+            ctx.status(200, 'Mocked status'),
+            ctx.json(getGetTermsMock()),
+        );
+    }),
+    rest.post('*/projects/:projectId/terms', (_req, res, ctx) => {
         return res(
-          ctx.delay(1000),
-          ctx.status(200, 'Mocked status'),
-ctx.json(getCreateTermMock()),
-        )
-      }),rest.put('*/projects/:projectId/terms/:termId', (_req, res, ctx) => {
+            ctx.delay(1000),
+            ctx.status(200, 'Mocked status'),
+            ctx.json(getCreateTermMock()),
+        );
+    }),
+    rest.put('*/projects/:projectId/terms/:termId', (_req, res, ctx) => {
         return res(
-          ctx.delay(1000),
-          ctx.status(200, 'Mocked status'),
-ctx.json(getUpdateTermMock()),
-        )
-      }),rest.delete('*/projects/:projectId/terms/:termId', (_req, res, ctx) => {
-        return res(
-          ctx.delay(1000),
-          ctx.status(200, 'Mocked status'),
-        )
-      }),]
+            ctx.delay(1000),
+            ctx.status(200, 'Mocked status'),
+            ctx.json(getUpdateTermMock()),
+        );
+    }),
+    rest.delete('*/projects/:projectId/terms/:termId', (_req, res, ctx) => {
+        return res(ctx.delay(1000), ctx.status(200, 'Mocked status'));
+    }),
+];

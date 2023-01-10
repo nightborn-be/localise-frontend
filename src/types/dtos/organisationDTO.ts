@@ -9,9 +9,9 @@
  * An organisation
  */
 export interface OrganisationDTO {
-  id?: string;
-  createdAt?: string;
-  modifiedAt?: string;
-  name?: string;
-  pictureUrl?: string | null;
+    id?: string;
+    createdAt?: string;
+    modifiedAt?: string;
+    name?: string;
+    pictureUrl?: string | null;
 }
