@@ -16,8 +16,6 @@ export default function ProjectHeader() {
 		query: { projectId },
 	} = useRouter();
 
-	const {} = useGetProjects("2a510101-7a88-4ac7-83a7-c5662434f564");
-
 	const routes = useMemo(() => {
 		return {
 			glossary: <div>test</div>,
