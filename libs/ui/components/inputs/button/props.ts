@@ -1,9 +1,15 @@
-export default interface IButtonIconProps {
+export default interface IButtonProps {
+    text: string,
     size: ButtonSize,
+    color: string,
     backgroundColor?: string,
     border?: string,
     borderRadius?: string,
-    icon: React.ReactElement,
+    w: string,
+    h: string,
+    startEnhancer?: React.ReactElement,
+    endEnhancer?: React.ReactElement,
+    hoverTextColor: string,
     hoverBackgroundColor?: string,
     handleOnClick?: () => void,
 }

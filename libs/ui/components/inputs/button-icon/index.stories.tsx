@@ -21,6 +21,7 @@ const props: IButtonIconProps = {
     border: 'none',
     borderRadius: '8px',
     icon: <Icon name='add' stroke='white' width='16' height='16' />,
+    handleOnClick: () => {},
 };
 
 export const Xs = Template.bind({});
