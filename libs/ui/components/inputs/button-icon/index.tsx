@@ -20,6 +20,8 @@ export default function ButtonIcon({
             borderRadius={borderRadius}
             width={size}
             height={size}
+            minHeight={'28px'}
+            minWidth={'28px'}
             onClick={handleOnClick}
             icon={icon}
             _hover={{ bgColor: hoverBackgroundColor }}
