@@ -1,19 +1,11 @@
-export default interface IButtonProps {
-    text: string,
-    size: ButtonSize,
-    color: string,
-    backgroundColor?: string,
-    border?: string,
-    borderRadius?: string,
-    w: string,
-    h: string,
-    startEnhancer?: React.ReactElement,
-    endEnhancer?: React.ReactElement,
-    hoverTextColor: string,
-    hoverBackgroundColor?: string,
-    handleOnClick?: () => void,
-}
+import { ButtonProps } from "@chakra-ui/react";
 
-export enum ButtonSize {
-    XS = "28px", SMALL = "32px", REGULAR = "36px", LARGE = "40px", XL = "44px"
+export default interface IButtonProps extends ButtonProps {
+    text: string,
+    startEnHancer?: React.ReactElement,
+    endEnHancer?: React.ReactElement,
+    hoverTextColor?: string,
+    hoverBackgroundColor?: string,
+    direction?: string,
+    spacing: string,
 }

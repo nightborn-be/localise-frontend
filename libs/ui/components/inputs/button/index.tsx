@@ -1,35 +1,68 @@
 import React from 'react';
-import { IconButton } from '@chakra-ui/react';
+import {
+    Button as ChakraButton,
+    HStack,
+    Stack,
+    Text,
+    VStack,
+} from '@chakra-ui/react';
 import IButtonProps from './props';
 
 export default function Button({
-    size,
-    backgroundColor,
-    hoverBackgroundColor,
-    border,
-    borderRadius,
-    handleOnClick,
     text,
-    color,
-    w,
-    h,
-    startEnhancer,
-    endEnhancer,
     hoverTextColor,
+    hoverBackgroundColor,
+    spacing,
+    onClick,
+    direction = 'row',
+    ...rest
 }: IButtonProps) {
     // Render
     return (
-        <IconButton
-            aria-label='icon button'
-            backgroundColor={backgroundColor}
-            border={border}
-            borderRadius={borderRadius}
-            width={size}
-            height={size}
-            minHeight={'28px'}
-            minWidth={'28px'}
-            onClick={handleOnClick}
-            _hover={{ bgColor: hoverBackgroundColor }}
-        />
+        <ChakraButton
+            value={text}
+            onClick={onClick}
+            _hover={{
+                bgColor: hoverBackgroundColor,
+                textColor: hoverTextColor,
+            }}
+            {...rest}
+        >
+            {direction === 'row' ? (
+                <HStack direction={'row'} align-item='center' spacing={spacing}>
+                    {rest.startEnHancer && (
+                        <Stack align={'start'}>{rest.startEnHancer}</Stack>
+                    )}
+                    <Text
+                        textAlign={rest.textAlign}
+                        lineHeight={rest.lineHeight}
+                        fontSize={rest.fontSize}
+                        color={rest.color}
+                    >
+                        {text}
+                    </Text>
+                    {rest.endEnHancer && (
+                        <Stack align={'end'}>{rest.endEnHancer}</Stack>
+                    )}
+                </HStack>
+            ) : (
+                <VStack direction={'row'} align-item='center' spacing={spacing}>
+                    {rest.startEnHancer && (
+                        <Stack align={'start'}>{rest.startEnHancer}</Stack>
+                    )}
+                    <Text
+                        textAlign={rest.textAlign}
+                        lineHeight={rest.lineHeight}
+                        fontSize={rest.fontSize}
+                        color={rest.color}
+                    >
+                        {text}
+                    </Text>
+                    {rest.endEnHancer && (
+                        <Stack align={'end'}>{rest.endEnHancer}</Stack>
+                    )}
+                </VStack>
+            )}
+        </ChakraButton>
     );
 }

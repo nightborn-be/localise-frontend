@@ -1,5 +1,6 @@
+import { ChakraProps } from '@chakra-ui/react';
 import React from 'react'
-export default interface IButtonIconProps {
+export default interface IButtonIconProps extends ChakraProps {
     size: ButtonSize,
     backgroundColor?: string,
     border?: string,
