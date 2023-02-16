@@ -1,8 +1,6 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import IButtonIconProps, { ButtonSize } from './props';
-import Add from '../../contents/icon/icons/add';
-import IconProps from '../../contents/icon/props';
 import Icon from '../../contents/icon';
 import ButtonIcon from '.';
 

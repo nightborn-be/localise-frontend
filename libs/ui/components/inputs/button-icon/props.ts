@@ -1,3 +1,4 @@
+import React from 'react'
 export default interface IButtonIconProps {
     size: ButtonSize,
     backgroundColor?: string,
