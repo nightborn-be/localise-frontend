@@ -15,6 +15,7 @@ export default function Button({
     spacing,
     onClick,
     direction = 'row',
+    whiteSpace,
     ...rest
 }: IButtonProps) {
     // Render
@@ -26,10 +27,25 @@ export default function Button({
                 bgColor: hoverBackgroundColor,
                 textColor: hoverTextColor,
             }}
+            padding={
+                direction !== 'row' ||
+                (rest.startEnHancer === undefined &&
+                    rest.endEnHancer === undefined)
+                    ? ''
+                    : rest.startEnHancer
+                    ? '4px 12px 4px 8px'
+                    : '4px 8px 4px 12px'
+            }
+            gap='4px'
             {...rest}
         >
             {direction === 'row' ? (
-                <HStack direction={'row'} align-item='center' spacing={spacing}>
+                <HStack
+                    direction={'row'}
+                    align-item='center'
+                    justify-content='center'
+                    spacing={spacing}
+                >
                     {rest.startEnHancer && (
                         <Stack align={'start'}>{rest.startEnHancer}</Stack>
                     )}
@@ -38,6 +54,8 @@ export default function Button({
                         lineHeight={rest.lineHeight}
                         fontSize={rest.fontSize}
                         color={rest.color}
+                        fontFamily='Inter'
+                        fontStyle='normal'
                     >
                         {text}
                     </Text>
@@ -55,6 +73,9 @@ export default function Button({
                         lineHeight={rest.lineHeight}
                         fontSize={rest.fontSize}
                         color={rest.color}
+                        whiteSpace={whiteSpace}
+                        fontFamily='Inter'
+                        fontStyle='normal'
                     >
                         {text}
                     </Text>
