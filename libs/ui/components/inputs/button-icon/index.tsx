@@ -4,20 +4,15 @@ import IButtonIconProps from './props';
 
 export default function ButtonIcon({
     size,
-    backgroundColor,
     hoverBackgroundColor,
-    border,
-    borderRadius,
     handleOnClick,
     icon,
+    ...props
 }: IButtonIconProps) {
     // Render
     return (
         <IconButton
-            aria-label='icon button'
-            backgroundColor={backgroundColor}
-            border={border}
-            borderRadius={borderRadius}
+            {...props}
             width={size}
             height={size}
             minHeight={'28px'}
@@ -25,6 +20,7 @@ export default function ButtonIcon({
             onClick={handleOnClick}
             icon={icon}
             _hover={{ bgColor: hoverBackgroundColor }}
+            onM
         />
     );
 }
