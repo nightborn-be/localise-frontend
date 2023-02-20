@@ -2,12 +2,12 @@ import React from 'react';
 
 const Expand = (props: React.SVGProps<SVGSVGElement>) => (
     <svg
-        width='12'
-        height='12'
-        viewBox='0 0 12 12'
+        {...props}
+        width={props?.width ?? '12'}
+        height={props?.height ?? '12'}
+        viewBox={props?.viewBox ?? '0 0 12 12'}
         fill='none'
         xmlns='http://www.w3.org/2000/svg'
-        {...props}
     >
         <g clipPath='url(#clip0_5301_49024)'>
             <path

@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import IButtonIconProps, { ButtonSize } from './props';
 import Icon from '../../contents/icon';
 import ButtonIcon from '.';
-import { Box, Stack } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 
 export default {
     title: 'Components/Inputs/ButtonIcon',
@@ -52,8 +52,8 @@ NoBorderNoColor.args = {
 export const BorderNoColor = Template.bind({});
 BorderNoColor.args = {
     ...props,
-    hoverBackgroundColor: 'none',
-    backgroundColor: 'none',
+    hoverBackgroundColor: '#F2F4F9',
+    backgroundColor: 'transparent',
     icon: <Icon name='add' stroke='#8F95B2' width='16' height='16' />,
 };
 export const SimpleBorderNoColor = Template.bind({});
@@ -64,21 +64,40 @@ SimpleBorderNoColor.args = {
     hoverBackgroundColor: '#EDEEFC',
     icon: <Icon name='add' stroke='#5F43E2' width='16' height='16' />,
 };
+const DashedBorderComponent = (): JSX.Element => {
+    const [isHovered, setIsHovered] = useState<boolean>();
+    const handleMouseOver = () => setIsHovered((prev) => !prev);
+    const handleMouseLeave = () => setIsHovered((prev) => !prev);
+    return (
+        <Box
+            onMouseOver={handleMouseOver}
+            onMouseLeave={handleMouseLeave}
+            p='10px'
+        >
+            <Icon
+                name='add'
+                stroke={isHovered ? '#393360' : '#8F95B2'}
+                width='16'
+                height='16'
+            />
+        </Box>
+    );
+};
 export const DashedBorderNoColor = Template.bind({});
 DashedBorderNoColor.args = {
     ...props,
     hoverBackgroundColor: 'none',
-    backgroundColor: 'none',
+    backgroundColor: 'transparent',
     border: '1px dashed #8F95B2',
     borderRadius: '8px',
-    icon: <Icon name='add' stroke='#8F95B2' width='16' height='16' />,
+    icon: <DashedBorderComponent />,
 };
 export const Trash = Template.bind({});
 Trash.args = {
     ...props,
     backgroundColor: '#F46363',
     icon: <Icon name='trashSmall' stroke='#FFFFFF' fill='#FFFFFF' />,
-    size: ButtonSize.LARGE,
+    size: ButtonSize.SMALL,
     hoverBackgroundColor: '#E55252',
     padding: '4px',
     gap: '10px',
@@ -87,10 +106,34 @@ export const TrashNoBackground = Template.bind({});
 TrashNoBackground.args = {
     ...props,
     size: ButtonSize.XL,
-    backgroundColor: 'none',
+    backgroundColor: 'transparent',
+    hoverBackgroundColor: '#F2F4F9',
     icon: <Icon name='trashLarge' stroke='#F46363' fill='#F46363' />,
 };
 
+const RemoveMemberComponent = ({
+    small,
+    color,
+}: {
+    small: boolean;
+    color: string;
+}): JSX.Element => {
+    const [isHovered, setIsHovered] = useState<boolean>();
+    const handleMouseOver = () => setIsHovered((prev) => !prev);
+    const handleMouseLeave = () => setIsHovered((prev) => !prev);
+    return (
+        <Box
+            onMouseOver={handleMouseOver}
+            onMouseLeave={handleMouseLeave}
+            p='10px'
+        >
+            <Icon
+                name={small ? 'removeSmall' : 'removeLarge'}
+                stroke={isHovered ? '#F46363' : color}
+            />
+        </Box>
+    );
+};
 export const RemoveMemberSmall = Template.bind({});
 RemoveMemberSmall.args = {
     borderRadius: '6px',
@@ -99,7 +142,7 @@ RemoveMemberSmall.args = {
     gap: '10px',
     backgroundColor: '#FFFFFF',
     hoverBackgroundColor: '#F2F4F9',
-    icon: <Icon name='removeSmall' stroke='#8F95B2' />,
+    icon: <RemoveMemberComponent small={true} color='#8F95B2' />,
 };
 export const RemoveMemberXL = Template.bind({});
 RemoveMemberXL.args = {
@@ -109,41 +152,20 @@ RemoveMemberXL.args = {
     gap: '10px',
     backgroundColor: '#FFFFFF',
     hoverBackgroundColor: '#F2F4F9',
-    icon: <Icon name='removeLarge' width='20' height='20' stroke='#8F95B2' />,
+    icon: <RemoveMemberComponent small={false} color='#8F95B2' />,
 };
+export const RemoveMenu = Template.bind({});
+RemoveMenu.args = {
+    borderRadius: '6px',
+    size: ButtonSize.SMALL,
+    padding: '4px',
+    gap: '10px',
+    backgroundColor: '#5F43E2',
+    hoverBackgroundColor: '#4C36B5',
+    icon: <Icon name='removeLarge' stroke='#FFFFFF' />,
+};
+
 export const ArrowDown = Template.bind({});
-// const ArrowDownComponent = (): JSX.Element => {
-//     // Attributes
-//     const [isHovered, setIsHovered] = useState<boolean>();
-
-//     const handleMouseOver = () => setIsHovered((prev) => !prev);
-//     const handleMouseLeave = () => setIsHovered((prev) => !prev);
-
-//     /**
-//      * Normally you should do like this in order to change the Icon fill when you hover, but
-//      * I can't make it works with Storyboook :'D
-//      *
-//      * So for now you can leave it like this or try your idea but changing the Props type may not work
-//      * as expected when you'll implement the component in your app.
-//      *
-//      * <Button handleMouseOver={handleMouseOver} handleMouseLeave={handleMouseLeave}>
-//      *     <Icon
-//      *          name='arrowDown'
-//      *          stroke='#8F95B2'
-//      *          fill={isHovered ? '#8F95B2' : '#FFFFFF'}
-//      *      />
-//      *  </Button>
-//      */
-
-//     // Render
-//     return (
-//         <Icon
-//             name='arrowDown'
-//             stroke='#8F95B2'
-//             fill={isHovered ? '#8F95B2' : '#FFFFFF'}
-//         />
-//     );
-// };
 
 ArrowDown.args = {
     borderRadius: '6px',
@@ -197,3 +219,25 @@ More.args = {
     hoverBackgroundColor: '#F2F4F9',
     icon: <Icon name='more' fill='#8F95B2' stroke='#8F95B2' />,
 };
+export const Copy = Template.bind({});
+Copy.args = {
+    borderRadius: '6px',
+    size: ButtonSize.XS,
+    padding: '4px',
+    gap: '10px',
+    backgroundColor: '#F8F9FC',
+    hoverBackgroundColor: '#E7E9F4',
+    icon: <Icon name='copy' fill='#8F95B2' />,
+};
+export const CircleAdd = Template.bind({});
+CircleAdd.args = {
+    borderRadius: '100px',
+    size: ButtonSize.XXL,
+    backgroundColor: '#5F43E2',
+    hoverBackgroundColor: '#4C36B5',
+    boxShadow:
+        '0px 2px 4px rgba(40, 41, 61, 0.04), 0px 8px 16px rgba(96, 97, 112, 0.16)',
+    icon: <Icon name='addCircle' stroke='#FFFFFF' width={28} height={28} />,
+};
+
+

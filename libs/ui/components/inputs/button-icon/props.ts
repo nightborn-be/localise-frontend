@@ -5,10 +5,10 @@ export default interface IButtonIconProps extends IconButtonProps {
     icon: React.ReactElement,
     hoverBackgroundColor?: string,
     handleOnClick?: () => void,
-    onMouseOver?: () => void,
-    onMouseLeave?: () => void,
+    handleOnMouseOver?: () => void,
+    handleOnMouseLeave?: () => void,
 }
 
 export enum ButtonSize {
-    XS = "28px", SMALL = "32px", REGULAR = "36px", LARGE = "40px", XL = "44px"
+    XS = "28px", SMALL = "32px", REGULAR = "36px", LARGE = "40px", XL = "44px", XXL = "48px"
 }

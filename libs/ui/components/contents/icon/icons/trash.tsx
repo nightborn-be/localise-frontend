@@ -1,9 +1,10 @@
 import React from 'react';
 const TrashSmall = (props: React.SVGProps<SVGSVGElement>) => (
     <svg
-        width='12'
-        height='12'
-        viewBox='0 0 12 12'
+        {...props}
+        width={props?.width ?? '12'}
+        height={props?.height ?? '12'}
+        viewBox={props?.viewBox ?? '0 0 12 12'}
         xmlns='http://www.w3.org/2000/svg'
         fill={props.fill}
     >
@@ -27,11 +28,10 @@ const TrashSmall = (props: React.SVGProps<SVGSVGElement>) => (
 
 export const TrashLarge = (props: React.SVGProps<SVGSVGElement>) => (
     <svg
-        width='14'
-        height='14'
-        viewBox='0 0 14 14'
-        fill='none'
         {...props}
+        width={props?.width ?? '14'}
+        height={props?.height ?? '14'}
+        viewBox={props?.viewBox ?? '0 0 14 14'}
         xmlns='http://www.w3.org/2000/svg'
     >
         <g clipPath='url(#clip0_5280_43462)'>

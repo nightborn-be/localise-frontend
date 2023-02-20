@@ -1,7 +1,7 @@
 import React from 'react';
 import { IconButton } from '@chakra-ui/react';
 import IButtonIconProps from './props';
-
+ 
 export default function ButtonIcon({
     size,
     hoverBackgroundColor,
