@@ -48,6 +48,14 @@ export const RegularTextLeftIcon = Template.bind({});
 RegularTextLeftIcon.args = {
     ...props,
 };
+
+export const XLTextLeftIcon = Template.bind({});
+XLTextLeftIcon.args = {
+    ...props,
+    width: '74px',
+    height: '44px',
+    fontSize: '14px',
+};
 export const LargeTextRightIconNoBackground = Template.bind({});
 LargeTextRightIconNoBackground.args = {
     ...props,
