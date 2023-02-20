@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import Button from '.';
 import IButtonProps from './props';
 import Icon from '../../contents/icon';
+import { Box } from '@chakra-ui/react';
 
 export default {
     title: 'Components/Inputs/Button',
@@ -42,7 +43,9 @@ const props: IButtonProps = {
 export const SmallTextLeftIcon = Template.bind({});
 SmallTextLeftIcon.args = {
     ...props,
-    fontSize: '10px',
+    height: '28px',
+    padding: '4px 12px 4px 8px',
+    gap: '4px',
 };
 export const RegularTextLeftIcon = Template.bind({});
 RegularTextLeftIcon.args = {
@@ -55,6 +58,9 @@ XLTextLeftIcon.args = {
     width: '74px',
     height: '44px',
     fontSize: '14px',
+    padding: '4px 12px 4px 8px',
+    gap: '4px',
+    startEnHancer: <Icon name='add' stroke='#FFFFFF' width='20' height='20' />,
 };
 export const LargeTextRightIconNoBackground = Template.bind({});
 LargeTextRightIconNoBackground.args = {
@@ -83,6 +89,10 @@ TextWithBorder.args = {
     border: '1px solid #5F43E2',
     borderRadius: '8px',
     backgroundColor: '#F8F9FC',
+    h: '36px',
+    padding: '4px 12px 4px 8px',
+    gap: '4px',
+    lineHeight: '15px',
     startEnHancer: (
         <Icon
             name='add'
@@ -101,11 +111,12 @@ TextRightIconWithBorderDashed.args = {
     ...props,
     border: '1px dashed #8F95B2',
     borderRadius: '8px',
-    backgroundColor: '#F8F9FC',
+    backgroundColor: 'transparent',
     color: '#8F95B2',
-    lineHeight: '17px',
+    lineHeight: '15px',
     startEnHancer: undefined,
     hoverBackgroundColor: undefined,
+    hoverColor: '#393360',
     endEnHancer: (
         <Icon
             name='add'
@@ -122,11 +133,13 @@ const trashProps: IButtonProps = {
     color: '#FFFFFF',
     backgroundColor: '#F46363',
     borderRadius: '8px',
-    w: '66px',
-    h: '32px',
+    w: '50px',
+    h: '28px',
+    padding: '4px 12px',
+    gap: '4px',
     startEnHancer: (
         <Icon
-            name='trash'
+            name='trashSmall'
             stroke='#FFFFFF'
             fill='#FFFFFF'
             width='12'
@@ -135,7 +148,7 @@ const trashProps: IButtonProps = {
         />
     ),
     fontWeight: 600,
-    lineHeight: '17px',
+    lineHeight: '15px',
     textAlign: 'center',
     spacing: '4px',
     onClick: () => {},
@@ -159,15 +172,13 @@ TrashRightWithText.args = {
     h: '44px',
     startEnHancer: (
         <Icon
-            name='trash'
-            stroke='#FFFFFF'
+            name='trashLarge'
             fill='#FFFFFF'
             width='14'
             height='14'
             viewBox='0 0 14 14'
         />
     ),
-    padding: '4px 12px',
     gap: '8px',
     spacing: '8.33px',
 };
@@ -176,13 +187,12 @@ TrashLeftWithTextNoBackground.args = {
     ...trashProps,
     color: '#F46363',
     fontSize: '14px',
-    lineHeight: '15px',
+    lineHeight: '17px',
     fontWeight: 600,
     startEnHancer: undefined,
     endEnHancer: (
         <Icon
-            name='trash'
-            stroke='##F46363'
+            name='trashLarge'
             fill='#F46363'
             width='14'
             height='14'
@@ -207,13 +217,14 @@ AddMember.args = {
     w: '327px',
     h: '44px',
     padding: '4px 12px 4px 8px',
+    gap: '4px',
     fontSize: '14px',
     fontWeight: 400,
     lineHeight: '17px',
     justifyContent: 'flex-start',
     backgroundColor: 'transparent',
     color: '#8F95B2',
-    startEnHancer: <Icon name='add' stroke='#8F95B2' width='12' height='12' />,
+    startEnHancer: <Icon name='add' stroke='#8F95B2' width='20' height='20' />,
 };
 
 export const AddPicture = Template.bind({});
@@ -235,4 +246,75 @@ AddPicture.args = {
     ),
 };
 
+export const AddLanguage = Template.bind({});
+AddLanguage.args = {
+    text: 'Add another target language',
+    color: '#393360',
+    fontWeight: 500,
+    fontSize: '12px',
+    lineHeight: '15px',
+    width: '189px',
+    height: '16px',
+    padding: '0px',
+    gap: '8px',
+    backgroundColor: 'transparent',
+    hoverColor: '#5F43E2',
+    changeIconBackground: true,
+    startEnHancer: (
+        <Icon
+            name='addSmallBackground'
+            color='#393360'
+            fill='#FFFFFF'
+            stroke='#FFFFFF'
+        />
+    ),
+};
 
+export const DeleteProject = Template.bind({});
+DeleteProject.args = {
+    text: 'Delete project',
+    color: '#8F95B2',
+    fontWeight: 500,
+    fontSize: '12px',
+    lineHeight: '15px',
+    width: '101px',
+    height: '15px',
+    padding: '0px',
+    gap: '8px',
+    backgroundColor: 'transparent',
+    hoverColor: '#F46363',
+    startEnHancer: <Icon name='trashXs' fill='#8F95B2' />,
+};
+
+export const Remove = Template.bind({});
+Remove.args = {
+    text: 'Remove',
+    color: '#8F95B2',
+    fontWeight: 600,
+    fontSize: '12px',
+    lineHeight: '14.52px',
+    width: '110px',
+    height: '32px',
+    padding: '4px 10px',
+    gap: '6px',
+    backgroundColor: 'transparent',
+    hoverColor: '#F46363',
+    startEnHancer: <Icon name='trashXs' fill='#8F95B2' />,
+};
+
+export const Sort = Template.bind({});
+Sort.args = {
+    text: 'Sort',
+    fontWeight: 400,
+    fontSize: '12px',
+    lineHeight: '15px',
+    backgroundColor: 'transparent',
+    hoverBackgroundColor: '#F4F6FA',
+    width: '41px',
+    height: '28px',
+    padding: '6px 8px',
+    gap: '4px',
+    borderRadius: '4px',
+    color: '#8F95B2',
+    hoverColor: '#5F43E2',
+};

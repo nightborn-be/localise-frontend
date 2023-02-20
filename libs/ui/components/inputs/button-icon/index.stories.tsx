@@ -96,7 +96,7 @@ export const Trash = Template.bind({});
 Trash.args = {
     ...props,
     backgroundColor: '#F46363',
-    icon: <Icon name='trashSmall' stroke='#FFFFFF' fill='#FFFFFF' />,
+    icon: <Icon name='trashSmall' stroke='none' fill='#FFFFFF' />,
     size: ButtonSize.SMALL,
     hoverBackgroundColor: '#E55252',
     padding: '4px',
@@ -108,7 +108,9 @@ TrashNoBackground.args = {
     size: ButtonSize.XL,
     backgroundColor: 'transparent',
     hoverBackgroundColor: '#F2F4F9',
-    icon: <Icon name='trashLarge' stroke='#F46363' fill='#F46363' />,
+    gap: '10px',
+    padding: '4px',
+    icon: <Icon name='trashLarge' stroke='none' fill='#F46363' />,
 };
 
 const RemoveMemberComponent = ({

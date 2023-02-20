@@ -4,8 +4,9 @@ export default interface IButtonProps extends ButtonProps {
     text: string,
     startEnHancer?: React.ReactElement,
     endEnHancer?: React.ReactElement,
-    hoverTextColor?: string,
+    hoverColor?: string,
     hoverBackgroundColor?: string,
     direction?: string,
-    spacing: string,
+    spacing?: string,
+    changeIconBackground?: boolean
 }
