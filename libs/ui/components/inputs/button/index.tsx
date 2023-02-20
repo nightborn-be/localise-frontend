@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { cloneElement, useState } from 'react';
 import {
     Button as ChakraButton,
     HStack,
@@ -10,7 +10,7 @@ import IButtonProps from './props';
 
 export default function Button({
     text,
-    hoverTextColor,
+    hoverColor,
     hoverBackgroundColor,
     spacing,
     onClick,
@@ -18,14 +18,19 @@ export default function Button({
     whiteSpace,
     ...rest
 }: IButtonProps) {
+    //Attributes
+    const [isHovered, setIsHovered] = useState<boolean>();
+    const handleMouseOver = () => setIsHovered((prev) => !prev);
+    const handleMouseLeave = () => setIsHovered((prev) => !prev);
     // Render
     return (
         <ChakraButton
+            onMouseOver={handleMouseOver}
+            onMouseLeave={handleMouseLeave}
             value={text}
             onClick={onClick}
             _hover={{
                 bgColor: hoverBackgroundColor,
-                textColor: hoverTextColor,
             }}
             padding={
                 direction !== 'row' ||
@@ -42,37 +47,88 @@ export default function Button({
             {direction === 'row' ? (
                 <HStack
                     direction={'row'}
-                    align-item='center'
-                    justify-content='center'
+                    alignItems='center'
+                    justifyContent='center'
                     spacing={spacing}
+                    pointerEvents='none'
                 >
                     {rest.startEnHancer && (
-                        <Stack align={'start'}>{rest.startEnHancer}</Stack>
+                        <Stack align={'start'}>
+                            {isHovered && hoverColor
+                                ? cloneElement(
+                                      rest.startEnHancer,
+                                      rest.changeIconBackground
+                                          ? {
+                                                color: hoverColor,
+                                            }
+                                          : {
+                                                stroke: hoverColor,
+                                                fill: hoverColor,
+                                            },
+                                  )
+                                : rest.startEnHancer}
+                        </Stack>
                     )}
                     <Text
                         textAlign={rest.textAlign}
                         lineHeight={rest.lineHeight}
                         fontSize={rest.fontSize}
-                        color={rest.color}
+                        color={isHovered ? hoverColor : rest.color}
                         fontFamily='Inter'
                         fontStyle='normal'
                     >
                         {text}
                     </Text>
                     {rest.endEnHancer && (
-                        <Stack align={'end'}>{rest.endEnHancer}</Stack>
+                        <Stack align={'end'}>
+                            {isHovered && hoverColor
+                                ? cloneElement(
+                                      rest.endEnHancer,
+                                      rest.changeIconBackground
+                                          ? {
+                                                color: hoverColor,
+                                            }
+                                          : {
+                                                stroke: hoverColor,
+                                                fill: hoverColor,
+                                            },
+                                  )
+                                : rest.endEnHancer}
+                        </Stack>
                     )}
                 </HStack>
             ) : (
-                <VStack direction={'row'} align-item='center' spacing={spacing}>
+                <VStack
+                    direction={'row'}
+                    alignItems='center'
+                    justifyContent='center'
+                    spacing={spacing}
+                    pointerEvents='none'
+                >
                     {rest.startEnHancer && (
-                        <Stack align={'start'}>{rest.startEnHancer}</Stack>
+                        <Stack align={'start'}>
+                            {isHovered && hoverColor
+                                ? cloneElement(
+                                      rest.startEnHancer,
+                                      rest.changeIconBackground
+                                          ? {
+                                                color: hoverColor,
+                                            }
+                                          : {
+                                                stroke: hoverColor,
+                                                fill: hoverColor,
+                                            },
+                                  )
+                                : rest.startEnHancer}
+                        </Stack>
                     )}
                     <Text
                         textAlign={rest.textAlign}
                         lineHeight={rest.lineHeight}
                         fontSize={rest.fontSize}
-                        color={rest.color}
+                        color={
+                            isHovered && hoverColor ? hoverColor : rest.color
+                        }
                         whiteSpace={whiteSpace}
                         fontFamily='Inter'
                         fontStyle='normal'
@@ -80,7 +136,21 @@ export default function Button({
                         {text}
                     </Text>
                     {rest.endEnHancer && (
-                        <Stack align={'end'}>{rest.endEnHancer}</Stack>
+                        <Stack align={'end'}>
+                            {isHovered && hoverColor
+                                ? cloneElement(
+                                      rest.endEnHancer,
+                                      rest.changeIconBackground
+                                          ? {
+                                                color: hoverColor,
+                                            }
+                                          : {
+                                                stroke: hoverColor,
+                                                fill: hoverColor,
+                                            },
+                                  )
+                                : rest.endEnHancer}
+                        </Stack>
                     )}
                 </VStack>
             )}

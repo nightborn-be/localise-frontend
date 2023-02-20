@@ -1,5 +1,5 @@
-import { Add, AddCircle } from './add';
-import TrashSmall, { TrashLarge } from './trash';
+import { Add, AddCircle, AddSmallBackground } from './add';
+import TrashSmall, { TrashXs, TrashLarge } from './trash';
 import RemoveSmall, { RemoveLarge } from './remove';
 import ArrowDown from './arrow-down';
 import ArrowUp from './arrow-up';
@@ -12,10 +12,11 @@ import Cross from './cross';
 
 const Icons = {
     add: Add,
+    trashXs: TrashXs,
     trashSmall: TrashSmall,
+    trashLarge: TrashLarge,
     uploadCloud: UploadCloud,
     cross: Cross,
-    trashLarge: TrashLarge,
     removeSmall: RemoveSmall,
     removeLarge: RemoveLarge,
     arrowDown: ArrowDown,
@@ -25,6 +26,7 @@ const Icons = {
     more: More,
     copy: CopyClipBoard,
     addCircle: AddCircle,
+    addSmallBackground: AddSmallBackground,
 };
 
 export default Icons;
