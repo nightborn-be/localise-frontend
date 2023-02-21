@@ -17,6 +17,32 @@ export const Add = (props: React.SVGProps<SVGSVGElement>) => (
     </svg>
 );
 
+export const AddLarge = (props: React.SVGProps<SVGSVGElement>) => (
+    <svg
+        {...props}
+        width={props.width ?? '20'}
+        height={props.height ?? '20'}
+        viewBox={props.viewBox ?? '0 0 20 20'}
+        fill='none'
+        xmlns='http://www.w3.org/2000/svg'
+    >
+        <path
+            d='M10 4.1665V15.8332'
+            stroke={props.stroke}
+            stroke-width='2'
+            stroke-linecap='round'
+            stroke-linejoin='round'
+        />
+        <path
+            d='M4.16675 10H15.8334'
+            stroke={props.stroke}
+            stroke-width='2'
+            stroke-linecap='round'
+            stroke-linejoin='round'
+        />
+    </svg>
+);
+
 export const AddSmallBackground = (props: React.SVGProps<SVGSVGElement>) => (
     <svg
         width={props.width ?? '16'}

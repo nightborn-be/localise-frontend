@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import Button from '.';
 import IButtonProps from './props';
 import Icon from '../../contents/icon';
-import { Box } from '@chakra-ui/react';
 
 export default {
     title: 'Components/Inputs/Button',
@@ -60,7 +59,7 @@ XLTextLeftIcon.args = {
     fontSize: '14px',
     padding: '4px 12px 4px 8px',
     gap: '4px',
-    startEnHancer: <Icon name='add' stroke='#FFFFFF' width='20' height='20' />,
+    startEnHancer: <Icon name='addLarge' stroke='#FFFFFF' />,
 };
 export const LargeTextRightIconNoBackground = Template.bind({});
 LargeTextRightIconNoBackground.args = {
@@ -86,22 +85,16 @@ LargeTextRightIconNoBackground.args = {
 export const TextWithBorder = Template.bind({});
 TextWithBorder.args = {
     ...props,
+    width: '74px',
+    height: '44px',
+    fontSize: '14px',
+    padding: '4px 12px 4px 8px',
+    gap: '4px',
+    text: 'Text',
     border: '1px solid #5F43E2',
     borderRadius: '8px',
     backgroundColor: '#F8F9FC',
-    h: '36px',
-    padding: '4px 12px 4px 8px',
-    gap: '4px',
-    lineHeight: '15px',
-    startEnHancer: (
-        <Icon
-            name='add'
-            stroke='#5F43E2'
-            width='16'
-            height='16'
-            viewBox='0 0 16 16'
-        />
-    ),
+    startEnHancer: <Icon name='addLarge' stroke='#5F43E2' />,
     color: '#5F43E2',
     hoverBackgroundColor: '#EDEEFC',
     icon: undefined,
