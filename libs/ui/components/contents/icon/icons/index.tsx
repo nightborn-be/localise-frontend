@@ -1,4 +1,4 @@
-import { Add, AddCircle, AddSmallBackground } from './add';
+import { Add, AddCircle, AddLarge, AddSmallBackground } from './add';
 import TrashSmall, { TrashXs, TrashLarge } from './trash';
 import RemoveSmall, { RemoveLarge } from './remove';
 import ArrowDown from './arrow-down';
@@ -12,6 +12,7 @@ import Cross from './cross';
 
 const Icons = {
     add: Add,
+    addLarge: AddLarge,
     trashXs: TrashXs,
     trashSmall: TrashSmall,
     trashLarge: TrashLarge,
