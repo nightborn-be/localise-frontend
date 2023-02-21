@@ -20,7 +20,6 @@ export default function ButtonIcon({
             onClick={handleOnClick}
             icon={icon}
             _hover={{ bgColor: hoverBackgroundColor }}
-            onM
         />
     );
 }
