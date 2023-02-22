@@ -66,12 +66,11 @@ SimpleBorderNoColor.args = {
 };
 const DashedBorderComponent = (): JSX.Element => {
     const [isHovered, setIsHovered] = useState<boolean>();
-    const handleMouseOver = () => setIsHovered((prev) => !prev);
-    const handleMouseLeave = () => setIsHovered((prev) => !prev);
+    const updateHoverState = () => setIsHovered((prev) => !prev);
     return (
         <Box
-            onMouseOver={handleMouseOver}
-            onMouseLeave={handleMouseLeave}
+            onMouseOver={updateHoverState}
+            onMouseLeave={updateHoverState}
             p='10px'
         >
             <Icon
@@ -121,12 +120,12 @@ const RemoveMemberComponent = ({
     color: string;
 }): JSX.Element => {
     const [isHovered, setIsHovered] = useState<boolean>();
-    const handleMouseOver = () => setIsHovered((prev) => !prev);
-    const handleMouseLeave = () => setIsHovered((prev) => !prev);
+    const updateHoverState = () => setIsHovered((prev) => !prev);
+
     return (
         <Box
-            onMouseOver={handleMouseOver}
-            onMouseLeave={handleMouseLeave}
+            onMouseOver={updateHoverState}
+            onMouseLeave={updateHoverState}
             p='10px'
         >
             <Icon

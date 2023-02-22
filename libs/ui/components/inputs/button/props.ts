@@ -1,12 +1,14 @@
-import { ButtonProps } from "@chakra-ui/react";
+import { ButtonProps, StackDirection } from "@chakra-ui/react";
 
 export default interface IButtonProps extends ButtonProps {
-    text: string,
-    startEnHancer?: React.ReactElement,
-    endEnHancer?: React.ReactElement,
+    startEnhancer?: React.ReactElement,
+    startEnhancerHover?: React.ReactElement,
+    endEnhancer?: React.ReactElement,
+    endEnhancerHover?: React.ReactElement,
     hoverColor?: string,
     hoverBackgroundColor?: string,
-    direction?: string,
+    direction?: StackDirection,
     spacing?: string,
-    changeIconBackground?: boolean
+    children?: React.ReactElement | string;
+    color?: string;
 }
