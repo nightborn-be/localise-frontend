@@ -1,75 +1,81 @@
 import React from 'react';
-import { Select, VStack } from '@chakra-ui/react';
+import { VStack } from '@chakra-ui/react';
+import Select from 'react-select';
 import COLORS from '../../../constants/colors';
 import Text from '../../contents/text';
 import FONTS from '../../../constants/fonts';
 import IInputSelectProps from './props';
-import Icon from '../../contents/icon';
 export default function InputSelect({
     type = 'text',
     color = COLORS.Text.T500.value,
-    colorLabelPrimary = COLORS.Text.T500.value,
-    colorLabelSecondary = COLORS.InputText.value,
-    border = '1px solid ' + COLORS.Stroke.value,
-    placeholderColor = COLORS.InputText.value,
-    placeholder,
+    labelColor = COLORS.Text.T500.value,
+    descriptionColor = COLORS.InputText.value,
+    label,
+    description,
+    border = `1px solid ${COLORS.Stroke.value}`,
+    placeholder = 'Select value',
     h,
     w,
     lineHeight = '15px',
     errorBorderColor = COLORS.Negative.value,
-    fontSize = '12px',
-    fontWeight = '500',
     alignItems = 'left',
+    fontSize = '12px',
+    fontWeight = '400',
+    fontFamily = 'Inter',
+    gap = '8px',
+    paddingTop = '3px',
+    icon,
+    isInvalid = false,
     ...props
 }: IInputSelectProps) {
+    const textProps = { lineHeight: lineHeight, margin: 0 };
+    const options = [
+        { value: 'Admin', label: 'Admin' },
+        { value: 'Member', label: 'Member' },
+    ];
     return (
         <VStack
             direction='column'
             spacing='4px'
-            h={h}
             w={w}
+            h={h}
             alignItems={alignItems}
         >
-            {props.labelPrimary ? (
+            {label && (
                 <Text
+                    {...textProps}
                     font={FONTS.T1.T12px.Medium500.value}
-                    lineHeight={lineHeight}
-                    color={colorLabelPrimary}
-                    margin={0}
+                    color={labelColor}
                 >
-                    {props.labelPrimary}
+                    {label}
                 </Text>
-            ) : (
-                <></>
             )}
-            {props.labelSecondary ? (
+            {description && (
                 <Text
-                    font={FONTS.T1.T12px.Medium500.value}
-                    lineHeight={lineHeight}
-                    color={colorLabelSecondary}
-                    margin={0}
+                    {...textProps}
+                    font={FONTS.T1.T12px.Regular400.value}
+                    color={descriptionColor}
                 >
-                    {props.labelSecondary}
+                    {description}
                 </Text>
-            ) : (
-                <></>
             )}
+
             <Select
-                variant='unstyled'
-                border='none'
-                fontSize='12px'
-                lineHeight='15px'
-                fontWeight='400'
-                height={h}
-                color='#5F43E2'
-                icon={<Icon name='arrowDown' fontSize='10px' fill='#5F43E2' />}
-            >
-                <option selected value='Admin'>
-                    Admin
-                </option>
-                <option value='Member'>Member</option>
-            </Select>
-            );
+                options={options}
+                // styles={{}}
+                // h={h}
+                // minW={w}
+                // w={h}
+                // focusBorderColor={props.focusBorderColor ?? 'false'}
+                // border={isInvalid ? `1px solid ${errorBorderColor}` : border}
+                // fontSize={fontSize}
+                // fontWeight={fontWeight}
+                // fontFamily={fontFamily}
+                // color={color}
+                // icon={icon}
+                // paddingTop={paddingTop}
+                // placeholder={placeholder}
+            />
         </VStack>
     );
 }
