@@ -244,17 +244,19 @@ AddMember.args = {
 export const AddPicture = Template.bind({});
 
 AddPicture.args = {
-    border: '2px dashed ' + COLORS.InputText.value,
+    border: '2px dashed ' + COLORS.Line.value,
     borderRadius: '16px',
     children: 'Add a picture',
     w: '100px',
     h: '100px',
     fontSize: '12px',
+    lineHeight: '12px',
     fontWeight: 500,
     direction: 'column',
     backgroundColor: 'transparent',
     color: COLORS.InputText.value,
     whiteSpace: 'pre-line',
+    spacing: '7px',
     startEnhancer: (
         <Icon
             name='uploadCloud'
@@ -285,7 +287,7 @@ AddLanguage.args = {
     padding: '0px',
     gap: '8px',
     backgroundColor: 'transparent',
-    hoverColor: COLORS.Localize.Purple.T500,
+    hoverColor: COLORS.Localize.Purple.T500.value,
     startEnhancer: (
         <Icon
             name='addSmallBackground'
