@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import { Button as ChakraButton, Stack } from '@chakra-ui/react';
 import IButtonProps from './props';
 import ButtonChildren from '../button-children';
-import ButtonStartEnhancer from '../button-start-enhancer';
-import ButtonEndEnhancer from '../button-end-enhancer';
 
 export default function Button({
     hoverBackgroundColor,
@@ -15,9 +13,7 @@ export default function Button({
     fontStyle = 'normal',
     children,
     startEnhancer,
-    startEnhancerHover,
     endEnhancer,
-    endEnhancerHover,
     color,
     hoverColor = color,
     ...rest
@@ -25,7 +21,7 @@ export default function Button({
     //Attributes
     const [isHovered, setIsHovered] = useState<boolean>();
     const updateHoverState = () => setIsHovered((prev) => !prev);
-
+    const enhancerProps = { isHovered };
     const paddingCondition = () => {
         if (direction !== 'row') {
             return 'auto';
@@ -60,13 +56,7 @@ export default function Button({
                 spacing={spacing}
                 pointerEvents='none'
             >
-                <ButtonStartEnhancer
-                    isHovered={isHovered}
-                    startEnhancer={startEnhancer}
-                    startEnhancerHover={startEnhancerHover}
-                    {...rest}
-                />
-
+                {startEnhancer && startEnhancer(enhancerProps)}
                 <ButtonChildren
                     fontSize={rest.fontSize}
                     fontWeight={rest.fontWeight}
@@ -80,12 +70,7 @@ export default function Button({
                 >
                     {children}
                 </ButtonChildren>
-
-                <ButtonEndEnhancer
-                    isHovered={isHovered}
-                    endEnhancer={endEnhancer}
-                    endEnhancerHover={endEnhancerHover}
-                />
+                {endEnhancer && endEnhancer(enhancerProps)}
             </Stack>
         </ChakraButton>
     );

@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import Button from '.';
-import IButtonProps from './props';
+import IButtonProps, { EnhancerProps } from './props';
 import Icon from '../../contents/icon';
 import COLORS from '../../../constants/colors';
 
@@ -14,6 +14,7 @@ export default {
 } as ComponentMeta<typeof Button>;
 
 const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
+
 const props: IButtonProps = {
     children: 'Text',
     fontSize: '12px',
@@ -22,17 +23,20 @@ const props: IButtonProps = {
     borderRadius: '8px',
     w: '66px',
     h: '32px',
-    startEnhancer: (
+
+    startEnhancer: (enhancer) => (
         <Icon
             name='add'
-            stroke={COLORS.White.T500.value}
+            stroke={
+                enhancer.isHovered
+                    ? COLORS.White.T500.value
+                    : COLORS.White.T500.value
+            }
             width='16'
             height='16'
             viewBox='0 0 16 16'
         />
     ),
-
-    startEnhancerHover: undefined,
     fontWeight: 600,
     lineHeight: '17px',
     textAlign: 'center',
@@ -61,7 +65,9 @@ XLTextLeftIcon.args = {
     fontSize: '14px',
     padding: '4px 12px 4px 8px',
     gap: '4px',
-    startEnhancer: <Icon name='addLarge' stroke={COLORS.White.T500.value} />,
+    startEnhancer: (enhancer: EnhancerProps): React.ReactElement => (
+        <Icon name='addLarge' stroke={COLORS.White.T500.value} />
+    ),
 };
 
 export const LargeTextRightIconNoBackground = Template.bind({});
@@ -73,7 +79,7 @@ LargeTextRightIconNoBackground.args = {
     lineHeight: '15px',
     color: COLORS.Localize.Purple.T500.value,
     startEnhancer: undefined,
-    endEnhancer: (
+    endEnhancer: (enhancer: EnhancerProps): React.ReactElement => (
         <Icon
             name='add'
             stroke={COLORS.Localize.Purple.T500.value}
@@ -97,13 +103,14 @@ TextWithBorder.args = {
     border: '1px solid ' + COLORS.Localize.Purple.T500.value,
     borderRadius: '8px',
     backgroundColor: COLORS.BG.value,
-    startEnhancer: (
+    startEnhancer: (enhancer: EnhancerProps): React.ReactElement => (
         <Icon name='addLarge' stroke={COLORS.Localize.Purple.T500.value} />
     ),
     color: COLORS.Localize.Purple.T500.value,
     hoverBackgroundColor: COLORS.Communication.BG.value,
     icon: undefined,
 };
+
 export const TextRightIconWithBorderDashed = Template.bind({});
 TextRightIconWithBorderDashed.args = {
     ...props,
@@ -115,24 +122,21 @@ TextRightIconWithBorderDashed.args = {
     startEnhancer: undefined,
     hoverBackgroundColor: undefined,
     hoverColor: COLORS.Text.T400.value,
-    endEnhancer: (
-        <Icon
-            name='add'
-            stroke={COLORS.InputText.value}
-            width='16'
-            height='16'
-            viewBox='0 0 16 16'
-        />
-    ),
-    endEnhancerHover: (
-        <Icon
-            name='add'
-            stroke={COLORS.Text.T400.value}
-            width='16'
-            height='16'
-            viewBox='0 0 16 16'
-        />
-    ),
+    endEnhancer: (enhancer: EnhancerProps): React.ReactElement => {
+        return (
+            <Icon
+                name='add'
+                stroke={
+                    enhancer.isHovered
+                        ? COLORS.Text.T400.value
+                        : COLORS.InputText.value
+                }
+                width='16'
+                height='16'
+                viewBox='0 0 16 16'
+            />
+        );
+    },
 };
 const trashProps: IButtonProps = {
     children: 'Text',
@@ -144,22 +148,24 @@ const trashProps: IButtonProps = {
     h: '28px',
     padding: '4px 12px',
     gap: '4px',
-    startEnhancer: (
-        <Icon
-            name='trashSmall'
-            stroke={COLORS.White.T500.value}
-            fill={COLORS.White.T500.value}
-            width='12'
-            height='12'
-            viewBox='0 0 12 12'
-        />
-    ),
+    startEnhancer: (enhancer: EnhancerProps): React.ReactElement => {
+        return (
+            <Icon
+                name='trashSmall'
+                stroke={COLORS.White.T500.value}
+                fill={COLORS.White.T500.value}
+                width='12'
+                height='12'
+                viewBox='0 0 12 12'
+            />
+        );
+    },
     fontWeight: 600,
     lineHeight: '15px',
     textAlign: 'center',
     spacing: '4px',
     onClick: () => {},
-    hoverBackgroundColor: COLORS.Error.T500.value,
+    hoverBackgroundColor: COLORS.HoverRed.value,
 };
 
 export const TrashText = Template.bind({});
@@ -177,7 +183,7 @@ TrashRightWithText.args = {
     lineHeight: '17px',
     w: '76px',
     h: '44px',
-    startEnhancer: (
+    startEnhancer: (enhancer: EnhancerProps): React.ReactElement => (
         <Icon
             name='trashLarge'
             fill={COLORS.White.T500.value}
@@ -197,7 +203,7 @@ TrashLeftWithTextNoBackground.args = {
     lineHeight: '17px',
     fontWeight: 600,
     startEnhancer: undefined,
-    endEnhancer: (
+    endEnhancer: (enhancer: EnhancerProps): React.ReactElement => (
         <Icon
             name='trashLarge'
             fill={COLORS.Error.T500.value}
@@ -231,7 +237,7 @@ AddMember.args = {
     justifyContent: 'flex-start',
     backgroundColor: 'transparent',
     color: COLORS.InputText.value,
-    startEnhancer: (
+    startEnhancer: (enhancer: EnhancerProps): React.ReactElement => (
         <Icon
             name='add'
             stroke={COLORS.InputText.value}
@@ -257,15 +263,7 @@ AddPicture.args = {
     color: COLORS.InputText.value,
     whiteSpace: 'pre-line',
     spacing: '7px',
-    startEnhancer: (
-        <Icon
-            name='uploadCloud'
-            stroke={COLORS.InputText.value}
-            width='24'
-            height='24'
-        />
-    ),
-    startEnhancerHover: (
+    startEnhancer: (enhancer: EnhancerProps): React.ReactElement => (
         <Icon
             name='uploadCloud'
             stroke={COLORS.InputText.value}
@@ -288,18 +286,14 @@ AddLanguage.args = {
     gap: '8px',
     backgroundColor: 'transparent',
     hoverColor: COLORS.Localize.Purple.T500.value,
-    startEnhancer: (
+    startEnhancer: (enhancer: EnhancerProps): React.ReactElement => (
         <Icon
             name='addSmallBackground'
-            color={COLORS.Text.T400.value}
-            fill={COLORS.White.T500.value}
-            stroke={COLORS.White.T500.value}
-        />
-    ),
-    startEnhancerHover: (
-        <Icon
-            name='addSmallBackground'
-            color={COLORS.Localize.Purple.T500.value}
+            color={
+                enhancer.isHovered
+                    ? COLORS.Localize.Purple.T500.value
+                    : COLORS.Text.T400.value
+            }
             fill={COLORS.White.T500.value}
             stroke={COLORS.White.T500.value}
         />
@@ -319,8 +313,16 @@ DeleteProject.args = {
     gap: '8px',
     backgroundColor: 'transparent',
     hoverColor: COLORS.Error.T500.value,
-    startEnhancer: <Icon name='trashXs' fill={COLORS.InputText.value} />,
-    startEnhancerHover: <Icon name='trashXs' fill={COLORS.Error.T500.value} />,
+    startEnhancer: (enhancer: EnhancerProps): React.ReactElement => (
+        <Icon
+            name='trashXs'
+            fill={
+                enhancer.isHovered
+                    ? COLORS.Error.T500.value
+                    : COLORS.InputText.value
+            }
+        />
+    ),
 };
 
 export const Remove = Template.bind({});
@@ -336,8 +338,16 @@ Remove.args = {
     gap: '6px',
     backgroundColor: 'transparent',
     hoverColor: COLORS.Error.T500.value,
-    startEnhancer: <Icon name='trashXs' fill={COLORS.InputText.value} />,
-    startEnhancerHover: <Icon name='trashXs' fill={COLORS.Error.T500.value} />,
+    startEnhancer: (enhancer: EnhancerProps): React.ReactElement => (
+        <Icon
+            name='trashXs'
+            fill={
+                enhancer.isHovered
+                    ? COLORS.Error.T500.value
+                    : COLORS.InputText.value
+            }
+        />
+    ),
 };
 
 export const Sort = Template.bind({});
