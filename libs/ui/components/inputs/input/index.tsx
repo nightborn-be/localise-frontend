@@ -1,19 +1,16 @@
 import React from 'react';
 import IInputProps from './props';
-import {
-    FormLabel,
-    Input as ChakraInput,
-    InputGroup,
-    VStack,
-} from '@chakra-ui/react';
+import { Input as ChakraInput, InputGroup, VStack } from '@chakra-ui/react';
 import COLORS from '../../../constants/colors';
 import Text from '../../contents/text';
 import FONTS from '../../../constants/fonts';
 export default function Input({
     type = 'text',
     color = COLORS.Text.T500.value,
-    colorLabelPrimary = COLORS.Text.T500.value,
-    colorLabelSecondary = COLORS.InputText.value,
+    label,
+    description,
+    labelColor = COLORS.Text.T500.value,
+    descriptionColor = COLORS.InputText.value,
     border = '1px solid ' + COLORS.Stroke.value,
     placeholderColor = COLORS.InputText.value,
     placeholder,
@@ -26,6 +23,7 @@ export default function Input({
     alignItems = 'left',
     ...props
 }: IInputProps) {
+    const textProps = { lineHeight: lineHeight, margin: 0 };
     // Render
     return (
         <>
@@ -36,29 +34,23 @@ export default function Input({
                 w={w}
                 alignItems={alignItems}
             >
-                {props.labelPrimary ? (
+                {label && (
                     <Text
+                        {...textProps}
                         font={FONTS.T1.T12px.Medium500.value}
-                        lineHeight={lineHeight}
-                        color={colorLabelPrimary}
-                        margin={0}
+                        color={labelColor}
                     >
-                        {props.labelPrimary}
+                        {label}
                     </Text>
-                ) : (
-                    <></>
                 )}
-                {props.labelSecondary ? (
+                {description && (
                     <Text
-                        font={FONTS.T1.T12px.Medium500.value}
-                        lineHeight={lineHeight}
-                        color={colorLabelSecondary}
-                        margin={0}
+                        {...textProps}
+                        font={FONTS.T1.T12px.Regular400.value}
+                        color={descriptionColor}
                     >
-                        {props.labelSecondary}
+                        {description}
                     </Text>
-                ) : (
-                    <></>
                 )}
                 <InputGroup>
                     <ChakraInput
