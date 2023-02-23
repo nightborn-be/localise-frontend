@@ -12,6 +12,7 @@ export default function ButtonChildren({
     direction,
     whiteSpace,
     fontStyle,
+    fontWeight,
     children,
 }: IButtonChildrenProps) {
     //Render
@@ -24,6 +25,7 @@ export default function ButtonChildren({
             <Text
                 textAlign={textAlign}
                 lineHeight={lineHeight}
+                fontWeight={fontWeight}
                 fontSize={fontSize}
                 color={isHovered ? hoverColor : color}
                 fontStyle={fontStyle}

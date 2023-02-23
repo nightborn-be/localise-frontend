@@ -50,7 +50,7 @@ export default function Button({
                 bgColor: hoverBackgroundColor,
             }}
             padding={paddingCondition()}
-            gap='4px'
+            gap={rest.gap ?? '4px'}
             {...rest}
         >
             <Stack
@@ -64,10 +64,12 @@ export default function Button({
                     isHovered={isHovered}
                     startEnhancer={startEnhancer}
                     startEnhancerHover={startEnhancerHover}
+                    {...rest}
                 />
 
                 <ButtonChildren
                     fontSize={rest.fontSize}
+                    fontWeight={rest.fontWeight}
                     hoverColor={hoverColor}
                     textAlign={rest.textAlign}
                     lineHeight={rest.lineHeight}
