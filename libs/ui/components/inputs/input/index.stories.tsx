@@ -11,7 +11,7 @@ const Template: ComponentStory<typeof Input> = (props: IInputProps) => (
 );
 
 const props: IInputProps = {
-    placeholder: 'Insert Text',
+    placeholder: 'Insert text',
     h: '40px',
     w: '327px',
     padding: '12px',

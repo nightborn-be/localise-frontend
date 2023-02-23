@@ -6,6 +6,8 @@ export default interface IInputProps extends InputProps {
     border?: string,
     labelPrimary?: string,
     labelSecondary?: string,
+    colorLabelPrimary?: string,
+    colorLabelSecondary?: string,
     placeholder: string,
     placeholderColor?: string,
     h: string,
