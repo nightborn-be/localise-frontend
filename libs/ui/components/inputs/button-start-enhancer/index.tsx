@@ -8,8 +8,8 @@ export default function ButtonStartEnhancer({
     startEnhancer,
     startEnhancerHover,
 }: IButtonStartEnhancerProps) {
+    //Renders
     if (!startEnhancer) return <></>;
-    //Attributes
     return (
         <Stack align={align}>
             {isHovered ? startEnhancerHover ?? startEnhancer : startEnhancer}
