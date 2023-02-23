@@ -11,12 +11,19 @@ import Text from '../../contents/text';
 import FONTS from '../../../constants/fonts';
 export default function Input({
     type = 'text',
-    color,
-    border,
-    placeholderColor,
+    color = COLORS.Text.T500.value,
+    colorLabelPrimary = COLORS.Text.T500.value,
+    colorLabelSecondary = COLORS.InputText.value,
+    border = '1px solid ' + COLORS.Stroke.value,
+    placeholderColor = COLORS.InputText.value,
     placeholder,
     h,
     w,
+    lineHeight = '15px',
+    errorBorderColor = COLORS.Negative.value,
+    fontSize = '12px',
+    fontWeight = '500',
+    alignItems = 'left',
     ...props
 }: IInputProps) {
     // Render
@@ -27,13 +34,13 @@ export default function Input({
                 spacing='4px'
                 h={h}
                 w={w}
-                alignItems='left'
+                alignItems={alignItems}
             >
                 {props.labelPrimary ? (
                     <Text
                         font={FONTS.T1.T12px.Medium500.value}
-                        lineHeight={props.lineHeight ?? '15px'}
-                        color={color ?? COLORS.Text.T500.value}
+                        lineHeight={lineHeight}
+                        color={colorLabelPrimary}
                         margin={0}
                     >
                         {props.labelPrimary}
@@ -43,9 +50,9 @@ export default function Input({
                 )}
                 {props.labelSecondary ? (
                     <Text
-                        font={FONTS.T1.T12px.Regular400.value}
-                        lineHeight={props.lineHeight ?? '15px'}
-                        color={placeholderColor ?? COLORS.InputText.value}
+                        font={FONTS.T1.T12px.Medium500.value}
+                        lineHeight={lineHeight}
+                        color={colorLabelSecondary}
                         margin={0}
                     >
                         {props.labelSecondary}
@@ -59,24 +66,19 @@ export default function Input({
                         type={type}
                         isInvalid={props.isInvalid}
                         placeholder={placeholder}
-                        letterSpacing={type === 'password' ? '5px' : '0px'}
                         _placeholder={{
                             color: placeholderColor,
-                            fontWeight: props.fontWeight,
-                            fontSize:
-                                type === 'password' ? '12px' : props.fontSize,
-                            lineHeight: '15px',
-                            letterSpacing: '0px',
+                            fontWeight: fontWeight,
+                            fontSize: fontSize,
+                            lineHeight: lineHeight,
                         }}
                         focusBorderColor={props.focusBorderColor ?? 'false'}
-                        errorBorderColor={
-                            props.errorBorderColor ?? COLORS.Negative.value
-                        }
-                        border={border ?? '1px solid ' + COLORS.Stroke.value}
-                        color={color ?? COLORS.Text.T500.value}
-                        fontSize={props.fontSize ?? '12px'}
-                        fontWeight={props.fontWeight ?? '500'}
-                        lineHeight={props.lineHeight ?? '15px'}
+                        errorBorder={errorBorderColor}
+                        border={props.isInvalid ? '' : border}
+                        color={color}
+                        fontSize={fontSize}
+                        fontWeight={fontWeight}
+                        lineHeight={lineHeight}
                         marignTop={props.marginTop}
                     />
                 </InputGroup>
