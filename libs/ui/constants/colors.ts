@@ -1,3 +1,35 @@
+Skip to content
+Search or jump to…
+Pull requests
+Issues
+Codespaces
+Marketplace
+Explore
+
+@youssef-night
+nightborn - be
+    /
+    localise - frontend
+Public
+Fork your own copy of nightborn - be / localise - frontend
+Code
+Issues
+Pull requests
+2
+Actions
+Projects
+Wiki
+Security
+Insights
+localise - frontend / libs / ui / constants / colors.ts /
+@youssef-night
+youssef - night feat: update code and stories, setup color and font from figma plugin
+Latest commit 1b88b3c 1 hour ago
+History
+2 contributors
+@youssef-night@m-Nightly
+248 lines(243 sloc)  7.24 KB
+
 /* This file is auto-generated, manual edits in this file will be overwritten! */
 
 export type Color = string;
@@ -38,6 +70,8 @@ export interface Colors {
         T800: { value: Color };
         T900: { value: Color };
     };
+
+    Negative: { value: Color };
     InputText: { value: Color };
     Line: { value: Color };
     Localize: {
@@ -158,6 +192,7 @@ const COLORS: Colors = {
         T800: { value: '#612727' },
         T900: { value: '#301313' },
     },
+    Negative: { value: '#F35959' },
     InputText: { value: '#8f95b2' },
     Line: { value: '#e7e9f4' },
     Localize: {
