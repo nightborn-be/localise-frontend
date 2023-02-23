@@ -11,7 +11,5 @@ export default interface IInputProps extends InputProps {
     h: string,
     w: string,
     readOnly?: boolean,
-    inputRightElement?: React.ReactElement,
-    inputLeftElement?: React.ReactElement,
 }
 

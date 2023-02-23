@@ -19,6 +19,7 @@ const props: IInputProps = {
     fontSize: '12px',
     fontWeight: '400',
     gap: '8px',
+    marginTop: '3px',
 };
 
 export const SimpleInput = Template.bind({});

@@ -38,6 +38,8 @@ export interface Colors {
         T800: { value: Color };
         T900: { value: Color };
     };
+
+    Negative: { value: Color };
     InputText: { value: Color };
     Line: { value: Color };
     Localize: {
@@ -158,6 +160,7 @@ const COLORS: Colors = {
         T800: { value: '#612727' },
         T900: { value: '#301313' },
     },
+    Negative: { value: '#F35959' },
     InputText: { value: '#8f95b2' },
     Line: { value: '#e7e9f4' },
     Localize: {

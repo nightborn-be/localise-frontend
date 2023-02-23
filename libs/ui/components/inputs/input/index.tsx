@@ -6,6 +6,9 @@ import {
     InputGroup,
     VStack,
 } from '@chakra-ui/react';
+import COLORS from '../../../constants/colors';
+import Text from '../../contents/text';
+import FONTS from '../../../constants/fonts';
 export default function Input({
     type = 'text',
     color,
@@ -27,30 +30,28 @@ export default function Input({
                 alignItems='left'
             >
                 {props.labelPrimary ? (
-                    <FormLabel
-                        fontSize={props.fontSize ?? '12px'}
-                        fontWeight='500'
+                    <Text
+                        font={FONTS.T1.T12px.Medium500.value}
                         lineHeight={props.lineHeight ?? '15px'}
-                        color={color ?? '#080038'}
+                        color={color ?? COLORS.Text.T500.value}
                         margin={0}
                     >
                         {props.labelPrimary}
-                    </FormLabel>
+                    </Text>
                 ) : (
-                    ''
+                    <></>
                 )}
                 {props.labelSecondary ? (
-                    <FormLabel
-                        fontSize={props.fontSize ?? '12px'}
-                        fontWeight='500'
+                    <Text
+                        font={FONTS.T1.T12px.Regular400.value}
                         lineHeight={props.lineHeight ?? '15px'}
-                        color={placeholderColor ?? '#8F95B2'}
+                        color={placeholderColor ?? COLORS.InputText.value}
                         margin={0}
                     >
                         {props.labelSecondary}
-                    </FormLabel>
+                    </Text>
                 ) : (
-                    ''
+                    <></>
                 )}
                 <InputGroup>
                     <ChakraInput
@@ -68,12 +69,15 @@ export default function Input({
                             letterSpacing: '0px',
                         }}
                         focusBorderColor={props.focusBorderColor ?? 'false'}
-                        errorBorderColor={props.errorBorderColor ?? '#F46363'}
-                        border={border ?? '1px solid #E9EAF0'}
-                        color={color ?? '#080038'}
+                        errorBorderColor={
+                            props.errorBorderColor ?? COLORS.Negative.value
+                        }
+                        border={border ?? '1px solid ' + COLORS.Stroke.value}
+                        color={color ?? COLORS.Text.T500.value}
                         fontSize={props.fontSize ?? '12px'}
                         fontWeight={props.fontWeight ?? '500'}
                         lineHeight={props.lineHeight ?? '15px'}
+                        marignTop={props.marginTop}
                     />
                 </InputGroup>
             </VStack>
