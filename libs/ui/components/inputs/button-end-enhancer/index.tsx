@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Stack } from '@chakra-ui/react';
 import IButtonEndEnhancerProps from './props';
 
