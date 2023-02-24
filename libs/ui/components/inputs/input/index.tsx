@@ -17,10 +17,11 @@ export default function Input({
     h,
     w,
     lineHeight = '15px',
-    errorBorderColor = COLORS.Negative.value,
+    errorBorder = `1px solid ${COLORS.Negative.value}`,
     fontSize = '12px',
     fontWeight = '500',
     alignItems = 'left',
+    isValid = true,
     ...props
 }: IInputProps) {
     const textProps = { lineHeight: lineHeight, margin: 0 };
@@ -56,7 +57,6 @@ export default function Input({
                     <ChakraInput
                         {...props}
                         type={type}
-                        isInvalid={props.isInvalid}
                         placeholder={placeholder}
                         _placeholder={{
                             color: placeholderColor,
@@ -65,8 +65,8 @@ export default function Input({
                             lineHeight: lineHeight,
                         }}
                         focusBorderColor={props.focusBorderColor ?? 'false'}
-                        errorBorder={errorBorderColor}
-                        border={props.isInvalid ? '' : border}
+                        border={isValid ? border : errorBorder}
+                        _hover={{ borderColor: isValid ? border : errorBorder }}
                         color={color}
                         fontSize={fontSize}
                         fontWeight={fontWeight}
