@@ -24,6 +24,10 @@ const props: IInputSelectProps = {
     background: COLORS.White.T500.value,
     borderRadius: '8px',
     icon: <Icon name='selectStroke' />,
+    options: [
+        { value: 'Admin', label: 'Admin' },
+        { value: 'Member', label: 'Member' },
+    ],
 };
 
 export const SimpleSelect = Template.bind({});

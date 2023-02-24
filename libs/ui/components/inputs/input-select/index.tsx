@@ -5,11 +5,13 @@ import COLORS from '../../../constants/colors';
 import Text from '../../contents/text';
 import FONTS from '../../../constants/fonts';
 import IInputSelectProps from './props';
+
 export default function InputSelect({
     type = 'text',
     color = COLORS.Text.T500.value,
     labelColor = COLORS.Text.T500.value,
     descriptionColor = COLORS.InputText.value,
+    placeholderColor = COLORS.InputText.value,
     label,
     description,
     border = `1px solid ${COLORS.Stroke.value}`,
@@ -17,7 +19,7 @@ export default function InputSelect({
     h,
     w,
     lineHeight = '15px',
-    errorBorderColor = COLORS.Negative.value,
+    errorBorder = `1px solid ${COLORS.Negative.value}`,
     alignItems = 'left',
     fontSize = '12px',
     fontWeight = '400',
@@ -26,13 +28,51 @@ export default function InputSelect({
     paddingTop = '3px',
     icon,
     isInvalid = false,
+    options,
+    dropdownArrowColor = COLORS.InputText.value,
+    backgroundOptionColor = COLORS.Stroke.value,
     ...props
 }: IInputSelectProps) {
     const textProps = { lineHeight: lineHeight, margin: 0 };
-    const options = [
-        { value: 'Admin', label: 'Admin' },
-        { value: 'Member', label: 'Member' },
-    ];
+    const colourStyles: any = {
+        control: (styles, { data, isDisabled, isFocused, isSelected }) => {
+            return {
+                ...styles,
+                h: h,
+                w: w,
+                border: isInvalid ? errorBorder : border,
+                '&:hover': isInvalid ? errorBorder : border,
+                fontSize: fontSize,
+                fontWeight: fontWeight,
+                fontFamily: fontFamily,
+                color: color,
+                backgroundColor: 'transparent',
+                boxShadow: 'none',
+            };
+        },
+        placeholder: (styles) => {
+            return {
+                ...styles,
+                color: placeholderColor,
+            };
+        },
+        option: (styles, { data, isDisabled, isFocused, isSelected }) => {
+            return {
+                ...styles,
+                backgroundColor: isFocused ? backgroundOptionColor : 'none',
+                color: color,
+            };
+        },
+
+        dropdownIndicator: (
+            base,
+            { data, isDisabled, isFocused, isSelected },
+        ) => ({
+            ...base,
+            color: dropdownArrowColor,
+            '&:hover': { color: dropdownArrowColor },
+        }),
+    };
     return (
         <VStack
             direction='column'
@@ -62,19 +102,11 @@ export default function InputSelect({
 
             <Select
                 options={options}
-                // styles={{}}
-                // h={h}
-                // minW={w}
-                // w={h}
-                // focusBorderColor={props.focusBorderColor ?? 'false'}
-                // border={isInvalid ? `1px solid ${errorBorderColor}` : border}
-                // fontSize={fontSize}
-                // fontWeight={fontWeight}
-                // fontFamily={fontFamily}
-                // color={color}
-                // icon={icon}
-                // paddingTop={paddingTop}
-                // placeholder={placeholder}
+                placeholder={placeholder}
+                styles={colourStyles}
+                components={{
+                    IndicatorSeparator: () => null,
+                }}
             />
         </VStack>
     );
