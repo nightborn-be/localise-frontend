@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import IInputProps from './props';
-import { Input as ChakraInput, InputGroup, VStack } from '@chakra-ui/react';
+import {
+    Input as ChakraInput,
+    InputGroup,
+    InputRightElement,
+    VStack,
+} from '@chakra-ui/react';
 import COLORS from '../../../constants/colors';
 import Text from '../../contents/text';
 import FONTS from '../../../constants/fonts';
+import * as CSS from 'csstype';
 export default function Input({
     type = 'text',
     color = COLORS.Text.T500.value,
@@ -16,15 +22,34 @@ export default function Input({
     placeholder,
     h,
     w,
-    lineHeight = '15px',
     errorBorder = `1px solid ${COLORS.Negative.value}`,
-    fontSize = '12px',
-    fontWeight = '500',
+    font,
+    hoverBorder,
     alignItems = 'left',
+    rightElement,
+    paddingRight,
     isValid = true,
     ...props
 }: IInputProps) {
-    const textProps = { lineHeight: lineHeight, margin: 0 };
+    //Attributes
+    const textProps = { lineHeight: font?.lineHeight, margin: 0 };
+    const [visibility, setVisibility] =
+        useState<CSS.Property.Visibility>('hidden');
+
+    //function
+    const handleToggleVisibility = () => {
+        if (visibility === 'hidden') setVisibility('visible');
+        if (visibility === 'visible') setVisibility('hidden');
+    };
+    const hoverCondition = (): string => {
+        if (!isValid) {
+            return errorBorder;
+        }
+        if (hoverBorder) {
+            return hoverBorder;
+        }
+        return border;
+    };
     // Render
     return (
         <>
@@ -60,19 +85,27 @@ export default function Input({
                         placeholder={placeholder}
                         _placeholder={{
                             color: placeholderColor,
-                            fontWeight: fontWeight,
-                            fontSize: fontSize,
-                            lineHeight: lineHeight,
+                            fontSize: font?.fontSize,
+                            fontWeight: font?.fontWeight,
+                            lineHeight: font?.lineHeight,
                         }}
                         focusBorderColor={props.focusBorderColor ?? 'false'}
                         border={isValid ? border : errorBorder}
-                        _hover={{ borderColor: isValid ? border : errorBorder }}
+                        _hover={{ border: hoverCondition }}
                         color={color}
-                        fontSize={fontSize}
-                        fontWeight={fontWeight}
-                        lineHeight={lineHeight}
+                        fontFamily={font?.fontFamily}
+                        fontSize={font?.fontSize}
+                        fontWeight={font?.fontWeight}
+                        lineHeight={font?.lineHeight}
+                        letterSpacing={font?.letterSpacing}
                         marignTop={props.marginTop}
+                        onFocus={handleToggleVisibility}
+                        onBlur={handleToggleVisibility}
+                        pr={paddingRight ?? '4px'}
                     />
+                    <InputRightElement visibility={visibility} mr={'8px'}>
+                        {rightElement}
+                    </InputRightElement>
                 </InputGroup>
             </VStack>
         </>

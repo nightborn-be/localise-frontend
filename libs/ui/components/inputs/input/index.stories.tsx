@@ -2,6 +2,10 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import Input from '.';
 import IInputProps from './props';
 import React from 'react';
+import Icon from '../../contents/icon/';
+import Text from '../../contents/text';
+import COLORS from '../../../constants/colors';
+import FONTS from '../../../constants/fonts';
 export default {
     title: 'Components/Inputs/Input',
     component: Input,
@@ -15,9 +19,7 @@ const props: IInputProps = {
     h: '40px',
     w: '327px',
     padding: '12px',
-    lineHeight: '15px',
-    fontSize: '12px',
-    fontWeight: '400',
+    font: FONTS.T1.T12px.Regular400.value,
     gap: '8px',
     marginTop: '3px',
 };
@@ -86,4 +88,32 @@ PasswordIsInvalidInput.args = {
     isValid: false,
     label: 'Label',
     description: 'Description',
+};
+
+export const RightElementInput = Template.bind({});
+RightElementInput.args = {
+    color: COLORS.Text.T500.value,
+    border: 'transparent',
+    padding: '8px',
+    gap: '12px',
+    w: '412px',
+    h: '32x',
+    font: FONTS.T1.T14px.SemiBold600,
+    placeHolder: 'Text',
+    paddingRight: '50px',
+    focusBorderColor: `${COLORS.Stroke.value}`,
+    hoverBorder: `1px solid ${COLORS.Stroke.value}`,
+    rightElement: (
+        <>
+            <Icon name='enter' />
+            <Text
+                ml={'2px'}
+                color={COLORS.InputText.value}
+                lineHeight={'12px'}
+                font={FONTS.T1.T10px.SemiBold600.value}
+            >
+                Enter
+            </Text>
+        </>
+    ),
 };
