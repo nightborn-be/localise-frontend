@@ -13,5 +13,7 @@ export default interface IInputProps extends InputProps {
     h: string,
     w: string,
     readOnly?: boolean,
+    errorBorder?: string
+    isValid?: boolean,
 }
 

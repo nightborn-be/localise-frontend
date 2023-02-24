@@ -41,7 +41,7 @@ LabelsInput.args = {
 export const IsInvalidInput = Template.bind({});
 IsInvalidInput.args = {
     ...props,
-    isInvalid: 'isInvalid',
+    isValid: false,
     label: 'Label',
     description: 'Description',
 };
@@ -83,7 +83,7 @@ PasswordIsInvalidInput.args = {
     ...props,
     type: 'password',
     placeholder: 'Insert password',
-    isInvalid: 'isInvalid',
+    isValid: false,
     label: 'Label',
     description: 'Description',
 };
