@@ -1,6 +1,6 @@
 import React from 'react';
-import { VStack } from '@chakra-ui/react';
-import Select from 'react-select';
+import { Box, Stack, VStack } from '@chakra-ui/react';
+import Select, { components } from 'react-select';
 import COLORS from '../../../constants/colors';
 import Text from '../../contents/text';
 import FONTS from '../../../constants/fonts';
@@ -31,9 +31,26 @@ export default function InputSelect({
     options,
     dropdownArrowColor = COLORS.InputText.value,
     backgroundOptionColor = COLORS.Stroke.value,
+    borderRadius = '8px',
     ...props
 }: IInputSelectProps) {
     const textProps = { lineHeight: lineHeight, margin: 0 };
+    const { Option } = components;
+    const IconOption = (props) => (
+        <Option {...props}>
+            <Box
+                marginRight={'8px'}
+                h={'16px'}
+                w={'16px'}
+                display='flex'
+                alignItems={'center'}
+                justifyContent='center'
+            >
+                {icon}
+            </Box>
+            {props.data.label}
+        </Option>
+    );
     const colourStyles: any = {
         control: (styles, { data, isDisabled, isFocused, isSelected }) => {
             return {
@@ -41,6 +58,7 @@ export default function InputSelect({
                 h: h,
                 w: w,
                 border: isInvalid ? errorBorder : border,
+                borderRadius: borderRadius,
                 '&:hover': isInvalid ? errorBorder : border,
                 fontSize: fontSize,
                 fontWeight: fontWeight,
@@ -61,9 +79,14 @@ export default function InputSelect({
                 ...styles,
                 backgroundColor: isFocused ? backgroundOptionColor : 'none',
                 color: color,
+                display: 'flex',
+                alignItems: 'center',
             };
         },
-
+        input: (styles) => ({ ...styles }),
+        singleValue: (styles, { data }) => ({
+            ...styles,
+        }),
         dropdownIndicator: (
             base,
             { data, isDisabled, isFocused, isSelected },
@@ -73,6 +96,7 @@ export default function InputSelect({
             '&:hover': { color: dropdownArrowColor },
         }),
     };
+
     return (
         <VStack
             direction='column'
@@ -106,6 +130,7 @@ export default function InputSelect({
                 styles={colourStyles}
                 components={{
                     IndicatorSeparator: () => null,
+                    Option: IconOption,
                 }}
             />
         </VStack>

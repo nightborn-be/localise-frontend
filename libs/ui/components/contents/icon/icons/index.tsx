@@ -8,6 +8,8 @@ import Send from './send';
 import More from './more';
 import CopyClipBoard from './copy-clipboard';
 import SelectStroke from './select-stroke';
+import Sort from './sort';
+import Date from './date';
 
 const Icons = {
     add: Add,
@@ -23,6 +25,8 @@ const Icons = {
     copy: CopyClipBoard,
     addCircle: AddCircle,
     selectStroke: SelectStroke,
+    sort: Sort,
+    date: Date,
 };
 
 export default Icons;

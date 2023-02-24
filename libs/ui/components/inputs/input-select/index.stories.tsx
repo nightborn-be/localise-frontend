@@ -23,7 +23,7 @@ const props: IInputSelectProps = {
     h: '40px',
     background: COLORS.White.T500.value,
     borderRadius: '8px',
-    icon: <Icon name='selectStroke' />,
+    icon: <Icon name='date' />,
     options: [
         { value: 'Admin', label: 'Admin' },
         { value: 'Member', label: 'Member' },
