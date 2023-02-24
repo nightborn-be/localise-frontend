@@ -23,7 +23,6 @@ const props: IInputSelectProps = {
     h: '40px',
     background: COLORS.White.T500.value,
     borderRadius: '8px',
-    icon: <Icon name='date' />,
     options: [
         { value: 'Admin', label: 'Admin' },
         { value: 'Member', label: 'Member' },
@@ -49,7 +48,7 @@ LabelsSelect.args = {
 export const IsInvalidSelect = Template.bind({});
 IsInvalidSelect.args = {
     ...props,
-    isInvalid: true,
+    isValid: false,
     label: 'Label',
     description: 'Description',
 };

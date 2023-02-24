@@ -5,8 +5,7 @@ export default interface IInputSelectProps extends InputProps {
     description?: string,
     labelColor?: string,
     descriptionColor?: string,
-    icon: React.ReactElement,
-    isInvalid?: boolean,
+    isValid?: boolean,
     errorBorder?: string,
     placeholderColor?: string,
     options?: Array<Options>
@@ -17,5 +16,4 @@ export default interface IInputSelectProps extends InputProps {
 export type Options = {
     value: string,
     label: string,
-    icon?: React.ReactElement
 }
