@@ -102,6 +102,8 @@ export default function Input({
                         onFocus={handleToggleVisibility}
                         onBlur={handleToggleVisibility}
                         pr={paddingRight ?? '4px'}
+                        paddingInlineStart={props.paddingInlineStart ?? 0}
+                        paddingInlineEnd={props.paddingInlineEnd ?? 0}
                     />
                     <InputRightElement visibility={visibility} mr={'8px'}>
                         {rightElement}
