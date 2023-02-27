@@ -1,7 +1,6 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import COLORS from '../../../constants/colors';
-import Icon from '../../contents/icon';
 import InputSelect from '.';
 import IInputSelectProps from './props';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { VStack } from '@chakra-ui/react';
-import Select from 'react-select';
+import Select, { components } from 'react-select';
 import COLORS from '../../../constants/colors';
 import Text from '../../contents/text';
 import FONTS from '../../../constants/fonts';
@@ -31,6 +31,10 @@ export default function InputSelect({
     dropdownArrowColor = COLORS.InputText.value,
     backgroundOptionColor = COLORS.Stroke.value,
     borderRadius = '8px',
+    padding,
+    dropDownIndicator,
+    paddingRight,
+    paddingLeft,
     ...props
 }: IInputSelectProps) {
     const textProps = { lineHeight: lineHeight, margin: 0 };
@@ -38,8 +42,6 @@ export default function InputSelect({
         control: (styles, { data, isDisabled, isFocused, isSelected }) => {
             return {
                 ...styles,
-                h: h,
-                w: w,
                 border: isValid ? border : errorBorder,
                 borderRadius: borderRadius,
                 '&:hover': isValid ? border : errorBorder,
@@ -49,7 +51,6 @@ export default function InputSelect({
                 color: color,
                 backgroundColor: 'transparent',
                 boxShadow: 'none',
-                marginTop: '3px',
             };
         },
         placeholder: (styles) => {
@@ -62,12 +63,18 @@ export default function InputSelect({
             return {
                 ...styles,
                 backgroundColor: isFocused ? backgroundOptionColor : 'none',
-                color: color,
+                fontSize: fontSize,
+                fontWeight: fontWeight,
+                fontFamily: fontFamily,
             };
         },
-        input: (styles) => ({ ...styles }),
-        singleValue: (styles, { data }) => ({
+        input: (styles) => ({
             ...styles,
+        }),
+        singleValue: (styles, state) => ({
+            ...styles,
+            overflow: 'visible',
+            color: color,
         }),
         dropdownIndicator: (
             base,
@@ -75,14 +82,25 @@ export default function InputSelect({
         ) => ({
             ...base,
             color: dropdownArrowColor,
+            backgroundColor: 'transparent',
             '&:hover': { color: dropdownArrowColor },
+            paddingLeft: paddingLeft,
+            paddingRight: paddingRight,
         }),
+    };
+
+    const DropdownIndicator = (props) => {
+        return (
+            <components.DropdownIndicator {...props}>
+                {dropDownIndicator}
+            </components.DropdownIndicator>
+        );
     };
     return (
         <VStack
             direction='column'
             spacing='4px'
-            w={w}
+            w={w ?? undefined}
             h={h}
             alignItems={alignItems}
         >
@@ -105,14 +123,18 @@ export default function InputSelect({
                 </Text>
             )}
 
-            <Select
-                options={options}
-                placeholder={placeholder}
-                styles={selectStyle}
-                components={{
-                    IndicatorSeparator: () => null,
-                }}
-            />
+            {options && (
+                <Select
+                    isSearchable={false}
+                    options={options}
+                    placeholder={placeholder}
+                    styles={{ ...selectStyle }}
+                    components={{
+                        IndicatorSeparator: () => null,
+                        DropdownIndicator,
+                    }}
+                />
+            )}
         </VStack>
     );
 }
