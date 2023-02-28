@@ -5,7 +5,7 @@ import Text from '../../contents/text';
 import FONTS from '../../../constants/fonts';
 import InputSelect from '../input-select';
 import IInputSelectAndInputProps from './props';
-import Input from '../input/input-text';
+import Input from '../input';
 import ButtonIcon from '../button-icon';
 import { ButtonSize } from '../button-icon/props';
 import Icon from '../../contents/icon';
@@ -23,13 +23,16 @@ export default function InputSelectAndInput({
     borderRadius = '8px',
     alignItems,
     lineHeight,
+    isValid = true,
+    errorBorder = `1px solid ${COLORS.Negative.value}`,
+    leftIcon,
     ...props
 }: IInputSelectAndInputProps) {
     const textProps = { lineHeight: lineHeight, margin: 0 };
     return (
         <VStack
             direction='column'
-            spacing='4px'
+            spacing='0.25rem'
             w={w}
             h={h}
             alignItems={alignItems}
@@ -56,11 +59,13 @@ export default function InputSelectAndInput({
             <HStack
                 w={w}
                 h={h}
-                border={border}
+                border={isValid ? border : errorBorder}
                 borderRadius={borderRadius}
                 px='0.75rem'
                 spacing={0}
                 justifyContent='space-between'
+                paddingRight={leftIcon ? '0.375rem' : '1.1019rem'}
+                paddingLeft='12px'
             >
                 <Input {...inputProps} borderRadius={0} flexGrow={1} />
                 <InputSelect
@@ -70,15 +75,17 @@ export default function InputSelectAndInput({
                     h='fit-content'
                     minW={'12.5rem'}
                 />{' '}
-                <ButtonIcon
-                    borderRadius='6px'
-                    padding='4px'
-                    gap='10px'
-                    backgroundColor='transparent'
-                    icon={<Icon name={'removeSmall'} stroke={'#F46363'} />}
-                    size={ButtonSize.SMALL}
-                    aria-label=''
-                ></ButtonIcon>
+                {leftIcon ? (
+                    <ButtonIcon
+                        borderRadius='0.375rem'
+                        padding='0.25rem'
+                        gap='0.625rem'
+                        backgroundColor='transparent'
+                        icon={leftIcon}
+                        size={ButtonSize.SMALL}
+                        aria-label=''
+                    ></ButtonIcon>
+                ) : null}
             </HStack>
         </VStack>
     );

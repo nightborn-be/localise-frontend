@@ -13,6 +13,9 @@ export default interface IInputSelectAndInputProps extends InputProps {
     h?: string,
     border?: string,
     borderRadius?: string,
+    isValid?: boolean,
+    errorBorder?: string,
+    leftIcon?: React.ReactElement,
 }
 
 export type Options = {

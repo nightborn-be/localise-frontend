@@ -7,6 +7,7 @@ import Expand from './expand';
 import Send from './send';
 import More from './more';
 import CopyClipBoard from './copy-clipboard';
+import DropdownIndicator from './dropdownIndicator';
 
 const Icons = {
     add: Add,
@@ -21,6 +22,7 @@ const Icons = {
     more: More,
     copy: CopyClipBoard,
     addCircle: AddCircle,
+    dropdownIndicator: DropdownIndicator,
 };
 
 export default Icons;

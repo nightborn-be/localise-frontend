@@ -6,6 +6,7 @@ import InputSelect from '.';
 import IInputSelectProps from './props';
 import InputSelectAndInput from '.';
 import IInputSelectAndInputProps from './props';
+import FONTS from '../../../constants/fonts';
 
 export default {
     title: 'Components/Inputs/InputSelectAndInput',
@@ -35,9 +36,9 @@ const props: IInputSelectAndInputProps = {
             { value: 'Administrateur', label: 'Administrateur' },
         ],
         fontWeight: '400',
+        dropDownIndicator: <Icon name='dropdownIndicator' />,
         fontSize: '12px',
         lineHeight: '15px',
-        dropDownIndicator: <Icon name='DropdownIndicator'></Icon>,
         padding: '0px',
         gap: '4px',
         placeholder: 'Admin',
@@ -49,6 +50,7 @@ const props: IInputSelectAndInputProps = {
         w: '216px',
         h: '40px',
         border: 'transparent',
+        font: FONTS.T1.T12px.Regular400.value,
     },
     w: '327px',
     h: '40px',
@@ -56,26 +58,62 @@ const props: IInputSelectAndInputProps = {
     borderRadius: '8px',
 };
 
-export const SimpleSelect = Template.bind({});
-SimpleSelect.args = { ...props };
+export const SimpleTextSelect = Template.bind({});
+SimpleTextSelect.args = { ...props };
 
-export const labelSelect = Template.bind({});
-labelSelect.args = { ...props, label: 'Label' };
+export const LabelTextSelect = Template.bind({});
+LabelTextSelect.args = { ...props, label: 'Label' };
 
-export const descriptionSelect = Template.bind({});
-descriptionSelect.args = { ...props, description: 'Description' };
+export const DescriptionTextSelect = Template.bind({});
+DescriptionTextSelect.args = { ...props, description: 'Description' };
 
-export const LabelsSelect = Template.bind({});
-LabelsSelect.args = {
+export const LabelsTextSelect = Template.bind({});
+LabelsTextSelect.args = {
     ...props,
     label: 'Label',
     description: 'Description',
 };
 
-export const IsInvalidSelect = Template.bind({});
-IsInvalidSelect.args = {
+export const IsInvalidTextSelect = Template.bind({});
+IsInvalidTextSelect.args = {
     ...props,
     isValid: false,
     label: 'Label',
     description: 'Description',
+};
+export const SimpleTextSelectWithIcon = Template.bind({});
+SimpleTextSelectWithIcon.args = {
+    ...props,
+    leftIcon: <Icon name='removeSmall' stroke={COLORS.InputText.value} />,
+};
+
+export const LabelTextSelectWithIcon = Template.bind({});
+LabelTextSelectWithIcon.args = {
+    ...props,
+    label: 'Label',
+    leftIcon: <Icon name='removeSmall' stroke={COLORS.InputText.value} />,
+};
+
+export const DescriptionTextSelectWithIcon = Template.bind({});
+DescriptionTextSelectWithIcon.args = {
+    ...props,
+    description: 'Description',
+    leftIcon: <Icon name='removeSmall' stroke={COLORS.InputText.value} />,
+};
+
+export const LabelsTextSelectWithIcon = Template.bind({});
+LabelsTextSelectWithIcon.args = {
+    ...props,
+    label: 'Label',
+    description: 'Description',
+    leftIcon: <Icon name='removeSmall' stroke={COLORS.InputText.value} />,
+};
+
+export const IsInvalidTextSelectWithIcon = Template.bind({});
+IsInvalidTextSelectWithIcon.args = {
+    ...props,
+    isValid: false,
+    label: 'Label',
+    description: 'Description',
+    leftIcon: <Icon name='removeSmall' stroke={COLORS.InputText.value} />,
 };
