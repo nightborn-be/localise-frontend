@@ -17,7 +17,7 @@ export default function Input<T>({
     description,
     labelColor = COLORS.Text.T500.value,
     descriptionColor = COLORS.InputText.value,
-    border = '1px solid ' + COLORS.Stroke.value,
+    border = `1px solid ${COLORS.Stroke.value}`,
     placeholderColor = COLORS.InputText.value,
     placeholder,
     h,
@@ -47,7 +47,8 @@ export default function Input<T>({
         if (visibility === 'hidden') setVisibility('visible');
         if (visibility === 'visible') setVisibility('hidden');
     };
-    const hoverCondition = (): string => {
+
+    const borderCondition = (): string => {
         if (!isValid) {
             return errorBorder;
         }
@@ -56,6 +57,7 @@ export default function Input<T>({
         }
         return border;
     };
+
     // Render
     return (
         <>
@@ -99,14 +101,12 @@ export default function Input<T>({
                             fontWeight: font?.fontWeight,
                             lineHeight: font?.lineHeight,
                         }}
-                        _focus={
-                            focusBorderColor
-                                ? { _hover: { border: 'none' } }
-                                : undefined
-                        }
-                        focusBorderColor={focusBorderColor ?? 'false'}
+                        _focus={{
+                            border: borderCondition,
+                        }}
+                        focusBorderColor={'transparent'}
                         border={isValid ? border : errorBorder}
-                        _hover={{ border: hoverCondition }}
+                        _hover={{ border: borderCondition }}
                         color={color}
                         fontFamily={font?.fontFamily}
                         fontSize={font?.fontSize}
