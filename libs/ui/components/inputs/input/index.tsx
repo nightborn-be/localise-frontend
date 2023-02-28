@@ -99,6 +99,11 @@ export default function Input<T>({
                             fontWeight: font?.fontWeight,
                             lineHeight: font?.lineHeight,
                         }}
+                        _focus={
+                            focusBorderColor
+                                ? { _hover: { border: 'none' } }
+                                : undefined
+                        }
                         focusBorderColor={focusBorderColor ?? 'false'}
                         border={isValid ? border : errorBorder}
                         _hover={{ border: hoverCondition }}
