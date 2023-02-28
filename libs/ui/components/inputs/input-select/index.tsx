@@ -88,6 +88,7 @@ export default function InputSelect({
             '&:hover': { color: dropdownArrowColor },
             paddingLeft: paddingLeft,
             paddingRight: paddingRight,
+            marginLeft: '-7px',
         }),
     };
 

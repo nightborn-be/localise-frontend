@@ -19,8 +19,8 @@ export default function InputSelectAndInput({
     description,
     h,
     w,
-    border = `1px solid ${COLORS.Line.value}`,
-    borderRadius = '8px',
+    border = `0.0625rem solid ${COLORS.Line.value}`,
+    borderRadius = '0.5rem',
     alignItems,
     lineHeight,
     isValid = true,
@@ -65,7 +65,7 @@ export default function InputSelectAndInput({
                 spacing={0}
                 justifyContent='space-between'
                 paddingRight={leftIcon ? '0.375rem' : '1.1019rem'}
-                paddingLeft='12px'
+                paddingLeft='8px'
             >
                 <Input {...inputProps} borderRadius={0} flexGrow={1} />
                 <InputSelect
@@ -74,7 +74,8 @@ export default function InputSelectAndInput({
                     w='fit-content'
                     h='fit-content'
                     minW={'12.5rem'}
-                />{' '}
+                />
+
                 {leftIcon ? (
                     <ButtonIcon
                         borderRadius='0.375rem'
