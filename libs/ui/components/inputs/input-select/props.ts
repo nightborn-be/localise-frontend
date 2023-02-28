@@ -12,6 +12,7 @@ export default interface IInputSelectProps extends InputProps {
     dropdownArrowColor?: string,
     backgroundOptionColor?: string,
     dropDownIndicator?: React.ReactElement,
+    isSearchable?: boolean
 }
 
 export type Options = {

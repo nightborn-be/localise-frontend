@@ -35,6 +35,7 @@ export default function InputSelect({
     dropDownIndicator,
     paddingRight,
     paddingLeft,
+    isSearchable = false,
     ...props
 }: IInputSelectProps) {
     const textProps = { lineHeight: lineHeight, margin: 0 };
@@ -125,7 +126,7 @@ export default function InputSelect({
 
             {options && (
                 <Select
-                    isSearchable={false}
+                    isSearchable={isSearchable}
                     options={options}
                     placeholder={placeholder}
                     styles={{ ...selectStyle }}
