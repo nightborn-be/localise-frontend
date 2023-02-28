@@ -19,7 +19,7 @@ export default function Button({
     ...rest
 }: IButtonProps) {
     //Attributes
-    const [isHovered, setIsHovered] = useState<boolean>();
+    const [isHovered, setIsHovered] = useState<boolean>(false);
     const updateHoverState = () => setIsHovered((prev) => !prev);
     const enhancerProps = { isHovered };
     const paddingCondition = () => {
@@ -56,7 +56,7 @@ export default function Button({
                 spacing={spacing}
                 pointerEvents='none'
             >
-                {startEnhancer && startEnhancer(enhancerProps)}
+                {startEnhancer ? startEnhancer(enhancerProps) : null}
                 <ButtonChildren
                     fontSize={rest.fontSize}
                     fontWeight={rest.fontWeight}
@@ -70,7 +70,7 @@ export default function Button({
                 >
                     {children}
                 </ButtonChildren>
-                {endEnhancer && endEnhancer(enhancerProps)}
+                {endEnhancer ? endEnhancer(enhancerProps) : null}
             </Stack>
         </ChakraButton>
     );
