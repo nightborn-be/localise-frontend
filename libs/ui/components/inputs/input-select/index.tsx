@@ -29,16 +29,28 @@ export default function InputSelect({
     isValid = true,
     options,
     dropdownArrowColor = COLORS.InputText.value,
-    backgroundOptionColor = COLORS.Stroke.value,
+    backgroundOptionColor = COLORS.Localize.Purple.T500.value,
+    focusBackgroundOptionColor = COLORS.Tag.value,
+    selectedOptionColor = COLORS.White.T500.value,
+    textOptionColor = COLORS.Text.T400.value,
+    borderRadiusOption = '4px',
     borderRadius = '8px',
     padding,
     dropDownIndicator,
     paddingRight,
     paddingLeft,
+    menuOptionWidth,
     isSearchable = false,
+    menuRightOption,
     ...props
 }: IInputSelectProps) {
     const textProps = { lineHeight: lineHeight, margin: 0 };
+
+    const backgroundCondition = (isFocused: boolean, isSelected: boolean) => {
+        if (isSelected) return backgroundOptionColor;
+        if (isFocused) return focusBackgroundOptionColor;
+        return 'none';
+    };
     const selectStyle: any = {
         control: (styles, { data, isDisabled, isFocused, isSelected }) => {
             return {
@@ -60,14 +72,26 @@ export default function InputSelect({
                 color: placeholderColor,
             };
         },
+
+        menu: (styles, state) => {
+            return {
+                ...styles,
+                width: menuOptionWidth ?? '100%',
+                padding: '0px 6px 0px 6px',
+                right: menuRightOption,
+            };
+        },
         option: (styles, { data, isDisabled, isFocused, isSelected }) => {
             return {
                 ...styles,
-                backgroundColor: isFocused ? backgroundOptionColor : 'none',
+                marginTop: '4px',
+                ':active': { backgroundColor: 'none' },
+                backgroundColor: backgroundCondition(isFocused, isSelected),
                 fontSize: fontSize,
                 fontWeight: fontWeight,
                 fontFamily: fontFamily,
-                color: color,
+                borderRadius: borderRadiusOption,
+                color: isSelected ? selectedOptionColor : textOptionColor,
             };
         },
         input: (styles) => ({
@@ -88,7 +112,6 @@ export default function InputSelect({
             '&:hover': { color: dropdownArrowColor },
             paddingLeft: paddingLeft,
             paddingRight: paddingRight,
-            marginLeft: '-7px',
         }),
     };
 
@@ -100,13 +123,7 @@ export default function InputSelect({
         );
     };
     return (
-        <VStack
-            direction='column'
-            spacing='4px'
-            w={w ?? undefined}
-            h={h}
-            alignItems={alignItems}
-        >
+        <VStack spacing='4px' w={w ?? undefined} h={h} alignItems={alignItems}>
             {label && (
                 <Text
                     {...textProps}
@@ -141,3 +158,4 @@ export default function InputSelect({
         </VStack>
     );
 }
+

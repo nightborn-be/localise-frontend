@@ -8,7 +8,6 @@ import IInputSelectAndInputProps from './props';
 import Input from '../input';
 import ButtonIcon from '../button-icon';
 import { ButtonSize } from '../button-icon/props';
-import Icon from '../../contents/icon';
 
 export default function InputSelectAndInput({
     selectProps,
@@ -55,7 +54,6 @@ export default function InputSelectAndInput({
                     {description}
                 </Text>
             )}
-
             <HStack
                 w={w}
                 h={h}
@@ -71,11 +69,12 @@ export default function InputSelectAndInput({
                 <InputSelect
                     {...selectProps}
                     borderRadius={0}
+                    menuOptionWidth='120px'
                     w='fit-content'
                     h='fit-content'
                     minW={'12.5rem'}
+                    menuRightOption='0px'
                 />
-
                 {leftIcon ? (
                     <ButtonIcon
                         borderRadius='0.375rem'
