@@ -10,7 +10,7 @@ import COLORS from '../../../constants/colors';
 import Text from '../../contents/text';
 import FONTS from '../../../constants/fonts';
 import * as CSS from 'csstype';
-export default function Input({
+export default function Input<T>({
     type = 'text',
     color = COLORS.Text.T500.value,
     label,
@@ -29,8 +29,14 @@ export default function Input({
     rightElement,
     paddingRight,
     isValid = true,
+    focusBorderColor,
+    marginTop,
+    paddingInlineStart,
+    paddingInlineEnd,
+    padding,
+    gap,
     ...props
-}: IInputProps) {
+}: IInputProps<T>) {
     //Attributes
     const textProps = { lineHeight: font?.lineHeight, margin: 0 };
     const [visibility, setVisibility] =
@@ -80,7 +86,11 @@ export default function Input({
                 )}
                 <InputGroup>
                     <ChakraInput
-                        {...props}
+                        padding={padding}
+                        gap={gap}
+                        value={props.value}
+                        onChange={props.onChange}
+                        name={props.name as string}
                         type={type}
                         placeholder={placeholder}
                         _placeholder={{
@@ -89,7 +99,7 @@ export default function Input({
                             fontWeight: font?.fontWeight,
                             lineHeight: font?.lineHeight,
                         }}
-                        focusBorderColor={props.focusBorderColor ?? 'false'}
+                        focusBorderColor={focusBorderColor ?? 'false'}
                         border={isValid ? border : errorBorder}
                         _hover={{ border: hoverCondition }}
                         color={color}
@@ -98,12 +108,12 @@ export default function Input({
                         fontWeight={font?.fontWeight}
                         lineHeight={font?.lineHeight}
                         letterSpacing={font?.letterSpacing}
-                        marignTop={props.marginTop}
+                        marginTop={marginTop}
                         onFocus={handleToggleVisibility}
                         onBlur={handleToggleVisibility}
                         pr={paddingRight ?? '4px'}
-                        paddingInlineStart={props.paddingInlineStart ?? 0}
-                        paddingInlineEnd={props.paddingInlineEnd ?? 0}
+                        paddingInlineStart={paddingInlineStart ?? 0}
+                        paddingInlineEnd={paddingInlineEnd ?? 0}
                     />
                     <InputRightElement visibility={visibility} mr={'8px'}>
                         {rightElement}

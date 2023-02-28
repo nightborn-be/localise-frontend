@@ -6,15 +6,20 @@ import Icon from '../../contents/icon/';
 import Text from '../../contents/text';
 import COLORS from '../../../constants/colors';
 import FONTS from '../../../constants/fonts';
+
+interface test {
+    name: string;
+}
 export default {
     title: 'Components/Inputs/Input',
     component: Input,
 } as ComponentMeta<typeof Input>;
-const Template: ComponentStory<typeof Input> = (props: IInputProps) => (
+const Template: ComponentStory<typeof Input> = (props: IInputProps<test>) => (
     <Input {...props} />
 );
 
-const props: IInputProps = {
+const props: IInputProps<test> = {
+    name: 'name',
     placeholder: 'Insert text',
     h: '40px',
     w: '327px',
@@ -22,6 +27,8 @@ const props: IInputProps = {
     font: FONTS.T1.T12px.Regular400.value,
     gap: '8px',
     marginTop: '3px',
+    value: null,
+    onChange: () => {},
 };
 
 export const SimpleInput = Template.bind({});

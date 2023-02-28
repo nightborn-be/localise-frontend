@@ -1,7 +1,7 @@
-import { InputProps } from '@chakra-ui/react';
 import React from 'react'
+import { IFieldForm } from '../../../../utils/formik';
 import { Font } from '../../../constants/fonts';
-export default interface IInputProps extends InputProps {
+export default interface IInputProps<T> extends IFieldForm<T> {
     type?: React.HTMLInputTypeAttribute;
     color?: string,
     font?: Font,
@@ -19,5 +19,13 @@ export default interface IInputProps extends InputProps {
     hoverBorder?: string
     isValid?: boolean,
     rightElement?: JSX.Element
+    alignItems?: string,
+    paddingRight?: string,
+    focusBorderColor?: string,
+    marginTop?: string,
+    paddingInlineStart?: string,
+    paddingInlineEnd?: string,
+    padding?: string,
+    gap?: string,
 }
 
