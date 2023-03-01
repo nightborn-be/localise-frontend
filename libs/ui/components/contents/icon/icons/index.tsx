@@ -7,6 +7,7 @@ import Expand from './expand';
 import Send from './send';
 import More from './more';
 import CopyClipBoard from './copy-clipboard';
+import Enter from './enter';
 import UploadCloud from './uploadCloud';
 import Cross from './cross';
 
@@ -27,6 +28,7 @@ const Icons = {
     more: More,
     copy: CopyClipBoard,
     addCircle: AddCircle,
+    enter: Enter,
     addSmallBackground: AddSmallBackground,
 };
 
