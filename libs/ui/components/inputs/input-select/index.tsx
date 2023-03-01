@@ -40,8 +40,8 @@ export default function InputSelect({
     paddingRight,
     paddingLeft,
     menuOptionWidth,
-
     isSearchable = false,
+    menuRightOption,
     ...props
 }: IInputSelectProps) {
     const textProps = { lineHeight: lineHeight, margin: 0 };
@@ -77,7 +77,8 @@ export default function InputSelect({
             return {
                 ...styles,
                 width: menuOptionWidth ?? '100%',
-                padding: '0px 6px 4px 6px',
+                padding: '0px 6px 0px 6px',
+                right: menuRightOption,
             };
         },
         option: (styles, { data, isDisabled, isFocused, isSelected }) => {
@@ -157,3 +158,4 @@ export default function InputSelect({
         </VStack>
     );
 }
+

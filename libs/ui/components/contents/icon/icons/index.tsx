@@ -10,10 +10,10 @@ import CopyClipBoard from './copy-clipboard';
 import SelectStroke from './select-stroke';
 import Sort from './sort';
 import Date from './date';
-import DropdownIndicator from './DropdownIndicator';
 import Enter from './enter';
 import UploadCloud from './uploadCloud';
 import Cross from './cross';
+import DropdownIndicator from './dropdownIndicator';
 
 const Icons = {
     add: Add,
@@ -35,9 +35,9 @@ const Icons = {
     selectStroke: SelectStroke,
     sort: Sort,
     date: Date,
-    DropdownIndicator: DropdownIndicator,
     enter: Enter,
     addSmallBackground: AddSmallBackground,
+    dropdownIndicator: DropdownIndicator,
 };
 
 export default Icons;

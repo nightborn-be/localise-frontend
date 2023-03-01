@@ -57,7 +57,6 @@ export default function Input<T>({
         }
         return border;
     };
-
     // Render
     return (
         <>

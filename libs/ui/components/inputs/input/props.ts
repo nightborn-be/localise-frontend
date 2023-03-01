@@ -28,4 +28,3 @@ export default interface IInputProps<T> extends IFieldForm<T> {
     padding?: string,
     gap?: string,
 }
-
