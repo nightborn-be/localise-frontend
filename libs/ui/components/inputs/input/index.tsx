@@ -22,6 +22,7 @@ export default function Input<T>({
     placeholder,
     h,
     w,
+    maxWidth,
     errorBorder = `1px solid ${COLORS.Negative.value}`,
     font,
     hoverBorder,
@@ -65,6 +66,7 @@ export default function Input<T>({
                 spacing='4px'
                 h={h}
                 w={w}
+                maxWidth={maxWidth}
                 alignItems={alignItems}
             >
                 {label && (

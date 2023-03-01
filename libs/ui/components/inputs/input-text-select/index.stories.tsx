@@ -19,7 +19,10 @@ export default {
 const Template: ComponentStory<typeof InputSelectAndInput> = (args) => (
     <InputSelectAndInput {...args} />
 );
-const props: IInputSelectAndInputProps = {
+interface test {
+    name: string;
+}
+const props: IInputSelectAndInputProps<test> = {
     selectProps: {
         labelColor: COLORS.Text.T500.value,
         color: COLORS.Localize.Purple.T500.value,
@@ -46,8 +49,11 @@ const props: IInputSelectAndInputProps = {
         paddingLeft: '0',
     },
     inputProps: {
+        name: 'name',
+        value: null,
+        onChange: () => {},
         placeholder: 'Text',
-        w: '216px',
+        w: '100%',
         h: '40px',
         border: 'transparent',
         font: FONTS.T1.T12px.Regular400.value,
@@ -84,21 +90,21 @@ IsInvalidTextSelect.args = {
 export const SimpleTextSelectWithIcon = Template.bind({});
 SimpleTextSelectWithIcon.args = {
     ...props,
-    leftIcon: <Icon name='removeSmall' stroke={COLORS.InputText.value} />,
+    rightIcon: <Icon name='removeSmall' stroke={COLORS.InputText.value} />,
 };
 
 export const LabelTextSelectWithIcon = Template.bind({});
 LabelTextSelectWithIcon.args = {
     ...props,
     label: 'Label',
-    leftIcon: <Icon name='removeSmall' stroke={COLORS.InputText.value} />,
+    rightIcon: <Icon name='removeSmall' stroke={COLORS.InputText.value} />,
 };
 
 export const DescriptionTextSelectWithIcon = Template.bind({});
 DescriptionTextSelectWithIcon.args = {
     ...props,
     description: 'Description',
-    leftIcon: <Icon name='removeSmall' stroke={COLORS.InputText.value} />,
+    rightIcon: <Icon name='removeSmall' stroke={COLORS.InputText.value} />,
 };
 
 export const LabelsTextSelectWithIcon = Template.bind({});
@@ -106,7 +112,7 @@ LabelsTextSelectWithIcon.args = {
     ...props,
     label: 'Label',
     description: 'Description',
-    leftIcon: <Icon name='removeSmall' stroke={COLORS.InputText.value} />,
+    rightIcon: <Icon name='removeSmall' stroke={COLORS.InputText.value} />,
 };
 
 export const IsInvalidTextSelectWithIcon = Template.bind({});
@@ -115,5 +121,5 @@ IsInvalidTextSelectWithIcon.args = {
     isValid: false,
     label: 'Label',
     description: 'Description',
-    leftIcon: <Icon name='removeSmall' stroke={COLORS.InputText.value} />,
+    rightIcon: <Icon name='removeSmall' stroke={COLORS.InputText.value} />,
 };

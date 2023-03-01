@@ -19,6 +19,7 @@ export default interface IInputSelectProps extends InputProps {
     selectedOptionColor?: string,
     textOptionColor?: string,
     menuRightOption?: string,
+    menuLeftOption?: string,
 }
 
 export type Options = {

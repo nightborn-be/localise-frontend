@@ -12,11 +12,13 @@ export default interface IInputProps<T> extends IFieldForm<T> {
     descriptionColor?: string,
     placeholder: string,
     placeholderColor?: string,
-    h: string,
-    w: string,
+    h?: string,
+    maxWidth?: string
+    w?: string,
     readOnly?: boolean,
     errorBorder?: string
     hoverBorder?: string
+    borderRadius?: string
     isValid?: boolean,
     rightElement?: JSX.Element
     alignItems?: string,

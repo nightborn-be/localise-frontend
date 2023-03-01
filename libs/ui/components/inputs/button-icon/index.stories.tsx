@@ -19,7 +19,9 @@ const props: IButtonIconProps = {
     hoverBackgroundColor: '#4C36B5',
     border: 'none',
     borderRadius: '8px',
-    icon: <Icon name='add' stroke='white' width='16' height='16' />,
+    displayIcon: (isHovered) => (
+        <Icon name='add' stroke='white' width='16' height='16' />
+    ),
     handleOnClick: () => {},
     'aria-label': '',
 };
@@ -34,27 +36,35 @@ export const Large = Template.bind({});
 Large.args = {
     ...props,
     size: ButtonSize.LARGE,
-    icon: <Icon name='add' stroke='white' width='20' height='20' />,
+    displayIcon: (isHovered) => (
+        <Icon name='add' stroke='white' width='20' height='20' />
+    ),
 };
 export const Xl = Template.bind({});
 Xl.args = {
     ...props,
     size: ButtonSize.XL,
-    icon: <Icon name='add' stroke='white' width='20' height='20' />,
+    displayIcon: (isHovered) => (
+        <Icon name='add' stroke='white' width='20' height='20' />
+    ),
 };
 export const NoBorderNoColor = Template.bind({});
 NoBorderNoColor.args = {
     ...props,
     backgroundColor: 'transparent',
     hoverBackgroundColor: '#EDEEFC',
-    icon: <Icon name='add' stroke='#5F43E2' width='16' height='16' />,
+    displayIcon: (isHovered) => (
+        <Icon name='add' stroke='#5F43E2' width='16' height='16' />
+    ),
 };
 export const BorderNoColor = Template.bind({});
 BorderNoColor.args = {
     ...props,
     hoverBackgroundColor: '#F2F4F9',
     backgroundColor: 'transparent',
-    icon: <Icon name='add' stroke='#8F95B2' width='16' height='16' />,
+    displayIcon: (isHovered) => (
+        <Icon name='add' stroke='#8F95B2' width='16' height='16' />
+    ),
 };
 export const SimpleBorderNoColor = Template.bind({});
 SimpleBorderNoColor.args = {
@@ -62,41 +72,18 @@ SimpleBorderNoColor.args = {
     backgroundColor: '#F8F9FC',
     border: '2px solid #5F43E2',
     hoverBackgroundColor: '#EDEEFC',
-    icon: <Icon name='add' stroke='#5F43E2' width='16' height='16' />,
+    displayIcon: (isHovered) => (
+        <Icon name='add' stroke='#5F43E2' width='16' height='16' />
+    ),
 };
-const DashedBorderComponent = (): JSX.Element => {
-    const [isHovered, setIsHovered] = useState<boolean>();
-    const updateHoverState = () => setIsHovered((prev) => !prev);
-    return (
-        <Box
-            onMouseOver={updateHoverState}
-            onMouseLeave={updateHoverState}
-            p='10px'
-        >
-            <Icon
-                name='add'
-                stroke={isHovered ? '#393360' : '#8F95B2'}
-                width='16'
-                height='16'
-                pointerEvents='none'
-            />
-        </Box>
-    );
-};
-export const DashedBorderNoColor = Template.bind({});
-DashedBorderNoColor.args = {
-    ...props,
-    hoverBackgroundColor: 'none',
-    backgroundColor: 'transparent',
-    border: '1px dashed #8F95B2',
-    borderRadius: '8px',
-    icon: <DashedBorderComponent />,
-};
+
 export const Trash = Template.bind({});
 Trash.args = {
     ...props,
     backgroundColor: '#F46363',
-    icon: <Icon name='trashSmall' stroke='none' fill='#FFFFFF' />,
+    displayIcon: (isHovered) => (
+        <Icon name='trashSmall' stroke='none' fill='#FFFFFF' />
+    ),
     size: ButtonSize.SMALL,
     hoverBackgroundColor: '#E55252',
     padding: '4px',
@@ -110,33 +97,11 @@ TrashNoBackground.args = {
     hoverBackgroundColor: '#F2F4F9',
     gap: '10px',
     padding: '4px',
-    icon: <Icon name='trashLarge' stroke='none' fill='#F46363' />,
+    displayIcon: (isHovered) => (
+        <Icon name='trashLarge' stroke='none' fill='#F46363' />
+    ),
 };
 
-const RemoveMemberComponent = ({
-    small,
-    color,
-}: {
-    small: boolean;
-    color: string;
-}): JSX.Element => {
-    const [isHovered, setIsHovered] = useState<boolean>();
-    const updateHoverState = () => setIsHovered((prev) => !prev);
-
-    return (
-        <Box
-            onMouseOver={updateHoverState}
-            onMouseLeave={updateHoverState}
-            p='10px'
-        >
-            <Icon
-                pointerEvents='none'
-                name={small ? 'removeSmall' : 'removeLarge'}
-                stroke={isHovered ? '#F46363' : color}
-            />
-        </Box>
-    );
-};
 export const RemoveMemberSmall = Template.bind({});
 RemoveMemberSmall.args = {
     borderRadius: '6px',
@@ -145,7 +110,13 @@ RemoveMemberSmall.args = {
     gap: '10px',
     backgroundColor: '#FFFFFF',
     hoverBackgroundColor: '#F2F4F9',
-    icon: <RemoveMemberComponent small={true} color='#8F95B2' />,
+    displayIcon: (isHovered) => (
+        <Icon
+            pointerEvents='none'
+            name={'removeSmall'}
+            stroke={isHovered ? '#F46363' : '#8F95B2'}
+        />
+    ),
 };
 export const RemoveMemberXL = Template.bind({});
 RemoveMemberXL.args = {
@@ -155,7 +126,13 @@ RemoveMemberXL.args = {
     gap: '10px',
     backgroundColor: '#FFFFFF',
     hoverBackgroundColor: '#F2F4F9',
-    icon: <RemoveMemberComponent small={false} color='#8F95B2' />,
+    displayIcon: (isHovered) => (
+        <Icon
+            pointerEvents='none'
+            name={'removeLarge'}
+            stroke={isHovered ? '#F46363' : '#8F95B2'}
+        />
+    ),
 };
 export const RemoveMenu = Template.bind({});
 RemoveMenu.args = {
@@ -165,7 +142,7 @@ RemoveMenu.args = {
     gap: '10px',
     backgroundColor: '#5F43E2',
     hoverBackgroundColor: '#4C36B5',
-    icon: <Icon name='removeLarge' stroke='#FFFFFF' />,
+    displayIcon: (isHovered) => <Icon name='removeLarge' stroke='#FFFFFF' />,
 };
 
 export const ArrowDown = Template.bind({});
@@ -177,7 +154,9 @@ ArrowDown.args = {
     gap: '10px',
     backgroundColor: '#FFFFFF',
     hoverBackgroundColor: '#F2F4F9',
-    icon: <Icon name='arrowDown' stroke='#8F95B2' fill='#8F95B2' />,
+    displayIcon: (isHovered) => (
+        <Icon name='arrowDown' stroke='#8F95B2' fill='#8F95B2' />
+    ),
 };
 export const ArrowUp = Template.bind({});
 ArrowUp.args = {
@@ -187,7 +166,9 @@ ArrowUp.args = {
     gap: '10px',
     backgroundColor: '#FFFFFF',
     hoverBackgroundColor: '#F2F4F9',
-    icon: <Icon name='arrowUp' fill='#8F95B2' stroke='#8F95B2' />,
+    displayIcon: (isHovered) => (
+        <Icon name='arrowUp' fill='#8F95B2' stroke='#8F95B2' />
+    ),
 };
 
 export const Send = Template.bind({});
@@ -198,7 +179,9 @@ Send.args = {
     gap: '4px',
     backgroundColor: '#5F43E2',
     hoverBackgroundColor: '#4C36B5',
-    icon: <Icon name='send' fill='#FFFFFF' stroke='#FFFFFF' />,
+    displayIcon: (isHovered) => (
+        <Icon name='send' fill='#FFFFFF' stroke='#FFFFFF' />
+    ),
 };
 
 export const Expand = Template.bind({});
@@ -209,7 +192,9 @@ Expand.args = {
     gap: '4px',
     backgroundColor: '#FFFFFF',
     hoverBackgroundColor: '#F2F4F9',
-    icon: <Icon name='expand' fill='#8F95B2' stroke='#8F95B2' />,
+    displayIcon: (isHovered) => (
+        <Icon name='expand' fill='#8F95B2' stroke='#8F95B2' />
+    ),
 };
 
 export const More = Template.bind({});
@@ -220,7 +205,9 @@ More.args = {
     gap: '10px',
     backgroundColor: '#FFFFFF',
     hoverBackgroundColor: '#F2F4F9',
-    icon: <Icon name='more' fill='#8F95B2' stroke='#8F95B2' />,
+    displayIcon: (isHovered) => (
+        <Icon name='more' fill='#8F95B2' stroke='#8F95B2' />
+    ),
 };
 export const Copy = Template.bind({});
 Copy.args = {
@@ -230,7 +217,7 @@ Copy.args = {
     gap: '10px',
     backgroundColor: '#F8F9FC',
     hoverBackgroundColor: '#E7E9F4',
-    icon: <Icon name='copy' fill='#8F95B2' />,
+    displayIcon: (isHovered) => <Icon name='copy' fill='#8F95B2' />,
 };
 export const CircleAdd = Template.bind({});
 CircleAdd.args = {
@@ -240,7 +227,9 @@ CircleAdd.args = {
     hoverBackgroundColor: '#4C36B5',
     boxShadow:
         '0px 2px 4px rgba(40, 41, 61, 0.04), 0px 8px 16px rgba(96, 97, 112, 0.16)',
-    icon: <Icon name='addCircle' stroke='#FFFFFF' width={28} height={28} />,
+    displayIcon: (isHovered) => (
+        <Icon name='addCircle' stroke='#FFFFFF' width={28} height={28} />
+    ),
 };
 
 

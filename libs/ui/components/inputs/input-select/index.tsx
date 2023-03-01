@@ -42,6 +42,7 @@ export default function InputSelect({
     menuOptionWidth,
     isSearchable = false,
     menuRightOption,
+    menuLeftOption,
     ...props
 }: IInputSelectProps) {
     const textProps = { lineHeight: lineHeight, margin: 0 };
@@ -79,6 +80,7 @@ export default function InputSelect({
                 width: menuOptionWidth ?? '100%',
                 padding: '0px 6px 0px 6px',
                 right: menuRightOption,
+                left: menuLeftOption,
             };
         },
         option: (styles, { data, isDisabled, isFocused, isSelected }) => {
