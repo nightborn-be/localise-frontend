@@ -2,7 +2,6 @@ import React from 'react';
 
 const More = (props: React.SVGProps<SVGSVGElement>) => (
     <svg
-        {...props}
         width={props?.width ?? '16'}
         height={props?.height ?? '4'}
         viewBox={props?.viewBox ?? '0 0 16 4'}

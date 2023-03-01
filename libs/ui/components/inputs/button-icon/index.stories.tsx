@@ -78,6 +78,7 @@ const DashedBorderComponent = (): JSX.Element => {
                 stroke={isHovered ? '#393360' : '#8F95B2'}
                 width='16'
                 height='16'
+                pointerEvents='none'
             />
         </Box>
     );
@@ -129,6 +130,7 @@ const RemoveMemberComponent = ({
             p='10px'
         >
             <Icon
+                pointerEvents='none'
                 name={small ? 'removeSmall' : 'removeLarge'}
                 stroke={isHovered ? '#F46363' : color}
             />
@@ -212,10 +214,10 @@ Expand.args = {
 
 export const More = Template.bind({});
 More.args = {
-    borderRadius: '6px',
-    size: ButtonSize.SMALL,
-    padding: '4px 10px',
-    gap: '4px',
+    borderRadius: '4px',
+    size: ButtonSize.XS,
+    padding: '4px',
+    gap: '10px',
     backgroundColor: '#FFFFFF',
     hoverBackgroundColor: '#F2F4F9',
     icon: <Icon name='more' fill='#8F95B2' stroke='#8F95B2' />,
