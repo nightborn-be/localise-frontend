@@ -106,7 +106,9 @@ export default function Input<T>({
                         }}
                         focusBorderColor={'transparent'}
                         border={isValid ? border : errorBorder}
-                        _hover={{ border: borderCondition }}
+                        _hover={{
+                            border: borderCondition,
+                        }}
                         color={color}
                         fontFamily={font?.fontFamily}
                         fontSize={font?.fontSize}
@@ -119,6 +121,11 @@ export default function Input<T>({
                         pr={paddingRight ?? '4px'}
                         paddingInlineStart={paddingInlineStart ?? 0}
                         paddingInlineEnd={paddingInlineEnd ?? 0}
+                        onKeyDown={(event) =>
+                            event.key === 'Enter'
+                                ? event.currentTarget.blur()
+                                : ''
+                        }
                     />
                     <InputRightElement visibility={visibility} mr={'8px'}>
                         {rightElement}

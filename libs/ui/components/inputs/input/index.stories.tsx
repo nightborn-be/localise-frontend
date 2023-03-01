@@ -100,7 +100,7 @@ PasswordIsInvalidInput.args = {
 export const RightElementInput = Template.bind({});
 RightElementInput.args = {
     color: COLORS.Text.T500.value,
-    border: 'transparent',
+    border: '1px solid transparent',
     padding: '8px',
     gap: '12px',
     w: '412px',
