@@ -77,7 +77,7 @@ export default function InputSelect({
             return {
                 ...styles,
                 width: menuOptionWidth ?? '100%',
-                padding: '8px 6px 8px 6px',
+                padding: '0px 6px 4px 6px',
             };
         },
         option: (styles, { data, isDisabled, isFocused, isSelected }) => {
