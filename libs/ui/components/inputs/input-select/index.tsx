@@ -122,7 +122,7 @@ export default function InputSelect({
         );
     };
     return (
-        <VStack spacing='4px' w={w ?? undefined} h={h} alignItems={alignItems}>
+        <VStack spacing='4px' w={w} h={h} alignItems={alignItems}>
             {label && (
                 <Text
                     {...textProps}
