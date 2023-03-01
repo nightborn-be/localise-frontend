@@ -7,6 +7,10 @@ import Expand from './expand';
 import Send from './send';
 import More from './more';
 import CopyClipBoard from './copy-clipboard';
+import SelectStroke from './select-stroke';
+import Sort from './sort';
+import Date from './date';
+import DropdownIndicator from './DropdownIndicator';
 import Enter from './enter';
 import UploadCloud from './uploadCloud';
 import Cross from './cross';
@@ -28,6 +32,10 @@ const Icons = {
     more: More,
     copy: CopyClipBoard,
     addCircle: AddCircle,
+    selectStroke: SelectStroke,
+    sort: Sort,
+    date: Date,
+    DropdownIndicator: DropdownIndicator,
     enter: Enter,
     addSmallBackground: AddSmallBackground,
 };
