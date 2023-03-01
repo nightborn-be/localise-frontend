@@ -1,5 +1,5 @@
 import { TextProps as ChakraTextProps } from '@chakra-ui/react';
-import { Font } from 'libs/ui/constants/fonts';
+import { Font } from '../../../constants/fonts';
 
 export interface TextProps extends ChakraTextProps {
     font?: Font;

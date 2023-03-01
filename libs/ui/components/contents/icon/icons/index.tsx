@@ -1,5 +1,5 @@
-import { Add, AddCircle } from './add';
-import TrashSmall, { TrashLarge } from './trash';
+import { Add, AddCircle, AddLarge, AddSmallBackground } from './add';
+import TrashSmall, { TrashXs, TrashLarge } from './trash';
 import RemoveSmall, { RemoveLarge } from './remove';
 import ArrowDown from './arrow-down';
 import ArrowUp from './arrow-up';
@@ -11,11 +11,18 @@ import SelectStroke from './select-stroke';
 import Sort from './sort';
 import Date from './date';
 import DropdownIndicator from './DropdownIndicator';
+import Enter from './enter';
+import UploadCloud from './uploadCloud';
+import Cross from './cross';
 
 const Icons = {
     add: Add,
+    addLarge: AddLarge,
+    trashXs: TrashXs,
     trashSmall: TrashSmall,
     trashLarge: TrashLarge,
+    uploadCloud: UploadCloud,
+    cross: Cross,
     removeSmall: RemoveSmall,
     removeLarge: RemoveLarge,
     arrowDown: ArrowDown,
@@ -29,6 +36,8 @@ const Icons = {
     sort: Sort,
     date: Date,
     DropdownIndicator: DropdownIndicator,
+    enter: Enter,
+    addSmallBackground: AddSmallBackground,
 };
 
 export default Icons;
