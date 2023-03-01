@@ -10,17 +10,17 @@ const RemoveSmall = (props: React.SVGProps<SVGSVGElement>) => (
     >
         <path
             d='M12 4L4 12'
-            stroke={props.stroke}
-            stroke-width='1.6'
-            stroke-linecap='round'
-            stroke-linejoin='round'
+            stroke={props?.stroke}
+            strokeWidth='1.6'
+            strokeLinecap='round'
+            strokeLinejoin='round'
         />
         <path
             d='M4 4L12 12'
-            stroke={props.stroke}
-            stroke-width='1.6'
-            stroke-linecap='round'
-            stroke-linejoin='round'
+            stroke={props?.stroke}
+            strokeWidth='1.6'
+            strokeLinecap='round'
+            strokeLinejoin='round'
         />
     </svg>
 );
@@ -35,17 +35,17 @@ export const RemoveLarge = (props: React.SVGProps<SVGSVGElement>) => (
     >
         <path
             d='M16 16L4 4'
-            stroke={props.stroke}
-            stroke-width='2'
-            stroke-linecap='round'
-            stroke-linejoin='round'
+            stroke={props?.stroke}
+            strokeWidth='2'
+            strokeLinecap='round'
+            strokeLinejoin='round'
         />
         <path
             d='M16 4L4 16'
-            stroke={props.stroke}
-            stroke-width='2'
-            stroke-linecap='round'
-            stroke-linejoin='round'
+            stroke={props?.stroke}
+            strokeWidth='2'
+            strokeLinecap='round'
+            strokeLinejoin='round'
         />
     </svg>
 );

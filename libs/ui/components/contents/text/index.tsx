@@ -6,7 +6,7 @@ import { Text as ChakraText } from '@chakra-ui/react';
 
 const Text = ({
     children,
-    font = FONTS.T1.T16px.Regular400.value,
+    font = FONTS.T1.T12px.SemiBold600.value,
     color = COLORS.Text.T500.value,
     ...rest
 }: TextProps) => {
