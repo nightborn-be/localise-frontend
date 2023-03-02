@@ -6,13 +6,15 @@ import ArrowUp from './arrow-up';
 import Expand from './expand';
 import Send from './send';
 import More from './more';
-import CopyClipBoard from './copy-clipboard';
+import { CopyClipBoard, CopyClipBoardLarge } from './copy-clipboard';
 import SelectStroke from './select-stroke';
 import Sort from './sort';
 import Date from './date';
 import Enter from './enter';
 import UploadCloud from './uploadCloud';
 import Cross from './cross';
+import { ProjectLine } from './projectLine';
+import DropdownIndicator from './DropdownIndicator';
 
 const Icons = {
     add: Add,
@@ -30,12 +32,15 @@ const Icons = {
     send: Send,
     more: More,
     copy: CopyClipBoard,
+    copyLarge: CopyClipBoardLarge,
     addCircle: AddCircle,
     selectStroke: SelectStroke,
     sort: Sort,
     date: Date,
     enter: Enter,
     addSmallBackground: AddSmallBackground,
+    dropdownIndicator: DropdownIndicator,
+    projectLine: ProjectLine,
 };
 
 export default Icons;
