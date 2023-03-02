@@ -7,18 +7,9 @@ export default interface IInputSelectAndInputProps<T> extends InputProps {
     inputProps: IInputProps<T>
     label?: string,
     description?: string,
-    labelColor?: string,
-    descriptionColor?: string,
-    w?: string,
-    h?: string,
     border?: string,
-    borderRadius?: string,
     isValid?: boolean,
     errorBorder?: string,
     rightIcon?: React.ReactElement,
-}
-
-export type Options = {
-    value: string,
-    label: string,
+    rightHoverIcon?: React.ReactElement,
 }

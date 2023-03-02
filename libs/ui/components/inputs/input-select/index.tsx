@@ -2,15 +2,11 @@ import React from 'react';
 import { VStack } from '@chakra-ui/react';
 import Select, { components } from 'react-select';
 import COLORS from '../../../constants/colors';
-import Text from '../../contents/text';
-import FONTS from '../../../constants/fonts';
 import IInputSelectProps from './props';
+import InputLabel from '../input-label';
 
 export default function InputSelect({
-    type = 'text',
     color = COLORS.Text.T500.value,
-    labelColor = COLORS.Text.T500.value,
-    descriptionColor = COLORS.InputText.value,
     placeholderColor = COLORS.InputText.value,
     label,
     description,
@@ -18,14 +14,11 @@ export default function InputSelect({
     placeholder = 'Select value',
     h,
     w,
-    lineHeight = '15px',
     errorBorder = `1px solid ${COLORS.Negative.value}`,
     alignItems = 'left',
     fontSize = '12px',
     fontWeight = '400',
     fontFamily = 'Inter',
-    gap = '8px',
-    paddingTop = '3px',
     isValid = true,
     options,
     dropdownArrowColor = COLORS.InputText.value,
@@ -35,7 +28,6 @@ export default function InputSelect({
     textOptionColor = COLORS.Text.T400.value,
     borderRadiusOption = '4px',
     borderRadius = '8px',
-    padding,
     dropDownIndicator,
     paddingRight,
     paddingLeft,
@@ -43,15 +35,9 @@ export default function InputSelect({
     isSearchable = false,
     menuRightOption,
     menuLeftOption,
-    ...props
+    selectMarginLeft,
 }: IInputSelectProps) {
-    const textProps = { lineHeight: lineHeight, margin: 0 };
-
-    const backgroundCondition = (isFocused: boolean, isSelected: boolean) => {
-        if (isSelected) return backgroundOptionColor;
-        if (isFocused) return focusBackgroundOptionColor;
-        return 'none';
-    };
+    //Attributes
     const selectStyle: any = {
         control: (styles, { data, isDisabled, isFocused, isSelected }) => {
             return {
@@ -65,6 +51,7 @@ export default function InputSelect({
                 color: color,
                 backgroundColor: 'transparent',
                 boxShadow: 'none',
+                marginLeft: selectMarginLeft,
             };
         },
         placeholder: (styles) => {
@@ -116,7 +103,12 @@ export default function InputSelect({
             paddingRight: paddingRight,
         }),
     };
-
+    //Function
+    const backgroundCondition = (isFocused: boolean, isSelected: boolean) => {
+        if (isSelected) return backgroundOptionColor;
+        if (isFocused) return focusBackgroundOptionColor;
+        return 'none';
+    };
     const DropdownIndicator = (props) => {
         return (
             <components.DropdownIndicator {...props}>
@@ -124,27 +116,14 @@ export default function InputSelect({
             </components.DropdownIndicator>
         );
     };
+
+    //Render
     return (
         <VStack spacing='4px' w={w} h={h} alignItems={alignItems}>
-            {label && (
-                <Text
-                    {...textProps}
-                    font={FONTS.T1.T12px.Medium500.value}
-                    color={labelColor}
-                >
-                    {label}
-                </Text>
-            )}
-            {description && (
-                <Text
-                    {...textProps}
-                    font={FONTS.T1.T12px.Regular400.value}
-                    color={descriptionColor}
-                >
-                    {description}
-                </Text>
-            )}
+            {/* INPUT LABEL SECTION */}
+            <InputLabel label={label} description={description} />
 
+            {/* INPUT SELECT SECTION */}
             {options && (
                 <Select
                     isSearchable={isSearchable}

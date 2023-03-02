@@ -1,21 +1,17 @@
 import React, { useState } from 'react';
 import { Box, HStack, VStack } from '@chakra-ui/react';
 import COLORS from '../../../constants/colors';
-import Text from '../../contents/text';
-import FONTS from '../../../constants/fonts';
 import InputSelect from '../input-select';
 import IInputSelectAndInputProps from './props';
 import Input from '../input';
 import ButtonIcon from '../button-icon';
 import { ButtonSize } from '../button-icon/props';
-import Icon from '../../contents/icon';
 import { motion } from 'framer-motion';
+import InputLabel from '../input-label';
 
 export default function InputSelectAndInput<T>({
     selectProps,
     inputProps,
-    labelColor = COLORS.Text.T500.value,
-    descriptionColor = COLORS.InputText.value,
     label,
     description,
     h,
@@ -23,88 +19,73 @@ export default function InputSelectAndInput<T>({
     border = `0.0625rem solid ${COLORS.Line.value}`,
     borderRadius = '0.5rem',
     alignItems,
-    lineHeight,
     isValid = true,
     errorBorder = `1px solid ${COLORS.Negative.value}`,
     rightIcon,
-    ...props
+    rightHoverIcon,
 }: IInputSelectAndInputProps<T>) {
-    const textProps = { lineHeight: lineHeight, margin: 0 };
+    //Attributes
     const [isHovered, setIsHovered] = useState<boolean>(false);
-    const [isFocused, setIsFocused] = useState<boolean>(false);
-    const toggleIsHovered = () => setIsHovered((prev) => !prev);
-    const toggleIsFocused = () => setIsFocused((prev) => !prev);
-    console.log('isHovered', isHovered);
 
+    //Render
     return (
-        <>
-            <VStack
-                direction='column'
-                spacing='0.25rem'
+        <VStack
+            direction='column'
+            spacing='0.5rem'
+            w={w}
+            h={h}
+            alignItems={alignItems}
+        >
+            {/* INPUT LABEL SECTION */}
+            <InputLabel label={label} description={description} />
+
+            {/* INPUT SECTION */}
+            <HStack
                 w={w}
                 h={h}
-                alignItems={alignItems}
+                border={isValid ? border : errorBorder}
+                borderRadius={borderRadius}
+                px='0.75rem'
+                spacing={0}
+                justifyContent='space-between'
+                paddingRight='8px'
+                paddingLeft='12px'
+                transition='marginRight 2s'
+                marginRight='200px'
+                onMouseOver={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
+                position='relative'
             >
-                {label && (
-                    <Text
-                        {...textProps}
-                        font={FONTS.T1.T12px.Medium500.value}
-                        color={labelColor}
-                    >
-                        {label}
-                    </Text>
-                )}
-                {description && (
-                    <Text
-                        {...textProps}
-                        font={FONTS.T1.T12px.Regular400.value}
-                        color={descriptionColor}
-                    >
-                        {description}
-                    </Text>
-                )}
-                <HStack
-                    w={w}
-                    h={h}
-                    border={isValid ? border : errorBorder}
-                    borderRadius={borderRadius}
-                    px='0.75rem'
-                    spacing={0}
-                    justifyContent='space-between'
-                    paddingRight={rightIcon ? '0.375rem' : '1.1019rem'}
-                    paddingLeft='8px'
-                    transition='marginRight 2s'
-                    marginRight='200px'
-                    onMouseOver={() => setIsHovered(true)}
-                    onMouseLeave={() => setIsHovered(false)}
-                    onFocus={() => setIsFocused(true)}
-                    onBlur={() => setIsFocused(false)}
-                    position='relative'
+                {/* INPUT FIELD SECTION */}
+                <Input {...inputProps} />
+
+                {/* SELECT SECTION */}
+                <motion.div
+                    initial={false}
+                    animate={{
+                        translateX: isHovered ? -40 : 0,
+                    }}
+                    transition={{ ease: 'easeOut', duration: 0.5 }}
                 >
-                    <Input {...inputProps} paddingInlineStart='4px' />
-                    <motion.div
-                        initial={false}
-                        animate={{
-                            translateX: isHovered || isFocused ? -40 : 0,
-                        }}
-                        transition={{ ease: 'easeOut', duration: 0.5 }}
-                    >
-                        <InputSelect
-                            {...selectProps}
-                            w='fit-content'
-                            h='fit-content'
-                            borderRadius={0}
-                            menuOptionWidth='200px'
-                            minW={'12.5rem'}
-                            menuRightOption='-44px'
-                        />
-                    </motion.div>
-                    {rightIcon ? (
-                        // <Box position='absolute' left='287px'>
+                    <InputSelect
+                        {...selectProps}
+                        w='fit-content'
+                        h='fit-content'
+                        borderRadius={0}
+                        menuOptionWidth='200px'
+                        minW={'12.5rem'}
+                        menuRightOption='-44px'
+                        selectMarginLeft={isHovered ? '30px' : '0px'}
+                    />
+                </motion.div>
+
+                {/* BUTTON RIGHT SECTION */}
+                {rightIcon && (
+                    <Box position='absolute' left='287px'>
                         <motion.div
                             initial={false}
                             animate={{
-                                opacity: isHovered || isFocused ? 1 : 0,
+                                opacity: isHovered ? 1 : 0,
                             }}
                             transition={{ ease: 'easeOut', duration: 0.5 }}
                         >
@@ -113,27 +94,19 @@ export default function InputSelectAndInput<T>({
                                 padding='0.25rem'
                                 gap='0.625rem'
                                 backgroundColor='transparent'
-                                displayIcon={(isHovered) => (
-                                    <Icon
-                                        name={'removeSmall'}
-                                        pointerEvents='none'
-                                        stroke={
-                                            isHovered ? '#F46363' : '#8F95B2'
-                                        }
-                                    />
-                                )}
+                                displayIcon={(isHovered) =>
+                                    isHovered && rightHoverIcon
+                                        ? rightHoverIcon
+                                        : rightIcon
+                                }
                                 hoverBackgroundColor={COLORS.Tag.value}
                                 size={ButtonSize.SMALL}
                                 aria-label=''
-                                position={'absolute'}
-                                top='0'
-                                right='0'
                             />
                         </motion.div>
-                    ) : // </Box>
-                    null}
-                </HStack>
-            </VStack>
-        </>
+                    </Box>
+                )}
+            </HStack>
+        </VStack>
     );
 }

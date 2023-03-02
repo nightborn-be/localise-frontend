@@ -3,7 +3,6 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import COLORS from '../../../constants/colors';
 import Icon from '../../contents/icon';
 import InputSelect from '.';
-import IInputSelectProps from './props';
 import InputSelectAndInput from '.';
 import IInputSelectAndInputProps from './props';
 import FONTS from '../../../constants/fonts';
@@ -24,7 +23,6 @@ interface test {
 }
 const props: IInputSelectAndInputProps<test> = {
     selectProps: {
-        labelColor: COLORS.Text.T500.value,
         color: COLORS.Localize.Purple.T500.value,
         placeholderColor: COLORS.Localize.Purple.T500.value,
         dropdownArrowColor: COLORS.Localize.Purple.T500.value,
@@ -57,6 +55,7 @@ const props: IInputSelectAndInputProps<test> = {
         h: '40px',
         border: 'transparent',
         font: FONTS.T1.T12px.Regular400.value,
+        zIndex: '10',
     },
     w: '327px',
     h: '40px',
@@ -64,47 +63,63 @@ const props: IInputSelectAndInputProps<test> = {
     borderRadius: '8px',
 };
 
-export const SimpleTextSelect = Template.bind({});
-SimpleTextSelect.args = { ...props };
-
-export const LabelTextSelect = Template.bind({});
-LabelTextSelect.args = { ...props, label: 'Label' };
-
-export const DescriptionTextSelect = Template.bind({});
-DescriptionTextSelect.args = { ...props, description: 'Description' };
-
-export const LabelsTextSelect = Template.bind({});
-LabelsTextSelect.args = {
-    ...props,
-    label: 'Label',
-    description: 'Description',
-};
-
-export const IsInvalidTextSelect = Template.bind({});
-IsInvalidTextSelect.args = {
-    ...props,
-    isValid: false,
-    label: 'Label',
-    description: 'Description',
-};
 export const SimpleTextSelectWithIcon = Template.bind({});
 SimpleTextSelectWithIcon.args = {
     ...props,
-    rightIcon: <Icon name='removeSmall' stroke={COLORS.InputText.value} />,
+    rightIcon: (
+        <Icon
+            pointerEvents={'none'}
+            name='removeSmall'
+            stroke={COLORS.InputText.value}
+        />
+    ),
+    rightHoverIcon: (
+        <Icon
+            pointerEvents={'none'}
+            name='removeSmall'
+            stroke={COLORS.Error.T500.value}
+        />
+    ),
 };
 
 export const LabelTextSelectWithIcon = Template.bind({});
 LabelTextSelectWithIcon.args = {
     ...props,
     label: 'Label',
-    rightIcon: <Icon name='removeSmall' stroke={COLORS.InputText.value} />,
+    rightIcon: (
+        <Icon
+            pointerEvents={'none'}
+            name='removeSmall'
+            stroke={COLORS.InputText.value}
+        />
+    ),
+    rightHoverIcon: (
+        <Icon
+            pointerEvents={'none'}
+            name='removeSmall'
+            stroke={COLORS.Error.T500.value}
+        />
+    ),
 };
 
 export const DescriptionTextSelectWithIcon = Template.bind({});
 DescriptionTextSelectWithIcon.args = {
     ...props,
     description: 'Description',
-    rightIcon: <Icon name='removeSmall' stroke={COLORS.InputText.value} />,
+    rightIcon: (
+        <Icon
+            pointerEvents={'none'}
+            name='removeSmall'
+            stroke={COLORS.InputText.value}
+        />
+    ),
+    rightHoverIcon: (
+        <Icon
+            pointerEvents={'none'}
+            name='removeSmall'
+            stroke={COLORS.Error.T500.value}
+        />
+    ),
 };
 
 export const LabelsTextSelectWithIcon = Template.bind({});
@@ -112,7 +127,20 @@ LabelsTextSelectWithIcon.args = {
     ...props,
     label: 'Label',
     description: 'Description',
-    rightIcon: <Icon name='removeSmall' stroke={COLORS.InputText.value} />,
+    rightIcon: (
+        <Icon
+            pointerEvents={'none'}
+            name='removeSmall'
+            stroke={COLORS.InputText.value}
+        />
+    ),
+    rightHoverIcon: (
+        <Icon
+            pointerEvents={'none'}
+            name='removeSmall'
+            stroke={COLORS.Error.T500.value}
+        />
+    ),
 };
 
 export const IsInvalidTextSelectWithIcon = Template.bind({});
@@ -121,5 +149,18 @@ IsInvalidTextSelectWithIcon.args = {
     isValid: false,
     label: 'Label',
     description: 'Description',
-    rightIcon: <Icon name='removeSmall' stroke={COLORS.InputText.value} />,
+    rightIcon: (
+        <Icon
+            pointerEvents={'none'}
+            name='removeSmall'
+            stroke={COLORS.InputText.value}
+        />
+    ),
+    rightHoverIcon: (
+        <Icon
+            pointerEvents={'none'}
+            name='removeSmall'
+            stroke={COLORS.Error.T500.value}
+        />
+    ),
 };

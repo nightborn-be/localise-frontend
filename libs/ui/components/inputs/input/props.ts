@@ -8,8 +8,6 @@ export default interface IInputProps<T> extends IFieldForm<T> {
     border?: string,
     label?: string,
     description?: string,
-    labelColor?: string,
-    descriptionColor?: string,
     placeholder: string,
     placeholderColor?: string,
     h?: string,
@@ -25,8 +23,7 @@ export default interface IInputProps<T> extends IFieldForm<T> {
     paddingRight?: string,
     focusBorderColor?: string,
     marginTop?: string,
-    paddingInlineStart?: string,
-    paddingInlineEnd?: string,
     padding?: string,
     gap?: string,
+    zIndex?: string,
 }
