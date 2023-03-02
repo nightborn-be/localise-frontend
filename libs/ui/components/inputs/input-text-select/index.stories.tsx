@@ -6,6 +6,8 @@ import InputSelect from '.';
 import InputSelectAndInput from '.';
 import IInputSelectAndInputProps from './props';
 import FONTS from '../../../constants/fonts';
+import { EnhancerProps } from '../button/props';
+import Button from '../button';
 
 export default {
     title: 'Components/Inputs/InputSelectAndInput',
@@ -161,6 +163,60 @@ IsInvalidTextSelectWithIcon.args = {
             pointerEvents={'none'}
             name='removeSmall'
             stroke={COLORS.Error.T500.value}
+        />
+    ),
+};
+
+export const SimpleLargeTextSelectWithIcon = Template.bind({});
+SimpleLargeTextSelectWithIcon.args = {
+    ...props,
+    w: '590px',
+    rightIcon: (
+        <Icon
+            pointerEvents={'none'}
+            name='removeSmall'
+            stroke={COLORS.InputText.value}
+        />
+    ),
+    rightHoverIcon: (
+        <Icon
+            pointerEvents={'none'}
+            name='removeSmall'
+            stroke={COLORS.Error.T500.value}
+        />
+    ),
+};
+
+const TemplateButton: ComponentStory<typeof Button> = (args) => (
+    <Button {...args} />
+);
+export const AddMember = TemplateButton.bind({});
+
+AddMember.args = {
+    border: '1px dashed ' + COLORS.Line.value,
+    borderRadius: '8px',
+    children: 'Add a member',
+    w: '590px',
+    h: '40px',
+    padding: '4px 12px 4px 8px',
+    gap: '4px',
+    fontSize: '12px',
+    fontWeight: 400,
+    lineHeight: '15px',
+    justifyContent: 'flex-start',
+    backgroundColor: 'transparent',
+    color: COLORS.InputText.value,
+    hoverColor: COLORS.Localize.Purple.T500.value,
+    startEnhancer: (enhancer: EnhancerProps): React.ReactElement => (
+        <Icon
+            name='add'
+            stroke={
+                enhancer.isHovered
+                    ? COLORS.Localize.Purple.T500.value
+                    : COLORS.InputText.value
+            }
+            width='20'
+            height='20'
         />
     ),
 };

@@ -81,30 +81,32 @@ export default function InputSelectAndInput<T>({
 
                 {/* BUTTON RIGHT SECTION */}
                 {rightIcon && (
-                    <Box position='absolute' left='287px'>
-                        <motion.div
-                            initial={false}
-                            animate={{
-                                opacity: isHovered ? 1 : 0,
-                            }}
-                            transition={{ ease: 'easeOut', duration: 0.5 }}
-                        >
-                            <ButtonIcon
-                                borderRadius='0.375rem'
-                                padding='0.25rem'
-                                gap='0.625rem'
-                                backgroundColor='transparent'
-                                displayIcon={(isHovered) =>
-                                    isHovered && rightHoverIcon
-                                        ? rightHoverIcon
-                                        : rightIcon
-                                }
-                                hoverBackgroundColor={COLORS.Tag.value}
-                                size={ButtonSize.SMALL}
-                                aria-label=''
-                            />
-                        </motion.div>
-                    </Box>
+                    <motion.div
+                        initial={false}
+                        animate={{
+                            opacity: isHovered ? 1 : 0,
+                        }}
+                        transition={{ ease: 'easeOut', duration: 0.5 }}
+                    >
+                        <ButtonIcon
+                            borderRadius='0.375rem'
+                            padding='0.25rem'
+                            gap='0.625rem'
+                            backgroundColor='transparent'
+                            displayIcon={(isHovered) =>
+                                isHovered && rightHoverIcon
+                                    ? rightHoverIcon
+                                    : rightIcon
+                            }
+                            hoverBackgroundColor={COLORS.Tag.value}
+                            size={ButtonSize.XS}
+                            aria-label=''
+                            position='absolute'
+                            right='8px'
+                            top='5px'
+                            bottom='6px'
+                        />
+                    </motion.div>
                 )}
             </HStack>
         </VStack>
