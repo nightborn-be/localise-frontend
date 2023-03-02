@@ -29,7 +29,6 @@ const props: IInputSelectAndInputProps<test> = {
         placeholderColor: COLORS.Localize.Purple.T500.value,
         dropdownArrowColor: COLORS.Localize.Purple.T500.value,
         w: '100px',
-        h: '40px',
         background: COLORS.White.T500.value,
         border: 'transparent',
         options: [
@@ -54,7 +53,6 @@ const props: IInputSelectAndInputProps<test> = {
         onChange: () => {},
         placeholder: 'Text',
         w: '100%',
-        h: '40px',
         border: 'transparent',
         font: FONTS.T1.T12px.Regular400.value,
         zIndex: '10',
