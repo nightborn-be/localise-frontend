@@ -1,13 +1,5 @@
 import React, { useState, useRef } from 'react';
-import {
-    Box,
-    HStack,
-    Input,
-    InputGroup,
-    InputLeftElement,
-    InputProps,
-    InputRightElement,
-} from '@chakra-ui/react';
+import { Box, HStack, InputGroup, InputLeftElement } from '@chakra-ui/react';
 import Select, { components } from 'react-select';
 import COLORS from '../../../constants/colors';
 import FONTS from '../../../constants/fonts';
@@ -38,10 +30,15 @@ export default function Searchbar({
     //Attributes
     const backgroundCondition = (isFocused: boolean, isSelected: boolean) => {
         if (isSelected) return selectProps?.backgroundOptionColor;
-        if (isFocused) return selectProps?.focusBackgroundOptionColor;
+        if (isFocused && isHovered)
+            return selectProps?.focusBackgroundOptionColor;
         return 'none';
     };
+    const [isHovered, setIsHovered] = useState(false);
 
+    const toggleIsHovered = () => {
+        setIsHovered((prev) => !prev);
+    };
     const Option = (props) => {
         return (
             <components.Option {...props}>
@@ -88,23 +85,25 @@ export default function Searchbar({
                 flexDirection: 'column',
                 alignItems: 'flex-start',
                 borderRadius: '0px',
-                // borderRight: `1px solid ${COLORS.Line.value}`,
                 boxShadow: 'transparent',
                 position: 'absolute',
                 left: '-20px',
                 marginTop: '0px',
             };
         },
-        option: (styles, { data, isDisabled, isFocused, isSelected }) => {
+        option: (
+            styles,
+            { data, isHovered, isDisabled, isFocused, isSelected },
+        ) => {
             return {
                 ...styles,
+                display: 'flex',
+                flexDirection: 'row',
+                alignItems: 'center',
                 width: '228px',
                 height: '40px',
                 padding: '12px',
                 gap: '12px',
-                display: 'flex',
-                flexDirection: 'row',
-                alignItems: 'center',
                 ':active': { backgroundColor: 'none' },
                 backgroundColor: backgroundCondition(isFocused, isSelected),
                 ...FONTS.T1.T12px.Medium500.value,
@@ -127,6 +126,25 @@ export default function Searchbar({
             ...styles,
             color: color,
         }),
+        noOptionsMessage: (
+            styles,
+            { data, isHovered, isDisabled, isFocused, isSelected },
+        ) => {
+            return {
+                ...styles,
+                display: 'flex',
+                alignItems: 'center',
+                flexDirection: 'row',
+                padding: '12px',
+                gap: '12px',
+                width: '228px',
+                height: '40px',
+                ':active': { backgroundColor: 'none' },
+                ...FONTS.T1.T12px.Medium500.value,
+                borderRadius: selectProps?.borderRadiusOption,
+                color: COLORS.InputText.value,
+            };
+        },
     };
 
     const DropdownIndicator = (props) => {
@@ -155,7 +173,13 @@ export default function Searchbar({
             >
                 <Icon name='search' />
             </InputLeftElement>
-            <HStack w={w} h={h} maxWidth={w}>
+            <HStack
+                w={w}
+                h={h}
+                maxWidth={w}
+                // onMouseEnter={toggleIsHovered}
+                // onMouseLeave={toggleIsHovered}
+            >
                 <Select
                     menuIsOpen={true}
                     options={options}
@@ -166,9 +190,9 @@ export default function Searchbar({
                         DropdownIndicator,
                         Option,
                     }}
-                    // onMenuClose={() => {
-
-                    // }}
+                    noOptionsMessage={(data) => {
+                        return `No projects found for ${data.inputValue}`;
+                    }}
                 />
             </HStack>
             {/* <Input
