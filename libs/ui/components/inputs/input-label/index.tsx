@@ -3,6 +3,7 @@ import { VStack } from '@chakra-ui/react';
 import COLORS from '../../../constants/colors';
 import Text from '../../contents/text';
 import FONTS from '../../../constants/fonts';
+import InputLabelProps from './props';
 
 export default function InputLabel({ label, description }: InputLabelProps) {
     //Attributes
