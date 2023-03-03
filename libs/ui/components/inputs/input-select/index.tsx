@@ -40,7 +40,6 @@ export default function InputSelect({
     paddingRight,
     paddingLeft,
     menuOptionWidth,
-
     isSearchable = false,
     ...props
 }: IInputSelectProps) {
@@ -115,6 +114,7 @@ export default function InputSelect({
     };
 
     const DropdownIndicator = (props) => {
+        
         return (
             <components.DropdownIndicator {...props}>
                 {dropDownIndicator}
