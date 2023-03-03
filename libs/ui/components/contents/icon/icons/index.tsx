@@ -14,8 +14,7 @@ import Enter from './enter';
 import UploadCloud from './uploadCloud';
 import Cross from './cross';
 import { ProjectLine } from './projectLine';
-import DropdownIndicator from './DropdownIndicator';
-
+import DropdownIndicator from './dropdownindicator';
 const Icons = {
     add: Add,
     addLarge: AddLarge,
