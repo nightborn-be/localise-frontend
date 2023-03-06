@@ -34,12 +34,6 @@ export default function Searchbar({
     ...props
 }: SearchbarProps) {
     //Attributes
-    const backgroundCondition = (isFocused: boolean, isSelected: boolean) => {
-        if (isSelected) return selectProps?.backgroundOptionColor;
-        if (isFocused && isHovered)
-            return selectProps?.focusBackgroundOptionColor;
-        return 'none';
-    };
     const [isHovered, setIsHovered] = useState(false);
 
     const selectStyle: any = {
@@ -48,13 +42,7 @@ export default function Searchbar({
                 ...FONTS.T1.T12px.Regular400.value,
                 color: color,
                 marginRight: '10px',
-                backgroundColor: 'transparent',
-                boxShadow: 'none',
-                marginLeft: '12px',
-                boxSizing: 'border-box',
-                display: 'flex',
-                flexDirection: 'row',
-                alignItems: 'center',
+                marginLeft: '18px',
                 padding: '4px 12px 4px 10px',
                 gap: '8px',
             };
@@ -65,35 +53,23 @@ export default function Searchbar({
                 color: placeholderColor,
             };
         },
-
         menu: (styles, state) => {
             return {
                 ...styles,
                 gap: '12px',
-                width: '240px',
-                height: '370px',
-                minWidth: '240px',
-                minHeight: '370px',
-                boxSizing: 'border-box',
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'flex-start',
-                borderRadius: '0px',
                 boxShadow: 'transparent',
-                position: 'absolute',
-                left: '0px',
-                marginTop: '6px',
-                overflow: 'hidden',
             };
         },
         menuList: (styles, state) => {
             return {
                 ...styles,
-                overflow: 'hidden',
+                '::-webkit-scrollbar': {
+                    display: 'none',
+                },
+                width: '228px',
                 maxHeight: '378px',
             };
         },
-
         option: (
             styles,
             { data, isHovered, isDisabled, isFocused, isSelected },
@@ -101,14 +77,13 @@ export default function Searchbar({
             return {
                 ...styles,
                 display: 'flex',
+                marginTop: '8px',
                 flexDirection: 'row',
                 alignItems: 'center',
-                width: '228px',
                 height: '40px',
-                padding: '12px',
                 gap: '12px',
                 ':active': { backgroundColor: 'none' },
-                backgroundColor: backgroundCondition(isFocused, isSelected),
+                backgroundColor: backgroundOptionColor(isFocused, isSelected),
                 ...FONTS.T1.T12px.Medium500.value,
                 borderRadius: selectProps?.borderRadiusOption,
                 color: isSelected
@@ -120,13 +95,7 @@ export default function Searchbar({
             styles,
             { data, isHovered, isDisabled, isFocused, isSelected },
         ) => ({
-            visibility: 'visible',
-            flex: '1 1 auto',
-            display: 'inline-grid',
             gridArea: '1/1/2/3',
-            margin: '2px',
-            paddingBottom: '2px',
-            paddingTop: '2px',
             input: {
                 opacity: '1 !important',
             },
@@ -144,13 +113,6 @@ export default function Searchbar({
         ) => {
             return {
                 ...styles,
-                display: 'flex',
-                alignItems: 'center',
-                flexDirection: 'row',
-                padding: '12px',
-                gap: '12px',
-                width: '228px',
-                height: '40px',
                 ':active': { backgroundColor: 'none' },
                 ...FONTS.T1.T12px.Medium500.value,
                 borderRadius: selectProps?.borderRadiusOption,
@@ -158,10 +120,15 @@ export default function Searchbar({
             };
         },
     };
+
     //Function
-    const DropdownIndicator = (props) => {
-        return <></>;
+    const backgroundOptionColor = (isFocused: boolean, isSelected: boolean) => {
+        if (isSelected) return selectProps?.backgroundOptionColor;
+        if (isFocused && isHovered)
+            return selectProps?.focusBackgroundOptionColor;
+        return 'none';
     };
+
     const Option = (props) => {
         return (
             <components.Option {...props}>
@@ -183,11 +150,11 @@ export default function Searchbar({
     };
     return (
         <InputGroup
+            w={w}
+            h={h}
+            minW={w}
             padding={padding}
             gap={gap}
-            w={w}
-            minW={w}
-            h={h}
             _focus={{ border: border }}
             _hover={{ border: border }}
             border={border}
@@ -196,14 +163,17 @@ export default function Searchbar({
             borderRadius={borderRadius}
             bg={backgroundColor}
         >
+            {/* Left input icon */}
             <InputLeftElement
-                mt='6.5px'
                 w={'16px'}
                 h={'16px'}
+                mt='6.5px'
                 ml={marginLeftElement}
             >
                 <Icon name='search' />
             </InputLeftElement>
+
+            {/* Searchbar */}
             <HStack w={w} h={h} minWidth={w} minHeight={h}>
                 <Select
                     menuIsOpen={true}
@@ -212,7 +182,7 @@ export default function Searchbar({
                     styles={{ ...selectStyle }}
                     components={{
                         IndicatorSeparator: () => null,
-                        DropdownIndicator,
+                        DropdownIndicator: () => null,
                         Option,
                         Menu,
                     }}
