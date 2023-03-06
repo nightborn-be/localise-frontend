@@ -14,3 +14,8 @@ export type Options = {
     label: string,
     color: string,
 }
+
+
+export enum state {
+    ISHOVERED, ISSELECTED, NONE
+}

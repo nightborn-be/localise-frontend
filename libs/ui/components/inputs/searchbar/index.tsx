@@ -1,16 +1,19 @@
 import React, { useState, useRef } from 'react';
 import {
     Box,
-    Button,
     HStack,
+    Input,
     InputGroup,
     InputLeftElement,
+    VStack,
 } from '@chakra-ui/react';
 import Select, { components } from 'react-select';
 import COLORS from '../../../constants/colors';
 import FONTS from '../../../constants/fonts';
-import SearchbarProps from './props';
+import SearchbarProps, { state } from './props';
 import Icon from '../../contents/icon';
+import Text from '../../contents/text';
+import { Options } from './props';
 export default function Searchbar({
     type = 'text',
     color = COLORS.Text.T500.value,
@@ -33,184 +36,105 @@ export default function Searchbar({
     selectProps,
     ...props
 }: SearchbarProps) {
+    const ItemList = ({ value, color, label }: Options) => {
+        const [bgColor, setBgColor] = useState(COLORS.White.T500.value);
+        const [textColor, setTextColor] = useState(COLORS.Text.T400.value);
+        const selectedItem = useRef();
+        const toggleBgColor = () => {
+            if (bgColor === COLORS.White.T500.value) {
+                setBgColor(COLORS.Localize.Purple.value);
+                setTextColor(COLORS.White.T500.value);
+            }
+            if (bgColor === COLORS.Localize.Purple.value) {
+                setBgColor(COLORS.White.T500.value);
+                setTextColor(COLORS.Text.T400.value);
+            }
+        };
+
+        return (
+            <HStack
+                w='228px'
+                h='40px'
+                bg={bgColor}
+                borderRadius={borderRadius}
+                _hover={{
+                    bg: COLORS.BG.value,
+                }}
+                onClick={toggleBgColor}
+                padding='6px 8px'
+            >
+                <Box w='8px' h='8px' borderRadius='2px' bg={color} />
+                <Text
+                    font={FONTS.T1.T12px.Medium500.value}
+                    color={textColor}
+                    id={value}
+                >
+                    {label}
+                </Text>
+            </HStack>
+        );
+    };
+
+    const ProjectList = ({ listElement }) => {
+        console.log(listElement);
+        return (
+            <VStack alignItems={'left'}>
+                {listElement.map((obj) => (
+                    <ItemList {...obj} />
+                ))}
+            </VStack>
+        );
+    };
     //Attributes
     const [isHovered, setIsHovered] = useState(false);
-
-    const selectStyle: any = {
-        control: (styles, { data, isDisabled, isFocused, isSelected }) => {
-            return {
-                ...FONTS.T1.T12px.Regular400.value,
-                color: color,
-                marginRight: '10px',
-                marginLeft: '18px',
-                padding: '4px 12px 4px 10px',
-                gap: '8px',
-            };
-        },
-        placeholder: (styles) => {
-            return {
-                ...styles,
-                color: placeholderColor,
-            };
-        },
-        menu: (styles, state) => {
-            return {
-                ...styles,
-                gap: '12px',
-                boxShadow: 'transparent',
-            };
-        },
-        menuList: (styles, state) => {
-            return {
-                ...styles,
-                '::-webkit-scrollbar': {
-                    display: 'none',
-                },
-                width: '228px',
-                maxHeight: '378px',
-            };
-        },
-        option: (
-            styles,
-            { data, isHovered, isDisabled, isFocused, isSelected },
-        ) => {
-            return {
-                ...styles,
-                display: 'flex',
-                marginTop: '8px',
-                flexDirection: 'row',
-                alignItems: 'center',
-                height: '40px',
-                gap: '12px',
-                ':active': { backgroundColor: 'none' },
-                backgroundColor: backgroundOptionColor(isFocused, isSelected),
-                ...FONTS.T1.T12px.Medium500.value,
-                borderRadius: selectProps?.borderRadiusOption,
-                color: isSelected
-                    ? selectProps?.selectedOptionColor
-                    : selectProps?.textOptionColor,
-            };
-        },
-        input: (
-            styles,
-            { data, isHovered, isDisabled, isFocused, isSelected },
-        ) => ({
-            gridArea: '1/1/2/3',
-            input: {
-                opacity: '1 !important',
-            },
-        }),
-        singleValue: (
-            styles,
-            { data, isHovered, isDisabled, isFocused, isSelected },
-        ) => ({
-            ...styles,
-            color: color,
-        }),
-        noOptionsMessage: (
-            styles,
-            { data, isHovered, isDisabled, isFocused, isSelected },
-        ) => {
-            return {
-                ...styles,
-                ':active': { backgroundColor: 'none' },
-                ...FONTS.T1.T12px.Medium500.value,
-                borderRadius: selectProps?.borderRadiusOption,
-                color: COLORS.InputText.value,
-            };
-        },
-    };
-
-    //Function
-    const backgroundOptionColor = (isFocused: boolean, isSelected: boolean) => {
-        if (isSelected) return selectProps?.backgroundOptionColor;
-        if (isFocused && isHovered)
-            return selectProps?.focusBackgroundOptionColor;
-        return 'none';
-    };
-
-    const Option = (props) => {
-        return (
-            <components.Option {...props}>
-                <Box w='8px' h='8px' borderRadius='2px' bg={props.data.color} />
-                {props.children}
-            </components.Option>
-        );
-    };
-
-    const Menu = (props) => {
-        return (
-            <Box
-                onMouseEnter={() => setIsHovered(true)}
-                onMouseLeave={() => setIsHovered(false)}
-            >
-                <components.Menu {...props}></components.Menu>
-            </Box>
-        );
-    };
+    const [listElement, setListElement] = useState<Options>();
+    const [searchValue, setSearchValue] = useState(undefined);
     return (
-        <InputGroup
-            w={w}
-            h={h}
-            minW={w}
-            padding={padding}
-            gap={gap}
-            _focus={{ border: border }}
-            _hover={{ border: border }}
-            border={border}
-            justifyContent='center'
-            alignItems={'center'}
-            borderRadius={borderRadius}
-            bg={backgroundColor}
-        >
-            {/* Left input icon */}
-            <InputLeftElement
-                w={'16px'}
-                h={'16px'}
-                mt='6.5px'
-                ml={marginLeftElement}
-            >
-                <Icon name='search' />
-            </InputLeftElement>
-
-            {/* Searchbar */}
+        <>
             <HStack w={w} h={h} minWidth={w} minHeight={h}>
-                <Select
-                    menuIsOpen={true}
-                    options={options}
-                    placeholder={placeholder}
-                    styles={{ ...selectStyle }}
-                    components={{
-                        IndicatorSeparator: () => null,
-                        DropdownIndicator: () => null,
-                        Option,
-                        Menu,
-                    }}
-                    controlShouldRenderValue={false}
-                    noOptionsMessage={(data) => {
-                        return `No projects found for ${data.inputValue}`;
-                    }}
-                />
+                <InputGroup
+                    w={w}
+                    h={h}
+                    minW={w}
+                    padding={padding}
+                    gap={gap}
+                    _focus={{ border: border }}
+                    _hover={{ border: border }}
+                    border={border}
+                    justifyContent='center'
+                    alignItems={'center'}
+                    borderRadius={borderRadius}
+                    bg={backgroundColor}
+                >
+                    {/* Left input icon */}
+                    <InputLeftElement
+                        w={'16px'}
+                        h={'16px'}
+                        mt='6.5px'
+                        ml={marginLeftElement}
+                    >
+                        <Icon name='search' />
+                    </InputLeftElement>
+
+                    {/* Searchbar */}
+                    <Input
+                        {...FONTS.T1.T12px.Regular400.value}
+                        value={searchValue}
+                        w={w}
+                        minW={w}
+                        maxW={w}
+                        placeholder={placeholder}
+                        backgroundColor={'transparent'}
+                        _placeholder={{ color: placeholderColor }}
+                        focusBorderColor='transparent'
+                        _focus={{ border: '1px solid transprent' }}
+                        _hover={{ border: '1px solid transprent' }}
+                        border={'1px solid transprent'}
+                        marginRight='10px'
+                    />
+                </InputGroup>
             </HStack>
-            {/* <Input
-                {...FONTS.T1.T12px.Regular400.value}
-                ref={input}
-                w={w}
-                minW={w}
-                maxW={w}
-                placeholder={placeholder}
-                backgroundColor={'transparent'}
-                _placeholder={{ color: placeholderColor }}
-                focusBorderColor='transparent'
-                _focus={{ border: '1px solid transprent' }}
-                _hover={{ border: '1px solid transprent' }}
-                border={'1px solid transprent'}
-                onFocus={() => {
-                    setIsVisible(false);
-                }}
-                marginRight='10px'
-                onBlur={toggleOnBlurIsVisible}
-            /> */}
-        </InputGroup>
+            <ProjectList listElement={options} />
+        </>
     );
 }
