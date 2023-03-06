@@ -3,19 +3,21 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import COLORS from '../../../constants/colors';
 import Searchbar from '.';
 import SearchbarProps from './props';
+import SearchIcon from '.';
+import SearchIconProps from './props';
 
 export default {
-    title: 'Components/Inputs/Searchbar',
-    component: Searchbar,
+    title: 'Components/Inputs/SearchIcon',
+    component: SearchIcon,
     argTypes: {
         backgroundColor: { control: 'color' },
     },
-} as ComponentMeta<typeof Searchbar>;
+} as ComponentMeta<typeof SearchIcon>;
 
-const Template: ComponentStory<typeof Searchbar> = (args) => (
-    <Searchbar {...args} />
+const Template: ComponentStory<typeof SearchIcon> = (args) => (
+    <SearchIcon {...args} />
 );
-const props: SearchbarProps = {
+const props: SearchIconProps = {
     color: COLORS.Text.T400.value,
     w: '228px',
     h: '32px',
