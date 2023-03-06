@@ -1,5 +1,11 @@
 import React, { useState, useRef } from 'react';
-import { Box, HStack, InputGroup, InputLeftElement } from '@chakra-ui/react';
+import {
+    Box,
+    Button,
+    HStack,
+    InputGroup,
+    InputLeftElement,
+} from '@chakra-ui/react';
 import Select, { components } from 'react-select';
 import COLORS from '../../../constants/colors';
 import FONTS from '../../../constants/fonts';
@@ -36,17 +42,6 @@ export default function Searchbar({
     };
     const [isHovered, setIsHovered] = useState(false);
 
-    const toggleIsHovered = () => {
-        setIsHovered((prev) => !prev);
-    };
-    const Option = (props) => {
-        return (
-            <components.Option {...props}>
-                <Box w='8px' h='8px' borderRadius='2px' bg={props.data.color} />
-                {props.children}
-            </components.Option>
-        );
-    };
     const selectStyle: any = {
         control: (styles, { data, isDisabled, isFocused, isSelected }) => {
             return {
@@ -74,7 +69,6 @@ export default function Searchbar({
         menu: (styles, state) => {
             return {
                 ...styles,
-                padding: '6px 8px 20px',
                 gap: '12px',
                 width: '240px',
                 height: '370px',
@@ -87,10 +81,19 @@ export default function Searchbar({
                 borderRadius: '0px',
                 boxShadow: 'transparent',
                 position: 'absolute',
-                left: '-20px',
-                marginTop: '0px',
+                left: '0px',
+                marginTop: '6px',
+                overflow: 'hidden',
             };
         },
+        menuList: (styles, state) => {
+            return {
+                ...styles,
+                overflow: 'hidden',
+                maxHeight: '378px',
+            };
+        },
+
         option: (
             styles,
             { data, isHovered, isDisabled, isFocused, isSelected },
@@ -113,7 +116,10 @@ export default function Searchbar({
                     : selectProps?.textOptionColor,
             };
         },
-        input: (styles) => ({
+        input: (
+            styles,
+            { data, isHovered, isDisabled, isFocused, isSelected },
+        ) => ({
             visibility: 'visible',
             flex: '1 1 auto',
             display: 'inline-grid',
@@ -121,8 +127,14 @@ export default function Searchbar({
             margin: '2px',
             paddingBottom: '2px',
             paddingTop: '2px',
+            input: {
+                opacity: '1 !important',
+            },
         }),
-        singleValue: (styles, state) => ({
+        singleValue: (
+            styles,
+            { data, isHovered, isDisabled, isFocused, isSelected },
+        ) => ({
             ...styles,
             color: color,
         }),
@@ -146,9 +158,28 @@ export default function Searchbar({
             };
         },
     };
-
+    //Function
     const DropdownIndicator = (props) => {
         return <></>;
+    };
+    const Option = (props) => {
+        return (
+            <components.Option {...props}>
+                <Box w='8px' h='8px' borderRadius='2px' bg={props.data.color} />
+                {props.children}
+            </components.Option>
+        );
+    };
+
+    const Menu = (props) => {
+        return (
+            <Box
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
+            >
+                <components.Menu {...props}></components.Menu>
+            </Box>
+        );
     };
     return (
         <InputGroup
@@ -173,13 +204,7 @@ export default function Searchbar({
             >
                 <Icon name='search' />
             </InputLeftElement>
-            <HStack
-                w={w}
-                h={h}
-                maxWidth={w}
-                // onMouseEnter={toggleIsHovered}
-                // onMouseLeave={toggleIsHovered}
-            >
+            <HStack w={w} h={h} minWidth={w} minHeight={h}>
                 <Select
                     menuIsOpen={true}
                     options={options}
@@ -189,7 +214,9 @@ export default function Searchbar({
                         IndicatorSeparator: () => null,
                         DropdownIndicator,
                         Option,
+                        Menu,
                     }}
+                    controlShouldRenderValue={false}
                     noOptionsMessage={(data) => {
                         return `No projects found for ${data.inputValue}`;
                     }}
