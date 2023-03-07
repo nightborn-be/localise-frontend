@@ -22,7 +22,6 @@ const props: SearchIconProps = {
     padding: '4px 10px',
     gap: '8px',
     background: COLORS.White.T500.value,
-    placeholder: 'Search for a project...',
     placeholderColor: COLORS.InputText.value,
     borderRadius: '6px',
 };
