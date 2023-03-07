@@ -1,8 +1,6 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import COLORS from '../../../constants/colors';
-import Searchbar from '.';
-import SearchbarProps from './props';
 import SearchIcon from '.';
 import SearchIconProps from './props';
 
@@ -31,11 +29,3 @@ const props: SearchIconProps = {
 
 export const SideBar = Template.bind({});
 SideBar.args = { ...props };
-
-export const AddProjeect = Template.bind({});
-AddProjeect.args = {
-    ...props,
-    w: '550px',
-    h: '40px',
-    backgroundColor: COLORS.White.T500.value,
-};

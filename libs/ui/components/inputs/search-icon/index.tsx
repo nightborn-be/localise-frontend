@@ -1,92 +1,98 @@
-import React, { useState, useEffect } from 'react';
-import {
-    Box,
-    HStack,
-    Input,
-    InputGroup,
-    InputLeftElement,
-} from '@chakra-ui/react';
+import React, { useState, useRef, useEffect } from 'react';
+import { Box, HStack, Input } from '@chakra-ui/react';
 import COLORS from '../../../constants/colors';
 import FONTS from '../../../constants/fonts';
 import Icon from '../../contents/icon';
 import SearchIconProps from './props';
 import ButtonIcon from '../button-icon';
 import { ButtonSize } from '../button-icon/props';
-import {
-    motion,
-    useAnimation,
-    useAnimationControls,
-    useCycle,
-} from 'framer-motion';
+import { motion } from 'framer-motion';
 export default function SearchIcon({
-    type = 'text',
     color = COLORS.Text.T500.value,
     placeholderColor = COLORS.InputText.value,
-    border = `1px solid ${COLORS.Line.value}`,
-    placeholder = 'Search for a project',
+    placeholder = 'Type to search...',
     h,
     w,
-    alignItems = 'left',
-    gap = '8px',
-    paddingTop = '3px',
-    borderRadius = '6px',
-    padding,
-    paddingRight,
-    paddingLeft,
-    marginLeftElement = '10px',
+    marginLeft = '150px',
     backgroundColor = COLORS.BG.value,
+    leftIcon = <Icon name='search' />,
+    inputWidth = '95px',
+    inputHeight = '15px',
+    inputBorder = 'transparent',
+    inputBorderRadius = '0px',
     ...props
 }: SearchIconProps) {
     //Attributes
-    const [animate, cycle] = useCycle({ translateX: 0 }, { translateX: -50 });
-    const [animateText, cycleText] = useCycle(
-        { translateX: 0, opacity: 0, display: 'inline' },
-        { translateX: -50, opacity: 1, display: 'inline' },
-    );
     const [launchAnime, setLaunchAnime] = useState<boolean>(false);
-    const toggleLaunchAnime = () => {
-        setLaunchAnime((prev) => !prev);
-    };
+    const boxRef = useRef<HTMLDivElement>(null);
 
-    const animationControls = useAnimationControls();
-    function sequence() {
-        animationControls.start(animate);
-        animationControls.start(animateText);
-    }
-    const allAnimation = {};
+    //Functions
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (boxRef.current && !boxRef.current.contains(event.target)) {
+                setLaunchAnime(false);
+            }
+        };
+        document.addEventListener('mousedown', handleClickOutside);
+
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [boxRef]);
+
     //Render
     return (
-        <HStack w={w} h={h} minWidth={w} minHeight={h} ml='150px'>
-            <Box onClick={toggleLaunchAnime}>
+        <HStack w={w} h={h} minWidth={w} minHeight={h} ml={marginLeft}>
+            <Box onClick={() => setLaunchAnime(true)} ref={boxRef}>
                 <motion.div
-                    animate={animate}
+                    initial={{ translateX: 0 }}
+                    animate={
+                        launchAnime ? { translateX: -50 } : { translateX: 0 }
+                    }
                     transition={{
                         ease: 'easeOut',
-                        onDurationChange: 0.5,
+                        duration: 0.3,
                     }}
                 >
                     <ButtonIcon
                         size={ButtonSize.XS}
-                        displayIcon={(isHovered) => <Icon name='search' />}
+                        displayIcon={(isHovered) => leftIcon}
                         backgroundColor={COLORS.White.T500.value}
                         hoverBackgroundColor={COLORS.Tag.value}
                         aria-label=''
                     />
                     <motion.div
-                        animate={animateText}
+                        initial={{
+                            translateX: 0,
+                            opacity: 0,
+                            display: 'inline',
+                        }}
+                        animate={
+                            launchAnime
+                                ? {
+                                      translateX: -50,
+                                      opacity: 1,
+                                      display: 'inline',
+                                  }
+                                : {
+                                      translateX: 0,
+                                      opacity: 0,
+                                      display: 'inline',
+                                  }
+                        }
                         transition={{
                             ease: 'easeOut',
-                            onDurationChange: 0.5,
+                            duration: 0.3,
                         }}
                     >
                         <Input
                             variant={'unstyled'}
-                            w={'95px'}
-                            h={'15px'}
-                            borderRadius='0px'
+                            w={inputWidth}
+                            h={inputHeight}
+                            borderRadius={inputBorderRadius}
                             focusBorderColor='transparent'
-                            border='transparent'
-                            placeholder={'Type to search...'}
+                            border={inputBorder}
+                            placeholder={placeholder}
                             _placeholder={{
                                 color: COLORS.InputText.value,
                             }}

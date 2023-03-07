@@ -6,27 +6,21 @@ import Text from '../../contents/text';
 import SearchbarTagProps from './props';
 import Searchbar from '../searchbar';
 export default function SearchbarTag({
-    type = 'text',
-    color = COLORS.Text.T500.value,
     border = `1px solid ${COLORS.Line.value}`,
     placeholder = 'Search for a project',
     h,
     w,
     alignItems = 'left',
     gap = '8px',
-    paddingTop = '3px',
     borderRadius = '6px',
     padding,
-    paddingRight,
-    paddingLeft,
     backgroundColor = COLORS.Disabled.value,
     searchbar,
     tags = [],
-    ...props
 }: SearchbarTagProps) {
     //Attributes
-    const [searchValue, setSearchValue] = useState<string>('');
     const [tagList, setTagList] = useState<Array<JSX.Element>>(tags);
+
     //Render
     return (
         <>
@@ -38,7 +32,7 @@ export default function SearchbarTag({
                 gap={gap}
                 border={border}
                 borderRadius={borderRadius}
-                alignItems='left'
+                alignItems={alignItems}
             >
                 <Box>
                     <Text
