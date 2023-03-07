@@ -13,6 +13,8 @@ import Date from './date';
 import Enter from './enter';
 import UploadCloud from './uploadCloud';
 import Cross from './cross';
+import Search from './search';
+import ShortCut from './shortcut';
 
 const Icons = {
     add: Add,
@@ -36,6 +38,8 @@ const Icons = {
     date: Date,
     enter: Enter,
     addSmallBackground: AddSmallBackground,
+    search: Search,
+    shortcut: ShortCut,
 };
 
 export default Icons;
