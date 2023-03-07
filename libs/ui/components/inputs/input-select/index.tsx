@@ -104,7 +104,7 @@ export default function InputSelect({
         }),
     };
     //Function
-    const backgroundCondition = (isFocused: boolean, isSelected: boolean) => {
+    const backgroundStyleSwitch = (isFocused: boolean, isSelected: boolean) => {
         if (isSelected) return backgroundOptionColor;
         if (isFocused) return focusBackgroundOptionColor;
         return 'none';
@@ -120,10 +120,10 @@ export default function InputSelect({
     //Render
     return (
         <VStack spacing='4px' w={w} h={h} alignItems={alignItems}>
-            {/* INPUT LABEL SECTION */}
+            {/* Input label section */}
             <InputLabel label={label} description={description} />
 
-            {/* INPUT SELECT SECTION */}
+            {/* Input select section */}
             {options && (
                 <Select
                     isSearchable={isSearchable}

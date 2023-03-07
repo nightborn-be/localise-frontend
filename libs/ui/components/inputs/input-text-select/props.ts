@@ -12,4 +12,7 @@ export default interface IInputSelectAndInputProps<T> extends InputProps {
     errorBorder?: string,
     rightIcon?: React.ReactElement,
     rightHoverIcon?: React.ReactElement,
+    menuOptionWidth?: string,
+    menuRightOption?: string,
+    menuMinWOption?: string,
 }

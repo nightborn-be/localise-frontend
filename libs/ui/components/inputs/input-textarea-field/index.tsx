@@ -52,7 +52,7 @@ export default function InputTextAreaField<T>({
                 w={w}
                 maxWidth={maxWidth}
             >
-                {/* INPUT FIELD SECTION */}
+                {/* Input field section */}
                 <InputGroup>
                     <Box
                         padding={padding}
@@ -102,7 +102,7 @@ export default function InputTextAreaField<T>({
                             onKeyDown={(event) =>
                                 event.key === 'Enter'
                                     ? event.currentTarget.blur()
-                                    : ''
+                                    : null
                             }
                         />
                     </Box>

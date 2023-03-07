@@ -5,9 +5,13 @@ import Text from '../../contents/text';
 import FONTS from '../../../constants/fonts';
 import InputLabelProps from './props';
 
-export default function InputLabel({ label, description }: InputLabelProps) {
+export default function InputLabel({
+    label,
+    description,
+    lineHeight = '15px',
+    margin = '0',
+}: InputLabelProps) {
     //Attributes
-    const textProps = { lineHeight: '15px', margin: 0 };
 
     //Render
     if (!label && !description) return <></>;
@@ -15,7 +19,8 @@ export default function InputLabel({ label, description }: InputLabelProps) {
         <VStack spacing='0.25rem' align='left'>
             {label && (
                 <Text
-                    {...textProps}
+                    lineHeight={lineHeight}
+                    margin={margin}
                     font={FONTS.T1.T12px.Medium500.value}
                     color={COLORS.Text.T500.value}
                 >
@@ -24,7 +29,8 @@ export default function InputLabel({ label, description }: InputLabelProps) {
             )}
             {description && (
                 <Text
-                    {...textProps}
+                    lineHeight={lineHeight}
+                    margin={margin}
                     font={FONTS.T1.T12px.Regular400.value}
                     color={COLORS.InputText.value}
                 >

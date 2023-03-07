@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, HStack, VStack } from '@chakra-ui/react';
+import { HStack, VStack } from '@chakra-ui/react';
 import COLORS from '../../../constants/colors';
 import InputSelect from '../input-select';
 import IInputSelectAndInputProps from './props';
@@ -23,10 +23,25 @@ export default function InputSelectAndInput<T>({
     errorBorder = `1px solid ${COLORS.Negative.value}`,
     rightIcon,
     rightHoverIcon,
+    menuOptionWidth = '200px',
+    menuRightOption = '-44px',
+    menuMinWOption = '12.5rem',
 }: IInputSelectAndInputProps<T>) {
     //Attributes
     const [isHovered, setIsHovered] = useState<boolean>(false);
 
+    const setIsHoveredToTrue = () => {
+        setIsHovered(true);
+    };
+
+    const setIsHoveredToFalse = () => {
+        setIsHovered(false);
+    };
+
+    const iconChoice = (isHovered): any => {
+        if (isHovered && rightHoverIcon) return rightHoverIcon;
+        return rightIcon;
+    };
     //Render
     return (
         <VStack
@@ -36,10 +51,10 @@ export default function InputSelectAndInput<T>({
             h={h}
             alignItems={alignItems}
         >
-            {/* INPUT LABEL SECTION */}
+            {/* Input label section */}
             <InputLabel label={label} description={description} />
 
-            {/* INPUT SECTION */}
+            {/* Input section */}
             <HStack
                 w={w}
                 h={h}
@@ -52,14 +67,14 @@ export default function InputSelectAndInput<T>({
                 paddingLeft='12px'
                 transition='marginRight 2s'
                 marginRight='200px'
-                onMouseOver={() => setIsHovered(true)}
-                onMouseLeave={() => setIsHovered(false)}
+                onMouseOver={setIsHoveredToTrue}
+                onMouseLeave={setIsHoveredToFalse}
                 position='relative'
             >
-                {/* INPUT FIELD SECTION */}
+                {/* Input field section */}
                 <Input {...inputProps} />
 
-                {/* SELECT SECTION */}
+                {/* Select section */}
                 <motion.div
                     initial={false}
                     animate={{
@@ -72,14 +87,14 @@ export default function InputSelectAndInput<T>({
                         w='fit-content'
                         h='fit-content'
                         borderRadius={0}
-                        menuOptionWidth='200px'
-                        minW={'12.5rem'}
-                        menuRightOption='-44px'
+                        menuOptionWidth={menuOptionWidth}
+                        menuRightOption={menuRightOption}
+                        minW={menuMinWOption}
                         selectMarginLeft={isHovered ? '30px' : '0px'}
                     />
                 </motion.div>
 
-                {/* BUTTON RIGHT SECTION */}
+                {/* Button right section */}
                 {rightIcon && (
                     <motion.div
                         initial={false}
@@ -93,11 +108,7 @@ export default function InputSelectAndInput<T>({
                             padding='0.25rem'
                             gap='0.625rem'
                             backgroundColor='transparent'
-                            displayIcon={(isHovered) =>
-                                isHovered && rightHoverIcon
-                                    ? rightHoverIcon
-                                    : rightIcon
-                            }
+                            iconComponent={() => iconChoice(isHovered)}
                             hoverBackgroundColor={COLORS.Tag.value}
                             size={ButtonSize.XS}
                             aria-label=''

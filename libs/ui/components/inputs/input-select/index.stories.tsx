@@ -16,7 +16,6 @@ const Template: ComponentStory<typeof InputSelect> = (args) => (
     <InputSelect {...args} />
 );
 const props: IInputSelectProps = {
-    labelColor: COLORS.Text.T500.value,
     color: COLORS.Text.T400.value,
     w: '327px',
     h: '40px',

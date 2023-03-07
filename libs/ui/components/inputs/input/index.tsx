@@ -35,7 +35,6 @@ export default function Input<T>({
     ...props
 }: IInputProps<T>) {
     //Attributes
-    const textProps = { lineHeight: font?.lineHeight, margin: 0 };
     const [visibility, setVisibility] =
         useState<CSS.Property.Visibility>('hidden');
 
@@ -66,10 +65,10 @@ export default function Input<T>({
                 alignItems={alignItems}
                 zIndex={zIndex}
             >
-                {/* INPUT LABEL SECTION */}
+                {/* Input label section */}
                 <InputLabel label={label} description={description} />
 
-                {/* INPUT FIELD SECTION */}
+                {/* Input field section */}
                 <InputGroup>
                     <ChakraInput
                         padding={padding}
