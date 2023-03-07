@@ -13,6 +13,8 @@ import Date from './date';
 import Enter from './enter';
 import UploadCloud from './uploadCloud';
 import Cross from './cross';
+import Section from './section';
+import EditorialArrow from './editorial-arrow';
 
 const Icons = {
     add: Add,
@@ -36,6 +38,8 @@ const Icons = {
     date: Date,
     enter: Enter,
     addSmallBackground: AddSmallBackground,
+    section: Section,
+    editorialArrow: EditorialArrow,
 };
 
 export default Icons;

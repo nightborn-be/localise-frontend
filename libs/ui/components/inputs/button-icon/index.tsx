@@ -18,12 +18,12 @@ export default function ButtonIcon({
             {...props}
             width={size}
             height={size}
-            minHeight={'28px'}
-            minWidth={'28px'}
+            minHeight={size}
+            minWidth={size}
             onClick={handleOnClick}
             onMouseOver={updateHoverState}
             onMouseLeave={updateHoverState}
-            icon={displayIcon(isHovered)}
+            icon={displayIcon && displayIcon(isHovered)}
             _hover={{ bgColor: hoverBackgroundColor }}
         />
     );
