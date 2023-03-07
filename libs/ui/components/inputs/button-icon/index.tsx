@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { IconButton } from '@chakra-ui/react';
 import IButtonIconProps from './props';
 
@@ -6,9 +6,12 @@ export default function ButtonIcon({
     size,
     hoverBackgroundColor,
     handleOnClick,
-    icon,
+    displayIcon,
     ...props
 }: IButtonIconProps) {
+    //Attributes
+    const [isHovered, setIsHovered] = useState<boolean>(false);
+    const updateHoverState = () => setIsHovered((prev) => !prev);
     // Render
     return (
         <IconButton
@@ -18,7 +21,9 @@ export default function ButtonIcon({
             minHeight={'28px'}
             minWidth={'28px'}
             onClick={handleOnClick}
-            icon={icon}
+            onMouseOver={updateHoverState}
+            onMouseLeave={updateHoverState}
+            icon={displayIcon(isHovered)}
             _hover={{ bgColor: hoverBackgroundColor }}
         />
     );
