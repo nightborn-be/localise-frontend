@@ -6,7 +6,6 @@ import SearchbarProps from './props';
 import Icon from '../../contents/icon';
 export default function Searchbar({
     type = 'text',
-    color = COLORS.Text.T500.value,
     placeholderColor = COLORS.InputText.value,
     border = `1px solid ${COLORS.Line.value}`,
     placeholder = 'Search for a project',
@@ -17,10 +16,10 @@ export default function Searchbar({
     paddingTop = '3px',
     borderRadius = '6px',
     padding,
-    paddingRight,
-    paddingLeft,
     marginLeftElement = '10px',
     backgroundColor = COLORS.BG.value,
+    leftIcon = <Icon name='search' />,
+    leftIconWidth = '16px',
     ...props
 }: SearchbarProps) {
     //Attributes
@@ -41,13 +40,13 @@ export default function Searchbar({
             >
                 {/* Left input icon */}
                 <InputLeftElement
-                    w={'16px'}
+                    w={leftIconWidth}
                     h={h}
                     ml={'10px'}
                     justifyContent={'center'}
                     alignItems={'center'}
                 >
-                    <Icon name='search' />
+                    {leftIcon}
                 </InputLeftElement>
 
                 {/* Searchbar */}
