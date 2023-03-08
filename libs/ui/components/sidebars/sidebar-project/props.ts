@@ -1,13 +1,9 @@
 import React from 'react'
-import { IFieldForm } from '../../../../utils/formik';
 import { Font } from '../../../constants/fonts';
 export default interface SidebarProps {
-    topText?: string,
-    topTextFont?: Font,
-    topTextColor?: string,
-    bottomText?: string,
-    bottomTextFont?: Font,
-    bottomTextColor?: string,
+    text?: string,
+    textFont?: Font,
+    textColor?: string,
     startEnhancer?: React.ReactElement,
     endEnhancer?: React.ReactElement,
     projectIconColor?: string,
@@ -15,6 +11,8 @@ export default interface SidebarProps {
     notificationNumber?: number,
     showNotification?: boolean,
     canBeSelected?: boolean,
+    isCheckbox?: boolean,
+    displayColorBox?: boolean,
     w?: string,
     h?: string,
 }

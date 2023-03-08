@@ -6,6 +6,7 @@ import FONTS from '../../../constants/fonts';
 import ToggleProps from './props';
 
 export default function Toggle({}: ToggleProps) {
+    //Render
     return (
         <HStack>
             <Text
