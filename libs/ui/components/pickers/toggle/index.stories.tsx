@@ -24,7 +24,7 @@ ToggleClassic.args = { ...props };
 export const ToggleMarginLeft = Template.bind({});
 ToggleMarginLeft.args = {
     ...props,
-    textPaddingRight: '44px',
+    textPaddingRight: '40px',
     border: `1px solid ${COLORS.Line.value}`,
     w: '200px',
     h: '48px',

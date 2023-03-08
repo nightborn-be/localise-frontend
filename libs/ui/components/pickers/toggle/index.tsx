@@ -27,19 +27,19 @@ export default function Toggle({
             borderRadius={borderRadius}
             boxShadow={boxShadow}
         >
-            <HStack w='176px' h='32px' padding='12px 0px'>
+            <HStack
+                w='176px'
+                h='32px'
+                padding='12px 0px'
+                spacing={textPaddingRight}
+            >
                 <Text
                     font={FONTS.T1.T12px.Regular400.value}
                     color={COLORS.Text.T400.value}
-                    pr={textPaddingRight}
                 >
                     {text}
                 </Text>
-                <Switch
-                    w='32px'
-                    h='20px'
-                    marginInlineStart={'0px !important'}
-                />
+                <Switch w='32px' h='20px' />
             </HStack>
         </HStack>
     );

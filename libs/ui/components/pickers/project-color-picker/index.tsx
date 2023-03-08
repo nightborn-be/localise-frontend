@@ -36,13 +36,15 @@ export default function ProjectColorPicker({}: ProjectColorPickerProps) {
             boxShadow='0px 2px 8px rgba(40, 41, 61, 0.04), 0px 26px 34px rgba(96, 97, 112, 0.06)'
         >
             {colors.map((color) => (
-                <Box
-                    w={'14px'}
-                    h={'14px'}
+                <ButtonIcon
+                    size={ButtonSize.XXS}
                     aria-label=''
                     backgroundColor={color}
                     borderRadius={'4px'}
                     marginInlineStart='0px !important'
+                    displayIcon={(isHovered) => (
+                        <Icon pointerEvents='none' name={'checkedColor'} />
+                    )}
                 />
             ))}
             <ButtonIcon
@@ -51,6 +53,7 @@ export default function ProjectColorPicker({}: ProjectColorPickerProps) {
                 borderRadius={'4px'}
                 marginInlineStart='0px !important'
                 backgroundColor='transparent'
+                hoverBackgroundColor={COLORS.Tag.value}
                 displayIcon={(isHovered) => (
                     <Icon name='add' stroke='#5F43E2' width='16' height='16' />
                 )}

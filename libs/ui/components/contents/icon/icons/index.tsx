@@ -20,6 +20,7 @@ import UnChecked from './unchecked';
 import Checked from './checked';
 import Edit from './edit';
 import CheckboxChecked from './checkbox-checked';
+import CheckedColor from './checked-color';
 
 const Icons = {
     add: Add,
@@ -50,6 +51,7 @@ const Icons = {
     checkboxChecked: CheckboxChecked,
     unChecked: UnChecked,
     edit: Edit,
+    checkedColor: CheckedColor,
 };
 
 export default Icons;
