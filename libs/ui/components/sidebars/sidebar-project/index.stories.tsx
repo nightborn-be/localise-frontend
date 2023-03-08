@@ -1,15 +1,10 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import Input from '.';
 import React from 'react';
 import Icon from '../../contents/icon';
-import Text from '../../contents/text';
 import COLORS from '../../../constants/colors';
 import FONTS from '../../../constants/fonts';
 import SidebarProps from './props';
 import SidebarProject from '.';
-import { Box, Image, VStack } from '@chakra-ui/react';
-import Button from '../../inputs/button';
-import IButtonProps, { EnhancerProps } from '../../inputs/button/props';
 
 export default {
     title: 'Components/Sidebars/SidebarProject',
@@ -17,12 +12,12 @@ export default {
 } as ComponentMeta<typeof SidebarProject>;
 const Template: ComponentStory<typeof SidebarProject> = (
     props: SidebarProps,
-) => <Input {...props} />;
+) => <SidebarProject {...props} />;
 
 const props: SidebarProps = {
-    topText: 'Mobile App',
-    topTextFont: FONTS.T1.T12px.Medium500.value,
-    topTextColor: COLORS.Text.T400.value,
+    text: 'Mobile App',
+    textFont: FONTS.T1.T12px.Medium500.value,
+    textColor: COLORS.Text.T400.value,
     projectIconColor: '#F74A3E',
     notificationNumber: 1,
 };
@@ -34,33 +29,16 @@ export const Default = Template.bind({});
 Default.args = {
     ...props,
     startEnhancer: <Icon name='section' />,
-    topText: 'Profile',
+    text: 'Profile',
 };
 export const DefaultGray = Template.bind({});
 DefaultGray.args = {
     ...props,
     startEnhancer: <Icon name='section' fill={COLORS.InputText.value} />,
-    topText: 'Profile',
-    topTextColor: COLORS.InputText.value,
+    text: 'Profile',
+    textColor: COLORS.InputText.value,
 };
 
-export const ActualOrganisation = Template.bind({});
-ActualOrganisation.args = {
-    ...props,
-    startEnhancer: (
-        <Image src='/assets/images/nightbornOrganisation.png' alt='nightborn' />
-    ),
-    w: '228px',
-    h: '52px',
-    topText: 'Organisation',
-    topTextFont: FONTS.T1.T10px.Regular400.value,
-    topTextColor: COLORS.InputText.value,
-    bottomText: 'NightBorn',
-    bottomTextFont: FONTS.T1.T12px.Medium500.value,
-    bottomTextColor: COLORS.Text.T400.value,
-    endEnhancer: <Icon name='editorialArrow' />,
-    canBeSelected: false,
-};
 export const CreateOrganisation = Template.bind({});
 CreateOrganisation.args = {
     ...props,
@@ -74,11 +52,11 @@ CreateOrganisation.args = {
     ),
     showNotification: false,
     marginLeftText: '8px',
-    w: '228px',
+    w: '252px',
     h: '40px',
-    topText: 'Create new organization',
-    topTextFont: FONTS.T1.T12px.Medium500.value,
-    topTextColor: COLORS.Text.T400.value,
+    text: 'Create new organization',
+    textFont: FONTS.T1.T12px.Medium500.value,
+    textColor: COLORS.Text.T400.value,
     canBeSelected: false,
 };
 
@@ -90,22 +68,76 @@ SortBy.args = {
     marginLeftText: '12px',
     w: '188px',
     h: '32px',
-    topText: 'Name',
-    topTextFont: FONTS.T1.T12px.Medium500.value,
-    topTextColor: COLORS.Text.T400.value,
+    text: 'Name',
+    textFont: FONTS.T1.T12px.Medium500.value,
+    textColor: COLORS.Text.T400.value,
+    canBeSelected: true,
+};
+export const SortNone = Template.bind({});
+SortNone.args = {
+    ...props,
+    showNotification: false,
+    displayColorBox: false,
+    marginLeftText: '0px',
+    w: '188px',
+    h: '32px',
+    text: 'None',
+    textFont: FONTS.T1.T12px.Medium500.value,
+    textColor: COLORS.Text.T400.value,
     canBeSelected: true,
 };
 
-export const SortByChecked = Template.bind({});
-SortByChecked.args = {
+export const SortByName = Template.bind({});
+SortByName.args = {
+    ...props,
+    startEnhancer: <Icon name='sortName' />,
+    showNotification: false,
+    marginLeftText: '12px',
+    w: '188px',
+    h: '32px',
+    text: 'Name',
+    textFont: FONTS.T1.T12px.Medium500.value,
+    textColor: COLORS.Text.T400.value,
+    canBeSelected: true,
+};
+
+export const SortByAuthor = Template.bind({});
+SortByAuthor.args = {
     ...props,
     startEnhancer: <Icon name='sort' />,
     showNotification: false,
     marginLeftText: '12px',
     w: '188px',
     h: '32px',
-    topText: 'Name',
-    topTextFont: FONTS.T1.T12px.Medium500.value,
-    topTextColor: COLORS.Text.T400.value,
+    text: 'Author',
+    textFont: FONTS.T1.T12px.Medium500.value,
+    textColor: COLORS.Text.T400.value,
+    canBeSelected: true,
+};
+export const SortByDate = Template.bind({});
+SortByDate.args = {
+    ...props,
+    startEnhancer: <Icon name='date' />,
+    showNotification: false,
+    marginLeftText: '12px',
+    w: '188px',
+    h: '32px',
+    text: 'Date',
+    textFont: FONTS.T1.T12px.Medium500.value,
+    textColor: COLORS.Text.T400.value,
+    canBeSelected: true,
+};
+export const SortByChecked = Template.bind({});
+SortByChecked.args = {
+    ...props,
+    startEnhancer: <Icon name='unChecked' />,
+    showNotification: false,
+    isCheckbox: true,
+    marginLeftText: '12px',
+    w: '188px',
+    h: '32px',
+    text: 'Name',
+    textFont: FONTS.T1.T12px.Medium500.value,
+    textColor: COLORS.Text.T400.value,
     canBeSelected: true,
 };

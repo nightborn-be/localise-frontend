@@ -1,12 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import Input from '.';
 import React from 'react';
-import Icon from '../../contents/icon';
-import Text from '../../contents/text';
-import COLORS from '../../../constants/colors';
-import FONTS from '../../../constants/fonts';
 import ProjectColorPicker from '.';
-import { Image } from '@chakra-ui/react';
 import ProjectColorPickerProps from './props';
 
 export default {
