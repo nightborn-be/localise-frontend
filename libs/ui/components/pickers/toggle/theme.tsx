@@ -1,28 +1,27 @@
 import { switchAnatomy } from '@chakra-ui/anatomy';
 import { createMultiStyleConfigHelpers, extendTheme } from '@chakra-ui/react';
+import COLORS from '../../../constants/colors';
 
 const { definePartsStyle, defineMultiStyleConfig } =
     createMultiStyleConfigHelpers(switchAnatomy.keys);
 
 const baseStyle = definePartsStyle({
     container: {
-        border: '2px solid',
-        borderColor: 'gray.300',
-        borderRadius: 'full',
-        bg: 'gray.50',
-        _checked: {
-            bg: 'green.500',
-            borderColor: 'green.500',
-        },
+        w: '32px',
+        h: '20px',
     },
     thumb: {
+        w: '12px',
+        h: '12px',
         bg: 'white',
-        boxShadow: '0px 0px 2px 2px rgba(0,0,0,0.1)',
+        mt: '2px',
+        ml: '2px',
+        borderRadius: '100%',
     },
     track: {
-        bg: 'gray.100',
+        bg: COLORS.Line.value,
         _checked: {
-            bg: 'gray.100',
+            bg: COLORS.Success.T500.value,
         },
     },
 });

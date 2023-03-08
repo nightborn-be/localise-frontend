@@ -124,18 +124,3 @@ RightElementInput.args = {
         </>
     ),
 };
-export const EditKeyName = Template.bind({});
-EditKeyName.args = {
-    color: COLORS.Text.T500.value,
-    border: '1px solid transparent',
-    padding: '8px',
-    gap: '12px',
-    w: '412px',
-    h: '32x',
-    font: FONTS.T1.T14px.SemiBold600,
-    placeHolder: 'Text',
-    paddingRight: '50px',
-    focusBorderColor: `transparent`,
-    hoverBorder: `1px solid transparent`,
-    rightElement: <Icon name='edit' />,
-};
