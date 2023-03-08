@@ -14,12 +14,22 @@ const Template: ComponentStory<typeof Toggle> = (props: ToggleProps) => (
 );
 
 const props: ToggleProps = {
-    topText: 'Mobile App',
-    topTextFont: FONTS.T1.T12px.Medium500.value,
-    topTextColor: COLORS.Text.T400.value,
-    projectIconColor: '#F74A3E',
-    notificationNumber: 1,
+    text: 'Detect duplicates',
+    textPaddingRight: '6px',
 };
 
-export const Project = Template.bind({});
-Project.args = { ...props };
+export const ToggleClassic = Template.bind({});
+ToggleClassic.args = { ...props };
+
+export const ToggleMarginLeft = Template.bind({});
+ToggleMarginLeft.args = {
+    ...props,
+    textPaddingRight: '44px',
+    border: `1px solid ${COLORS.Line.value}`,
+    w: '200px',
+    h: '48px',
+    padding: '8px 12px',
+    gap: '4px',
+    borderRadius: '8px',
+    boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.04)',
+};
