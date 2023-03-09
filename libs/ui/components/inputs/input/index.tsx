@@ -17,12 +17,12 @@ export default function Input<T>({
     description,
     labelColor = COLORS.Text.T500.value,
     descriptionColor = COLORS.InputText.value,
-    border = `1px solid ${COLORS.Stroke.value}`,
+    border = `0.0625rem solid ${COLORS.Stroke.value}`,
     placeholderColor = COLORS.InputText.value,
     placeholder,
     h,
     w,
-    errorBorder = `1px solid ${COLORS.Negative.value}`,
+    errorBorder = `0.0625rem solid ${COLORS.Negative.value}`,
     font,
     hoverBorder,
     alignItems = 'left',
@@ -63,7 +63,7 @@ export default function Input<T>({
         <>
             <VStack
                 direction='column'
-                spacing='4px'
+                spacing='0.25rem'
                 h={h}
                 w={w}
                 alignItems={alignItems}
@@ -118,7 +118,7 @@ export default function Input<T>({
                         marginTop={marginTop}
                         onFocus={handleToggleVisibility}
                         onBlur={handleToggleVisibility}
-                        pr={paddingRight ?? '4px'}
+                        pr={paddingRight ?? '0.25rem'}
                         paddingInlineStart={paddingInlineStart ?? 0}
                         paddingInlineEnd={paddingInlineEnd ?? 0}
                         onKeyDown={(event) =>
@@ -127,7 +127,7 @@ export default function Input<T>({
                                 : ''
                         }
                     />
-                    <InputRightElement visibility={visibility} mr={'8px'}>
+                    <InputRightElement visibility={visibility} mr={'0.5rem'}>
                         {rightElement}
                     </InputRightElement>
                 </InputGroup>

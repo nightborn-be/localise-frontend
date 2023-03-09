@@ -22,6 +22,7 @@ export default function InputProjectKey({
     font = FONTS.T1.T14px.SemiBold600.value,
     placeholder,
     value,
+    text="Projet key",
     rightElement,
 }: InputProjectKeyProps) {
     // Render
@@ -29,16 +30,16 @@ export default function InputProjectKey({
         <>
             <HStack>
                 {/* ICON SECTION */}
-                <Box mb='20px' ml='20px'>
+                <Box mb='1.25rem' ml='1.25rem'>
                     <Icon name='projectLine' />
                 </Box>
 
                 {/* INPUT FIELD SECTION */}
                 <InputGroup w={w} h={h}>
                     <InputLeftAddon
-                        gap='8px'
-                        padding='12px 8px 12px 12px'
-                        borderRight={`1px solid ${COLORS.Tag.value}`}
+                        gap='0.5rem'
+                        padding='0.75rem 0.5rem 0.75rem 0.75rem'
+                        borderRight={`0.0625rem solid ${COLORS.Tag.value}`}
                         borderTopLeftRadius={borderRadius}
                         borderBottomLeftRadius={borderRadius}
                     >
@@ -46,7 +47,7 @@ export default function InputProjectKey({
                             {...FONTS.T1.T12px.SemiBold600}
                             color={COLORS.InputText.value}
                         >
-                            Projet key
+                            {text}
                         </Text>
                     </InputLeftAddon>
                     <ChakraInput
@@ -55,7 +56,7 @@ export default function InputProjectKey({
                         borderRadius={borderRadius}
                         backgroundColor={COLORS.BG.value}
                         padding={padding}
-                        paddingLeft='12px'
+                        paddingLeft='0.75rem'
                         placeholder={placeholder}
                         _placeholder={{
                             fontSize: font?.fontSize,
@@ -71,15 +72,15 @@ export default function InputProjectKey({
                         fontWeight={font?.fontWeight}
                         lineHeight={font?.lineHeight}
                         letterSpacing={font?.letterSpacing}
-                        paddingInlineStart={'0px'}
-                        paddingInlineEnd={'0px'}
+                        paddingInlineStart={'0rem'}
+                        paddingInlineEnd={'0rem'}
                     />
                     <InputRightAddon
                         bg={COLORS.BG.value}
                         borderLeft='transparent'
-                        paddingRight='8px'
+                        paddingRight='0.5rem'
                     >
-                        <Box paddingLeft={'40px'}>{rightElement}</Box>
+                        <Box paddingLeft={'2.5rem'}>{rightElement}</Box>
                     </InputRightAddon>
                 </InputGroup>
             </HStack>

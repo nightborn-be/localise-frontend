@@ -18,10 +18,10 @@ const Template: ComponentStory<typeof InputSelect> = (args) => (
 const props: IInputSelectProps = {
     labelColor: COLORS.Text.T500.value,
     color: COLORS.Text.T400.value,
-    w: '327px',
-    h: '40px',
+    w: '20.4375rem',
+    h: '2.5rem',
     background: COLORS.White.T500.value,
-    borderRadius: '8px',
+    borderRadius: '0.5rem',
     options: [
         { value: 'Admin', label: 'Admin' },
         { value: 'Member', label: 'Member' },

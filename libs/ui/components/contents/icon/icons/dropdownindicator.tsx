@@ -4,7 +4,7 @@ const DropdownIndicator = (props: React.SVGProps<SVGSVGElement>) => (
     <svg
         width={props?.width ?? '8'}
         height={props?.height ?? '6'}
-        viewBox={props?.viewBox ?? '0 0 8 6'}
+        viewBox={'0 0 8 6'}
         fill={'none'}
         xmlns='http://www.w3.org/2000/svg'
     >

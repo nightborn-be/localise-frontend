@@ -3,4 +3,5 @@ import { Font } from '../../../constants/fonts';
 export default interface InputProjectKeyProps extends InputProps {
     font?: Font,
     rightElement?: string,
+    text?:string,
 }

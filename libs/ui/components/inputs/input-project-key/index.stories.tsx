@@ -1,9 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import Input from '.';
-import IInputProps from './props';
 import React from 'react';
 import Icon from '../../contents/icon/';
-import Text from '../../contents/text';
 import COLORS from '../../../constants/colors';
 import FONTS from '../../../constants/fonts';
 import InputProjectKey from '.';
@@ -22,10 +19,10 @@ const Template: ComponentStory<typeof InputProjectKey> = (
 export const ProjectKeyInput = Template.bind({});
 ProjectKeyInput.args = {
     color: COLORS.Text.T500.value,
-    border: `1px solid ${COLORS.Stroke.value}`,
-    borderRadius: '8px',
-    padding: '0px',
-    w: '580px',
+    border: `0.0625rem solid ${COLORS.Stroke.value}`,
+    borderRadius: '0.5rem',
+    padding: '0rem',
+    w: '36.25rem',
     h: '40x',
     font: FONTS.T1.T12px.Regular400.value,
     value: '9d7516a8-39b7-43d4-af09-a4f6c914b200',
