@@ -13,6 +13,14 @@ import Date from './date';
 import Enter from './enter';
 import UploadCloud from './uploadCloud';
 import Cross from './cross';
+import Section from './section';
+import EditorialArrow from './editorial-arrow';
+import SortName from './sort-name';
+import UnChecked from './unchecked';
+import Checked from './checked';
+import Edit from './edit';
+import CheckboxChecked from './checkbox-checked';
+import CheckedColor from './checked-color';
 
 const Icons = {
     add: Add,
@@ -36,6 +44,14 @@ const Icons = {
     date: Date,
     enter: Enter,
     addSmallBackground: AddSmallBackground,
+    section: Section,
+    editorialArrow: EditorialArrow,
+    sortName: SortName,
+    checked: Checked,
+    checkboxChecked: CheckboxChecked,
+    unChecked: UnChecked,
+    edit: Edit,
+    checkedColor: CheckedColor,
 };
 
 export default Icons;
