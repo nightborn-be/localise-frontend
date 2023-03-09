@@ -75,7 +75,7 @@ export default function InputSelect({
                 ...styles,
                 marginTop: '4px',
                 ':active': { backgroundColor: 'none' },
-                backgroundColor: backgroundCondition(isFocused, isSelected),
+                backgroundColor: backgroundStyleSwitch(isFocused, isSelected),
                 fontSize: fontSize,
                 fontWeight: fontWeight,
                 fontFamily: fontFamily,
