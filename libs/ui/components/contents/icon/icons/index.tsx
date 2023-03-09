@@ -15,6 +15,12 @@ import UploadCloud from './uploadCloud';
 import Cross from './cross';
 import DropdownIndicator from './dropdownIndicator';
 import { ProjectLine } from './projectLine';
+import ArrowToBottom from './arrow-to-bottom';
+import CrossClose from './cross-close';
+import Drag from './drag';
+import MyProfile from './my-profile';
+import Setting from './setting';
+import Support from './support';
 
 const Icons = {
     add: Add,
@@ -41,6 +47,12 @@ const Icons = {
     addSmallBackground: AddSmallBackground,
     dropdownIndicator: DropdownIndicator,
     projectLine: ProjectLine,
+    arrowToBottom: ArrowToBottom,
+    crossClose: CrossClose,
+    drag: Drag,
+    myProfile: MyProfile,
+    setting: Setting,
+    support: Support,
 };
 
 export default Icons;
