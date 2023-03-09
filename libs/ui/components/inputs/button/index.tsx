@@ -28,11 +28,11 @@ export default function Button({
         }
 
         if (startEnhancer) {
-            return '4px 12px 4px 8px';
+            return '0.25rem 0.75rem 0.25rem 0.5rem';
         } else if (endEnhancer) {
-            return '4px 8px 4px 12px';
+            return '0.25rem 0.5rem 0.25rem 0.75rem';
         } else {
-            return '4px 12px';
+            return '0.25rem 0.75rem';
         }
     };
 
@@ -46,7 +46,7 @@ export default function Button({
                 bgColor: hoverBackgroundColor,
             }}
             padding={paddingCondition()}
-            gap={rest.gap ?? '4px'}
+            gap={rest.gap ?? '0.25rem'}
             {...rest}
         >
             <Stack

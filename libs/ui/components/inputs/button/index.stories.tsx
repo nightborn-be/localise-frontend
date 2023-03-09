@@ -17,12 +17,12 @@ const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 
 const props: IButtonProps = {
     children: 'Text',
-    fontSize: '12px',
+    fontSize: '0.75rem',
     color: COLORS.White.T500.value,
     backgroundColor: COLORS.Localize.Purple.T500.value,
-    borderRadius: '8px',
-    w: '66px',
-    h: '32px',
+    borderRadius: '0.5rem',
+    w: '4.125rem',
+    h: '2rem',
 
     startEnhancer: (enhancer) => (
         <Icon
@@ -38,9 +38,9 @@ const props: IButtonProps = {
         />
     ),
     fontWeight: 600,
-    lineHeight: '17px',
+    lineHeight: '1.0625rem',
     textAlign: 'center',
-    spacing: '4px',
+    spacing: '0.25rem',
     hoverBackgroundColor: COLORS.Localize.Purple.T600.value,
     onClick: () => {},
 };
@@ -48,9 +48,9 @@ const props: IButtonProps = {
 export const SmallTextLeftIcon = Template.bind({});
 SmallTextLeftIcon.args = {
     ...props,
-    height: '28px',
-    padding: '4px 12px 4px 8px',
-    gap: '4px',
+    height: '1.75rem',
+    padding: '0.25rem 0.75rem 0.25rem 0.5rem',
+    gap: '0.25rem',
 };
 export const RegularTextLeftIcon = Template.bind({});
 RegularTextLeftIcon.args = {
@@ -60,11 +60,11 @@ RegularTextLeftIcon.args = {
 export const XLTextLeftIcon = Template.bind({});
 XLTextLeftIcon.args = {
     ...props,
-    width: '74px',
-    height: '44px',
-    fontSize: '14px',
-    padding: '4px 12px 4px 8px',
-    gap: '4px',
+    width: '4.625rem',
+    height: '2.75rem',
+    fontSize: '0.875rem',
+    padding: '0.25rem 0.75rem 0.25rem 0.5rem',
+    gap: '0.25rem',
     startEnhancer: (enhancer: EnhancerProps): React.ReactElement => (
         <Icon name='addLarge' stroke={COLORS.White.T500.value} />
     ),
@@ -73,10 +73,10 @@ XLTextLeftIcon.args = {
 export const LargeTextRightIconNoBackground = Template.bind({});
 LargeTextRightIconNoBackground.args = {
     ...props,
-    fontSize: '14px',
-    w: '66px',
-    h: '36px',
-    lineHeight: '15px',
+    fontSize: '0.875rem',
+    w: '4.125rem',
+    h: '2.25rem',
+    lineHeight: '0.9375rem',
     color: COLORS.Localize.Purple.T500.value,
     startEnhancer: undefined,
     endEnhancer: (enhancer: EnhancerProps): React.ReactElement => (
@@ -94,14 +94,14 @@ LargeTextRightIconNoBackground.args = {
 export const TextWithBorder = Template.bind({});
 TextWithBorder.args = {
     ...props,
-    width: '74px',
-    height: '44px',
-    fontSize: '14px',
-    padding: '4px 12px 4px 8px',
-    gap: '4px',
+    width: '4.625rem',
+    height: '2.75rem',
+    fontSize: '0.875rem',
+    padding: '0.25rem 0.75rem 0.25rem 0.5rem',
+    gap: '0.25rem',
     children: 'Text',
-    border: '1px solid ' + COLORS.Localize.Purple.T500.value,
-    borderRadius: '8px',
+    border: '0.0625rem solid ' + COLORS.Localize.Purple.T500.value,
+    borderRadius: '0.5rem',
     backgroundColor: COLORS.BG.value,
     startEnhancer: (enhancer: EnhancerProps): React.ReactElement => (
         <Icon name='addLarge' stroke={COLORS.Localize.Purple.T500.value} />
@@ -114,11 +114,11 @@ TextWithBorder.args = {
 export const TextRightIconWithBorderDashed = Template.bind({});
 TextRightIconWithBorderDashed.args = {
     ...props,
-    border: '1px dashed ' + COLORS.InputText.value,
-    borderRadius: '8px',
+    border: '0.0625rem dashed ' + COLORS.InputText.value,
+    borderRadius: '0.5rem',
     backgroundColor: 'transparent',
     color: COLORS.InputText.value,
-    lineHeight: '15px',
+    lineHeight: '0.9375rem',
     startEnhancer: undefined,
     hoverBackgroundColor: undefined,
     hoverColor: COLORS.Text.T400.value,
@@ -140,14 +140,14 @@ TextRightIconWithBorderDashed.args = {
 };
 const trashProps: IButtonProps = {
     children: 'Text',
-    fontSize: '12px',
+    fontSize: '0.75rem',
     color: COLORS.White.T500.value,
     backgroundColor: COLORS.Error.T500.value,
-    borderRadius: '8px',
-    w: '50px',
-    h: '28px',
-    padding: '4px 12px',
-    gap: '4px',
+    borderRadius: '0.5rem',
+    w: '3.125rem',
+    h: '1.75rem',
+    padding: '0.25rem 0.75rem',
+    gap: '0.25rem',
     startEnhancer: (enhancer: EnhancerProps): React.ReactElement => {
         return (
             <Icon
@@ -161,9 +161,9 @@ const trashProps: IButtonProps = {
         );
     },
     fontWeight: 600,
-    lineHeight: '15px',
+    lineHeight: '0.9375rem',
     textAlign: 'center',
-    spacing: '4px',
+    spacing: '0.25rem',
     onClick: () => {},
     hoverBackgroundColor: COLORS.HoverRed.value,
 };
@@ -179,10 +179,10 @@ TrashText.args = {
 export const TrashRightWithText = Template.bind({});
 TrashRightWithText.args = {
     ...trashProps,
-    fontSize: '14px',
-    lineHeight: '17px',
-    w: '76px',
-    h: '44px',
+    fontSize: '0.875rem',
+    lineHeight: '1.0625rem',
+    w: '4.75rem',
+    h: '2.75rem',
     startEnhancer: (enhancer: EnhancerProps): React.ReactElement => (
         <Icon
             name='trashLarge'
@@ -192,15 +192,15 @@ TrashRightWithText.args = {
             viewBox='0 0 14 14'
         />
     ),
-    gap: '8px',
-    spacing: '8px',
+    gap: '0.5rem',
+    spacing: '0.5rem',
 };
 export const TrashLeftWithTextNoBackground = Template.bind({});
 TrashLeftWithTextNoBackground.args = {
     ...trashProps,
     color: COLORS.Error.T500.value,
-    fontSize: '14px',
-    lineHeight: '17px',
+    fontSize: '0.875rem',
+    lineHeight: '1.0625rem',
     fontWeight: 600,
     startEnhancer: undefined,
     endEnhancer: (enhancer: EnhancerProps): React.ReactElement => (
@@ -212,11 +212,11 @@ TrashLeftWithTextNoBackground.args = {
             viewBox='0 0 14 14'
         />
     ),
-    w: '76px',
-    h: '40px',
-    padding: '4px 12px',
-    gap: '8px',
-    spacing: '8.33px',
+    w: '4.75rem',
+    h: '2.5rem',
+    padding: '0.25rem 0.75rem',
+    gap: '0.5rem',
+    spacing: '0.5206rem',
     backgroundColor: 'transparent',
     hoverBackgroundColor: COLORS.Tag.value,
 };
@@ -224,16 +224,16 @@ TrashLeftWithTextNoBackground.args = {
 export const AddMember = Template.bind({});
 
 AddMember.args = {
-    border: '1px dashed ' + COLORS.Line.value,
-    borderRadius: '8px',
+    border: '0.0625rem dashed ' + COLORS.Line.value,
+    borderRadius: '0.5rem',
     children: 'Add a member',
-    w: '327px',
-    h: '44px',
-    padding: '4px 12px 4px 8px',
-    gap: '4px',
-    fontSize: '14px',
+    w: '20.4375rem',
+    h: '2.75rem',
+    padding: '0.25rem 0.75rem 0.25rem 0.5rem',
+    gap: '0.25rem',
+    fontSize: '0.875rem',
     fontWeight: 400,
-    lineHeight: '17px',
+    lineHeight: '1.0625rem',
     justifyContent: 'flex-start',
     backgroundColor: 'transparent',
     color: COLORS.InputText.value,
@@ -250,19 +250,19 @@ AddMember.args = {
 export const AddPicture = Template.bind({});
 
 AddPicture.args = {
-    border: '2px dashed ' + COLORS.Line.value,
-    borderRadius: '16px',
+    border: '0.125rem dashed ' + COLORS.Line.value,
+    borderRadius: '1rem',
     children: 'Add a picture',
-    w: '100px',
-    h: '100px',
-    fontSize: '12px',
-    lineHeight: '12px',
+    w: '6.25rem',
+    h: '6.25rem',
+    fontSize: '0.75rem',
+    lineHeight: '0.75rem',
     fontWeight: 500,
     direction: 'column',
     backgroundColor: 'transparent',
     color: COLORS.InputText.value,
     whiteSpace: 'pre-line',
-    spacing: '7px',
+    spacing: '0.4375rem',
     startEnhancer: (enhancer: EnhancerProps): React.ReactElement => (
         <Icon
             name='uploadCloud'
@@ -278,12 +278,12 @@ AddLanguage.args = {
     children: 'Add another target language',
     color: '#393360',
     fontWeight: 500,
-    fontSize: '12px',
-    lineHeight: '15px',
-    width: '189px',
-    height: '16px',
-    padding: '0px',
-    gap: '8px',
+    fontSize: '0.75rem',
+    lineHeight: '0.9375rem',
+    width: '11.8125rem',
+    height: '1rem',
+    padding: '0rem',
+    gap: '0.5rem',
     backgroundColor: 'transparent',
     hoverColor: COLORS.Localize.Purple.T500.value,
     startEnhancer: (enhancer: EnhancerProps): React.ReactElement => (
@@ -305,12 +305,12 @@ DeleteProject.args = {
     children: 'Delete project',
     color: COLORS.InputText.value,
     fontWeight: 500,
-    fontSize: '12px',
-    lineHeight: '15px',
-    width: '101px',
-    height: '15px',
-    padding: '0px',
-    gap: '8px',
+    fontSize: '0.75rem',
+    lineHeight: '0.9375rem',
+    width: '6.3125rem',
+    height: '0.9375rem',
+    padding: '0rem',
+    gap: '0.5rem',
     backgroundColor: 'transparent',
     hoverColor: COLORS.Error.T500.value,
     startEnhancer: (enhancer: EnhancerProps): React.ReactElement => (
@@ -330,12 +330,12 @@ Remove.args = {
     children: 'Remove',
     color: COLORS.InputText.value,
     fontWeight: 600,
-    fontSize: '12px',
-    lineHeight: '14.52px',
-    width: '110px',
-    height: '32px',
-    padding: '4px 10px',
-    gap: '6px',
+    fontSize: '0.75rem',
+    lineHeight: '0.9075rem',
+    width: '6.875rem',
+    height: '2rem',
+    padding: '0.25rem 0.625rem',
+    gap: '0.375rem',
     backgroundColor: 'transparent',
     hoverColor: COLORS.Error.T500.value,
     startEnhancer: (enhancer: EnhancerProps): React.ReactElement => (
@@ -354,15 +354,15 @@ export const Sort = Template.bind({});
 Sort.args = {
     children: 'Sort',
     fontWeight: 400,
-    fontSize: '12px',
-    lineHeight: '15px',
+    fontSize: '0.75rem',
+    lineHeight: '0.9375rem',
     backgroundColor: 'transparent',
     hoverBackgroundColor: COLORS.Disabled.value,
-    width: '41px',
-    height: '28px',
-    padding: '6px 8px',
-    gap: '4px',
-    borderRadius: '4px',
+    width: '2.5625rem',
+    height: '1.75rem',
+    padding: '0.375rem 0.5rem',
+    gap: '0.25rem',
+    borderRadius: '0.25rem',
     color: COLORS.InputText.value,
     hoverColor: COLORS.Localize.Purple.T500.value,
 };
