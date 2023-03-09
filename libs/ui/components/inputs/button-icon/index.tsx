@@ -6,7 +6,7 @@ export default function ButtonIcon({
     size,
     hoverBackgroundColor,
     handleOnClick,
-    displayIcon,
+    iconComponent,
     ...props
 }: IButtonIconProps) {
     //Attributes
@@ -23,7 +23,7 @@ export default function ButtonIcon({
             onClick={handleOnClick}
             onMouseOver={updateHoverState}
             onMouseLeave={updateHoverState}
-            icon={displayIcon(isHovered)}
+            icon={iconComponent(isHovered)}
             _hover={{ bgColor: hoverBackgroundColor }}
         />
     );

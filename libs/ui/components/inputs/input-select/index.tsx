@@ -2,30 +2,23 @@ import React from 'react';
 import { VStack } from '@chakra-ui/react';
 import Select, { components } from 'react-select';
 import COLORS from '../../../constants/colors';
-import Text from '../../contents/text';
-import FONTS from '../../../constants/fonts';
 import IInputSelectProps from './props';
+import InputLabel from '../input-label';
 
 export default function InputSelect({
-    type = 'text',
     color = COLORS.Text.T500.value,
-    labelColor = COLORS.Text.T500.value,
-    descriptionColor = COLORS.InputText.value,
     placeholderColor = COLORS.InputText.value,
     label,
     description,
-    border = `1px solid ${COLORS.Stroke.value}`,
+    border = `0.0625rem solid ${COLORS.Stroke.value}`,
     placeholder = 'Select value',
     h,
     w,
-    lineHeight = '15px',
-    errorBorder = `1px solid ${COLORS.Negative.value}`,
+    errorBorder = `0.0625rem solid ${COLORS.Negative.value}`,
     alignItems = 'left',
-    fontSize = '12px',
+    fontSize = '0.75rem',
     fontWeight = '400',
     fontFamily = 'Inter',
-    gap = '8px',
-    paddingTop = '3px',
     isValid = true,
     options,
     dropdownArrowColor = COLORS.InputText.value,
@@ -33,24 +26,18 @@ export default function InputSelect({
     focusBackgroundOptionColor = COLORS.Tag.value,
     selectedOptionColor = COLORS.White.T500.value,
     textOptionColor = COLORS.Text.T400.value,
-    borderRadiusOption = '4px',
-    borderRadius = '8px',
-    padding,
+    borderRadiusOption = '0.25rem',
+    borderRadius = '0.5rem',
     dropDownIndicator,
     paddingRight,
     paddingLeft,
     menuOptionWidth,
-
     isSearchable = false,
-    ...props
+    menuRightOption,
+    menuLeftOption,
+    selectMarginLeft,
 }: IInputSelectProps) {
-    const textProps = { lineHeight: lineHeight, margin: 0 };
-
-    const backgroundCondition = (isFocused: boolean, isSelected: boolean) => {
-        if (isSelected) return backgroundOptionColor;
-        if (isFocused) return focusBackgroundOptionColor;
-        return 'none';
-    };
+    //Attributes
     const selectStyle: any = {
         control: (styles, { data, isDisabled, isFocused, isSelected }) => {
             return {
@@ -64,6 +51,7 @@ export default function InputSelect({
                 color: color,
                 backgroundColor: 'transparent',
                 boxShadow: 'none',
+                marginLeft: selectMarginLeft,
             };
         },
         placeholder: (styles) => {
@@ -77,15 +65,17 @@ export default function InputSelect({
             return {
                 ...styles,
                 width: menuOptionWidth ?? '100%',
-                padding: '0px 6px 4px 6px',
+                padding: '0rem 0.375rem 0rem 0.375rem',
+                right: menuRightOption,
+                left: menuLeftOption,
             };
         },
         option: (styles, { data, isDisabled, isFocused, isSelected }) => {
             return {
                 ...styles,
-                marginTop: '4px',
+                marginTop: '0.25rem',
                 ':active': { backgroundColor: 'none' },
-                backgroundColor: backgroundCondition(isFocused, isSelected),
+                backgroundColor: backgroundStyleSwitch(isFocused, isSelected),
                 fontSize: fontSize,
                 fontWeight: fontWeight,
                 fontFamily: fontFamily,
@@ -113,7 +103,12 @@ export default function InputSelect({
             paddingRight: paddingRight,
         }),
     };
-
+    //Function
+    const backgroundStyleSwitch = (isFocused: boolean, isSelected: boolean) => {
+        if (isSelected) return backgroundOptionColor;
+        if (isFocused) return focusBackgroundOptionColor;
+        return 'none';
+    };
     const DropdownIndicator = (props) => {
         return (
             <components.DropdownIndicator {...props}>
@@ -121,27 +116,14 @@ export default function InputSelect({
             </components.DropdownIndicator>
         );
     };
-    return (
-        <VStack spacing='4px' w={w} h={h} alignItems={alignItems}>
-            {label && (
-                <Text
-                    {...textProps}
-                    font={FONTS.T1.T12px.Medium500.value}
-                    color={labelColor}
-                >
-                    {label}
-                </Text>
-            )}
-            {description && (
-                <Text
-                    {...textProps}
-                    font={FONTS.T1.T12px.Regular400.value}
-                    color={descriptionColor}
-                >
-                    {description}
-                </Text>
-            )}
 
+    //Render
+    return (
+        <VStack spacing='0.25rem' w={w} h={h} alignItems={alignItems}>
+            {/* Input label section */}
+            <InputLabel label={label} description={description} />
+
+            {/* Input select section */}
             {options && (
                 <Select
                     isSearchable={isSearchable}
@@ -157,3 +139,4 @@ export default function InputSelect({
         </VStack>
     );
 }
+
