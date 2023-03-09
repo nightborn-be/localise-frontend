@@ -23,10 +23,10 @@ export const Breadcrumb = ({ elements }: BreadcrumbProps) => {
     return (
         <Stack
             direction={'row'}
-            spacing={'6px'}
-            px={'32px'}
-            py='16px'
-            borderBottom={`1px solid ${COLORS.Line.value}`}
+            spacing={'0.375rem'}
+            px={'2rem'}
+            py='1rem'
+            borderBottom={`0.0625rem solid ${COLORS.Line.value}`}
         >
             {crumbs.map((element, index) => {
                 return (

@@ -14,20 +14,22 @@ export default {
 const Template: ComponentStory<typeof Tabs> = (props: ITabsProps) => {
     const [activeKey, setActiveKey] = useState<React.Key>();
 
-return <Tabs activeKey={activeKey} onChange={(key) => setActiveKey(key)}>
+return (
+    <Tabs activeKey={activeKey} onChange={(key) => setActiveKey(key)}>
         <Tab title='Glossary'>
-            <Box bg='red.100' w='50' h='50' />
+            <Box bg='red.100' h='31.25rem' />
         </Tab>
         <Tab title='Settings'>
-            <Box bg='blue.100' w='50' h='50' />
+            <Box bg='blue.100' h='31.25rem' />
         </Tab>
         <Tab title='Statistics'>
-            <Box bg='green.400' w='50' h='50' />
+            <Box bg='green.400' h='31.25rem' />
         </Tab>
         <Tab title='History'>
-            <Box bg='yellow.400' w='50' h='50' />
+            <Box bg='yellow.400' h='31.25rem' />
         </Tab>
     </Tabs>
+);
 }
 
 export const Default = Template.bind({});

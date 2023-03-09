@@ -43,10 +43,10 @@ const Tabs = ({ children, activeKey, onChange }: ITabsProps): JSX.Element => {
         <Flex direction='column'>
             {/* Tab bar */}
             <Stack
-                py={'10.5px'}
-                px={'32px'}
+                py={'0.6563rem'}
+                px={'2rem'}
                 direction='row'
-                spacing={'24px'}
+                spacing={'1.5rem'}
                 align='center'
                 w='100%'
                 bg={COLORS.Tag.value}
