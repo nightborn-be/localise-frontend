@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { Box, HStack, VStack } from '@chakra-ui/react';
+import { HStack } from '@chakra-ui/react';
 import COLORS from '../../../constants/colors';
-import ButtonIcon from '../../inputs/button-icon';
 import ProjectColorPickerProps from './props';
-import { ButtonSize } from '../../inputs/button-icon/props';
-import Icon from '../../contents/icon';
+import { ColorButton } from './color-button';
+
 export default function ProjectColorPicker({}: ProjectColorPickerProps) {
     //Attributes
     const [colors, setColors] = useState([
@@ -15,52 +14,29 @@ export default function ProjectColorPicker({}: ProjectColorPickerProps) {
         COLORS.Social.FacebookBlue.value,
         COLORS.Bancontact.Payconiq.value,
         COLORS.Visa.Yellow.value,
+        "#DF73FF"
     ]);
-    //Functions
-    const addNewColorPicker = (color) => {
-        setColors((oldColor) => [...oldColor, color]);
-    };
+    const [currentSelectedColor, setCurrentSelectedColor] = useState<string>()
     //Render
     return (
-        <HStack
-            padding={'15px'}
-            paddingBottom='18px'
-            gap='12px'
-            width='176px'
-            height='fit-content'
-            maxW='176px'
-            border={`1px solid ${COLORS.Line.value}`}
-            borderRadius={'8px'}
-            flexWrap={'wrap'}
-            alignContent={'space-between'}
-            boxShadow='0px 2px 8px rgba(40, 41, 61, 0.04), 0px 26px 34px rgba(96, 97, 112, 0.06)'
-        >
-            {colors.map((color) => (
-                <ButtonIcon
-                    size={ButtonSize.XXS}
-                    aria-label=''
-                    backgroundColor={color}
-                    borderRadius={'4px'}
-                    marginInlineStart='0px !important'
-                    displayIcon={(isHovered) => (
-                        <Icon pointerEvents='none' name={'checkedColor'} />
-                    )}
-                />
-            ))}
-            <ButtonIcon
-                size={ButtonSize.XXS}
-                aria-label=''
-                borderRadius={'4px'}
-                marginInlineStart='0px !important'
-                backgroundColor='transparent'
-                hoverBackgroundColor={COLORS.Tag.value}
-                displayIcon={(isHovered) => (
-                    <Icon name='add' stroke='#5F43E2' width='16' height='16' />
-                )}
-                handleOnClick={() => {
-                    addNewColorPicker(COLORS.Error.T500.value);
-                }}
-            />
-        </HStack>
+        <>
+            <HStack
+                padding={'0.9375rem'}
+                paddingBottom='1.125rem'
+                gap='0.75rem'
+                width='11rem'
+                height='fit-content'
+                maxW='11rem'
+                border={`1px solid ${COLORS.Line.value}`}
+                borderRadius={'0.5rem'}
+                flexWrap={'wrap'}
+                alignContent={'space-between'}
+                boxShadow='0rem 0.125rem 0.5rem rgba(40, 41, 61, 0.04), 0rem 1.625rem 2.125rem rgba(96, 97, 112, 0.06)'
+            >
+                {colors.map((color, i) => (
+                    <ColorButton key={i} setCurrentSelectedColor={setCurrentSelectedColor} isSelected={currentSelectedColor === color ? true : false} color={color}/>
+                ))}
+            </HStack>
+        </>
     );
 }
