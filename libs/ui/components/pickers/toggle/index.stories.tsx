@@ -1,7 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import React from 'react';
 import COLORS from '../../../constants/colors';
-import FONTS from '../../../constants/fonts';
 import Toggle from '.';
 import ToggleProps from './props';
 
