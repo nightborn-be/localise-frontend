@@ -3,6 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import IButtonIconProps, { ButtonSize } from './props';
 import Icon from '../../contents/icon';
 import ButtonIcon from '.';
+import COLORS from '../../../constants/colors'
 
 export default {
     title: 'Components/Inputs/ButtonIcon',
@@ -230,5 +231,56 @@ CircleAdd.args = {
         <Icon name='addCircle' stroke='#FFFFFF' width={28} height={28} />
     ),
 };
+
+
+export const CircleClose = Template.bind({});
+CircleClose.args = {
+    borderRadius: '100%',
+    border: `1px solid ${COLORS.Line.value}`,
+    size: ButtonSize.XS,
+    backgroundColor: COLORS.White.T500.value,
+    hoverBackgroundColor: COLORS.Tag.value,
+    iconComponent: () => (
+        <Icon name='removeSmall' stroke={COLORS.Error.T500.value} width={20} height={20} />
+    ),
+};
+
+export const CircleCrossClose = Template.bind({});
+CircleCrossClose.args = {
+    borderRadius: '100%',
+    border: `1px solid ${COLORS.Line.value}`,
+    size: ButtonSize.XXS,
+    backgroundColor: COLORS.White.T500.value,
+    hoverBackgroundColor: COLORS.Tag.value,
+    iconComponent: () => (
+        <Icon
+            name='crossClose'
+        />
+    ),
+};
+
+export const RemoveOrganization = Template.bind({});
+RemoveOrganization.args = {
+    borderRadius:"0px",
+    size: ButtonSize['18px'],
+    backgroundColor: COLORS.Black.T500.value,
+    hoverBackgroundColor: COLORS.Black.T400.value,
+    iconComponent: () => <Icon name='trashLarge' fill={COLORS.White.T500.value}/>,
+};
+
+
+export const RemoveProject = Template.bind({});
+RemoveProject.args = {
+    borderRadius: '0px',
+    size: ButtonSize.XXS,
+    backgroundColor: COLORS.Black.T500.value,
+    hoverBackgroundColor: COLORS.Black.T400.value,
+    iconComponent: () => (
+        <Icon name='removeLarge' stroke={COLORS.White.T500.value} />
+    ),
+};
+
+
+
 
 
