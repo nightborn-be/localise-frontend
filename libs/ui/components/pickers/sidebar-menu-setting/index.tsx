@@ -8,16 +8,16 @@ export default function SidebarMenuSetting({
     textColor,
     text,
     hoverBackgroundColor = COLORS.Tag.value,
-    w = '228px',
-    h = '40px',
-    marginLeftText = '12px',
+    w = '14.25rem',
+    h = '2.5rem',
+    marginLeftText = '0.75rem',
 }: SidebarMenuSettingProps) {
     //Attributes
     const [isSelected, setIsSelected] = useState<boolean>(false);
     const [isHovered, setIsHovered] = useState<boolean>(false);
-    //Function
+    //Functions
     const toggleIsSelected = () => setIsSelected((prev) => !prev);
-    const boxBackgroundColor = () => {
+    const boxBackgroundColor = () : string => {
         if (isSelected) {
             return COLORS.Localize.Purple.T500.value;
         }
@@ -30,7 +30,7 @@ export default function SidebarMenuSetting({
     return (
         <>
             <HStack
-                borderRadius='1px 4px 4px 1px'
+                borderRadius='0.0625rem 0.25rem 0.25rem 0.0625rem'
                 w={w}
                 h={h}
                 _hover={{
@@ -48,14 +48,14 @@ export default function SidebarMenuSetting({
                 onClick={toggleIsSelected}
             >
                 <Box
-                    w='2px'
+                    w='0.125rem'
                     h='full'
-                    borderRadius='4px 4px 4px 4px'
+                    borderRadius='0.25rem 0.25rem 0.25rem 0.25rem'
                     bg={boxBackgroundColor()}
                 />
                 <HStack
                     w='full'
-                    h='32px'
+                    h='2rem'
                     marginInlineStart={`${marginLeftText} !important`}
                 >
                     {text && (

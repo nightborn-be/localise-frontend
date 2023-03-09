@@ -17,6 +17,7 @@ export default function ProjectColorPicker({}: ProjectColorPickerProps) {
         "#DF73FF"
     ]);
     const [currentSelectedColor, setCurrentSelectedColor] = useState<string>()
+    
     //Render
     return (
         <>
