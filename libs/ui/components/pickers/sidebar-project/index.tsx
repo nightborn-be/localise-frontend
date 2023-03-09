@@ -16,15 +16,15 @@ export default function SidebarProject({
     showNotification = true,
     canBeSelected = true,
     isCheckbox = false,
-    marginLeftText = '12px',
+    marginLeftText = '0.75rem',
     displayColorBox = true,
-    w = '228px',
-    h = '40px',
+    w = '14.25rem',
+    h = '2.5rem',
 }: SidebarProps) {
     //Attributes
     const [isSelected, setIsSelected] = useState<boolean>(false);
     //Function
-    const toggleIsSelected = () => {
+    const toggleIsSelected = () : void => {
         if (canBeSelected) setIsSelected((prev) => !prev);
     };
     const startEnhancerPicker = () => {
@@ -38,7 +38,7 @@ export default function SidebarProject({
             else return startEnhancer;
         if (displayColorBox)
             return (
-                <Box w='8px' h='8px' borderRadius='2px' bg={projectIconColor} />
+                <Box w='0.5rem' h='0.5rem' borderRadius='0.125rem' bg={projectIconColor} />
             );
 
         return null;
@@ -53,19 +53,19 @@ export default function SidebarProject({
         if (showNotification)
             return (
                 <VStack
-                    w='28px'
-                    h='18px'
-                    minH='18px'
-                    minW='28px'
-                    padding='2px'
-                    margin='11px 12px'
-                    borderRadius='432.9px'
+                    w='1.75rem'
+                    h='1.125rem'
+                    minH='1.125rem'
+                    minW='1.75rem'
+                    padding='0.125rem'
+                    margin='0.6875rem 0.75rem'
+                    borderRadius='27.0562rem'
                     bg={
                         isSelected
                             ? COLORS.Localize.Purple.T600.value
                             : COLORS.Error.T500.value
                     }
-                    mr='5px'
+                    mr='0.3125rem'
                     justifyContent={'center'}
                     alignItems='center'
                 >
@@ -83,8 +83,8 @@ export default function SidebarProject({
         <HStack
             w={w}
             h={h}
-            padding='12px'
-            borderRadius='6px'
+            padding='0.75rem'
+            borderRadius='0.375rem'
             _hover={{ bg: pickHoverBackgroundColor }}
             bg={
                 isSelected && !isCheckbox
@@ -93,7 +93,7 @@ export default function SidebarProject({
             }
             onClick={toggleIsSelected}
         >
-            <HStack w='full' h='32px'>
+            <HStack w='full' h='2rem'>
                 {startEnhancerPicker()}
                 {text && (
                     <Text

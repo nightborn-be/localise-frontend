@@ -17,8 +17,8 @@ const props: SidebarMenuSettingProps = {
     text: 'Informations',
     textFont: FONTS.T1.T12px.Medium500.value,
     textColor: COLORS.Text.T400.value,
-    w: '176px',
-    h: '32px',
+    w: '11rem',
+    h: '2rem',
 };
 
 export const MenuSetting = Template.bind({});

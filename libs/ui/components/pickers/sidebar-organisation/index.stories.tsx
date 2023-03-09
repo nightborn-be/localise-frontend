@@ -17,15 +17,15 @@ const Template: ComponentStory<typeof SidebarOrganisation> = (
 ) => <SidebarOrganisation {...props} />;
 
 const props: SidebarProps = {
-    w: '228px',
-    h: '52px',
+    w: '14.25rem',
+    h: '3.25rem',
     topText: 'Organisation',
     topTextFont: FONTS.T1.T10px.Regular400.value,
     topTextColor: COLORS.InputText.value,
     bottomText: 'NightBorn',
     bottomTextFont: FONTS.T1.T12px.Medium500.value,
     bottomTextColor: COLORS.Text.T400.value,
-    marginLeftText: '8px',
+    marginLeftText: '0.5rem',
 };
 
 export const ActualOrganisation = Template.bind({});

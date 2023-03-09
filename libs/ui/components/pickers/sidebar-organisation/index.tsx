@@ -12,16 +12,16 @@ export default function SidebarOrganisation({
     bottomText,
     startEnhancer,
     endEnhancer,
-    padding = '10px 12px',
-    marginLeftText = '12px',
+    padding = '0.625rem 0.75rem',
+    marginLeftText = '0.75rem',
     canBeSelected = false,
-    w = '228px',
-    h = '52px',
+    w = '14.25rem',
+    h = '3.25rem',
 }: SidebarOrganisationProps) {
     //Attributes
     const [isSelected, setIsSelected] = useState<boolean>(!canBeSelected);
     //Functions
-    const toggleIsSelected = () => {
+    const toggleIsSelected = () : void => {
         if (canBeSelected) setIsSelected((prev) => !prev);
     };
     //Render
@@ -30,12 +30,12 @@ export default function SidebarOrganisation({
             w={w}
             h={h}
             padding={padding}
-            borderRadius='6px'
+            borderRadius='0.375rem'
             _hover={{ bg: COLORS.Tag.value }}
             bg={COLORS.White.T500.value}
             onClick={toggleIsSelected}
         >
-            <HStack w='full' h='32px'>
+            <HStack w='full' h='2rem'>
                 {startEnhancer}
                 <VStack marginInlineStart={`${marginLeftText} !important`}>
                     {topText && (
@@ -46,7 +46,7 @@ export default function SidebarOrganisation({
 
                     {bottomText && (
                         <Text
-                            mt='0px !important'
+                            mt='0rem !important'
                             font={bottomTextFont}
                             color={bottomTextColor}
                         >

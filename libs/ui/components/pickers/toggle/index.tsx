@@ -14,7 +14,7 @@ export default function Toggle({
     padding,
     gap,
     text,
-    textPaddingRight = '6px',
+    textPaddingRight = '0.375rem',
 }: ToggleProps) {
     //Render
     return (
@@ -28,9 +28,9 @@ export default function Toggle({
             boxShadow={boxShadow}
         >
             <HStack
-                w='176px'
-                h='32px'
-                padding='12px 0px'
+                w='11rem'
+                h='2rem'
+                padding='0.75rem 0rem'
                 spacing={textPaddingRight}
             >
                 <Text
@@ -39,7 +39,7 @@ export default function Toggle({
                 >
                     {text}
                 </Text>
-                <Switch w='32px' h='20px' />
+                <Switch w='2rem' h='1.25rem' />
             </HStack>
         </HStack>
     );
