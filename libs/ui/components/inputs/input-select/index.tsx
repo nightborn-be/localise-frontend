@@ -10,13 +10,13 @@ export default function InputSelect({
     placeholderColor = COLORS.InputText.value,
     label,
     description,
-    border = `1px solid ${COLORS.Stroke.value}`,
+    border = `0.0625rem solid ${COLORS.Stroke.value}`,
     placeholder = 'Select value',
     h,
     w,
-    errorBorder = `1px solid ${COLORS.Negative.value}`,
+    errorBorder = `0.0625rem solid ${COLORS.Negative.value}`,
     alignItems = 'left',
-    fontSize = '12px',
+    fontSize = '0.75rem',
     fontWeight = '400',
     fontFamily = 'Inter',
     isValid = true,
@@ -26,8 +26,8 @@ export default function InputSelect({
     focusBackgroundOptionColor = COLORS.Tag.value,
     selectedOptionColor = COLORS.White.T500.value,
     textOptionColor = COLORS.Text.T400.value,
-    borderRadiusOption = '4px',
-    borderRadius = '8px',
+    borderRadiusOption = '0.25rem',
+    borderRadius = '0.5rem',
     dropDownIndicator,
     paddingRight,
     paddingLeft,
@@ -65,7 +65,7 @@ export default function InputSelect({
             return {
                 ...styles,
                 width: menuOptionWidth ?? '100%',
-                padding: '0px 6px 0px 6px',
+                padding: '0rem 0.375rem 0rem 0.375rem',
                 right: menuRightOption,
                 left: menuLeftOption,
             };
@@ -73,7 +73,7 @@ export default function InputSelect({
         option: (styles, { data, isDisabled, isFocused, isSelected }) => {
             return {
                 ...styles,
-                marginTop: '4px',
+                marginTop: '0.25rem',
                 ':active': { backgroundColor: 'none' },
                 backgroundColor: backgroundStyleSwitch(isFocused, isSelected),
                 fontSize: fontSize,
@@ -119,7 +119,7 @@ export default function InputSelect({
 
     //Render
     return (
-        <VStack spacing='4px' w={w} h={h} alignItems={alignItems}>
+        <VStack spacing='0.25rem' w={w} h={h} alignItems={alignItems}>
             {/* Input label section */}
             <InputLabel label={label} description={description} />
 
