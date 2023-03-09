@@ -1,5 +1,6 @@
 import { Box, Flex, Stack } from '@chakra-ui/react';
 import React, { Children, ReactElement, ReactNode } from 'react';
+import COLORS from '../../../constants/colors';
 import ITabsProps from './props';
 import { ITabProps } from './tab/props';
 
@@ -48,7 +49,7 @@ const Tabs = ({ children, activeKey, onChange }: ITabsProps): JSX.Element => {
                 spacing={'24px'}
                 align='center'
                 w='100%'
-                bg='#F2F4F9'
+                bg={COLORS.Tag.value}
             >
                 {renderTabs()}
             </Stack>

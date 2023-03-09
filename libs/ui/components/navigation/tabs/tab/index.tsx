@@ -1,6 +1,8 @@
 import React from 'react';
 import { ITabProps } from './props';
-import { Flex, Text } from '@chakra-ui/react';
+import COLORS from '../../../../constants/colors';
+import Text from '../../../contents/text';
+import FONTS from '../../../../constants/fonts';
 
 const Tab = ({ children, onSelect, active }: ITabProps): JSX.Element => {
     // Render
@@ -8,9 +10,8 @@ const Tab = ({ children, onSelect, active }: ITabProps): JSX.Element => {
         <Text
             cursor='pointer'
             onClick={onSelect}
-            fontWeight={500}
-            fontSize={15}
-            color={active ? '#393360' : '#8F95B2'}
+            font={FONTS.T1.T12px.Medium500.value}
+            color={active ? COLORS.Text.T400.value : COLORS.InputText.value}
         >
             {children}
         </Text>

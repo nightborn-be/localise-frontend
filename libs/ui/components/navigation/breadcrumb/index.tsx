@@ -1,14 +1,10 @@
-import { Stack, Text } from '@chakra-ui/react';
+import { Stack } from '@chakra-ui/react';
 import React from 'react';
 import { useMemo } from 'react';
-
-interface BreadcrumbElement {
-    label: string;
-}
-
-interface BreadcrumbProps {
-    elements: BreadcrumbElement[];
-}
+import COLORS from '../../../constants/colors';
+import FONTS from '../../../constants/fonts';
+import Text from '../../contents/text';
+import BreadcrumbProps, { BreadcrumbElement } from './props';
 
 export const Breadcrumb = ({ elements }: BreadcrumbProps) => {
     // Attributes
@@ -30,16 +26,15 @@ export const Breadcrumb = ({ elements }: BreadcrumbProps) => {
             spacing={'6px'}
             px={'32px'}
             py='16px'
-            borderBottom='1px solid #E7E9F4'
+            borderBottom={`1px solid ${COLORS.Line.value}`}
         >
             {crumbs.map((element, index) => {
                 return (
                     <Text
                         key={index}
-                        fontWeight={500}
-                        fontSize={16}
+                        font={FONTS.T1.T16px.Medium500.value}
                         color={
-                            index < crumbs.length - 1 ? '#8F95B2' : '#393360'
+                            index < crumbs.length - 1 ? COLORS.InputText.value : COLORS.Text.T400.value
                         }
                     >
                         {element.label}
