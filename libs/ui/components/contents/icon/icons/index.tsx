@@ -15,6 +15,7 @@ import UploadCloud from './uploadCloud';
 import Cross from './cross';
 import Search from './search';
 import ShortCut from './shortcut';
+import Union from './union';
 
 const Icons = {
     add: Add,
@@ -40,6 +41,7 @@ const Icons = {
     addSmallBackground: AddSmallBackground,
     search: Search,
     shortcut: ShortCut,
+    union: Union,
 };
 
 export default Icons;
