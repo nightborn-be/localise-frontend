@@ -18,8 +18,8 @@ export default function ButtonIcon({
             {...props}
             width={size}
             height={size}
-            minHeight={'28px'}
-            minWidth={'28px'}
+            minHeight={'20px'}
+            minWidth={'20px'}
             onClick={handleOnClick}
             onMouseOver={updateHoverState}
             onMouseLeave={updateHoverState}
