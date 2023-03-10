@@ -4,7 +4,7 @@ import IRoleProps from './props';
 import COLORS from '../../../constants/colors';
 import Role from './index';
 export default {
-    title: 'Components/Constents/Role',
+    title: 'Components/Contents/Role',
     component: Role,
 } as ComponentMeta<typeof Role>;
 const Template: ComponentStory<typeof Role> = (props: IRoleProps) => (
