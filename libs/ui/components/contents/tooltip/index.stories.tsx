@@ -6,7 +6,7 @@ import Tooltip from '.';
 import Icon from '../icon';
 import { HStack } from '@chakra-ui/react';
 export default {
-    title: 'Components/Constents/Tooltip',
+    title: 'Components/Contents/Tooltip',
 } as ComponentMeta<typeof Tooltip>;
 
 export const Tooltips = () => {
