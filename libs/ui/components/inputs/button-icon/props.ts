@@ -8,5 +8,5 @@ export default interface IButtonIconProps extends IconButtonProps {
 }
 
 export enum ButtonSize {
-    XS = "28px", SMALL = "32px", REGULAR = "36px", LARGE = "40px", XL = "44px", XXL = "48px"
+    XXS = "20px", XS = "28px", SMALL = "32px", REGULAR = "36px", LARGE = "40px", XL = "44px", XXL = "48px"
 }
