@@ -24,7 +24,7 @@ export default function Tag({
     return (
         <HStack
             bg={backgroundColor}
-            spacing='6px'
+            spacing='2px'
             w={w}
             h={h}
             borderRadius={borderRadius}
