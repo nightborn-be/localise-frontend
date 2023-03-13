@@ -2,6 +2,6 @@ export interface BreadcrumbElement {
     label: string;
 }
 
-export default interface BreadcrumbProps {
+export default interface IBreadcrumbProps {
     elements: BreadcrumbElement[];
 }

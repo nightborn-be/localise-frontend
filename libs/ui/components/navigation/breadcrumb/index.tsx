@@ -4,9 +4,9 @@ import { useMemo } from 'react';
 import COLORS from '../../../constants/colors';
 import FONTS from '../../../constants/fonts';
 import Text from '../../contents/text';
-import BreadcrumbProps, { BreadcrumbElement } from './props';
+import IBreadcrumbProps, { BreadcrumbElement } from './props';
 
-export const Breadcrumb = ({ elements }: BreadcrumbProps) => {
+export const Breadcrumb = ({ elements }: IBreadcrumbProps) => {
     // Attributes
     const crumbs = useMemo(() => {
         const crumbs: BreadcrumbElement[] = [];
@@ -34,7 +34,9 @@ export const Breadcrumb = ({ elements }: BreadcrumbProps) => {
                         key={index}
                         font={FONTS.T1.T16px.Medium500.value}
                         color={
-                            index < crumbs.length - 1 ? COLORS.InputText.value : COLORS.Text.T400.value
+                            index < crumbs.length - 1
+                                ? COLORS.InputText.value
+                                : COLORS.Text.T400.value
                         }
                     >
                         {element.label}
