@@ -23,14 +23,14 @@ ProjectKeyInput.args = {
     borderRadius: '0.5rem',
     padding: '0rem',
     w: '36.25rem',
-    h: '40x',
+    h: '2.5rem',
     font: FONTS.T1.T12px.Regular400.value,
     value: '9d7516a8-39b7-43d4-af09-a4f6c914b200',
     rightElement: (
         <ButtonIcon
             size={ButtonSize.XS}
             backgroundColor={COLORS.BG.value}
-            displayIcon={(isHovered) => <Icon name='copyLarge' />}
+            iconComponent={() => <Icon name='copyClipBoardLarge' />}
             hoverBackgroundColor={COLORS.Line.value}
             aria-label='test'
         />
