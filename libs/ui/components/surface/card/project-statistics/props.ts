@@ -1,3 +1,4 @@
 export default interface IProjectStatisticsProps {
-    nbKeys?: number
+    value?: number
+    title?: string
 }
