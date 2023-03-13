@@ -1,16 +1,12 @@
-import { Stack, Text } from '@chakra-ui/react';
+import { Stack } from '@chakra-ui/react';
 import React from 'react';
 import { useMemo } from 'react';
+import COLORS from '../../../constants/colors';
+import FONTS from '../../../constants/fonts';
+import Text from '../../contents/text';
+import IBreadcrumbProps, { BreadcrumbElement } from './props';
 
-interface BreadcrumbElement {
-    label: string;
-}
-
-interface BreadcrumbProps {
-    elements: BreadcrumbElement[];
-}
-
-export const Breadcrumb = ({ elements }: BreadcrumbProps) => {
+export const Breadcrumb = ({ elements }: IBreadcrumbProps) => {
     // Attributes
     const crumbs = useMemo(() => {
         const crumbs: BreadcrumbElement[] = [];
@@ -27,19 +23,20 @@ export const Breadcrumb = ({ elements }: BreadcrumbProps) => {
     return (
         <Stack
             direction={'row'}
-            spacing={'6px'}
-            px={'32px'}
-            py='16px'
-            borderBottom='1px solid #E7E9F4'
+            spacing={'0.375rem'}
+            px={'2rem'}
+            py='1rem'
+            borderBottom={`0.0625rem solid ${COLORS.Line.value}`}
         >
             {crumbs.map((element, index) => {
                 return (
                     <Text
                         key={index}
-                        fontWeight={500}
-                        fontSize={16}
+                        font={FONTS.T1.T16px.Medium500.value}
                         color={
-                            index < crumbs.length - 1 ? '#8F95B2' : '#393360'
+                            index < crumbs.length - 1
+                                ? COLORS.InputText.value
+                                : COLORS.Text.T400.value
                         }
                     >
                         {element.label}
