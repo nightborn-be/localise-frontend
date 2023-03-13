@@ -23,7 +23,7 @@ export default function ButtonIcon({
             onClick={handleOnClick}
             onMouseOver={updateHoverState}
             onMouseLeave={updateHoverState}
-            icon={iconComponent(isHovered)}
+            icon={iconComponent({ isHovered })}
             _hover={{ bgColor: hoverBackgroundColor }}
         />
     );

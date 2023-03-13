@@ -18,7 +18,7 @@ const props: IButtonIconProps = {
     hoverBackgroundColor: '#4C36B5',
     border: 'none',
     borderRadius: '8px',
-    iconComponent: (isHovered) => (
+    iconComponent: () => (
         <Icon name='add' stroke='white' width='16' height='16' />
     ),
     handleOnClick: () => {},
@@ -109,11 +109,11 @@ RemoveMemberSmall.args = {
     gap: '10px',
     backgroundColor: '#FFFFFF',
     hoverBackgroundColor: '#F2F4F9',
-    iconComponent: (isHovered) => (
+    iconComponent: ({ isHovered }) => (
         <Icon
             pointerEvents='none'
             name={'removeSmall'}
-            stroke={isHovered ? '#F46363' : '#8F95B2'}
+            stroke={{ isHovered } ? '#F46363' : '#8F95B2'}
         />
     ),
 };
@@ -125,11 +125,11 @@ RemoveMemberXL.args = {
     gap: '10px',
     backgroundColor: '#FFFFFF',
     hoverBackgroundColor: '#F2F4F9',
-    iconComponent: (isHovered) => (
+    iconComponent: ({ isHovered }) => (
         <Icon
             pointerEvents='none'
             name={'removeLarge'}
-            stroke={isHovered ? '#F46363' : '#8F95B2'}
+            stroke={{ isHovered } ? '#F46363' : '#8F95B2'}
         />
     ),
 };
