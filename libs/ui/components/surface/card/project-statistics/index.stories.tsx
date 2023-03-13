@@ -5,14 +5,14 @@ import ProjectStatistics from '.';
 import IProjectStatisticsProps from './props';
 
 export default {
-    title: 'Components/Surface/ProjectStatistics',
+    title: 'Components/Surface/Card/ProjectStatistics',
     component: ProjectStatistics,
 } as ComponentMeta<typeof ProjectStatistics>;
 const Template: ComponentStory<typeof KeyDetail> = (
     props: IProjectStatisticsProps,
 ) => <ProjectStatistics {...props} />;
 
-const props: IProjectStatisticsProps = {};
+const props: IProjectStatisticsProps = { value: 230, title: 'Total Key' };
 
 export const ScreenShot = Template.bind({});
-ScreenShot.args = { nbKeys: 230 };
+ScreenShot.args = { ...props };

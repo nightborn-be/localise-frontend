@@ -2,19 +2,23 @@ import { HStack } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import COLORS from '../../../constants/colors';
 import SHADOWS from '../../../constants/shadows';
-import Icon from '../../contents/icon';
+import Icon from '../icon';
 import IKeyDetailProps from './props';
 import ButtonIcon from '../../inputs/button-icon';
 import { ButtonSize } from '../../inputs/button-icon/props';
 
-export default function KeyDetail({ imageSrc }: IKeyDetailProps) {
+const KeyDetailImage = ({
+    imageSrc,
+    isSelected,
+    onSelect,
+    onRemove,
+}: IKeyDetailProps) => {
     //Attributes
     const [isHovered, setIsHovered] = useState<boolean>(false);
-    const [isSelected, setIsSelected] = useState<boolean>(false);
-    const handleToggleIsSelected = () => setIsSelected((prev) => !prev);
     // Render
     return (
         <HStack
+            position={'relative'}
             w='4rem'
             h='4rem'
             borderRadius='0.5rem'
@@ -33,15 +37,15 @@ export default function KeyDetail({ imageSrc }: IKeyDetailProps) {
             }
             onMouseOver={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
-            onClick={handleToggleIsSelected}
+            onClick={onSelect}
         >
             {isHovered && (
                 <>
                     <Icon name='eye' />
                     <ButtonIcon
                         position={'absolute'}
-                        top='0.625rem'
-                        left='3.625rem'
+                        top='-7px'
+                        right='-5px'
                         aria-label=''
                         borderRadius='100%'
                         border={`0.0625rem solid ${COLORS.Line.value}`}
@@ -49,9 +53,12 @@ export default function KeyDetail({ imageSrc }: IKeyDetailProps) {
                         backgroundColor={COLORS.White.T500.value}
                         hoverBackgroundColor={COLORS.Tag.value}
                         iconComponent={() => <Icon name='crossClose' />}
+                        handleOnClick={onRemove}
                     />
                 </>
             )}
         </HStack>
     );
-}
+};
+
+export default KeyDetailImage;

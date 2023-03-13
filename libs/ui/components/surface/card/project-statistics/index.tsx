@@ -1,11 +1,11 @@
 import { HStack, Image, VStack } from '@chakra-ui/react';
 import React from 'react';
-import COLORS from '../../../constants/colors';
-import FONTS from '../../../constants/fonts';
-import Text from '../../contents/text';
+import COLORS from '../../../../constants/colors';
+import FONTS from '../../../../constants/fonts';
+import Text from '../../../contents/text';
 import IProjectStatisticsProps from './props';
 
-export default function ProjectStatistics({ nbKeys }: IProjectStatisticsProps) {
+const ProjectStatisticCard = ({ value, title }: IProjectStatisticsProps) => {
     // Render
     return (
         <VStack
@@ -32,15 +32,17 @@ export default function ProjectStatistics({ nbKeys }: IProjectStatisticsProps) {
                     font={FONTS.T1.T14px.Medium500.value}
                     color={COLORS.Text.T400.value}
                 >
-                    Total keys
+                    {title}
                 </Text>
             </HStack>
             <Text
                 font={FONTS.T1.T28px.SemiBold600.value}
                 color={COLORS.Text.T400.value}
             >
-                {nbKeys}
+                {value}
             </Text>
         </VStack>
     );
-}
+};
+
+export default ProjectStatisticCard;
