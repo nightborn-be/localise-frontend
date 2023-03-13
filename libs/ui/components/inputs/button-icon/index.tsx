@@ -23,13 +23,12 @@ export default function ButtonIcon({
             minHeight={'1.75rem'}
             minWidth={'1.75rem'}
             onClick={handleOnClick}
+            icon={children(isHovered)}
             onMouseOver={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
             _hover={{ bgColor: hoverBackgroundColor }}
             border={border}
             borderRadius={borderRadius}
-        >
-            {children(isHovered)}
-        </IconButton>
+        />
     );
 }
