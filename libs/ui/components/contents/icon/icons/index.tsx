@@ -13,7 +13,7 @@ import Date from './date';
 import Enter from './enter';
 import UploadCloud from './uploadCloud';
 import Cross from './cross';
-import DropdownIndicator from './dropdownIndicator';
+import DropdownIndicator from './dropdownindicator';
 import { ProjectLine } from './projectLine';
 import ArrowToBottom from './arrow-to-bottom';
 import CrossClose from './cross-close';
@@ -38,8 +38,8 @@ const Icons = {
     expand: Expand,
     send: Send,
     more: More,
-    copy: CopyClipBoard,
-    copyLarge: CopyClipBoardLarge,
+    copyClipBoard: CopyClipBoard,
+    copyClipBoardLarge: CopyClipBoardLarge,
     addCircle: AddCircle,
     selectStroke: SelectStroke,
     sort: Sort,

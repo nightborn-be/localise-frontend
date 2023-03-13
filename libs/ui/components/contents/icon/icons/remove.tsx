@@ -5,7 +5,7 @@ const RemoveSmall = (props: React.SVGProps<SVGSVGElement>) => (
         {...props}
         width={props?.width ?? '16'}
         height={props?.height ?? '16'}
-        viewBox={props?.viewBox ?? '0 0 16 16'}
+        viewBox={'0 0 16 16'}
         xmlns='http://www.w3.org/2000/svg'
     >
         <path
@@ -30,7 +30,7 @@ export const RemoveLarge = (props: React.SVGProps<SVGSVGElement>) => (
         {...props}
         width={props?.width ?? '20'}
         height={props?.height ?? '20'}
-        viewBox={props?.viewBox ?? '0 0 20 20'}
+        viewBox={'0 0 20 20'}
         xmlns='http://www.w3.org/2000/svg'
     >
         <path
