@@ -1,10 +1,13 @@
-import { IconButtonProps } from '@chakra-ui/react';
+import { ButtonProps, IconButtonProps } from '@chakra-ui/react';
 import React from 'react'
-export default interface IButtonIconProps extends IconButtonProps {
+export default interface IButtonIconProps extends Omit<ButtonProps, "children"> {
     size: ButtonSize,
-    iconComponent: (isHovered: boolean) => React.ReactElement,
+    children: (isHovered: boolean) => React.ReactNode,
     hoverBackgroundColor?: string,
     handleOnClick?: () => void,
+    backgroundColor?: string,
+    border?: string,
+    borderRadius?: string
 }
 
 export enum ButtonSize {
