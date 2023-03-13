@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import IButtonIconProps, { ButtonSize } from './props';
 import Icon from '../../contents/icon';
 import ButtonIcon from '.';
-import { Box } from '@chakra-ui/react';
 
 export default {
     title: 'Components/Inputs/ButtonIcon',
@@ -19,7 +18,7 @@ const props: IButtonIconProps = {
     hoverBackgroundColor: '#4C36B5',
     border: 'none',
     borderRadius: '0.5rem',
-    displayIcon: (isHovered) => (
+    iconComponent: () => (
         <Icon name='add' stroke='white' width='16' height='16' />
     ),
     handleOnClick: () => {},
@@ -36,7 +35,7 @@ export const Large = Template.bind({});
 Large.args = {
     ...props,
     size: ButtonSize.LARGE,
-    displayIcon: () => (
+    iconComponent: () => (
         <Icon name='add' stroke='white' width='20' height='20' />
     ),
 };
@@ -44,7 +43,7 @@ export const Xl = Template.bind({});
 Xl.args = {
     ...props,
     size: ButtonSize.XL,
-    displayIcon: () => (
+    iconComponent: () => (
         <Icon name='add' stroke='white' width='20' height='20' />
     ),
 };
@@ -53,7 +52,7 @@ NoBorderNoColor.args = {
     ...props,
     backgroundColor: 'transparent',
     hoverBackgroundColor: '#EDEEFC',
-    displayIcon: () => (
+    iconComponent: () => (
         <Icon name='add' stroke='#5F43E2' width='16' height='16' />
     ),
 };
@@ -62,7 +61,7 @@ BorderNoColor.args = {
     ...props,
     hoverBackgroundColor: '#F2F4F9',
     backgroundColor: 'transparent',
-    displayIcon: () => (
+    iconComponent: () => (
         <Icon name='add' stroke='#8F95B2' width='16' height='16' />
     ),
 };
@@ -72,7 +71,7 @@ SimpleBorderNoColor.args = {
     backgroundColor: '#F8F9FC',
     border: '0.125rem solid #5F43E2',
     hoverBackgroundColor: '#EDEEFC',
-    displayIcon: () => (
+    iconComponent: () => (
         <Icon name='add' stroke='#5F43E2' width='16' height='16' />
     ),
 };
@@ -81,7 +80,7 @@ export const Trash = Template.bind({});
 Trash.args = {
     ...props,
     backgroundColor: '#F46363',
-    displayIcon: () => (
+    iconComponent: () => (
         <Icon name='trashSmall' stroke='none' fill='#FFFFFF' />
     ),
     size: ButtonSize.SMALL,
@@ -97,7 +96,7 @@ TrashNoBackground.args = {
     hoverBackgroundColor: '#F2F4F9',
     gap: '0.625rem',
     padding: '0.25rem',
-    displayIcon: () => (
+    iconComponent: () => (
         <Icon name='trashLarge' stroke='none' fill='#F46363' />
     ),
 };
@@ -110,7 +109,7 @@ RemoveMemberSmall.args = {
     gap: '0.625rem',
     backgroundColor: '#FFFFFF',
     hoverBackgroundColor: '#F2F4F9',
-    displayIcon: (isHovered) => (
+    iconComponent: (isHovered) => (
         <Icon
             pointerEvents='none'
             name={'removeSmall'}
@@ -126,7 +125,7 @@ RemoveMemberXL.args = {
     gap: '0.625rem',
     backgroundColor: '#FFFFFF',
     hoverBackgroundColor: '#F2F4F9',
-    displayIcon: (isHovered) => (
+    iconComponent: (isHovered) => (
         <Icon
             pointerEvents='none'
             name={'removeLarge'}
@@ -142,7 +141,7 @@ RemoveMenu.args = {
     gap: '0.625rem',
     backgroundColor: '#5F43E2',
     hoverBackgroundColor: '#4C36B5',
-    displayIcon: () => <Icon name='removeLarge' stroke='#FFFFFF' />,
+    iconComponent: () => <Icon name='removeLarge' stroke='#FFFFFF' />,
 };
 
 export const ArrowDown = Template.bind({});
@@ -154,7 +153,7 @@ ArrowDown.args = {
     gap: '0.625rem',
     backgroundColor: '#FFFFFF',
     hoverBackgroundColor: '#F2F4F9',
-    displayIcon: () => (
+    iconComponent: () => (
         <Icon name='arrowDown' stroke='#8F95B2' fill='#8F95B2' />
     ),
 };
@@ -166,7 +165,7 @@ ArrowUp.args = {
     gap: '0.625rem',
     backgroundColor: '#FFFFFF',
     hoverBackgroundColor: '#F2F4F9',
-    displayIcon: () => (
+    iconComponent: () => (
         <Icon name='arrowUp' fill='#8F95B2' stroke='#8F95B2' />
     ),
 };
@@ -179,7 +178,7 @@ Send.args = {
     gap: '0.25rem',
     backgroundColor: '#5F43E2',
     hoverBackgroundColor: '#4C36B5',
-    displayIcon: () => (
+    iconComponent: () => (
         <Icon name='send' fill='#FFFFFF' stroke='#FFFFFF' />
     ),
 };
@@ -192,7 +191,7 @@ Expand.args = {
     gap: '0.25rem',
     backgroundColor: '#FFFFFF',
     hoverBackgroundColor: '#F2F4F9',
-    displayIcon: () => (
+    iconComponent: () => (
         <Icon name='expand' fill='#8F95B2' stroke='#8F95B2' />
     ),
 };
@@ -205,7 +204,7 @@ More.args = {
     gap: '0.625rem',
     backgroundColor: '#FFFFFF',
     hoverBackgroundColor: '#F2F4F9',
-    displayIcon: () => (
+    iconComponent: () => (
         <Icon name='more' fill='#8F95B2' stroke='#8F95B2' />
     ),
 };
@@ -217,7 +216,7 @@ Copy.args = {
     gap: '0.625rem',
     backgroundColor: '#F8F9FC',
     hoverBackgroundColor: '#E7E9F4',
-    displayIcon: () => <Icon name='copy' fill='#8F95B2' />,
+    iconComponent: () => <Icon name='copy' fill='#8F95B2' />,
 };
 export const CircleAdd = Template.bind({});
 CircleAdd.args = {
@@ -227,7 +226,9 @@ CircleAdd.args = {
     hoverBackgroundColor: '#4C36B5',
     boxShadow:
         '0rem 0.125rem 0.25rem rgba(40, 41, 61, 0.04), 0rem 0.5rem 1rem rgba(96, 97, 112, 0.16)',
-    displayIcon: () => (
+    iconComponent: () => (
         <Icon name='addCircle' stroke='#FFFFFF' width={28} height={28} />
     ),
 };
+
+
