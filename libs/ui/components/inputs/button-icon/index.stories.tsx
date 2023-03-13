@@ -216,7 +216,7 @@ Copy.args = {
     gap: '0.625rem',
     backgroundColor: '#F8F9FC',
     hoverBackgroundColor: '#E7E9F4',
-    iconComponent: () => <Icon name='copy' fill='#8F95B2' />,
+    iconComponent: () => <Icon name='copyClipBoard' fill='#8F95B2' />,
 };
 export const CircleAdd = Template.bind({});
 CircleAdd.args = {
