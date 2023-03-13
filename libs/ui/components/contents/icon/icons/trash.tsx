@@ -6,7 +6,7 @@ export const TrashXs = (props: React.SVGProps<SVGSVGElement>) => (
     <svg
         width={props?.width ?? '12'}
         height={props?.height ?? '13'}
-        viewBox={props?.viewBox ?? '0 0 12 13'}
+        viewBox={'0 0 12 13'}
         fill='none'
         xmlns='http://www.w3.org/2000/svg'
     >
@@ -37,7 +37,7 @@ const TrashSmall = (props: React.SVGProps<SVGSVGElement>) => (
         {...props}
         width={props?.width ?? '12'}
         height={props?.height ?? '12'}
-        viewBox={props?.viewBox ?? '0 0 12 12'}
+        viewBox={'0 0 12 12'}
         xmlns='http://www.w3.org/2000/svg'
         fill={props?.fill}
     >
@@ -64,7 +64,7 @@ export const TrashLarge = (props: React.SVGProps<SVGSVGElement>) => (
         {...props}
         width={props?.width ?? '14'}
         height={props?.height ?? '14'}
-        viewBox={props?.viewBox ?? '0 0 14 14'}
+        viewBox={'0 0 14 14'}
         fill='none'
         xmlns='http://www.w3.org/2000/svg'
     >
