@@ -1,6 +1,6 @@
 import React from 'react';
 
-const UnChecked = (props: React.SVGProps<SVGSVGElement>) => (
+const CheckboxOff = (props: React.SVGProps<SVGSVGElement>) => (
     <svg
         width={props?.width ?? '16'}
         height={props?.height ?? '16'}
@@ -19,4 +19,4 @@ const UnChecked = (props: React.SVGProps<SVGSVGElement>) => (
     </svg>
 );
 
-export default UnChecked;
+export default CheckboxOff;

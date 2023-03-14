@@ -1,12 +1,6 @@
-import React from 'react'
-import { Font } from '../../../constants/fonts';
-export default interface SidebarMenuSettingProps {
-    text?: string,
-    textFont?: Font,
-    textColor?: string,
-    w?: string,
-    h?: string,
-    hoverBackgroundColor?: string
-    marginLeftText?: string
+import { Options } from './types'
+export default interface SidebarMenuSettingProps<T> {
+    options?: Array<Options<T>>,
+    value?: T,
+    onChange?: (value: T) => void
 }
-

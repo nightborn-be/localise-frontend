@@ -36,12 +36,3 @@ ActualOrganisation.args = {
     ),
     endEnhancer: <Icon name='editorialArrow' />,
 };
-export const SideBarOrganisation = Template.bind({});
-SideBarOrganisation.args = {
-    ...props,
-    startEnhancer: (
-        <Image src='/assets/images/nightbornOrganisation.png' alt='nightborn' />
-    ),
-    endEnhancer: <Icon name='checked' />,
-    canBeSelected: true,
-};
