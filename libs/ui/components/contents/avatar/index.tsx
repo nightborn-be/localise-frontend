@@ -5,7 +5,7 @@ import COLORS from '../../../constants/colors';
 import Text from '../text';
 import FONTS from '../../../constants/fonts';
 
-export default function Avatar({ text, imageSrc }: ITooltipProps) {
+export default function Avatar({ name, imageSrc }: ITooltipProps) {
     // Render
     return (
         <>
@@ -33,7 +33,7 @@ export default function Avatar({ text, imageSrc }: ITooltipProps) {
                         font={FONTS.T1.T10px.SemiBold600.value}
                         color={COLORS.InputText.value}
                     >
-                        {text}
+                        {name}
                     </Text>
                 </HStack>
             )}

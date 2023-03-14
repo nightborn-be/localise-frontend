@@ -1,5 +1,5 @@
 
 export default interface IAvatarProps {
-    text?: string,
+    name?: string,
     imageSrc?: string,
 }

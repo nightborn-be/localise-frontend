@@ -1,5 +1,5 @@
-import * as nextImage from 'next/image';
-Object.defineProperty(nextImage, 'default', {
+import { Image } from '@chakra-ui/react';
+Object.defineProperty(Image, 'default', {
   configurable: true, value: props => <img {...props} />
 });
 export const parameters = {
