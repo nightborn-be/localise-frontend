@@ -18,7 +18,7 @@ const props: IButtonIconProps = {
     hoverBackgroundColor: '#4C36B5',
     border: 'none',
     borderRadius: '0.5rem',
-    children: () => <Icon name='add' stroke='white' width='16' height='16' />,
+    children: <Icon name='add' stroke='white' width='16' height='16' />,
     handleOnClick: () => {},
 };
 
@@ -32,27 +32,27 @@ export const Large = Template.bind({});
 Large.args = {
     ...props,
     size: ButtonSize.LARGE,
-    children: () => <Icon name='add' stroke='white' width='20' height='20' />,
+    children: <Icon name='add' stroke='white' width='20' height='20' />,
 };
 export const Xl = Template.bind({});
 Xl.args = {
     ...props,
     size: ButtonSize.XL,
-    children: () => <Icon name='add' stroke='white' width='20' height='20' />,
+    children: <Icon name='add' stroke='white' width='20' height='20' />,
 };
 export const NoBorderNoColor = Template.bind({});
 NoBorderNoColor.args = {
     ...props,
     backgroundColor: 'transparent',
     hoverBackgroundColor: '#EDEEFC',
-    children: () => <Icon name='add' stroke='#5F43E2' width='16' height='16' />,
+    children: <Icon name='add' stroke='#5F43E2' width='16' height='16' />,
 };
 export const BorderNoColor = Template.bind({});
 BorderNoColor.args = {
     ...props,
     hoverBackgroundColor: '#F2F4F9',
     backgroundColor: 'transparent',
-    children: () => <Icon name='add' stroke='#8F95B2' width='16' height='16' />,
+    children: <Icon name='add' stroke='#8F95B2' width='16' height='16' />,
 };
 export const SimpleBorderNoColor = Template.bind({});
 SimpleBorderNoColor.args = {
@@ -60,14 +60,14 @@ SimpleBorderNoColor.args = {
     backgroundColor: '#F8F9FC',
     border: '0.125rem solid #5F43E2',
     hoverBackgroundColor: '#EDEEFC',
-    children: () => <Icon name='add' stroke='#5F43E2' width='16' height='16' />,
+    children: <Icon name='add' stroke='#5F43E2' width='16' height='16' />,
 };
 
 export const Trash = Template.bind({});
 Trash.args = {
     ...props,
     backgroundColor: '#F46363',
-    children: () => <Icon name='trashSmall' stroke='none' fill='#FFFFFF' />,
+    children: <Icon name='trashSmall' stroke='none' fill='#FFFFFF' />,
     size: ButtonSize.SMALL,
     hoverBackgroundColor: '#E55252',
     padding: '0.25rem',
@@ -81,7 +81,7 @@ TrashNoBackground.args = {
     hoverBackgroundColor: '#F2F4F9',
     gap: '0.625rem',
     padding: '0.25rem',
-    children: () => <Icon name='trashLarge' stroke='none' fill='#F46363' />,
+    children: <Icon name='trashLarge' stroke='none' fill='#F46363' />,
 };
 
 export const RemoveMemberSmall = Template.bind({});
@@ -124,7 +124,7 @@ RemoveMenu.args = {
     gap: '0.625rem',
     backgroundColor: '#5F43E2',
     hoverBackgroundColor: '#4C36B5',
-    children: () => <Icon name='removeLarge' stroke='#FFFFFF' />,
+    children: <Icon name='removeLarge' stroke='#FFFFFF' />,
 };
 
 export const ArrowDown = Template.bind({});
@@ -136,7 +136,7 @@ ArrowDown.args = {
     gap: '0.625rem',
     backgroundColor: '#FFFFFF',
     hoverBackgroundColor: '#F2F4F9',
-    children: () => <Icon name='arrowDown' stroke='#8F95B2' fill='#8F95B2' />,
+    children: <Icon name='arrowDown' stroke='#8F95B2' fill='#8F95B2' />,
 };
 export const ArrowUp = Template.bind({});
 ArrowUp.args = {
@@ -146,7 +146,7 @@ ArrowUp.args = {
     gap: '0.625rem',
     backgroundColor: '#FFFFFF',
     hoverBackgroundColor: '#F2F4F9',
-    children: () => <Icon name='arrowUp' fill='#8F95B2' stroke='#8F95B2' />,
+    children: <Icon name='arrowUp' fill='#8F95B2' stroke='#8F95B2' />,
 };
 
 export const Send = Template.bind({});
@@ -157,7 +157,7 @@ Send.args = {
     gap: '0.25rem',
     backgroundColor: '#5F43E2',
     hoverBackgroundColor: '#4C36B5',
-    children: () => <Icon name='send' fill='#FFFFFF' stroke='#FFFFFF' />,
+    children: <Icon name='send' fill='#FFFFFF' stroke='#FFFFFF' />,
 };
 
 export const Expand = Template.bind({});
@@ -168,7 +168,7 @@ Expand.args = {
     gap: '0.25rem',
     backgroundColor: '#FFFFFF',
     hoverBackgroundColor: '#F2F4F9',
-    children: () => <Icon name='expand' fill='#8F95B2' stroke='#8F95B2' />,
+    children: <Icon name='expand' fill='#8F95B2' stroke='#8F95B2' />,
 };
 
 export const More = Template.bind({});
@@ -179,7 +179,7 @@ More.args = {
     gap: '0.625rem',
     backgroundColor: '#FFFFFF',
     hoverBackgroundColor: '#F2F4F9',
-    children: () => <Icon name='more' fill='#8F95B2' stroke='#8F95B2' />,
+    children: <Icon name='more' fill='#8F95B2' stroke='#8F95B2' />,
 };
 export const Copy = Template.bind({});
 Copy.args = {
@@ -189,7 +189,7 @@ Copy.args = {
     gap: '0.625rem',
     backgroundColor: '#F8F9FC',
     hoverBackgroundColor: '#E7E9F4',
-    children: () => <Icon name='copyClipBoard' fill='#8F95B2' />,
+    children: <Icon name='copyClipBoard' fill='#8F95B2' />,
 };
 export const CircleAdd = Template.bind({});
 CircleAdd.args = {
@@ -199,9 +199,7 @@ CircleAdd.args = {
     hoverBackgroundColor: '#4C36B5',
     boxShadow:
         '0rem 0.125rem 0.25rem rgba(40, 41, 61, 0.04), 0rem 0.5rem 1rem rgba(96, 97, 112, 0.16)',
-    children: () => (
-        <Icon name='addCircle' stroke='#FFFFFF' width={28} height={28} />
-    ),
+    children: <Icon name='addCircle' stroke='#FFFFFF' width={28} height={28} />,
 };
 
 
