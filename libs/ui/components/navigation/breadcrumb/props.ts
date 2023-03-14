@@ -1,7 +1,5 @@
-export interface BreadcrumbElement {
-    label: string;
-}
+import { IBreadcrumbElement } from "./types";
 
 export default interface IBreadcrumbProps {
-    elements: BreadcrumbElement[];
+    elements: IBreadcrumbElement[];
 }

@@ -5,9 +5,9 @@ import InputSelect from '../input-select';
 import IInputSelectAndInputProps from './props';
 import Input from '../input';
 import ButtonIcon from '../button-icon';
-import { ButtonSize } from '../button-icon/props';
 import { motion } from 'framer-motion';
 import InputLabel from '../input-label';
+import { ButtonSize } from '../button-icon/types';
 
 export default function InputSelectAndInput<T>({
     selectProps,
