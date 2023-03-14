@@ -12,7 +12,7 @@ const Template: ComponentStory<typeof Avatar> = (props: IAvatarProps) => (
 
 export const AvatarText = Template.bind({});
 AvatarText.args = {
-    text: 'PD',
+    name: 'PD',
 };
 
 export const AvatarPicture = Template.bind({});
