@@ -1,8 +1,9 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import IButtonIconProps, { ButtonSize } from './props';
+import IButtonIconProps from './props';
 import Icon from '../../contents/icon';
 import ButtonIcon from '.';
+import { ButtonSize } from './types';
 
 export default {
     title: 'Components/Inputs/ButtonIcon',
@@ -113,7 +114,7 @@ RemoveMemberSmall.args = {
         <Icon
             pointerEvents='none'
             name={'removeSmall'}
-            stroke={{ isHovered } ? '#F46363' : '#8F95B2'}
+            stroke={isHovered ? '#F46363' : '#8F95B2'}
         />
     ),
 };
@@ -129,7 +130,7 @@ RemoveMemberXL.args = {
         <Icon
             pointerEvents='none'
             name={'removeLarge'}
-            stroke={{ isHovered } ? '#F46363' : '#8F95B2'}
+            stroke={isHovered ? '#F46363' : '#8F95B2'}
         />
     ),
 };

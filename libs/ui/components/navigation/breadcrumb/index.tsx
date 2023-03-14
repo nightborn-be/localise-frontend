@@ -4,12 +4,13 @@ import { useMemo } from 'react';
 import COLORS from '../../../constants/colors';
 import FONTS from '../../../constants/fonts';
 import Text from '../../contents/text';
-import IBreadcrumbProps, { BreadcrumbElement } from './props';
+import IBreadcrumbProps from './props';
+import { IBreadcrumbElement } from './types';
 
 export const Breadcrumb = ({ elements }: IBreadcrumbProps) => {
     // Attributes
     const crumbs = useMemo(() => {
-        const crumbs: BreadcrumbElement[] = [];
+        const crumbs: IBreadcrumbElement[] = [];
         elements.forEach((value, index) => {
             crumbs.push(value);
             if (index < elements.length - 1) {

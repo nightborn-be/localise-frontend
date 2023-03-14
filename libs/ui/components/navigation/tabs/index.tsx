@@ -15,7 +15,7 @@ const Tabs = ({ children, activeKey, onChange }: ITabsProps): JSX.Element => {
 
                 return React.cloneElement(child, {
                     key,
-                    active: key === activeKey,
+                    isActive: key === activeKey,
                     onSelect: () => onChange?.(key),
                     children: child.props.title,
                 });
