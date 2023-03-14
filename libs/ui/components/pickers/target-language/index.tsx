@@ -16,7 +16,7 @@ export default function TargetLanguage() {
             <VStack
                 alignItems={'left'}
                 padding={'0.25rem 0.375rem 0.5rem'}
-                overflowY="scroll"
+                overflowY='scroll'
                 gap='0.5rem'
                 width='34.375rem'
                 maxH={'11.75rem'}
@@ -29,7 +29,7 @@ export default function TargetLanguage() {
                 {languages.map((lang, i) => (
                     <SidebarProject
                         key={i}
-                        startEnhancer={<Icon name='unChecked' />}
+                        startEnhancer={<Icon name='checkboxOff' />}
                         showNotification={false}
                         isCheckbox={true}
                         marginLeftText='0.75rem'

@@ -14,5 +14,6 @@ export default interface SidebarOrganisationProps extends ChakraProps {
     canBeSelected?: boolean,
     w?: string,
     h?: string,
+    onClick?: () => void,
 }
 

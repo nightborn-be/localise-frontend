@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { HStack } from '@chakra-ui/react';
 import COLORS from '../../../constants/colors';
 import ProjectColorPickerProps from './props';
-import { ColorButton } from './color-button';
+import { ColorPicker } from './color-picker';
 
 export default function ProjectColorPicker({}: ProjectColorPickerProps) {
     //Attributes
@@ -35,7 +35,14 @@ export default function ProjectColorPicker({}: ProjectColorPickerProps) {
                 boxShadow='0rem 0.125rem 0.5rem rgba(40, 41, 61, 0.04), 0rem 1.625rem 2.125rem rgba(96, 97, 112, 0.06)'
             >
                 {colors.map((color, i) => (
-                    <ColorButton key={i} setCurrentSelectedColor={setCurrentSelectedColor} isSelected={currentSelectedColor === color ? true : false} color={color}/>
+                    <ColorPicker
+                        key={i}
+                        setCurrentSelectedColor={setCurrentSelectedColor}
+                        isSelected={
+                            currentSelectedColor === color ? true : false
+                        }
+                        color={color}
+                    />
                 ))}
             </HStack>
         </>

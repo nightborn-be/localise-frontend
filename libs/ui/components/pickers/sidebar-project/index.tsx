@@ -30,7 +30,7 @@ export default function SidebarProject({
     const startEnhancerPicker = () => {
         if (startEnhancer)
             if (isSelected)
-                if (isCheckbox) return <Icon name='checkboxChecked' />;
+                if (isCheckbox) return <Icon name='checkboxOn' />;
                 else
                     return cloneElement(startEnhancer, {
                         fill: COLORS.White.T500.value,

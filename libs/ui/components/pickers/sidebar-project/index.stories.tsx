@@ -130,7 +130,7 @@ SortByDate.args = {
 export const SortByChecked = Template.bind({});
 SortByChecked.args = {
     ...props,
-    startEnhancer: <Icon name='unChecked' />,
+    startEnhancer: <Icon name='checkboxOff' />,
     showNotification: false,
     isCheckbox: true,
     marginLeftText: '0.75rem',

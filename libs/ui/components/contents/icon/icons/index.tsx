@@ -16,12 +16,12 @@ import Cross from './cross';
 import Section from './section';
 import EditorialArrow from './editorial-arrow';
 import SortName from './sort-name';
-import UnChecked from './unchecked';
 import Checked from './checked';
 import Edit from './edit';
-import CheckboxChecked from './checkbox-checked';
 import CheckedColor from './checked-color';
 import DropdownIndicator from './dropdownIndicator';
+import CheckboxOn from './checkboxOn';
+import CheckboxOff from './checkboxOff';
 
 const Icons = {
     add: Add,
@@ -49,8 +49,8 @@ const Icons = {
     editorialArrow: EditorialArrow,
     sortName: SortName,
     checked: Checked,
-    checkboxChecked: CheckboxChecked,
-    unChecked: UnChecked,
+    checkboxOn: CheckboxOn,
+    checkboxOff: CheckboxOff,
     edit: Edit,
     checkedColor: CheckedColor,
     dropdownIndicator: DropdownIndicator,

@@ -1,19 +1,23 @@
-import React, { useState  } from 'react';
+import React, { useState } from 'react';
 import { Box } from '@chakra-ui/react';
 import Icon from '../../../contents/icon';
-import ColorButtonProps from './props';
+import ColorPickerProps from './props';
 
-export const ColorButton = ({ color, isSelected, setCurrentSelectedColor } : ColorButtonProps) => {
-    //Attributes
+export const ColorPicker = ({
+    color,
+    isSelected,
+    setCurrentSelectedColor,
+}: ColorPickerProps) => {
+    // Attributes
     const [isHovered, setIsHovered] = useState(false);
-    
-    //Functions
-    const opacityValue = () : string=> {
+
+    // Functions
+    const opacityValue = (): string => {
         if (isSelected) return '1';
         if (isHovered) return '0.5';
         return '0';
     };
-    //Render
+    // Render
     return (
         <Box
             w='0.875rem'
