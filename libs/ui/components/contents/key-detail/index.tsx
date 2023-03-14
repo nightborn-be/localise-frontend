@@ -44,17 +44,18 @@ const KeyDetailImage = ({
                     <Icon name='eye' />
                     <ButtonIcon
                         position={'absolute'}
-                        top='-7px'
-                        right='-5px'
+                        top='-0.4375rem'
+                        right='-0.3125rem'
                         aria-label=''
                         borderRadius='100%'
                         border={`0.0625rem solid ${COLORS.Line.value}`}
                         size={ButtonSize.XXS}
                         backgroundColor={COLORS.White.T500.value}
                         hoverBackgroundColor={COLORS.Tag.value}
-                        iconComponent={() => <Icon name='crossClose' />}
                         handleOnClick={onRemove}
-                    />
+                    >
+                        <Icon name='crossClose' />
+                    </ButtonIcon>
                 </>
             )}
         </HStack>
