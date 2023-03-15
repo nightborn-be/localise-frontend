@@ -4,11 +4,11 @@ import COLORS from '../../../constants/colors';
 import FONTS from '../../../constants/fonts';
 import SearchbarProps from './props';
 import Icon from '../../contents/icon';
-export default function Searchbar({
+const Searchbar = <T extends object>({
     type = 'text',
     placeholderColor = COLORS.InputText.value,
     border = `1px solid ${COLORS.Line.value}`,
-    placeholder = 'Search for a project',
+    placeholder,
     h,
     w,
     alignItems = 'left',
@@ -18,13 +18,11 @@ export default function Searchbar({
     padding,
     marginLeftElement = '10px',
     backgroundColor = COLORS.BG.value,
-    leftIcon = <Icon name='search' />,
-    leftIconWidth = '16px',
+    value,
+    onChange,
     ...props
-}: SearchbarProps) {
-    //Attributes
-    const [searchValue, setSearchValue] = useState<string>('');
-    //Render
+}: SearchbarProps) => {
+    // Render
     return (
         <HStack w={w} h={h} minWidth={w} minHeight={h}>
             <InputGroup
@@ -40,13 +38,13 @@ export default function Searchbar({
             >
                 {/* Left input icon */}
                 <InputLeftElement
-                    w={leftIconWidth}
+                    w={'16px'}
                     h={h}
                     ml={'10px'}
                     justifyContent={'center'}
                     alignItems={'center'}
                 >
-                    {leftIcon}
+                    <Icon name='search' />
                 </InputLeftElement>
 
                 {/* Searchbar */}
@@ -54,7 +52,8 @@ export default function Searchbar({
                     type={type}
                     {...FONTS.T1.T12px.Regular400.value}
                     color={COLORS.Text.T400.value}
-                    onChange={(obj) => setSearchValue(obj.target.value)}
+                    onChange={onChange}
+                    value={value}
                     w={w}
                     minW={w}
                     placeholder={placeholder}
@@ -67,4 +66,6 @@ export default function Searchbar({
             </InputGroup>
         </HStack>
     );
-}
+};
+
+export default Searchbar;

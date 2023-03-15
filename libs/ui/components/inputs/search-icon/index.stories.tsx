@@ -1,29 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import COLORS from '../../../constants/colors';
-import SearchIcon from '.';
-import SearchIconProps from './props';
+import SearchInput from '.';
+import SearchInputProps from './props';
 
 export default {
-    title: 'Components/Inputs/SearchIcon',
-    component: SearchIcon,
+    title: 'Components/Inputs/SearchInput',
+    component: SearchInput,
     argTypes: {
         backgroundColor: { control: 'color' },
     },
-} as ComponentMeta<typeof SearchIcon>;
+} as ComponentMeta<typeof SearchInput>;
 
-const Template: ComponentStory<typeof SearchIcon> = (args) => (
-    <SearchIcon {...args} />
-);
-const props: SearchIconProps = {
+const Template: ComponentStory<typeof SearchInput> = (args) => {
+    const [value, setValue] = useState<string>('');
+    return (
+        <SearchInput
+            {...args}
+            value={value}
+            onChange={(value) => setValue(value.target.value)}
+        />
+    );
+};
+const props: SearchInputProps = {
     color: COLORS.Text.T400.value,
-    w: '228px',
-    h: '32px',
     padding: '4px 10px',
     gap: '8px',
     background: COLORS.White.T500.value,
     placeholderColor: COLORS.InputText.value,
     borderRadius: '6px',
+    placeholder: 'Type to search...',
 };
 
 export const SideBar = Template.bind({});

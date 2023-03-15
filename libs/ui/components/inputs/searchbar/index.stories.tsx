@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import COLORS from '../../../constants/colors';
 import Searchbar from '.';
@@ -12,9 +12,16 @@ export default {
     },
 } as ComponentMeta<typeof Searchbar>;
 
-const Template: ComponentStory<typeof Searchbar> = (args) => (
-    <Searchbar {...args} />
-);
+const Template: ComponentStory<typeof Searchbar> = (args) => {
+    const [value, setValue] = useState<string>('');
+    return (
+        <Searchbar
+            {...args}
+            value={value}
+            onChange={(value) => setValue(value.target.value)}
+        />
+    );
+};
 const props: SearchbarProps = {
     color: COLORS.Text.T400.value,
     w: '228px',
@@ -30,8 +37,8 @@ const props: SearchbarProps = {
 export const SideBar = Template.bind({});
 SideBar.args = { ...props };
 
-export const AddProjeect = Template.bind({});
-AddProjeect.args = {
+export const AddProject = Template.bind({});
+AddProject.args = {
     ...props,
     w: '550px',
     h: '40px',

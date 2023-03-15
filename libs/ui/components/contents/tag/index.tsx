@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { HStack } from '@chakra-ui/react';
 import COLORS from '../../../constants/colors';
-import Text from '../../contents/text';
-import TagProps from './props';
-import ButtonIcon from '../button-icon';
-import Icon from '../../contents/icon';
-import { ButtonSize } from '../button-icon/props';
+import Text from '../text';
+import ITagProps from './props';
+import ButtonIcon from '../../inputs/button-icon';
+import Icon from '../icon';
+import { ButtonSize } from '../../inputs/button-icon/props';
 export default function Tag({
     h = '28px',
     w = 'fit-content',
@@ -16,8 +16,8 @@ export default function Tag({
     font,
     value,
     color = COLORS.Text.T400.value,
-    onClick,
-}: TagProps) {
+    onDelete,
+}: ITagProps) {
     //Attributes
     const [isHovered, setIsHovered] = useState<boolean>(false);
     //Render
@@ -45,7 +45,7 @@ export default function Tag({
                     size={ButtonSize.XXS}
                     backgroundColor={COLORS.Text.T400.value}
                     displayIcon={() => <Icon name='union' />}
-                    handleOnClick={onClick}
+                    handleOnClick={onDelete}
                 />
             )}
         </HStack>
