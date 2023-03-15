@@ -31,7 +31,7 @@ export default function InputSelect({
     textOptionColor = COLORS.Text.T400.value,
     borderRadiusOption = '0.25rem',
     borderRadius = '0.5rem',
-    dropDownIndicator,
+    dropdownIndicator,
     paddingRight,
     paddingLeft,
     menuOptionWidth,
@@ -89,7 +89,7 @@ export default function InputSelect({
                         DropdownIndicator: (props) => (
                             <DropdownIndicator
                                 props={props}
-                                dropDownIndicator={dropDownIndicator}
+                                dropdownIndicator={dropdownIndicator}
                             />
                         ),
                         Option: (props) => (
