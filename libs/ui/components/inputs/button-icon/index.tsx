@@ -6,24 +6,23 @@ export default function ButtonIcon({
     size,
     hoverBackgroundColor,
     handleOnClick,
-    displayIcon,
+    iconComponent,
     ...props
 }: IButtonIconProps) {
     //Attributes
     const [isHovered, setIsHovered] = useState<boolean>(false);
-    const updateHoverState = () => setIsHovered((prev) => !prev);
     // Render
     return (
         <IconButton
             {...props}
             width={size}
             height={size}
-            minHeight={size}
-            minWidth={size}
+            minHeight={'1.75rem'}
+            minWidth={'1.75rem'}
             onClick={handleOnClick}
-            onMouseOver={updateHoverState}
-            onMouseLeave={updateHoverState}
-            icon={displayIcon && displayIcon(isHovered)}
+            onMouseOver={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+            icon={iconComponent(isHovered)}
             _hover={{ bgColor: hoverBackgroundColor }}
         />
     );

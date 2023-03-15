@@ -7,21 +7,19 @@ import {
     VStack,
 } from '@chakra-ui/react';
 import COLORS from '../../../constants/colors';
-import Text from '../../contents/text';
-import FONTS from '../../../constants/fonts';
 import * as CSS from 'csstype';
+import InputLabel from '../input-label';
 export default function Input<T>({
     type = 'text',
     color = COLORS.Text.T500.value,
     label,
     description,
-    labelColor = COLORS.Text.T500.value,
-    descriptionColor = COLORS.InputText.value,
     border = `1px solid ${COLORS.Stroke.value}`,
     placeholderColor = COLORS.InputText.value,
     placeholder,
     h,
     w,
+    maxWidth,
     errorBorder = `1px solid ${COLORS.Negative.value}`,
     font,
     hoverBorder,
@@ -31,18 +29,16 @@ export default function Input<T>({
     isValid = true,
     focusBorderColor,
     marginTop,
-    paddingInlineStart,
-    paddingInlineEnd,
     padding,
     gap,
+    zIndex,
     ...props
 }: IInputProps<T>) {
     //Attributes
-    const textProps = { lineHeight: font?.lineHeight, margin: 0 };
     const [visibility, setVisibility] =
         useState<CSS.Property.Visibility>('hidden');
 
-    //function
+    //Function
     const handleToggleVisibility = () => {
         if (visibility === 'hidden') setVisibility('visible');
         if (visibility === 'visible') setVisibility('hidden');
@@ -57,35 +53,22 @@ export default function Input<T>({
         }
         return border;
     };
-
     // Render
     return (
         <>
             <VStack
                 direction='column'
-                spacing='4px'
+                spacing='0.25rem'
                 h={h}
                 w={w}
+                maxWidth={maxWidth}
                 alignItems={alignItems}
+                zIndex={zIndex}
             >
-                {label && (
-                    <Text
-                        {...textProps}
-                        font={FONTS.T1.T12px.Medium500.value}
-                        color={labelColor}
-                    >
-                        {label}
-                    </Text>
-                )}
-                {description && (
-                    <Text
-                        {...textProps}
-                        font={FONTS.T1.T12px.Regular400.value}
-                        color={descriptionColor}
-                    >
-                        {description}
-                    </Text>
-                )}
+                {/* Input label section */}
+                <InputLabel label={label} description={description} />
+
+                {/* Input field section */}
                 <InputGroup>
                     <ChakraInput
                         padding={padding}
@@ -119,15 +102,15 @@ export default function Input<T>({
                         onFocus={handleToggleVisibility}
                         onBlur={handleToggleVisibility}
                         pr={paddingRight ?? '4px'}
-                        paddingInlineStart={paddingInlineStart ?? 0}
-                        paddingInlineEnd={paddingInlineEnd ?? 0}
+                        paddingInlineStart={'0px'}
+                        paddingInlineEnd={'0px'}
                         onKeyDown={(event) =>
                             event.key === 'Enter'
                                 ? event.currentTarget.blur()
                                 : ''
                         }
                     />
-                    <InputRightElement visibility={visibility} mr={'8px'}>
+                    <InputRightElement visibility={visibility} mr={'0.5rem'}>
                         {rightElement}
                     </InputRightElement>
                 </InputGroup>
