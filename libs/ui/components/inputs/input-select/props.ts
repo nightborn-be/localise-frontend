@@ -19,6 +19,7 @@ export default interface IInputSelectProps extends InputProps {
     menuRightOption?: string,
     menuLeftOption?: string,
     selectMarginLeft?: string
+    isMultiple?: boolean
 }
 
 export type Options = {
