@@ -21,12 +21,12 @@ const Template: ComponentStory<typeof Input> = (props: IInputProps<test>) => (
 const props: IInputProps<test> = {
     name: 'name',
     placeholder: 'Insert text',
-    h: '40px',
-    w: '327px',
-    padding: '12px',
+    h: '2.5rem',
+    w: '20.4375rem',
+    padding: '0.75rem',
     font: FONTS.T1.T12px.Regular400.value,
-    gap: '8px',
-    marginTop: '3px',
+    gap: '0.5rem',
+    marginTop: '0.1875rem',
     value: null,
     onChange: () => {},
 };
@@ -100,23 +100,23 @@ PasswordIsInvalidInput.args = {
 export const RightElementInput = Template.bind({});
 RightElementInput.args = {
     color: COLORS.Text.T500.value,
-    border: '1px solid transparent',
-    padding: '8px',
-    gap: '12px',
-    w: '412px',
+    border: '0.0625rem solid transparent',
+    padding: '0.5rem',
+    gap: '0.75rem',
+    w: '25.75rem',
     h: '32x',
     font: FONTS.T1.T14px.SemiBold600,
     placeHolder: 'Text',
-    paddingRight: '50px',
+    paddingRight: '3.125rem',
     focusBorderColor: `${COLORS.Stroke.value}`,
-    hoverBorder: `1px solid ${COLORS.Stroke.value}`,
+    hoverBorder: `0.0625rem solid ${COLORS.Stroke.value}`,
     rightElement: (
         <>
             <Icon name='enter' />
             <Text
-                ml={'2px'}
+                ml={'0.125rem'}
                 color={COLORS.InputText.value}
-                lineHeight={'12px'}
+                lineHeight={'0.75rem'}
                 font={FONTS.T1.T10px.SemiBold600.value}
             >
                 Enter

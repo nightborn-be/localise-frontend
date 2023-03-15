@@ -4,7 +4,7 @@ const ArrowDown = (props: React.SVGProps<SVGSVGElement>) => (
         {...props}
         width={props?.width ?? '10'}
         height={props?.height ?? '10'}
-        viewBox={props?.viewBox ?? '0 0 10 10'}
+        viewBox={'0 0 10 10'}
         xmlns='http://www.w3.org/2000/svg'
     >
         <g clipPath='url(#clip0_4683_2003)'>
