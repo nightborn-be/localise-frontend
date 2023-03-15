@@ -3,7 +3,8 @@ import { Box } from '@chakra-ui/react';
 import { components } from 'react-select';
 import COLORS from '../../../../constants/colors';
 import Icon from '../../../contents/icon';
-const Option = ({ props, isMultiple }) => {
+import { IOptionProps } from './props';
+const Option = ({ props, isMultiple }: IOptionProps) => {
     // Render
     return (
         <components.Option {...props}>

@@ -1,9 +1,13 @@
 import React from 'react';
 import { components } from 'react-select';
-const DropdownIndicator = ({ props, dropDownIndicator }) => {
+import { IDropwdownIndicatorProps } from './props';
+const DropdownIndicator = ({
+    props,
+    dropdownIndicator,
+}: IDropwdownIndicatorProps) => {
     return (
         <components.DropdownIndicator {...props}>
-            {dropDownIndicator}
+            {dropdownIndicator}
         </components.DropdownIndicator>
     );
 };
