@@ -9,5 +9,7 @@ export default interface ToggleProps {
     h?: string
     padding?: string
     gap?: string
+    isChecked?: boolean,
+    toggleChecked?: () => void
 }
 
