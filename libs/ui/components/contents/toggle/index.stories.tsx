@@ -5,7 +5,7 @@ import Toggle from '.';
 import ToggleProps from './props';
 
 export default {
-    title: 'Components/Sidebars/Toggle',
+    title: 'Components/Contents/Toggle',
     component: Toggle,
 } as ComponentMeta<typeof Toggle>;
 const Template: ComponentStory<typeof Toggle> = (props: ToggleProps) => (

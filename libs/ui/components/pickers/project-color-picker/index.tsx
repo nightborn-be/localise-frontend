@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import { HStack } from '@chakra-ui/react';
 import COLORS from '../../../constants/colors';
-import ProjectColorPickerProps from './props';
+import { IProjectColorPickerProps } from './props';
 import { ColorPicker } from './color-picker';
 
-export default function ProjectColorPicker({}: ProjectColorPickerProps) {
-    //Attributes
-    const [colors, setColors] = useState([
+export default function ProjectColorPicker({
+    onSelect,
+    selected,
+}: IProjectColorPickerProps) {
+    // Attributes
+    const colors = [
         COLORS.Localize.Purple.T500.value,
         COLORS.Success.T500.value,
         COLORS.Warning.T500.value,
@@ -14,11 +17,10 @@ export default function ProjectColorPicker({}: ProjectColorPickerProps) {
         COLORS.Social.FacebookBlue.value,
         COLORS.Bancontact.Payconiq.value,
         COLORS.Visa.Yellow.value,
-        "#DF73FF"
-    ]);
-    const [currentSelectedColor, setCurrentSelectedColor] = useState<string>()
-    
-    //Render
+        '#DF73FF',
+    ];
+
+    // Render
     return (
         <>
             <HStack
@@ -37,10 +39,8 @@ export default function ProjectColorPicker({}: ProjectColorPickerProps) {
                 {colors.map((color, i) => (
                     <ColorPicker
                         key={i}
-                        setCurrentSelectedColor={setCurrentSelectedColor}
-                        isSelected={
-                            currentSelectedColor === color ? true : false
-                        }
+                        onSelect={onSelect}
+                        isSelected={selected === color}
                         color={color}
                     />
                 ))}

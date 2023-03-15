@@ -5,7 +5,7 @@ import SidebarMenuSettingProps from './props';
 import { MenuItemValue } from './types';
 
 export default {
-    title: 'Components/Sidebars/SidebarMenuSetting',
+    title: 'Components/Navigation/SidebarMenuSetting',
     component: SidebarMenuSetting,
 } as ComponentMeta<typeof SidebarMenuSetting>;
 const Template: ComponentStory<

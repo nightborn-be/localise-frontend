@@ -1,6 +1,6 @@
 import React from 'react'
-export default interface ColorPickerProps {
+export interface IColorPickerProps {
     isSelected: boolean,
     color: string,
-    setCurrentSelectedColor: (color: string) => void
+    onSelect: (color: string) => void
 }
