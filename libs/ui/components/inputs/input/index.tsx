@@ -58,7 +58,7 @@ export default function Input<T>({
         <>
             <VStack
                 direction='column'
-                spacing='4px'
+                spacing='0.25rem'
                 h={h}
                 w={w}
                 maxWidth={maxWidth}
@@ -110,7 +110,7 @@ export default function Input<T>({
                                 : ''
                         }
                     />
-                    <InputRightElement visibility={visibility} mr={'8px'}>
+                    <InputRightElement visibility={visibility} mr={'0.5rem'}>
                         {rightElement}
                     </InputRightElement>
                 </InputGroup>

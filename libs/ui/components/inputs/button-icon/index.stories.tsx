@@ -18,8 +18,8 @@ const props: IButtonIconProps = {
     backgroundColor: '#5F43E2',
     hoverBackgroundColor: '#4C36B5',
     border: 'none',
-    borderRadius: '8px',
-    iconComponent: (isHovered) => (
+    borderRadius: '0.5rem',
+    iconComponent: () => (
         <Icon name='add' stroke='white' width='16' height='16' />
     ),
     handleOnClick: () => {},
@@ -70,7 +70,7 @@ export const SimpleBorderNoColor = Template.bind({});
 SimpleBorderNoColor.args = {
     ...props,
     backgroundColor: '#F8F9FC',
-    border: '2px solid #5F43E2',
+    border: '0.125rem solid #5F43E2',
     hoverBackgroundColor: '#EDEEFC',
     iconComponent: () => (
         <Icon name='add' stroke='#5F43E2' width='16' height='16' />
@@ -86,8 +86,8 @@ Trash.args = {
     ),
     size: ButtonSize.SMALL,
     hoverBackgroundColor: '#E55252',
-    padding: '4px',
-    gap: '10px',
+    padding: '0.25rem',
+    gap: '0.625rem',
 };
 export const TrashNoBackground = Template.bind({});
 TrashNoBackground.args = {
@@ -95,8 +95,8 @@ TrashNoBackground.args = {
     size: ButtonSize.XL,
     backgroundColor: 'transparent',
     hoverBackgroundColor: '#F2F4F9',
-    gap: '10px',
-    padding: '4px',
+    gap: '0.625rem',
+    padding: '0.25rem',
     iconComponent: () => (
         <Icon name='trashLarge' stroke='none' fill='#F46363' />
     ),
@@ -104,10 +104,10 @@ TrashNoBackground.args = {
 
 export const RemoveMemberSmall = Template.bind({});
 RemoveMemberSmall.args = {
-    borderRadius: '6px',
+    borderRadius: '0.375rem',
     size: ButtonSize.SMALL,
-    padding: '4px',
-    gap: '10px',
+    padding: '0.25rem',
+    gap: '0.625rem',
     backgroundColor: '#FFFFFF',
     hoverBackgroundColor: '#F2F4F9',
     iconComponent: (isHovered) => (
@@ -120,10 +120,10 @@ RemoveMemberSmall.args = {
 };
 export const RemoveMemberXL = Template.bind({});
 RemoveMemberXL.args = {
-    borderRadius: '6px',
+    borderRadius: '0.375rem',
     size: ButtonSize.XL,
-    padding: '4px',
-    gap: '10px',
+    padding: '0.25rem',
+    gap: '0.625rem',
     backgroundColor: '#FFFFFF',
     hoverBackgroundColor: '#F2F4F9',
     iconComponent: (isHovered) => (
@@ -136,10 +136,10 @@ RemoveMemberXL.args = {
 };
 export const RemoveMenu = Template.bind({});
 RemoveMenu.args = {
-    borderRadius: '6px',
+    borderRadius: '0.375rem',
     size: ButtonSize.SMALL,
-    padding: '4px',
-    gap: '10px',
+    padding: '0.25rem',
+    gap: '0.625rem',
     backgroundColor: '#5F43E2',
     hoverBackgroundColor: '#4C36B5',
     iconComponent: () => <Icon name='removeLarge' stroke='#FFFFFF' />,
@@ -148,10 +148,10 @@ RemoveMenu.args = {
 export const ArrowDown = Template.bind({});
 
 ArrowDown.args = {
-    borderRadius: '6px',
+    borderRadius: '0.375rem',
     size: ButtonSize.SMALL,
-    padding: '4px',
-    gap: '10px',
+    padding: '0.25rem',
+    gap: '0.625rem',
     backgroundColor: '#FFFFFF',
     hoverBackgroundColor: '#F2F4F9',
     iconComponent: () => (
@@ -160,10 +160,10 @@ ArrowDown.args = {
 };
 export const ArrowUp = Template.bind({});
 ArrowUp.args = {
-    borderRadius: '6px',
+    borderRadius: '0.375rem',
     size: ButtonSize.SMALL,
-    padding: '4px',
-    gap: '10px',
+    padding: '0.25rem',
+    gap: '0.625rem',
     backgroundColor: '#FFFFFF',
     hoverBackgroundColor: '#F2F4F9',
     iconComponent: () => (
@@ -173,10 +173,10 @@ ArrowUp.args = {
 
 export const Send = Template.bind({});
 Send.args = {
-    borderRadius: '6px',
+    borderRadius: '0.375rem',
     size: ButtonSize.SMALL,
-    padding: '4px 10px',
-    gap: '4px',
+    padding: '0.25rem 0.625rem',
+    gap: '0.25rem',
     backgroundColor: '#5F43E2',
     hoverBackgroundColor: '#4C36B5',
     iconComponent: () => (
@@ -186,10 +186,10 @@ Send.args = {
 
 export const Expand = Template.bind({});
 Expand.args = {
-    borderRadius: '6px',
+    borderRadius: '0.375rem',
     size: ButtonSize.SMALL,
-    padding: '4px 10px',
-    gap: '4px',
+    padding: '0.25rem 0.625rem',
+    gap: '0.25rem',
     backgroundColor: '#FFFFFF',
     hoverBackgroundColor: '#F2F4F9',
     iconComponent: () => (
@@ -199,10 +199,10 @@ Expand.args = {
 
 export const More = Template.bind({});
 More.args = {
-    borderRadius: '4px',
+    borderRadius: '0.25rem',
     size: ButtonSize.XS,
-    padding: '4px',
-    gap: '10px',
+    padding: '0.25rem',
+    gap: '0.625rem',
     backgroundColor: '#FFFFFF',
     hoverBackgroundColor: '#F2F4F9',
     iconComponent: () => (
@@ -211,22 +211,22 @@ More.args = {
 };
 export const Copy = Template.bind({});
 Copy.args = {
-    borderRadius: '6px',
+    borderRadius: '0.375rem',
     size: ButtonSize.XS,
-    padding: '4px',
-    gap: '10px',
+    padding: '0.25rem',
+    gap: '0.625rem',
     backgroundColor: '#F8F9FC',
     hoverBackgroundColor: '#E7E9F4',
-    iconComponent: () => <Icon name='copy' fill='#8F95B2' />,
+    iconComponent: () => <Icon name='copyClipBoard' fill='#8F95B2' />,
 };
 export const CircleAdd = Template.bind({});
 CircleAdd.args = {
-    borderRadius: '100px',
+    borderRadius: '6.25rem',
     size: ButtonSize.XXL,
     backgroundColor: '#5F43E2',
     hoverBackgroundColor: '#4C36B5',
     boxShadow:
-        '0px 2px 4px rgba(40, 41, 61, 0.04), 0px 8px 16px rgba(96, 97, 112, 0.16)',
+        '0rem 0.125rem 0.25rem rgba(40, 41, 61, 0.04), 0rem 0.5rem 1rem rgba(96, 97, 112, 0.16)',
     iconComponent: () => (
         <Icon name='addCircle' stroke='#FFFFFF' width={28} height={28} />
     ),
