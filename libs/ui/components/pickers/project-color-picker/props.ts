@@ -1,4 +1,6 @@
 import React from 'react'
-export default interface ProjectColorPickerProps {
+export interface IProjectColorPickerProps {
+    selected: string,
+    onSelect: (color: string) => void,
 }
 

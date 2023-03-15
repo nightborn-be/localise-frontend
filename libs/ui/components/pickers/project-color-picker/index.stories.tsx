@@ -1,17 +1,25 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import React from 'react';
+import React, { useState } from 'react';
 import ProjectColorPicker from '.';
-import ProjectColorPickerProps from './props';
+import { IProjectColorPickerProps } from './props';
 
 export default {
     title: 'Components/Sidebars/ProjectColorPicker',
     component: ProjectColorPicker,
 } as ComponentMeta<typeof ProjectColorPicker>;
 const Template: ComponentStory<typeof ProjectColorPicker> = (
-    props: ProjectColorPickerProps,
-) => <ProjectColorPicker {...props} />;
+    props: IProjectColorPickerProps,
+) => {
+    const [currentSelectedColor, setCurrentSelectedColor] =
+        useState<string>('');
 
-const props: ProjectColorPickerProps = {};
+    return (
+        <ProjectColorPicker
+            {...props}
+            selected={currentSelectedColor}
+            onSelect={setCurrentSelectedColor}
+        />
+    );
+};
 
 export const Project = Template.bind({});
-Project.args = { ...props };

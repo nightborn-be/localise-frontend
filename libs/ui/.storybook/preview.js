@@ -1,5 +1,5 @@
 import { Image } from '@chakra-ui/react';
-import theme from '../components/pickers/toggle/theme'
+import theme from '../components/contents/toggle/theme'
 Object.defineProperty(Image, 'default', {
   configurable: true, value: props => <Image {...props} />
 });
