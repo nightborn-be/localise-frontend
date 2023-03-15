@@ -24,4 +24,5 @@ export default interface IInputSelectProps extends InputProps {
 export type Options = {
     value: string,
     label: string,
+    icon?: React.ReactElement,
 }
