@@ -3,7 +3,7 @@ import React from 'react';
 export const Add = (props: React.SVGProps<SVGSVGElement>) => (
     <svg
         {...props}
-        viewBox={props?.viewBox ?? '0 0 16 16'}
+        viewBox={'0 0 16 16'}
         xmlns='http://www.w3.org/2000/svg'
     >
         <path
@@ -26,7 +26,7 @@ export const AddLarge = (props: React.SVGProps<SVGSVGElement>) => (
         {...props}
         width={props?.width ?? '20'}
         height={props?.height ?? '20'}
-        viewBox={props?.viewBox ?? '0 0 20 20'}
+        viewBox={'0 0 20 20'}
         fill={props?.fill ?? 'none'}
         xmlns='http://www.w3.org/2000/svg'
     >
@@ -51,7 +51,7 @@ export const AddSmallBackground = (props: React.SVGProps<SVGSVGElement>) => (
     <svg
         width={props?.width ?? '16'}
         height={props?.height ?? '16'}
-        viewBox={props?.viewBox ?? '0 0 16 16'}
+        viewBox={'0 0 16 16'}
         fill='none'
         xmlns='http://www.w3.org/2000/svg'
     >
@@ -84,7 +84,7 @@ export const AddCircle = (props: React.SVGProps<SVGSVGElement>) => (
         {...props}
         width={props?.width ?? '28'}
         height={props?.height ?? '28'}
-        viewBox={props?.viewBox ?? '0 0 28 28'}
+        viewBox={'0 0 28 28'}
         fill={props?.fill ?? 'none'}
         xmlns='http://www.w3.org/2000/svg'
     >
