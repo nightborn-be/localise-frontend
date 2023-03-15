@@ -4,7 +4,7 @@ const UploadCloud = (props: React.SVGProps<SVGSVGElement>) => (
         {...props}
         width={props?.width ?? '25'}
         height={props?.height ?? '24'}
-        viewBox={props?.viewBox ?? '0 0 25 24'}
+        viewBox={'0 0 25 24'}
         fill={props?.fill ?? 'none'}
         xmlns='http://www.w3.org/2000/svg'
     >

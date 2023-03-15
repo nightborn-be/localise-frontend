@@ -4,7 +4,7 @@ const More = (props: React.SVGProps<SVGSVGElement>) => (
     <svg
         width={props?.width ?? '16'}
         height={props?.height ?? '4'}
-        viewBox={props?.viewBox ?? '0 0 16 4'}
+        viewBox={'0 0 16 4'}
         fill={props?.fill ?? 'none'}
         xmlns='http://www.w3.org/2000/svg'
     >

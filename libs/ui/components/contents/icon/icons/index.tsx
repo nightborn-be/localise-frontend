@@ -6,7 +6,7 @@ import ArrowUp from './arrow-up';
 import Expand from './expand';
 import Send from './send';
 import More from './more';
-import CopyClipBoard from './copy-clipboard';
+import { CopyClipBoard, CopyClipBoardLarge } from './copy-clipboard';
 import SelectStroke from './select-stroke';
 import Sort from './sort';
 import Date from './date';
@@ -22,6 +22,13 @@ import CheckedColor from './checked-color';
 import DropdownIndicator from './dropdownIndicator';
 import CheckboxOn from './checkboxOn';
 import CheckboxOff from './checkboxOff';
+import { ProjectLine } from './projectLine';
+import ArrowToBottom from './arrow-to-bottom';
+import CrossClose from './cross-close';
+import Drag from './drag';
+import MyProfile from './my-profile';
+import Setting from './setting';
+import Support from './support';
 
 const Icons = {
     add: Add,
@@ -38,7 +45,8 @@ const Icons = {
     expand: Expand,
     send: Send,
     more: More,
-    copy: CopyClipBoard,
+    copyClipBoard: CopyClipBoard,
+    copyClipBoardLarge: CopyClipBoardLarge,
     addCircle: AddCircle,
     selectStroke: SelectStroke,
     sort: Sort,
@@ -54,6 +62,13 @@ const Icons = {
     edit: Edit,
     checkedColor: CheckedColor,
     dropdownIndicator: DropdownIndicator,
+    projectLine: ProjectLine,
+    arrowToBottom: ArrowToBottom,
+    crossClose: CrossClose,
+    drag: Drag,
+    myProfile: MyProfile,
+    setting: Setting,
+    support: Support,
 };
 
 export default Icons;
