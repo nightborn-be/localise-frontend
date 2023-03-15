@@ -1,5 +1,5 @@
-import React from 'react';
-import { VStack } from '@chakra-ui/react';
+import React, { cloneElement } from 'react';
+import { Box, HStack, VStack } from '@chakra-ui/react';
 import Select, { components } from 'react-select';
 import COLORS from '../../../constants/colors';
 import IInputSelectProps from './props';
@@ -14,14 +14,11 @@ export default function InputSelect({
     placeholder = 'Select value',
     h,
     w,
-    lineHeight = '0.9375rem',
     errorBorder = `0.0625rem solid ${COLORS.Negative.value}`,
     alignItems = 'left',
     fontSize = '0.75rem',
     fontWeight = '400',
     fontFamily = 'Inter',
-    gap = '0.5rem',
-    paddingTop = '0.1875rem',
     isValid = true,
     options,
     dropdownArrowColor = COLORS.InputText.value,
@@ -77,6 +74,9 @@ export default function InputSelect({
         option: (styles, { data, isDisabled, isFocused, isSelected }) => {
             return {
                 ...styles,
+                display: 'flex',
+                flexDirection: 'row',
+                alignItems: 'center',
                 marginTop: '0.25rem',
                 ':active': { backgroundColor: 'none' },
                 backgroundColor: backgroundStyleSwitch(isFocused, isSelected),
@@ -120,6 +120,22 @@ export default function InputSelect({
             </components.DropdownIndicator>
         );
     };
+    const Option = (props) => {
+        return (
+            <components.Option {...props}>
+                {props.data.icon && (
+                    <Box w='1rem' h='1rem' mr={'0.75rem'}>
+                        {props.isSelected
+                            ? cloneElement(props.data.icon, {
+                                  fill: COLORS.White.T500.value,
+                              })
+                            : props.data.icon}
+                    </Box>
+                )}
+                {props.data.value}
+            </components.Option>
+        );
+    };
 
     //Render
     return (
@@ -137,10 +153,10 @@ export default function InputSelect({
                     components={{
                         IndicatorSeparator: () => null,
                         DropdownIndicator,
+                        Option: Option,
                     }}
                 />
             )}
         </VStack>
     );
 }
-
