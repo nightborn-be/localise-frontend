@@ -16,6 +16,8 @@ export default function Button({
     endEnhancer,
     color,
     hoverColor = color,
+    font,
+    justifyContent = 'center',
     ...rest
 }: IButtonProps) {
     //Attributes
@@ -42,6 +44,7 @@ export default function Button({
             onMouseOver={updateHoverState}
             onMouseLeave={updateHoverState}
             onClick={onClick}
+            justifyContent={justifyContent}
             _hover={{
                 bgColor: hoverBackgroundColor,
             }}
@@ -56,13 +59,10 @@ export default function Button({
                 spacing={spacing}
                 pointerEvents='none'
             >
-                {startEnhancer ? startEnhancer(enhancerProps) : null}
+                {startEnhancer && startEnhancer(enhancerProps)}
                 <ButtonChildren
-                    fontSize={rest.fontSize}
-                    fontWeight={rest.fontWeight}
+                    {...font}
                     hoverColor={hoverColor}
-                    textAlign={rest.textAlign}
-                    lineHeight={rest.lineHeight}
                     direction={direction}
                     whiteSpace={whiteSpace}
                     isHovered={isHovered}
@@ -70,7 +70,7 @@ export default function Button({
                 >
                     {children}
                 </ButtonChildren>
-                {endEnhancer ? endEnhancer(enhancerProps) : null}
+                {endEnhancer && endEnhancer(enhancerProps)}
             </Stack>
         </ChakraButton>
     );
