@@ -1,14 +1,14 @@
-import React, { cloneElement } from 'react';
-import { Box, HStack, VStack } from '@chakra-ui/react';
-import Select, { components } from 'react-select';
+import React from 'react';
+import { VStack } from '@chakra-ui/react';
+import Select from 'react-select';
 import COLORS from '../../../constants/colors';
 import IInputSelectProps from './props';
 import InputLabel from '../input-label';
-import Icon from '../../contents/icon';
 import { getSelectStyle } from './style';
 import Option from './input-select-option';
 import DropdownIndicator from './input-select-dropdown-indicator';
-export default function InputSelect({
+
+const InputSelect = ({
     color = COLORS.Text.T500.value,
     placeholderColor = COLORS.InputText.value,
     label,
@@ -40,7 +40,7 @@ export default function InputSelect({
     menuLeftOption,
     selectMarginLeft,
     isMultiple = false,
-}: IInputSelectProps) {
+}: IInputSelectProps) => {
     // Render
     return (
         <VStack spacing='0.25rem' w={w} h={h} alignItems={alignItems}>
@@ -100,4 +100,6 @@ export default function InputSelect({
             )}
         </VStack>
     );
-}
+};
+
+export default InputSelect;

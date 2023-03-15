@@ -30,7 +30,7 @@ export default function ProjectColorPicker({
                 width='11rem'
                 height='fit-content'
                 maxW='11rem'
-                border={`1px solid ${COLORS.Line.value}`}
+                border={`0.0625rem solid ${COLORS.Line.value}`}
                 borderRadius={'0.5rem'}
                 flexWrap={'wrap'}
                 alignContent={'space-between'}

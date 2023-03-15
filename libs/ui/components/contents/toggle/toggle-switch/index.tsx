@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Box, HStack } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import COLORS from '../../../../constants/colors';
