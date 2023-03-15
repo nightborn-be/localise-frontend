@@ -5,7 +5,7 @@ const Send = (props: React.SVGProps<SVGSVGElement>) => (
         {...props}
         width={props?.width ?? '14'}
         height={props?.height ?? '14'}
-        viewBox={props?.viewBox ?? '0 0 14 14'}
+        viewBox={'0 0 14 14'}
         xmlns='http://www.w3.org/2000/svg'
     >
         <g clipPath='url(#clip0_4938_16919)'>
