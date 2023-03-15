@@ -4,11 +4,16 @@ import COLORS from '../../../constants/colors';
 import SidebarProject from '../sidebar-project';
 import FONTS from '../../../constants/fonts';
 import Icon from '../../contents/icon';
-import { Languages } from './types';
 
 export default function TargetLanguage() {
     //Attributes
-    const [languages, setLanguages] = useState<Array<Languages>>(Object.values(Languages));
+    const [languages, setLanguages] = useState<Array<string>>([
+        'French',
+        'Dutch',
+        'Chinese',
+        'German',
+        'Italian',
+    ]);
 
     //Render
     return (
@@ -30,15 +35,12 @@ export default function TargetLanguage() {
                     <SidebarProject
                         key={i}
                         startEnhancer={<Icon name='checkboxOff' />}
-                        showNotification={false}
-                        isCheckbox={true}
                         marginLeftText='0.75rem'
                         w='33.625rem'
                         h='2rem'
                         text={lang}
                         textFont={FONTS.T1.T12px.Medium500.value}
                         textColor={COLORS.Text.T400.value}
-                        canBeSelected={true}
                     />
                 ))}
             </VStack>

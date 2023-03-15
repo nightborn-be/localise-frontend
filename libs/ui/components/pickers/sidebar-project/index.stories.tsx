@@ -39,27 +39,6 @@ DefaultGray.args = {
     textColor: COLORS.InputText.value,
 };
 
-export const CreateOrganisation = Template.bind({});
-CreateOrganisation.args = {
-    ...props,
-    startEnhancer: (
-        <Icon
-            name='addSmallBackground'
-            color={COLORS.Text.T400.value}
-            fill={COLORS.White.T500.value}
-            stroke={COLORS.White.T500.value}
-        />
-    ),
-    showNotification: false,
-    marginLeftText: '0.5rem',
-    w: '15.75rem',
-    h: '2.5rem',
-    text: 'Create new organization',
-    textFont: FONTS.T1.T12px.Medium500.value,
-    textColor: COLORS.Text.T400.value,
-    canBeSelected: false,
-};
-
 export const SortBy = Template.bind({});
 SortBy.args = {
     ...props,
