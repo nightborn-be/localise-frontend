@@ -38,7 +38,7 @@ const props: IInputSelectAndInputProps<test> = {
             { value: 'Administrateur', label: 'Administrateur' },
         ],
         fontWeight: '400',
-        dropDownIndicator: <Icon name='dropdownIndicator' />,
+        dropdownIndicator: <Icon name='dropdownIndicator' />,
         fontSize: '12px',
         lineHeight: '15px',
         padding: '0px',

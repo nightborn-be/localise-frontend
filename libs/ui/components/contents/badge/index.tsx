@@ -1,10 +1,8 @@
 import React from 'react';
-import { HStack, VStack } from '@chakra-ui/react';
+import { VStack } from '@chakra-ui/react';
 import COLORS from '../../../constants/colors';
 import Text from '../text';
 import FONTS from '../../../constants/fonts';
-import ToggleProps from './props';
-import Switch from './toggle-switch';
 import IBadgeProps from './props';
 
 const Badge = ({isSelected, notificationNumber}: IBadgeProps) => {

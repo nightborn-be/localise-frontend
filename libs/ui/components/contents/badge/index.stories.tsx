@@ -1,8 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import React, { useState } from 'react';
-import COLORS from '../../../constants/colors';
+import React from 'react';
 import Toggle from '.';
-import ToggleProps from './props';
 import Badge from '.';
 import IBadgeProps from './props';
 

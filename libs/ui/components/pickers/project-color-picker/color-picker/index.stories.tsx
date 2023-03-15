@@ -1,12 +1,12 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import React from 'react';
 import { ColorPicker } from '.';
-import ColorButtonProps from './props';
+import { IColorPickerProps } from './props';
 
 export default {
     title: 'Components/Sidebars/ColorPicker',
     component: ColorPicker,
 } as ComponentMeta<typeof ColorPicker>;
 const Template: ComponentStory<typeof ColorPicker> = (
-    props: ColorButtonProps,
+    props: IColorPickerProps,
 ) => <ColorPicker {...props} />;
