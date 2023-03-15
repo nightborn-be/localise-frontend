@@ -2,11 +2,11 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import COLORS from '../../../constants/colors';
 import Tag from '.';
-import TagProps from './props';
+import ITagProps from './props';
 import FONTS from '../../../constants/fonts';
 
 export default {
-    title: 'Components/Inputs/Tag',
+    title: 'Components/Contents/Tag',
     component: Tag,
     argTypes: {
         backgroundColor: { control: 'color' },
@@ -14,7 +14,7 @@ export default {
 } as ComponentMeta<typeof Tag>;
 
 const Template: ComponentStory<typeof Tag> = (args) => <Tag {...args} />;
-const props: TagProps = {
+const props: ITagProps = {
     w: 'fit-content',
     h: '28px',
     padding: '6px 10px',

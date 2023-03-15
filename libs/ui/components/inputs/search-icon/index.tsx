@@ -3,46 +3,35 @@ import { Box, HStack, Input } from '@chakra-ui/react';
 import COLORS from '../../../constants/colors';
 import FONTS from '../../../constants/fonts';
 import Icon from '../../contents/icon';
-import SearchIconProps from './props';
+import SearchInputProps from './props';
 import ButtonIcon from '../button-icon';
 import { ButtonSize } from '../button-icon/props';
 import { motion } from 'framer-motion';
-export default function SearchIcon({
+import useOnClickOutside from './hooks';
+const SearchInput = <T extends object>({
     color = COLORS.Text.T500.value,
     placeholderColor = COLORS.InputText.value,
-    placeholder = 'Type to search...',
-    h,
-    w,
+    placeholder,
     marginLeft = '150px',
     backgroundColor = COLORS.BG.value,
-    leftIcon = <Icon name='search' />,
     inputWidth = '95px',
     inputHeight = '15px',
     inputBorder = 'transparent',
     inputBorderRadius = '0px',
+    value,
+    onChange,
     ...props
-}: SearchIconProps) {
+}: SearchInputProps) => {
     //Attributes
     const [launchAnime, setLaunchAnime] = useState<boolean>(false);
     const boxRef = useRef<HTMLDivElement>(null);
 
     //Functions
-    useEffect(() => {
-        const handleClickOutside = (event) => {
-            if (boxRef.current && !boxRef.current.contains(event.target)) {
-                setLaunchAnime(false);
-            }
-        };
-        document.addEventListener('mousedown', handleClickOutside);
-
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
-        };
-    }, [boxRef]);
+    useOnClickOutside(boxRef, () => setLaunchAnime(false));
 
     //Render
     return (
-        <HStack w={w} h={h} minWidth={w} minHeight={h} ml={marginLeft}>
+        <HStack ml={marginLeft}>
             <Box onClick={() => setLaunchAnime(true)} ref={boxRef}>
                 <motion.div
                     initial={{ translateX: 0 }}
@@ -56,7 +45,7 @@ export default function SearchIcon({
                 >
                     <ButtonIcon
                         size={ButtonSize.XS}
-                        displayIcon={(isHovered) => leftIcon}
+                        displayIcon={(isHovered) => <Icon name='search' />}
                         backgroundColor={COLORS.White.T500.value}
                         hoverBackgroundColor={COLORS.Tag.value}
                         aria-label=''
@@ -87,6 +76,8 @@ export default function SearchIcon({
                     >
                         <Input
                             variant={'unstyled'}
+                            value={value}
+                            onChange={onChange}
                             w={inputWidth}
                             h={inputHeight}
                             borderRadius={inputBorderRadius}
@@ -104,4 +95,5 @@ export default function SearchIcon({
             </Box>
         </HStack>
     );
-}
+};
+export default SearchInput;

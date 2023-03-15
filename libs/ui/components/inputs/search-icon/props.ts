@@ -1,8 +1,7 @@
 import { InputProps } from '@chakra-ui/react';
-export default interface SearchIconProps extends InputProps {
+export default interface SearchInputProps extends InputProps {
     placeholderColor?: string,
     marginLeft?: string,
-    leftIcon?: React.ReactElement,
     inputWidth?: string,
     inputHeight?: string,
     inputBorder?: string,
