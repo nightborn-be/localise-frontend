@@ -6,24 +6,32 @@ export default function ButtonIcon({
     size,
     hoverBackgroundColor,
     handleOnClick,
-    iconComponent,
+    children,
+    border,
+    borderRadius,
     ...props
 }: IButtonIconProps) {
     //Attributes
     const [isHovered, setIsHovered] = useState<boolean>(false);
+
     // Render
     return (
         <IconButton
             {...props}
+            aria-label=''
             width={size}
             height={size}
-            minHeight={'1.5rem'}
-            minWidth={'1.5rem'}
+            minHeight={'1.25rem'}
+            minWidth={'1.25rem'}
             onClick={handleOnClick}
+            icon={
+                typeof children === 'function' ? children(isHovered) : children
+            }
             onMouseOver={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
-            icon={iconComponent(isHovered)}
             _hover={{ bgColor: hoverBackgroundColor }}
+            border={border}
+            borderRadius={borderRadius}
         />
     );
 }

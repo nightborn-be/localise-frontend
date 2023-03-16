@@ -30,9 +30,10 @@ ProjectKeyInput.args = {
         <ButtonIcon
             size={ButtonSize.XS}
             backgroundColor={COLORS.BG.value}
-            iconComponent={() => <Icon name='copyClipBoardLarge' />}
             hoverBackgroundColor={COLORS.Line.value}
             aria-label='test'
-        />
+        >
+            <Icon name='copyClipBoardLarge' />
+        </ButtonIcon>
     ),
 };
