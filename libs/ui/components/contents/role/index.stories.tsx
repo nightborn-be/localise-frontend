@@ -1,6 +1,6 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import IRoleProps from './props';
+import { IRoleProps } from './props';
 import COLORS from '../../../constants/colors';
 import Role from './index';
 export default {

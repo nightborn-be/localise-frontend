@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import IKeyDetailProps from './props';
+import { IKeyDetailProps } from './props';
 import KeyDetail from '.';
 
 export default {

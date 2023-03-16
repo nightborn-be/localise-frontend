@@ -1,4 +1,4 @@
-export default interface InputLabelProps {
+export interface IInputLabelProps {
     label?: string,
     description?: string,
     lineHeight?: string,

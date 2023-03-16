@@ -1,11 +1,11 @@
 import React from 'react';
 import { HStack, Image } from '@chakra-ui/react';
-import ITooltipProps from './props';
 import COLORS from '../../../constants/colors';
 import Text from '../text';
 import FONTS from '../../../constants/fonts';
+import { IAvatarProps } from './props';
 
-export default function Avatar({ name, imageSrc }: ITooltipProps) {
+const Avatar = ({ name, imageSrc }: IAvatarProps) => {
     // Render
     return (
         <>
@@ -39,4 +39,6 @@ export default function Avatar({ name, imageSrc }: ITooltipProps) {
             )}
         </>
     );
-}
+};
+
+export default Avatar;

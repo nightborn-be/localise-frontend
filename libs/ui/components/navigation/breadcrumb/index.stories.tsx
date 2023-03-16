@@ -1,7 +1,7 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import React from 'react';
-import { Breadcrumb } from '.';
-import IBreadcrumbProps from './props';
+import Breadcrumb from '.';
+import { IBreadcrumbProps } from './props';
 
 export default {
     title: 'Components/Navigations/Breadcrumb',

@@ -1,8 +1,8 @@
 import React from 'react';
-import IButtonChildrenProps from './props';
+import { IButtonChildrenProps } from './props';
 import Text from '../../contents/text';
 
-export default function ButtonChildren({
+const ButtonChildren = ({
     textAlign,
     lineHeight,
     fontSize,
@@ -14,7 +14,7 @@ export default function ButtonChildren({
     fontStyle,
     fontWeight,
     children,
-}: IButtonChildrenProps) {
+}: IButtonChildrenProps) => {
     //Render
     if (!children) {
         return <></>;
@@ -36,4 +36,5 @@ export default function ButtonChildren({
         );
     }
     return children;
-}
+};
+export default ButtonChildren;

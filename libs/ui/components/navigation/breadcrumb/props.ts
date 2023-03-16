@@ -1,5 +1,5 @@
 import { IBreadcrumbElement } from "./types";
 
-export default interface IBreadcrumbProps {
+export interface IBreadcrumbProps {
     elements: IBreadcrumbElement[];
 }

@@ -1,6 +1,6 @@
 import { InputProps } from '@chakra-ui/react';
 import React from 'react'
-export default interface IInputSelectProps extends InputProps {
+export interface IInputSelectProps extends InputProps {
     label?: string,
     description?: string,
     isValid?: boolean,
@@ -9,7 +9,7 @@ export default interface IInputSelectProps extends InputProps {
     options?: Array<Options>
     dropdownArrowColor?: string,
     backgroundOptionColor?: string,
-    dropDownIndicator?: React.ReactElement,
+    dropdownIndicator?: React.ReactElement,
     isSearchable?: boolean,
     menuOptionWidth?: string,
     focusBackgroundOptionColor?: string,
@@ -19,9 +19,11 @@ export default interface IInputSelectProps extends InputProps {
     menuRightOption?: string,
     menuLeftOption?: string,
     selectMarginLeft?: string
+    isMultiple?: boolean
 }
 
 export type Options = {
     value: string,
     label: string,
+    icon?: React.ReactElement,
 }

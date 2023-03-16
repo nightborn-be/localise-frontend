@@ -1,11 +1,14 @@
 import React from 'react';
 import { VStack } from '@chakra-ui/react';
-import Select, { components } from 'react-select';
+import Select from 'react-select';
 import COLORS from '../../../constants/colors';
-import IInputSelectProps from './props';
+import { IInputSelectProps } from './props';
 import InputLabel from '../input-label';
+import { getSelectStyle } from './style';
+import Option from './input-select-option';
+import DropdownIndicator from './input-select-dropdown-indicator';
 
-export default function InputSelect({
+const InputSelect = ({
     color = COLORS.Text.T500.value,
     placeholderColor = COLORS.InputText.value,
     label,
@@ -14,14 +17,11 @@ export default function InputSelect({
     placeholder = 'Select value',
     h,
     w,
-    lineHeight = '0.9375rem',
     errorBorder = `0.0625rem solid ${COLORS.Negative.value}`,
     alignItems = 'left',
     fontSize = '0.75rem',
     fontWeight = '400',
     fontFamily = 'Inter',
-    gap = '0.5rem',
-    paddingTop = '0.1875rem',
     isValid = true,
     options,
     dropdownArrowColor = COLORS.InputText.value,
@@ -31,8 +31,7 @@ export default function InputSelect({
     textOptionColor = COLORS.Text.T400.value,
     borderRadiusOption = '0.25rem',
     borderRadius = '0.5rem',
-    padding,
-    dropDownIndicator,
+    dropdownIndicator,
     paddingRight,
     paddingLeft,
     menuOptionWidth,
@@ -40,89 +39,9 @@ export default function InputSelect({
     menuRightOption,
     menuLeftOption,
     selectMarginLeft,
-}: IInputSelectProps) {
-    //Attributes
-    const selectStyle: any = {
-        control: (styles, { data, isDisabled, isFocused, isSelected }) => {
-            return {
-                ...styles,
-                border: isValid ? border : errorBorder,
-                borderRadius: borderRadius,
-                '&:hover': isValid ? border : errorBorder,
-                fontSize: fontSize,
-                fontWeight: fontWeight,
-                fontFamily: fontFamily,
-                color: color,
-                backgroundColor: 'transparent',
-                boxShadow: 'none',
-                marginLeft: selectMarginLeft,
-            };
-        },
-        placeholder: (styles) => {
-            return {
-                ...styles,
-                color: placeholderColor,
-            };
-        },
-
-        menu: (styles, state) => {
-            return {
-                ...styles,
-                width: menuOptionWidth ?? '100%',
-                padding: '0rem 0.375rem 0.25rem 0.375rem',
-                right: menuRightOption,
-                left: menuLeftOption,
-            };
-        },
-        option: (styles, { data, isDisabled, isFocused, isSelected }) => {
-            return {
-                ...styles,
-                marginTop: '0.25rem',
-                ':active': { backgroundColor: 'none' },
-                backgroundColor: backgroundStyleSwitch(isFocused, isSelected),
-                fontSize: fontSize,
-                fontWeight: fontWeight,
-                fontFamily: fontFamily,
-                borderRadius: borderRadiusOption,
-                color: isSelected ? selectedOptionColor : textOptionColor,
-            };
-        },
-        input: (styles) => ({
-            ...styles,
-        }),
-        singleValue: (styles, state) => ({
-            ...styles,
-            overflow: 'visible',
-            color: color,
-        }),
-        dropdownIndicator: (
-            base,
-            { data, isDisabled, isFocused, isSelected },
-        ) => ({
-            ...base,
-            color: dropdownArrowColor,
-            backgroundColor: 'transparent',
-            '&:hover': { color: dropdownArrowColor },
-            paddingLeft: paddingLeft,
-            paddingRight: paddingRight,
-        }),
-    };
-    //Function
-    const backgroundStyleSwitch = (isFocused: boolean, isSelected: boolean) => {
-        if (isSelected) return backgroundOptionColor;
-        if (isFocused) return focusBackgroundOptionColor;
-        return 'none';
-    };
-    const DropdownIndicator = (props) => {
-        
-        return (
-            <components.DropdownIndicator {...props}>
-                {dropDownIndicator}
-            </components.DropdownIndicator>
-        );
-    };
-
-    //Render
+    isMultiple = false,
+}: IInputSelectProps) => {
+    // Render
     return (
         <VStack spacing='0.25rem' w={w} h={h} alignItems={alignItems}>
             {/* Input label section */}
@@ -131,17 +50,56 @@ export default function InputSelect({
             {/* Input select section */}
             {options && (
                 <Select
+                    isMulti={isMultiple}
                     isSearchable={isSearchable}
+                    controlShouldRenderValue={isMultiple ? false : true}
+                    hideSelectedOptions={false}
+                    closeMenuOnSelect={isMultiple ? false : true}
+                    isClearable={false}
                     options={options}
                     placeholder={placeholder}
-                    styles={{ ...selectStyle }}
+                    styles={{
+                        ...getSelectStyle(
+                            isValid,
+                            border,
+                            errorBorder,
+                            borderRadius,
+                            fontSize,
+                            fontWeight,
+                            fontFamily,
+                            color,
+                            selectMarginLeft,
+                            placeholderColor,
+                            menuOptionWidth,
+                            menuRightOption,
+                            menuLeftOption,
+                            borderRadiusOption,
+                            isMultiple,
+                            selectedOptionColor,
+                            textOptionColor,
+                            dropdownArrowColor,
+                            paddingLeft,
+                            paddingRight,
+                            backgroundOptionColor,
+                            focusBackgroundOptionColor,
+                        ),
+                    }}
                     components={{
                         IndicatorSeparator: () => null,
-                        DropdownIndicator,
+                        DropdownIndicator: (props) => (
+                            <DropdownIndicator
+                                props={props}
+                                dropdownIndicator={dropdownIndicator}
+                            />
+                        ),
+                        Option: (props) => (
+                            <Option props={props} isMultiple={isMultiple} />
+                        ),
                     }}
                 />
             )}
         </VStack>
     );
-}
+};
 
+export default InputSelect;

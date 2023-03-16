@@ -6,7 +6,7 @@ import Text from '../../contents/text';
 import COLORS from '../../../constants/colors';
 import FONTS from '../../../constants/fonts';
 import InputTextAreaField from '.';
-import InputTextAreaFieldProps from './props';
+import { IInputTextAreaFieldProps } from './props';
 
 interface test {
     name: string;
@@ -16,7 +16,7 @@ export default {
     component: InputTextAreaField,
 } as ComponentMeta<typeof InputTextAreaField>;
 const Template: ComponentStory<typeof Input> = (
-    props: InputTextAreaFieldProps<test>,
+    props: IInputTextAreaFieldProps<test>,
 ) => <InputTextAreaField {...props} />;
 
 export const RightAreaElementInput = Template.bind({});

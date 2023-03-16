@@ -2,7 +2,7 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import KeyDetail from '.';
 import ProjectStatistics from '.';
-import IProjectStatisticsProps from './props';
+import { IProjectStatisticsProps } from './props';
 
 export default {
     title: 'Components/Surface/Card/ProjectStatistics',

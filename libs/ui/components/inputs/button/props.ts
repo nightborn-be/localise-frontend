@@ -1,5 +1,6 @@
 import { ButtonProps, StackDirection } from "@chakra-ui/react";
-export default interface IButtonProps extends ButtonProps {
+import { Font } from "../../../constants/fonts";
+export interface IButtonProps extends ButtonProps {
     startEnhancer?: (enhancerProps: EnhancerProps) => React.ReactElement,
     endEnhancer?: (enhancerProps: EnhancerProps) => React.ReactElement,
     hoverColor?: string,
@@ -8,6 +9,7 @@ export default interface IButtonProps extends ButtonProps {
     spacing?: string,
     children?: React.ReactElement | string;
     color?: string;
+    font?: Font
 }
 
 export type EnhancerProps = {
