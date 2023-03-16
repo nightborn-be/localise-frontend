@@ -48,7 +48,9 @@ export const OrganisationMenuItem = ({
                 </Text>
             </VStack>
             <Box w='1.25rem' h='1.25rem'>
-                {isActive && <Icon name='checked' />}
+                {isActive && (
+                    <Icon name='checked' width={'1.25rem'} height={'1.25rem'} />
+                )}
             </Box>
         </HStack>
     );
