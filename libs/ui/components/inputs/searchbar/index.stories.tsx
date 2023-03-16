@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import COLORS from '../../../constants/colors';
 import Searchbar from '.';
-import SearchbarProps from './props';
+import SearchbarProps, { Options } from './props';
 
 export default {
     title: 'Components/Inputs/Searchbar',
@@ -14,15 +14,24 @@ export default {
 
 const Template: ComponentStory<typeof Searchbar> = (args) => {
     const [value, setValue] = useState<string>('');
+    const [options, setOptions] = useState<Options<string>[]>();
+    const [activeKeys, setActiveKeys] = useState<string[]>(['French']);
+    function onCheck(value) {
+        if (!activeKeys?.some((option) => option === value))
+            setActiveKeys((prev) => [{ ...prev }, value]);
+        else setActiveKeys((prev) => prev?.filter((option) => option != value));
+    }
     return (
         <Searchbar
             {...args}
             value={value}
             onChange={(value) => setValue(value.target.value)}
+            onCheck={onCheck}
+            activeKeys={activeKeys}
         />
     );
 };
-const props: SearchbarProps = {
+const props: SearchbarProps<string> = {
     color: COLORS.Text.T400.value,
     w: '228px',
     h: '32px',
@@ -32,6 +41,24 @@ const props: SearchbarProps = {
     placeholder: 'Search for a project...',
     placeholderColor: COLORS.InputText.value,
     borderRadius: '6px',
+    options: [
+        { value: 'French', label: 'French', isActive: false },
+        { value: 'Chinese', label: 'Chinese', isActive: false },
+        { value: 'Dutch', label: 'Dutch', isActive: false },
+        { value: 'Dutch', label: 'Dutch', isActive: false },
+        { value: 'Dutch', label: 'Dutch', isActive: false },
+        { value: 'Dutch', label: 'Dutch', isActive: false },
+        { value: 'Dutch', label: 'Dutch', isActive: false },
+        { value: 'Dutch', label: 'Dutch', isActive: false },
+        { value: 'Dutch', label: 'Dutch', isActive: false },
+        { value: 'Dutch', label: 'Dutch', isActive: false },
+        { value: 'Dutch', label: 'Dutch', isActive: false },
+        { value: 'Dutch', label: 'Dutch', isActive: false },
+        { value: 'Dutch', label: 'Dutch', isActive: false },
+        { value: 'Dutch', label: 'Dutch', isActive: false },
+        { value: 'Dutch', label: 'Dutch', isActive: false },
+        { value: 'Dutch', label: 'Dutch', isActive: false },
+    ],
 };
 
 export const SideBar = Template.bind({});
