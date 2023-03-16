@@ -1,22 +1,23 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import React from 'react';
-import Toggle from '.';
 import Badge from '.';
-import {IBadgeProps} from './props';
+import COLORS from '../../../constants/colors';
+import { IBadgeProps } from './props';
 
 export default {
     title: 'Components/Contents/Badge',
     component: Badge,
 } as ComponentMeta<typeof Badge>;
 const Template: ComponentStory<typeof Badge> = (props: IBadgeProps) => {
-    return <Toggle {...props} />;
+    return <Badge {...props}>1</Badge>;
 };
 
 export const BadgeNotification = Template.bind({});
-BadgeNotification.args = { isSelected: false, notificationNumber: 1 };
+BadgeNotification.args = {
+    color: COLORS.Error.T500.value,
+};
 
 export const BadgeNotificationSelected = Template.bind({});
 BadgeNotificationSelected.args = {
-    isSelected: true,
-    notificationNumber: 1,
+    color: COLORS.Localize.Purple.T600.value,
 };
