@@ -3,20 +3,19 @@ import React from 'react';
 import Icon from '../../contents/icon';
 import COLORS from '../../../constants/colors';
 import FONTS from '../../../constants/fonts';
-import SidebarProps from './props';
 import { Image } from '@chakra-ui/react';
 import SidebarOrganisation from '.';
-import SidebarOrganisationProps from './props';
+import { ISidebarOrganisationProps } from './props';
 
 export default {
     title: 'Components/Sidebars/SidebarOrganisation',
     component: SidebarOrganisation,
 } as ComponentMeta<typeof SidebarOrganisation>;
 const Template: ComponentStory<typeof SidebarOrganisation> = (
-    props: SidebarOrganisationProps,
+    props: ISidebarOrganisationProps,
 ) => <SidebarOrganisation {...props} />;
 
-const props: SidebarProps = {
+const props: ISidebarOrganisationProps = {
     w: '14.25rem',
     h: '3.25rem',
     topText: 'Organisation',

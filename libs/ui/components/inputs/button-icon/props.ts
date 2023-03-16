@@ -1,7 +1,7 @@
 import { ButtonProps } from '@chakra-ui/react';
 import React from 'react'
 import { ButtonSize } from './types';
-export default interface IButtonIconProps extends Omit<ButtonProps, "children"> {
+export interface IButtonIconProps extends Omit<ButtonProps, "children"> {
     size: ButtonSize,
     children: ((isHovered: boolean) => React.ReactElement) | React.ReactElement 
     hoverBackgroundColor?: string,

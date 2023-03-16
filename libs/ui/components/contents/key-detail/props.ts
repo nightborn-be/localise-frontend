@@ -1,4 +1,4 @@
-export default interface IKeyDetailProps {
+export interface IKeyDetailProps {
     imageSrc?: string
     isSelected?: boolean;
     onSelect?: () => void;

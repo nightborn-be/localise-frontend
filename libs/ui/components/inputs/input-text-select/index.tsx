@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { HStack, VStack } from '@chakra-ui/react';
 import COLORS from '../../../constants/colors';
 import InputSelect from '../input-select';
-import IInputSelectAndInputProps from './props';
+import { IInputSelectAndInputProps } from './props';
 import Input from '../input';
 import ButtonIcon from '../button-icon';
 import { motion } from 'framer-motion';

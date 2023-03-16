@@ -1,6 +1,6 @@
 import React from 'react'
 import { Font } from '../../../constants/fonts';
-export default interface SidebarProps {
+export interface ISidebarProps {
     text?: string,
     textFont?: Font,
     textColor?: string,

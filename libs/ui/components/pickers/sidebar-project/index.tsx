@@ -2,9 +2,9 @@ import React, { useState, cloneElement } from 'react';
 import { Box, HStack } from '@chakra-ui/react';
 import COLORS from '../../../constants/colors';
 import Text from '../../contents/text';
-import SidebarProps from './props';
+import { ISidebarProps } from './props';
 import Badge from '../../contents/badge';
-export default function SidebarProject({
+const SidebarProject = ({
     textFont,
     textColor,
     text,
@@ -15,7 +15,7 @@ export default function SidebarProject({
     displayColorBox = true,
     w = '14.25rem',
     h = '2.5rem',
-}: SidebarProps) {
+}: ISidebarProps) => {
     //Attributes
     const [isSelected, setIsSelected] = useState<boolean>(false);
     //Function
@@ -72,4 +72,6 @@ export default function SidebarProject({
             />
         </HStack>
     );
-}
+};
+
+export default SidebarProject;

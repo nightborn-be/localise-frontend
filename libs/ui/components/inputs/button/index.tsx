@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Button as ChakraButton, Stack } from '@chakra-ui/react';
-import IButtonProps from './props';
+import { IButtonProps } from './props';
 import ButtonChildren from '../button-children';
 
-export default function Button({
+const Button = ({
     hoverBackgroundColor,
     spacing,
     onClick,
@@ -19,7 +19,7 @@ export default function Button({
     font,
     justifyContent = 'center',
     ...rest
-}: IButtonProps) {
+}: IButtonProps) => {
     //Attributes
     const [isHovered, setIsHovered] = useState<boolean>(false);
     const updateHoverState = () => setIsHovered((prev) => !prev);
@@ -74,4 +74,6 @@ export default function Button({
             </Stack>
         </ChakraButton>
     );
-}
+};
+
+export default Button;

@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import React from 'react';
-import { ColorPicker } from '.';
+import ColorPicker from '.';
 import { IColorPickerProps } from './props';
 
 export default {

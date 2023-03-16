@@ -3,11 +3,7 @@ import { Box } from '@chakra-ui/react';
 import Icon from '../../../contents/icon';
 import { IColorPickerProps } from './props';
 
-export const ColorPicker = ({
-    color,
-    isSelected,
-    onSelect,
-}: IColorPickerProps) => {
+const ColorPicker = ({ color, isSelected, onSelect }: IColorPickerProps) => {
     // Attributes
     const [isHovered, setIsHovered] = useState<boolean>(false);
 
@@ -40,3 +36,4 @@ export const ColorPicker = ({
         </Box>
     );
 };
+export default ColorPicker;

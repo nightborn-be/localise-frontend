@@ -3,14 +3,14 @@ import { VStack } from '@chakra-ui/react';
 import COLORS from '../../../constants/colors';
 import Text from '../../contents/text';
 import FONTS from '../../../constants/fonts';
-import InputLabelProps from './props';
+import { IInputLabelProps } from './props';
 
-export default function InputLabel({
+const InputLabel = ({
     label,
     description,
     lineHeight = '15px',
     margin = '0',
-}: InputLabelProps) {
+}: IInputLabelProps) => {
     //Attributes
 
     //Render
@@ -39,4 +39,5 @@ export default function InputLabel({
             )}
         </VStack>
     );
-}
+};
+export default InputLabel;

@@ -1,7 +1,7 @@
 import { ChakraProps } from '@chakra-ui/react';
 import React from 'react'
 import { Font } from '../../../constants/fonts';
-export default interface SidebarOrganisationProps extends ChakraProps {
+export interface ISidebarOrganisationProps extends ChakraProps {
     topText?: string,
     topTextFont?: Font,
     topTextColor?: string,

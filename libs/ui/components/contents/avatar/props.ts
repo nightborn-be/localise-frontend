@@ -1,5 +1,5 @@
 
-export default interface IAvatarProps {
+export interface IAvatarProps {
     name?: string,
     imageSrc?: string,
 }

@@ -1,10 +1,10 @@
 import React from 'react';
-import IRoleProps from './props';
+import { IRoleProps } from './props';
 import FONTS from '../../../constants/fonts';
 import Text from '../text';
 import { HStack } from '@chakra-ui/react';
 
-export default function Role({ text, color, backgroundColor }: IRoleProps) {
+const Role = ({ text, color, backgroundColor }: IRoleProps) => {
     // Render
     return (
         <HStack
@@ -19,4 +19,5 @@ export default function Role({ text, color, backgroundColor }: IRoleProps) {
             </Text>
         </HStack>
     );
-}
+};
+export default Role;

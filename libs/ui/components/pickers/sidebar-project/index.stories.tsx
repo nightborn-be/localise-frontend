@@ -3,7 +3,7 @@ import React from 'react';
 import Icon from '../../contents/icon';
 import COLORS from '../../../constants/colors';
 import FONTS from '../../../constants/fonts';
-import SidebarProps from './props';
+import { ISidebarProps } from './props';
 import SidebarProject from '.';
 
 export default {
@@ -11,10 +11,10 @@ export default {
     component: SidebarProject,
 } as ComponentMeta<typeof SidebarProject>;
 const Template: ComponentStory<typeof SidebarProject> = (
-    props: SidebarProps,
+    props: ISidebarProps,
 ) => <SidebarProject {...props} />;
 
-const props: SidebarProps = {
+const props: ISidebarProps = {
     text: 'Mobile App',
     textFont: FONTS.T1.T12px.Medium500.value,
     textColor: COLORS.Text.T400.value,

@@ -3,7 +3,7 @@ import { VStack } from '@chakra-ui/react';
 import COLORS from '../../../constants/colors';
 import Text from '../text';
 import FONTS from '../../../constants/fonts';
-import IBadgeProps from './props';
+import { IBadgeProps } from './props';
 
 const Badge = ({isSelected, notificationNumber}: IBadgeProps) => {
     // Render

@@ -4,10 +4,10 @@ import { useMemo } from 'react';
 import COLORS from '../../../constants/colors';
 import FONTS from '../../../constants/fonts';
 import Text from '../../contents/text';
-import IBreadcrumbProps from './props';
+import { IBreadcrumbProps } from './props';
 import { IBreadcrumbElement } from './types';
 
-export const Breadcrumb = ({ elements }: IBreadcrumbProps) => {
+const Breadcrumb = ({ elements }: IBreadcrumbProps) => {
     // Attributes
     const crumbs = useMemo(() => {
         const crumbs: IBreadcrumbElement[] = [];
@@ -47,3 +47,5 @@ export const Breadcrumb = ({ elements }: IBreadcrumbProps) => {
         </Stack>
     );
 };
+
+export default Breadcrumb;

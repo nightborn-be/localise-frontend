@@ -2,8 +2,8 @@ import React from 'react';
 import { HStack, VStack } from '@chakra-ui/react';
 import COLORS from '../../../constants/colors';
 import Text from '../../contents/text';
-import SidebarOrganisationProps from './props';
-export default function SidebarOrganisation({
+import { ISidebarOrganisationProps } from './props';
+const SidebarOrganisation = ({
     topTextFont,
     topTextColor,
     topText,
@@ -16,7 +16,7 @@ export default function SidebarOrganisation({
     w = '14.25rem',
     h = '3.25rem',
     onClick,
-}: SidebarOrganisationProps) {
+}: ISidebarOrganisationProps) => {
     //Render
     return (
         <HStack
@@ -47,4 +47,5 @@ export default function SidebarOrganisation({
             {endEnhancer}
         </HStack>
     );
-}
+};
+export default SidebarOrganisation;

@@ -1,12 +1,12 @@
 import React from 'react';
 import { VStack } from '@chakra-ui/react';
-import SidebarMenuSettingProps from './props';
+import { ISidebarMenuSettingProps } from './props';
 import SidebarMenuSettingItem from './sidebar-menu-setting-item';
 export default function SidebarMenuSetting<T>({
     options,
     value,
     onChange,
-}: SidebarMenuSettingProps<T>) {
+}: ISidebarMenuSettingProps<T>) {
     //Render
     return (
         <>

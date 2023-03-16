@@ -1,4 +1,4 @@
-export interface IOrganizationMenuItemProps {
+export interface IOrganisationMenuItemProps {
     title?: string,
     description?: string,
     imageUrl?: string,

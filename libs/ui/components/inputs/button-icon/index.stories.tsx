@@ -1,6 +1,6 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import IButtonIconProps from './props';
+import { IButtonIconProps } from './props';
 import Icon from '../../contents/icon';
 import ButtonIcon from '.';
 import COLORS from "../../../constants/colors"
@@ -232,8 +232,8 @@ CircleCrossClose.args = {
     children: <Icon name='crossClose' />,
 };
 
-export const RemoveOrganization = Template.bind({});
-RemoveOrganization.args = {
+export const RemoveOrganisation = Template.bind({});
+RemoveOrganisation.args = {
     borderRadius: '0rem',
     size: ButtonSize['1.125rem'],
     backgroundColor: COLORS.Black.T500.value,

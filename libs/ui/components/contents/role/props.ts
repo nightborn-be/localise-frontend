@@ -1,4 +1,4 @@
-export default interface IRoleProps  {
+export interface IRoleProps {
     text?:string,
     color?: string,
     backgroundColor?: string,

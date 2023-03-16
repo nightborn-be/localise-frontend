@@ -1,7 +1,7 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import React, { useState } from 'react';
 import SidebarMenuSetting from '.';
-import SidebarMenuSettingProps from './props';
+import { ISidebarMenuSettingProps } from './props';
 import { MenuItemValue } from './types';
 
 export default {
@@ -10,7 +10,7 @@ export default {
 } as ComponentMeta<typeof SidebarMenuSetting>;
 const Template: ComponentStory<
     typeof SidebarMenuSetting<MenuItemValue>
-> = ({}: SidebarMenuSettingProps<MenuItemValue>) => {
+> = ({}: ISidebarMenuSettingProps<MenuItemValue>) => {
     const [activeKey, setActiveKey] = useState(MenuItemValue.INFORMATION);
     return (
         <SidebarMenuSetting
