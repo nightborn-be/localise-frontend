@@ -2,7 +2,7 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import COLORS from '../../../constants/colors';
 import Tag from '.';
-import ITagProps from './props';
+import { ITagProps } from './props';
 import FONTS from '../../../constants/fonts';
 
 export default {

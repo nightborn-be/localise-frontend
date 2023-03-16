@@ -27,7 +27,7 @@ const props: SearchbarProps = {
     w: '228px',
     h: '32px',
     padding: '4px 10px',
-    gap: '8px',
+    spacing: '8px',
     background: COLORS.White.T500.value,
     placeholder: 'Search for a project...',
     placeholderColor: COLORS.InputText.value,

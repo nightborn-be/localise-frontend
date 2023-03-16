@@ -12,7 +12,7 @@ const Searchbar = <T extends object>({
     h,
     w,
     alignItems = 'left',
-    gap = '8px',
+    spacing = '8px',
     paddingTop = '3px',
     borderRadius = '6px',
     padding,
@@ -24,7 +24,7 @@ const Searchbar = <T extends object>({
 }: SearchbarProps) => {
     // Render
     return (
-        <HStack w={w} h={h} minWidth={w} minHeight={h}>
+        <HStack w={w} h={h} minWidth={w} minHeight={h} spacing={spacing}>
             <InputGroup
                 w={w}
                 h={h}
@@ -33,7 +33,6 @@ const Searchbar = <T extends object>({
                 alignItems={'center'}
                 borderRadius={borderRadius}
                 padding={padding}
-                gap={gap}
                 bg={backgroundColor}
             >
                 {/* Left input icon */}
