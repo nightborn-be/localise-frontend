@@ -44,9 +44,10 @@ export default function Tag({
                     borderRadius='100%'
                     size={ButtonSize.XXS}
                     backgroundColor={COLORS.Text.T400.value}
-                    displayIcon={() => <Icon name='union' />}
                     handleOnClick={onDelete}
-                />
+                >
+                    <Icon name='union' />
+                </ButtonIcon>
             )}
         </HStack>
     );
