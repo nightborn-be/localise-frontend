@@ -1,5 +1,5 @@
 import React from 'react'
-export default interface IBadgeProps {
+export interface IBadgeProps {
     isSelected?: boolean
     notificationNumber?: number
 }

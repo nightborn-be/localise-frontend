@@ -1,25 +1,27 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import React, { useState } from 'react';
 import COLORS from '../../../constants/colors';
-import Toggle from '.';
-import ToggleProps from './props';
+import SwitchText from '.';
+import { ISwitchTextProps } from './props';
 
 export default {
-    title: 'Components/Contents/Toggle',
-    component: Toggle,
-} as ComponentMeta<typeof Toggle>;
-const Template: ComponentStory<typeof Toggle> = (props: ToggleProps) => {
+    title: 'Components/Contents/SwitchText',
+    component: SwitchText,
+} as ComponentMeta<typeof SwitchText>;
+const Template: ComponentStory<typeof SwitchText> = (
+    props: ISwitchTextProps,
+) => {
     const [isChecked, setIsChecked] = useState<boolean>(false);
 
     return (
-        <Toggle
+        <SwitchText
             {...props}
             isChecked={isChecked}
             toggleChecked={() => setIsChecked((prev) => !prev)}
         />
     );
 };
-const props: ToggleProps = {
+const props: ISwitchTextProps = {
     text: 'Detect duplicates',
     textPaddingRight: '0.375rem',
 };

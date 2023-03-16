@@ -1,15 +1,15 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import React, { useState } from 'react';
-import OrganizationMenu from '.';
+import OrganisationMenu from '.';
 
 export default {
-    title: 'Components/Contents/OrganizationMenu',
-    component: OrganizationMenu<number>,
-} as ComponentMeta<typeof OrganizationMenu<number>>;
-const Template: ComponentStory<typeof OrganizationMenu> = () => {
+    title: 'Components/Contents/OrganisationMenu',
+    component: OrganisationMenu<number>,
+} as ComponentMeta<typeof OrganisationMenu<number>>;
+const Template: ComponentStory<typeof OrganisationMenu> = () => {
     const [activeKey, setActiveKey] = useState(0);
     return (
-        <OrganizationMenu
+        <OrganisationMenu
             options={[
                 {
                     title: 'Nightborn',

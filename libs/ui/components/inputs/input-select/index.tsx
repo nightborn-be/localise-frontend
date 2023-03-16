@@ -2,7 +2,7 @@ import React from 'react';
 import { VStack } from '@chakra-ui/react';
 import Select from 'react-select';
 import COLORS from '../../../constants/colors';
-import IInputSelectProps from './props';
+import { IInputSelectProps } from './props';
 import InputLabel from '../input-label';
 import { getSelectStyle } from './style';
 import Option from './input-select-option';

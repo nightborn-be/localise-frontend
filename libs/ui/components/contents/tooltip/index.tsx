@@ -3,7 +3,7 @@ import { Box, Tooltip as ChakraTooltip } from '@chakra-ui/react';
 import { ITooltipProps, TooltipType } from './props';
 import COLORS from '../../../constants/colors';
 
-export default function Tooltip({
+const Tooltip = ({
     color = COLORS.White.T500.value,
     backgroundColor = COLORS.Black.T400.value,
     type = TooltipType.DEFAULT,
@@ -19,7 +19,7 @@ export default function Tooltip({
     lineHeight = '0.75rem',
     command,
     ...props
-}: ITooltipProps) {
+}: ITooltipProps) => {
     // Render
     return (
         <ChakraTooltip
@@ -44,4 +44,5 @@ export default function Tooltip({
             <Box w='fit-content'>{children}</Box>
         </ChakraTooltip>
     );
-}
+};
+export default Tooltip;

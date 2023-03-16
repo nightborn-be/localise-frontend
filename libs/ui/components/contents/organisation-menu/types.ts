@@ -1,6 +1,6 @@
-export type Option<T> = {
+export type OrganisationMenuOption<T> = {
     title?: string,
     description?: string,
-    value?: T,
+    value: T,
     imageUrl?: string,
 }

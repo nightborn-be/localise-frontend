@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { IconButton } from '@chakra-ui/react';
-import IButtonIconProps from './props';
+import { IButtonIconProps } from './props';
 
-export default function ButtonIcon({
+const ButtonIcon = ({
     size,
     hoverBackgroundColor,
     handleOnClick,
@@ -10,7 +10,7 @@ export default function ButtonIcon({
     border,
     borderRadius,
     ...props
-}: IButtonIconProps) {
+}: IButtonIconProps) => {
     //Attributes
     const [isHovered, setIsHovered] = useState<boolean>(false);
 
@@ -34,4 +34,6 @@ export default function ButtonIcon({
             borderRadius={borderRadius}
         />
     );
-}
+};
+
+export default ButtonIcon;

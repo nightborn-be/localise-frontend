@@ -2,7 +2,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import React from 'react';
 import Toggle from '.';
 import Badge from '.';
-import IBadgeProps from './props';
+import {IBadgeProps} from './props';
 
 export default {
     title: 'Components/Contents/Badge',

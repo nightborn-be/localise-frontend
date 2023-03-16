@@ -4,16 +4,16 @@ import Icon from '../../contents/icon/';
 import COLORS from '../../../constants/colors';
 import FONTS from '../../../constants/fonts';
 import InputProjectKey from '.';
-import InputProjectKeyProps from './props';
+import { IInputProjectKeyProps } from './props';
 import ButtonIcon from '../button-icon';
-import { ButtonSize } from '../button-icon/props';
+import { ButtonSize } from '../button-icon/types';
 
 export default {
     title: 'Components/Inputs/InputProjectKey',
     component: InputProjectKey,
 } as ComponentMeta<typeof InputProjectKey>;
 const Template: ComponentStory<typeof InputProjectKey> = (
-    props: InputProjectKeyProps,
+    props: IInputProjectKeyProps,
 ) => <InputProjectKey {...props} />;
 
 export const ProjectKeyInput = Template.bind({});

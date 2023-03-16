@@ -4,7 +4,7 @@ import COLORS from '../../../constants/colors';
 import Icon from '../../contents/icon';
 import InputSelect from '.';
 import InputSelectAndInput from '.';
-import IInputSelectAndInputProps from './props';
+import { IInputSelectAndInputProps } from './props';
 import FONTS from '../../../constants/fonts';
 import { EnhancerProps } from '../button/props';
 import Button from '../button';

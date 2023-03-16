@@ -1,5 +1,5 @@
 import { Options } from './types'
-export default interface SidebarMenuSettingProps<T> {
+export interface ISidebarMenuSettingProps<T> {
     options?: Array<Options<T>>,
     value?: T,
     onChange?: (value: T) => void

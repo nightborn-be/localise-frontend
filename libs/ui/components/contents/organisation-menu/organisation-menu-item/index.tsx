@@ -4,15 +4,15 @@ import COLORS from '../../../../constants/colors';
 import Text from '../../text';
 import FONTS from '../../../../constants/fonts';
 import Icon from '../../icon';
-import { IOrganizationMenuItemProps } from './props';
+import { IOrganisationMenuItemProps } from './props';
 
-export const OrganizationMenuItem = ({
+export const OrganisationMenuItem = ({
     title,
     description,
     isActive,
     imageUrl,
     onSelect,
-}: IOrganizationMenuItemProps) => {
+}: IOrganisationMenuItemProps) => {
     // Render
     return (
         <HStack

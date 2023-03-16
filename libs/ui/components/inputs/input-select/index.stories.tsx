@@ -2,7 +2,7 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import COLORS from '../../../constants/colors';
 import InputSelect from '.';
-import IInputSelectProps from './props';
+import { IInputSelectProps } from './props';
 import Icon from '../../contents/icon';
 
 export default {

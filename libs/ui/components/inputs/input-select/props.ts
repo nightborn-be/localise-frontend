@@ -1,6 +1,6 @@
 import { InputProps } from '@chakra-ui/react';
 import React from 'react'
-export default interface IInputSelectProps extends InputProps {
+export interface IInputSelectProps extends InputProps {
     label?: string,
     description?: string,
     isValid?: boolean,

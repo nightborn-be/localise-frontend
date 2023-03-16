@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Box, HStack } from '@chakra-ui/react';
 import COLORS from '../../../../constants/colors';
 import Text from '../../../contents/text';
-import ISidebarMenuSettingItemProps from './props';
+import { ISidebarMenuSettingItemProps } from './props';
 import FONTS from '../../../../constants/fonts';
 export default function SidebarMenuSettingItem({
     text,

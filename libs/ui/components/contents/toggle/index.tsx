@@ -3,10 +3,9 @@ import { HStack } from '@chakra-ui/react';
 import COLORS from '../../../constants/colors';
 import Text from '../../contents/text';
 import FONTS from '../../../constants/fonts';
-import ToggleProps from './props';
 import Switch from './toggle-switch';
-
-export default function Toggle({
+import { ISwitchTextProps } from './props';
+const SwitchText = ({
     border,
     borderRadius,
     boxShadow,
@@ -18,7 +17,7 @@ export default function Toggle({
     textPaddingRight = '0.375rem',
     isChecked,
     toggleChecked,
-}: ToggleProps) {
+}: ISwitchTextProps) => {
     //Render
     return (
         <HStack
@@ -46,4 +45,6 @@ export default function Toggle({
             </HStack>
         </HStack>
     );
-}
+};
+
+export default SwitchText;

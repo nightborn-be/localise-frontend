@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import COLORS from '../../../../constants/colors';
 import { ISwitchProps } from './props';
 
-export default function Switch({ isChecked, toggleChecked }: ISwitchProps) {
+const Switch = ({ isChecked, toggleChecked }: ISwitchProps) => {
     //Render
     return (
         <HStack
@@ -33,4 +33,6 @@ export default function Switch({ isChecked, toggleChecked }: ISwitchProps) {
             </motion.div>
         </HStack>
     );
-}
+};
+
+export default Switch;

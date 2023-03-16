@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import Button from '.';
-import IButtonProps, { EnhancerProps } from './props';
+import { IButtonProps, EnhancerProps } from './props';
 import Icon from '../../contents/icon';
 import COLORS from '../../../constants/colors';
 import FONTS from '../../../constants/fonts';
@@ -346,8 +346,8 @@ Sort.args = {
     hoverColor: COLORS.Localize.Purple.T500.value,
 };
 
-export const CreateOrganization = Template.bind({});
-CreateOrganization.args = {
+export const CreateOrganisation = Template.bind({});
+CreateOrganisation.args = {
     startEnhancer: (): React.ReactElement => (
         <Icon
             name='addSmallBackground'
@@ -359,7 +359,7 @@ CreateOrganization.args = {
     w: '252px',
     h: '40px',
     justifyContent: 'left',
-    children: 'Create new organization',
+    children: 'Create new organisation',
     font: FONTS.T1.T12px.Medium500.value,
     color: COLORS.Text.T400.value,
     spacing: '8px',

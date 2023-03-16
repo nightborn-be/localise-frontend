@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { HStack } from '@chakra-ui/react';
 import COLORS from '../../../constants/colors';
 import { IProjectColorPickerProps } from './props';
-import { ColorPicker } from './color-picker';
+import ColorPicker from './color-picker';
 
-export default function ProjectColorPicker({
+const ProjectColorPicker = ({
     onSelect,
     selected,
-}: IProjectColorPickerProps) {
+}: IProjectColorPickerProps) => {
     // Attributes
     const colors = [
         COLORS.Localize.Purple.T500.value,
@@ -47,4 +47,5 @@ export default function ProjectColorPicker({
             </HStack>
         </>
     );
-}
+};
+export default ProjectColorPicker;

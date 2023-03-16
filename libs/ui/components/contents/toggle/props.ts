@@ -1,5 +1,5 @@
 import React from 'react'
-export default interface ToggleProps {
+export interface ISwitchTextProps {
     text?: string,
     borderRadius?: string,
     boxShadow?: string,

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Font } from '../../../../constants/fonts';
-export default interface ISidebarMenuSettingItemProps {
+export interface ISidebarMenuSettingItemProps {
     text?: string,
     textFont?: Font,
     textColor?: string,
