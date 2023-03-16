@@ -1,5 +1,6 @@
 import { Box, Flex, Stack } from '@chakra-ui/react';
 import React, { Children, ReactElement, ReactNode } from 'react';
+import COLORS from '../../../constants/colors';
 import ITabsProps from './props';
 import { ITabProps } from './tab/props';
 
@@ -14,7 +15,7 @@ const Tabs = ({ children, activeKey, onChange }: ITabsProps): JSX.Element => {
 
                 return React.cloneElement(child, {
                     key,
-                    active: key === activeKey,
+                    isActive: key === activeKey,
                     onSelect: () => onChange?.(key),
                     children: child.props.title,
                 });
@@ -42,13 +43,13 @@ const Tabs = ({ children, activeKey, onChange }: ITabsProps): JSX.Element => {
         <Flex direction='column'>
             {/* Tab bar */}
             <Stack
-                py={'10.5px'}
-                px={'32px'}
+                py={'0.6563rem'}
+                px={'2rem'}
                 direction='row'
-                spacing={'24px'}
+                spacing={'1.5rem'}
                 align='center'
                 w='100%'
-                bg='#F2F4F9'
+                bg={COLORS.Tag.value}
             >
                 {renderTabs()}
             </Stack>
