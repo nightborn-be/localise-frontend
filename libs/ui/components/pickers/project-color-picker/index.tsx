@@ -9,7 +9,7 @@ const ProjectColorPicker = ({
     selected,
 }: IProjectColorPickerProps) => {
     // Attributes
-    const colors = [
+    const colors: string[] = [
         COLORS.Localize.Purple.T500.value,
         COLORS.Success.T500.value,
         COLORS.Warning.T500.value,

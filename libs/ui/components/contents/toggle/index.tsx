@@ -1,50 +1,38 @@
 import React from 'react';
-import { HStack } from '@chakra-ui/react';
+import { Box, HStack } from '@chakra-ui/react';
+import { motion } from 'framer-motion';
 import COLORS from '../../../constants/colors';
-import Text from '../../contents/text';
-import FONTS from '../../../constants/fonts';
-import Switch from './toggle-switch';
-import { ISwitchTextProps } from './props';
-const SwitchText = ({
-    border,
-    borderRadius,
-    boxShadow,
-    w,
-    h,
-    padding,
-    gap,
-    text,
-    textPaddingRight = '0.375rem',
-    isChecked,
-    toggleChecked,
-}: ISwitchTextProps) => {
+import { IToggleProps } from './props';
+
+const Toggle = ({ isChecked, toggleChecked }: IToggleProps) => {
     //Render
     return (
         <HStack
-            border={border}
-            w={w}
-            h={h}
-            padding={padding}
-            gap={gap}
-            borderRadius={borderRadius}
-            boxShadow={boxShadow}
+            w='2rem'
+            h='1.25rem'
+            backgroundColor={
+                isChecked ? COLORS.Success.T500.value : COLORS.Line.value
+            }
+            borderRadius='6.25rem'
+            padding={'0.25rem'}
+            onClick={toggleChecked}
         >
-            <HStack
-                w='11rem'
-                h='2rem'
-                padding='0.75rem 0rem'
-                spacing={textPaddingRight}
+            <motion.div
+                initial={{ translateX: '0' }}
+                animate={
+                    isChecked ? { translateX: '0.75rem' } : { translateX: '0' }
+                }
+                transition={{ duration: 0.3, ease: 'easeOut' }}
             >
-                <Text
-                    font={FONTS.T1.T12px.Regular400.value}
-                    color={COLORS.Text.T400.value}
-                >
-                    {text}
-                </Text>
-                <Switch isChecked={isChecked} toggleChecked={toggleChecked} />
-            </HStack>
+                <Box
+                    w='0.75rem'
+                    h='0.75rem'
+                    backgroundColor={'white'}
+                    borderRadius='100%'
+                />
+            </motion.div>
         </HStack>
     );
 };
 
-export default SwitchText;
+export default Toggle;
