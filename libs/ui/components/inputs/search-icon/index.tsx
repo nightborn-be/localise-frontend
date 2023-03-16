@@ -45,11 +45,12 @@ const SearchInput = <T extends object>({
                 >
                     <ButtonIcon
                         size={ButtonSize.XS}
-                        displayIcon={(isHovered) => <Icon name='search' />}
                         backgroundColor={COLORS.White.T500.value}
                         hoverBackgroundColor={COLORS.Tag.value}
                         aria-label=''
-                    />
+                    >
+                        <Icon name='search' />
+                    </ButtonIcon>
                     <motion.div
                         initial={{
                             translateX: 0,
