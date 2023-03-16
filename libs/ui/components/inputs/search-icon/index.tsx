@@ -6,7 +6,7 @@ import Icon from '../../contents/icon';
 import SearchInputProps from './props';
 import ButtonIcon from '../button-icon';
 import { motion } from 'framer-motion';
-import useOnClickOutside from './hooks';
+import useOnClickOutside from '../../../../utils/hooks';
 import { ButtonSize } from '../button-icon/types';
 const SearchInput = <T extends object>({
     color = COLORS.Text.T500.value,
