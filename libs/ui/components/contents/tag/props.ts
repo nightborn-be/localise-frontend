@@ -1,8 +1,8 @@
 import { ChakraProps } from '@chakra-ui/react';
 import { Font } from '../../../constants/fonts';
-export interface ITagProps extends ChakraProps {
+export interface ITagProps<T> extends ChakraProps {
     font?: Font,
-    value: string,
+    value: T,
     color?: string,
     onDelete?: () => void
 }
