@@ -8,7 +8,7 @@ import {
 } from '@chakra-ui/react';
 import COLORS from '../../../constants/colors';
 import * as CSS from 'csstype';
-import InputTextAreaFieldProps from './props';
+import { IInputTextAreaFieldProps } from './props';
 export default function InputTextAreaField<T>({
     color = COLORS.Text.T500.value,
     border = `1px solid ${COLORS.Stroke.value}`,
@@ -24,7 +24,7 @@ export default function InputTextAreaField<T>({
     padding,
     gap,
     ...props
-}: InputTextAreaFieldProps<T>) {
+}: IInputTextAreaFieldProps<T>) {
     //Attributes
     const [visibility, setVisibility] =
         useState<CSS.Property.Visibility>('hidden');

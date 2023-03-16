@@ -4,7 +4,7 @@ import COLORS from '../../../constants/colors';
 import Icon from '../../contents/icon';
 import InputSelect from '.';
 import InputSelectAndInput from '.';
-import IInputSelectAndInputProps from './props';
+import { IInputSelectAndInputProps } from './props';
 import FONTS from '../../../constants/fonts';
 import { EnhancerProps } from '../button/props';
 import Button from '../button';
@@ -38,7 +38,7 @@ const props: IInputSelectAndInputProps<test> = {
             { value: 'Administrateur', label: 'Administrateur' },
         ],
         fontWeight: '400',
-        dropDownIndicator: <Icon name='dropdownIndicator' />,
+        dropdownIndicator: <Icon name='dropdownIndicator' />,
         fontSize: '12px',
         lineHeight: '15px',
         padding: '0px',

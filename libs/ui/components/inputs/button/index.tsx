@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Button as ChakraButton, Stack } from '@chakra-ui/react';
-import IButtonProps from './props';
+import { IButtonProps } from './props';
 import ButtonChildren from '../button-children';
 
-export default function Button({
+const Button = ({
     hoverBackgroundColor,
     spacing,
     onClick,
@@ -16,8 +16,10 @@ export default function Button({
     endEnhancer,
     color,
     hoverColor = color,
+    font,
+    justifyContent = 'center',
     ...rest
-}: IButtonProps) {
+}: IButtonProps) => {
     //Attributes
     const [isHovered, setIsHovered] = useState<boolean>(false);
     const updateHoverState = () => setIsHovered((prev) => !prev);
@@ -42,6 +44,7 @@ export default function Button({
             onMouseOver={updateHoverState}
             onMouseLeave={updateHoverState}
             onClick={onClick}
+            justifyContent={justifyContent}
             _hover={{
                 bgColor: hoverBackgroundColor,
             }}
@@ -56,13 +59,10 @@ export default function Button({
                 spacing={spacing}
                 pointerEvents='none'
             >
-                {startEnhancer ? startEnhancer(enhancerProps) : null}
+                {startEnhancer && startEnhancer(enhancerProps)}
                 <ButtonChildren
-                    fontSize={rest.fontSize}
-                    fontWeight={rest.fontWeight}
+                    {...font}
                     hoverColor={hoverColor}
-                    textAlign={rest.textAlign}
-                    lineHeight={rest.lineHeight}
                     direction={direction}
                     whiteSpace={whiteSpace}
                     isHovered={isHovered}
@@ -70,8 +70,10 @@ export default function Button({
                 >
                     {children}
                 </ButtonChildren>
-                {endEnhancer ? endEnhancer(enhancerProps) : null}
+                {endEnhancer && endEnhancer(enhancerProps)}
             </Stack>
         </ChakraButton>
     );
-}
+};
+
+export default Button;

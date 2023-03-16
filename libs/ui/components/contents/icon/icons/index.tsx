@@ -16,7 +16,15 @@ import Cross from './cross';
 import Search from './search';
 import ShortCut from './shortcut';
 import Union from './union';
+import Section from './section';
+import EditorialArrow from './editorial-arrow';
+import SortName from './sort-name';
+import Checked from './checked';
+import Edit from './edit';
+import CheckedColor from './checked-color';
 import DropdownIndicator from './dropdownIndicator';
+import CheckboxOn from './checkboxOn';
+import CheckboxOff from './checkboxOff';
 import { ProjectLine } from './projectLine';
 import ArrowToBottom from './arrow-to-bottom';
 import CrossClose from './cross-close';
@@ -53,6 +61,14 @@ const Icons = {
     search: Search,
     shortcut: ShortCut,
     union: Union,
+    section: Section,
+    editorialArrow: EditorialArrow,
+    sortName: SortName,
+    checked: Checked,
+    checkboxOn: CheckboxOn,
+    checkboxOff: CheckboxOff,
+    edit: Edit,
+    checkedColor: CheckedColor,
     dropdownIndicator: DropdownIndicator,
     projectLine: ProjectLine,
     arrowToBottom: ArrowToBottom,

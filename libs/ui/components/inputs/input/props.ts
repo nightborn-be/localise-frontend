@@ -1,7 +1,7 @@
 import React from 'react'
 import { IFieldForm } from '../../../../utils/formik';
 import { Font } from '../../../constants/fonts';
-export default interface IInputProps<T> extends IFieldForm<T> {
+export interface IInputProps<T> extends IFieldForm<T> {
     type?: React.HTMLInputTypeAttribute;
     color?: string,
     font?: Font,

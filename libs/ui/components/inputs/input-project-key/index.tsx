@@ -10,9 +10,9 @@ import {
 import COLORS from '../../../constants/colors';
 import FONTS from '../../../constants/fonts';
 import Text from '../../contents/text';
-import InputProjectKeyProps from './props';
+import {IInputProjectKeyProps} from './props';
 import Icon from '../../contents/icon';
-export default function InputProjectKey({
+const InputProjectKey = ({
     color,
     border,
     borderRadius,
@@ -22,9 +22,9 @@ export default function InputProjectKey({
     font = FONTS.T1.T14px.SemiBold600.value,
     placeholder,
     value,
-    text="Projet key",
+    text = 'Projet key',
     rightElement,
-}: InputProjectKeyProps) {
+}: IInputProjectKeyProps) => {
     // Render
     return (
         <>
@@ -86,4 +86,5 @@ export default function InputProjectKey({
             </HStack>
         </>
     );
-}
+};
+export default InputProjectKey;

@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import COLORS from '../../../constants/colors';
 import SHADOWS from '../../../constants/shadows';
 import Icon from '../icon';
-import IKeyDetailProps from './props';
+import { IKeyDetailProps } from './props';
 import ButtonIcon from '../../inputs/button-icon';
 import { ButtonSize } from '../../inputs/button-icon/types';
 

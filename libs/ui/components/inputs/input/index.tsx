@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import IInputProps from './props';
+import { IInputProps } from './props';
 import {
     Input as ChakraInput,
     InputGroup,

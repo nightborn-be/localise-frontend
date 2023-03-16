@@ -3,7 +3,7 @@ import React from 'react';
 import COLORS from '../../../../constants/colors';
 import FONTS from '../../../../constants/fonts';
 import Text from '../../../contents/text';
-import IProjectStatisticsProps from './props';
+import { IProjectStatisticsProps } from './props';
 
 const ProjectStatisticCard = ({ value, title }: IProjectStatisticsProps) => {
     // Render
