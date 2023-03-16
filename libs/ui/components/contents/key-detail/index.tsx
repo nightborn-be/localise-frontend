@@ -5,7 +5,7 @@ import SHADOWS from '../../../constants/shadows';
 import Icon from '../icon';
 import IKeyDetailProps from './props';
 import ButtonIcon from '../../inputs/button-icon';
-import { ButtonSize } from '../../inputs/button-icon/props';
+import { ButtonSize } from '../../inputs/button-icon/types';
 
 const KeyDetailImage = ({
     imageSrc,

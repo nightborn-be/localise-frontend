@@ -7,7 +7,7 @@ import { Box } from '@chakra-ui/react';
 
 
 export default {
-    title: 'Components/Inputs/Tabs',
+    title: 'Components/Navigations/Tabs',
     component: Tabs,
 } as ComponentMeta<typeof Tabs>;
 

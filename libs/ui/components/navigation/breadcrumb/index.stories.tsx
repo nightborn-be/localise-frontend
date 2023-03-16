@@ -4,7 +4,7 @@ import { Breadcrumb } from '.';
 import IBreadcrumbProps from './props';
 
 export default {
-    title: 'Components/Inputs/Breadcrumb',
+    title: 'Components/Navigations/Breadcrumb',
     component: Breadcrumb,
 } as ComponentMeta<typeof Breadcrumb>;
 const Template: ComponentStory<typeof Breadcrumb> = (

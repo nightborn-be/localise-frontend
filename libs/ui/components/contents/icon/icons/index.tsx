@@ -22,6 +22,7 @@ import MyProfile from './my-profile';
 import Setting from './setting';
 import Support from './support';
 import Eye from './eye';
+import ShortKey from './short-key';
 
 const Icons = {
     add: Add,
@@ -55,6 +56,7 @@ const Icons = {
     setting: Setting,
     support: Support,
     eye: Eye,
+    shortKey: ShortKey,
 };
 
 export default Icons;

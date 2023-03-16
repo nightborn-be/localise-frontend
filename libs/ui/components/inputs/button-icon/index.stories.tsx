@@ -208,48 +208,47 @@ CircleAdd.args = {
 export const CircleClose = Template.bind({});
 CircleClose.args = {
     borderRadius: '100%',
-    border: `1px solid ${COLORS.Line.value}`,
+    border: `0.0625rem solid ${COLORS.Line.value}`,
     size: ButtonSize.XS,
     backgroundColor: COLORS.White.T500.value,
     hoverBackgroundColor: COLORS.Tag.value,
-    iconComponent: () => (
-        <Icon name='removeSmall' stroke={COLORS.Error.T500.value} width={20} height={20} />
+    children: (
+        <Icon
+            name='removeSmall'
+            stroke={COLORS.Error.T500.value}
+            width={20}
+            height={20}
+        />
     ),
 };
 
 export const CircleCrossClose = Template.bind({});
 CircleCrossClose.args = {
     borderRadius: '100%',
-    border: `1px solid ${COLORS.Line.value}`,
+    border: `0.0625rem solid ${COLORS.Line.value}`,
     size: ButtonSize.XXS,
     backgroundColor: COLORS.White.T500.value,
     hoverBackgroundColor: COLORS.Tag.value,
-    iconComponent: () => (
-        <Icon
-            name='crossClose'
-        />
-    ),
+    children: <Icon name='crossClose' />,
 };
 
 export const RemoveOrganization = Template.bind({});
 RemoveOrganization.args = {
-    borderRadius:"0px",
-    size: ButtonSize['18px'],
+    borderRadius: '0rem',
+    size: ButtonSize['1.125rem'],
     backgroundColor: COLORS.Black.T500.value,
     hoverBackgroundColor: COLORS.Black.T400.value,
-    iconComponent: () => <Icon name='trashLarge' fill={COLORS.White.T500.value}/>,
+    children: <Icon name='trashLarge' fill={COLORS.White.T500.value} />,
 };
 
 
 export const RemoveProject = Template.bind({});
 RemoveProject.args = {
-    borderRadius: '0px',
+    borderRadius: '0rem',
     size: ButtonSize.XXS,
     backgroundColor: COLORS.Black.T500.value,
     hoverBackgroundColor: COLORS.Black.T400.value,
-    iconComponent: () => (
-        <Icon name='removeLarge' stroke={COLORS.White.T500.value} />
-    ),
+    children: <Icon name='removeLarge' stroke={COLORS.White.T500.value} />,
 };
 
 
