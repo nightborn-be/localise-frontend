@@ -1,27 +1,27 @@
 import React, { useState } from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { ISearchTargetProps } from './props';
-import SearchTarget from '.';
+import SearchBox from '.';
+import { ISearchBoxProps } from './props';
 
 export default {
-    title: 'Components/Contents/SearchTarget',
-    component: SearchTarget,
+    title: 'Components/Contents/SearchBox',
+    component: SearchBox,
     argTypes: {
         backgroundColor: { control: 'color' },
     },
-} as ComponentMeta<typeof SearchTarget>;
+} as ComponentMeta<typeof SearchBox>;
 
-const Template: ComponentStory<typeof SearchTarget> = (args) => {
+const Template: ComponentStory<typeof SearchBox> = (args) => {
     const [value, setValue] = useState<string>('');
     return (
-        <SearchTarget
+        <SearchBox
             {...args}
             value={value}
             onChange={(value) => setValue(value.target.value)}
         />
     );
 };
-const props: ISearchTargetProps<boolean> = {
+const props: ISearchBoxProps<string> = {
     title: 'Target',
     description:
         'Target languages are secondary languages you want to add to your project.',

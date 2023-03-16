@@ -3,18 +3,18 @@ import { Box, HStack, VStack } from '@chakra-ui/react';
 import COLORS from '../../../constants/colors';
 import FONTS from '../../../constants/fonts';
 import Text from '../text';
-import { ISearchTargetProps } from './props';
+import { ISearchBoxProps } from './props';
 import Tag from '../tag';
 import Searchbar from '../../inputs/searchbar';
 
-const SearchTarget = <T extends object>({
+const SearchBox = <T,>({
     title,
     description,
     value,
     onChange,
     placeholder,
     tags = [],
-}: ISearchTargetProps<T>) => {
+}: ISearchBoxProps<T>) => {
     // Render
     return (
         <>
@@ -61,7 +61,7 @@ const SearchTarget = <T extends object>({
                         {tags.map((tag, index) => (
                             <Tag
                                 key={`tag-${index}`}
-                                value={tag as unknown as string}
+                                value={tag}
                                 font={FONTS.T1.T12px.Medium500.value}
                             />
                         ))}
@@ -72,4 +72,4 @@ const SearchTarget = <T extends object>({
     );
 };
 
-export default SearchTarget;
+export default SearchBox;

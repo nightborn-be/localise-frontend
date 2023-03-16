@@ -14,7 +14,7 @@ export default {
 } as ComponentMeta<typeof Tag>;
 
 const Template: ComponentStory<typeof Tag> = (args) => <Tag {...args} />;
-const props: ITagProps = {
+const props: ITagProps<string> = {
     w: 'fit-content',
     h: '28px',
     padding: '6px 10px',

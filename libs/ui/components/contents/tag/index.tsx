@@ -6,7 +6,7 @@ import { ITagProps } from './props';
 import ButtonIcon from '../../inputs/button-icon';
 import Icon from '../icon';
 import { ButtonSize } from '../../inputs/button-icon/types';
-const Tag = ({
+const Tag = <T,>({
     h = '28px',
     w = 'fit-content',
     gap = '4px',
@@ -17,10 +17,10 @@ const Tag = ({
     value,
     color = COLORS.Text.T400.value,
     onDelete,
-}: ITagProps) => {
-    //Attributes
+}: ITagProps<T>) => {
+    // Attributes
     const [isHovered, setIsHovered] = useState<boolean>(false);
-    //Render
+    // Render
     return (
         <HStack
             bg={backgroundColor}
@@ -34,21 +34,27 @@ const Tag = ({
             onMouseOver={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >
-            <Text {...font} color={color}>
-                {value}
-            </Text>
+            <>
+                {typeof value === 'string' || 'number' ? (
+                    <Text {...font} color={color}>
+                        {value as string}
+                    </Text>
+                ) : (
+                    { value }
+                )}
 
-            {isHovered && (
-                <ButtonIcon
-                    aria-label=''
-                    borderRadius='100%'
-                    size={ButtonSize.XXS}
-                    backgroundColor={COLORS.Text.T400.value}
-                    handleOnClick={onDelete}
-                >
-                    <Icon name='union' />
-                </ButtonIcon>
-            )}
+                {isHovered && (
+                    <ButtonIcon
+                        aria-label=''
+                        borderRadius='100%'
+                        size={ButtonSize.XXS}
+                        backgroundColor={COLORS.Text.T400.value}
+                        handleOnClick={onDelete}
+                    >
+                        <Icon name='union' />
+                    </ButtonIcon>
+                )}
+            </>
         </HStack>
     );
 };
