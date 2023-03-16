@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { HStack } from '@chakra-ui/react';
 import COLORS from '../../../constants/colors';
 import Text from '../text';
-import ITagProps from './props';
+import { ITagProps } from './props';
 import ButtonIcon from '../../inputs/button-icon';
 import Icon from '../icon';
-import { ButtonSize } from '../../inputs/button-icon/props';
-export default function Tag({
+import { ButtonSize } from '../../inputs/button-icon/types';
+const Tag = ({
     h = '28px',
     w = 'fit-content',
     gap = '4px',
@@ -17,7 +17,7 @@ export default function Tag({
     value,
     color = COLORS.Text.T400.value,
     onDelete,
-}: ITagProps) {
+}: ITagProps) => {
     //Attributes
     const [isHovered, setIsHovered] = useState<boolean>(false);
     //Render
@@ -51,4 +51,6 @@ export default function Tag({
             )}
         </HStack>
     );
-}
+};
+
+export default Tag;

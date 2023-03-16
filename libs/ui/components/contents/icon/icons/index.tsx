@@ -16,7 +16,7 @@ import Cross from './cross';
 import Search from './search';
 import ShortCut from './shortcut';
 import Union from './union';
-import DropdownIndicator from './dropdownindicator';
+import DropdownIndicator from './dropdownIndicator';
 import { ProjectLine } from './projectLine';
 import ArrowToBottom from './arrow-to-bottom';
 import CrossClose from './cross-close';
