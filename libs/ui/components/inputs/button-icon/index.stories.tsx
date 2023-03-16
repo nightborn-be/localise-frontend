@@ -1,9 +1,10 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import IButtonIconProps, { ButtonSize } from './props';
+import IButtonIconProps from './props';
 import Icon from '../../contents/icon';
 import ButtonIcon from '.';
-import COLORS from '../../../constants/colors'
+import COLORS from "../../../constants/colors"
+import { ButtonSize } from './types';
 
 export default {
     title: 'Components/Inputs/ButtonIcon',
