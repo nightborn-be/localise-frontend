@@ -1,6 +1,6 @@
 import React from 'react'
 export interface IBadgeProps {
-    isSelected?: boolean
-    notificationNumber?: number
+    color?: string
+    children?: React.ReactNode
 }
 

@@ -67,9 +67,14 @@ const SidebarProject = ({
                 )}
             </HStack>
             <Badge
-                isSelected={isSelected}
-                notificationNumber={notificationNumber}
-            />
+                color={
+                    isSelected
+                        ? COLORS.Localize.Purple.T600.value
+                        : COLORS.Error.T500.value
+                }
+            >
+                {notificationNumber}
+            </Badge>
         </HStack>
     );
 };
