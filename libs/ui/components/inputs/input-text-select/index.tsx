@@ -108,7 +108,6 @@ export default function InputSelectAndInput<T>({
                             padding='0.25rem'
                             gap='0.625rem'
                             backgroundColor='transparent'
-                            iconComponent={() => iconChoice(isHovered)}
                             hoverBackgroundColor={COLORS.Tag.value}
                             size={ButtonSize.XS}
                             aria-label=''
@@ -116,7 +115,9 @@ export default function InputSelectAndInput<T>({
                             right='8px'
                             top='5px'
                             bottom='6px'
-                        />
+                        >
+                            {() => iconChoice(isHovered)}
+                        </ButtonIcon>
                     </motion.div>
                 )}
             </HStack>
