@@ -1,6 +1,7 @@
-import { Options } from './types'
+import { SidebarMenuSettingOption } from "./types";
+
 export interface ISidebarMenuSettingProps<T> {
-    options?: Array<Options<T>>,
-    value?: T,
+    options?: SidebarMenuSettingOption<T>[],
+    value: T,
     onChange?: (value: T) => void
 }

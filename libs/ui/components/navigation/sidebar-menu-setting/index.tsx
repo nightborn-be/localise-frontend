@@ -11,11 +11,12 @@ export default function SidebarMenuSetting<T>({
     return (
         <>
             <VStack p='2rem 1.25rem 2rem 2rem' spacing='0.5rem' w='14.25rem'>
-                {options?.map((obj) => (
+                {options?.map((option, index) => (
                     <SidebarMenuSettingItem
-                        text={obj.title}
-                        isSelected={value === obj.value}
-                        onSelect={() => onChange?.(obj.value as T)}
+                        key={index}
+                        text={option.title}
+                        isSelected={value === option.value}
+                        onSelect={() => onChange?.(option.value)}
                     />
                 ))}
             </VStack>

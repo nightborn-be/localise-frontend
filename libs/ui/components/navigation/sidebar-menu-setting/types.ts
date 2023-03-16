@@ -1,8 +1,11 @@
-export type Options<T> = {
+export type SidebarMenuSettingOption<T> = {
     title?: string,
-    value?: T,
+    value: T,
 }
 
 export enum MenuItemValue {
-    INFORMATION, PROJET_COLOR, SOURCE_LANGUAGE, TARGET_LANGUAGES
+    INFORMATION = "INFORMATION",
+    PROJET_COLOR = "PROJECT_COLOR",
+    SOURCE_LANGUAGE = "SOURCE_LANGUAGE",
+    TARGET_LANGUAGES = "TARGET_LANGUAGES"
 }
