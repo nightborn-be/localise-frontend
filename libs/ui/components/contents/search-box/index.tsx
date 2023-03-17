@@ -13,7 +13,9 @@ const SearchBox = <T,>({
     value,
     onChange,
     placeholder,
-    tags = [],
+    onCheck,
+    activeKeys,
+    options,
 }: ISearchBoxProps<T>) => {
     // Render
     return (
@@ -55,10 +57,13 @@ const SearchBox = <T,>({
                     borderRadius='0.375rem'
                     value={value}
                     onChange={onChange}
+                    onCheck={onCheck}
+                    activeKeys={activeKeys}
+                    options={options}
                 />
-                {!!tags?.length && (
+                {!!activeKeys?.length && (
                     <HStack spacing={'0.25rem'}>
-                        {tags.map((tag, index) => (
+                        {activeKeys.map((tag, index) => (
                             <Tag
                                 key={`tag-${index}`}
                                 value={tag}

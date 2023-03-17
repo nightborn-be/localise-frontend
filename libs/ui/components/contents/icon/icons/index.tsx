@@ -34,6 +34,7 @@ import Setting from './setting';
 import Support from './support';
 import Eye from './eye';
 import ShortKey from './short-key';
+import ChevronDown from './chevron-down';
 
 const Icons = {
     add: Add,
@@ -79,6 +80,7 @@ const Icons = {
     support: Support,
     eye: Eye,
     shortKey: ShortKey,
+    chevronDown: ChevronDown,
 };
 
 export default Icons;

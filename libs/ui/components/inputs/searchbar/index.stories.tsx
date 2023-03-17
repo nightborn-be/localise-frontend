@@ -6,28 +6,41 @@ import SearchbarProps, { Options } from './props';
 
 export default {
     title: 'Components/Inputs/Searchbar',
-    component: Searchbar,
+    component: Searchbar<string>,
     argTypes: {
         backgroundColor: { control: 'color' },
     },
-} as ComponentMeta<typeof Searchbar>;
+} as ComponentMeta<typeof Searchbar<string>>;
 
-const Template: ComponentStory<typeof Searchbar> = (args) => {
+const Template: ComponentStory<typeof Searchbar<string>> = (args) => {
+    // Attributes
     const [value, setValue] = useState<string>('');
-    const [options, setOptions] = useState<Options<string>[]>();
-    const [activeKeys, setActiveKeys] = useState<string[]>(['French']);
-    function onCheck(value) {
+    const options: Options<string>[] = [
+        { value: 'French', label: 'French' },
+        { value: 'Chinese', label: 'Chinese' },
+        { value: 'Dutch', label: 'Dutch' },
+    ];
+    const [activeKeys, setActiveKeys] = useState<string[]>([]);
+
+    // Functions
+    function onCheck(value: string) {
         if (!activeKeys?.some((option) => option === value))
-            setActiveKeys((prev) => [{ ...prev }, value]);
+            setActiveKeys((prev) => [...prev, value]);
         else setActiveKeys((prev) => prev?.filter((option) => option != value));
+    }
+    function filter(value: string) {
+        return options?.filter((option) =>
+            option.value.toLowerCase().includes(value.toLowerCase()),
+        );
     }
     return (
         <Searchbar
             {...args}
             value={value}
-            onChange={(value) => setValue(value.target.value)}
+            onChange={(event) => setValue(event?.target.value)}
             onCheck={onCheck}
             activeKeys={activeKeys}
+            options={filter(value)}
         />
     );
 };
@@ -41,24 +54,6 @@ const props: SearchbarProps<string> = {
     placeholder: 'Search for a project...',
     placeholderColor: COLORS.InputText.value,
     borderRadius: '6px',
-    options: [
-        { value: 'French', label: 'French', isActive: false },
-        { value: 'Chinese', label: 'Chinese', isActive: false },
-        { value: 'Dutch', label: 'Dutch', isActive: false },
-        { value: 'Dutch', label: 'Dutch', isActive: false },
-        { value: 'Dutch', label: 'Dutch', isActive: false },
-        { value: 'Dutch', label: 'Dutch', isActive: false },
-        { value: 'Dutch', label: 'Dutch', isActive: false },
-        { value: 'Dutch', label: 'Dutch', isActive: false },
-        { value: 'Dutch', label: 'Dutch', isActive: false },
-        { value: 'Dutch', label: 'Dutch', isActive: false },
-        { value: 'Dutch', label: 'Dutch', isActive: false },
-        { value: 'Dutch', label: 'Dutch', isActive: false },
-        { value: 'Dutch', label: 'Dutch', isActive: false },
-        { value: 'Dutch', label: 'Dutch', isActive: false },
-        { value: 'Dutch', label: 'Dutch', isActive: false },
-        { value: 'Dutch', label: 'Dutch', isActive: false },
-    ],
 };
 
 export const SideBar = Template.bind({});

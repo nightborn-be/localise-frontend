@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import {
     Box,
     HStack,
@@ -13,6 +13,7 @@ import SearchbarProps from './props';
 import Icon from '../../contents/icon';
 import SHADOWS from '../../../constants/shadows';
 import Checkbox from '../checkbox';
+import useOnClickOutside from '../../../../utils/hooks';
 const Searchbar = <T,>({
     type = 'text',
     placeholderColor = COLORS.InputText.value,
@@ -35,9 +36,17 @@ const Searchbar = <T,>({
     activeKeys,
     ...props
 }: SearchbarProps<T>) => {
+    const [showModal, setShowModal] = useState<boolean>(false);
+    const inputRef = useRef<HTMLDivElement>(null);
+    useOnClickOutside(inputRef, () => setShowModal(false));
     // Render
     return (
-        <VStack alignItems={'left'}>
+        <VStack
+            alignItems={'left'}
+            ref={inputRef}
+            w={'fit-content'}
+            spacing={'4px'}
+        >
             <HStack w={w} h={h} minWidth={w} minHeight={h} spacing={spacing}>
                 <InputGroup
                     w={w}
@@ -75,10 +84,12 @@ const Searchbar = <T,>({
                         focusBorderColor='transparent'
                         border={'1px solid transprent'}
                         marginRight='8px'
+                        onFocus={() => setShowModal(true)}
                     />
                 </InputGroup>
             </HStack>
             <VStack
+                display={showModal ? 'visible' : 'none'}
                 w={w}
                 h='188px'
                 overflowY={'scroll'}
