@@ -4,6 +4,7 @@ import COLORS from '../../../constants/colors';
 import InputSelect from '.';
 import { IInputSelectProps } from './props';
 import Icon from '../../contents/icon';
+import FONTS from '../../../constants/fonts';
 
 export default {
     title: 'Components/Inputs/InputSelect',
@@ -21,7 +22,10 @@ const props: IInputSelectProps = {
     w: '20.4375rem',
     h: '2.5rem',
     background: COLORS.White.T500.value,
+    font: FONTS.T1.T12px.Regular400.value,
     borderRadius: '0.5rem',
+    dropdownIndicator: <Icon name='chevronDown' />,
+    paddingContainer: '12px',
     options: [
         { value: 'Admin', label: 'Admin' },
         { value: 'Member', label: 'Member' },
@@ -54,9 +58,11 @@ IsInvalidSelect.args = {
 
 const selectSortProps: IInputSelectProps = {
     color: COLORS.Text.T400.value,
-    w: '20.4375rem',
-    h: '2.5rem',
+    h: '32px',
     background: COLORS.White.T500.value,
+    dropdownIndicator: <Icon name='chevronDown' />,
+    font: FONTS.T1.T12px.Regular400.value,
+    paddingContainer: '12px',
     borderRadius: '0.5rem',
     options: [
         { value: 'None', label: 'None' },
@@ -70,16 +76,4 @@ export const SortSelect = Template.bind({});
 SortSelect.args = {
     ...selectSortProps,
     w: '12.5rem',
-};
-
-export const SortMultiple = Template.bind({});
-SortMultiple.args = {
-    ...selectSortProps,
-    options: [
-        { value: 'Name', label: 'Name' },
-        { value: 'Author', label: 'Author' },
-        { value: 'Date', label: 'Date' },
-    ],
-    w: '12.5rem',
-    isMultiple: true,
 };

@@ -40,6 +40,9 @@ const InputSelect = ({
     menuLeftOption,
     selectMarginLeft,
     isMultiple = false,
+    font,
+    paddingContainer,
+    onChange,
 }: IInputSelectProps) => {
     // Render
     return (
@@ -58,6 +61,7 @@ const InputSelect = ({
                     isClearable={false}
                     options={options}
                     placeholder={placeholder}
+                    onChange={onChange}
                     styles={{
                         ...getSelectStyle(
                             isValid,
@@ -82,16 +86,21 @@ const InputSelect = ({
                             paddingRight,
                             backgroundOptionColor,
                             focusBackgroundOptionColor,
+                            font,
+                            paddingContainer,
                         ),
                     }}
                     components={{
                         IndicatorSeparator: () => null,
-                        DropdownIndicator: (props) => (
-                            <DropdownIndicator
-                                props={props}
-                                dropdownIndicator={dropdownIndicator}
-                            />
-                        ),
+                        DropdownIndicator: (props) => {
+                            if (!dropdownIndicator) return null;
+                            return (
+                                <DropdownIndicator
+                                    props={props}
+                                    dropdownIndicator={dropdownIndicator}
+                                />
+                            );
+                        },
                         Option: (props) => (
                             <Option props={props} isMultiple={isMultiple} />
                         ),

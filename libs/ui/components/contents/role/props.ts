@@ -1,5 +1,4 @@
 export interface IRoleProps {
-    text?:string,
-    color?: string,
-    backgroundColor?: string,
+    selectedValue: string,
+    setSelectedValue: (value) => void,
 }

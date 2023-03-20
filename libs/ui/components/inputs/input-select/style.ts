@@ -5,21 +5,28 @@ function backgroundStyleSwitch(isFocused: boolean, isSelected: boolean, isMultip
 }
 export function getSelectStyle(isValid, border, errorBorder, borderRadius, fontSize, fontWeight,
     fontFamily, color, selectMarginLeft, placeholderColor, menuOptionWidth, menuRightOption, menuLeftOption, borderRadiusOption, isMultiple, selectedOptionColor,
-    textOptionColor, dropdownArrowColor, paddingLeft, paddingRight, backgroundOptionColor, focusBackgroundOptionColor) {
+    textOptionColor, dropdownArrowColor, paddingLeft, paddingRight, backgroundOptionColor, focusBackgroundOptionColor, font, paddingContainer) {
     return {
+        valueContainer: (styles) => {
+            return {
+                ...styles,
+                padding: paddingContainer,
+                width: 'fit-content',
+                height: 'fit-content',
+            }
+        },
         control: (styles) => {
             return {
                 ...styles,
                 border: isValid ? border : errorBorder,
                 borderRadius: borderRadius,
                 '&:hover': isValid ? border : errorBorder,
-                fontSize: fontSize,
-                fontWeight: fontWeight,
-                fontFamily: fontFamily,
+                ...font,
                 color: color,
                 backgroundColor: 'transparent',
                 boxShadow: 'none',
                 marginLeft: selectMarginLeft,
+                minHeight: "0px",
             };
         },
         placeholder: (styles) => {
@@ -72,6 +79,9 @@ export function getSelectStyle(isValid, border, errorBorder, borderRadius, fontS
             '&:hover': { color: dropdownArrowColor },
             paddingLeft: paddingLeft,
             paddingRight: paddingRight,
+            height: 'full',
+            justifyContent: 'center',
+            alignItem: 'center',
         }),
     };
 }
