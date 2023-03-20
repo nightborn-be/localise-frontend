@@ -31,6 +31,7 @@ import Setting from './setting';
 import Support from './support';
 import Eye from './eye';
 import ShortKey from './short-key';
+import HomeShape from './home-shape';
 
 const Icons = {
     add: Add,
@@ -73,6 +74,7 @@ const Icons = {
     support: Support,
     eye: Eye,
     shortKey: ShortKey,
+    homeShape: HomeShape,
 };
 
 export default Icons;

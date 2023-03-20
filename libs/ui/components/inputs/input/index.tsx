@@ -32,6 +32,9 @@ export default function Input<T>({
     padding,
     gap,
     zIndex,
+    value,
+    name,
+    onChange,
     ...props
 }: IInputProps<T>) {
     //Attributes
@@ -73,9 +76,13 @@ export default function Input<T>({
                     <ChakraInput
                         padding={padding}
                         gap={gap}
-                        value={props.value}
-                        onChange={props.onChange}
-                        name={props.name as string}
+                        value={value}
+                        onChange={(e) => {
+                            console.log(e);
+
+                            onChange && onChange(e.currentTarget.value);
+                        }}
+                        name={name as string}
                         type={type}
                         placeholder={placeholder}
                         _placeholder={{
@@ -101,9 +108,9 @@ export default function Input<T>({
                         marginTop={marginTop}
                         onFocus={handleToggleVisibility}
                         onBlur={handleToggleVisibility}
-                        pr={paddingRight ?? '4px'}
-                        paddingInlineStart={'0px'}
-                        paddingInlineEnd={'0px'}
+                        pr={paddingRight ?? '0.25rem'}
+                        paddingInlineStart={'0rem'}
+                        paddingInlineEnd={'0rem'}
                         onKeyDown={(event) =>
                             event.key === 'Enter'
                                 ? event.currentTarget.blur()
