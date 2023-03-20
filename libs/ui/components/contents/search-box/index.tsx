@@ -30,7 +30,7 @@ const SearchBox = <T,>({
                 borderRadius={'0.5rem'}
                 alignItems={'left'}
             >
-                <Box>
+                <VStack align={'left'} spacing='0'>
                     <Text
                         font={FONTS.T1.T14px.Medium500.value}
                         color={COLORS.Text.T400.value}
@@ -44,7 +44,7 @@ const SearchBox = <T,>({
                     >
                         {description}
                     </Text>
-                </Box>
+                </VStack>
                 <Searchbar
                     color={COLORS.Text.T400.value}
                     w='34.375rem'

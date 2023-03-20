@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import COLORS from '../../../constants/colors';
 import SearchbarSelect from '.';
-import ISearchbarSelectProps, { Options } from './props';
+import ISearchbarSelectProps from './props';
+import { SearchBarOption } from '../searchbar/props';
 
 export default {
     title: 'Components/Inputs/SearchbarSelect',
@@ -14,7 +15,7 @@ export default {
 
 const Template: ComponentStory<typeof SearchbarSelect<string>> = (args) => {
     // Attributes
-    const options: Options<string>[] = [
+    const options: SearchBarOption<string>[] = [
         { value: 'French', label: 'French' },
         { value: 'Chinese', label: 'Chinese' },
         { value: 'Dutch', label: 'Dutch' },
@@ -50,6 +51,7 @@ const props: ISearchbarSelectProps<string> = {
     placeholder: 'Search for a project...',
     placeholderColor: COLORS.InputText.value,
     borderRadius: '6px',
+    defaultSelectValue: 'Choose a source language',
 };
 
 export const SearchbarSelectDefault = Template.bind({});

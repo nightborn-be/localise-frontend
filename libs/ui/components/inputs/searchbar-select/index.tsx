@@ -16,6 +16,7 @@ const SearchbarSelect = <T,>({
     onChange,
     onSelect,
     options,
+    defaultSelectValue,
     ...props
 }: ISearchbarSelectProps<T>) => {
     const [showModal, setShowModal] = useState<boolean>(false);
@@ -40,11 +41,9 @@ const SearchbarSelect = <T,>({
                     }
                     w={'full'}
                 >
-                    {activeKey
-                        ? (activeKey as string)
-                        : 'Choose a source language'}
+                    {activeKey ? (activeKey as string) : defaultSelectValue}
                 </Text>
-                <Icon name='chevronDown' />
+                <Icon name='chevronDown' width='20' height='20' />
             </HStack>
             <VStack
                 spacing={'8px'}
