@@ -1,6 +1,8 @@
 import { InputProps } from '@chakra-ui/react';
 import React from 'react'
-export interface IInputSelectProps extends InputProps {
+import { Font } from '../../../constants/fonts';
+
+export interface IInputSelectProps extends Omit<InputProps, 'onChange'> {
     label?: string,
     description?: string,
     isValid?: boolean,
@@ -18,8 +20,11 @@ export interface IInputSelectProps extends InputProps {
     textOptionColor?: string,
     menuRightOption?: string,
     menuLeftOption?: string,
-    selectMarginLeft?: string
-    isMultiple?: boolean
+    selectMarginLeft?: string,
+    isMultiple?: boolean,
+    font?: Font;
+    paddingContainer?: string;
+    onChange?: (value) => void;
 }
 
 export type Options = {
