@@ -14,6 +14,7 @@ import Icon from '../../contents/icon';
 import SHADOWS from '../../../constants/shadows';
 import Checkbox from '../checkbox';
 import useOnClickOutside from '../../../../utils/hooks';
+
 const Searchbar = <T,>({
     type = 'text',
     placeholderColor = COLORS.InputText.value,
@@ -34,10 +35,14 @@ const Searchbar = <T,>({
     onCheck,
     options,
     activeKeys,
+    displayModal = true,
     ...props
 }: SearchbarProps<T>) => {
+    
     const [showModal, setShowModal] = useState<boolean>(false);
     const inputRef = useRef<HTMLDivElement>(null);
+    
+    // Hooks
     useOnClickOutside(inputRef, () => setShowModal(false));
     // Render
     return (
@@ -46,6 +51,7 @@ const Searchbar = <T,>({
             ref={inputRef}
             w={'fit-content'}
             spacing={'4px'}
+            position='relative'
         >
             <HStack w={w} h={h} minWidth={w} minHeight={h} spacing={spacing}>
                 <InputGroup
@@ -88,33 +94,37 @@ const Searchbar = <T,>({
                     />
                 </InputGroup>
             </HStack>
-            <VStack
-                display={showModal ? 'visible' : 'none'}
-                w={w}
-                h='188px'
-                overflowY={'scroll'}
-                alignItems={'flex-start'}
-                bg={COLORS.White.T500.value}
-                borderRadius={'8px'}
-                boxShadow={SHADOWS.Elevation.Light.Bottom.T05.value}
-                border={`1px solid ${COLORS.Line.value}`}
-                padding={'6px'}
-                spacing='4px'
-            >
-                {options?.map((option, index) => {
-                    return (
-                        <Checkbox
-                            key={index}
-                            label={option.label}
-                            isSelected={activeKeys?.some(
-                                (checkedOption) =>
-                                    checkedOption === option.value,
-                            )}
-                            onSelect={() => onCheck?.(option.value)}
-                        />
-                    );
-                })}
-            </VStack>
+            {displayModal && (
+                <VStack
+                    position={'absolute'}
+                    top={h}
+                    display={showModal ? 'visible' : 'none'}
+                    w={w}
+                    h='188px'
+                    overflowY={'scroll'}
+                    alignItems={'flex-start'}
+                    bg={COLORS.White.T500.value}
+                    borderRadius={'8px'}
+                    boxShadow={SHADOWS.Elevation.Light.Bottom.T05.value}
+                    border={`1px solid ${COLORS.Line.value}`}
+                    padding={'6px'}
+                    spacing='4px'
+                >
+                    {options?.map((option, index) => {
+                        return (
+                            <Checkbox
+                                key={index}
+                                label={option.label}
+                                isSelected={activeKeys?.some(
+                                    (checkedOption) =>
+                                        checkedOption === option.value,
+                                )}
+                                onSelect={() => onCheck?.(option.value)}
+                            />
+                        );
+                    })}
+                </VStack>
+            )}
         </VStack>
     );
 };

@@ -55,9 +55,3 @@ const props: ISearchBoxProps<string> = {
 
 export const SearchBarTag = Template.bind({});
 SearchBarTag.args = { ...props };
-
-export const SearchBarTagAdded = Template.bind({});
-SearchBarTagAdded.args = {
-    ...props,
-    tags: ['French', 'Dutch', 'Japanes'],
-};
