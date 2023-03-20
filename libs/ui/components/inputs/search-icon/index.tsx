@@ -22,14 +22,14 @@ const SearchInput = <T extends object>({
     onChange,
     ...props
 }: SearchInputProps) => {
-    //Attributes
+    // Attributes
     const [launchAnime, setLaunchAnime] = useState<boolean>(false);
     const boxRef = useRef<HTMLDivElement>(null);
 
-    //Functions
+    // Hooks
     useOnClickOutside(boxRef, () => setLaunchAnime(false));
 
-    //Render
+    // Render
     return (
         <HStack ml={marginLeft}>
             <Box onClick={() => setLaunchAnime(true)} ref={boxRef}>

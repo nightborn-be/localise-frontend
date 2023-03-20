@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import COLORS from '../../../constants/colors';
 import Searchbar from '.';
-import SearchbarProps, { Options } from './props';
+import SearchbarProps, { SearchBarOption } from './props';
 
 export default {
     title: 'Components/Inputs/Searchbar',
@@ -15,7 +15,7 @@ export default {
 const Template: ComponentStory<typeof Searchbar<string>> = (args) => {
     // Attributes
     const [value, setValue] = useState<string>('');
-    const options: Options<string>[] = [
+    const options: SearchBarOption<string>[] = [
         { value: 'French', label: 'French' },
         { value: 'Chinese', label: 'Chinese' },
         { value: 'Dutch', label: 'Dutch' },
