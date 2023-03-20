@@ -7,6 +7,7 @@ export default interface SearchbarProps<T> extends InputProps {
     options?: Options<T>[]
     activeKeys?: T[]
     onCheck?: (values: T) => void
+    displayModal?: boolean
 }
 
 export type Options<T> = {
