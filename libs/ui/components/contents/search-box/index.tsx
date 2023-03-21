@@ -30,11 +30,10 @@ const SearchBox = <T,>({
                 borderRadius={'0.5rem'}
                 alignItems={'left'}
             >
-                <VStack align={'left'} spacing='0'>
+                <VStack align={'left'} spacing='0.25rem'>
                     <Text
                         font={FONTS.T1.T14px.Medium500.value}
                         color={COLORS.Text.T400.value}
-                        pb={'0.25rem'}
                     >
                         {title}
                     </Text>
