@@ -15,4 +15,5 @@ export interface IInputSelectAndInputProps<T> extends InputProps {
     menuOptionWidth?: string;
     menuRightOption?: string;
     menuMinWOption?: string;
+    onDelete: () => void;
 }

@@ -14,75 +14,95 @@ import { EnhancerProps } from '../../../components/inputs/button/props';
 import Icon from '../../../components/contents/icon';
 import InputSelectAndInput from '../../../components/inputs/input-text-select';
 
+
+export type TeammatesOption = {
+    id: number;
+    content: React.ReactElement;
+};
 export default function SignInPage() {
     const { push } = useRouter();
     const [currentStep, setCurrentStep] = useState<SignUpStep>(
         SignUpStep.DEFAULT,
     );
 
-    const [teammates, setTeammates] = useState<React.ReactElement[]>([]);
+    const [countTeammates, setCountTeammates] = useState<number>(0);
+    const [teammates, setTeammates] = useState<TeammatesOption[]>([]);
 
     function addTeammates() {
+        // if (countTeammates < 5) setCountTeammates((prev) => prev + 1);
         setTeammates((prev) => [
             ...prev,
-            <InputSelectAndInput
-                selectProps={{
-                    color: COLORS.Localize.Purple.T500.value,
-                    placeholderColor: COLORS.Localize.Purple.T500.value,
-                    dropdownArrowColor: COLORS.Localize.Purple.T500.value,
-                    w: '100px',
-                    background: COLORS.White.T500.value,
-                    border: 'transparent',
-                    options: [
-                        { value: 'Admin', label: 'Admin' },
-                        { value: 'Member', label: 'Member' },
-                        {
-                            value: 'Utilisateur',
-                            label: 'Utilisateur',
-                        },
-                        {
-                            value: 'Administrateur',
-                            label: 'Administrateur',
-                        },
-                    ],
-                    fontWeight: '400',
-                    dropdownIndicator: <Icon name='dropdownIndicator' />,
-                    fontSize: '12px',
-                    lineHeight: '15px',
-                    padding: '0px',
-                    gap: '4px',
-                    placeholder: 'Admin',
-                    paddingRight: '0',
-                    paddingLeft: '0',
-                }}
-                inputProps={{
-                    ...form.teammates,
-                    placeholder: 'Insert email',
-                    w: '100%',
-                    border: 'transparent',
-                    font: FONTS.T1.T12px.Regular400.value,
-                    zIndex: '10',
-                }}
-                w='327px'
-                h='40px'
-                border={`1px solid ${COLORS.Line.value}`}
-                borderRadius='8px'
-                backgroundColor={COLORS.White.T500.value}
-                rightIcon={
-                    <Icon
-                        pointerEvents={'none'}
-                        name='removeSmall'
-                        stroke={COLORS.InputText.value}
+            {
+                id: countTeammates + 1,
+                content: (
+                    <InputSelectAndInput
+                        selectProps={{
+                            color: COLORS.Localize.Purple.T500.value,
+                            placeholderColor: COLORS.Localize.Purple.T500.value,
+                            dropdownArrowColor:
+                                COLORS.Localize.Purple.T500.value,
+                            w: '100px',
+                            background: COLORS.White.T500.value,
+                            border: 'transparent',
+                            options: [
+                                { value: 'Admin', label: 'Admin' },
+                                {
+                                    value: 'Member',
+                                    label: 'Member',
+                                },
+                                {
+                                    value: 'Utilisateur',
+                                    label: 'Utilisateur',
+                                },
+                                {
+                                    value: 'Administrateur',
+                                    label: 'Administrateur',
+                                },
+                            ],
+                            fontWeight: '400',
+                            dropdownIndicator: (
+                                <Icon name='dropdownIndicator' />
+                            ),
+                            fontSize: '12px',
+                            lineHeight: '15px',
+                            padding: '0px',
+                            gap: '4px',
+                            placeholder: 'Admin',
+                            paddingRight: '0',
+                            paddingLeft: '0',
+                        }}
+                        inputProps={{
+                            ...form.email,
+                            placeholder: 'Insert email',
+                            w: '100%',
+                            border: 'transparent',
+                            font: FONTS.T1.T12px.Regular400.value,
+                            zIndex: '10',
+                        }}
+                        w='327px'
+                        h='40px'
+                        border={`1px solid ${COLORS.Line.value}`}
+                        borderRadius='8px'
+                        backgroundColor={COLORS.White.T500.value}
+                        rightIcon={
+                            <Icon
+                                pointerEvents={'none'}
+                                name='removeSmall'
+                                stroke={COLORS.InputText.value}
+                            />
+                        }
+                        rightHoverIcon={
+                            <Icon
+                                pointerEvents={'none'}
+                                name='removeSmall'
+                                stroke={COLORS.Error.T500.value}
+                            />
+                        }
+                        onDelete={() => {}}
+                        key={countTeammates}
                     />
-                }
-                rightHoverIcon={
-                    <Icon
-                        pointerEvents={'none'}
-                        name='removeSmall'
-                        stroke={COLORS.Error.T500.value}
-                    />
-                }
-            />,
+                ),
+            },
         ]);
     }
     const handleOnSubmit = async (): Promise<void> => {
@@ -153,7 +173,7 @@ export default function SignInPage() {
                             placeholderColor={COLORS.InputText.value}
                             bg={COLORS.White.T500.value}
                             font={FONTS.T1.T12px.Regular400.value}
-                            color={COLORS.InputText.value}
+                            color={COLORS.Text.T400.value}
                         />
                         <Input
                             {...form.password}
@@ -166,7 +186,7 @@ export default function SignInPage() {
                             placeholderColor={COLORS.InputText.value}
                             bg={COLORS.White.T500.value}
                             font={FONTS.T1.T12px.Regular400.value}
-                            color={COLORS.InputText.value}
+                            color={COLORS.Text.T400.value}
                         />
                     </>
                 );
@@ -217,37 +237,116 @@ export default function SignInPage() {
             case SignUpStep.INVITE_TEAM_MEMBERS:
                 return (
                     <VStack w='327px' spacing={'12px'}>
-                        {teammates}
-                        <Button
-                            border={`1px dashed ${COLORS.Line.value}`}
-                            borderRadius='8px'
-                            w='327px'
-                            h='40px'
-                            padding='4px 12px 4px 8px'
-                            gap='4px'
-                            font={FONTS.T1.T14px.Regular400.value}
-                            justifyContent='flex-start'
-                            backgroundColor='transparent'
-                            color={COLORS.InputText.value}
-                            hoverColor={COLORS.Localize.Purple.T500.value}
-                            startEnhancer={(
-                                enhancer: EnhancerProps,
-                            ): React.ReactElement => (
-                                <Icon
-                                    name='add'
-                                    stroke={
-                                        enhancer.isHovered
-                                            ? COLORS.Localize.Purple.T500.value
-                                            : COLORS.InputText.value
+                        {/* {Array(countTeammates)
+                            .fill(null)
+                            .map((obj, index) => (
+                                <InputSelectAndInput
+                                    selectProps={{
+                                        color: COLORS.Localize.Purple.T500
+                                            .value,
+                                        placeholderColor:
+                                            COLORS.Localize.Purple.T500.value,
+                                        dropdownArrowColor:
+                                            COLORS.Localize.Purple.T500.value,
+                                        w: '100px',
+                                        background: COLORS.White.T500.value,
+                                        border: 'transparent',
+                                        options: [
+                                            { value: 'Admin', label: 'Admin' },
+                                            {
+                                                value: 'Member',
+                                                label: 'Member',
+                                            },
+                                            {
+                                                value: 'Utilisateur',
+                                                label: 'Utilisateur',
+                                            },
+                                            {
+                                                value: 'Administrateur',
+                                                label: 'Administrateur',
+                                            },
+                                        ],
+                                        fontWeight: '400',
+                                        dropdownIndicator: (
+                                            <Icon name='dropdownIndicator' />
+                                        ),
+                                        fontSize: '12px',
+                                        lineHeight: '15px',
+                                        padding: '0px',
+                                        gap: '4px',
+                                        placeholder: 'Admin',
+                                        paddingRight: '0',
+                                        paddingLeft: '0',
+                                    }}
+                                    inputProps={{
+                                        ...form.email,
+                                        placeholder: 'Insert email',
+                                        w: '100%',
+                                        border: 'transparent',
+                                        font: FONTS.T1.T12px.Regular400.value,
+                                        zIndex: '10',
+                                    }}
+                                    w='327px'
+                                    h='40px'
+                                    border={`1px solid ${COLORS.Line.value}`}
+                                    borderRadius='8px'
+                                    backgroundColor={COLORS.White.T500.value}
+                                    rightIcon={
+                                        <Icon
+                                            pointerEvents={'none'}
+                                            name='removeSmall'
+                                            stroke={COLORS.InputText.value}
+                                        />
                                     }
-                                    width='20'
-                                    height='20'
+                                    rightHoverIcon={
+                                        <Icon
+                                            pointerEvents={'none'}
+                                            name='removeSmall'
+                                            stroke={COLORS.Error.T500.value}
+                                        />
+                                    }
+                                    onDelete={() => {}}
+                                    key={index}
                                 />
+                            ))} */}
+                        <>
+                            {teammates.map((obj) => obj.content)}
+                            {countTeammates < 5 && (
+                                <Button
+                                    border={`1px dashed ${COLORS.Line.value}`}
+                                    borderRadius='8px'
+                                    w='327px'
+                                    h='40px'
+                                    padding='4px 12px 4px 8px'
+                                    gap='4px'
+                                    font={FONTS.T1.T14px.Regular400.value}
+                                    justifyContent='flex-start'
+                                    backgroundColor='transparent'
+                                    color={COLORS.InputText.value}
+                                    hoverColor={
+                                        COLORS.Localize.Purple.T500.value
+                                    }
+                                    startEnhancer={(
+                                        enhancer: EnhancerProps,
+                                    ): React.ReactElement => (
+                                        <Icon
+                                            name='add'
+                                            stroke={
+                                                enhancer.isHovered
+                                                    ? COLORS.Localize.Purple
+                                                          .T500.value
+                                                    : COLORS.InputText.value
+                                            }
+                                            width='20'
+                                            height='20'
+                                        />
+                                    )}
+                                    onClick={addTeammates}
+                                >
+                                    Add a member
+                                </Button>
                             )}
-                            onClick={addTeammates}
-                        >
-                            Add a member
-                        </Button>
+                        </>
                     </VStack>
                 );
         }

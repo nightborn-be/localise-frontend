@@ -79,8 +79,6 @@ export default function Input<T>({
                         gap={gap}
                         value={value}
                         onChange={(e) => {
-                            console.log(e);
-
                             onChange && onChange(e.currentTarget.value);
                         }}
                         name={name as string}
