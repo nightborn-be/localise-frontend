@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import COLORS from '../../../../../libs/ui/constants/colors';
 import { VStack } from '@chakra-ui/react';
 import FONTS from '../../../../../libs/ui/constants/fonts';
@@ -10,11 +10,81 @@ import Button from '../../../components/inputs/button';
 import { useFormik } from 'formik';
 import { createForm } from '../../../../utils/formik';
 import { SignUpStep } from './types';
+import { EnhancerProps } from '../../../components/inputs/button/props';
+import Icon from '../../../components/contents/icon';
+import InputSelectAndInput from '../../../components/inputs/input-text-select';
+
 export default function SignInPage() {
     const { push } = useRouter();
     const [currentStep, setCurrentStep] = useState<SignUpStep>(
         SignUpStep.DEFAULT,
     );
+
+    const [teammates, setTeammates] = useState<React.ReactElement[]>([]);
+
+    function addTeammates() {
+        setTeammates((prev) => [
+            ...prev,
+            <InputSelectAndInput
+                selectProps={{
+                    color: COLORS.Localize.Purple.T500.value,
+                    placeholderColor: COLORS.Localize.Purple.T500.value,
+                    dropdownArrowColor: COLORS.Localize.Purple.T500.value,
+                    w: '100px',
+                    background: COLORS.White.T500.value,
+                    border: 'transparent',
+                    options: [
+                        { value: 'Admin', label: 'Admin' },
+                        { value: 'Member', label: 'Member' },
+                        {
+                            value: 'Utilisateur',
+                            label: 'Utilisateur',
+                        },
+                        {
+                            value: 'Administrateur',
+                            label: 'Administrateur',
+                        },
+                    ],
+                    fontWeight: '400',
+                    dropdownIndicator: <Icon name='dropdownIndicator' />,
+                    fontSize: '12px',
+                    lineHeight: '15px',
+                    padding: '0px',
+                    gap: '4px',
+                    placeholder: 'Admin',
+                    paddingRight: '0',
+                    paddingLeft: '0',
+                }}
+                inputProps={{
+                    ...form.teammates,
+                    placeholder: 'Insert email',
+                    w: '100%',
+                    border: 'transparent',
+                    font: FONTS.T1.T12px.Regular400.value,
+                    zIndex: '10',
+                }}
+                w='327px'
+                h='40px'
+                border={`1px solid ${COLORS.Line.value}`}
+                borderRadius='8px'
+                backgroundColor={COLORS.White.T500.value}
+                rightIcon={
+                    <Icon
+                        pointerEvents={'none'}
+                        name='removeSmall'
+                        stroke={COLORS.InputText.value}
+                    />
+                }
+                rightHoverIcon={
+                    <Icon
+                        pointerEvents={'none'}
+                        name='removeSmall'
+                        stroke={COLORS.Error.T500.value}
+                    />
+                }
+            />,
+        ]);
+    }
     const handleOnSubmit = async (): Promise<void> => {
         // if (dirty) {
         //     const response = await TokenService.post(
@@ -40,9 +110,12 @@ export default function SignInPage() {
         initialValues: {
             email: '',
             password: '',
+            organizationName: '',
+            teammates: [''],
         },
         onSubmit: () => {},
     });
+
     const handleOnContinue = () => {
         if (currentStep === SignUpStep.DEFAULT)
             setCurrentStep(SignUpStep.ORGANIZATION_NAME);
@@ -78,6 +151,9 @@ export default function SignInPage() {
                             label='Email'
                             placeholder='Insert email'
                             placeholderColor={COLORS.InputText.value}
+                            bg={COLORS.White.T500.value}
+                            font={FONTS.T1.T12px.Regular400.value}
+                            color={COLORS.InputText.value}
                         />
                         <Input
                             {...form.password}
@@ -88,17 +164,95 @@ export default function SignInPage() {
                             label='Password'
                             placeholder='Insert password'
                             placeholderColor={COLORS.InputText.value}
+                            bg={COLORS.White.T500.value}
+                            font={FONTS.T1.T12px.Regular400.value}
+                            color={COLORS.InputText.value}
                         />
                     </>
                 );
             case SignUpStep.ORGANIZATION_NAME:
-                return;
+                return (
+                    <>
+                        <Input
+                            {...form.organizationName}
+                            w='327px'
+                            padding='12px'
+                            gap='8px'
+                            label='Your workspace name'
+                            placeholder='Insert name'
+                            placeholderColor={COLORS.InputText.value}
+                            bg={COLORS.White.T500.value}
+                            font={FONTS.T1.T12px.Regular400.value}
+                            color={COLORS.InputText.value}
+                        />
+                    </>
+                );
             case SignUpStep.ORGANIZATION_PICTURE:
-                return;
+                return (
+                    <Button
+                        border={`0.125rem dashed ${COLORS.Line.value}`}
+                        font={FONTS.T1.T12px.Medium500.value}
+                        borderRadius='1rem'
+                        w='6.25rem'
+                        h='6.25rem'
+                        direction='column'
+                        backgroundColor='transparent'
+                        color={COLORS.InputText.value}
+                        whiteSpace='pre-line'
+                        spacing='0.4375rem'
+                        startEnhancer={(
+                            enhancer: EnhancerProps,
+                        ): React.ReactElement => (
+                            <Icon
+                                name='uploadCloud'
+                                stroke={COLORS.InputText.value}
+                                width='24'
+                                height='24'
+                            />
+                        )}
+                    >
+                        Add a picture
+                    </Button>
+                );
             case SignUpStep.INVITE_TEAM_MEMBERS:
-                return;
+                return (
+                    <VStack w='327px' spacing={'12px'}>
+                        {teammates}
+                        <Button
+                            border={`1px dashed ${COLORS.Line.value}`}
+                            borderRadius='8px'
+                            w='327px'
+                            h='40px'
+                            padding='4px 12px 4px 8px'
+                            gap='4px'
+                            font={FONTS.T1.T14px.Regular400.value}
+                            justifyContent='flex-start'
+                            backgroundColor='transparent'
+                            color={COLORS.InputText.value}
+                            hoverColor={COLORS.Localize.Purple.T500.value}
+                            startEnhancer={(
+                                enhancer: EnhancerProps,
+                            ): React.ReactElement => (
+                                <Icon
+                                    name='add'
+                                    stroke={
+                                        enhancer.isHovered
+                                            ? COLORS.Localize.Purple.T500.value
+                                            : COLORS.InputText.value
+                                    }
+                                    width='20'
+                                    height='20'
+                                />
+                            )}
+                            onClick={addTeammates}
+                        >
+                            Add a member
+                        </Button>
+                    </VStack>
+                );
         }
     };
+
     const form = createForm(values, rest);
     return (
         <Page bgImage='/assets/images/LoginBackground.png'>
@@ -108,8 +262,7 @@ export default function SignInPage() {
                 position='absolute'
                 left='136px'
                 top='221px'
-                w='327px'
-                h='305px'
+                w='358px'
             >
                 <Text
                     font={FONTS.T1.T24px.Bold700.value}
@@ -117,37 +270,35 @@ export default function SignInPage() {
                 >
                     {renderTitle()}
                 </Text>
-                <VStack spacing='20px'>
-                    <Input
-                        {...form.email}
-                        w='327px'
-                        padding='12px'
-                        gap='8px'
-                        label='Email'
-                        placeholder='Insert email'
-                        placeholderColor={COLORS.InputText.value}
-                    />
-                    <Input
-                        {...form.password}
-                        w='327px'
-                        padding='12px'
-                        gap='8px'
-                        type='password'
-                        label='Password'
-                        placeholder='Insert password'
-                        placeholderColor={COLORS.InputText.value}
-                    />
+                <VStack spacing='20px' alignItems={'left'}>
+                    {renderForm()}
                 </VStack>
-                <Button
-                    color={COLORS.White.T500.value}
-                    backgroundColor={COLORS.Localize.Purple.T500.value}
-                    border='1px solid transparent'
-                    borderRadius={'8px'}
-                    hoverBackgroundColor={COLORS.Localize.Purple.T600.value}
-                    onClick={handleOnContinue}
-                >
-                    Continue
-                </Button>
+                <VStack spacing='4px' alignItems={'left'}>
+                    <Button
+                        color={COLORS.White.T500.value}
+                        backgroundColor={COLORS.Localize.Purple.T500.value}
+                        border='1px solid transparent'
+                        borderRadius={'8px'}
+                        w='327px'
+                        h='44px'
+                        onClick={handleOnContinue}
+                    >
+                        Continue
+                    </Button>
+                    {currentStep === SignUpStep.ORGANIZATION_NAME ||
+                        (currentStep === SignUpStep.ORGANIZATION_PICTURE && (
+                            <Button
+                                color={COLORS.InputText.value}
+                                backgroundColor={'transparent'}
+                                border='1px solid transparent'
+                                borderRadius={'8px'}
+                                w='327px'
+                                onClick={handleOnContinue}
+                            >
+                                Later
+                            </Button>
+                        ))}
+                </VStack>
             </VStack>
         </Page>
     );

@@ -27,4 +27,5 @@ export interface IInputProps<T> extends IFieldForm<T> {
     gap?: string,
     zIndex?: string,
     margin?: string,
+    bg?: string,
 }

@@ -35,6 +35,7 @@ export default function Input<T>({
     value,
     name,
     onChange,
+    bg,
     ...props
 }: IInputProps<T>) {
     //Attributes
@@ -61,7 +62,7 @@ export default function Input<T>({
         <>
             <VStack
                 direction='column'
-                spacing='0.25rem'
+                spacing='0.5rem'
                 h={h}
                 w={w}
                 maxWidth={maxWidth}
@@ -70,9 +71,9 @@ export default function Input<T>({
             >
                 {/* Input label section */}
                 <InputLabel label={label} description={description} />
-
                 {/* Input field section */}
-                <InputGroup>
+
+                <InputGroup bg={bg}>
                     <ChakraInput
                         padding={padding}
                         gap={gap}

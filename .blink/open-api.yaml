@@ -37,32 +37,63 @@ paths:
           schema:
             type: string
       responses:
-        "200":
+        '200':
           description: Return the organisations for a user
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/OrgnanisationPagingDTO"
+                $ref: '#/components/schemas/OrgnanisationPagingDTO'
+  /users/{userId}/switch-organisation:
+    patch:
+      security:
+        - oauth2:
+            - write:basic
+      description: Switch user's current organisation
+      tags:
+        - Organisations
+      operationId: SwitchUserOrganisation
+      parameters:
+        - name: userId
+          description: The user id
+          required: true
+          in: path
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/SwitchUserOrganisationDTO'
+      responses:
+        '204':
+          description: Switch user's current organisation
   /organisations:
     post:
+      security:
+        - oauth2:
+            - write:basic
       description: Create an organisation
       tags:
         - Organisations
       operationId: CreateOrganisation
       requestBody:
         content:
-          "application/json":
+          'application/json':
             schema:
-              $ref: "#/components/schemas/CreateOrganisationDTO"
+              $ref: '#/components/schemas/CreateOrganisationDTO'
       responses:
-        "200":
+        '200':
           description: Return the created organisation
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/OrganisationDTO"
+                $ref: '#/components/schemas/OrganisationDTO'
   /organisations/{organisationId}:
     get:
+      security:
+        - oauth2:
+            - write:basic
       description: Get an organisation
       tags:
         - Organisations
@@ -76,13 +107,16 @@ paths:
             type: string
             format: uuid
       responses:
-        "200":
+        '200':
           description: Return the organisation
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/OrganisationDTO"
+                $ref: '#/components/schemas/OrganisationDTO'
     put:
+      security:
+        - oauth2:
+            - write:basic
       description: Update an organisation
       tags:
         - Organisations
@@ -97,17 +131,20 @@ paths:
             format: uuid
       requestBody:
         content:
-          "application/json":
+          'application/json':
             schema:
-              $ref: "#/components/schemas/UpdateOrganisationDTO"
+              $ref: '#/components/schemas/UpdateOrganisationDTO'
       responses:
-        "200":
+        '200':
           description: Return the updated organisation
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/OrganisationDTO"
+                $ref: '#/components/schemas/OrganisationDTO'
     delete:
+      security:
+        - oauth2:
+            - write:basic
       description: Delete an organisation
       tags:
         - Organisations
@@ -121,12 +158,15 @@ paths:
             type: string
             format: uuid
       responses:
-        "204":
+        '204':
           description: Success
 
   # Projects
-  /organisations/{organisationId}/projects:
+  /organisations/:organisationId/projects:
     get:
+      security:
+        - oauth2:
+            - write:basic
       description: Returns the projects of an organisation
       tags:
         - Projects
@@ -155,13 +195,16 @@ paths:
           schema:
             type: string
       responses:
-        "200":
+        '200':
           description: Return the projects of an organisation
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProjectPagingDTO"
+                $ref: '#/components/schemas/ProjectPagingDTO'
     post:
+      security:
+        - oauth2:
+            - write:basic
       description: Create a project in an organisation
       tags:
         - Projects
@@ -176,18 +219,21 @@ paths:
             format: uuid
       requestBody:
         content:
-          "application/json":
+          'application/json':
             schema:
-              $ref: "#/components/schemas/CreateProjectDTO"
+              $ref: '#/components/schemas/CreateProjectDTO'
       responses:
-        "200":
+        '200':
           description: Return the created project
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProjectDTO"
+                $ref: '#/components/schemas/ProjectDTO'
   /organisations/{organisationId}/projects/{projectId}:
     put:
+      security:
+        - oauth2:
+            - write:basic
       description: Update a project
       tags:
         - Projects
@@ -209,17 +255,20 @@ paths:
             format: uuid
       requestBody:
         content:
-          "application/json":
+          'application/json':
             schema:
-              $ref: "#/components/schemas/UpdateProjectDTO"
+              $ref: '#/components/schemas/UpdateProjectDTO'
       responses:
-        "200":
+        '200':
           description: Return the updated project
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProjectDTO"
+                $ref: '#/components/schemas/ProjectDTO'
     delete:
+      security:
+        - oauth2:
+            - write:basic
       description: Delete a project
       tags:
         - Projects
@@ -240,12 +289,15 @@ paths:
             type: string
             format: uuid
       responses:
-        "204":
+        '204':
           description: Success
 
   # Terms
   /projects/:projectId/terms:
     get:
+      security:
+        - oauth2:
+            - write:basic
       description: Returns the terms of a project
       tags:
         - Terms
@@ -274,13 +326,16 @@ paths:
           schema:
             type: string
       responses:
-        "200":
+        '200':
           description: Return the terms of a project
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/TermPagingDTO"
+                $ref: '#/components/schemas/TermPagingDTO'
     post:
+      security:
+        - oauth2:
+            - write:basic
       description: Create a term in a project
       tags:
         - Terms
@@ -295,18 +350,21 @@ paths:
             format: uuid
       requestBody:
         content:
-          "application/json":
+          'application/json':
             schema:
-              $ref: "#/components/schemas/CreateTermDTO"
+              $ref: '#/components/schemas/CreateTermDTO'
       responses:
-        "200":
+        '200':
           description: Return the created project
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/TermDTO"
+                $ref: '#/components/schemas/TermDTO'
   /projects/{projectId}/terms/{termId}:
     put:
+      security:
+        - oauth2:
+            - write:basic
       description: Update a term
       tags:
         - Terms
@@ -328,17 +386,20 @@ paths:
             format: uuid
       requestBody:
         content:
-          "application/json":
+          'application/json':
             schema:
-              $ref: "#/components/schemas/UpdateTermDTO"
+              $ref: '#/components/schemas/UpdateTermDTO'
       responses:
-        "200":
+        '200':
           description: Return the updated term
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/TermDTO"
+                $ref: '#/components/schemas/TermDTO'
     delete:
+      security:
+        - oauth2:
+            - write:basic
       description: Delete a term
       tags:
         - Terms
@@ -359,12 +420,15 @@ paths:
             type: string
             format: uuid
       responses:
-        "204":
+        '204':
           description: Success
 
   # Translations
   /terms/{termId}/languages:
     get:
+      security:
+        - oauth2:
+            - write:basic
       description: Returns the translations of a term (even if there is no translation for a specific language)
       tags:
         - Translations
@@ -393,14 +457,17 @@ paths:
           schema:
             type: string
       responses:
-        "200":
+        '200':
           description: Return the translations of a term
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/TranslationWithMetaPagingDTO"
+                $ref: '#/components/schemas/TranslationWithMetaPagingDTO'
   /terms/{termId}/languages/{languageId}:
     post:
+      security:
+        - oauth2:
+            - write:basic
       description: Save a translation for a language of a term
       tags:
         - Translations
@@ -422,16 +489,53 @@ paths:
             format: uuid
       requestBody:
         content:
-          "application/json":
+          'application/json':
             schema:
-              $ref: "#/components/schemas/SaveTranslationDTO"
+              $ref: '#/components/schemas/SaveTranslationDTO'
       responses:
-        "200":
+        '200':
           description: Return the saved translation
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/TranslationDTO"
+                $ref: '#/components/schemas/TranslationDTO'
+
+  # Users
+  /users:
+    post:
+      description: Create a user
+      tags:
+        - Users
+      operationId: CreateUser
+      requestBody:
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/CreateUserDTO'
+      responses:
+        '200':
+          description: Return the created user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDTO'
+
+  /me:
+    get:
+      security:
+        - oauth2:
+            - write:basic
+      description: Returns the logged in user informations
+      tags:
+        - Users
+      operationId: GetMe
+      responses:
+        '200':
+          description: Returns the logged in user informations
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MeDTO'
 
 components:
   securitySchemes:
@@ -466,7 +570,7 @@ components:
           type: array
           description: The organisations
           items:
-            $ref: "#/components/schemas/OrganisationDTO"
+            $ref: '#/components/schemas/OrganisationDTO'
         nbPages:
           type: integer
           description: The number of pages
@@ -509,6 +613,15 @@ components:
           type: string
           format: base64
           nullable: true
+    SwitchUserOrganisationDTO:
+      description: An organisation object to update
+      type: object
+      required:
+        - organisationId
+      properties:
+        organisationId:
+          type: string
+          format: uuid
 
     # Projects
     ProjectDTO:
@@ -534,7 +647,7 @@ components:
           type: array
           description: The projects
           items:
-            $ref: "#/components/schemas/ProjectDTO"
+            $ref: '#/components/schemas/ProjectDTO'
         nbPages:
           type: integer
           description: The number of pages
@@ -562,11 +675,11 @@ components:
           description: The (unique) name of the project
           type: string
         sourceLanguage:
-          $ref: "#/components/schemas/UpsertProjectLanguageDTO"
+          $ref: '#/components/schemas/UpsertProjectLanguageDTO'
         languages:
           type: array
           items:
-            $ref: "#/components/schemas/UpsertProjectLanguageDTO"
+            $ref: '#/components/schemas/UpsertProjectLanguageDTO'
     UpdateProjectDTO:
       description: A project object to update
       type: object
@@ -578,11 +691,11 @@ components:
           description: The (unique) name of the project
           type: string
         sourceLanguage:
-          $ref: "#/components/schemas/UpsertProjectLanguageDTO"
+          $ref: '#/components/schemas/UpsertProjectLanguageDTO'
         languages:
           type: array
           items:
-            $ref: "#/components/schemas/UpsertProjectLanguageDTO"
+            $ref: '#/components/schemas/UpsertProjectLanguageDTO'
     UpsertProjectLanguageDTO:
       description: A language
       type: object
@@ -625,7 +738,7 @@ components:
           type: array
           description: The terms
           items:
-            $ref: "#/components/schemas/TermDTO"
+            $ref: '#/components/schemas/TermDTO'
         nbPages:
           type: integer
           description: The number of pages
@@ -684,13 +797,13 @@ components:
           type: string
     TranslationWithMetaDTO:
       allOf:
-        - $ref: "#/components/schemas/TranslationDTO"
+        - $ref: '#/components/schemas/TranslationDTO'
         - type: object
           required:
             - language
           properties:
             language:
-              $ref: "#/components/schemas/TranslationLanguageMetaDTO"
+              $ref: '#/components/schemas/TranslationLanguageMetaDTO'
     TranslationLanguageMetaDTO:
       type: object
       description: The language linked to a translation
@@ -709,7 +822,7 @@ components:
           type: array
           description: The translations
           items:
-            $ref: "#/components/schemas/TranslationWithMetaDTO"
+            $ref: '#/components/schemas/TranslationWithMetaDTO'
         nbPages:
           type: integer
           description: The number of pages
@@ -732,4 +845,60 @@ components:
       properties:
         translation:
           description: The translation of a term for a language
+          type: string
+
+    # Users
+    UserDTO:
+      description: A user
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        createdAt:
+          type: string
+          format: date-time
+        modifiedAt:
+          type: string
+          format: date-time
+        email:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+    CreateUserDTO:
+      description: A user object to create
+      type: object
+      required:
+        - email
+        - firstName
+        - lastName
+        - password
+      properties:
+        email:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        password:
+          type: string
+    MeDTO:
+      description: Logged in user informations
+      type: object
+      properties:
+        userId:
+          type: string
+          format: uuid
+        organisationId:
+          description: The last used organisation id
+          type: string
+          format: uuid
+          nullable: true
+        email:
+          type: string
+        firstName:
+          type: string
+        lastName:
           type: string

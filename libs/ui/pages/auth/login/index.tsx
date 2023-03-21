@@ -68,6 +68,9 @@ export default function LoginPage() {
                         label='Email'
                         placeholder='Insert email'
                         placeholderColor={COLORS.InputText.value}
+                        bg={COLORS.White.T500.value}
+                        font={FONTS.T1.T12px.Regular400.value}
+                        color={COLORS.InputText.value}
                     />
                     <Input
                         {...form.password}
@@ -78,6 +81,9 @@ export default function LoginPage() {
                         label='Password'
                         placeholder='Insert password'
                         placeholderColor={COLORS.InputText.value}
+                        bg={COLORS.White.T500.value}
+                        font={FONTS.T1.T12px.Regular400.value}
+                        color={COLORS.InputText.value}
                     />
                 </VStack>
                 <Button

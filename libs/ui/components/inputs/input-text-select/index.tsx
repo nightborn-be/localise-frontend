@@ -26,6 +26,7 @@ export default function InputSelectAndInput<T>({
     menuOptionWidth = '200px',
     menuRightOption = '-44px',
     menuMinWOption = '12.5rem',
+    backgroundColor,
 }: IInputSelectAndInputProps<T>) {
     //Attributes
     const [isHovered, setIsHovered] = useState<boolean>(false);
@@ -50,6 +51,7 @@ export default function InputSelectAndInput<T>({
             w={w}
             h={h}
             alignItems={alignItems}
+            backgroundColor={backgroundColor}
         >
             {/* Input label section */}
             <InputLabel label={label} description={description} />
@@ -79,6 +81,7 @@ export default function InputSelectAndInput<T>({
                     initial={false}
                     animate={{
                         translateX: isHovered ? -40 : 0,
+                        zIndex: 20,
                     }}
                     transition={{ ease: 'easeOut', duration: 0.5 }}
                 >
@@ -100,6 +103,7 @@ export default function InputSelectAndInput<T>({
                         initial={false}
                         animate={{
                             opacity: isHovered ? 1 : 0,
+                            zIndex: 20,
                         }}
                         transition={{ ease: 'easeOut', duration: 0.5 }}
                     >
