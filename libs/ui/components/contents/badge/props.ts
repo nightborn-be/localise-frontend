@@ -1,6 +1,5 @@
-import React from 'react'
+import React from 'react';
 export interface IBadgeProps {
-    color?: string
-    children?: React.ReactNode
+    color?: string;
+    children?: React.ReactNode;
 }
-

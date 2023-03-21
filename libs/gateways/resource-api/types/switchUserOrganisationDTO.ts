@@ -6,11 +6,8 @@
  */
 
 /**
- * A project
+ * An organisation object to update
  */
-export interface ProjectDTO {
-    id?: string;
-    createdAt?: string;
-    modifiedAt?: string;
-    name?: string;
+export interface SwitchUserOrganisationDTO {
+    organisationId: string;
 }

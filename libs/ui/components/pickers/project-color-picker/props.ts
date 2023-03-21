@@ -1,6 +1,5 @@
-import React from 'react'
+import React from 'react';
 export interface IProjectColorPickerProps {
-    selected: string,
-    onSelect: (color: string) => void,
+    selected: string;
+    onSelect: (color: string) => void;
 }
-

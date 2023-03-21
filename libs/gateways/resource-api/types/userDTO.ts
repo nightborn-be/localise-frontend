@@ -6,11 +6,13 @@
  */
 
 /**
- * A project
+ * A user
  */
-export interface ProjectDTO {
+export interface UserDTO {
     id?: string;
     createdAt?: string;
     modifiedAt?: string;
-    name?: string;
+    email?: string;
+    firstName?: string;
+    lastName?: string;
 }
