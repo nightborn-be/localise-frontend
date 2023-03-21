@@ -6,8 +6,8 @@ import InputSelect from '../../inputs/input-select';
 import COLORS from '../../../constants/colors';
 
 const Role = ({ selectedValue, setSelectedValue }: IRoleProps) => {
-    // Function
-    function colorChoice() {
+    // Functions
+    function getColor() {
         switch (selectedValue) {
             case 'Admin':
                 return COLORS.Localize.Purple.T500.value;
@@ -17,7 +17,7 @@ const Role = ({ selectedValue, setSelectedValue }: IRoleProps) => {
                 return COLORS.Text.T400.value;
         }
     }
-    function backgroundChoice() {
+    function getBackground() {
         switch (selectedValue) {
             case 'Admin':
                 return COLORS.Localize.Purple.T100.value;
@@ -34,7 +34,7 @@ const Role = ({ selectedValue, setSelectedValue }: IRoleProps) => {
     return (
         <>
             <HStack
-                backgroundColor={backgroundChoice()}
+                backgroundColor={getBackground()}
                 py='4px'
                 px='8px'
                 width='fit-content'
@@ -42,7 +42,7 @@ const Role = ({ selectedValue, setSelectedValue }: IRoleProps) => {
             >
                 <InputSelect
                     font={FONTS.T1.T12px.Medium500.value}
-                    color={colorChoice()}
+                    color={getColor()}
                     placeholderColor={COLORS.Localize.Purple.T500.value}
                     dropdownArrowColor={COLORS.Localize.Purple.T500.value}
                     background={COLORS.White.T500.value}
