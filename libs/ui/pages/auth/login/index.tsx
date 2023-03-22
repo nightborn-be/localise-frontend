@@ -11,32 +11,15 @@ import { useFormik } from 'formik';
 import { createForm } from '../../../../utils/formik';
 import * as Yup from 'yup';
 export default function LoginPage() {
+    // Attributes
     const { push } = useRouter();
-
-    const handleOnSubmit = async (): Promise<void> => {
-        // if (dirty) {
-        //     const response = await TokenService.post(
-        //         form?.email?.value,
-        //         form?.password?.value,
-        //     );
-        // }
-        // If you have a response it means that the user is recognized by the system
-        // if (response) {
-        // 	const { access_token } = response;
-        // 	// The new access_token will be store in the localStorage (from navigator)
-        // 	localStorage.setItem('ACCESS_TOKEN', access_token);
-        // 	push('/company');
-        // } else {
-        // 	const errorMsg = 'Wrong credentials';
-        // 	errors.push(errorMsg);
-        // 	setFieldError('email', errorMsg);
-        // }
-    };
+    const handleOnSubmit = async (): Promise<void> => {};
     const schema = Yup.object({
         email: Yup.string().email().required('Email is requried'),
         password: Yup.string().required('Passowrd is requried'),
     });
-    //Formik
+
+    // Formik
     const { values, dirty, setFieldError, ...rest } = useFormik({
         initialValues: {
             email: '',
@@ -46,6 +29,7 @@ export default function LoginPage() {
         validationSchema: schema,
     });
     const form = createForm(values, rest);
+    // Render
     return (
         <Page bgImage='/assets/images/LoginBackground.jpg'>
             <VStack

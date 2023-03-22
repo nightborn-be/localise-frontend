@@ -1,6 +1,6 @@
-import React, { useState, cloneElement } from 'react';
+import React, { useState } from 'react';
 import COLORS from '../../../../../libs/ui/constants/colors';
-import { HStack, Image, Input as ChakraInput, VStack } from '@chakra-ui/react';
+import { HStack, Image, VStack } from '@chakra-ui/react';
 import FONTS from '../../../../../libs/ui/constants/fonts';
 import Page from '../../../components/contents/page';
 import Text from '../../../components/contents/text';
@@ -14,7 +14,6 @@ import Icon from '../../../components/contents/icon';
 import InputSelectAndInput from '../../../components/inputs/input-text-select';
 import ButtonIcon from '../../../components/inputs/button-icon';
 import { ButtonSize } from '../../../components/inputs/button-icon/types';
-import Yup, { array, string } from 'yup';
 import Dropzone from '../../../components/contents/dropzone';
 import { TeammatesOption } from '../../../components/contents/teammates/props';
 import Teammates from '../../../components/contents/teammates';
