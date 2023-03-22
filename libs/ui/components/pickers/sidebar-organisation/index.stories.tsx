@@ -30,8 +30,6 @@ const props: ISidebarOrganisationProps = {
 export const ActualOrganisation = Template.bind({});
 ActualOrganisation.args = {
     ...props,
-    startEnhancer: (
-        <Image src='/assets/images/nightbornOrganisation.png' alt='nightborn' />
-    ),
+    startEnhancer: <Image src='/assets/images/nightborn.jpg' alt='nightborn' />,
     endEnhancer: <Icon name='editorialArrow' />,
 };

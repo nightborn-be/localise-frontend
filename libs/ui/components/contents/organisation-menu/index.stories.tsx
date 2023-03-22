@@ -14,7 +14,7 @@ const Template: ComponentStory<typeof OrganisationMenu> = () => {
                 {
                     title: 'Nightborn',
                     description: '15 members',
-                    imageUrl: '/assets/images/nightbornOrganisation.png',
+                    imageUrl: '/assets/images/nightborn.jpg',
                     value: 0,
                 },
                 {

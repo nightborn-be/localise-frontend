@@ -9,7 +9,7 @@ import { useRouter } from 'next/router';
 import Button from '../../../components/inputs/button';
 import { useFormik } from 'formik';
 import { createForm } from '../../../../utils/formik';
-
+import * as Yup from 'yup';
 export default function LoginPage() {
     const { push } = useRouter();
 
@@ -32,18 +32,22 @@ export default function LoginPage() {
         // 	setFieldError('email', errorMsg);
         // }
     };
-
+    const schema = Yup.object({
+        email: Yup.string().email().required('Email is requried'),
+        password: Yup.string().required('Passowrd is requried'),
+    });
     //Formik
     const { values, dirty, setFieldError, ...rest } = useFormik({
         initialValues: {
             email: '',
             password: '',
         },
-        onSubmit: () => {},
+        onSubmit: handleOnSubmit,
+        validationSchema: schema,
     });
     const form = createForm(values, rest);
     return (
-        <Page bgImage='/assets/images/LoginBackground.png'>
+        <Page bgImage='/assets/images/LoginBackground.jpg'>
             <VStack
                 alignItems='left'
                 spacing='40px'
@@ -69,8 +73,8 @@ export default function LoginPage() {
                         placeholder='Insert email'
                         placeholderColor={COLORS.InputText.value}
                         bg={COLORS.White.T500.value}
-                        font={FONTS.T1.T12px.Regular400.value}
-                        color={COLORS.InputText.value}
+                        font={FONTS.T1.T14px.Regular400.value}
+                        color={COLORS.Text.T400.value}
                     />
                     <Input
                         {...form.password}
@@ -82,8 +86,8 @@ export default function LoginPage() {
                         placeholder='Insert password'
                         placeholderColor={COLORS.InputText.value}
                         bg={COLORS.White.T500.value}
-                        font={FONTS.T1.T12px.Regular400.value}
-                        color={COLORS.InputText.value}
+                        font={FONTS.T1.T14px.Regular400.value}
+                        color={COLORS.Text.T400.value}
                     />
                 </VStack>
                 <Button
@@ -92,7 +96,7 @@ export default function LoginPage() {
                     border='1px solid transparent'
                     borderRadius={'8px'}
                     hoverBackgroundColor={COLORS.Localize.Purple.T600.value}
-                    onClick={() => {}}
+                    onClick={handleOnSubmit}
                 >
                     Log in
                 </Button>

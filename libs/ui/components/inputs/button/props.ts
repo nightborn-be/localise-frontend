@@ -10,6 +10,7 @@ export interface IButtonProps extends ButtonProps {
     children?: React.ReactElement | string;
     color?: string;
     font?: Font;
+    onClick?: () => void;
 }
 
 export type EnhancerProps = {

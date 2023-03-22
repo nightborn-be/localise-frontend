@@ -6,7 +6,7 @@ const Page = ({ children, bg, bgImage }: PageProps) => {
     // Render
 
     return (
-        <HStack justify={'start'} maxW='100%' w='100%' h='100vh'>
+        <HStack justify={'center'} w='100%' h='100vh'>
             {/* Side bar*/}
             {/* <HStack direction={'row'} position={'sticky'} top={0}>
                 <SideBar active={selectedItem} onClick={setSelectItem} />
@@ -17,9 +17,9 @@ const Page = ({ children, bg, bgImage }: PageProps) => {
                 h='100%'
                 spacing={0}
                 alignItems={'start'}
-                position={'relative'}
                 bgImage={bgImage}
                 bgSize={'cover'}
+                justifyContent={'center'}
             >
                 {children}
             </VStack>

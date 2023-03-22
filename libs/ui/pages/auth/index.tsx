@@ -22,9 +22,8 @@ export default function HomePage() {
                 spacing='20px'
                 padding='0'
                 position={'relative'}
-                top='16.6875rem'
-                left='12.5rem'
                 alignItems={'left'}
+                ml='200px'
             >
                 <VStack spacing={'0'} alignItems='left'>
                     <Text
@@ -61,7 +60,7 @@ export default function HomePage() {
                             <Image
                                 w={'24px'}
                                 h={'24px'}
-                                src='./assets/images/nightborn.png'
+                                src='./assets/images/nightborn.jpg'
                                 alt='Nightborn logo'
                             />
                         </HStack>
