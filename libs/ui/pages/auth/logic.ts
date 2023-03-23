@@ -1,8 +1,6 @@
 import { useRouter } from 'next/router';
 import { AuthLogicType } from './types';
 
-
-
 export const useAuthLogic = (): AuthLogicType => {
     // Attributes
     const { push } = useRouter();

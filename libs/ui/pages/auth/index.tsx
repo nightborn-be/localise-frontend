@@ -14,13 +14,7 @@ export default function HomePage() {
   // Render
   return (
     <Page bgImage='./assets/images/DefaultHomeBackground.png'>
-      <VStack
-        spacing='20px'
-        padding='0'
-        position={'relative'}
-        alignItems={'left'}
-        ml='200px'
-      >
+      <VStack spacing='20px' padding='0' alignItems={'left'} ml='12.5rem'>
         <VStack spacing={'0'} alignItems='left'>
           <Text
             font={FONTS.T1.T28px.SemiBold600.value}
@@ -31,6 +25,7 @@ export default function HomePage() {
           </Text>
           <VStack spacing='12px' alignItems={'left'}>
             <HStack spacing={0}>
+              {/* Change the font size to 64px when Thomas regenerate the value */}
               <Text
                 font={FONTS.T1.T60px.Bold700.value}
                 color={COLORS.Text.T400.value}

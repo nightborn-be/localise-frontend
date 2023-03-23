@@ -1,11 +1,11 @@
 import { IDefaultForm, IForm } from "../../../../utils/formik";
 
-export type SignInLogicType = {
+export type LoginLogicType = {
     handleOnSubmit(): Promise<void>
-    form: IForm<ISignInFormik> & IDefaultForm
+    form: IForm<ILoginFormik> & IDefaultForm
 }
 
-export interface ISignInFormik {
+export interface ILoginFormik {
     email: string,
     password: string
 }
