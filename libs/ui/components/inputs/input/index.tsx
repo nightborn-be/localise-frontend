@@ -9,6 +9,8 @@ import {
 import COLORS from '../../../constants/colors';
 import * as CSS from 'csstype';
 import InputLabel from '../input-label';
+import Text from '../../contents/text/index';
+import FONTS from '../../../constants/fonts';
 export default function Input<T>({
     type = 'text',
     color = COLORS.Text.T500.value,
@@ -36,6 +38,8 @@ export default function Input<T>({
     name,
     onChange,
     bg,
+    errorMsg,
+    isTouched,
     ...props
 }: IInputProps<T>) {
     //Attributes
@@ -57,6 +61,7 @@ export default function Input<T>({
         }
         return border;
     };
+
     // Render
     return (
         <>
@@ -70,7 +75,7 @@ export default function Input<T>({
                 zIndex={zIndex}
             >
                 {/* Input label section */}
-                <InputLabel label={label} description={description} />
+                <InputLabel label={label ?? ''} description={description} />
                 {/* Input field section */}
 
                 <InputGroup bg={bg}>
@@ -120,6 +125,14 @@ export default function Input<T>({
                         {rightElement}
                     </InputRightElement>
                 </InputGroup>
+                {errorMsg && isTouched ? (
+                    <Text
+                        font={FONTS.T1.T12px.Regular400.value}
+                        color={COLORS.Error.T500.value}
+                    >
+                        {errorMsg}
+                    </Text>
+                ) : null}
             </VStack>
         </>
     );
