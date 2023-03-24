@@ -54,7 +54,6 @@ const props: SearchbarProps<string> = {
     placeholder: 'Search for a project...',
     placeholderColor: COLORS.InputText.value,
     borderRadius: '6px',
-
 };
 
 export const SideBar = Template.bind({});
