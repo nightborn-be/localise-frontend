@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { IInputProps } from './props';
-import { useTranslation } from 'react-i18next';
 import {
     Input as ChakraInput,
     InputGroup,
@@ -10,7 +9,6 @@ import {
 import COLORS from '../../../constants/colors';
 import * as CSS from 'csstype';
 import InputLabel from '../input-label';
-import { tKeys } from '../../../../i18n/keys';
 export default function Input<T>({
     type = 'text',
     color = COLORS.Text.T500.value,
@@ -34,10 +32,13 @@ export default function Input<T>({
     padding,
     gap,
     zIndex,
+    value,
+    name,
+    onChange,
+    bg,
     ...props
 }: IInputProps<T>) {
     //Attributes
-    const { t } = useTranslation();
     const [visibility, setVisibility] =
         useState<CSS.Property.Visibility>('hidden');
 
@@ -56,13 +57,12 @@ export default function Input<T>({
         }
         return border;
     };
-
     // Render
     return (
         <>
             <VStack
                 direction='column'
-                spacing='0.25rem'
+                spacing='0.5rem'
                 h={h}
                 w={w}
                 maxWidth={maxWidth}
@@ -70,19 +70,18 @@ export default function Input<T>({
                 zIndex={zIndex}
             >
                 {/* Input label section */}
-                <InputLabel
-                    label={t(tKeys.common.test)}
-                    description={description}
-                />
-
+                <InputLabel label={label} description={description} />
                 {/* Input field section */}
-                <InputGroup>
+
+                <InputGroup bg={bg}>
                     <ChakraInput
                         padding={padding}
                         gap={gap}
-                        value={props.value}
-                        onChange={props.onChange}
-                        name={props.name as string}
+                        value={value}
+                        onChange={(e) => {
+                            onChange && onChange(e.currentTarget.value);
+                        }}
+                        name={name as string}
                         type={type}
                         placeholder={placeholder}
                         _placeholder={{
@@ -108,9 +107,9 @@ export default function Input<T>({
                         marginTop={marginTop}
                         onFocus={handleToggleVisibility}
                         onBlur={handleToggleVisibility}
-                        pr={paddingRight ?? '4px'}
-                        paddingInlineStart={'0px'}
-                        paddingInlineEnd={'0px'}
+                        pr={paddingRight ?? '0.25rem'}
+                        paddingInlineStart={'0rem'}
+                        paddingInlineEnd={'0rem'}
                         onKeyDown={(event) =>
                             event.key === 'Enter'
                                 ? event.currentTarget.blur()
