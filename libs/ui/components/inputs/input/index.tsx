@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { IInputProps } from './props';
+import { useTranslation } from 'react-i18next';
 import {
     Input as ChakraInput,
     InputGroup,
@@ -9,6 +10,7 @@ import {
 import COLORS from '../../../constants/colors';
 import * as CSS from 'csstype';
 import InputLabel from '../input-label';
+import { tKeys } from '../../../../i18n/keys';
 export default function Input<T>({
     type = 'text',
     color = COLORS.Text.T500.value,
@@ -35,6 +37,7 @@ export default function Input<T>({
     ...props
 }: IInputProps<T>) {
     //Attributes
+    const { t } = useTranslation();
     const [visibility, setVisibility] =
         useState<CSS.Property.Visibility>('hidden');
 
@@ -53,6 +56,7 @@ export default function Input<T>({
         }
         return border;
     };
+
     // Render
     return (
         <>
@@ -66,7 +70,10 @@ export default function Input<T>({
                 zIndex={zIndex}
             >
                 {/* Input label section */}
-                <InputLabel label={label} description={description} />
+                <InputLabel
+                    label={t(tKeys.common.test)}
+                    description={description}
+                />
 
                 {/* Input field section */}
                 <InputGroup>
