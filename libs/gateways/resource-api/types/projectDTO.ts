@@ -9,8 +9,8 @@
  * A project
  */
 export interface ProjectDTO {
-  id?: string;
-  createdAt?: string;
-  modifiedAt?: string;
-  name?: string;
+    id?: string;
+    createdAt?: string;
+    modifiedAt?: string;
+    name?: string;
 }

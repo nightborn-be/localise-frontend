@@ -8,13 +8,13 @@ const ArrowToBottom = (props: React.SVGProps<SVGSVGElement>) => (
         fill='none'
         xmlns='http://www.w3.org/2000/svg'
     >
-            <path
-                d='M3 12H17M17 12L13 8M17 12L13 16M21 5V19'
-                stroke={props?.stroke ?? 'black'}
-                strokeWidth='2'
-                strokeLinecap='round'
-                strokeLinejoin='round'
-            />
+        <path
+            d='M3 12H17M17 12L13 8M17 12L13 16M21 5V19'
+            stroke={props?.stroke ?? 'black'}
+            strokeWidth='2'
+            strokeLinecap='round'
+            strokeLinejoin='round'
+        />
     </svg>
 );
 export default ArrowToBottom;

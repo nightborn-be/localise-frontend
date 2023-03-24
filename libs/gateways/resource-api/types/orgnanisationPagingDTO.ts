@@ -10,14 +10,14 @@ import type { OrganisationDTO } from './organisationDTO';
  * A paging
  */
 export interface OrgnanisationPagingDTO {
-  /** The organisations */
-  data?: OrganisationDTO[];
-  /** The number of pages */
-  nbPages?: number;
-  /** The current page */
-  page?: number;
-  /** The current size */
-  size?: number;
-  /** The total amount of organisations */
-  totalAmount?: number;
+    /** The organisations */
+    data?: OrganisationDTO[];
+    /** The number of pages */
+    nbPages?: number;
+    /** The current page */
+    page?: number;
+    /** The current size */
+    size?: number;
+    /** The total amount of organisations */
+    totalAmount?: number;
 }

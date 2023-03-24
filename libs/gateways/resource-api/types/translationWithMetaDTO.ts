@@ -7,4 +7,5 @@
 import type { TranslationDTO } from './translationDTO';
 import type { TranslationWithMetaDTOAllOf } from './translationWithMetaDTOAllOf';
 
-export type TranslationWithMetaDTO = TranslationDTO & TranslationWithMetaDTOAllOf;
+export type TranslationWithMetaDTO = TranslationDTO &
+    TranslationWithMetaDTOAllOf;

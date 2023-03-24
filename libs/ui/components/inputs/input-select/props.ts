@@ -28,7 +28,7 @@ export interface IInputSelectProps extends Omit<InputProps, 'onChange'> {
 }
 
 export type Options = {
-    value: string,
-    label: string,
-    icon?: React.ReactElement,
-}
+    value: string;
+    label: string;
+    icon?: React.ReactElement;
+};
