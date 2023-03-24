@@ -9,9 +9,32 @@ function backgroundStyleSwitch(
     if (isFocused) return focusBackgroundOptionColor;
     return 'none';
 }
-export function getSelectStyle(isValid, border, errorBorder, borderRadius, fontSize, fontWeight,
-    fontFamily, color, selectMarginLeft, placeholderColor, menuOptionWidth, menuRightOption, menuLeftOption, borderRadiusOption, isMultiple, selectedOptionColor,
-    textOptionColor, dropdownArrowColor, paddingLeft, paddingRight, backgroundOptionColor, focusBackgroundOptionColor, font, paddingContainer) {
+export function getSelectStyle(
+    isValid,
+    border,
+    errorBorder,
+    borderRadius,
+    fontSize,
+    fontWeight,
+    fontFamily,
+    color,
+    selectMarginLeft,
+    placeholderColor,
+    menuOptionWidth,
+    menuRightOption,
+    menuLeftOption,
+    borderRadiusOption,
+    isMultiple,
+    selectedOptionColor,
+    textOptionColor,
+    dropdownArrowColor,
+    paddingLeft,
+    paddingRight,
+    backgroundOptionColor,
+    focusBackgroundOptionColor,
+    font,
+    paddingContainer,
+) {
     return {
         valueContainer: (styles) => {
             return {
@@ -19,7 +42,7 @@ export function getSelectStyle(isValid, border, errorBorder, borderRadius, fontS
                 padding: paddingContainer,
                 width: 'fit-content',
                 height: 'fit-content',
-            }
+            };
         },
         control: (styles) => {
             return {
@@ -32,7 +55,7 @@ export function getSelectStyle(isValid, border, errorBorder, borderRadius, fontS
                 backgroundColor: 'transparent',
                 boxShadow: 'none',
                 marginLeft: selectMarginLeft,
-                minHeight: "0px",
+                minHeight: '0px',
             };
         },
         placeholder: (styles) => {
