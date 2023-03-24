@@ -15,7 +15,7 @@ export default function SignUpPage() {
     return (
         <Page bgImage='/assets/images/LoginBackground.jpg'>
             <ContentSignUp
-                title='Tell us more about yourself'
+                title={t(tKeys.signup.account.title) ?? ''}
                 handleOnContinue={handleOnSubmit}
             >
                 <Input
