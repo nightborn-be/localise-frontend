@@ -2,6 +2,6 @@ import { ReactNode } from 'react';
 
 export interface PageProps {
     children: ReactNode | ReactNode[];
-    // selectedItem : SideItem
-    // setSelectItem :(item: SideItem) => void
+    bg?: string;
+    bgImage?: string;
 }

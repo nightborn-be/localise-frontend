@@ -2,16 +2,21 @@ import React, { HStack, VStack } from '@chakra-ui/react';
 import COLORS from '../../../constants/colors';
 import { PageProps } from './props';
 
-const Page = ({ children }: PageProps) => {
+const Page = ({ children, bg, bgImage }: PageProps) => {
     // Render
 
     return (
-        <HStack justify='start' w='full' h='full' minH='100vh'>
-            {/* Side bar*/}
-            {/* <HStack direction={'row'} position={'sticky'} top={0}>
-                <SideBar active={selectedItem} onClick={setSelectItem} />
-            </HStack> */}
-            <VStack bg={COLORS.BG.value} w='full' spacing={0}>
+        <HStack justify={'center'} w='100%' h='100vh'>
+            <VStack
+                bg={bg}
+                w='100%'
+                h='100%'
+                spacing={0}
+                alignItems={'start'}
+                bgImage={bgImage}
+                bgSize={'cover'}
+                justifyContent={'center'}
+            >
                 {children}
             </VStack>
         </HStack>
