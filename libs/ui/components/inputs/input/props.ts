@@ -28,4 +28,6 @@ export interface IInputProps<T> extends IFieldForm<T> {
     zIndex?: string;
     margin?: string;
     bg?: string;
+    errorMsg?: string;
+    isTouched?: boolean;
 }

@@ -1,7 +1,7 @@
 import { IDefaultForm, IForm } from "../../../../utils/formik";
 
 export type LoginLogicType = {
-    handleOnSubmit(): Promise<void>
+    handleOnSubmit(): void
     form: IForm<ILoginFormik> & IDefaultForm
 }
 

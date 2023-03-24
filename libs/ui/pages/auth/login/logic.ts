@@ -1,13 +1,11 @@
 import { ILoginFormik, LoginLogicType } from './types';
-import * as Yup from 'yup';
 import { useFormik } from 'formik';
 import { createForm } from '../../../../utils/formik';
+
+import schema from './validations'
+
 export const useLoginLogic = (): LoginLogicType => {
     // Formik
-    const schema = Yup.object({
-        email: Yup.string().email().required('Email is requried'),
-        password: Yup.string().required('Passowrd is requried'),
-    });
     const { values, dirty, setFieldError, ...rest } = useFormik<ILoginFormik>({
         initialValues: {
             email: '',
@@ -15,14 +13,16 @@ export const useLoginLogic = (): LoginLogicType => {
         },
         onSubmit: handleOnSubmit,
         validationSchema: schema,
+
     });
     const form = createForm(values, rest);
 
     // Functions
-    async function handleOnSubmit(): Promise<void> { return undefined };
-
+    function handleOnSubmit(): void {
+        return undefined
+    };
     return {
-        handleOnSubmit,
+        handleOnSubmit: form?.submitForm,
         form,
     }
 
