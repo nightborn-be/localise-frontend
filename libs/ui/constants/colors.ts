@@ -3,7 +3,7 @@
 export type Color = string;
 
 export interface Colors {
-    HoverRed: { value: Color },
+    HoverRed: { value: Color };
     BG: { value: Color };
     Bancontact: {
         Blue: { value: Color };

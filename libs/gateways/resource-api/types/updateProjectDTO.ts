@@ -10,8 +10,8 @@ import type { UpsertProjectLanguageDTO } from './upsertProjectLanguageDTO';
  * A project object to update
  */
 export interface UpdateProjectDTO {
-  /** The (unique) name of the project */
-  name: string;
-  sourceLanguage: UpsertProjectLanguageDTO;
-  languages?: UpsertProjectLanguageDTO[];
+    /** The (unique) name of the project */
+    name: string;
+    sourceLanguage: UpsertProjectLanguageDTO;
+    languages?: UpsertProjectLanguageDTO[];
 }

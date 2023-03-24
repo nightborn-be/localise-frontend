@@ -9,7 +9,7 @@
  * A translation of a term for a language
  */
 export interface TranslationDTO {
-  languageId?: string;
-  termId?: string;
-  translation?: string;
+    languageId?: string;
+    termId?: string;
+    translation?: string;
 }

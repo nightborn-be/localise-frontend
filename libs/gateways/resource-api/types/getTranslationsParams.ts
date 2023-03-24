@@ -5,4 +5,8 @@
  * OpenAPI spec version: v1
  */
 
-export type GetTranslationsParams = { page?: number; size?: number; q?: string };
+export type GetTranslationsParams = {
+    page?: number;
+    size?: number;
+    q?: string;
+};
