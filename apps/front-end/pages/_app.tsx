@@ -32,13 +32,13 @@ function MyApp({ Component, pageProps }: AppProps) {
 
     // Render
     return (
-        <QueryClientProvider client={queryClient}>
-            <I18nextProvider i18n={getI18nInstance()}>
+        <I18nextProvider i18n={getI18nInstance()}>
+            <QueryClientProvider client={queryClient}>
                 <ChakraProvider>
                     <Component {...pageProps} />
                 </ChakraProvider>
-            </I18nextProvider>
-        </QueryClientProvider>
+            </QueryClientProvider>
+        </I18nextProvider>
     );
 }
 
