@@ -2,7 +2,8 @@ import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import { i18nConfig } from './config';
 import en from './en.json';
-const locales = { en } as unknown as Record<string, Record<string, string>>;
+import fr from './fr.json';
+const locales = { en, fr } as unknown as Record<string, Record<string, string>>;
 const getResources = (languages?: string[]) => {
     return languages?.reduce(
         (acc, language) => ({
