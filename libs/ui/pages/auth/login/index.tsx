@@ -6,10 +6,13 @@ import Page from '../../../components/contents/page';
 import Text from '../../../components/contents/text';
 import Input from '../../../components/inputs/input';
 import Button from '../../../components/inputs/button';
+import { useTranslation } from 'react-i18next';
+import { tKeys } from '../../../../i18n/keys';
 import { useLoginLogic } from './logic';
 export default function LoginPage() {
     // Attributes
     const { handleOnSubmit, form } = useLoginLogic();
+    const { t } = useTranslation();
     // Render
     return (
         <Page bgImage='/assets/images/LoginBackground.jpg'>
@@ -23,7 +26,7 @@ export default function LoginPage() {
                     font={FONTS.T1.T24px.Bold700.value}
                     color={COLORS.Text.T400.value}
                 >
-                    Log in to Localize
+                    {t(tKeys.login.title)}
                 </Text>
                 <VStack spacing='1.25rem'>
                     <Input
@@ -31,8 +34,8 @@ export default function LoginPage() {
                         w='20.4375rem'
                         padding='0.75rem'
                         gap='0.5rem'
-                        label='Email'
-                        placeholder='Insert email'
+                        label={t(tKeys.login.inputLabel.email)}
+                        placeholder={t(tKeys.login.inputPlaceholder.email)}
                         placeholderColor={COLORS.InputText.value}
                         bg={COLORS.White.T500.value}
                         font={FONTS.T1.T14px.Regular400.value}
@@ -47,8 +50,8 @@ export default function LoginPage() {
                         padding='0.75rem'
                         gap='0.5rem'
                         type='password'
-                        label='Password'
-                        placeholder='Insert password'
+                        label={t(tKeys.login.inputLabel.password)}
+                        placeholder={t(tKeys.login.inputPlaceholder.password)}
                         placeholderColor={COLORS.InputText.value}
                         bg={COLORS.White.T500.value}
                         font={FONTS.T1.T14px.Regular400.value}
@@ -66,7 +69,7 @@ export default function LoginPage() {
                     hoverBackgroundColor={COLORS.Localize.Purple.T600.value}
                     onClick={handleOnSubmit}
                 >
-                    Log in
+                    {t(tKeys.common.buttonLogin) ?? ''}
                 </Button>
             </VStack>
         </Page>

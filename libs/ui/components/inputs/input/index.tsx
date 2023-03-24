@@ -43,7 +43,6 @@ export default function Input<T>({
     ...props
 }: IInputProps<T>) {
     //Attributes
-    const { t } = useTranslation();
     const [visibility, setVisibility] =
         useState<CSS.Property.Visibility>('hidden');
 
@@ -76,7 +75,7 @@ export default function Input<T>({
                 zIndex={zIndex}
             >
                 {/* Input label section */}
-                <InputLabel label={label} description={description} />
+                <InputLabel label={label ?? ''} description={description} />
                 {/* Input field section */}
 
                 <InputGroup bg={bg}>

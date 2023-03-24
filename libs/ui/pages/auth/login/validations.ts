@@ -5,4 +5,4 @@ const schema = Yup.object({
     password: Yup.string().required('Password is required'),
 });
 
-export default schema
+export default schema;

@@ -2,7 +2,7 @@ import { ILoginFormik, LoginLogicType } from './types';
 import { useFormik } from 'formik';
 import { createForm } from '../../../../utils/formik';
 
-import schema from './validations'
+import schema from './validations';
 
 export const useLoginLogic = (): LoginLogicType => {
     // Formik
@@ -13,17 +13,15 @@ export const useLoginLogic = (): LoginLogicType => {
         },
         onSubmit: handleOnSubmit,
         validationSchema: schema,
-
     });
     const form = createForm(values, rest);
 
     // Functions
     function handleOnSubmit(): void {
-        return undefined
-    };
+        return undefined;
+    }
     return {
         handleOnSubmit: form?.submitForm,
         form,
-    }
-
-}
+    };
+};

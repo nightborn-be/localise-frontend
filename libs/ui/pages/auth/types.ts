@@ -1,4 +1,4 @@
 export type AuthLogicType = {
-    handleSignInRedirection(): void
-    handleLogInRedirecton(): void
-}
+    handleSignInRedirection(): void;
+    handleLogInRedirecton(): void;
+};

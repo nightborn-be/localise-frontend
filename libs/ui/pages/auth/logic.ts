@@ -18,7 +18,6 @@ export const useAuthLogic = (): AuthLogicType => {
 
     return {
         handleLogInRedirecton,
-        handleSignInRedirection
-    }
-
-}
+        handleSignInRedirection,
+    };
+};
