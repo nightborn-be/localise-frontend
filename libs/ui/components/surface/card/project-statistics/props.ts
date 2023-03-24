@@ -1,4 +1,4 @@
 export interface IProjectStatisticsProps {
-    value?: number
-    title?: string
+    value?: number;
+    title?: string;
 }

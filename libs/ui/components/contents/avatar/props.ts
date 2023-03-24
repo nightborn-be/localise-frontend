@@ -1,5 +1,4 @@
-
 export interface IAvatarProps {
-    name?: string,
-    imageSrc?: string,
+    name?: string;
+    imageSrc?: string;
 }

@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { IButtonIconProps } from './props';
 import Icon from '../../contents/icon';
 import ButtonIcon from '.';
-import COLORS from "../../../constants/colors"
+import COLORS from '../../../constants/colors';
 import { ButtonSize } from './types';
 
 export default {
@@ -240,7 +240,6 @@ RemoveOrganisation.args = {
     children: <Icon name='trashLarge' fill={COLORS.White.T500.value} />,
 };
 
-
 export const RemoveProject = Template.bind({});
 RemoveProject.args = {
     borderRadius: '0rem',
@@ -249,8 +248,3 @@ RemoveProject.args = {
     hoverBackgroundColor: COLORS.Black.T400.value,
     children: <Icon name='removeLarge' stroke={COLORS.White.T500.value} />,
 };
-
-
-
-
-

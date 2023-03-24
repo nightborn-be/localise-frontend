@@ -1,4 +1,10 @@
-function backgroundStyleSwitch(isFocused: boolean, isSelected: boolean, isMultiple: boolean, backgroundOptionColor, focusBackgroundOptionColor) {
+function backgroundStyleSwitch(
+    isFocused: boolean,
+    isSelected: boolean,
+    isMultiple: boolean,
+    backgroundOptionColor,
+    focusBackgroundOptionColor,
+) {
     if (isSelected && !isMultiple) return backgroundOptionColor;
     if (isFocused) return focusBackgroundOptionColor;
     return 'none';
@@ -53,7 +59,13 @@ export function getSelectStyle(isValid, border, errorBorder, borderRadius, fontS
                 alignItems: 'center',
                 marginTop: '0.25rem',
                 ':active': { backgroundColor: 'none' },
-                backgroundColor: backgroundStyleSwitch(isFocused, isSelected, isMultiple, backgroundOptionColor, focusBackgroundOptionColor),
+                backgroundColor: backgroundStyleSwitch(
+                    isFocused,
+                    isSelected,
+                    isMultiple,
+                    backgroundOptionColor,
+                    focusBackgroundOptionColor,
+                ),
                 fontSize: fontSize,
                 fontWeight: fontWeight,
                 fontFamily: fontFamily,

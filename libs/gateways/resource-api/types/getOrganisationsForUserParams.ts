@@ -5,4 +5,8 @@
  * OpenAPI spec version: v1
  */
 
-export type GetOrganisationsForUserParams = { page?: number; size?: number; q?: string };
+export type GetOrganisationsForUserParams = {
+    page?: number;
+    size?: number;
+    q?: string;
+};

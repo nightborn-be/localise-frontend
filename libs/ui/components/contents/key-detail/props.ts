@@ -1,5 +1,5 @@
 export interface IKeyDetailProps {
-    imageSrc?: string
+    imageSrc?: string;
     isSelected?: boolean;
     onSelect?: () => void;
     onRemove?: () => void;
