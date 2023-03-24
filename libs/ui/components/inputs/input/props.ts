@@ -6,7 +6,7 @@ export interface IInputProps<T> extends IFieldForm<T> {
     color?: string;
     font?: Font;
     border?: string;
-    label?: string;
+    label?: string | null;
     description?: string;
     placeholder: string;
     placeholderColor?: string;
@@ -28,4 +28,6 @@ export interface IInputProps<T> extends IFieldForm<T> {
     zIndex?: string;
     margin?: string;
     bg?: string;
+    errorMsg?: string;
+    isTouched?: boolean;
 }
