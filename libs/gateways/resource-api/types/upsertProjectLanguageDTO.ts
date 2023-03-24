@@ -9,6 +9,6 @@
  * A language
  */
 export interface UpsertProjectLanguageDTO {
-  name: string;
-  abbreviation: string;
+    name: string;
+    abbreviation: string;
 }

@@ -10,7 +10,7 @@ import {
 import COLORS from '../../../constants/colors';
 import FONTS from '../../../constants/fonts';
 import Text from '../../contents/text';
-import {IInputProjectKeyProps} from './props';
+import { IInputProjectKeyProps } from './props';
 import Icon from '../../contents/icon';
 const InputProjectKey = ({
     color,

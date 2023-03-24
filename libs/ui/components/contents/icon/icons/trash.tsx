@@ -1,7 +1,5 @@
 import React from 'react';
 
-
-
 export const TrashXs = (props: React.SVGProps<SVGSVGElement>) => (
     <svg
         width={props?.width ?? '12'}

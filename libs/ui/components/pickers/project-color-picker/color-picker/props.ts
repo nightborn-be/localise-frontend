@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
 export interface IColorPickerProps {
-    isSelected: boolean,
-    color: string,
-    onSelect: (color: string) => void
+    isSelected: boolean;
+    color: string;
+    onSelect: (color: string) => void;
 }

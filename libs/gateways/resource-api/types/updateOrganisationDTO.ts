@@ -9,7 +9,7 @@
  * An organisation object to update
  */
 export interface UpdateOrganisationDTO {
-  /** The (unique) name of the organisation */
-  name: string;
-  pictureContent?: string | null;
+    /** The (unique) name of the organisation */
+    name: string;
+    pictureContent?: string | null;
 }
