@@ -13,60 +13,52 @@ export default function LoginPage() {
 
   // Render
   return (
-    <Page bgImage='/assets/images/LoginBackground.jpg'>
-      <VStack
-        alignItems='left'
-        spacing='40px'
-        position='absolute'
-        left='136px'
-        top='221px'
-        w='327px'
-        h='305px'
-      >
-        <Text
-          font={FONTS.T1.T24px.Bold700.value}
-          color={COLORS.Text.T400.value}
-        >
-          Log in to Localize
-        </Text>
-        <VStack spacing='20px'>
-          <Input
-            {...form.email}
-            w='327px'
-            padding='12px'
-            gap='8px'
-            label='Email'
-            placeholder='Insert email'
-            placeholderColor={COLORS.InputText.value}
-            bg={COLORS.White.T500.value}
-            font={FONTS.T1.T14px.Regular400.value}
-            color={COLORS.Text.T400.value}
-          />
-          <Input
-            {...form.password}
-            w='327px'
-            padding='12px'
-            gap='8px'
-            type='password'
-            label='Password'
-            placeholder='Insert password'
-            placeholderColor={COLORS.InputText.value}
-            bg={COLORS.White.T500.value}
-            font={FONTS.T1.T14px.Regular400.value}
-            color={COLORS.Text.T400.value}
-          />
-        </VStack>
-        <Button
-          color={COLORS.White.T500.value}
-          backgroundColor={COLORS.Localize.Purple.T500.value}
-          border='1px solid transparent'
-          borderRadius={'8px'}
-          hoverBackgroundColor={COLORS.Localize.Purple.T600.value}
-          onClick={handleOnSubmit}
-        >
-          Log in
-        </Button>
-      </VStack>
-    </Page>
+      <Page bgImage='/assets/images/LoginBackground.jpg'>
+          <VStack alignItems='left' spacing='2.5rem' w='20.4375rem' ml='8.5rem'>
+              <Text
+                  font={FONTS.T1.T24px.Bold700.value}
+                  color={COLORS.Text.T400.value}
+              >
+                  Log in to Localize
+              </Text>
+              <VStack spacing='1.25rem'>
+                  <Input
+                      {...form.email}
+                      w='20.4375rem'
+                      padding='0.75rem'
+                      gap='0.5rem'
+                      label='Email'
+                      placeholder='Insert email'
+                      placeholderColor={COLORS.InputText.value}
+                      bg={COLORS.White.T500.value}
+                      font={FONTS.T1.T14px.Regular400.value}
+                      color={COLORS.Text.T400.value}
+                  />
+                  <Input
+                      {...form.password}
+                      w='20.4375rem'
+                      padding='0.75rem'
+                      gap='0.5rem'
+                      type='password'
+                      label='Password'
+                      placeholder='Insert password'
+                      placeholderColor={COLORS.InputText.value}
+                      bg={COLORS.White.T500.value}
+                      font={FONTS.T1.T14px.Regular400.value}
+                      color={COLORS.Text.T400.value}
+                  />
+              </VStack>
+              <Button
+                  color={COLORS.White.T500.value}
+                  backgroundColor={COLORS.Localize.Purple.T500.value}
+                  border='0.0625rem solid transparent'
+                  borderRadius={'0.5rem'}
+                  hoverBackgroundColor={COLORS.Localize.Purple.T600.value}
+                  onClick={handleOnSubmit}
+              >
+                  Log in
+              </Button>
+          </VStack>
+      </Page>
   );
 }
