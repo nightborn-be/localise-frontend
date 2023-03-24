@@ -10,7 +10,8 @@
         "build": "turbo run build",
         "dev": "turbo run dev --parallel",
         "lint": "turbo run lint",
-        "format": "prettier --write \"**/*.{ts,tsx,md}\""
+        "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+        "generate-translations": "node ./scripts/generate-translations.js && npm run format"
     },
     "devDependencies": {
         "eslint-config-custom": "*",
@@ -25,7 +26,8 @@
         "formik": "^2.2.9",
         "framer-motion": "^10.0.1",
         "orval": "^6.12.1",
-        "yup": "^1.0.2"
+        "yup": "^1.0.2",
+        "react-i18next": "^12.2.0"
     },
     "packageManager": "npm@8.19.3"
 }

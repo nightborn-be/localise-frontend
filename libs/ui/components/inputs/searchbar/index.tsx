@@ -38,10 +38,9 @@ const Searchbar = <T,>({
     displayModal = true,
     ...props
 }: SearchbarProps<T>) => {
-    
     const [showModal, setShowModal] = useState<boolean>(false);
     const inputRef = useRef<HTMLDivElement>(null);
-    
+
     // Hooks
     useOnClickOutside(inputRef, () => setShowModal(false));
     // Render

@@ -43,6 +43,7 @@ export default function Input<T>({
     ...props
 }: IInputProps<T>) {
     //Attributes
+    const { t } = useTranslation();
     const [visibility, setVisibility] =
         useState<CSS.Property.Visibility>('hidden');
 
@@ -61,6 +62,7 @@ export default function Input<T>({
         }
         return border;
     };
+
     // Render
     return (
         <>
