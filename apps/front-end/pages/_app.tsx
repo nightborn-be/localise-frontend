@@ -1,9 +1,9 @@
 import type { AppProps } from 'next/app';
 import { ChakraProvider } from '@chakra-ui/react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import Head from 'next/head';
 import React from 'react';
-
+import { getI18nInstance } from '../../../libs/i18n/index';
+import { I18nextProvider } from 'react-i18next';
 // Create query client
 const queryClient = new QueryClient({
     defaultOptions: {
@@ -33,9 +33,11 @@ function MyApp({ Component, pageProps }: AppProps) {
     // Render
     return (
         <QueryClientProvider client={queryClient}>
-            <ChakraProvider>
-                <Component {...pageProps} />
-            </ChakraProvider>
+            <I18nextProvider i18n={getI18nInstance()}>
+                <ChakraProvider>
+                    <Component {...pageProps} />
+                </ChakraProvider>
+            </I18nextProvider>
         </QueryClientProvider>
     );
 }
