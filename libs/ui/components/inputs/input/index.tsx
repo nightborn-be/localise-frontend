@@ -32,6 +32,10 @@ export default function Input<T>({
     padding,
     gap,
     zIndex,
+    value,
+    name,
+    onChange,
+    bg,
     ...props
 }: IInputProps<T>) {
     //Attributes
@@ -58,7 +62,7 @@ export default function Input<T>({
         <>
             <VStack
                 direction='column'
-                spacing='0.25rem'
+                spacing='0.5rem'
                 h={h}
                 w={w}
                 maxWidth={maxWidth}
@@ -67,15 +71,17 @@ export default function Input<T>({
             >
                 {/* Input label section */}
                 <InputLabel label={label} description={description} />
-
                 {/* Input field section */}
-                <InputGroup>
+
+                <InputGroup bg={bg}>
                     <ChakraInput
                         padding={padding}
                         gap={gap}
-                        value={props.value}
-                        onChange={props.onChange}
-                        name={props.name as string}
+                        value={value}
+                        onChange={(e) => {
+                            onChange && onChange(e.currentTarget.value);
+                        }}
+                        name={name as string}
                         type={type}
                         placeholder={placeholder}
                         _placeholder={{
@@ -101,9 +107,9 @@ export default function Input<T>({
                         marginTop={marginTop}
                         onFocus={handleToggleVisibility}
                         onBlur={handleToggleVisibility}
-                        pr={paddingRight ?? '4px'}
-                        paddingInlineStart={'0px'}
-                        paddingInlineEnd={'0px'}
+                        pr={paddingRight ?? '0.25rem'}
+                        paddingInlineStart={'0rem'}
+                        paddingInlineEnd={'0rem'}
                         onKeyDown={(event) =>
                             event.key === 'Enter'
                                 ? event.currentTarget.blur()

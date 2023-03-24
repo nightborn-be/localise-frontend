@@ -26,6 +26,8 @@ export default function InputSelectAndInput<T>({
     menuOptionWidth = '200px',
     menuRightOption = '-44px',
     menuMinWOption = '12.5rem',
+    backgroundColor,
+    onDelete,
 }: IInputSelectAndInputProps<T>) {
     //Attributes
     const [isHovered, setIsHovered] = useState<boolean>(false);
@@ -50,6 +52,9 @@ export default function InputSelectAndInput<T>({
             w={w}
             h={h}
             alignItems={alignItems}
+            backgroundColor={backgroundColor}
+            borderRadius={borderRadius}
+            // key={key}
         >
             {/* Input label section */}
             <InputLabel label={label} description={description} />
@@ -79,6 +84,7 @@ export default function InputSelectAndInput<T>({
                     initial={false}
                     animate={{
                         translateX: isHovered ? -40 : 0,
+                        zIndex: 20,
                     }}
                     transition={{ ease: 'easeOut', duration: 0.5 }}
                 >
@@ -100,6 +106,7 @@ export default function InputSelectAndInput<T>({
                         initial={false}
                         animate={{
                             opacity: isHovered ? 1 : 0,
+                            zIndex: 20,
                         }}
                         transition={{ ease: 'easeOut', duration: 0.5 }}
                     >
@@ -115,6 +122,7 @@ export default function InputSelectAndInput<T>({
                             right='8px'
                             top='5px'
                             bottom='6px'
+                            handleOnClick={onDelete}
                         >
                             {() => iconChoice(isHovered)}
                         </ButtonIcon>

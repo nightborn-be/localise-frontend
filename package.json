@@ -22,8 +22,10 @@
     },
     "dependencies": {
         "@chakra-ui/react": "^2.4.6",
+        "formik": "^2.2.9",
         "framer-motion": "^10.0.1",
-        "orval": "^6.12.1"
+        "orval": "^6.12.1",
+        "yup": "^1.0.2"
     },
     "packageManager": "npm@8.19.3"
 }
