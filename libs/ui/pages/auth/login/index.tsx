@@ -15,7 +15,7 @@ export default function SignInPage() {
     const { handleOnSubmit, form } = useSignInLogic();
     // Render
     return (
-        <Page bgImage='/assets/images/AuthHomeBackground.png'>
+        <Page bgImage='/assets/images/AuthSignInBackground.png'>
             <VStack
                 alignItems='left'
                 spacing='2.5rem'
