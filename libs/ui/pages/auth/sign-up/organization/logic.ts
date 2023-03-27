@@ -22,7 +22,13 @@ export const useOrganizationLogic = (): OrganizationLogicType => {
 
     // Functions
     async function handleOnSubmit() {
-        push('/auth/sign-up/organization/picture');
+        push({
+            pathname: '/auth/sign-up/organization/picture', query: {
+                organizationName: values.organizationName
+            }
+        },
+            undefined,
+            { shallow: true })
         return undefined;
     }
 
