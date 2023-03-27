@@ -3,7 +3,7 @@ import { PictureLogicType } from './types';
 
 export const usePictureLogic = (): PictureLogicType => {
     // Attributes
-    const { push } = useRouter();
+    const { push, query } = useRouter();
 
     // Functions
     async function handleOnContinue(picturePath: string) {
