@@ -1,4 +1,5 @@
-import HomePage from '../../../../libs/ui/pages/auth';
-export default function Home() {
-    return <HomePage />;
-}
+import AuthHomePage from '../../../../libs/ui/pages/auth';
+const AuthHome = () => {
+    return <AuthHomePage />;
+};
+export default AuthHome;

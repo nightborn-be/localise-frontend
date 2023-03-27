@@ -8,14 +8,14 @@ import Input from '../../../components/inputs/input';
 import Button from '../../../components/inputs/button';
 import { useTranslation } from 'react-i18next';
 import { tKeys } from '../../../../i18n/keys';
-import { useLoginLogic } from './logic';
-export default function LoginPage() {
+import { useSignInLogic } from './logic';
+export default function SignInPage() {
     // Attributes
-    const { handleOnSubmit, form } = useLoginLogic();
     const { t } = useTranslation();
+    const { handleOnSubmit, form } = useSignInLogic();
     // Render
     return (
-        <Page bgImage='/assets/images/LoginBackground.jpg'>
+        <Page bgImage='/assets/images/AuthHomeBackground.png'>
             <VStack
                 alignItems='left'
                 spacing='2.5rem'
@@ -26,7 +26,7 @@ export default function LoginPage() {
                     font={FONTS.T1.T24px.Bold700.value}
                     color={COLORS.Text.T400.value}
                 >
-                    {t(tKeys.login.title)}
+                    {t(tKeys.auth.sign_in.title)}
                 </Text>
                 <VStack spacing='1.25rem'>
                     <Input
@@ -34,15 +34,17 @@ export default function LoginPage() {
                         w='20.4375rem'
                         padding='0.75rem'
                         gap='0.5rem'
-                        label={t(tKeys.login.inputLabel.email)}
-                        placeholder={t(tKeys.login.inputPlaceholder.email)}
+                        label={t(tKeys.auth.sign_in.form.email.title)}
+                        placeholder={t(
+                            tKeys.auth.sign_in.form.email.placeholder,
+                        )}
                         placeholderColor={COLORS.InputText.value}
                         bg={COLORS.White.T500.value}
                         font={FONTS.T1.T14px.Regular400.value}
                         color={COLORS.Text.T400.value}
                         errorMsg={form.email.meta?.error}
                         isTouched={form.email.meta?.touched}
-                        isValid={form.email.meta?.error === undefined}
+                        isValid={!form.email.meta?.error}
                     />
                     <Input
                         {...form.password}
@@ -50,26 +52,28 @@ export default function LoginPage() {
                         padding='0.75rem'
                         gap='0.5rem'
                         type='password'
-                        label={t(tKeys.login.inputLabel.password)}
-                        placeholder={t(tKeys.login.inputPlaceholder.password)}
+                        label={t(tKeys.auth.sign_in.form.password.title)}
+                        placeholder={t(
+                            tKeys.auth.sign_in.form.password.placeholder,
+                        )}
                         placeholderColor={COLORS.InputText.value}
                         bg={COLORS.White.T500.value}
                         font={FONTS.T1.T14px.Regular400.value}
                         color={COLORS.Text.T400.value}
                         errorMsg={form.password.meta?.error}
                         isTouched={form.password.meta?.touched}
-                        isValid={form.password.meta?.error === undefined}
+                        isValid={!form.password.meta?.error}
                     />
                 </VStack>
                 <Button
                     color={COLORS.White.T500.value}
                     backgroundColor={COLORS.Localize.Purple.T500.value}
                     border='0.0625rem solid transparent'
-                    borderRadius={'0.5rem'}
+                    borderRadius='0.5rem'
                     hoverBackgroundColor={COLORS.Localize.Purple.T600.value}
                     onClick={handleOnSubmit}
                 >
-                    {t(tKeys.common.buttonLogin) ?? ''}
+                    {t(tKeys.auth.sign_in.cta.sign_in) ?? ''}
                 </Button>
             </VStack>
         </Page>

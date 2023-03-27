@@ -1,3 +1,6 @@
-export default function SignIn() {
-    return <div></div>;
+import React from 'react';
+import SignInPage from '../../../../../libs/ui/pages/auth/login';
+
+export default function Login() {
+    return <SignInPage />;
 }

@@ -1,4 +1,4 @@
-export type AuthLogicType = {
-    handleSignInRedirection(): void;
-    handleLogInRedirecton(): void;
+export type AuthHomeLogicResponse = {
+    handleSignInRedirection: () => void;
+    handleLogInRedirecton: () => void;
 };

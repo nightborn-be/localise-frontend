@@ -1,19 +1,17 @@
 import { useRouter } from 'next/router';
-import { AuthLogicType } from './types';
+import { AuthHomeLogicResponse } from './types';
 
-export const useAuthLogic = (): AuthLogicType => {
+export const useAuthHomeLogic = (): AuthHomeLogicResponse => {
     // Attributes
     const { push } = useRouter();
 
     // Functions
     function handleSignInRedirection() {
         push('auth/sign-in');
-        return;
     }
 
     function handleLogInRedirecton() {
-        push('auth/login');
-        return;
+        push('auth/sign-in');
     }
 
     return {

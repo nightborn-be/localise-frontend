@@ -1,21 +1,26 @@
-import { ILoginFormik, LoginLogicType } from './types';
+import { ISignInFormik, SignInLogicType } from './types';
 import { useFormik } from 'formik';
 import { createForm } from '../../../../utils/formik';
 import schema from './validations';
+import { useTranslation } from 'react-i18next';
+import { tKeys } from '../../../../i18n/keys';
+import validationSchema from './validations';
+export const useSignInLogic = (): SignInLogicType => {
+    // Attributes
+    const { t } = useTranslation();
 
-export const useLoginLogic = (): LoginLogicType => {
     // Formik
-    const { values, dirty, setFieldError, ...rest } = useFormik<ILoginFormik>({
+    const { values, ...rest } = useFormik<ISignInFormik>({
         initialValues: {
             email: '',
             password: '',
         },
         onSubmit: handleOnSubmit,
-        validationSchema: schema,
+        validationSchema: validationSchema(t),
         validateOnChange: false,
     });
     const form = createForm(values, rest);
-
+    const { dirty, setFieldError } = rest;
     // Functions
     function handleOnSubmit(): void {
         return undefined;

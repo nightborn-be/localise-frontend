@@ -54,7 +54,6 @@ export default function InputSelectAndInput<T>({
             alignItems={alignItems}
             backgroundColor={backgroundColor}
             borderRadius={borderRadius}
-            // key={key}
         >
             {/* Input label section */}
             <InputLabel label={label} description={description} />

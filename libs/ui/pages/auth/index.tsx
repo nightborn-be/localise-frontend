@@ -5,17 +5,18 @@ import COLORS from '../../constants/colors';
 import FONTS from '../../constants/fonts';
 import Button from '../../components/inputs/button';
 import { HStack, Image, VStack } from '@chakra-ui/react';
-import { useAuthLogic } from './logic';
+import { useAuthHomeLogic } from './logic';
 import { useTranslation } from 'react-i18next';
 import { tKeys } from '../../../i18n/keys';
-export default function HomePage() {
+export default function AuthHomePage() {
     // Attributes
-    const { handleLogInRedirecton, handleSignInRedirection } = useAuthLogic();
+    const { handleLogInRedirecton, handleSignInRedirection } =
+        useAuthHomeLogic();
     const { t } = useTranslation();
 
     // Render
     return (
-        <Page bgImage='./assets/images/DefaultHomeBackground.png'>
+        <Page bgImage='./assets/images/AuthHomeBackground.png'>
             <VStack
                 spacing='1.25rem'
                 padding='0'
@@ -26,9 +27,8 @@ export default function HomePage() {
                     <Text
                         font={FONTS.T1.T28px.SemiBold600.value}
                         color={COLORS.Text.T400.value}
-                        my='0'
                     >
-                        {t(tKeys.home.welcom.title)}
+                        {t(tKeys.auth.home.title)}
                     </Text>
                     <VStack spacing='0.75rem' alignItems={'left'}>
                         <HStack spacing={0}>
@@ -38,7 +38,7 @@ export default function HomePage() {
                                 color={COLORS.Text.T400.value}
                                 my='0'
                             >
-                                LOCALIZE
+                                {t(tKeys.auth.home.project_name)}
                             </Text>
                             <Image
                                 w={'3.75rem'}
@@ -53,7 +53,7 @@ export default function HomePage() {
                                 color={COLORS.Text.T400.value}
                                 my='0'
                             >
-                                {t(tKeys.home.subtitle)}
+                                {t(tKeys.auth.home.subtitle)}
                             </Text>
                             <Image
                                 w={'1.5rem'}
@@ -75,7 +75,7 @@ export default function HomePage() {
                         hoverBackgroundColor={COLORS.Localize.Purple.T600.value}
                         onClick={handleLogInRedirecton}
                     >
-                        {t(tKeys.common.buttonLogin) ?? ''}
+                        {t(tKeys.auth.home.cta.sign_in) ?? ''}
                     </Button>
                     <Button
                         color={COLORS.Localize.Purple.T500.value}
@@ -86,7 +86,7 @@ export default function HomePage() {
                         borderRadius={'0.5rem'}
                         onClick={handleSignInRedirection}
                     >
-                        {t(tKeys.home.buttonSignup) ?? ''}
+                        {t(tKeys.auth.home.cta.sign_up) ?? ''}
                     </Button>
                 </VStack>
             </VStack>
