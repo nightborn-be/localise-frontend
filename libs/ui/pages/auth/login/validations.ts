@@ -4,10 +4,10 @@ import { tKeys } from '../../../../i18n/keys';
 const validationSchema = (t: TFunction) => {
     return Yup.object({
         email: Yup.string()
-            .email(t(tKeys.auth.sign_in.form.email.invalid.error) ?? '')
-            .required(t(tKeys.auth.sign_in.form.email.required.error) ?? ''),
+            .email(t<string>(tKeys.auth.sign_in.form.email.invalid.error))
+            .required(t<string>(tKeys.auth.sign_in.form.email.required.error)),
         password: Yup.string().required(
-            t(tKeys.auth.sign_in.form.password.required.error) ?? '',
+            t<string>(tKeys.auth.sign_in.form.password.required.error),
         ),
     });
 };

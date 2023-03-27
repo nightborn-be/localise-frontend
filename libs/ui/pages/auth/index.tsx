@@ -28,7 +28,7 @@ export default function AuthHomePage() {
                         font={FONTS.T1.T28px.SemiBold600.value}
                         color={COLORS.Text.T400.value}
                     >
-                        {t(tKeys.auth.home.title)}
+                        {t<string>(tKeys.auth.home.title)}
                     </Text>
                     <VStack spacing='0.75rem' alignItems={'left'}>
                         <HStack spacing={0}>
@@ -38,7 +38,7 @@ export default function AuthHomePage() {
                                 color={COLORS.Text.T400.value}
                                 my='0'
                             >
-                                {t(tKeys.auth.home.project_name)}
+                                {t<string>(tKeys.auth.home.project_name)}
                             </Text>
                             <Image
                                 w={'3.75rem'}
@@ -53,7 +53,7 @@ export default function AuthHomePage() {
                                 color={COLORS.Text.T400.value}
                                 my='0'
                             >
-                                {t(tKeys.auth.home.subtitle)}
+                                {t<string>(tKeys.auth.home.subtitle)}
                             </Text>
                             <Image
                                 w={'1.5rem'}
@@ -75,7 +75,7 @@ export default function AuthHomePage() {
                         hoverBackgroundColor={COLORS.Localize.Purple.T600.value}
                         onClick={handleLogInRedirecton}
                     >
-                        {t(tKeys.auth.home.cta.sign_in) ?? ''}
+                        {t<string>(tKeys.auth.home.cta.sign_in)}
                     </Button>
                     <Button
                         color={COLORS.Localize.Purple.T500.value}
@@ -86,7 +86,7 @@ export default function AuthHomePage() {
                         borderRadius={'0.5rem'}
                         onClick={handleSignInRedirection}
                     >
-                        {t(tKeys.auth.home.cta.sign_up) ?? ''}
+                        {t<string>(tKeys.auth.home.cta.sign_up)}
                     </Button>
                 </VStack>
             </VStack>

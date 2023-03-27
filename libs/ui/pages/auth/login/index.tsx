@@ -26,7 +26,7 @@ export default function SignInPage() {
                     font={FONTS.T1.T24px.Bold700.value}
                     color={COLORS.Text.T400.value}
                 >
-                    {t(tKeys.auth.sign_in.title)}
+                    {t<string>(tKeys.auth.sign_in.title)}
                 </Text>
                 <VStack spacing='1.25rem'>
                     <Input
@@ -34,8 +34,8 @@ export default function SignInPage() {
                         w='20.4375rem'
                         padding='0.75rem'
                         gap='0.5rem'
-                        label={t(tKeys.auth.sign_in.form.email.title)}
-                        placeholder={t(
+                        label={t<string>(tKeys.auth.sign_in.form.email.title)}
+                        placeholder={t<string>(
                             tKeys.auth.sign_in.form.email.placeholder,
                         )}
                         placeholderColor={COLORS.InputText.value}
@@ -52,8 +52,10 @@ export default function SignInPage() {
                         padding='0.75rem'
                         gap='0.5rem'
                         type='password'
-                        label={t(tKeys.auth.sign_in.form.password.title)}
-                        placeholder={t(
+                        label={t<string>(
+                            tKeys.auth.sign_in.form.password.title,
+                        )}
+                        placeholder={t<string>(
                             tKeys.auth.sign_in.form.password.placeholder,
                         )}
                         placeholderColor={COLORS.InputText.value}
@@ -73,7 +75,7 @@ export default function SignInPage() {
                     hoverBackgroundColor={COLORS.Localize.Purple.T600.value}
                     onClick={handleOnSubmit}
                 >
-                    {t(tKeys.auth.sign_in.cta.sign_in) ?? ''}
+                    {t<string>(tKeys.auth.sign_in.cta.sign_in)}
                 </Button>
             </VStack>
         </Page>
