@@ -5,5 +5,5 @@ interface I18n {
 
 export const i18nConfig: I18n = {
     defaultLanguage: 'en',
-    availableLanguages: ['en']
+    availableLanguages: ['en'],
 };
