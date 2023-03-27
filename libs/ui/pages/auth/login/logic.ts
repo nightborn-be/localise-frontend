@@ -5,6 +5,7 @@ import schema from './validations';
 import { useTranslation } from 'react-i18next';
 import { tKeys } from '../../../../i18n/keys';
 import validationSchema from './validations';
+import { useAuth } from '../../../auth/index'
 export const useSignInLogic = (): SignInLogicType => {
     // Attributes
     const { t } = useTranslation();
@@ -23,6 +24,7 @@ export const useSignInLogic = (): SignInLogicType => {
     const { dirty, setFieldError } = rest;
     // Functions
     function handleOnSubmit(): void {
+        useAuth
         return undefined;
     }
     return {
