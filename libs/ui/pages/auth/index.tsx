@@ -58,7 +58,7 @@ export default function AuthHomePage() {
                             <Image
                                 w={'1.5rem'}
                                 h={'1.5rem'}
-                                src='./assets/images/nightborn.jpg'
+                                src='./assets/images/nightborn.png'
                                 alt='Nightborn logo'
                             />
                         </HStack>

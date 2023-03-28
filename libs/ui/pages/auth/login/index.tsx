@@ -1,6 +1,6 @@
 import React from 'react';
 import COLORS from '../../../../../libs/ui/constants/colors';
-import { Box, HStack, VStack } from '@chakra-ui/react';
+import { VStack } from '@chakra-ui/react';
 import FONTS from '../../../../../libs/ui/constants/fonts';
 import Page from '../../../components/contents/page';
 import Text from '../../../components/contents/text';

@@ -1,14 +1,15 @@
+import { useRouter } from 'next/router'
 import { ISignInFormik, SignInLogicType } from './types';
 import { useFormik } from 'formik';
 import { createForm } from '../../../../utils/formik';
-import schema from './validations';
 import { useTranslation } from 'react-i18next';
-import { tKeys } from '../../../../i18n/keys';
 import validationSchema from './validations';
 import { useAuth } from '../../../auth/index'
 export const useSignInLogic = (): SignInLogicType => {
     // Attributes
+    const { push } = useRouter()
     const { t } = useTranslation();
+    const auth = useAuth();
 
     // Formik
     const { values, ...rest } = useFormik<ISignInFormik>({
@@ -23,8 +24,14 @@ export const useSignInLogic = (): SignInLogicType => {
     const form = createForm(values, rest);
     const { dirty, setFieldError } = rest;
     // Functions
-    function handleOnSubmit(): void {
-        useAuth
+    async function handleOnSubmit(): Promise<void> {
+        auth?.signIn(values.email, values.password)
+        if (auth?.isLogged) {
+            push('/')
+        } else {
+            setFieldError("email", "Wrong email")
+            setFieldError("password", "Wrong password")
+        }
         return undefined;
     }
     return {

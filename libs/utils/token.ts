@@ -22,26 +22,6 @@ export const saveTokenInStorage = async (tokens: {
     }
 }
 
-export const getTokensFromStorage = async () => {
-    try {
-        const tokens: { [key in Token] } = { [Token.ID_TOKEN]: null, [Token.ACCESS_TOKEN]: null, [Token.REFRESH_TOKEN]: null }
-
-        const tokenKeys = Object.values(Token);
-        await Promise.all(
-            tokenKeys?.map(async key => {
-                const token = await getFromStorage(key);
-                tokens[key] = token;
-            })
-        );
-    } catch (err) {
-        console.error('Error when retrieving tokens :', err);
-    }
-    return {
-        [Token.ID_TOKEN]: null,
-        [Token.ACCESS_TOKEN]: null,
-        [Token.REFRESH_TOKEN]: null,
-    };
-}
 export const getTokenFromStorage = async (token: Token) => {
     try {
         return await getFromStorage(token);
@@ -51,23 +31,6 @@ export const getTokenFromStorage = async (token: Token) => {
     return null;
 }
 
-export const deleteTokensFromStorage = async () => {
-    try {
-        const tokenKeys = Object.values(Token);
-        await Promise.all(
-            tokenKeys?.map(async key => {
-                await removeFromStorage(key);
-            })
-        );
-    } catch (err) {
-        console.error('Error when deleting tokens :', err);
-    }
-    return {
-        [Token.ID_TOKEN]: null,
-        [Token.ACCESS_TOKEN]: null,
-        [Token.REFRESH_TOKEN]: null,
-    };
-}
 export const deleteTokenFromStorage = async (token: Token) => {
     try {
         return await removeFromStorage(token)
