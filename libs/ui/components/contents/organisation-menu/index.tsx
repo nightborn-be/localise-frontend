@@ -16,6 +16,7 @@ export default function OrganisationMenu<T>({
     return (
         <VStack
             width={'264px'}
+            maxH={'280px'}
             spacing='4px'
             alignItems={'left'}
             backgroundColor={COLORS.White.T500.value}
