@@ -16,7 +16,7 @@ export const OrganisationMenuItem = ({
     // Render
     return (
         <HStack
-            w='14.25rem'
+            w='15.75rem'
             h='3.25rem'
             padding='0.625rem'
             borderRadius='0.375rem'

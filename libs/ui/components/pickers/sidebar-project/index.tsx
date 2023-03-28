@@ -66,15 +66,17 @@ const SidebarProject = ({
                     </Text>
                 )}
             </HStack>
-            <Badge
-                color={
-                    isSelected
-                        ? COLORS.Localize.Purple.T600.value
-                        : COLORS.Error.T500.value
-                }
-            >
-                {notificationNumber}
-            </Badge>
+            {notificationNumber && notificationNumber > 0 && (
+                <Badge
+                    color={
+                        isSelected
+                            ? COLORS.Localize.Purple.T600.value
+                            : COLORS.Error.T500.value
+                    }
+                >
+                    {notificationNumber}
+                </Badge>
+            )}
         </HStack>
     );
 };
