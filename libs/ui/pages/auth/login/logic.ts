@@ -6,7 +6,6 @@ import { useTranslation } from 'react-i18next';
 import validationSchema from './validations';
 import { useAuth } from '../../../auth/index';
 export const useSignInLogic = (): SignInLogicType => {
-
     // Attributes
     const { push } = useRouter();
     const { t } = useTranslation();

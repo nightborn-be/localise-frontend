@@ -7,10 +7,9 @@ import UserCredential, {
 import { tokenStorage } from '../../utils/token/token';
 import { firebaseConfig } from './config';
 export const useLogic = () => {
-
     // Attributes
-    const [app, setApp] = useState<FirebaseApp>()
-    const [auth, setAuth] = useState<UserCredential.Auth>()
+    const [app, setApp] = useState<FirebaseApp>();
+    const [auth, setAuth] = useState<UserCredential.Auth>();
 
     const [isLogged, setIsLogged] = useState<boolean>(false);
     const [firebaseUser, setFirebaseUser] = useState<UserCredential.User>();
@@ -22,8 +21,8 @@ export const useLogic = () => {
         }
         const data = await signInWithEmailAndPassword(auth, email, password);
         if (data) {
-            setIsLogged(true)
-            setFirebaseUser(data.user)
+            setIsLogged(true);
+            setFirebaseUser(data.user);
         }
     }
 
@@ -31,15 +30,15 @@ export const useLogic = () => {
     useEffect(() => {
         firebaseUser?.getIdToken().then((token) => {
             tokenStorage.save({
-                id_token: token
-            })
-        })
-    }, [firebaseUser])
+                id_token: token,
+            });
+        });
+    }, [firebaseUser]);
 
     useEffect(() => {
         setApp(initializeApp(firebaseConfig));
-        setAuth(getAuth())
-    }, [])
+        setAuth(getAuth());
+    }, []);
 
     return {
         isLogged,

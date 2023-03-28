@@ -5,7 +5,6 @@ interface IJWTToken {
     nbf: number;
 }
 
-
 const saveTokenInStorage = async (tokens: {
     [key in TokenKey]: string;
 }) => {
@@ -17,7 +16,7 @@ const saveTokenInStorage = async (tokens: {
             }),
         );
     } catch (err) {
-        throw err
+        throw err;
     }
 };
 
@@ -25,7 +24,7 @@ const getTokenFromStorage = async (token: string) => {
     try {
         return await storage.get(token);
     } catch (err) {
-        throw err
+        throw err;
     }
 };
 
@@ -33,11 +32,11 @@ const removeTokenFromStorage = async (token: string) => {
     try {
         return await storage.remove(token);
     } catch (err) {
-        throw err
+        throw err;
     }
 };
 export const tokenStorage = {
     save: saveTokenInStorage,
     get: getTokenFromStorage,
     remove: removeTokenFromStorage,
-}
+};
