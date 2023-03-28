@@ -7,9 +7,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const auth = useLogic();
 
     // Render
-    return (
-        <AuthContext.Provider value={auth}>{children}</AuthContext.Provider>
-    );
+    return <AuthContext.Provider value={auth}>{children}</AuthContext.Provider>;
 }
 
 // Create hook

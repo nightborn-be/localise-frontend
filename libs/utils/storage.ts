@@ -1,13 +1,21 @@
-import { StorageKey } from "./storage-keys";
+import { StorageKey } from './storage-keys';
 
-export async function saveToStorage(key: StorageKey, value: string): Promise<void> {
-    await localStorage.setItem(key, value)
+async function saveToStorage(
+    key: StorageKey,
+    value: string,
+): Promise<void> {
+    await localStorage.setItem(key, value);
 }
-export async function getFromStorage(key: StorageKey): Promise<void> {
-    await localStorage.getItem(key)
+async function getFromStorage(key: StorageKey): Promise<void> {
+    await localStorage.getItem(key);
 }
-export async function removeFromStorage(key: StorageKey): Promise<void> {
-    await localStorage.removeItem(key)
+async function removeFromStorage(key: StorageKey): Promise<void> {
+    await localStorage.removeItem(key);
 }
 
 
+export const storage = {
+    save: saveToStorage,
+    get: getFromStorage,
+    remove: removeFromStorage,
+}

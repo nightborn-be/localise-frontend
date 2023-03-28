@@ -1,42 +1,46 @@
-import { saveToStorage, getFromStorage, removeFromStorage } from "./storage";
-
+import { storage } from './storage';
+import { StorageKey } from './storage-keys'
 interface IJWTToken {
     exp: number;
     nbf: number;
 }
 
 export enum Token {
-    ID_TOKEN = 'id_token',
-    ACCESS_TOKEN = 'access_token',
-    REFRESH_TOKEN = 'refresh_token'
+    ID_TOKEN = 'id_token'
 }
 
-export const saveTokenInStorage = async (tokens: {
-    [key in Token]: string
+const saveTokenInStorage = async (tokens: {
+    [key in Token]: string;
 }) => {
     try {
-        const items = Object.entries(tokens)
-        await Promise.all(items?.map(async ([key, value]) => { await saveToStorage(key, value) }))
+        const items = Object.entries(tokens);
+        await Promise.all(
+            items?.map(([key, value]) => {
+                return storage.save(key, value);
+            }),
+        );
     } catch (err) {
-        console.error('Error when storing tokens :', err)
+        throw err
     }
-}
+};
 
-export const getTokenFromStorage = async (token: Token) => {
+const getTokenFromStorage = async (token: Token) => {
     try {
-        return await getFromStorage(token);
+        return await storage.get(token);
     } catch (err) {
-        console.log('Error when retrieving token :', err)
+        throw err
     }
-    return null;
-}
+};
 
-export const deleteTokenFromStorage = async (token: Token) => {
+const removeTokenFromStorage = async (token: Token) => {
     try {
-        return await removeFromStorage(token)
+        return await storage.remove(token);
     } catch (err) {
-        console.log('Error when deleting token :', err)
+        throw err
     }
-    return null;
+};
+export const tokenStorage = {
+    save: saveTokenInStorage,
+    get: getTokenFromStorage,
+    remove: removeTokenFromStorage,
 }
-

@@ -70,7 +70,6 @@ export default function SignInPage() {
                 <Button
                     color={COLORS.White.T500.value}
                     backgroundColor={COLORS.Localize.Purple.T500.value}
-                    border='0.0625rem solid transparent'
                     borderRadius='0.5rem'
                     hoverBackgroundColor={COLORS.Localize.Purple.T600.value}
                     onClick={handleOnSubmit}

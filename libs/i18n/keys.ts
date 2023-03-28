@@ -17,21 +17,19 @@ export const tKeys = {
         sign_in: {
             title: 'auth.sign_in.title',
             form: {
-                password: {
-                    title: 'auth.sign_in.form.password.title',
-                    placeholder: 'auth.sign_in.form.password.placeholder',
-                    required: {
-                        error: 'auth.sign_in.form.password.required.error',
-                    },
-                },
                 email: {
                     title: 'auth.sign_in.form.email.title',
                     placeholder: 'auth.sign_in.form.email.placeholder',
-                    invalid: {
-                        error: 'auth.sign_in.form.email.invalid.error',
+                    error: {
+                        required: 'auth.sign_in.form.email.error.required',
+                        invalid: 'auth.sign_in.form.email.error.invalid',
                     },
-                    required: {
-                        error: 'auth.sign_in.form.email.required.error',
+                },
+                password: {
+                    title: 'auth.sign_in.form.password.title',
+                    placeholder: 'auth.sign_in.form.password.placeholder',
+                    error: {
+                        required: 'auth.sign_in.form.password.error.required',
                     },
                 },
             },
@@ -41,15 +39,15 @@ export const tKeys = {
         },
     },
     signup: {
+        buttonContinue: 'signup.buttonContinue',
         account: {
             title: 'signup.account.title',
         },
         organizationName: {
-            inputLabel: 'signup.organizationName.inputLabel',
             title: 'signup.organizationName.title',
+            inputLabel: 'signup.organizationName.inputLabel',
             inputPlaceholder: 'signup.organizationName.inputPlaceholder',
         },
-        buttonContinue: 'signup.buttonContinue',
         buttonLater: 'signup.buttonLater',
         organizationPicture: {
             title: 'signup.organizationPicture.title',
