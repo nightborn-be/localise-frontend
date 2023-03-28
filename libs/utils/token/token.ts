@@ -1,16 +1,13 @@
-import { storage } from './storage';
-import { StorageKey } from './storage-keys'
+import { storage } from '../storage/storage';
+import { TokenKey } from './token-keys';
 interface IJWTToken {
     exp: number;
     nbf: number;
 }
 
-export enum Token {
-    ID_TOKEN = 'id_token'
-}
 
 const saveTokenInStorage = async (tokens: {
-    [key in Token]: string;
+    [key in TokenKey]: string;
 }) => {
     try {
         const items = Object.entries(tokens);
@@ -24,7 +21,7 @@ const saveTokenInStorage = async (tokens: {
     }
 };
 
-const getTokenFromStorage = async (token: Token) => {
+const getTokenFromStorage = async (token: string) => {
     try {
         return await storage.get(token);
     } catch (err) {
@@ -32,7 +29,7 @@ const getTokenFromStorage = async (token: Token) => {
     }
 };
 
-const removeTokenFromStorage = async (token: Token) => {
+const removeTokenFromStorage = async (token: string) => {
     try {
         return await storage.remove(token);
     } catch (err) {

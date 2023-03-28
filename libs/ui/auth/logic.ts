@@ -4,7 +4,7 @@ import UserCredential, {
     getAuth,
     signInWithEmailAndPassword,
 } from '@firebase/auth';
-import { tokenStorage } from '../../utils/token';
+import { tokenStorage } from '../../utils/token/token';
 import { firebaseConfig } from './config';
 export const useLogic = () => {
 
