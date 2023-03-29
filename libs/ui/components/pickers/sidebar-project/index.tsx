@@ -1,9 +1,12 @@
-import React, { useState, cloneElement } from 'react';
+import React, { useState, cloneElement, useRef } from 'react';
 import { Box, HStack } from '@chakra-ui/react';
 import COLORS from '../../../constants/colors';
 import Text from '../../contents/text';
 import { ISidebarProps } from './props';
 import Badge from '../../contents/badge';
+import Button from '../../inputs/button';
+import ProjectColorPicker from '../project-color-picker';
+import useOnClickOutside from '../../../../utils/hooks';
 const SidebarProject = ({
     textFont,
     textColor,
@@ -20,6 +23,13 @@ const SidebarProject = ({
 }: ISidebarProps) => {
     // Attributes
     const isSelected = activeKey === text;
+    const [currentSelectedColor, setCurrentSelectedColor] = useState<string>(
+        projectIconColor ?? '',
+    );
+    const [isColorPickerVisible, setIsColorPickerVisible] =
+        useState<boolean>(false);
+    const ref = useRef<HTMLDivElement>(null);
+    useOnClickOutside(ref, () => setIsColorPickerVisible(false));
 
     // Functions
     const startEnhancerPicker = () => {
@@ -31,11 +41,15 @@ const SidebarProject = ({
             else return startEnhancer;
         if (displayColorBox)
             return (
-                <Box
+                <Button
                     w='0.5rem'
                     h='0.5rem'
+                    padding='0'
+                    minW='0.5rem'
+                    minH='0.5rem'
                     borderRadius='0.125rem'
-                    bg={projectIconColor}
+                    bg={currentSelectedColor}
+                    onClick={() => setIsColorPickerVisible(true)}
                 />
             );
 
@@ -56,8 +70,9 @@ const SidebarProject = ({
                     : COLORS.White.T500.value
             }
             onClick={() => onClick(text)}
+            ref={ref}
         >
-            <HStack w='full' h='2rem'>
+            <HStack w='full' h='2rem' position={'relative'}>
                 {startEnhancerPicker()}
                 {text && (
                     <Text
@@ -68,6 +83,19 @@ const SidebarProject = ({
                         {text}
                     </Text>
                 )}
+                <HStack
+                    position={'absolute'}
+                    maxW={w}
+                    top='18px'
+                    right='25px'
+                    display={isColorPickerVisible ? 'visible' : 'none'}
+                    zIndex='2'
+                >
+                    <ProjectColorPicker
+                        selected={currentSelectedColor}
+                        onSelect={setCurrentSelectedColor}
+                    />
+                </HStack>
             </HStack>
             {notificationNumber && notificationNumber > 0 && (
                 <Badge
