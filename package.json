@@ -11,9 +11,11 @@
         "dev": "turbo run dev --parallel",
         "lint": "turbo run lint",
         "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-        "generate-translations": "node ./scripts/generate-translations.js && npm run format"
+        "generate-translations": "node ./scripts/generate-translations.js && npm run format",
+        "generate-api": "orval --config ./orval.config.js && npm run format"
     },
     "devDependencies": {
+        "ajv": "^8.12.0",
         "eslint-config-custom": "*",
         "prettier": "latest",
         "turbo": "latest"
