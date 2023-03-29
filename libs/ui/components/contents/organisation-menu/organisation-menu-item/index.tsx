@@ -18,7 +18,7 @@ export const OrganisationMenuItem = ({
         <HStack
             w='15.75rem'
             h='3.25rem'
-            padding='0.625rem'
+            padding='10px'
             borderRadius='0.375rem'
             spacing='0.5rem'
             _hover={{ bg: COLORS.Tag.value }}
@@ -47,7 +47,7 @@ export const OrganisationMenuItem = ({
                     {description}
                 </Text>
             </VStack>
-            <Box w='1.25rem' h='1.25rem'>
+            <Box w='1.25rem' h='1.25rem' position={'absolute'} right='10px'>
                 {isActive && (
                     <Icon name='checked' width={'1.25rem'} height={'1.25rem'} />
                 )}

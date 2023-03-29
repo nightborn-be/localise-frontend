@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { Box, HStack, Image, VStack } from '@chakra-ui/react';
 import React from 'react';
 import COLORS from '../../constants/colors';
@@ -19,25 +19,67 @@ import {
 import { useGetProjects } from '../../../gateways/resource-api/projects/projects';
 
 import OrganizationMenu from '../contents/organisation-menu';
+import useOnClickOutside from '../../../utils/hooks';
 export const SideBar = () => {
     // Attributes
-    const options: ProjectDTO[] = [];
+    const options = [
+        {
+            title: 'Nightborn',
+            description: '15 members',
+            value: 0,
+        },
+        {
+            title: 'Bloomings Riders',
+            description: '3 members',
+            value: 1,
+        },
+        {
+            title: 'Happy Lifetime',
+            description: '12 members',
+            value: 2,
+        },
+    ];
+
+    /* FIRST MENU */
+    // Attributes
+    const [activeOptionKey, setActiveOptionKey] = useState<string>('');
+    // Functions
+    function handleOnOptionClick(value) {
+        setActiveOptionKey(value);
+    }
+
+    /* SECOND MENU PROJECT */
+    // Attributes
+    const [activeProjectKey, setActiveProjectKey] = useState<string>('');
+
+    // Functions
+    function handleOnProjectClick(value) {
+        setActiveProjectKey(value);
+    }
+
+    /* FILTER LOGIC */
+    // Attributes
     const [filterValue, setFilterValue] = useState<ProjectDTO>();
     const [activeKey, setActiveKey] = useState<string>();
+
+    // Functions
+    // function filter(value: string) {
+    //     return options?.filter(
+    //         (option) =>
+    //             option.id &&
+    //             option.id.toLowerCase().includes(value.toLowerCase()),
+    //     );
+    // }
+
+    /* ORGANISATION LOGIC */
+    // Attributes
     const [isOrganisationClicked, setIsOrganisationClicked] =
         useState<boolean>();
-    function handleToggleIsOrganisationClicked() {
-        setIsOrganisationClicked((prev) => !prev);
-    }
     const [organizationValue, setOrganizationValue] = useState<string>('');
     const [activeOrganizationKey, setActiveOrganizationKey] = useState(0);
     // Functions
-    function filter(value: string) {
-        return options?.filter(
-            (option) =>
-                option.id &&
-                option.id.toLowerCase().includes(value.toLowerCase()),
-        );
+    function handleToggleIsOrganisationClicked() {
+        setIsOrganisationClicked((prev) => !prev);
     }
     return (
         <VStack w={'244px'} h={'100vh'} spacing='0px'>
@@ -69,6 +111,8 @@ export const SideBar = () => {
                 borderRight={`1px solid ${COLORS.Line.value}`}
             >
                 <SidebarProject
+                    onClick={handleOnOptionClick}
+                    activeKey={activeOptionKey}
                     text={'Activity'}
                     textFont={FONTS.T1.T12px.Medium500.value}
                     textColor={COLORS.Text.T400.value}
@@ -77,21 +121,20 @@ export const SideBar = () => {
                     startEnhancer={<Icon name='section' />}
                 />
                 <SidebarProject
+                    onClick={handleOnOptionClick}
+                    activeKey={activeOptionKey}
                     text={'Profile'}
                     textFont={FONTS.T1.T12px.Medium500.value}
                     textColor={COLORS.Text.T400.value}
                     projectIconColor='#F74A3E'
-                    startEnhancer={
-                        <Icon name='myProfile' fill={COLORS.Text.T500.value} />
-                    }
+                    startEnhancer={<Icon name='myProfile' />}
                 />
             </VStack>
             <HStack
+                w={'244px'}
                 spacing={'124px'}
                 padding={'16px 8px 6px 20px'}
                 borderRight={`1px solid ${COLORS.Line.value}`}
-                height={'50px'} // try to remove it after
-                w={'244px'}
             >
                 <Text
                     color={COLORS.InputText.value}
@@ -142,7 +185,9 @@ export const SideBar = () => {
                 {options?.map((option, index) => {
                     return (
                         <SidebarProject
-                            text={option.name}
+                            onClick={handleOnProjectClick}
+                            activeKey={activeProjectKey}
+                            text={option.title}
                             key={index}
                             textFont={FONTS.T1.T12px.Medium500.value}
                             textColor={COLORS.Text.T400.value}

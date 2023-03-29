@@ -15,10 +15,13 @@ const SidebarProject = ({
     displayColorBox = true,
     w = '14.25rem',
     h = '2.5rem',
+    activeKey,
+    onClick,
 }: ISidebarProps) => {
-    //Attributes
-    const [isSelected, setIsSelected] = useState<boolean>(false);
-    //Function
+    // Attributes
+    const isSelected = activeKey === text;
+
+    // Functions
     const startEnhancerPicker = () => {
         if (startEnhancer)
             if (isSelected)
@@ -52,7 +55,7 @@ const SidebarProject = ({
                     ? COLORS.Localize.Purple.T500.value
                     : COLORS.White.T500.value
             }
-            onClick={() => setIsSelected((prev) => !prev)}
+            onClick={() => onClick(text)}
         >
             <HStack w='full' h='2rem'>
                 {startEnhancerPicker()}
