@@ -27,7 +27,7 @@ export const useSignInLogic = (): SignInLogicType => {
     // Functions
     async function handleOnSubmit(): Promise<void> {
         try {
-            await auth?.signIn(values.email, values.password);
+            await auth.signIn(values.email, values.password);
             push('/');
         } catch (error) {
             setFieldError('email', 'Wrong email');

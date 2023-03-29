@@ -40,7 +40,7 @@ export default function SignInPage() {
                         )}
                         placeholderColor={COLORS.InputText.value}
                         bg={COLORS.White.T500.value}
-                        font={FONTS.T1.T14px.Regular400.value}
+                        font={FONTS.T1.T12px.Regular400.value}
                         color={COLORS.Text.T400.value}
                         errorMsg={form.email.meta?.error}
                         isTouched={form.email.meta?.touched}
@@ -60,7 +60,7 @@ export default function SignInPage() {
                         )}
                         placeholderColor={COLORS.InputText.value}
                         bg={COLORS.White.T500.value}
-                        font={FONTS.T1.T14px.Regular400.value}
+                        font={FONTS.T1.T12px.Regular400.value}
                         color={COLORS.Text.T400.value}
                         errorMsg={form.password.meta?.error}
                         isTouched={form.password.meta?.touched}

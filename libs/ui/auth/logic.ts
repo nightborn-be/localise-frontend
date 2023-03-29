@@ -6,16 +6,15 @@ import UserCredential, {
 } from '@firebase/auth';
 import { tokenStorage } from '../../utils/token/token';
 import { firebaseConfig } from './config';
+import { TokenKey } from '../../utils/token/token-keys';
 export const useLogic = () => {
     // Attributes
-    const [app, setApp] = useState<FirebaseApp>();
-    const [auth, setAuth] = useState<UserCredential.Auth>();
-
     const [isLogged, setIsLogged] = useState<boolean>(false);
     const [firebaseUser, setFirebaseUser] = useState<UserCredential.User>();
 
     // Functions
     async function signIn(email: string, password: string): Promise<void> {
+        const auth = getAuth()
         if (!auth) {
             return;
         }
@@ -25,25 +24,20 @@ export const useLogic = () => {
             setFirebaseUser(data.user);
         }
     }
-
     // Effect
     useEffect(() => {
         firebaseUser?.getIdToken().then((token) => {
-            tokenStorage.save({
-                id_token: token,
-            });
+            tokenStorage.save({ [TokenKey.ID_TOKEN]: token });
         });
     }, [firebaseUser]);
 
     useEffect(() => {
-        setApp(initializeApp(firebaseConfig));
-        setAuth(getAuth());
+        initializeApp(firebaseConfig);
     }, []);
 
     return {
         isLogged,
         setIsLogged,
         signIn,
-        firebaseUser,
     };
 };
