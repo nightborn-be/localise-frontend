@@ -14,7 +14,7 @@ export const useLogic = () => {
 
     // Functions
     async function signIn(email: string, password: string): Promise<void> {
-        const auth = getAuth()
+        const auth = getAuth();
         if (!auth) {
             return;
         }

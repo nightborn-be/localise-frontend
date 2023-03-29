@@ -9,12 +9,12 @@ interface IJWTToken {
 const saveTokenInStorage = async (tokens: {
     [key in TokenKey]: TokenKey;
 }) => {
-        const items = Object.entries(tokens);
-        await Promise.all(
-            items?.map(([key, value]) => {
-                storage.save(toStorageKey(key), value);
-            }),
-        );
+    const items = Object.entries(tokens);
+    await Promise.all(
+        items?.map(([key, value]) => {
+            storage.save(toStorageKey(key), value);
+        }),
+    );
 };
 
 const getTokenFromStorage = async (token: TokenKey) => {
