@@ -6,11 +6,12 @@ import { useRouter } from 'next/router';
 import schema from './validation';
 import { toCreateUserDTO } from './mappers';
 import { useCreateUser } from '../../../../gateways/resource-api/users/users'
-import { AxiosError } from 'axios';
+import { useToast } from "@chakra-ui/react";
 export const useSignUpLogic = (): SignUpLogicType => {
     // Attributes
     const { push } = useRouter();
-    const { mutateAsync: createUser } = useCreateUser();
+    const toast = useToast()
+    const { mutateAsync: createUser, isError, error: any } = useCreateUser();
 
     // Formik
     const { values, dirty, setFieldError, ...rest } = useFormik<ISignUpFormik>({
@@ -23,7 +24,9 @@ export const useSignUpLogic = (): SignUpLogicType => {
         validateOnChange: false,
     });
     const form = createForm(values, rest);
+    if (isError) {
 
+    }
     // Functions
     async function handleOnSubmit() {
         const createUserDTO = toCreateUserDTO(values.email, values.password)
