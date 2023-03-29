@@ -21,6 +21,15 @@ import { useGetProjects } from '../../../gateways/resource-api/projects/projects
 import OrganizationMenu from '../contents/organisation-menu';
 import useOnClickOutside from '../../../utils/hooks';
 export const SideBar = () => {
+    /* FIRST MENU */
+    // Attributes
+    const [activeOptionKey, setActiveOptionKey] = useState<string>('');
+    // Functions
+    function handleOnOptionClick(value) {
+        setActiveOptionKey(value);
+    }
+
+    // /* SECOND MENU PROJECT */
     // Attributes
     const options = [
         {
@@ -39,17 +48,6 @@ export const SideBar = () => {
             value: 2,
         },
     ];
-
-    /* FIRST MENU */
-    // Attributes
-    const [activeOptionKey, setActiveOptionKey] = useState<string>('');
-    // Functions
-    function handleOnOptionClick(value) {
-        setActiveOptionKey(value);
-    }
-
-    /* SECOND MENU PROJECT */
-    // Attributes
     const [activeProjectKey, setActiveProjectKey] = useState<string>('');
 
     // Functions
@@ -73,10 +71,32 @@ export const SideBar = () => {
 
     /* ORGANISATION LOGIC */
     // Attributes
+    const optionsOrganisation = [
+        {
+            title: 'Nightborn',
+            description: '15 members',
+            imageUrl: '/assets/images/nightborn.png',
+            color: 'transparent',
+            value: 0,
+        },
+        {
+            title: 'Bloomings Riders',
+            description: '3 members',
+            color: COLORS.Bancontact.Blue.value,
+            value: 1,
+        },
+        {
+            title: 'Happy Lifetime',
+            description: '12 members',
+            color: COLORS.Bancontact.Payconiq.value,
+            value: 2,
+        },
+    ];
     const [isOrganisationClicked, setIsOrganisationClicked] =
         useState<boolean>();
     const [organizationValue, setOrganizationValue] = useState<string>('');
     const [activeOrganizationKey, setActiveOrganizationKey] = useState(0);
+
     // Functions
     function handleToggleIsOrganisationClicked() {
         setIsOrganisationClicked((prev) => !prev);
@@ -103,6 +123,7 @@ export const SideBar = () => {
                     Localize
                 </Text>
             </HStack>
+            {/* FIRST MENU */}
             <VStack
                 w={'244px'}
                 spacing='8px'
@@ -130,6 +151,7 @@ export const SideBar = () => {
                     startEnhancer={<Icon name='myProfile' />}
                 />
             </VStack>
+            {/* SECOND MENU PROJECT */}
             <HStack
                 w={'244px'}
                 spacing={'124px'}
@@ -196,6 +218,7 @@ export const SideBar = () => {
                     );
                 })}
             </VStack>
+            {/* ORGANISATION MENU */}
             <HStack
                 w={'244px'}
                 padding={'12px 8px'}
@@ -244,24 +267,7 @@ export const SideBar = () => {
                     left='8px'
                 >
                     <OrganizationMenu
-                        options={[
-                            {
-                                title: 'Nightborn',
-                                description: '15 members',
-                                imageUrl: '/assets/images/nightborn.png',
-                                value: 0,
-                            },
-                            {
-                                title: 'Bloomings Riders',
-                                description: '3 members',
-                                value: 1,
-                            },
-                            {
-                                title: 'Happy Lifetime',
-                                description: '12 members',
-                                value: 2,
-                            },
-                        ]}
+                        options={optionsOrganisation}
                         value={activeOrganizationKey}
                         onChange={(organizationValue) => {
                             setActiveOrganizationKey(organizationValue);
@@ -275,18 +281,36 @@ export const SideBar = () => {
                     topText={'Organisation'}
                     topTextFont={FONTS.T1.T10px.Regular400.value}
                     topTextColor={COLORS.InputText.value}
-                    bottomText={'NightBorn'}
+                    bottomText={
+                        optionsOrganisation.find(
+                            (obj) => obj.value === activeOrganizationKey,
+                        )?.title
+                    }
                     bottomTextFont={FONTS.T1.T12px.Medium500.value}
                     bottomTextColor={COLORS.Text.T400.value}
                     marginLeftText={'0.5rem'}
                     onClick={handleToggleIsOrganisationClicked}
+                    color={
+                        optionsOrganisation.find(
+                            (obj) => obj.value === activeOrganizationKey,
+                        )?.color
+                    }
                     startEnhancer={
-                        <Image
-                            w={'32px'}
-                            h={'32px'}
-                            src='/assets/images/nightborn.png'
-                            alt='nightborn'
-                        />
+                        optionsOrganisation.find(
+                            (obj) => obj.value === activeOrganizationKey,
+                        )?.imageUrl ? (
+                            <Image
+                                w={'32px'}
+                                h={'32px'}
+                                src={
+                                    optionsOrganisation.find(
+                                        (obj) =>
+                                            obj.value === activeOrganizationKey,
+                                    )?.imageUrl
+                                }
+                                alt='nightborn'
+                            />
+                        ) : undefined
                     }
                     endEnhancer={<Icon name='editorialArrow' />}
                 />

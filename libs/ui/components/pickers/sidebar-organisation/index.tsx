@@ -1,5 +1,5 @@
 import React from 'react';
-import { HStack, VStack } from '@chakra-ui/react';
+import { Box, HStack, VStack } from '@chakra-ui/react';
 import COLORS from '../../../constants/colors';
 import Text from '../../contents/text';
 import { ISidebarOrganisationProps } from './props';
@@ -12,6 +12,7 @@ const SidebarOrganisation = ({
     bottomText,
     startEnhancer,
     endEnhancer,
+    color,
     padding = '0.625rem 0.75rem',
     w = '14.25rem',
     h = '3.25rem',
@@ -29,8 +30,15 @@ const SidebarOrganisation = ({
             onClick={onClick}
         >
             <HStack w='full' h='2rem'>
-                {startEnhancer}
-                <VStack spacing={'0rem'}>
+                <Box
+                    borderRadius='0.5rem'
+                    bg={!startEnhancer ? color : 'transparent'}
+                    w={'2rem'}
+                    h={'2rem'}
+                >
+                    {startEnhancer}
+                </Box>
+                <VStack spacing={'0rem'} alignItems='left'>
                     {topText && (
                         <Text font={topTextFont} color={topTextColor}>
                             {topText}

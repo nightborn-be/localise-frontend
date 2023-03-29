@@ -11,6 +11,7 @@ export const OrganisationMenuItem = ({
     description,
     isActive,
     imageUrl,
+    color,
     onSelect,
 }: IOrganisationMenuItemProps) => {
     // Render
@@ -27,7 +28,7 @@ export const OrganisationMenuItem = ({
         >
             <Box
                 borderRadius='0.5rem'
-                bg={!imageUrl ? `#0EAE` : 'transparent'}
+                bg={!imageUrl ? color : 'transparent'}
                 w={'2rem'}
                 h={'2rem'}
             >

@@ -30,6 +30,7 @@ export default function OrganisationMenu<T>({
                 <OrganisationMenuItem
                     title={option.title}
                     key={index}
+                    color={option.color}
                     description={option.description}
                     isActive={value === option.value}
                     imageUrl={option.imageUrl}
