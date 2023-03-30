@@ -1,10 +1,9 @@
-import { ButtonProps, StackDirection } from '@chakra-ui/react';
-import { Font } from '../../../constants/fonts';
+import { ToastStatus } from './types';
 export interface IToastProps {
     title?: string
     w?: string,
-    h?: string,
     description?: string,
-    status?: string,
+    status: ToastStatus,
     duration?: number,
+    toast?: any,
 }
