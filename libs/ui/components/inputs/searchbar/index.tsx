@@ -108,6 +108,7 @@ const Searchbar = <T,>({
                     border={`1px solid ${COLORS.Line.value}`}
                     padding={'6px'}
                     spacing='4px'
+                    zIndex={1}
                 >
                     {options?.map((option, index) => {
                         return (

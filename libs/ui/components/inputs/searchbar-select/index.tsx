@@ -7,6 +7,7 @@ import SHADOWS from '../../../constants/shadows';
 import useOnClickOutside from '../../../../utils/hooks';
 import ISearchbarSelectProps from './props';
 import Text from '../../contents/text';
+import InputLabel from '../input-label';
 const SearchbarSelect = <T,>({
     h,
     w,
@@ -17,6 +18,10 @@ const SearchbarSelect = <T,>({
     onSelect,
     options,
     defaultSelectValue,
+    label,
+    description,
+    value,
+    name,
     ...props
 }: ISearchbarSelectProps<T>) => {
     const [showModal, setShowModal] = useState<boolean>(false);
@@ -24,31 +29,47 @@ const SearchbarSelect = <T,>({
     useOnClickOutside(inputRef, () => setShowModal(false));
     // Render
     return (
-        <VStack alignItems={'left'} w={w} spacing='4px' ref={inputRef}>
-            <HStack
-                border={`1px solid ${COLORS.Stroke.value}`}
-                borderRadius={'8px'}
-                padding='12px'
-                h={'40px'}
-                onClick={() => setShowModal(true)}
-            >
-                <Text
-                    font={FONTS.T1.T12px.Regular400.value}
-                    color={
-                        activeKey
-                            ? COLORS.Text.T500.value
-                            : COLORS.InputText.value
-                    }
-                    w={'full'}
+        <VStack alignItems={'left'} w={w} spacing='4px' position='relative'>
+            <VStack spacing='12px' alignItems={'left'}>
+                {/* Input label section */}
+                {label && (
+                    <InputLabel
+                        label={label}
+                        description={description}
+                        labelColor={COLORS.Text.T400.value}
+                        labelFont={FONTS.T1.T14px.Medium500.value}
+                    />
+                )}
+                <HStack
+                    border={`1px solid ${COLORS.Stroke.value}`}
+                    borderRadius={'8px'}
+                    padding='12px'
+                    h={'40px'}
+                    onClick={() => setShowModal(true)}
                 >
-                    {activeKey ? (activeKey as string) : defaultSelectValue}
-                </Text>
-                <Icon name='chevronDown' width='20' height='20' />
-            </HStack>
+                    <Text
+                        font={FONTS.T1.T12px.Regular400.value}
+                        color={
+                            activeKey
+                                ? COLORS.Text.T500.value
+                                : COLORS.InputText.value
+                        }
+                        w={'full'}
+                    >
+                        {activeKey ? (activeKey as string) : defaultSelectValue}
+                    </Text>
+                    <Icon name='chevronDown' width='20' height='20' />
+                </HStack>
+            </VStack>
             <VStack
+                ref={inputRef}
+                position={'absolute'}
+                top={'85px'}
+                zIndex='2'
                 spacing={'8px'}
                 bg={COLORS.White.T500.value}
                 h={'196px'}
+                w={w}
                 borderRadius={'8px'}
                 boxShadow={SHADOWS.Elevation.Light.Bottom.T05.value}
                 border={`1px solid ${COLORS.Line.value}`}
@@ -113,7 +134,9 @@ const SearchbarSelect = <T,>({
                                         ? COLORS.Localize.Purple.T500.value
                                         : COLORS.Tag.value,
                                 }}
-                                onClick={() => onSelect?.(option.value)}
+                                onClick={() => {
+                                    onSelect?.(option.value);
+                                }}
                             >
                                 <Text
                                     font={FONTS.T1.T12px.Medium500.value}

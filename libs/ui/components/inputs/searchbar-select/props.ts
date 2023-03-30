@@ -10,4 +10,6 @@ export default interface ISearchbarSelectProps<T> extends InputProps {
     options?: SearchBarOption<T>[];
     onSelect?: (value) => void;
     defaultSelectValue?: string;
+    label?: string;
+    description?: string;
 }
