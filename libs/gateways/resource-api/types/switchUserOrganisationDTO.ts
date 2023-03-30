@@ -6,9 +6,8 @@
  */
 
 /**
- * A language
+ * An organisation object to update
  */
-export interface UpsertProjectLanguageDTO {
-    name: string;
-    abbreviation: string;
+export interface SwitchUserOrganisationDTO {
+    organisationId: string;
 }

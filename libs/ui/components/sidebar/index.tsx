@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import { Box, HStack, Image, VStack } from '@chakra-ui/react';
 import React from 'react';
 import COLORS from '../../constants/colors';
@@ -10,97 +10,32 @@ import ButtonIcon from '../inputs/button-icon';
 import Button from '../inputs/button';
 import { ButtonSize } from '../inputs/button-icon/types';
 import Searchbar from '../inputs/searchbar';
-import { SearchBarOption } from '../inputs/searchbar/props';
 import SidebarOrganisation from '../pickers/sidebar-organisation';
-import {
-    ProjectDTO,
-    ProjectPagingDTO,
-} from '../../../gateways/resource-api/types/index';
-import { useGetProjects } from '../../../gateways/resource-api/projects/projects';
-
 import OrganizationMenu from '../contents/organisation-menu';
-import useOnClickOutside from '../../../utils/hooks';
+import { useSidebarLogic } from './logic';
 export const SideBar = () => {
-    /* FIRST MENU */
-    // Attributes
-    const [activeOptionKey, setActiveOptionKey] = useState<string>('');
-    // Functions
-    function handleOnOptionClick(value) {
-        setActiveOptionKey(value);
-    }
-
-    // /* SECOND MENU PROJECT */
-    // Attributes
-    const options = [
-        {
-            title: 'Nightborn',
-            description: '15 members',
-            value: 0,
-        },
-        {
-            title: 'Bloomings Riders',
-            description: '3 members',
-            value: 1,
-        },
-        {
-            title: 'Happy Lifetime',
-            description: '12 members',
-            value: 2,
-        },
-    ];
-    const [activeProjectKey, setActiveProjectKey] = useState<string>('');
-
-    // Functions
-    function handleOnProjectClick(value) {
-        setActiveProjectKey(value);
-    }
-
-    /* FILTER LOGIC */
-    // Attributes
-    const [filterValue, setFilterValue] = useState<ProjectDTO>();
-    const [activeKey, setActiveKey] = useState<string>();
-
-    // Functions
-    // function filter(value: string) {
-    //     return options?.filter(
-    //         (option) =>
-    //             option.id &&
-    //             option.id.toLowerCase().includes(value.toLowerCase()),
-    //     );
-    // }
-
-    /* ORGANISATION LOGIC */
-    // Attributes
-    const optionsOrganisation = [
-        {
-            title: 'Nightborn',
-            description: '15 members',
-            imageUrl: '/assets/images/nightborn.png',
-            color: 'transparent',
-            value: 0,
-        },
-        {
-            title: 'Bloomings Riders',
-            description: '3 members',
-            color: COLORS.Bancontact.Blue.value,
-            value: 1,
-        },
-        {
-            title: 'Happy Lifetime',
-            description: '12 members',
-            color: COLORS.Bancontact.Payconiq.value,
-            value: 2,
-        },
-    ];
-    const [isOrganisationClicked, setIsOrganisationClicked] =
-        useState<boolean>();
-    const [organizationValue, setOrganizationValue] = useState<string>('');
-    const [activeOrganizationKey, setActiveOrganizationKey] = useState(0);
-
-    // Functions
-    function handleToggleIsOrganisationClicked() {
-        setIsOrganisationClicked((prev) => !prev);
-    }
+    const [filterValue, setFilterValue] = useState<string>('');
+    const {
+        handleOnCreateOrganizationClick,
+        handleToggleIsOrganisationClicked,
+        filter,
+        handleOnProjectClick,
+        handleOnOptionClick,
+        activeOrganizationKey,
+        setActiveOrganizationKey,
+        organizationValue,
+        setOrganizationValue,
+        isOrganisationClicked,
+        setIsOrganisationClicked,
+        optionsOrganisation,
+        organisationUserData,
+        activeProjectKey,
+        setActiveProjectKey,
+        options,
+        projectsData,
+        activeOptionKey,
+        setActiveOptionKey,
+    } = useSidebarLogic();
     return (
         <VStack w={'244px'} h={'100vh'} spacing='0px'>
             <HStack
@@ -123,6 +58,7 @@ export const SideBar = () => {
                     Localize
                 </Text>
             </HStack>
+
             {/* FIRST MENU */}
             <VStack
                 w={'244px'}
@@ -151,6 +87,7 @@ export const SideBar = () => {
                     startEnhancer={<Icon name='myProfile' />}
                 />
             </VStack>
+
             {/* SECOND MENU PROJECT */}
             <HStack
                 w={'244px'}
@@ -189,10 +126,8 @@ export const SideBar = () => {
                     placeholder={'Search for a project...'}
                     placeholderColor={COLORS.InputText.value}
                     borderRadius={'6px'}
-                    // value={filterValue}
-                    // onChange={(event) => setFilterValue(event.target.value)}
-                    // activeKeys={activeKey}
-                    // options={filter(filterValue)}
+                    value={filterValue}
+                    onChange={(event) => setFilterValue(event.target.value)}
                     displayModal={false}
                 />
             </HStack>
@@ -204,20 +139,21 @@ export const SideBar = () => {
                 overflowY={'scroll'}
                 borderRight={`1px solid ${COLORS.Line.value}`}
             >
-                {options?.map((option, index) => {
+                {filter(filterValue)?.map((option, index) => {
                     return (
                         <SidebarProject
                             onClick={handleOnProjectClick}
                             activeKey={activeProjectKey}
-                            text={option.title}
+                            text={option.value}
                             key={index}
                             textFont={FONTS.T1.T12px.Medium500.value}
                             textColor={COLORS.Text.T400.value}
-                            projectIconColor='#F74A3E'
+                            projectIconColor='#1ABC9C'
                         />
                     );
                 })}
             </VStack>
+
             {/* ORGANISATION MENU */}
             <HStack
                 w={'244px'}
@@ -272,6 +208,7 @@ export const SideBar = () => {
                         onChange={(organizationValue) => {
                             setActiveOrganizationKey(organizationValue);
                         }}
+                        onClick={handleOnCreateOrganizationClick}
                     />
                 </Box>
                 <SidebarOrganisation

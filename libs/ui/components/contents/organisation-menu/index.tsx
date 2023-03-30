@@ -11,6 +11,7 @@ export default function OrganisationMenu<T>({
     options,
     value,
     onChange,
+    onClick,
 }: IOrganisationMenuProps<T>) {
     // Render
     return (
@@ -53,6 +54,7 @@ export default function OrganisationMenu<T>({
                 spacing='8px'
                 backgroundColor={'transparent'}
                 hoverBackgroundColor={COLORS.Tag.value}
+                onClick={onClick}
             >
                 Create new organisation
             </Button>

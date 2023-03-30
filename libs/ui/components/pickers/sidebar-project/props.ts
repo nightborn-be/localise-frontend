@@ -11,6 +11,6 @@ export interface ISidebarProps {
     displayColorBox?: boolean;
     w?: string;
     h?: string;
-    onClick: (value) => void
-    activeKey: string,
+    onClick: (value) => void;
+    activeKey: string;
 }

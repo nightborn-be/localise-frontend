@@ -4,5 +4,5 @@ export interface IOrganisationMenuItemProps {
     imageUrl?: string;
     isActive?: boolean;
     onSelect?: () => void;
-    color?: string
+    color?: string;
 }
