@@ -5,6 +5,7 @@ import { createForm } from '../../../../utils/formik';
 import { useTranslation } from 'react-i18next';
 import validationSchema from './validations';
 import { useAuth } from '../../../auth/index';
+import { tKeys } from '../../../../i18n/keys';
 export const useSignInLogic = (): SignInLogicType => {
     // Attributes
     const { push } = useRouter();
@@ -30,8 +31,14 @@ export const useSignInLogic = (): SignInLogicType => {
             await auth.signIn(values.email, values.password);
             push('/');
         } catch (error) {
-            setFieldError('email', 'Wrong email');
-            setFieldError('password', 'Wrong password');
+            setFieldError(
+                'email',
+                t<string>(tKeys.auth.sign_in.form.email.error.wrong),
+            );
+            setFieldError(
+                'password',
+                t<string>(tKeys.auth.sign_in.form.password.error.wrong),
+            );
         }
     }
     return {

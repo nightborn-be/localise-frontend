@@ -10,7 +10,7 @@ import { useTranslation } from 'react-i18next';
 import { tKeys } from '../../../i18n/keys';
 export default function AuthHomePage() {
     // Attributes
-    const { handleLogInRedirecton, handleSignInRedirection } =
+    const { handleSignInRedirection, handleSignUpRedirection } =
         useAuthHomeLogic();
     const { t } = useTranslation();
 
@@ -73,7 +73,7 @@ export default function AuthHomePage() {
                         border='0.0625rem solid transparent'
                         borderRadius={'0.5rem'}
                         hoverBackgroundColor={COLORS.Localize.Purple.T600.value}
-                        onClick={handleLogInRedirecton}
+                        onClick={handleSignInRedirection}
                     >
                         {t<string>(tKeys.auth.home.cta.sign_in)}
                     </Button>
@@ -84,7 +84,7 @@ export default function AuthHomePage() {
                         w={'17.1875rem'}
                         h={'2.75rem'}
                         borderRadius={'0.5rem'}
-                        onClick={handleSignInRedirection}
+                        onClick={handleSignUpRedirection}
                     >
                         {t<string>(tKeys.auth.home.cta.sign_up)}
                     </Button>

@@ -22,6 +22,7 @@ export const tKeys = {
                     placeholder: 'auth.sign_in.form.password.placeholder',
                     error: {
                         required: 'auth.sign_in.form.password.error.required',
+                        wrong: 'auth.sign_in.form.password.error.wrong',
                     },
                 },
                 email: {
@@ -30,6 +31,7 @@ export const tKeys = {
                     error: {
                         invalid: 'auth.sign_in.form.email.error.invalid',
                         required: 'auth.sign_in.form.email.error.required',
+                        wrong: 'auth.sign_in.form.email.error.wrong',
                     },
                 },
             },
