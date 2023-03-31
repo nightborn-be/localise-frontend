@@ -13,12 +13,15 @@ const OrganisationPage = () => {
     // Attributes
     const { handleOnSubmit, form } = useOrganisationLogic();
     const { t } = useTranslation();
+
     // Render
     return (
-        <Page bgImage='/assets/images/LoginBackground.jpg'>
+        <Page bgImage='/assets/images/AuthSignInBackground.png'>
             <HStack ml='8.5rem'>
                 <ContentSignUp
-                    title={t(tKeys.auth.sign_up.organisation.name.title) ?? ''}
+                    title={t<string>(
+                        tKeys.auth.sign_up.organisation.name.title,
+                    )}
                     handleOnContinue={handleOnSubmit}
                 >
                     <Input
@@ -26,10 +29,10 @@ const OrganisationPage = () => {
                         w='20.4375rem'
                         padding='0.75rem'
                         gap='0.5rem'
-                        label={t(
+                        label={t<string>(
                             tKeys.auth.sign_up.organisation.form.name.label,
                         )}
-                        placeholder={t(
+                        placeholder={t<string>(
                             tKeys.auth.sign_up.organisation.form.name
                                 .placeholder,
                         )}

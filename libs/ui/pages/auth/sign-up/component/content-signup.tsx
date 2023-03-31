@@ -18,6 +18,7 @@ const ContentSignUp = ({
 }: IContentSignUpProps) => {
     // Attributes
     const { t } = useTranslation();
+    
     // Render
     return (
         <VStack
