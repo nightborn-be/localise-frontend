@@ -1,4 +1,4 @@
-import OrganisationPicturePage from '../../../../../../../libs/ui/pages/auth/sign-up/organization/picture/index';
+import OrganisationPicturePage from '../../../../../../../libs/ui/pages/auth/sign-up/organisation/picture/index';
 
 const OrganisationPicture = () => {
     return <OrganisationPicturePage />;

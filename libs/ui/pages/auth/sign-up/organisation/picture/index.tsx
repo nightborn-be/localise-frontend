@@ -23,7 +23,7 @@ export default function OrganisationPicturePage() {
 
     // Render
     return (
-        <Page bgImage='/assets/images/LoginBackground.jpg'>
+        <Page bgImage='/assets/images/AuthSignInBackground.png'>
             <HStack ml='8.5rem'>
                 <ContentSignIn
                     title={t<string>(
