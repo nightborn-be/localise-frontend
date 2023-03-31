@@ -24,9 +24,12 @@ const SearchbarSelect = <T,>({
     name,
     ...props
 }: ISearchbarSelectProps<T>) => {
+    // Attributes
     const [showModal, setShowModal] = useState<boolean>(false);
+    const [haveClicked, setHaveClicked] = useState<boolean>(false);
     const inputRef = useRef<HTMLDivElement>(null);
     useOnClickOutside(inputRef, () => setShowModal(false));
+
     // Render
     return (
         <VStack alignItems={'left'} w={w} spacing='4px' position='relative'>
@@ -136,6 +139,7 @@ const SearchbarSelect = <T,>({
                                 }}
                                 onClick={() => {
                                     onSelect?.(option.value);
+                                    setShowModal(false);
                                 }}
                             >
                                 <Text
