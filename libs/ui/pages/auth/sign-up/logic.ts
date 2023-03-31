@@ -37,7 +37,7 @@ export const useSignUpLogic = (): ISignUpLogicResponse => {
         const createUserDTO = toCreateUserDTO(values.email, values.password);
         try {
             await createUser({ data: createUserDTO });
-            push('/auth/sign-up/organization');
+            push('/auth/sign-up/organisation');
         } catch (err: any) {
             toast({
                 type: ToastType.ERROR,

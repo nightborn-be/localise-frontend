@@ -35,6 +35,7 @@ const ContentSignUp = ({
                 <Button
                     color={COLORS.White.T500.value}
                     backgroundColor={COLORS.Localize.Purple.T500.value}
+                    hoverBackgroundColor={COLORS.Localize.Purple.T600.value}
                     border='0.0625rem solid transparent'
                     borderRadius={'0.5rem'}
                     w='20.4375rem'
@@ -51,6 +52,7 @@ const ContentSignUp = ({
                         borderRadius={'0.5rem'}
                         w='20.4375rem'
                         onClick={handleOnLater}
+                        hoverColor={COLORS.Text.T400.value}
                     >
                         {t<string>(tKeys.auth.sign_up.cta.later)}
                     </Button>
