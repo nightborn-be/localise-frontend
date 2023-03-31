@@ -4,9 +4,9 @@ import { VStack } from '@chakra-ui/react';
 import FONTS from '../../../../constants/fonts';
 import Text from '../../../../components/contents/text';
 import Button from '../../../../components/inputs/button';
-import { IContentSignUpProps } from './props';
 import { useTranslation } from 'react-i18next';
 import { tKeys } from '../../../../../i18n/keys';
+import { IContentSignUpProps } from './props';
 
 const ContentSignUp = ({
     w = '22.375rem',
@@ -48,11 +48,11 @@ const ContentSignUp = ({
                     <Button
                         color={COLORS.InputText.value}
                         backgroundColor={'transparent'}
+                        hoverColor={COLORS.Text.T400.value}
                         border='0.0625rem solid transparent'
                         borderRadius={'0.5rem'}
                         w='20.4375rem'
                         onClick={handleOnLater}
-                        hoverColor={COLORS.Text.T400.value}
                     >
                         {t<string>(tKeys.auth.sign_up.cta.later)}
                     </Button>
