@@ -1,8 +1,8 @@
 export interface IContentSignUpProps {
-    children: any;
-    title?: string;
+    children: React.ReactNode | React.ReactNode[];
+    title: string;
     w?: string;
     isLater?: boolean;
-    handleOnContinue?: () => void;
+    handleOnContinue: () => void;
     handleOnLater?: () => void;
 }

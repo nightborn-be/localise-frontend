@@ -7,6 +7,7 @@ import Button from '../../../../components/inputs/button';
 import { useTranslation } from 'react-i18next';
 import { tKeys } from '../../../../../i18n/keys';
 import { IContentSignUpProps } from './props';
+
 const ContentSignUp = ({
     w = '22.375rem',
     children,
@@ -15,15 +16,15 @@ const ContentSignUp = ({
     handleOnContinue,
     handleOnLater,
 }: IContentSignUpProps) => {
+    // Attributes
     const { t } = useTranslation();
     // Render
     return (
         <VStack
-            spacing='2.5rem'
-            ml='8.5rem'
+            spacing={'2.5rem'}
             w={w}
-            alignItems={'left'}
-            justifyContent={'left'}
+            alignItems='left'
+            justifyContent='left'
         >
             <Text
                 font={FONTS.T1.T28px.Bold700.value}
@@ -44,7 +45,7 @@ const ContentSignUp = ({
                     h='2.75rem'
                     onClick={handleOnContinue}
                 >
-                    {t(tKeys.signup.buttonContinue) ?? ''}
+                    {t<string>(tKeys.auth.sign_up.cta.continue)}
                 </Button>
                 {isLater && (
                     <Button
@@ -55,7 +56,7 @@ const ContentSignUp = ({
                         w='20.4375rem'
                         onClick={handleOnLater}
                     >
-                        {t(tKeys.signup.buttonLater) ?? ''}
+                        {t<string>(tKeys.auth.sign_up.cta.later)}
                     </Button>
                 )}
             </VStack>
