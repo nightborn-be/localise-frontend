@@ -93,5 +93,14 @@ export const tKeys = {
                 },
             },
         },
+        organisation: {
+            picture: {
+                error: {
+                    toast: {
+                        title: 'auth.organisation.picture.error.toast.title',
+                    },
+                },
+            },
+        },
     },
 };
