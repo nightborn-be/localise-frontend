@@ -32,5 +32,3 @@ yarn-error.log*
 
 # turbo
 .turbo
-apps/front-end/env
-env
