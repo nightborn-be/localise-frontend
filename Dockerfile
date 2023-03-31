@@ -14,4 +14,4 @@ RUN npm run build
 
 EXPOSE 3000
 ENV APPLICATION=$CURRENT_APPLICATION
-CMD npm run start
+CMD npm run start-${APPLICATION}
