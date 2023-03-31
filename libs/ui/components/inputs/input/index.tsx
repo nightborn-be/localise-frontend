@@ -146,7 +146,6 @@ export default function Input<T>({
                         visibility={visibility}
                         mr={rightElementMarginRight}
                         w='fit-content'
-                        top={type === 'password' ? '0.1875rem' : '0rem'}
                     >
                         {rightElement}
 
