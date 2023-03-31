@@ -49,9 +49,15 @@ export const tKeys = {
                                 'auth.sign_up.organisation.form.name.error.required',
                         },
                     },
+                    picture: {
+                        label: 'auth.sign_up.organisation.form.picture.label',
+                    },
                 },
                 name: {
                     title: 'auth.sign_up.organisation.name.title',
+                },
+                picture: {
+                    title: 'auth.sign_up.organisation.picture.title',
                 },
             },
             cta: {
@@ -63,10 +69,6 @@ export const tKeys = {
     signup: {
         account: {
             title: 'signup.account.title',
-        },
-        organizationPicture: {
-            title: 'signup.organizationPicture.title',
-            label: 'signup.organizationPicture.label',
         },
     },
 };
