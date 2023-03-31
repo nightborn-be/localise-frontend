@@ -3,40 +3,72 @@
 export const tKeys = {
     common: {
         test: 'common.test',
-        buttonLogin: 'common.buttonLogin',
     },
-    home: {
-        welcom: {
-            title: 'home.welcom.title',
+    auth: {
+        home: {
+            cta: {
+                sign_in: 'auth.home.cta.sign_in',
+                sign_up: 'auth.home.cta.sign_up',
+            },
+            title: 'auth.home.title',
+            subtitle: 'auth.home.subtitle',
+            project_name: 'auth.home.project_name',
         },
-        buttonSignup: 'home.buttonSignup',
-        subtitle: 'home.subtitle',
-    },
-    login: {
-        title: 'login.title',
-        inputLabel: {
-            password: 'login.inputLabel.password',
-            email: 'login.inputLabel.email',
+        sign_in: {
+            title: 'auth.sign_in.title',
+            form: {
+                password: {
+                    title: 'auth.sign_in.form.password.title',
+                    placeholder: 'auth.sign_in.form.password.placeholder',
+                    error: {
+                        required: 'auth.sign_in.form.password.error.required',
+                    },
+                },
+                email: {
+                    title: 'auth.sign_in.form.email.title',
+                    placeholder: 'auth.sign_in.form.email.placeholder',
+                    error: {
+                        invalid: 'auth.sign_in.form.email.error.invalid',
+                        required: 'auth.sign_in.form.email.error.required',
+                    },
+                },
+            },
+            cta: {
+                sign_in: 'auth.sign_in.cta.sign_in',
+            },
         },
-        inputPlaceholder: {
-            password: 'login.inputPlaceholder.password',
-            email: 'login.inputPlaceholder.email',
+        sign_up: {
+            organisation: {
+                form: {
+                    name: {
+                        label: 'auth.sign_up.organisation.form.name.label',
+                        placeholder:
+                            'auth.sign_up.organisation.form.name.placeholder',
+                        error: {
+                            required:
+                                'auth.sign_up.organisation.form.name.error.required',
+                        },
+                    },
+                    picture: {
+                        label: 'auth.sign_up.organisation.form.picture.label',
+                    },
+                },
+                name: {
+                    title: 'auth.sign_up.organisation.name.title',
+                },
+                picture: {
+                    title: 'auth.sign_up.organisation.picture.title',
+                },
+            },
+            cta: {
+                continue: 'auth.sign_up.cta.continue',
+                later: 'auth.sign_up.cta.later',
+            },
         },
     },
     signup: {
         account: {
             title: 'signup.account.title',
-        },
-        organizationName: {
-            inputLabel: 'signup.organizationName.inputLabel',
-            title: 'signup.organizationName.title',
-            inputPlaceholder: 'signup.organizationName.inputPlaceholder',
-        },
-        buttonContinue: 'signup.buttonContinue',
-        buttonLater: 'signup.buttonLater',
-        organizationPicture: {
-            title: 'signup.organizationPicture.title',
-            label: 'signup.organizationPicture.label',
         },
     },
 };
