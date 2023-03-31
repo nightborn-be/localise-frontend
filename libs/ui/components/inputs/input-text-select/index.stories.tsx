@@ -46,6 +46,8 @@ const props: IInputSelectAndInputProps<test> = {
         placeholder: 'Admin',
         paddingRight: '0',
         paddingLeft: '0',
+        paddingContainer: '10px',
+        font: FONTS.T1.T12px.Regular400.value,
     },
     inputProps: {
         name: 'name',
