@@ -3,7 +3,6 @@ import { IInputProps } from './props';
 import {
     Input as ChakraInput,
     InputGroup,
-    InputLeftElement,
     InputRightElement,
     VStack,
 } from '@chakra-ui/react';
@@ -20,13 +19,13 @@ export default function Input<T>({
     color = COLORS.Text.T500.value,
     label,
     description,
-    border = `1px solid ${COLORS.Stroke.value}`,
+    border = `0.0625rem solid ${COLORS.Stroke.value}`,
     placeholderColor = COLORS.InputText.value,
     placeholder,
     h,
     w,
     maxWidth,
-    errorBorder = `1px solid ${COLORS.Negative.value}`,
+    errorBorder = `0.0625rem solid ${COLORS.Negative.value}`,
     font,
     hoverBorder,
     alignItems = 'left',
@@ -147,8 +146,7 @@ export default function Input<T>({
                         visibility={visibility}
                         mr={rightElementMarginRight}
                         w='fit-content'
-                        top={type === 'password' ? '3px' : '0px'}
-                        zIndex='10'
+                        top={type === 'password' ? '0.1875rem' : '0rem'}
                     >
                         {rightElement}
 
