@@ -29,19 +29,23 @@ type Awaited<O> = O extends AwaitedInput<infer T> ? T : never;
 /**
  * Returns the terms of a project
  */
-export const getTerms = (params?: GetTermsParams, signal?: AbortSignal) => {
+export const getTerms = (
+    projectId: string,
+    params?: GetTermsParams,
+    signal?: AbortSignal,
+) => {
     return customInstance<TermPagingDTO>({
-        url: `/projects/:projectId/terms`,
+        url: `/projects/${projectId}/terms`,
         method: 'get',
         params,
         signal,
     });
 };
 
-export const getGetTermsQueryKey = (params?: GetTermsParams) => [
-    `/projects/:projectId/terms`,
-    ...(params ? [params] : []),
-];
+export const getGetTermsQueryKey = (
+    projectId: string,
+    params?: GetTermsParams,
+) => [`/projects/${projectId}/terms`, ...(params ? [params] : [])];
 
 export type GetTermsQueryResult = NonNullable<
     Awaited<ReturnType<typeof getTerms>>
@@ -52,6 +56,7 @@ export const useGetTerms = <
     TData = Awaited<ReturnType<typeof getTerms>>,
     TError = unknown,
 >(
+    projectId: string,
     params?: GetTermsParams,
     options?: {
         query?: UseQueryOptions<
@@ -63,14 +68,15 @@ export const useGetTerms = <
 ): UseQueryResult<TData, TError> & { queryKey: QueryKey } => {
     const { query: queryOptions } = options ?? {};
 
-    const queryKey = queryOptions?.queryKey ?? getGetTermsQueryKey(params);
+    const queryKey =
+        queryOptions?.queryKey ?? getGetTermsQueryKey(projectId, params);
 
     const queryFn: QueryFunction<Awaited<ReturnType<typeof getTerms>>> = ({
         signal,
-    }) => getTerms(params, signal);
+    }) => getTerms(projectId, params, signal);
 
     const query = useQuery<Awaited<ReturnType<typeof getTerms>>, TError, TData>(
-        { queryKey, queryFn, ...queryOptions },
+        { queryKey, queryFn, enabled: !!projectId, ...queryOptions },
     ) as UseQueryResult<TData, TError> & { queryKey: QueryKey };
 
     query.queryKey = queryKey;
@@ -81,9 +87,9 @@ export const useGetTerms = <
 /**
  * Create a term in a project
  */
-export const createTerm = (createTermDTO: CreateTermDTO) => {
+export const createTerm = (projectId: string, createTermDTO: CreateTermDTO) => {
     return customInstance<TermDTO>({
-        url: `/projects/:projectId/terms`,
+        url: `/projects/${projectId}/terms`,
         method: 'post',
         headers: { 'Content-Type': 'application/json' },
         data: createTermDTO,
@@ -100,7 +106,7 @@ export const useCreateTerm = <TError = unknown, TContext = unknown>(options?: {
     mutation?: UseMutationOptions<
         Awaited<ReturnType<typeof createTerm>>,
         TError,
-        { data: CreateTermDTO },
+        { projectId: string; data: CreateTermDTO },
         TContext
     >;
 }) => {
@@ -108,17 +114,17 @@ export const useCreateTerm = <TError = unknown, TContext = unknown>(options?: {
 
     const mutationFn: MutationFunction<
         Awaited<ReturnType<typeof createTerm>>,
-        { data: CreateTermDTO }
+        { projectId: string; data: CreateTermDTO }
     > = (props) => {
-        const { data } = props ?? {};
+        const { projectId, data } = props ?? {};
 
-        return createTerm(data);
+        return createTerm(projectId, data);
     };
 
     return useMutation<
         Awaited<ReturnType<typeof createTerm>>,
         TError,
-        { data: CreateTermDTO },
+        { projectId: string; data: CreateTermDTO },
         TContext
     >(mutationFn, mutationOptions);
 };

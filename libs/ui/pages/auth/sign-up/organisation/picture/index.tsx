@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import COLORS from '../../../../../constants/colors';
-import { HStack, Image } from '@chakra-ui/react';
+import { Box, HStack, Image } from '@chakra-ui/react';
 import Page from '../../../../../components/contents/page';
 import Icon from '../../../../../components/contents/icon';
 import ButtonIcon from '../../../../../components/inputs/button-icon';
@@ -10,7 +10,8 @@ import { usePictureLogic } from './logic';
 import Dropzone from './component/dropzone';
 import { useTranslation } from 'react-i18next';
 import { tKeys } from '../../../../../../i18n/keys';
-export default function OrganisationPicturePage() {
+
+const OrganisationPicturePage = () => {
     // Attributes
     const {
         handleOnContinue,
@@ -82,7 +83,9 @@ export default function OrganisationPicturePage() {
                         />
                     )}
                 </ContentSignIn>
-            </HStack>
+            </Box>
         </Page>
     );
-}
+};
+
+export default OrganisationPicturePage;
