@@ -41,13 +41,11 @@ const props: IInputSelectAndInputProps<test> = {
         dropdownIndicator: <Icon name='dropdownIndicator' />,
         fontSize: '12px',
         lineHeight: '15px',
-        padding: '10px',
+        padding: '0px',
         gap: '4px',
         placeholder: 'Admin',
         paddingRight: '0',
         paddingLeft: '0',
-        paddingContainer: '10px',
-        font: FONTS.T1.T12px.Regular400.value,
     },
     inputProps: {
         name: 'name',
@@ -63,6 +61,7 @@ const props: IInputSelectAndInputProps<test> = {
     h: '40px',
     border: `1px solid ${COLORS.Line.value}`,
     borderRadius: '8px',
+    onDelete: () => {},
 };
 
 export const SimpleTextSelectWithIcon = Template.bind({});
