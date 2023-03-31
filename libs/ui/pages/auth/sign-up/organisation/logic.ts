@@ -24,7 +24,7 @@ export const useOrganisationLogic = (): OrganisationLogicResponse => {
     // Functions
     function handleOnSubmit() {
         push({
-            pathname: '/auth/sign-up/organization/picture',
+            pathname: '/auth/sign-up/organisation/picture',
             query: {
                 organizationName: values.organizationName,
             },
