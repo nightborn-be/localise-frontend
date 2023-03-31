@@ -110,6 +110,7 @@ RightElementInput.args = {
     paddingRight: '3.125rem',
     focusBorderColor: `${COLORS.Stroke.value}`,
     hoverBorder: `0.0625rem solid ${COLORS.Stroke.value}`,
+    rightElementMarginRight: '0.5rem',
     rightElement: (
         <>
             <Icon name='enter' />

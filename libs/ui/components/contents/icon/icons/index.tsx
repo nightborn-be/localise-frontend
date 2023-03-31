@@ -37,6 +37,8 @@ import ShortKey from './short-key';
 import ChevronDown from './chevron-down';
 import CheckCircle from './check-circle';
 import AlertTriangle from './alert-triangle';
+import EyesHide from './EyesHide';
+import EyesShow from './EyesShow';
 
 const Icons = {
     add: Add,
@@ -81,6 +83,8 @@ const Icons = {
     setting: Setting,
     support: Support,
     eye: Eye,
+    eyesShow: EyesShow,
+    eyesHide: EyesHide,
     shortKey: ShortKey,
     chevronDown: ChevronDown,
     checkCircle: CheckCircle,

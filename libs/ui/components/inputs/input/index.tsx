@@ -3,6 +3,7 @@ import { IInputProps } from './props';
 import {
     Input as ChakraInput,
     InputGroup,
+    InputLeftElement,
     InputRightElement,
     VStack,
 } from '@chakra-ui/react';
@@ -11,6 +12,9 @@ import * as CSS from 'csstype';
 import InputLabel from '../input-label';
 import Text from '../../contents/text/index';
 import FONTS from '../../../constants/fonts';
+import Icon from '../../contents/icon';
+import ButtonIcon from '../button-icon';
+import { ButtonSize } from '../button-icon/types';
 export default function Input<T>({
     type = 'text',
     color = COLORS.Text.T500.value,
@@ -40,11 +44,17 @@ export default function Input<T>({
     bg,
     errorMsg,
     isTouched,
+    rightElementMarginRight,
     ...props
 }: IInputProps<T>) {
     //Attributes
     const [visibility, setVisibility] =
         useState<CSS.Property.Visibility>('hidden');
+
+    const [showPassword, setShowPassword] = useState<boolean>(false);
+    function toggleShowPassword() {
+        setShowPassword((prev) => !prev);
+    }
 
     //Function
     const handleToggleVisibility = () => {
@@ -62,6 +72,15 @@ export default function Input<T>({
         return border;
     };
 
+    function getTypeInput(): string {
+        if (type === 'password') {
+            if (!showPassword) {
+                return type;
+            } else return 'visible';
+        }
+        return type;
+    }
+
     // Render
     return (
         <>
@@ -78,7 +97,12 @@ export default function Input<T>({
                 <InputLabel label={label ?? ''} description={description} />
                 {/* Input field section */}
 
-                <InputGroup bg={bg}>
+                <InputGroup
+                    bg={bg}
+                    onFocus={handleToggleVisibility}
+                    onBlur={handleToggleVisibility}
+                    outlineOffset='0'
+                >
                     <ChakraInput
                         padding={padding}
                         gap={gap}
@@ -87,7 +111,7 @@ export default function Input<T>({
                             onChange && onChange(e.currentTarget.value);
                         }}
                         name={name as string}
-                        type={type}
+                        type={getTypeInput()}
                         placeholder={placeholder}
                         _placeholder={{
                             color: placeholderColor,
@@ -110,8 +134,6 @@ export default function Input<T>({
                         lineHeight={font?.lineHeight}
                         letterSpacing={font?.letterSpacing}
                         marginTop={marginTop}
-                        onFocus={handleToggleVisibility}
-                        onBlur={handleToggleVisibility}
                         pr={paddingRight ?? '0.25rem'}
                         paddingInlineStart={'0rem'}
                         paddingInlineEnd={'0rem'}
@@ -121,8 +143,30 @@ export default function Input<T>({
                                 : ''
                         }
                     />
-                    <InputRightElement visibility={visibility} mr={'0.5rem'}>
+                    <InputRightElement
+                        visibility={visibility}
+                        mr={rightElementMarginRight}
+                        w='fit-content'
+                        top={type === 'password' ? '3px' : '0px'}
+                        zIndex='10'
+                    >
                         {rightElement}
+
+                        {type === 'password' && (
+                            <ButtonIcon
+                                visibility={'visible'}
+                                backgroundColor='transparent'
+                                size={ButtonSize.XXS}
+                                handleOnClick={toggleShowPassword}
+                                mr='0.75rem'
+                            >
+                                <Icon
+                                    name={
+                                        showPassword ? 'eyesHide' : 'eyesShow'
+                                    }
+                                />
+                            </ButtonIcon>
+                        )}
                     </InputRightElement>
                 </InputGroup>
                 {errorMsg && isTouched ? (
