@@ -38,6 +38,9 @@ export const tKeys = {
             },
         },
         sign_up: {
+            account: {
+                title: 'auth.sign_up.account.title',
+            },
             organisation: {
                 form: {
                     name: {
@@ -64,11 +67,29 @@ export const tKeys = {
                 continue: 'auth.sign_up.cta.continue',
                 later: 'auth.sign_up.cta.later',
             },
-        },
-    },
-    signup: {
-        account: {
-            title: 'signup.account.title',
+            form: {
+                email: {
+                    placeholder: 'auth.sign_up.form.email.placeholder',
+                    title: 'auth.sign_up.form.email.title',
+                    error: {
+                        required: 'auth.sign_up.form.email.error.required',
+                        invalid: 'auth.sign_up.form.email.error.invalid',
+                    },
+                },
+                password: {
+                    placeholder: 'auth.sign_up.form.password.placeholder',
+                    error: {
+                        required: 'auth.sign_up.form.password.error.required',
+                        min: 'auth.sign_up.form.password.error.min',
+                    },
+                    title: 'auth.sign_up.form.password.title',
+                },
+            },
+            error: {
+                toast: {
+                    title: 'auth.sign_up.error.toast.title',
+                },
+            },
         },
     },
 };

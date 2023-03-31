@@ -45,7 +45,7 @@ const ContentSignUp = ({
                     h='2.75rem'
                     onClick={handleOnContinue}
                 >
-                    {t(tKeys.signup.buttonContinue) ?? ''}
+                    {t<string>(tKeys.auth.sign_up.cta.continue)}
                 </Button>
                 {isLater && (
                     <Button
@@ -56,7 +56,7 @@ const ContentSignUp = ({
                         w='20.4375rem'
                         onClick={handleOnLater}
                     >
-                        {t(tKeys.signup.buttonLater) ?? ''}
+                        {t<string>(tKeys.auth.sign_up.cta.later)}
                     </Button>
                 )}
             </VStack>

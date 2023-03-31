@@ -17,7 +17,7 @@ const SignUpPage = () => {
     return (
         <Page bgImage='/assets/images/AuthSignInBackground.png'>
             <ContentSignUp
-                title={t<string>(tKeys.signup.account.title)}
+                title={t<string>(tKeys.auth.sign_up.account.title)}
                 handleOnContinue={handleOnSubmit}
             >
                 <Input
@@ -25,8 +25,8 @@ const SignUpPage = () => {
                     w='20.4375rem'
                     padding='0.75rem'
                     gap='0.5rem'
-                    label={t(tKeys.login.inputLabel.email)}
-                    placeholder={t(tKeys.login.inputPlaceholder.email)}
+                    label={t(tKeys.auth.sign_up.form.email.title)}
+                    placeholder={t(tKeys.auth.sign_up.form.email.placeholder)}
                     placeholderColor={COLORS.InputText.value}
                     bg={COLORS.White.T500.value}
                     font={FONTS.T1.T12px.Regular400.value}
@@ -41,8 +41,10 @@ const SignUpPage = () => {
                     padding='0.75rem'
                     gap='0.5rem'
                     type='password'
-                    label={t(tKeys.login.inputLabel.password)}
-                    placeholder={t(tKeys.login.inputPlaceholder.password)}
+                    label={t(tKeys.auth.sign_up.form.password.title)}
+                    placeholder={t(
+                        tKeys.auth.sign_up.form.password.placeholder,
+                    )}
                     placeholderColor={COLORS.InputText.value}
                     bg={COLORS.White.T500.value}
                     font={FONTS.T1.T12px.Regular400.value}
