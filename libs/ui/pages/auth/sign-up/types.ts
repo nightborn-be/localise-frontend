@@ -1,11 +1,11 @@
 import { IDefaultForm, IForm } from '../../../../utils/formik';
 
-export type SignUpLogicType = {
-    handleOnSubmit(): void;
-    form: IForm<ISignUpFormik> & IDefaultForm;
-};
+export interface ISignUpLogicResponse {
+    handleOnSubmit: () => void;
+    form: IForm<ISignUpForm> & IDefaultForm;
+}
 
-export interface ISignUpFormik {
+export interface ISignUpForm {
     email: string;
     password: string;
 }

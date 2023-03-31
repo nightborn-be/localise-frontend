@@ -1,22 +1,24 @@
 import { useFormik } from 'formik';
 import { createForm } from '../../../../utils/formik';
-import { ISignUpFormik, SignUpLogicType } from './types';
+import { ISignUpForm, ISignUpLogicResponse } from './types';
 import { useRouter } from 'next/router';
 import schema from './validation';
 import { toCreateUserDTO } from './mappers';
-import { useCreateUser } from '../../../../gateways/resource-api/users/users'
-import { useToast } from "@chakra-ui/react";
-import MakeToast from '../../../components/validation/toast';
-import { ToastStatus } from '../../../components/validation/toast/types';
-import { AxiosError } from 'axios'
-export const useSignUpLogic = (): SignUpLogicType => {
+import { useCreateUser } from '../../../../gateways/resource-api/users/users';
+import useToast from '../../../components/progress-validation/toast';
+import { ToastType } from '../../../components/progress-validation/toast/types';
+import { strings } from '../../../../utils/strings';
+
+export const useSignUpLogic = (): ISignUpLogicResponse => {
     // Attributes
     const { push } = useRouter();
-    const toast = useToast()
+    const toast = useToast();
+
+    // Mutations
     const { mutateAsync: createUser } = useCreateUser();
 
-    // Formik
-    const { values, dirty, setFieldError, ...rest } = useFormik<ISignUpFormik>({
+    // Form
+    const { values, ...rest } = useFormik<ISignUpForm>({
         initialValues: {
             email: '',
             password: '',
@@ -28,25 +30,20 @@ export const useSignUpLogic = (): SignUpLogicType => {
     const form = createForm(values, rest);
 
     // Functions
-    function capitalizeFirstLetter(message: string) {
-        return message.charAt(0).toUpperCase() + message.slice(1)
-    }
     async function handleOnSubmit() {
-        const createUserDTO = toCreateUserDTO(values.email, values.password)
+        const createUserDTO = toCreateUserDTO(values.email, values.password);
         try {
             await createUser({ data: createUserDTO });
-            push('/auth/sign-up/organization')
-        } catch (err) {
-            if (err instanceof AxiosError) {
-                MakeToast({
-                    title: "Something went wrong",
-                    description: capitalizeFirstLetter(err.response?.data),
-                    status: ToastStatus.ERROR,
-                    toast: toast,
-                })
-            }
+            push('/auth/sign-up/organization');
+        } catch (err: any) {
+            toast({
+                type: ToastType.ERROR,
+                title: 'Something went wrong',
+                description: strings.capitalize(err.response?.data),
+            });
         }
     }
+
     return {
         handleOnSubmit: form?.submitForm,
         form,

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Error = (props: React.SVGProps<SVGSVGElement>) => (
+const AlertTriangle = (props: React.SVGProps<SVGSVGElement>) => (
     <svg
         width='20'
         height='20'
@@ -33,4 +33,4 @@ const Error = (props: React.SVGProps<SVGSVGElement>) => (
     </svg>
 );
 
-export default Error;
+export default AlertTriangle;

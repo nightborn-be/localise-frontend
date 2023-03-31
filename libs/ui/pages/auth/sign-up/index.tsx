@@ -7,15 +7,17 @@ import ContentSignUp from './component/content-signup';
 import { useSignUpLogic } from './logic';
 import { useTranslation } from 'react-i18next';
 import { tKeys } from '../../../../i18n/keys';
-export default function SignUpPage() {
+
+const SignUpPage = () => {
     // Attributes
-    const { handleOnSubmit, form } = useSignUpLogic();
     const { t } = useTranslation();
+    const { handleOnSubmit, form } = useSignUpLogic();
+
     // Render
     return (
-        <Page bgImage='/assets/images/LoginBackground.jpg'>
+        <Page bgImage='/assets/images/AuthSignInBackground.png'>
             <ContentSignUp
-                title={t(tKeys.signup.account.title) ?? ''}
+                title={t<string>(tKeys.signup.account.title)}
                 handleOnContinue={handleOnSubmit}
             >
                 <Input
@@ -52,4 +54,6 @@ export default function SignUpPage() {
             </ContentSignUp>
         </Page>
     );
-}
+};
+
+export default SignUpPage;

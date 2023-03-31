@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Success = (props: React.SVGProps<SVGSVGElement>) => (
+const CheckCircle = (props: React.SVGProps<SVGSVGElement>) => (
     <svg
         width='20'
         height='20'
@@ -16,4 +16,4 @@ const Success = (props: React.SVGProps<SVGSVGElement>) => (
     </svg>
 );
 
-export default Success;
+export default CheckCircle;
