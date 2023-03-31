@@ -6,12 +6,13 @@
  */
 
 /**
- * An organisation
+ * A user
  */
-export interface OrganisationDTO {
+export interface UserDTO {
     id?: string;
     createdAt?: string;
     modifiedAt?: string;
-    name?: string;
-    pictureUrl?: string | null;
+    email?: string;
+    firstName?: string;
+    lastName?: string;
 }
