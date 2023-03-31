@@ -37,18 +37,33 @@ export const tKeys = {
                 sign_in: 'auth.sign_in.cta.sign_in',
             },
         },
+        sign_up: {
+            organisation: {
+                form: {
+                    name: {
+                        label: 'auth.sign_up.organisation.form.name.label',
+                        placeholder:
+                            'auth.sign_up.organisation.form.name.placeholder',
+                        error: {
+                            required:
+                                'auth.sign_up.organisation.form.name.error.required',
+                        },
+                    },
+                },
+                name: {
+                    title: 'auth.sign_up.organisation.name.title',
+                },
+            },
+            cta: {
+                continue: 'auth.sign_up.cta.continue',
+                later: 'auth.sign_up.cta.later',
+            },
+        },
     },
     signup: {
         account: {
             title: 'signup.account.title',
         },
-        organizationName: {
-            inputLabel: 'signup.organizationName.inputLabel',
-            title: 'signup.organizationName.title',
-            inputPlaceholder: 'signup.organizationName.inputPlaceholder',
-        },
-        buttonContinue: 'signup.buttonContinue',
-        buttonLater: 'signup.buttonLater',
         organizationPicture: {
             title: 'signup.organizationPicture.title',
             label: 'signup.organizationPicture.label',
