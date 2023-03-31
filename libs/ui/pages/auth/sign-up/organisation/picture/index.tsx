@@ -83,7 +83,7 @@ const OrganisationPicturePage = () => {
                         />
                     )}
                 </ContentSignIn>
-            </Box>
+            </HStack>
         </Page>
     );
 };
