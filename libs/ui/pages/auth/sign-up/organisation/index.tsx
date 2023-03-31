@@ -7,7 +7,7 @@ import ContentSignUp from '../component/content-signup';
 import { useOrganisationLogic } from './logic';
 import { useTranslation } from 'react-i18next';
 import { tKeys } from '../../../../../i18n/keys';
-import { HStack } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 
 const OrganisationPage = () => {
     // Attributes
@@ -17,7 +17,7 @@ const OrganisationPage = () => {
     // Render
     return (
         <Page bgImage='/assets/images/AuthSignInBackground.png'>
-            <HStack ml='8.5rem'>
+            <Box ml='8.5rem'>
                 <ContentSignUp
                     title={t<string>(
                         tKeys.auth.sign_up.organisation.name.title,
@@ -47,7 +47,7 @@ const OrganisationPage = () => {
                         }
                     />
                 </ContentSignUp>
-            </HStack>
+            </Box>
         </Page>
     );
 };
