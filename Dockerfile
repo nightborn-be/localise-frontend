@@ -10,7 +10,7 @@ RUN npm install
 # Arguments
 ARG CURRENT_APPLICATION=front-end
 
-RUN npm run build
+RUN npm run build-${APPLICATION}
 
 EXPOSE 3000
 ENV APPLICATION=$CURRENT_APPLICATION
