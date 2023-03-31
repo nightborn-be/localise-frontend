@@ -16,16 +16,12 @@ const ContentSignUp = ({
     handleOnContinue,
     handleOnLater,
 }: IContentSignUpProps) => {
+    // Attributes
     const { t } = useTranslation();
+
     // Render
     return (
-        <VStack
-            spacing='2.5rem'
-            ml='8.5rem'
-            w={w}
-            alignItems={'left'}
-            justifyContent={'left'}
-        >
+        <VStack spacing='2.5rem' w={w} alignItems='left' justifyContent='left'>
             <Text
                 font={FONTS.T1.T28px.Bold700.value}
                 color={COLORS.Text.T400.value}
