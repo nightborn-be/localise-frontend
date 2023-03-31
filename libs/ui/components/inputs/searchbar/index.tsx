@@ -90,6 +90,7 @@ const Searchbar = <T,>({
                         border={'1px solid transprent'}
                         marginRight='8px'
                         onFocus={() => setShowModal(true)}
+                        paddingInlineEnd='0.3125rem'
                     />
                 </InputGroup>
             </HStack>
