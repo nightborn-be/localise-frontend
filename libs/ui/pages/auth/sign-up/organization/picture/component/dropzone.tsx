@@ -16,7 +16,7 @@ const Dropzone = ({ onDrag, label }: IDropzoneProps) => {
         [onDrag],
     );
 
-    const { getRootProps, getInputProps, acceptedFiles } = useDropzone({
+    const { getRootProps, getInputProps } = useDropzone({
         onDrop,
         maxFiles: 1,
         accept: { 'image/*': ['.jpeg', '.png', '.jpg'] },

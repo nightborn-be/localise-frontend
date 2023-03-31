@@ -4,7 +4,7 @@ import { PictureLogicType } from './types';
 
 export const usePictureLogic = (): PictureLogicType => {
     // Attributes
-    const { push, query } = useRouter();
+    const { push } = useRouter();
     const [picturePath, setPicturePath] = useState<string>('');
 
     // Functions
