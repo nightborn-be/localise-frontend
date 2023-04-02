@@ -1,10 +1,8 @@
 import Axios, { AxiosRequestConfig } from 'axios';
-import getConfig from 'next/config';
-const { publicRuntimeConfig } = getConfig();
 
 export const AXIOS_INSTANCE = Axios.create({
     // @ts-ignore
-    baseURL: publicRuntimeConfig.BACKEND_URL,
+    baseURL: process.env.NEXT_PUBLIC_BACKEND_URL,
 });
 export const customInstance = async <T>(
     config: AxiosRequestConfig,
