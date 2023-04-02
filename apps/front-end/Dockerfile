@@ -7,11 +7,8 @@ WORKDIR /app
 COPY . .
 RUN npm install
 
-# Arguments
-ARG CURRENT_APPLICATION=front-end
 
-RUN npm run build-${APPLICATION}
+RUN npm run build:front-end
 
 EXPOSE 3000
-ENV APPLICATION=$CURRENT_APPLICATION
-CMD npm run start-${APPLICATION}
+CMD npm run start:front-end
