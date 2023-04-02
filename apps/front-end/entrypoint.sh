@@ -13,8 +13,7 @@ done < ./apps/front-end/.env.production
 # Find and replace keys in specific folder with global environment values
 for key in "${!keys[@]}"; do
     if [ -n "${!key}" ]; then
-        escaped_value=$(printf '%s\n' "${!key}" | sed -e 's/[[\/.*^$(){}?+|]/\\&/g')
-        find ./apps/front-end/.next -type f -exec sh -c "sed -i 's#${key}#${escaped_value}#g' {}" \;
+        find ./apps/front-end/.next -type f -exec sh -c "awk '{gsub(/${key}/,\"${!key}\"); print}' {} > tmpfile && mv tmpfile {}" \;
     fi
 done
 
