@@ -7,8 +7,12 @@ WORKDIR /app
 COPY . .
 RUN npm install
 
-
 RUN npm run build:front-end
+
+RUN apk add --no-cache --upgrade bash
+RUN ["chmod", "+x", "./apps/front-end/entrypoint.sh"]
+ENTRYPOINT ["./apps/front-end/entrypoint.sh"]
+
 
 EXPOSE 3000
 CMD npm run start:front-end
