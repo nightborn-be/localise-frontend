@@ -13,7 +13,7 @@ done < ./apps/front-end/.env.production
 # Find and replace keys in specific folder with global environment values
 for key in "${!keys[@]}"; do
     if [ -n "${!key}" ]; then
-        find ./apps/front-end/.next -type f -exec sh -c "sed -i 's/\${$key}/$(echo ${!key} | sed 's/[\/&]/\\&/g')/g' {}" \;
+        find ./apps/front-end/.next -type f -exec sh -c "sed -i 's/\${$key}/'\"${!key}\"'/g' {}" \;
     fi
 done
 
