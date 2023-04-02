@@ -5,8 +5,8 @@ while read line; do
     if [[ $line =~ ^([A-Za-z_]+)=(.*)$ ]]; then
         key="${BASH_REMATCH[1]}"
         value="${BASH_REMATCH[2]}"
-        keys["$key"]="$value"
-        echo $key
+        keys["$key"]="'$value'"
+        echo "'$key' '$value'"
     fi
 done < ./apps/front-end/.env.production
 
