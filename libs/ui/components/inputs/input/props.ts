@@ -7,7 +7,7 @@ export interface IInputProps<T> extends IFieldForm<T> {
     font?: Font;
     border?: string;
     label?: string | null;
-    labelColor?: string,
+    labelColor?: string;
     labelFont?: Font;
     description?: string;
     descriptionColor?: string;

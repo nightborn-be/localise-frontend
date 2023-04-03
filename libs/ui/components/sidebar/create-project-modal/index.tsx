@@ -1,52 +1,44 @@
-import React, { useState, useEffect } from 'react';
-import { useFormik } from 'formik';
-import { createForm } from '../../../../utils/formik';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { IModalProps } from './props';
-import Modal from '.';
-import { HStack, useDisclosure, VStack } from '@chakra-ui/react';
-import Input from '../../inputs/input/index';
-import { IModalFormik } from './types';
+import { useState } from 'react';
+import { Box, HStack, Image, useDisclosure, VStack } from '@chakra-ui/react';
+import React from 'react';
+import COLORS from '../../../constants/colors';
 import FONTS from '../../../constants/fonts';
+import Input from '../../inputs/input/index';
 import { SearchBarOption } from '../../inputs/searchbar/props';
 import ISearchbarSelectProps from '../../inputs/searchbar-select/props';
-import COLORS from '../../../constants/colors';
 import SearchbarSelect from '../../inputs/searchbar-select';
 import SearchBox from '../../contents/search-box';
 import { ISearchBoxProps } from '../../contents/search-box/props';
+import { useCreateProjectLogic } from './logic';
+import Modal from '../../surface/modal';
+import { ICreateProjectProps } from './props';
+import languages from '../../../../utils/languages';
+import { UpsertProjectLanguageDTO } from '../../../../gateways/resource-api/types';
+export const CreateProjectModal = ({
+    isOpen,
+    onClose,
+}: ICreateProjectProps) => {
+    const {
+        sourceLanguageActiveKey,
+        setSourceLanguageActiveKey,
+        filterValue,
+        setFilterValue,
+        activeKeys,
+        setActiveKeys,
+        value,
+        setValue,
+        onCheck,
+        filter,
+        onTagDelete,
+        handleOnSubmit,
+        form,
+    } = useCreateProjectLogic();
 
-export default {
-    title: 'Components/Surface/Modal',
-    component: Modal,
-} as ComponentMeta<typeof Modal>;
-const Template: ComponentStory<typeof Modal> = (props: IModalProps) => {
-    const [activeKey, setActiveKey] = useState<string>('');
-    const [filterValue, setFilterValue] = useState<string>('');
-    const { isOpen, onOpen, onClose } = useDisclosure();
-    const [activeKeys, setActiveKeys] = useState<string[]>([]);
-    // Formik
-    const { values, ...rest } = useFormik<IModalFormik>({
-        initialValues: {
-            projectName: '',
-            sourceLanguage: '',
-            targetLanguages: [],
-        },
-        onSubmit: handleOnSubmit,
-        validateOnChange: false,
-    });
-    const form = createForm(values, rest);
+    const options: SearchBarOption<string>[] = languages.map((language) => ({
+        value: language.name,
+        label: language.name,
+    }));
 
-    function handleOnSubmit() {
-        console.log(values);
-    }
-
-    // Attributes
-    const options: SearchBarOption<string>[] = [
-        { value: 'French', label: 'French' },
-        { value: 'Chinese', label: 'Chinese' },
-        { value: 'Dutch', label: 'Dutch' },
-        { value: 'German', label: 'German' },
-    ];
     const searchbarProps: ISearchbarSelectProps<string> = {
         color: COLORS.Text.T400.value,
         w: '590px',
@@ -60,34 +52,6 @@ const Template: ComponentStory<typeof Modal> = (props: IModalProps) => {
         defaultSelectValue: 'Choose a source language',
         noValueMsg: 'We could’nt find the language you were looking for.',
     };
-    const [value, setValue] = useState<string>('');
-    const optionsSearchBox: SearchBarOption<string>[] = [
-        { value: 'French', label: 'French' },
-        { value: 'Chinese', label: 'Chinese' },
-        { value: 'Dutch', label: 'Dutch' },
-        { value: 'Italian', label: 'Italian' },
-        { value: 'German', label: 'German' },
-    ];
-
-    // Functions
-    function onCheck(value: string) {
-        if (!activeKeys?.some((option) => option === value))
-            setActiveKeys((prev) => [...prev, value]);
-        else setActiveKeys((prev) => prev?.filter((option) => option != value));
-    }
-    useEffect(() => {
-        rest.setFieldValue('targetLanguages', activeKeys);
-    }, [activeKeys]);
-
-    function filter(value: string) {
-        return optionsSearchBox?.filter((option) =>
-            option.value.toLowerCase().includes(value.toLowerCase()),
-        );
-    }
-
-    function onTagDelete(value: string) {
-        setActiveKeys((prev) => prev?.filter((option) => option != value));
-    }
     const searchBoxProps: ISearchBoxProps<string> = {
         w: '590px',
         title: 'Target languages',
@@ -97,7 +61,6 @@ const Template: ComponentStory<typeof Modal> = (props: IModalProps) => {
         noValueMsg: 'We could’nt find the language you were looking for.',
         onTagDelete: onTagDelete,
     };
-    onOpen();
     return (
         <HStack>
             <Modal
@@ -123,9 +86,9 @@ const Template: ComponentStory<typeof Modal> = (props: IModalProps) => {
                         <SearchbarSelect
                             {...searchbarProps}
                             filterValue={filterValue}
-                            activeKey={activeKey}
+                            activeKey={sourceLanguageActiveKey}
                             onSelect={(value) => {
-                                setActiveKey(value);
+                                setSourceLanguageActiveKey(value);
                                 form.sourceLanguage.onChange(value);
                             }}
                             onChange={(event) =>
@@ -142,7 +105,7 @@ const Template: ComponentStory<typeof Modal> = (props: IModalProps) => {
                             }
                         />
 
-                        <SearchBox
+                        <SearchBox<string>
                             {...searchBoxProps}
                             value={value}
                             onChange={(event) => setValue(event.target.value)}
@@ -157,4 +120,4 @@ const Template: ComponentStory<typeof Modal> = (props: IModalProps) => {
     );
 };
 
-export const ModalCreateProject = Template.bind({});
+export default CreateProjectModal;

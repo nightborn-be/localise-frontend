@@ -1,4 +1,4 @@
-import { Font } from "../../../constants/fonts";
+import { Font } from '../../../constants/fonts';
 
 export interface IInputLabelProps {
     label?: string;

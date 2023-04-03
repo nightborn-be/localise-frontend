@@ -17,11 +17,12 @@ export interface SidebarLogicType {
     isOrganisationClicked: boolean;
     setIsOrganisationClicked: (value: boolean) => void;
     optionsOrganisation: any;
-    organisationUserData: OrgnanisationPagingDTO;
+    organisationUserData?: OrgnanisationPagingDTO;
     activeProjectKey: string;
     setActiveProjectKey: (value: string) => void;
     options: SearchBarOption<string>[];
-    projectsData: ProjectPagingDTO;
+    projectsData?: ProjectPagingDTO;
     activeOptionKey: string;
     setActiveOptionKey: (value: string) => void;
+    handleOnCreateProject: () => void;
 }

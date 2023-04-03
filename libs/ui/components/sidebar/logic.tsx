@@ -12,7 +12,7 @@ import { SidebarLogicType } from './types';
 export const useSidebarLogic = (): SidebarLogicType => {
     // Attributes
     const [activeOptionKey, setActiveOptionKey] = useState<string>('');
-    const projectsData: ProjectPagingDTO = useGetProjects();
+    // const projectsData: ProjectPagingDTO = useGetProjects();
     const options: SearchBarOption<string>[] = [
         {
             label: 'Nightborn',
@@ -29,8 +29,8 @@ export const useSidebarLogic = (): SidebarLogicType => {
     ];
     const [activeProjectKey, setActiveProjectKey] = useState<string>('');
 
-    const organisationUserData: OrgnanisationPagingDTO =
-        useGetOrganisationsForUser('test');
+    // const organisationUserData: OrgnanisationPagingDTO =
+    //     useGetOrganisationsForUser('test');
     const optionsOrganisation = [
         {
             title: 'Nightborn',
@@ -59,10 +59,10 @@ export const useSidebarLogic = (): SidebarLogicType => {
     const [activeOrganizationKey, setActiveOrganizationKey] = useState(0);
 
     // Functions
-    function handleOnOptionClick(value) {
+    function handleOnOptionClick(value: string) {
         setActiveOptionKey(value);
     }
-    function handleOnProjectClick(value) {
+    function handleOnProjectClick(value: string) {
         //make the call api to get the data of the project
         setActiveProjectKey(value);
     }
@@ -78,6 +78,8 @@ export const useSidebarLogic = (): SidebarLogicType => {
         //open modal to create the organziation
         //    setActiveProjectKey(value);
     }
+
+    function handleOnCreateProject() {}
     return {
         handleOnCreateOrganizationClick,
         handleToggleIsOrganisationClicked,
@@ -91,12 +93,13 @@ export const useSidebarLogic = (): SidebarLogicType => {
         isOrganisationClicked,
         setIsOrganisationClicked,
         optionsOrganisation,
-        organisationUserData,
+        // organisationUserData,
         activeProjectKey,
         setActiveProjectKey,
         options,
-        projectsData,
+        // projectsData,
         activeOptionKey,
         setActiveOptionKey,
+        handleOnCreateProject,
     };
 };

@@ -162,7 +162,7 @@ paths:
           description: Success
 
   # Projects
-  /organisations/:organisationId/projects:
+  /organisations/{organisationId}/projects:
     get:
       security:
         - oauth2:
@@ -293,7 +293,7 @@ paths:
           description: Success
 
   # Terms
-  /projects/:projectId/terms:
+  /projects/{projectId}/terms:
     get:
       security:
         - oauth2:

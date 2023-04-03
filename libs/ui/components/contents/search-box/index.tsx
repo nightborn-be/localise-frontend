@@ -16,6 +16,8 @@ const SearchBox = <T,>({
     onCheck,
     activeKeys,
     options,
+    noValueMsg,
+    onTagDelete,
 }: ISearchBoxProps<T>) => {
     // Render
     return (
@@ -47,7 +49,7 @@ const SearchBox = <T,>({
                 <Searchbar
                     color={COLORS.Text.T400.value}
                     w='34.375rem'
-                    h='2.5rem'
+                    h='40px'
                     padding='0.25rem 0.625rem'
                     spacing='0.5rem'
                     backgroundColor={COLORS.White.T500.value}
@@ -59,6 +61,7 @@ const SearchBox = <T,>({
                     onCheck={onCheck}
                     activeKeys={activeKeys}
                     options={options}
+                    noValueMsg={noValueMsg}
                 />
                 {!!activeKeys?.length && (
                     <HStack spacing={'0.25rem'}>
@@ -67,6 +70,7 @@ const SearchBox = <T,>({
                                 key={`tag-${index}`}
                                 value={tag}
                                 font={FONTS.T1.T12px.Medium500.value}
+                                onDelete={() => onTagDelete(tag)}
                             />
                         ))}
                     </HStack>

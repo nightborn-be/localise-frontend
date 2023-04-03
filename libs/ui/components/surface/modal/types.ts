@@ -1,4 +1,4 @@
-import { IDefaultForm, IForm } from "../../../../utils/formik";
+import { IDefaultForm, IForm } from '../../../../utils/formik';
 
 export type ModalType = {
     handleOnSubmit(): void;

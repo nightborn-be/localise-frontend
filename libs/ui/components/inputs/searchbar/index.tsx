@@ -1,6 +1,5 @@
 import React, { useState, useRef } from 'react';
 import {
-    Box,
     HStack,
     Input,
     InputGroup,
@@ -14,20 +13,21 @@ import Icon from '../../contents/icon';
 import SHADOWS from '../../../constants/shadows';
 import Checkbox from '../checkbox';
 import useOnClickOutside from '../../../../utils/hooks';
+import Text from '../../contents/text';
 
 const Searchbar = <T,>({
     type = 'text',
     placeholderColor = COLORS.InputText.value,
-    border = `1px solid ${COLORS.Line.value}`,
+    border = `0.0625rem solid ${COLORS.Line.value}`,
     placeholder,
     h,
     w,
     alignItems = 'left',
-    spacing = '8px',
-    paddingTop = '3px',
-    borderRadius = '6px',
+    spacing = '0.5rem',
+    paddingTop = '0.1875rem',
+    borderRadius = '0.375rem',
     padding,
-    marginLeftElement = '10px',
+    marginLeftElement = '0.625rem',
     backgroundColor = COLORS.BG.value,
     value,
     values,
@@ -36,6 +36,7 @@ const Searchbar = <T,>({
     options,
     activeKeys,
     displayModal = true,
+    noValueMsg,
     ...props
 }: SearchbarProps<T>) => {
     const [showModal, setShowModal] = useState<boolean>(false);
@@ -49,7 +50,7 @@ const Searchbar = <T,>({
             alignItems={'left'}
             ref={inputRef}
             w={'fit-content'}
-            spacing={'4px'}
+            spacing={'0.25rem'}
             position='relative'
         >
             <HStack w={w} h={h} minWidth={w} minHeight={h} spacing={spacing}>
@@ -65,9 +66,9 @@ const Searchbar = <T,>({
                 >
                     {/* Left input icon */}
                     <InputLeftElement
-                        w={'16px'}
-                        h={h}
-                        ml={'10px'}
+                        w={'1rem'}
+                        h={'full'}
+                        ml={'0.625rem'}
                         justifyContent={'center'}
                         alignItems={'center'}
                     >
@@ -87,8 +88,8 @@ const Searchbar = <T,>({
                         backgroundColor={'transparent'}
                         _placeholder={{ color: placeholderColor }}
                         focusBorderColor='transparent'
-                        border={'1px solid transprent'}
-                        marginRight='8px'
+                        border={'0.0625rem solid transprent'}
+                        marginRight='0.5rem'
                         onFocus={() => setShowModal(true)}
                     />
                 </InputGroup>
@@ -99,30 +100,40 @@ const Searchbar = <T,>({
                     top={h}
                     display={showModal ? 'visible' : 'none'}
                     w={w}
-                    h='188px'
+                    maxH='11.75rem'
                     overflowY={'scroll'}
                     alignItems={'flex-start'}
                     bg={COLORS.White.T500.value}
-                    borderRadius={'8px'}
+                    borderRadius={'0.5rem'}
                     boxShadow={SHADOWS.Elevation.Light.Bottom.T05.value}
-                    border={`1px solid ${COLORS.Line.value}`}
-                    padding={'6px'}
-                    spacing='4px'
+                    border={`0.0625rem solid ${COLORS.Line.value}`}
+                    padding={'0.375rem'}
+                    spacing='0.25rem'
                     zIndex={1}
                 >
-                    {options?.map((option, index) => {
-                        return (
-                            <Checkbox
-                                key={index}
-                                label={option.label}
-                                isSelected={activeKeys?.some(
-                                    (checkedOption) =>
-                                        checkedOption === option.value,
-                                )}
-                                onSelect={() => onCheck?.(option.value)}
-                            />
-                        );
-                    })}
+                    {!!options?.length ? (
+                        options?.map((option, index) => {
+                            return (
+                                <Checkbox
+                                    key={index}
+                                    label={option.label}
+                                    isSelected={activeKeys?.some(
+                                        (checkedOption) =>
+                                            checkedOption === option.value,
+                                    )}
+                                    onSelect={() => onCheck?.(option.value)}
+                                />
+                            );
+                        })
+                    ) : (
+                        <Text
+                            padding={'0.75rem'}
+                            font={FONTS.T1.T12px.Medium500.value}
+                            color={COLORS.InputText.value}
+                        >
+                            {noValueMsg}
+                        </Text>
+                    )}
                 </VStack>
             )}
         </VStack>

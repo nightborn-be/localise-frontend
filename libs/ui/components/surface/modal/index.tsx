@@ -1,7 +1,5 @@
 import {
     HStack,
-    Image,
-    VStack,
     Modal as ChakraModal,
     ModalOverlay,
     ModalContent,
@@ -15,7 +13,6 @@ import COLORS from '../../../constants/colors';
 import FONTS from '../../../constants/fonts';
 import Text from '../../contents/text';
 import Button from '../../inputs/button';
-import ButtonIcon from '../../inputs/button-icon';
 import { ButtonSize } from '../../inputs/button-icon/types';
 import Icon from '../../contents/icon';
 import { IModalProps } from './props';
@@ -24,15 +21,16 @@ const Modal = ({
     children,
     title,
     isOpen,
-    setIsOpen,
     handleOnSubmit,
+    onClose,
 }: IModalProps) => {
     // Render
     return (
         <ChakraModal
             autoFocus={false}
             isOpen={isOpen}
-            onClose={() => setIsOpen(false)}
+            onClose={onClose}
+            isCentered
         >
             <ModalOverlay opacity={'0.6'} />
             <ModalContent w={'630px'} minW={'630px'} borderRadius={'12px'}>
@@ -48,19 +46,18 @@ const Modal = ({
                     >
                         {title}
                     </Text>
-                    <ModalCloseButton bgColor={'transparent'} top='13px'>
-                        <ButtonIcon
-                            borderRadius='0.375rem'
-                            size={ButtonSize.SMALL}
-                            padding='0.25rem'
-                            gap='0.625rem'
-                            backgroundColor={COLORS.Localize.Purple.T500.value}
-                            hoverBackgroundColor={
-                                COLORS.Localize.Purple.T600.value
-                            }
-                        >
-                            <Icon name='removeLarge' stroke='#FFFFFF' />
-                        </ButtonIcon>
+                    <ModalCloseButton
+                        backgroundColor={COLORS.Localize.Purple.T500.value}
+                        borderRadius='0.375rem'
+                        size={ButtonSize.SMALL}
+                        padding='0.25rem'
+                        gap='0.625rem'
+                        _hover={{
+                            bg: COLORS.Localize.Purple.T600.value,
+                        }}
+                        top='13px'
+                    >
+                        <Icon name='removeLarge' stroke='#FFFFFF' />
                     </ModalCloseButton>
                 </ModalHeader>
                 <ModalBody padding={0}>{children}</ModalBody>
@@ -75,7 +72,7 @@ const Modal = ({
                             font={FONTS.T1.T12px.SemiBold600.value}
                             color={COLORS.InputText.value}
                             padding={'4px 12px'}
-                            onClick={() => setIsOpen(false)}
+                            onClick={onClose}
                         >
                             Cancel
                         </Button>
@@ -93,7 +90,7 @@ const Modal = ({
                             padding={'4px 12px'}
                             onClick={() => {
                                 handleOnSubmit();
-                                setIsOpen(false);
+                                onClose();
                             }}
                         >
                             Create
