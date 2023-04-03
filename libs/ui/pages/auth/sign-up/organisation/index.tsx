@@ -16,7 +16,10 @@ const OrganisationPage = () => {
 
     // Render
     return (
-        <Page bgImage='/assets/images/AuthSignInBackground.png'>
+        <Page
+            bgImage='/assets/images/AuthSignInBackground.png'
+            displaySidebar={false}
+        >
             <Box ml='8.5rem'>
                 <ContentSignUp
                     title={t<string>(

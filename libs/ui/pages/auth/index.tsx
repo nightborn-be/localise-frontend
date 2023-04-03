@@ -16,7 +16,10 @@ export default function AuthHomePage() {
 
     // Render
     return (
-        <Page bgImage='./assets/images/AuthHomeBackground.png'>
+        <Page
+            bgImage='./assets/images/AuthHomeBackground.png'
+            displaySidebar={false}
+        >
             <VStack
                 spacing='1.25rem'
                 padding='0'

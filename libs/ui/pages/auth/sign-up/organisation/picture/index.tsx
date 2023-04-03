@@ -24,7 +24,10 @@ const OrganisationPicturePage = () => {
 
     // Render
     return (
-        <Page bgImage='/assets/images/AuthSignInBackground.png'>
+        <Page
+            bgImage='/assets/images/AuthSignInBackground.png'
+            displaySidebar={false}
+        >
             <HStack ml='8.5rem'>
                 <ContentSignIn
                     title={t<string>(

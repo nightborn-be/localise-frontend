@@ -6,23 +6,21 @@ interface IJWTToken {
     nbf: number;
 }
 
-const saveTokenInStorage = async (tokens: {
+const saveTokenInStorage = (tokens: {
     [key in TokenKey]: TokenKey;
 }) => {
     const items = Object.entries(tokens);
-    await Promise.all(
-        items?.map(([key, value]) => {
+    items?.forEach(([key, value]) => {
             storage.save(toStorageKey(key), value);
-        }),
-    );
+    })
 };
 
-const getTokenFromStorage = async (token: TokenKey) => {
-    await storage.get(toStorageKey(token));
+const getTokenFromStorage = (token: TokenKey) => {
+    return storage.get(toStorageKey(token))
 };
 
-const removeTokenFromStorage = async (token: TokenKey) => {
-    await storage.remove(toStorageKey(token));
+const removeTokenFromStorage = (token: TokenKey) => {
+    storage.remove(toStorageKey(token));
 };
 export const tokenStorage = {
     save: saveTokenInStorage,

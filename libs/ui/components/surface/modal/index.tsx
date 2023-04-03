@@ -16,6 +16,7 @@ import Button from '../../inputs/button';
 import { ButtonSize } from '../../inputs/button-icon/types';
 import Icon from '../../contents/icon';
 import { IModalProps } from './props';
+import { tokenStorage } from '../../../../utils/token/token';
 
 const Modal = ({
     children,
