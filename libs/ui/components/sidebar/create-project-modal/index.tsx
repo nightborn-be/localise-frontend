@@ -14,6 +14,8 @@ import Modal from '../../surface/modal';
 import { ICreateProjectProps } from './props';
 import languages from '../../../../utils/languages';
 import { UpsertProjectLanguageDTO } from '../../../../gateways/resource-api/types';
+import { useTranslation } from 'react-i18next';
+import { tKeys } from '../../../../i18n/keys';
 export const CreateProjectModal = ({
     isOpen,
     onClose,
@@ -38,33 +40,11 @@ export const CreateProjectModal = ({
         value: language.name,
         label: language.name,
     }));
-
-    const searchbarProps: ISearchbarSelectProps<string> = {
-        color: COLORS.Text.T400.value,
-        w: '590px',
-        h: '40px',
-        padding: '4px 10px',
-        spacing: '8px',
-        background: COLORS.White.T500.value,
-        placeholder: 'Search for a project...',
-        placeholderColor: COLORS.InputText.value,
-        borderRadius: '6px',
-        defaultSelectValue: 'Choose a source language',
-        noValueMsg: 'We could’nt find the language you were looking for.',
-    };
-    const searchBoxProps: ISearchBoxProps<string> = {
-        w: '590px',
-        title: 'Target languages',
-        description:
-            'Target languages are secondary languages you want to add to your project.',
-        placeholder: 'Search and select your target languages',
-        noValueMsg: 'We could’nt find the language you were looking for.',
-        onTagDelete: onTagDelete,
-    };
+    const { t } = useTranslation();
     return (
         <HStack>
             <Modal
-                title={'Create a new project'}
+                title={t<string>(tKeys.home.modal.create_project.title)}
                 isOpen={isOpen}
                 onClose={onClose}
                 handleOnSubmit={handleOnSubmit}
@@ -74,17 +54,42 @@ export const CreateProjectModal = ({
                         <Input
                             w={'590px'}
                             padding='10px'
-                            placeholder='Write your project name...'
-                            label={'Project name'}
+                            placeholder={t<string>(
+                                tKeys.home.modal.create_project.from
+                                    .project_name.placeholder,
+                            )}
+                            label={t<string>(
+                                tKeys.home.modal.create_project.from
+                                    .project_name.title,
+                            )}
                             font={FONTS.T1.T12px.Regular400.value}
                             labelColor={COLORS.Text.T500.value}
                             labelFont={FONTS.T1.T14px.Medium500.value}
                             {...form.projectName}
                         />
                     </HStack>
-                    <VStack padding={'12px 20px'} spacing='16px'>
+                    <VStack padding={'0.75rem 1.25rem'} spacing='1rem'>
                         <SearchbarSelect
-                            {...searchbarProps}
+                            color={COLORS.Text.T400.value}
+                            w='36.875rem'
+                            h='2.5rem'
+                            padding='0.25rem 0.625rem'
+                            spacing='0.5rem'
+                            background={COLORS.White.T500.value}
+                            placeholder={t<string>(
+                                tKeys.home.modal.create_project.from
+                                    .source_language.search.placeholder,
+                            )}
+                            placeholderColor={COLORS.InputText.value}
+                            borderRadius='0.375rem'
+                            defaultSelectValue={t<string>(
+                                tKeys.home.modal.create_project.from
+                                    .source_language.placeholder,
+                            )}
+                            noValueMsg={t<string>(
+                                tKeys.home.modal.create_project.from
+                                    .source_language.search.not_found,
+                            )}
                             filterValue={filterValue}
                             activeKey={sourceLanguageActiveKey}
                             onSelect={(value) => {
@@ -99,14 +104,35 @@ export const CreateProjectModal = ({
                                     .toLowerCase()
                                     .includes(filterValue.toLowerCase()),
                             )}
-                            label={'Source language'}
-                            description={
-                                'The source language is the main language of the project.'
-                            }
+                            label={t<string>(
+                                tKeys.home.modal.create_project.from
+                                    .source_language.title,
+                            )}
+                            description={t<string>(
+                                tKeys.home.modal.create_project.from
+                                    .source_language.description,
+                            )}
                         />
 
                         <SearchBox<string>
-                            {...searchBoxProps}
+                            w='590px'
+                            title={t<string>(
+                                tKeys.home.modal.create_project.from
+                                    .target_languages.title,
+                            )}
+                            description={t<string>(
+                                tKeys.home.modal.create_project.from
+                                    .target_languages.description,
+                            )}
+                            placeholder={t<string>(
+                                tKeys.home.modal.create_project.from
+                                    .target_languages.placeholder,
+                            )}
+                            noValueMsg={t<string>(
+                                tKeys.home.modal.create_project.from
+                                    .target_languages.not_found,
+                            )}
+                            onTagDelete={onTagDelete}
                             value={value}
                             onChange={(event) => setValue(event.target.value)}
                             onCheck={onCheck}

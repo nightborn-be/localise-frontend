@@ -11,12 +11,12 @@ const saveTokenInStorage = (tokens: {
 }) => {
     const items = Object.entries(tokens);
     items?.forEach(([key, value]) => {
-            storage.save(toStorageKey(key), value);
-    })
+        storage.save(toStorageKey(key), value);
+    });
 };
 
 const getTokenFromStorage = (token: TokenKey) => {
-    return storage.get(toStorageKey(token))
+    return storage.get(toStorageKey(token));
 };
 
 const removeTokenFromStorage = (token: TokenKey) => {
