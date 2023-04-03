@@ -12,10 +12,10 @@ const Page = ({ children, bg, bgImage }: PageProps) => {
                 w='100%'
                 h='100%'
                 spacing={0}
-                alignItems={'start'}
+                alignItems='start'
                 bgImage={bgImage}
-                bgSize={'cover'}
-                justifyContent={'center'}
+                bgSize='cover'
+                justifyContent='center'
             >
                 {children}
             </VStack>
