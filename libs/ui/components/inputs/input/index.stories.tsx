@@ -26,7 +26,6 @@ const props: IInputProps<test> = {
     padding: '0.75rem',
     font: FONTS.T1.T12px.Regular400.value,
     gap: '0.5rem',
-    marginTop: '0.1875rem',
     value: null,
     onChange: () => {},
 };
@@ -110,6 +109,7 @@ RightElementInput.args = {
     paddingRight: '3.125rem',
     focusBorderColor: `${COLORS.Stroke.value}`,
     hoverBorder: `0.0625rem solid ${COLORS.Stroke.value}`,
+    rightElementMarginRight: '0.5rem',
     rightElement: (
         <>
             <Icon name='enter' />
