@@ -59,11 +59,11 @@ export const CreateProjectModal = ({
                             w={'36.875rem'}
                             padding='0.625rem'
                             placeholder={t<string>(
-                                tKeys.home.modal.create_project.from
+                                tKeys.home.modal.create_project.form
                                     .project_name.placeholder,
                             )}
                             label={t<string>(
-                                tKeys.home.modal.create_project.from
+                                tKeys.home.modal.create_project.form
                                     .project_name.title,
                             )}
                             font={FONTS.T1.T12px.Regular400.value}
@@ -81,17 +81,17 @@ export const CreateProjectModal = ({
                             spacing='0.5rem'
                             background={COLORS.White.T500.value}
                             placeholder={t<string>(
-                                tKeys.home.modal.create_project.from
+                                tKeys.home.modal.create_project.form
                                     .source_language.search.placeholder,
                             )}
                             placeholderColor={COLORS.InputText.value}
                             borderRadius='0.375rem'
                             defaultSelectValue={t<string>(
-                                tKeys.home.modal.create_project.from
+                                tKeys.home.modal.create_project.form
                                     .source_language.placeholder,
                             )}
                             noValueMsg={t<string>(
-                                tKeys.home.modal.create_project.from
+                                tKeys.home.modal.create_project.form
                                     .source_language.search.not_found,
                             )}
                             filterValue={filterValue}
@@ -109,11 +109,11 @@ export const CreateProjectModal = ({
                                     .includes(filterValue.toLowerCase()),
                             )}
                             label={t<string>(
-                                tKeys.home.modal.create_project.from
+                                tKeys.home.modal.create_project.form
                                     .source_language.title,
                             )}
                             description={t<string>(
-                                tKeys.home.modal.create_project.from
+                                tKeys.home.modal.create_project.form
                                     .source_language.description,
                             )}
                         />
@@ -121,19 +121,19 @@ export const CreateProjectModal = ({
                         <SearchBox<string>
                             w='36.875rem'
                             title={t<string>(
-                                tKeys.home.modal.create_project.from
+                                tKeys.home.modal.create_project.form
                                     .target_languages.title,
                             )}
                             description={t<string>(
-                                tKeys.home.modal.create_project.from
+                                tKeys.home.modal.create_project.form
                                     .target_languages.description,
                             )}
                             placeholder={t<string>(
-                                tKeys.home.modal.create_project.from
+                                tKeys.home.modal.create_project.form
                                     .target_languages.placeholder,
                             )}
                             noValueMsg={t<string>(
-                                tKeys.home.modal.create_project.from
+                                tKeys.home.modal.create_project.form
                                     .target_languages.not_found,
                             )}
                             onTagDelete={onTagDelete}

@@ -107,47 +107,62 @@ export const tKeys = {
         modal: {
             create_project: {
                 title: 'home.modal.create_project.title',
-                from: {
+                form: {
                     project_name: {
-                        title: 'home.modal.create_project.from.project_name.title',
+                        title: 'home.modal.create_project.form.project_name.title',
                         placeholder:
-                            'home.modal.create_project.from.project_name.placeholder',
+                            'home.modal.create_project.form.project_name.placeholder',
                         form: {
-                            error: 'home.modal.create_project.from.project_name.form.error',
+                            error: 'home.modal.create_project.form.project_name.form.error',
                         },
                     },
                     source_language: {
-                        title: 'home.modal.create_project.from.source_language.title',
+                        title: 'home.modal.create_project.form.source_language.title',
                         description:
-                            'home.modal.create_project.from.source_language.description',
+                            'home.modal.create_project.form.source_language.description',
                         placeholder:
-                            'home.modal.create_project.from.source_language.placeholder',
+                            'home.modal.create_project.form.source_language.placeholder',
                         search: {
                             placeholder:
-                                'home.modal.create_project.from.source_language.search.placeholder',
+                                'home.modal.create_project.form.source_language.search.placeholder',
                             not_found:
-                                'home.modal.create_project.from.source_language.search.not_found',
+                                'home.modal.create_project.form.source_language.search.not_found',
                         },
                     },
                     target_languages: {
-                        title: 'home.modal.create_project.from.target_languages.title',
+                        title: 'home.modal.create_project.form.target_languages.title',
                         description:
-                            'home.modal.create_project.from.target_languages.description',
+                            'home.modal.create_project.form.target_languages.description',
                         placeholder:
-                            'home.modal.create_project.from.target_languages.placeholder',
+                            'home.modal.create_project.form.target_languages.placeholder',
                         not_found:
-                            'home.modal.create_project.from.target_languages.not_found',
+                            'home.modal.create_project.form.target_languages.not_found',
                     },
                 },
             },
             create_organisation: {
                 title: 'home.modal.create_organisation.title',
-                from: {
+                form: {
                     organisation_name: {
                         placeholder:
-                            'home.modal.create_organisation.from.organisation_name.placeholder',
-                        title: 'home.modal.create_organisation.from.organisation_name.title',
+                            'home.modal.create_organisation.form.organisation_name.placeholder',
+                        title: 'home.modal.create_organisation.form.organisation_name.title',
                     },
+                    organisation_picture: {
+                        title: 'home.modal.create_organisation.form.organisation_picture.title',
+                        description:
+                            'home.modal.create_organisation.form.organisation_picture.description',
+                        alt: 'home.modal.create_organisation.form.organisation_picture.alt',
+                    },
+                    organisation_teammates: {
+                        title: 'home.modal.create_organisation.form.organisation_teammates.title',
+                        cta: {
+                            add: 'home.modal.create_organisation.form.organisation_teammates.cta.add',
+                        },
+                        placeholder:
+                            'home.modal.create_organisation.form.organisation_teammates.placeholder',
+                    },
+                    error: 'home.modal.create_organisation.form.error',
                 },
             },
         },

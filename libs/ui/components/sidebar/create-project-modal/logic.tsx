@@ -60,7 +60,7 @@ export const useCreateProjectLogic = (): CreateProjectLogicType => {
                         toast({
                             type: ToastType.ERROR,
                             title: t(
-                                tKeys.home.modal.create_project.from
+                                tKeys.home.modal.create_project.form
                                     .project_name.form.error,
                             ),
                             delay: 5000,
