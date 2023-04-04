@@ -72,10 +72,8 @@ export default function Input<T>({
     };
 
     function getTypeInput(): string {
-        if (type === 'password') {
-            if (!showPassword) {
-                return type;
-            } else return 'visible';
+        if (type === 'password' && showPassword) {
+            return 'visible';
         }
         return type;
     }
