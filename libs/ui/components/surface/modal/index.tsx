@@ -74,6 +74,9 @@ const Modal = ({
                             color={COLORS.InputText.value}
                             padding={'4px 12px'}
                             onClick={onClose}
+                            _active={{
+                                bg: 'none',
+                            }}
                         >
                             Cancel
                         </Button>
