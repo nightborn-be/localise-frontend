@@ -8,6 +8,8 @@ import { toCreateProjectDTO } from './mappers';
 import { useCreateProject } from '../../../../gateways/resource-api/projects/projects';
 import useToast from '../../progress-validation/toast';
 import { ToastType } from '../../progress-validation/toast/types';
+import { useTranslation } from 'react-i18next';
+import { tKeys } from '../../../../i18n/keys';
 
 export const useCreateProjectLogic = (): CreateProjectLogicType => {
     // Attributes
@@ -23,7 +25,7 @@ export const useCreateProjectLogic = (): CreateProjectLogicType => {
         }),
     );
     const toast = useToast();
-
+    const { t } = useTranslation();
     // Hooks
     const { mutateAsync: createProject } = useCreateProject();
 
@@ -57,7 +59,11 @@ export const useCreateProjectLogic = (): CreateProjectLogicType => {
                     onError: async () => {
                         toast({
                             type: ToastType.ERROR,
-                            title: 'Error',
+                            title: t(
+                                tKeys.home.modal.create_project.from
+                                    .project_name.form.error,
+                            ),
+                            delay: 5000,
                         });
                     },
                 },
