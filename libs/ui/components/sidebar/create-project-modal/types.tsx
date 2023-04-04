@@ -1,8 +1,3 @@
-import {
-    OrgnanisationPagingDTO,
-    ProjectPagingDTO,
-    UpsertProjectLanguageDTO,
-} from '../../../../gateways/resource-api/types';
 import { IDefaultForm, IForm } from '../../../../utils/formik';
 import { SearchBarOption } from '../../inputs/searchbar/props';
 

@@ -14,6 +14,7 @@ import SidebarOrganisation from '../pickers/sidebar-organisation';
 import OrganizationMenu from '../contents/organisation-menu';
 import { useSidebarLogic } from './logic';
 import CreateProjectModal from './create-project-modal/index';
+import CreateOrganisationModal from './create-organisation-modal';
 export const SideBar = () => {
     const [filterValue, setFilterValue] = useState<string>('');
     const {
@@ -39,7 +40,7 @@ export const SideBar = () => {
     } = useSidebarLogic();
 
     const { isOpen, onOpen, onClose } = useDisclosure();
-
+    const createOrganisationModal = useDisclosure();
     return (
         <>
             <VStack w={'244px'} h={'100vh'} spacing='0px'>
@@ -217,7 +218,7 @@ export const SideBar = () => {
                             onChange={(organizationValue) => {
                                 setActiveOrganizationKey(organizationValue);
                             }}
-                            onClick={handleOnCreateOrganizationClick}
+                            onClick={createOrganisationModal.onOpen}
                         />
                     </Box>
                     <SidebarOrganisation
@@ -264,6 +265,10 @@ export const SideBar = () => {
                 </VStack>
             </VStack>
             <CreateProjectModal isOpen={isOpen} onClose={onClose} />
+            <CreateOrganisationModal
+                isOpen={createOrganisationModal.isOpen}
+                onClose={createOrganisationModal.onClose}
+            />
         </>
     );
 };

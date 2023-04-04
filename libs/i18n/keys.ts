@@ -17,6 +17,15 @@ export const tKeys = {
         sign_in: {
             title: 'auth.sign_in.title',
             form: {
+                email: {
+                    title: 'auth.sign_in.form.email.title',
+                    placeholder: 'auth.sign_in.form.email.placeholder',
+                    error: {
+                        required: 'auth.sign_in.form.email.error.required',
+                        invalid: 'auth.sign_in.form.email.error.invalid',
+                        wrong: 'auth.sign_in.form.email.error.wrong',
+                    },
+                },
                 password: {
                     title: 'auth.sign_in.form.password.title',
                     placeholder: 'auth.sign_in.form.password.placeholder',
@@ -25,25 +34,23 @@ export const tKeys = {
                         wrong: 'auth.sign_in.form.password.error.wrong',
                     },
                 },
-                email: {
-                    title: 'auth.sign_in.form.email.title',
-                    placeholder: 'auth.sign_in.form.email.placeholder',
-                    error: {
-                        invalid: 'auth.sign_in.form.email.error.invalid',
-                        required: 'auth.sign_in.form.email.error.required',
-                        wrong: 'auth.sign_in.form.email.error.wrong',
-                    },
-                },
             },
             cta: {
                 sign_in: 'auth.sign_in.cta.sign_in',
             },
         },
         sign_up: {
+            cta: {
+                continue: 'auth.sign_up.cta.continue',
+                later: 'auth.sign_up.cta.later',
+            },
             account: {
                 title: 'auth.sign_up.account.title',
             },
             organisation: {
+                name: {
+                    title: 'auth.sign_up.organisation.name.title',
+                },
                 form: {
                     name: {
                         label: 'auth.sign_up.organisation.form.name.label',
@@ -58,33 +65,26 @@ export const tKeys = {
                         label: 'auth.sign_up.organisation.form.picture.label',
                     },
                 },
-                name: {
-                    title: 'auth.sign_up.organisation.name.title',
-                },
                 picture: {
                     title: 'auth.sign_up.organisation.picture.title',
                 },
             },
-            cta: {
-                continue: 'auth.sign_up.cta.continue',
-                later: 'auth.sign_up.cta.later',
-            },
             form: {
                 email: {
-                    placeholder: 'auth.sign_up.form.email.placeholder',
                     title: 'auth.sign_up.form.email.title',
+                    placeholder: 'auth.sign_up.form.email.placeholder',
                     error: {
                         required: 'auth.sign_up.form.email.error.required',
                         invalid: 'auth.sign_up.form.email.error.invalid',
                     },
                 },
                 password: {
+                    title: 'auth.sign_up.form.password.title',
                     placeholder: 'auth.sign_up.form.password.placeholder',
                     error: {
                         required: 'auth.sign_up.form.password.error.required',
                         min: 'auth.sign_up.form.password.error.min',
                     },
-                    title: 'auth.sign_up.form.password.title',
                 },
             },
             error: {
@@ -106,16 +106,17 @@ export const tKeys = {
     home: {
         modal: {
             create_project: {
+                title: 'home.modal.create_project.title',
                 from: {
                     project_name: {
+                        title: 'home.modal.create_project.from.project_name.title',
                         placeholder:
                             'home.modal.create_project.from.project_name.placeholder',
-                        title: 'home.modal.create_project.from.project_name.title',
                     },
                     source_language: {
+                        title: 'home.modal.create_project.from.source_language.title',
                         description:
                             'home.modal.create_project.from.source_language.description',
-                        title: 'home.modal.create_project.from.source_language.title',
                         placeholder:
                             'home.modal.create_project.from.source_language.placeholder',
                         search: {
@@ -135,7 +136,16 @@ export const tKeys = {
                             'home.modal.create_project.from.target_languages.not_found',
                     },
                 },
-                title: 'home.modal.create_project.title',
+            },
+            create_organisation: {
+                title: 'home.modal.create_organisation.title',
+                from: {
+                    organisation_name: {
+                        placeholder:
+                            'home.modal.create_organisation.from.organisation_name.placeholder',
+                        title: 'home.modal.create_organisation.from.organisation_name.title',
+                    },
+                },
             },
         },
     },

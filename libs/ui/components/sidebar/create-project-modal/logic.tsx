@@ -1,10 +1,5 @@
 import { useState, useEffect } from 'react';
 import { SearchBarOption } from '../../inputs/searchbar/props';
-import {
-    OrgnanisationPagingDTO,
-    ProjectPagingDTO,
-    UpsertProjectLanguageDTO,
-} from '../../../../gateways/resource-api/types/index';
 import { CreateProjectLogicType, ICreateProjectForm } from './types';
 import { useFormik } from 'formik';
 import { createForm } from '../../../../utils/formik';

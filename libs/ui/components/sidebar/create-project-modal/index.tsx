@@ -1,21 +1,18 @@
-import { useState } from 'react';
-import { Box, HStack, Image, useDisclosure, VStack } from '@chakra-ui/react';
+import { HStack, VStack } from '@chakra-ui/react';
 import React from 'react';
 import COLORS from '../../../constants/colors';
 import FONTS from '../../../constants/fonts';
 import Input from '../../inputs/input/index';
 import { SearchBarOption } from '../../inputs/searchbar/props';
-import ISearchbarSelectProps from '../../inputs/searchbar-select/props';
 import SearchbarSelect from '../../inputs/searchbar-select';
 import SearchBox from '../../contents/search-box';
-import { ISearchBoxProps } from '../../contents/search-box/props';
 import { useCreateProjectLogic } from './logic';
 import Modal from '../../surface/modal';
 import { ICreateProjectProps } from './props';
 import languages from '../../../../utils/languages';
-import { UpsertProjectLanguageDTO } from '../../../../gateways/resource-api/types';
 import { useTranslation } from 'react-i18next';
 import { tKeys } from '../../../../i18n/keys';
+
 export const CreateProjectModal = ({
     isOpen,
     onClose,

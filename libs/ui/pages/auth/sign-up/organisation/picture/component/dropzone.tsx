@@ -7,11 +7,28 @@ import Button from '../../../../../../components/inputs/button';
 import FONTS from '../../../../../../constants/fonts';
 import Icon from '../../../../../../components/contents/icon';
 
-const Dropzone = ({ onDrag, label }: IDropzoneProps) => {
+const Dropzone = ({
+    onDrag,
+    label,
+    h = '6.25rem',
+    w = '6.25rem',
+    font = FONTS.T1.T12px.Medium500.value,
+    iconHeight = '24',
+    iconWidth = '24',
+    spacing = '0.4375rem',
+}: IDropzoneProps) => {
     // Attributes
     const onDrop = useCallback(
         (acceptedFiles: File[]) => {
-            onDrag && onDrag(URL.createObjectURL(acceptedFiles[0]));
+            const reader = new FileReader();
+            reader.onload = () => {
+                onDrag &&
+                    onDrag(
+                        URL.createObjectURL(acceptedFiles[0]),
+                        reader.result,
+                    );
+            };
+            reader.readAsBinaryString(acceptedFiles[0]);
         },
         [onDrag],
     );
@@ -24,27 +41,27 @@ const Dropzone = ({ onDrag, label }: IDropzoneProps) => {
 
     // Render
     return (
-        <HStack {...getRootProps()}>
+        <HStack {...getRootProps()} spacing='0'>
             <input {...getInputProps()} />
             <Button
                 border={`0.125rem dashed ${COLORS.InputText.value}`}
-                font={FONTS.T1.T12px.Medium500.value}
+                font={font}
                 borderRadius='1rem'
-                w='6.25rem'
-                h='6.25rem'
-                maxH='6.25rem'
-                maxW='6.25rem'
+                w={w}
+                h={h}
+                maxH={h}
+                maxW={w}
                 direction='column'
                 backgroundColor='transparent'
                 color={COLORS.InputText.value}
                 whiteSpace='pre-line'
-                spacing='0.4375rem'
+                spacing={spacing}
                 startEnhancer={(): React.ReactElement => (
                     <Icon
                         name='uploadCloud'
                         stroke={COLORS.InputText.value}
-                        width='24'
-                        height='24'
+                        width={iconWidth}
+                        height={iconHeight}
                     />
                 )}
             >
