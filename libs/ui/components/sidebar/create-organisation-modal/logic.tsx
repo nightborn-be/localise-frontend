@@ -6,6 +6,9 @@ import { toCreateOrganisationDTO } from './mappers';
 import { useCreateOrganisation } from '../../../../gateways/resource-api/organisations/organisations';
 import useToast from '../../progress-validation/toast';
 import { ToastType } from '../../progress-validation/toast/types';
+import { useTranslation } from 'react-i18next';
+import { tKeys } from '../../../../i18n/keys';
+import { AxiosError } from 'axios';
 
 export const useCreateOrganisationLogic = (): CreateOrganisationLogicType => {
     // Attributes
@@ -14,6 +17,7 @@ export const useCreateOrganisationLogic = (): CreateOrganisationLogicType => {
         string | ArrayBuffer | null
     >();
     const toast = useToast();
+    const { t } = useTranslation();
 
     // Hooks
     const { mutateAsync: createOrganisation } = useCreateOrganisation();
@@ -34,7 +38,7 @@ export const useCreateOrganisationLogic = (): CreateOrganisationLogicType => {
     //Function
     async function handleOnSubmit() {
         try {
-            createOrganisation(
+            await createOrganisation(
                 {
                     data: toCreateOrganisationDTO(
                         form.organisationName.value,
@@ -42,18 +46,20 @@ export const useCreateOrganisationLogic = (): CreateOrganisationLogicType => {
                     ),
                 },
                 {
-                    onSuccess: () => {
+                    onSuccess: async () => {
                         resetForm();
                     },
-                    onError: () => {
+                    onError: async () => {
                         toast({
                             type: ToastType.ERROR,
-                            title: 'Error organisation cannot be create',
+                            title: t<string>(
+                                tKeys.home.modal.create_organisation.form.error,
+                            ),
                         });
                     },
                 },
             );
-        } catch (e) {}
+        } catch (err) {}
     }
 
     function resetForm() {

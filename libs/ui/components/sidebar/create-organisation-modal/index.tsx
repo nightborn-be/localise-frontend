@@ -48,11 +48,11 @@ export const CreateOrganisationModal = ({
                         w={'36.875rem'}
                         padding='0.625rem'
                         placeholder={t<string>(
-                            tKeys.home.modal.create_organisation.from
+                            tKeys.home.modal.create_organisation.form
                                 .organisation_name.placeholder,
                         )}
                         label={t<string>(
-                            tKeys.home.modal.create_organisation.from
+                            tKeys.home.modal.create_organisation.form
                                 .organisation_name.title,
                         )}
                         font={FONTS.T1.T12px.Regular400.value}
@@ -68,8 +68,14 @@ export const CreateOrganisationModal = ({
                     w={'full'}
                 >
                     <InputLabel
-                        label='Add a picutre'
-                        description='The recommended size is 256x256px'
+                        label={t<string>(
+                            tKeys.home.modal.create_organisation.form
+                                .organisation_picture.title,
+                        )}
+                        description={t<string>(
+                            tKeys.home.modal.create_organisation.form
+                                .organisation_picture.description,
+                        )}
                         labelColor={COLORS.Text.T400.value}
                         labelFont={FONTS.T1.T14px.Medium500.value}
                     />
@@ -109,7 +115,10 @@ export const CreateOrganisationModal = ({
                                 color={COLORS.InputText.value}
                                 whiteSpace='pre-line'
                                 src={picturePath}
-                                alt='Organization picture'
+                                alt={t<string>(
+                                    tKeys.home.modal.create_organisation.form
+                                        .organisation_picture.alt,
+                                )}
                             />
                         </HStack>
                     ) : (
@@ -136,7 +145,10 @@ export const CreateOrganisationModal = ({
                 >
                     <HStack w={'full'} padding='0px' position={'relative'}>
                         <InputLabel
-                            label={'Invite your teammates'}
+                            label={t<string>(
+                                tKeys.home.modal.create_organisation.form
+                                    .organisation_teammates.title,
+                            )}
                             labelColor={COLORS.Text.T400.value}
                             labelFont={FONTS.T1.T14px.Medium500.value}
                         />
@@ -185,7 +197,10 @@ export const CreateOrganisationModal = ({
                             name: 'name',
                             value: '',
                             onChange: () => {},
-                            placeholder: 'Text',
+                            placeholder: t<string>(
+                                tKeys.home.modal.create_organisation.form
+                                    .organisation_teammates.placeholder,
+                            ),
                             w: '100%',
                             border: 'transparent',
                             font: FONTS.T1.T12px.Regular400.value,
@@ -240,7 +255,10 @@ export const CreateOrganisationModal = ({
                             />
                         )}
                     >
-                        Add a member
+                        {t<string>(
+                            tKeys.home.modal.create_organisation.form
+                                .organisation_teammates.cta.add,
+                        )}
                     </Button>
                 </VStack>
             </VStack>
