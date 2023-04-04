@@ -64,7 +64,7 @@ const SearchBox = <T,>({
                     noValueMsg={noValueMsg}
                 />
                 {!!activeKeys?.length && (
-                    <HStack spacing={'0.25rem'}>
+                    <HStack spacing={'0.25rem'} overflowX='scroll'>
                         {activeKeys.map((tag, index) => (
                             <Tag
                                 key={`tag-${index}`}

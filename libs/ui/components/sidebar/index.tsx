@@ -14,6 +14,7 @@ import SidebarOrganisation from '../pickers/sidebar-organisation';
 import OrganizationMenu from '../contents/organisation-menu';
 import { useSidebarLogic } from './logic';
 import CreateProjectModal from './create-project-modal/index';
+
 export const SideBar = () => {
     const [filterValue, setFilterValue] = useState<string>('');
     const {

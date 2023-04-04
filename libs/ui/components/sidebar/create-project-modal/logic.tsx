@@ -1,20 +1,16 @@
 import { useState, useEffect } from 'react';
 import { SearchBarOption } from '../../inputs/searchbar/props';
-import {
-    OrgnanisationPagingDTO,
-    ProjectPagingDTO,
-    UpsertProjectLanguageDTO,
-} from '../../../../gateways/resource-api/types/index';
 import { CreateProjectLogicType, ICreateProjectForm } from './types';
 import { useFormik } from 'formik';
 import { createForm } from '../../../../utils/formik';
 import languages from '../../../../utils/languages';
 import { toCreateProjectDTO } from './mappers';
 import { useCreateProject } from '../../../../gateways/resource-api/projects/projects';
+import useToast from '../../progress-validation/toast';
+import { ToastType } from '../../progress-validation/toast/types';
 
 export const useCreateProjectLogic = (): CreateProjectLogicType => {
     // Attributes
-
     const [sourceLanguageActiveKey, setSourceLanguageActiveKey] =
         useState<string>('');
     const [filterValue, setFilterValue] = useState<string>('');
@@ -26,8 +22,11 @@ export const useCreateProjectLogic = (): CreateProjectLogicType => {
             label: language.name,
         }),
     );
+    const toast = useToast();
+
     // Hooks
     const { mutateAsync: createProject } = useCreateProject();
+
     // Formik
     const { values, ...rest } = useFormik<ICreateProjectForm>({
         initialValues: {
@@ -53,16 +52,17 @@ export const useCreateProjectLogic = (): CreateProjectLogicType => {
                 },
                 {
                     onSuccess: async () => {
-                        console.log('Success');
+                        resetForm();
                     },
                     onError: async () => {
-                        console.log('Error');
+                        toast({
+                            type: ToastType.ERROR,
+                            title: 'Error',
+                        });
                     },
                 },
             );
-        } catch (e) {
-            console.log('Error msg', e);
-        }
+        } catch (e) {}
     }
     // Functions
     function onCheck(value: string) {
@@ -84,6 +84,16 @@ export const useCreateProjectLogic = (): CreateProjectLogicType => {
         setActiveKeys((prev) => prev?.filter((option) => option != value));
     }
 
+    function resetForm() {
+        rest.setFieldValue('projectName', '');
+        rest.setFieldValue('sourceLanguage', '');
+        rest.setFieldValue('targetLanguages', []);
+        setActiveKeys([]);
+        setFilterValue('');
+        setValue('');
+        setSourceLanguageActiveKey('');
+    }
+
     return {
         sourceLanguageActiveKey,
         setSourceLanguageActiveKey,
@@ -97,6 +107,7 @@ export const useCreateProjectLogic = (): CreateProjectLogicType => {
         filter,
         onTagDelete,
         handleOnSubmit,
+        resetForm,
         form,
     };
 };
