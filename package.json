@@ -17,13 +17,13 @@
     "devDependencies": {
         "ajv": "^8.12.0",
         "eslint-config-custom": "*",
-        "prettier": "latest",
-        "turbo": "latest"
+        "prettier": "latest"
     },
     "engines": {
         "node": ">=14.0.0"
     },
     "dependencies": {
+        "turbo": "latest",
         "@chakra-ui/react": "^2.4.6",
         "firebase": "^9.18.0",
         "formik": "^2.2.9",
