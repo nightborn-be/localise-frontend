@@ -2,62 +2,38 @@ import { useState } from 'react';
 import COLORS from '../../constants/colors';
 import { SearchBarOption } from '../inputs/searchbar/props';
 import {
+    OrganisationDTO,
     OrgnanisationPagingDTO,
     ProjectPagingDTO,
 } from '../../../gateways/resource-api/types/index';
+import { useGetMe } from '../../../gateways/resource-api/users/users';
 import { useGetProjects } from '../../../gateways/resource-api/projects/projects';
-import { useGetOrganisationsForUser } from '../../../gateways/resource-api/organisations/organisations';
+import {
+    useGetOrganisation,
+    useGetOrganisationsForUser,
+    useSwitchUserOrganisation,
+} from '../../../gateways/resource-api/organisations/organisations';
 import { SidebarLogicType } from './types';
 
 export const useSidebarLogic = (): SidebarLogicType => {
     // Attributes
     const [activeOptionKey, setActiveOptionKey] = useState<string>('');
     // const projectsData: ProjectPagingDTO = useGetProjects();
-    const options: SearchBarOption<string>[] = [
-        {
-            label: 'Nightborn',
-            value: 'Nightborn',
-        },
-        {
-            label: 'Bloomings Riders',
-            value: 'Bloomings Riders',
-        },
-        {
-            label: 'Happy Lifetime',
-            value: 'Happy Lifetime',
-        },
-    ];
     const [activeProjectKey, setActiveProjectKey] = useState<string>('');
-
-    // const organisationUserData: OrgnanisationPagingDTO =
-    //     useGetOrganisationsForUser('test');
-    const optionsOrganisation = [
-        {
-            title: 'Nightborn',
-            description: '15 members',
-            imageUrl: '/assets/images/nightborn.png',
-            color: 'transparent',
-            value: 0,
-        },
-        {
-            title: 'Bloomings Riders',
-            description: '3 members',
-            color: COLORS.Bancontact.Blue.value,
-            value: 1,
-        },
-        {
-            title: 'Happy Lifetime',
-            description: '12 members',
-            color: COLORS.Bancontact.Payconiq.value,
-            value: 2,
-        },
-    ];
-
     const [isOrganisationClicked, setIsOrganisationClicked] =
         useState<boolean>(false);
-    const [organizationValue, setOrganizationValue] = useState<string>('');
-    const [activeOrganizationKey, setActiveOrganizationKey] = useState(0);
-
+    // Hooks
+    const { mutateAsync: switchUserOrganisation } = useSwitchUserOrganisation();
+    const { data: userData, refetch: refetchUserData } = useGetMe();
+    const {
+        data: actualOrganisationUser,
+        refetch: refetchActualUserOrganisation,
+    } = useGetOrganisation(userData?.organisationId as string);
+    const { data: organisationUserData, refetch: refecthOrganisationUserData } =
+        useGetOrganisationsForUser(userData?.userId as string);
+    const { data: organisationProjectData } = useGetProjects(
+        actualOrganisationUser?.id as string,
+    );
     // Functions
     function handleOnOptionClick(value: string) {
         setActiveOptionKey(value);
@@ -66,9 +42,15 @@ export const useSidebarLogic = (): SidebarLogicType => {
         //make the call api to get the data of the project
         setActiveProjectKey(value);
     }
+    const options: SearchBarOption<string>[] = organisationProjectData?.data
+        ? organisationProjectData?.data?.map((project) => ({
+              label: project.name as string,
+              value: project.id as string,
+          }))
+        : [];
     function filter(value: string): SearchBarOption<string>[] {
         return options?.filter((option) => {
-            return option.value.toLowerCase().includes(value.toLowerCase());
+            return option.label.toLowerCase().includes(value.toLowerCase());
         });
     }
     function handleToggleIsOrganisationClicked() {
@@ -80,20 +62,40 @@ export const useSidebarLogic = (): SidebarLogicType => {
     }
 
     function handleOnCreateProject() {}
+
+    // Function
+    function getInitialeName() {
+        const arraySplit = actualOrganisationUser?.name?.split(' ');
+        let inital = '';
+        arraySplit?.map((obj) => {
+            inital += obj.charAt(0);
+        });
+        return inital;
+    }
+
+    function switchOrgansiation(organisation: OrganisationDTO) {
+        switchUserOrganisation(
+            {
+                userId: userData?.userId as string,
+                data: { organisationId: organisation.id as string },
+            },
+            {
+                onSuccess: () => {
+                    refetchUserData();
+                    setIsOrganisationClicked(false);
+                },
+            },
+        );
+    }
     return {
         handleOnCreateOrganizationClick,
         handleToggleIsOrganisationClicked,
         filter,
         handleOnProjectClick,
         handleOnOptionClick,
-        activeOrganizationKey,
-        setActiveOrganizationKey,
-        organizationValue,
-        setOrganizationValue,
         isOrganisationClicked,
         setIsOrganisationClicked,
-        optionsOrganisation,
-        // organisationUserData,
+        organisationUserData,
         activeProjectKey,
         setActiveProjectKey,
         options,
@@ -101,5 +103,8 @@ export const useSidebarLogic = (): SidebarLogicType => {
         activeOptionKey,
         setActiveOptionKey,
         handleOnCreateProject,
+        getInitialeName,
+        actualOrganisationUser,
+        switchOrgansiation,
     };
 };

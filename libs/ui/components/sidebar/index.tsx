@@ -23,13 +23,9 @@ export const SideBar = () => {
         filter,
         handleOnProjectClick,
         handleOnOptionClick,
-        activeOrganizationKey,
-        setActiveOrganizationKey,
-        organizationValue,
-        setOrganizationValue,
+        actualOrganisationUser,
         isOrganisationClicked,
         setIsOrganisationClicked,
-        optionsOrganisation,
         organisationUserData,
         activeProjectKey,
         setActiveProjectKey,
@@ -37,6 +33,8 @@ export const SideBar = () => {
         projectsData,
         activeOptionKey,
         setActiveOptionKey,
+        getInitialeName,
+        switchOrgansiation,
     } = useSidebarLogic();
 
     const { isOpen, onOpen, onClose } = useDisclosure();
@@ -154,8 +152,8 @@ export const SideBar = () => {
                             <SidebarProject
                                 onClick={handleOnProjectClick}
                                 activeKey={activeProjectKey}
-                                text={option.value}
-                                key={index}
+                                text={option.label}
+                                key={option.value}
                                 textFont={FONTS.T1.T12px.Medium500.value}
                                 textColor={COLORS.Text.T400.value}
                                 projectIconColor='#1ABC9C'
@@ -212,56 +210,52 @@ export const SideBar = () => {
                         bottom='4.75rem'
                         left='0.5rem'
                     >
-                        <OrganizationMenu
-                            options={optionsOrganisation}
-                            value={activeOrganizationKey}
-                            onChange={(organizationValue) => {
-                                setActiveOrganizationKey(organizationValue);
-                            }}
-                            onClick={handleOnCreateOrganizationClick}
-                        />
+                        {organisationUserData?.data && (
+                            <OrganizationMenu
+                                options={organisationUserData.data}
+                                value={actualOrganisationUser}
+                                onChange={(organizationValue) => {
+                                    switchOrgansiation(organizationValue);
+                                    
+                                }}
+                                onClick={handleOnCreateOrganizationClick}
+                            />
+                        )}
                     </Box>
-                    <SidebarOrganisation
-                        w={'14.25rem'}
-                        h={'3.25rem'}
-                        padding='0.625rem 0.75rem'
-                        topText={'Organisation'}
-                        topTextFont={FONTS.T1.T10px.Regular400.value}
-                        topTextColor={COLORS.InputText.value}
-                        bottomText={
-                            optionsOrganisation.find(
-                                (obj) => obj.value === activeOrganizationKey,
-                            )?.title
-                        }
-                        bottomTextFont={FONTS.T1.T12px.Medium500.value}
-                        bottomTextColor={COLORS.Text.T400.value}
-                        marginLeftText={'0.5rem'}
-                        onClick={handleToggleIsOrganisationClicked}
-                        color={
-                            optionsOrganisation.find(
-                                (obj) => obj.value === activeOrganizationKey,
-                            )?.color
-                        }
-                        startEnhancer={
-                            optionsOrganisation.find(
-                                (obj) => obj.value === activeOrganizationKey,
-                            )?.imageUrl ? (
-                                <Image
-                                    w={'2rem'}
-                                    h={'2rem'}
-                                    src={
-                                        optionsOrganisation.find(
-                                            (obj) =>
-                                                obj.value ===
-                                                activeOrganizationKey,
-                                        )?.imageUrl
-                                    }
-                                    alt='nightborn'
-                                />
-                            ) : undefined
-                        }
-                        endEnhancer={<Icon name='editorialArrow' />}
-                    />
+                    {actualOrganisationUser && (
+                        <SidebarOrganisation
+                            w={'14.25rem'}
+                            h={'3.25rem'}
+                            padding='0.625rem 0.75rem'
+                            topText={'Organisation'}
+                            topTextFont={FONTS.T1.T10px.Regular400.value}
+                            topTextColor={COLORS.InputText.value}
+                            bottomText={actualOrganisationUser.name}
+                            bottomTextFont={FONTS.T1.T12px.Medium500.value}
+                            bottomTextColor={COLORS.Text.T400.value}
+                            marginLeftText={'0.5rem'}
+                            onClick={handleToggleIsOrganisationClicked}
+                            color={COLORS.Line.value}
+                            startEnhancer={
+                                actualOrganisationUser.pictureUrl ? (
+                                    <Image
+                                        w={'2rem'}
+                                        h={'2rem'}
+                                        src={actualOrganisationUser.pictureUrl}
+                                        alt='nightborn'
+                                    />
+                                ) : (
+                                    <Text
+                                        font={FONTS.T1.T12px.Medium500.value}
+                                        color={COLORS.Text.T400.value}
+                                    >
+                                        {getInitialeName()}
+                                    </Text>
+                                )
+                            }
+                            endEnhancer={<Icon name='editorialArrow' />}
+                        />
+                    )}
                 </VStack>
             </VStack>
             <CreateProjectModal isOpen={isOpen} onClose={onClose} />
