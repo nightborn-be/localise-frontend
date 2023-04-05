@@ -4,7 +4,8 @@ export type SidebarMenuSettingOption<T> = {
 };
 
 export enum MenuItemValue {
-    INFORMATION = 'INFORMATION',
+    INFORMATIONS = 'INFORMATIONS',
+    MEMBERS = 'MEMBERS',
     PROJET_COLOR = 'PROJECT_COLOR',
     SOURCE_LANGUAGE = 'SOURCE_LANGUAGE',
     TARGET_LANGUAGES = 'TARGET_LANGUAGES',
