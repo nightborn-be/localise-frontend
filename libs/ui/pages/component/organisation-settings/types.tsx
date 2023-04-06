@@ -4,10 +4,11 @@ export interface OrganisationSettingsLogicType {
     handleOnSubmit: () => void;
     handleOnDelete: () => void;
     form: IForm<IOrganisationSettingsForm> & IDefaultForm;
-    setOrganisationPicture: (value: string) => void;
+    setOrganisationPicture: (binary?: string | ArrayBuffer | null) => void;
+    pictureUrl: string;
+    getInitialeName: () => string;
 }
 
 export interface IOrganisationSettingsForm {
     organisationName: string;
-    organisationPicture: string;
 }

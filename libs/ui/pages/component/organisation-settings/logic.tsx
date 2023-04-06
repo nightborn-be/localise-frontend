@@ -24,8 +24,10 @@ export const useOrganisationSettingsLogic =
         // Attributes
         const { t } = useTranslation();
         const toast = useToast();
-        const [picturePath, setPicturePath] = useState<string>('');
-
+        const [organisationPicture, setOrganisationPicture] = useState<
+            string | ArrayBuffer | null
+        >();
+        const [pictureUrl, setPictureUrl] = useState<string>('');
         // Hooks
         const { mutateAsync: updateOrganisation } = useUpdateOrganisation();
         const { mutateAsync: deleteOrganisation } = useDeleteOrganisation();
@@ -41,7 +43,6 @@ export const useOrganisationSettingsLogic =
         const { values, ...rest } = useFormik<IOrganisationSettingsForm>({
             initialValues: {
                 organisationName: '',
-                organisationPicture: '',
             },
             onSubmit: handleOnSubmit,
             validateOnChange: false,
@@ -51,11 +52,9 @@ export const useOrganisationSettingsLogic =
                 'organisationName',
                 actualOrganisationUser?.name,
             );
-            rest.setFieldValue(
-                'organisationPicture',
-                actualOrganisationUser?.pictureUrl,
-            );
+            setPictureUrl(actualOrganisationUser?.pictureUrl as string);
         }, [actualOrganisationUser]);
+
         const form = createForm(values, rest);
 
         // Functions
@@ -66,7 +65,9 @@ export const useOrganisationSettingsLogic =
                         organisationId: actualOrganisationUser?.id as string,
                         data: {
                             name: form.organisationName.value,
-                            pictureContent: form.organisationPicture.value,
+                            pictureContent: Buffer.from(
+                                organisationPicture as ArrayBuffer,
+                            ).toString('base64'),
                         },
                     },
                     {
@@ -108,15 +109,24 @@ export const useOrganisationSettingsLogic =
         }
         function resetForm() {
             rest.setFieldValue('organisationName', '');
-            rest.setFieldValue('picturePath', '');
+            rest.setFieldValue('organisationPicture', '');
         }
-        function setOrganisationPicture(value) {
-            rest.setFieldValue('organisationPicture', value);
+
+        // Function
+        function getInitialeName() {
+            const arraySplit = actualOrganisationUser?.name?.split(' ');
+            let inital = '';
+            arraySplit?.map((obj) => {
+                inital += obj.charAt(0);
+            });
+            return inital;
         }
         return {
             form,
             handleOnSubmit,
             handleOnDelete,
             setOrganisationPicture,
+            getInitialeName,
+            pictureUrl,
         };
     };

@@ -18,12 +18,19 @@ import TableRow from '../../../components/table/table-row';
 import Dropzone from '../../auth/sign-up/organisation/picture/component/dropzone';
 import { useTranslation } from 'react-i18next';
 import { tKeys } from '../../../../i18n/keys';
+import Text from '../../../components/contents/text';
 
 const OrganisationSettings = () => {
+    const {
+        form,
+        setOrganisationPicture,
+        handleOnSubmit,
+        handleOnDelete,
+        pictureUrl,
+        getInitialeName,
+    } = useOrganisationSettingsLogic();
     const [activeKey, setActiveKey] = useState(MenuItemValue.INFORMATIONS);
     const { t } = useTranslation();
-    const { form, setOrganisationPicture, handleOnSubmit, handleOnDelete } =
-        useOrganisationSettingsLogic();
     const informationRef = useRef<HTMLDivElement>(null);
     const membersRef = useRef<HTMLDivElement>(null);
     return (
@@ -132,38 +139,53 @@ const OrganisationSettings = () => {
                                 Do you want to delete this organisation ?
                             </Button>
                         </VStack>
-                        <Box
+                        <HStack
                             position={'relative'}
                             minW={'120px'}
                             width='120px'
-                            height={'fit-content'}
+                            height={'120px'}
+                            borderRadius='100px'
+                            justifyContent={'center'}
+                            bg={COLORS.Line.value}
                         >
-                            <Image
-                                src={
-                                    form.organisationPicture
-                                        ? form.organisationPicture.value
-                                        : ''
-                                }
-                                alt=''
-                                width='120px'
-                                height={'120px'}
-                                borderRadius='100px'
-                            />
-                            <Dropzone onDrag={setOrganisationPicture}>
-                                <ButtonIcon
-                                    position={'absolute'}
-                                    top='85px'
-                                    bottom='0'
-                                    right='0'
-                                    size={ButtonSize.SMALL}
-                                    border={`4px solid ${COLORS.White.T500.value}`}
-                                    borderRadius='60px'
-                                    bg={COLORS.Line.value}
+                            {pictureUrl ? (
+                                <Image
+                                    src={pictureUrl}
+                                    alt=''
+                                    width='120px'
+                                    height={'120px'}
+                                    borderRadius='100px'
+                                />
+                            ) : (
+                                <Text
+                                    font={FONTS.T1.T44px.Medium500.value}
+                                    color={COLORS.Text.T400.value}
                                 >
-                                    <Icon name='edit' width='12' height='12' />
-                                </ButtonIcon>
-                            </Dropzone>
-                        </Box>
+                                    {getInitialeName()}
+                                </Text>
+                            )}
+                            <Box
+                                position={'absolute'}
+                                top='85px'
+                                bottom='0'
+                                right='0'
+                            >
+                                <Dropzone onDrag={setOrganisationPicture}>
+                                    <ButtonIcon
+                                        size={ButtonSize.SMALL}
+                                        border={`4px solid ${COLORS.White.T500.value}`}
+                                        borderRadius='60px'
+                                        bg={COLORS.Line.value}
+                                    >
+                                        <Icon
+                                            name='edit'
+                                            width='12'
+                                            height='12'
+                                        />
+                                    </ButtonIcon>
+                                </Dropzone>
+                            </Box>
+                        </HStack>
                     </HStack>
                     <VStack
                         padding={'40px 32px 40px 20px'}

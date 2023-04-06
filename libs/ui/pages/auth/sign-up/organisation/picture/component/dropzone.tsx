@@ -11,7 +11,11 @@ const Dropzone = ({ onDrag, children }: IDropzoneProps) => {
     // Attributes
     const onDrop = useCallback(
         (acceptedFiles: File[]) => {
-            onDrag && onDrag(URL.createObjectURL(acceptedFiles[0]));
+            const reader = new FileReader();
+            reader.onload = () => {
+                onDrag && onDrag(reader.result);
+            };
+            reader.readAsArrayBuffer(acceptedFiles[0]);
         },
         [onDrag],
     );
@@ -24,7 +28,7 @@ const Dropzone = ({ onDrag, children }: IDropzoneProps) => {
 
     // Render
     return (
-        <HStack {...getRootProps()}>
+        <HStack {...getRootProps()} spacing='0'>
             <input {...getInputProps()} />
             {children}
         </HStack>
