@@ -30,4 +30,5 @@ export interface IInputProps<T> extends IFieldForm<T> {
     bg?: string;
     errorMsg?: string;
     isTouched?: boolean;
+    rightElementMarginRight?: string;
 }
