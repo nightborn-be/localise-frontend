@@ -49,6 +49,6 @@ interface IModalFooterProps {
     secondCtaBgHoverColor?: string;
     secondCtaFont?: Font;
     secondCtaStartEnhancer?: ReactElement;
-    secondCtaWidth?: string,
-    secondCtaHeight?: string,
+    secondCtaWidth?: string;
+    secondCtaHeight?: string;
 }

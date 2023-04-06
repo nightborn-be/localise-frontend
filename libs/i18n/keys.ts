@@ -166,6 +166,15 @@ export const tKeys = {
                 },
             },
             delete_project: {
+                content: {
+                    title: 'home.modal.delete_project.content.title',
+                    description:
+                        'home.modal.delete_project.content.description',
+                },
+                cta: {
+                    cancel: 'home.modal.delete_project.cta.cancel',
+                    delete: 'home.modal.delete_project.cta.delete',
+                },
                 title: 'home.modal.delete_project.title',
             },
         },

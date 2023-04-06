@@ -2,9 +2,7 @@ import { HStack, Image, VStack } from '@chakra-ui/react';
 import React from 'react';
 import COLORS from '../../../constants/colors';
 import FONTS from '../../../constants/fonts';
-import { SearchBarOption } from '../../inputs/searchbar/props';
 import Modal from '../../surface/modal';
-import languages from '../../../../utils/languages';
 import { useTranslation } from 'react-i18next';
 import { tKeys } from '../../../../i18n/keys';
 import { useDeleteOrganisationLogic } from './logic';
@@ -17,11 +15,6 @@ export const DeleteOrganisationModal = ({
     onClose,
 }: IDeleteOrganisationProps) => {
     const { handleOnSubmit } = useDeleteOrganisationLogic();
-
-    const options: SearchBarOption<string>[] = languages.map((language) => ({
-        value: language.name,
-        label: language.name,
-    }));
     const { t } = useTranslation();
     return (
         <HStack>
@@ -47,12 +40,16 @@ export const DeleteOrganisationModal = ({
                     font: FONTS.T1.T16px.SemiBold600.value,
                     justifyContent: 'center',
                     padding: '0px 20px 64px 20px',
-                    firstCtaLabel: 'Cancel',
+                    firstCtaLabel: t<string>(
+                        tKeys.home.modal.delete_project.cta.cancel,
+                    ),
                     firstCtaBgColor: 'transparent',
                     firstCtaBgHoverColor: COLORS.Localize.Purple.T500.value,
                     firstCtaColor: COLORS.InputText.value,
                     firstCtaFont: FONTS.T1.T12px.SemiBold600.value,
-                    secondCtaLabel: 'Delete',
+                    secondCtaLabel: t<string>(
+                        tKeys.home.modal.delete_project.cta.delete,
+                    ),
                     secondCtaBgColor: COLORS.Error.T500.value,
                     secondCtaColor: COLORS.White.T500.value,
                     secondCtaFont: FONTS.T1.T12px.SemiBold600.value,
@@ -84,14 +81,18 @@ export const DeleteOrganisationModal = ({
                             color={COLORS.Text.T400.value}
                             font={FONTS.T1.T20px.SemiBold600.value}
                         >
-                            Are you sure you want to delete ?
+                            {t<string>(
+                                tKeys.home.modal.delete_project.content.title,
+                            )}
                         </Text>
                         <Text
                             color={COLORS.InputText.value}
                             font={FONTS.T1.T14px.Regular400.value}
                         >
-                            By deleting this organization you will loose all the
-                            informations and keys related to this organization.
+                            {t<string>(
+                                tKeys.home.modal.delete_project.content
+                                    .description,
+                            )}
                         </Text>
                     </VStack>
                 </VStack>

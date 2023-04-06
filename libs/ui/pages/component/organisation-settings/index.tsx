@@ -35,7 +35,7 @@ const OrganisationSettings = () => {
     const membersRef = useRef<HTMLDivElement>(null);
     const { isOpen, onOpen, onClose } = useDisclosure();
     return (
-        <VStack h='full' w='full' alignItems={'left'} padding='0px'>
+        <VStack h='full' w='full' alignItems={'left'} padding='0rem'>
             <Breadcrumb
                 elements={[
                     {
@@ -49,7 +49,7 @@ const OrganisationSettings = () => {
                 w='full'
                 alignItems='start'
                 justifyContent={'start'}
-                spacing='0px'
+                spacing='0rem'
             >
                 <VStack h='fit-content'>
                     <SidebarMenuSetting
@@ -91,17 +91,17 @@ const OrganisationSettings = () => {
                     w={'full'}
                     alignItems='left'
                     justifyContent={'left'}
-                    spacing='0px'
+                    spacing='0rem'
                 >
                     <HStack
-                        spacing='100px'
+                        spacing='6.25rem'
                         w='full'
-                        padding={'32px 100px 0px 20px'}
+                        padding={'2rem 6.25rem 0rem 1.25rem'}
                     >
                         <VStack
                             alignItems={'left'}
-                            spacing='20px'
-                            padding={'0px'}
+                            spacing='1.25rem'
+                            padding={'0rem'}
                             w='full'
                             ref={informationRef}
                         >
@@ -139,7 +139,7 @@ const OrganisationSettings = () => {
                                 _active={{ bg: 'transparent' }}
                                 alignItems='left'
                                 justifyContent={'left'}
-                                borderRadius='0px'
+                                borderRadius='0rem'
                                 padding='0rem'
                                 gap='0.5rem'
                                 backgroundColor='transparent'
@@ -165,10 +165,10 @@ const OrganisationSettings = () => {
                         </VStack>
                         <HStack
                             position={'relative'}
-                            minW={'120px'}
-                            width='120px'
-                            height={'120px'}
-                            borderRadius='100px'
+                            minW={'7.5rem'}
+                            width='7.5rem'
+                            height={'7.5rem'}
+                            borderRadius='6.25rem'
                             justifyContent={'center'}
                             bg={COLORS.Line.value}
                         >
@@ -176,9 +176,9 @@ const OrganisationSettings = () => {
                                 <Image
                                     src={pictureUrl}
                                     alt=''
-                                    width='120px'
-                                    height={'120px'}
-                                    borderRadius='100px'
+                                    width='7.5rem'
+                                    height={'7.5rem'}
+                                    borderRadius='6.25rem'
                                 />
                             ) : (
                                 <Text
@@ -190,15 +190,15 @@ const OrganisationSettings = () => {
                             )}
                             <Box
                                 position={'absolute'}
-                                top='85px'
+                                top='5.3125rem'
                                 bottom='0'
                                 right='0'
                             >
                                 <Dropzone onDrag={setOrganisationPicture}>
                                     <ButtonIcon
                                         size={ButtonSize.SMALL}
-                                        border={`4px solid ${COLORS.White.T500.value}`}
-                                        borderRadius='60px'
+                                        border={`0.25rem solid ${COLORS.White.T500.value}`}
+                                        borderRadius='3.75rem'
                                         bg={COLORS.Line.value}
                                     >
                                         <Icon
@@ -212,18 +212,22 @@ const OrganisationSettings = () => {
                         </HStack>
                     </HStack>
                     <VStack
-                        padding={'40px 32px 40px 20px'}
-                        spacing='20px'
+                        padding={'2.5rem 2rem 2.5rem 1.25rem'}
+                        spacing='1.25rem'
                         justifyContent={'center'}
                         alignItems='center'
                         w='full'
                     >
-                        <Box w={'full'} height={'1px'} bg={COLORS.Line.value} />
+                        <Box
+                            w={'full'}
+                            height={'0.0625rem'}
+                            bg={COLORS.Line.value}
+                        />
                     </VStack>
                     <VStack
                         position={'relative'}
                         alignItems={'left'}
-                        padding='0px 32px 32px 20px'
+                        padding='0rem 2rem 2rem 1.25rem'
                         w='full'
                         ref={membersRef}
                     >
@@ -279,7 +283,7 @@ const OrganisationSettings = () => {
                     <VStack
                         alignItems={'left'}
                         w='full'
-                        padding='0px 32px 32px 20px'
+                        padding='0rem 2rem 2rem 1.25rem'
                         spacing={0}
                     >
                         <TableHeader />
@@ -299,14 +303,14 @@ const OrganisationSettings = () => {
                     <HStack
                         w='full'
                         justifyContent={'right'}
-                        padding='0px 32px 32px 20px'
+                        padding='0rem 2rem 2rem 1.25rem'
                     >
                         <Button
                             padding='0.25rem 0.75rem 0.25rem 0.75rem'
                             backgroundColor={COLORS.Localize.Purple.T500.value}
                             gap='0.25rem'
                             h={'2rem'}
-                            w={'80px'}
+                            w={'5rem'}
                             borderRadius={'0.5rem'}
                             hoverBackgroundColor={
                                 COLORS.Localize.Purple.T600.value
