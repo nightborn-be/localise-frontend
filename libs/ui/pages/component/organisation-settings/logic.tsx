@@ -27,7 +27,8 @@ export const useOrganisationSettingsLogic =
         const [pictureUrl, setPictureUrl] = useState<string>('');
 
         // Hooks
-        const { mutateAsync: updateOrganisation } = useUpdateOrganisation();
+        const { mutateAsync: updateOrganisation, isLoading } =
+            useUpdateOrganisation();
         const { data: userData, refetch: refetchUserData } = useGetMe();
         const {
             data: actualOrganisationUser,
@@ -108,5 +109,6 @@ export const useOrganisationSettingsLogic =
             setOrganisationPicture,
             getInitialeName,
             pictureUrl,
+            isLoading,
         };
     };

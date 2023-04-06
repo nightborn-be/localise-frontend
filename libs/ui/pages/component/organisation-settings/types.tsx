@@ -6,6 +6,7 @@ export interface OrganisationSettingsLogicType {
     setOrganisationPicture: (binary: string | ArrayBuffer | null) => void;
     pictureUrl: string;
     getInitialeName: () => string;
+    isLoading: boolean;
 }
 
 export interface IOrganisationSettingsForm {
