@@ -1,5 +1,6 @@
 import { InputProps } from '@chakra-ui/react';
 import React from 'react';
+import { ActionMeta, MultiValue, SingleValue } from 'react-select';
 import { Font } from '../../../constants/fonts';
 
 export interface IInputSelectProps extends Omit<InputProps, 'onChange'> {
@@ -24,7 +25,10 @@ export interface IInputSelectProps extends Omit<InputProps, 'onChange'> {
     isMultiple?: boolean;
     font?: Font;
     paddingContainer?: string;
-    onChange?: (value) => void;
+    onChange?: (
+        value: SingleValue<Options> | MultiValue<Options>,
+        actionMeta: ActionMeta<Options>,
+    ) => void;
 }
 
 export type Options = {

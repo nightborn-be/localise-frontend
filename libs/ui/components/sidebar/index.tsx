@@ -231,7 +231,8 @@ export const SideBar = () => {
                         topTextColor={COLORS.InputText.value}
                         bottomText={
                             optionsOrganisation.find(
-                                (obj) => obj.value === activeOrganizationKey,
+                                (obj: any) =>
+                                    obj.value === activeOrganizationKey,
                             )?.title
                         }
                         bottomTextFont={FONTS.T1.T12px.Medium500.value}
@@ -240,19 +241,21 @@ export const SideBar = () => {
                         onClick={handleToggleIsOrganisationClicked}
                         color={
                             optionsOrganisation.find(
-                                (obj) => obj.value === activeOrganizationKey,
+                                (obj: any) =>
+                                    obj.value === activeOrganizationKey,
                             )?.color
                         }
                         startEnhancer={
                             optionsOrganisation.find(
-                                (obj) => obj.value === activeOrganizationKey,
+                                (obj: any) =>
+                                    obj.value === activeOrganizationKey,
                             )?.imageUrl ? (
                                 <Image
                                     w={'2rem'}
                                     h={'2rem'}
                                     src={
                                         optionsOrganisation.find(
-                                            (obj) =>
+                                            (obj: any) =>
                                                 obj.value ===
                                                 activeOrganizationKey,
                                         )?.imageUrl
