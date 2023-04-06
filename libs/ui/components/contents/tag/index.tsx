@@ -7,12 +7,12 @@ import ButtonIcon from '../../inputs/button-icon';
 import Icon from '../icon';
 import { ButtonSize } from '../../inputs/button-icon/types';
 const Tag = <T,>({
-    h = '28px',
+    h = '1.75rem',
     w = 'fit-content',
-    gap = '4px',
-    padding = '6px 10px',
+    gap = '0.25rem',
+    padding = '0.375rem 0.625rem',
     backgroundColor = COLORS.Line.value,
-    borderRadius = '36px',
+    borderRadius = '2.25rem',
     font,
     value,
     color = COLORS.Text.T400.value,
@@ -24,12 +24,12 @@ const Tag = <T,>({
     return (
         <HStack
             bg={backgroundColor}
-            spacing='2px'
+            spacing='0.125rem'
             w={w}
             h={h}
             borderRadius={borderRadius}
             padding={padding}
-            paddingRight={isHovered ? '4px' : undefined}
+            paddingRight={isHovered ? '0.25rem' : undefined}
             gap={gap}
             onMouseOver={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}

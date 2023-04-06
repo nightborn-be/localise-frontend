@@ -18,8 +18,12 @@ export default function Input<T>({
     type = 'text',
     color = COLORS.Text.T500.value,
     label,
+    labelColor,
+    labelFont,
     description,
-    border = `0.0625rem solid ${COLORS.Stroke.value}`,
+    descriptionColor,
+    descriptionFont,
+    border = `1px solid ${COLORS.Stroke.value}`,
     placeholderColor = COLORS.InputText.value,
     placeholder,
     h,
@@ -91,7 +95,14 @@ export default function Input<T>({
                 zIndex={zIndex}
             >
                 {/* Input label section */}
-                <InputLabel label={label ?? ''} description={description} />
+                <InputLabel
+                    label={label ?? ''}
+                    description={description}
+                    labelColor={labelColor}
+                    labelFont={labelFont}
+                    descriptionColor={descriptionColor}
+                    descriptionFont={descriptionFont}
+                />
                 {/* Input field section */}
 
                 <InputGroup

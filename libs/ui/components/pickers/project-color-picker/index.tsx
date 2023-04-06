@@ -31,6 +31,7 @@ const ProjectColorPicker = ({
                 height='fit-content'
                 maxW='11rem'
                 border={`0.0625rem solid ${COLORS.Line.value}`}
+                bg={COLORS.White.T500.value}
                 borderRadius={'0.5rem'}
                 flexWrap={'wrap'}
                 alignContent={'space-between'}

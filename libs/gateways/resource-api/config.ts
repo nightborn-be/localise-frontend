@@ -1,4 +1,6 @@
 import Axios, { AxiosRequestConfig } from 'axios';
+import { tokenStorage } from '../../utils/token/token';
+import { TokenKey } from '../../utils/token/token-keys';
 
 export const AXIOS_INSTANCE = Axios.create({
     // @ts-ignore
@@ -11,7 +13,7 @@ export const customInstance = async <T>(
     const improvedConfig = {
         ...config,
         headers: {
-            Authorization: `Bearer ${await getIdToken()}`,
+            Authorization: `Bearer ${tokenStorage.get(TokenKey.ID_TOKEN)}`,
         },
     };
     const promise = AXIOS_INSTANCE({
@@ -27,11 +29,3 @@ export const customInstance = async <T>(
 
     return promise;
 };
-
-async function getIdToken() {
-    try {
-        return '';
-    } catch {
-        return '';
-    }
-}

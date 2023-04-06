@@ -3,4 +3,5 @@ export type OrganisationMenuOption<T> = {
     description?: string;
     value: T;
     imageUrl?: string;
+    color?: string;
 };

@@ -4,11 +4,12 @@ export default interface SearchbarProps<T> extends InputProps {
     placeholderColor?: string;
     marginLeftElement?: string;
     spacing?: string;
-    values?: SearchBarOption<T>[];
+    values?: T[];
     options?: SearchBarOption<T>[];
     activeKeys?: T[];
     onCheck?: (values: T) => void;
     displayModal?: boolean;
+    noValueMsg?: string;
 }
 
 export type SearchBarOption<T> = {

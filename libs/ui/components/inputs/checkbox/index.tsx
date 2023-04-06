@@ -9,7 +9,14 @@ import Text from '../../contents/text';
 const Checkbox = ({ isSelected, label, onSelect }: ICheckBoxProps) => {
     // Render
     return (
-        <HStack w='full' minH='32px' spacing={'12px'} onClick={onSelect}>
+        <HStack
+            w='full'
+            minH='32px'
+            spacing={'12px'}
+            onClick={onSelect}
+            _hover={{ bg: COLORS.Tag.value }}
+            borderRadius='6px'
+        >
             <Box w='1rem' h='1rem' ms={'12px'}>
                 <Icon name={isSelected ? 'checkboxOn' : 'checkboxOff'} />
             </Box>

@@ -12,6 +12,7 @@ export interface ISidebarOrganisationProps extends ChakraProps {
     endEnhancer?: React.ReactElement;
     marginLeftText?: string;
     canBeSelected?: boolean;
+    color?: string;
     w?: string;
     h?: string;
     onClick?: () => void;
