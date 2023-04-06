@@ -35,7 +35,15 @@ const OrganisationSettings = () => {
     const membersRef = useRef<HTMLDivElement>(null);
     return (
         <VStack h='full' w='full' alignItems={'left'} padding='0px'>
-            <Breadcrumb elements={[{ label: 'Organisation settings' }]} />
+            <Breadcrumb
+                elements={[
+                    {
+                        label: t<string>(
+                            tKeys.home.organisation_settings.breadcrumb,
+                        ),
+                    },
+                ]}
+            />
             <HStack
                 w='full'
                 alignItems='start'
@@ -46,11 +54,17 @@ const OrganisationSettings = () => {
                     <SidebarMenuSetting
                         options={[
                             {
-                                title: 'Information',
+                                title: t<string>(
+                                    tKeys.home.organisation_settings.menu_item
+                                        .informations,
+                                ),
                                 value: MenuItemValue.INFORMATIONS,
                             },
                             {
-                                title: 'Members',
+                                title: t<string>(
+                                    tKeys.home.organisation_settings.menu_item
+                                        .members,
+                                ),
                                 value: MenuItemValue.MEMBERS,
                             },
                         ]}
@@ -91,8 +105,14 @@ const OrganisationSettings = () => {
                             ref={informationRef}
                         >
                             <InputLabel
-                                label='Informations'
-                                description='Lorem ipsum dolor sit amet consectetur. Velit habitant eros nisl at risus mollis in sagittis et. Sed venenatis aenean scelerisque aliquet justo amet vestibulum.'
+                                label={t<string>(
+                                    tKeys.home.organisation_settings.menu.form
+                                        .informations.title,
+                                )}
+                                description={t<string>(
+                                    tKeys.home.organisation_settings.menu.form
+                                        .informations.description,
+                                )}
                                 labelColor={COLORS.Text.T400.value}
                                 labelFont={FONTS.T1.T16px.SemiBold600.value}
                                 descriptionColor={COLORS.InputText.value}
@@ -136,7 +156,10 @@ const OrganisationSettings = () => {
                                     />
                                 )}
                             >
-                                Do you want to delete this organisation ?
+                                {t<string>(
+                                    tKeys.home.organisation_settings.menu.form
+                                        .informations.cta.delete,
+                                )}
                             </Button>
                         </VStack>
                         <HStack
@@ -205,8 +228,14 @@ const OrganisationSettings = () => {
                     >
                         <HStack>
                             <InputLabel
-                                label='Members'
-                                description='Lorem ipsum dolor sit amet consectetur. Velit habitant eros nisl at risus mollis in sagittis et. Sed venenatis aenean scelerisque aliquet justo amet vestibulum.'
+                                label={t<string>(
+                                    tKeys.home.organisation_settings.menu.form
+                                        .members.title,
+                                )}
+                                description={t<string>(
+                                    tKeys.home.organisation_settings.menu.form
+                                        .members.description,
+                                )}
                                 labelColor={COLORS.Text.T400.value}
                                 labelFont={FONTS.T1.T16px.SemiBold600.value}
                                 descriptionColor={COLORS.InputText.value}
@@ -217,8 +246,9 @@ const OrganisationSettings = () => {
                             />
                             <Button
                                 font={FONTS.T1.T12px.SemiBold600.value}
-                                w={'fit-content'}
-                                h={'fit-content'}
+                                w={'7.625rem'}
+                                minW='7.625rem'
+                                h={'2rem'}
                                 padding='0.375rem 0.5rem'
                                 gap='0.25rem'
                                 spacing='0.25rem'
@@ -238,7 +268,10 @@ const OrganisationSettings = () => {
                                     COLORS.Communication.BG.value
                                 }
                             >
-                                Add members
+                                {t<string>(
+                                    tKeys.home.organisation_settings.menu.form
+                                        .members.cta.add_member,
+                                )}
                             </Button>
                         </HStack>
                     </VStack>
@@ -281,7 +314,9 @@ const OrganisationSettings = () => {
                             color={COLORS.White.T500.value}
                             onClick={handleOnSubmit}
                         >
-                            Save
+                            {t<string>(
+                                tKeys.home.organisation_settings.cta.save,
+                            )}
                         </Button>
                     </HStack>
                 </VStack>

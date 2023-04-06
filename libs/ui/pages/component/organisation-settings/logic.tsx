@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useFormik } from 'formik';
 import { createForm } from '../../../../utils/formik';
-import languages from '../../../../utils/languages';
-import { useCreateProject } from '../../../../gateways/resource-api/projects/projects';
 import { useTranslation } from 'react-i18next';
 import { tKeys } from '../../../../i18n/keys';
 import {
@@ -26,8 +24,9 @@ export const useOrganisationSettingsLogic =
         const toast = useToast();
         const [organisationPicture, setOrganisationPicture] = useState<
             string | ArrayBuffer | null
-        >();
+        >('');
         const [pictureUrl, setPictureUrl] = useState<string>('');
+
         // Hooks
         const { mutateAsync: updateOrganisation } = useUpdateOrganisation();
         const { mutateAsync: deleteOrganisation } = useDeleteOrganisation();
@@ -58,9 +57,9 @@ export const useOrganisationSettingsLogic =
         const form = createForm(values, rest);
 
         // Functions
-        async function handleOnSubmit() {
+        function handleOnSubmit() {
             try {
-                await updateOrganisation(
+                updateOrganisation(
                     {
                         organisationId: actualOrganisationUser?.id as string,
                         data: {
@@ -74,7 +73,10 @@ export const useOrganisationSettingsLogic =
                         onError: () => {
                             toast({
                                 type: ToastType.ERROR,
-                                title: `Sorry we cannot update your organisation`,
+                                title: t<string>(
+                                    tKeys.home.organisation_settings.error.save,
+                                ),
+                                delay: 4000,
                             });
                         },
                         onSuccess: () => {
@@ -83,7 +85,15 @@ export const useOrganisationSettingsLogic =
                         },
                     },
                 );
-            } catch (e) {}
+            } catch (e) {
+                toast({
+                    type: ToastType.ERROR,
+                    title: t<string>(
+                        tKeys.home.organisation_settings.error.save,
+                    ),
+                    delay: 4000,
+                });
+            }
         }
 
         async function handleOnDelete() {
@@ -96,7 +106,11 @@ export const useOrganisationSettingsLogic =
                         onError: () => {
                             toast({
                                 type: ToastType.ERROR,
-                                title: `Sorry we cannot delete your organisation`,
+                                title: t<string>(
+                                    tKeys.home.organisation_settings.error
+                                        .delete,
+                                ),
+                                delay: 4000,
                             });
                         },
                         onSuccess: () => {
@@ -105,14 +119,17 @@ export const useOrganisationSettingsLogic =
                         },
                     },
                 );
-            } catch (e) {}
-        }
-        function resetForm() {
-            rest.setFieldValue('organisationName', '');
-            rest.setFieldValue('organisationPicture', '');
+            } catch (e) {
+                toast({
+                    type: ToastType.ERROR,
+                    title: t<string>(
+                        tKeys.home.organisation_settings.error.delete,
+                    ),
+                    delay: 4000,
+                });
+            }
         }
 
-        // Function
         function getInitialeName() {
             const arraySplit = actualOrganisationUser?.name?.split(' ');
             let inital = '';

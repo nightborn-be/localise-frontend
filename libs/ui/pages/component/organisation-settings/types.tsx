@@ -4,7 +4,7 @@ export interface OrganisationSettingsLogicType {
     handleOnSubmit: () => void;
     handleOnDelete: () => void;
     form: IForm<IOrganisationSettingsForm> & IDefaultForm;
-    setOrganisationPicture: (binary?: string | ArrayBuffer | null) => void;
+    setOrganisationPicture: (binary: string | ArrayBuffer | null) => void;
     pictureUrl: string;
     getInitialeName: () => string;
 }

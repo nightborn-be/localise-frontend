@@ -166,5 +166,41 @@ export const tKeys = {
                 },
             },
         },
+        organisation_settings: {
+            menu_item: {
+                informations:
+                    'home.organisation_settings.menu_item.informations',
+                members: 'home.organisation_settings.menu_item.members',
+            },
+            menu: {
+                form: {
+                    informations: {
+                        title: 'home.organisation_settings.menu.form.informations.title',
+                        cta: {
+                            delete: 'home.organisation_settings.menu.form.informations.cta.delete',
+                        },
+                        description:
+                            'home.organisation_settings.menu.form.informations.description',
+                    },
+                    members: {
+                        description:
+                            'home.organisation_settings.menu.form.members.description',
+                        title: 'home.organisation_settings.menu.form.members.title',
+                        cta: {
+                            add_member:
+                                'home.organisation_settings.menu.form.members.cta.add_member',
+                        },
+                    },
+                },
+            },
+            cta: {
+                save: 'home.organisation_settings.cta.save',
+            },
+            error: {
+                delete: 'home.organisation_settings.error.delete',
+                save: 'home.organisation_settings.error.save',
+            },
+            breadcrumb: 'home.organisation_settings.breadcrumb',
+        },
     },
 };

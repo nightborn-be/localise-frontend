@@ -88,7 +88,6 @@ export default function TableHeader({}: ITableHeaderProps) {
                     color={COLORS.Text.T400.value}
                     padding='4px 10px'
                     gap='8px'
-                    background={COLORS.White.T500.value}
                     placeholderColor={COLORS.InputText.value}
                     borderRadius='6px'
                     placeholder='Type to search...'

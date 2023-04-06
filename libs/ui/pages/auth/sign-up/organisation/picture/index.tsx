@@ -35,7 +35,7 @@ const OrganisationPicturePage = () => {
                     title={t<string>(
                         tKeys.auth.sign_up.organisation.picture.title,
                     )}
-                    handleOnContinue={() => handleOnContinue(picturePath)}
+                    handleOnContinue={() => handleOnContinue('')}
                     handleOnLater={handleOnLater}
                     isLater={true}
                     w='27.375rem'
@@ -74,7 +74,7 @@ const OrganisationPicturePage = () => {
                                 minW='6.25rem'
                                 color={COLORS.InputText.value}
                                 whiteSpace='pre-line'
-                                src={picturePath}
+                                src={''}
                                 alt='Organization picture'
                             />
                         </HStack>

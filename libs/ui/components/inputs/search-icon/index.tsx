@@ -32,15 +32,21 @@ const SearchInput = <T extends object>({
     // Render
     return (
         <HStack ml={marginLeft}>
-            <Box onClick={() => setLaunchAnime(true)} ref={boxRef}>
+            <HStack
+                onClick={() => setLaunchAnime(true)}
+                ref={boxRef}
+                w={'28px'}
+                h={'28px'}
+                flexWrap={'wrap'}
+            >
                 <motion.div
                     initial={{ translateX: 0 }}
                     animate={
-                        launchAnime ? { translateX: -50 } : { translateX: 0 }
+                        launchAnime ? { translateX: -90 } : { translateX: 0 }
                     }
                     transition={{
                         ease: 'easeOut',
-                        duration: 0.3,
+                        duration: 0.5,
                     }}
                 >
                     <ButtonIcon
@@ -60,19 +66,17 @@ const SearchInput = <T extends object>({
                         animate={
                             launchAnime
                                 ? {
-                                      translateX: -50,
                                       opacity: 1,
                                       display: 'inline',
                                   }
                                 : {
-                                      translateX: 0,
                                       opacity: 0,
                                       display: 'inline',
                                   }
                         }
                         transition={{
                             ease: 'easeOut',
-                            duration: 0.3,
+                            duration: 0.5,
                         }}
                     >
                         <Input
@@ -93,7 +97,7 @@ const SearchInput = <T extends object>({
                         />
                     </motion.div>
                 </motion.div>
-            </Box>
+            </HStack>
         </HStack>
     );
 };
