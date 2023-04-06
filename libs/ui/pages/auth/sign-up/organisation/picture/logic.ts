@@ -5,7 +5,9 @@ import { PictureLogicType } from './types';
 export const usePictureLogic = (): PictureLogicType => {
     // Attributes
     const { push } = useRouter();
-    const [picturePath, setPicturePath] = useState<string | ArrayBuffer | null>('');
+    const [picturePath, setPicturePath] = useState<string | ArrayBuffer | null>(
+        '',
+    );
 
     // Functions
     function handleOnContinue(picturePath: string) {

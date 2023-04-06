@@ -8,7 +8,7 @@ import {
     ModalBody,
     ModalCloseButton,
 } from '@chakra-ui/react';
-import React from 'react';
+import React, { ReactElement } from 'react';
 import COLORS from '../../../constants/colors';
 import FONTS from '../../../constants/fonts';
 import Text from '../../contents/text';
@@ -16,7 +16,6 @@ import Button from '../../inputs/button';
 import { ButtonSize } from '../../inputs/button-icon/types';
 import Icon from '../../contents/icon';
 import { IModalProps } from './props';
-import { tokenStorage } from '../../../../utils/token/token';
 
 const Modal = ({
     children,
@@ -24,6 +23,33 @@ const Modal = ({
     isOpen,
     handleOnSubmit,
     onClose,
+    header = {
+        bg: COLORS.Localize.Purple.T500.value,
+        color: COLORS.White.T500.value,
+        font: FONTS.T1.T16px.SemiBold600.value,
+        closeButtonBgColor: COLORS.Localize.Purple.T500.value,
+        closeButtonHoverBgColor: COLORS.Localize.Purple.T600.value,
+        closeButtonColor: COLORS.White.T500.value,
+    },
+    footer = {
+        bg: COLORS.Localize.Purple.T500.value,
+        color: COLORS.White.T500.value,
+        font: FONTS.T1.T16px.SemiBold600.value,
+        firstCtaLabel: 'Cancel',
+        firstCtaBgColor: 'transparent',
+        firstCtaBgHoverColor: COLORS.Localize.Purple.T500.value,
+        firstCtaColor: COLORS.InputText.value,
+        firstCtaFont: FONTS.T1.T12px.SemiBold600.value,
+        secondCtaLabel: 'Create',
+        secondCtaBgColor: COLORS.Localize.Purple.value,
+        secondCtaColor: COLORS.White.T500.value,
+        secondCtaFont: FONTS.T1.T12px.SemiBold600.value,
+        secondCtaWidth: '80px',
+        secondCtaHeight: '32px',
+    },
+    body = {
+        padding: '0px',
+    },
 }: IModalProps) => {
     // Render
     return (
@@ -39,65 +65,74 @@ const Modal = ({
                     padding='20px'
                     h={'56px'}
                     borderTopRadius={'12px'}
-                    bg={COLORS.Localize.Purple.T500.value}
+                    bg={header.bg}
                 >
-                    <Text
-                        font={FONTS.T1.T16px.SemiBold600.value}
-                        color={COLORS.White.T500.value}
-                    >
+                    <Text font={header.font} color={header.color}>
                         {title}
                     </Text>
                     <ModalCloseButton
-                        backgroundColor={COLORS.Localize.Purple.T500.value}
+                        backgroundColor={header.closeButtonBgColor}
                         borderRadius='0.375rem'
                         size={ButtonSize.SMALL}
                         padding='0.25rem'
                         gap='0.625rem'
                         _hover={{
-                            bg: COLORS.Localize.Purple.T600.value,
+                            bg: header.closeButtonHoverBgColor,
                         }}
                         top='13px'
                     >
-                        <Icon name='removeLarge' stroke='#FFFFFF' />
+                        <Icon
+                            name='removeLarge'
+                            stroke={header.closeButtonColor}
+                        />
                     </ModalCloseButton>
                 </ModalHeader>
-                <ModalBody padding={0}>{children}</ModalBody>
-                <ModalFooter>
-                    <HStack alignItems={'right'} zIndex='0'>
+                <ModalBody padding={body.padding}>{children}</ModalBody>
+                <ModalFooter
+                    padding={footer.padding}
+                    justifyContent={footer.justifyContent}
+                >
+                    <HStack alignItems={'center'} zIndex='0'>
                         <Button
                             w={'72px'}
                             h={'32px'}
                             borderRadius='8px'
-                            backgroundColor={'transparent'}
-                            hoverColor={COLORS.Localize.Purple.T500.value}
-                            font={FONTS.T1.T12px.SemiBold600.value}
-                            color={COLORS.InputText.value}
+                            backgroundColor={footer.firstCtaBgColor}
+                            hoverColor={footer.firstCtaBgHoverColor}
+                            font={footer.firstCtaFont}
+                            color={footer.firstCtaColor}
                             padding={'4px 12px'}
                             onClick={onClose}
                             _active={{
                                 bg: 'none',
                             }}
                         >
-                            Cancel
+                            {footer.firstCtaLabel}
                         </Button>
                         <Button
-                            w={'80px'}
-                            h={'32px'}
+                            minW={footer.secondCtaWidth}
+                            h={footer.secondCtaHeight}
                             borderRadius='8px'
-                            backgroundColor={COLORS.Localize.Purple.value}
-                            spacing='0.25rem'
-                            hoverBackgroundColor={
-                                COLORS.Localize.Purple.T600.value
-                            }
-                            font={FONTS.T1.T12px.SemiBold600.value}
-                            color={COLORS.White.T500.value}
+                            backgroundColor={footer.secondCtaBgColor}
+                            spacing='8px'
+                            gap='8px'
+                            hoverBackgroundColor={footer.secondCtaBgHoverColor}
+                            font={footer.secondCtaFont}
+                            color={footer.secondCtaColor}
                             padding={'4px 12px'}
                             onClick={() => {
                                 handleOnSubmit();
                                 onClose();
                             }}
+                            startEnhancer={
+                                footer.secondCtaStartEnhancer
+                                    ? (): React.ReactElement => {
+                                          return footer.secondCtaStartEnhancer as ReactElement;
+                                      }
+                                    : undefined
+                            }
                         >
-                            Create
+                            {footer.secondCtaLabel}
                         </Button>
                     </HStack>
                 </ModalFooter>

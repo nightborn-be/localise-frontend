@@ -9,7 +9,6 @@ import {
 } from './types';
 import { useGetMe } from '../../../../gateways/resource-api/users/users';
 import {
-    useDeleteOrganisation,
     useGetOrganisation,
     useGetOrganisationsForUser,
     useUpdateOrganisation,
@@ -29,7 +28,6 @@ export const useOrganisationSettingsLogic =
 
         // Hooks
         const { mutateAsync: updateOrganisation } = useUpdateOrganisation();
-        const { mutateAsync: deleteOrganisation } = useDeleteOrganisation();
         const { data: userData, refetch: refetchUserData } = useGetMe();
         const {
             data: actualOrganisationUser,
@@ -96,40 +94,6 @@ export const useOrganisationSettingsLogic =
             }
         }
 
-        async function handleOnDelete() {
-            try {
-                await deleteOrganisation(
-                    {
-                        organisationId: actualOrganisationUser?.id as string,
-                    },
-                    {
-                        onError: () => {
-                            toast({
-                                type: ToastType.ERROR,
-                                title: t<string>(
-                                    tKeys.home.organisation_settings.error
-                                        .delete,
-                                ),
-                                delay: 4000,
-                            });
-                        },
-                        onSuccess: () => {
-                            refetchActualUserOrganisation();
-                            refecthOrganisationUserData();
-                        },
-                    },
-                );
-            } catch (e) {
-                toast({
-                    type: ToastType.ERROR,
-                    title: t<string>(
-                        tKeys.home.organisation_settings.error.delete,
-                    ),
-                    delay: 4000,
-                });
-            }
-        }
-
         function getInitialeName() {
             const arraySplit = actualOrganisationUser?.name?.split(' ');
             let inital = '';
@@ -141,7 +105,6 @@ export const useOrganisationSettingsLogic =
         return {
             form,
             handleOnSubmit,
-            handleOnDelete,
             setOrganisationPicture,
             getInitialeName,
             pictureUrl,

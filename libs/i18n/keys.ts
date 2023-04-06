@@ -165,6 +165,9 @@ export const tKeys = {
                     error: 'home.modal.create_organisation.form.error',
                 },
             },
+            delete_project: {
+                title: 'home.modal.delete_project.title',
+            },
         },
         organisation_settings: {
             menu_item: {

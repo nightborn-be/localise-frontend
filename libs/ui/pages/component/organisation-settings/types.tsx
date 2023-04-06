@@ -2,7 +2,6 @@ import { IDefaultForm, IForm } from '../../../../utils/formik';
 
 export interface OrganisationSettingsLogicType {
     handleOnSubmit: () => void;
-    handleOnDelete: () => void;
     form: IForm<IOrganisationSettingsForm> & IDefaultForm;
     setOrganisationPicture: (binary: string | ArrayBuffer | null) => void;
     pictureUrl: string;

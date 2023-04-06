@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { Box, HStack, Image, VStack } from '@chakra-ui/react';
+import { Box, HStack, Image, VStack, useDisclosure } from '@chakra-ui/react';
 import Breadcrumb from '../../../components/navigation/breadcrumb';
 import SidebarMenuSetting from '../../../components/navigation/sidebar-menu-setting';
 import { MenuItemValue } from '../../../components/navigation/sidebar-menu-setting/types';
@@ -19,13 +19,13 @@ import Dropzone from '../../auth/sign-up/organisation/picture/component/dropzone
 import { useTranslation } from 'react-i18next';
 import { tKeys } from '../../../../i18n/keys';
 import Text from '../../../components/contents/text';
+import DeleteOrganisationModal from '../../../components/sidebar/delete-organisation-modal';
 
 const OrganisationSettings = () => {
     const {
         form,
         setOrganisationPicture,
         handleOnSubmit,
-        handleOnDelete,
         pictureUrl,
         getInitialeName,
     } = useOrganisationSettingsLogic();
@@ -33,6 +33,7 @@ const OrganisationSettings = () => {
     const { t } = useTranslation();
     const informationRef = useRef<HTMLDivElement>(null);
     const membersRef = useRef<HTMLDivElement>(null);
+    const { isOpen, onOpen, onClose } = useDisclosure();
     return (
         <VStack h='full' w='full' alignItems={'left'} padding='0px'>
             <Breadcrumb
@@ -130,7 +131,7 @@ const OrganisationSettings = () => {
                                 {...form.organisationName}
                             />
                             <Button
-                                onClick={handleOnDelete}
+                                onClick={onOpen}
                                 color={COLORS.InputText.value}
                                 font={FONTS.T1.T12px.Medium500.value}
                                 w={'fit-content'}
@@ -321,6 +322,7 @@ const OrganisationSettings = () => {
                     </HStack>
                 </VStack>
             </HStack>
+            <DeleteOrganisationModal isOpen={isOpen} onClose={onClose} />
         </VStack>
     );
 };

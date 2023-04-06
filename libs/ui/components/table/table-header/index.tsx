@@ -4,16 +4,9 @@ import COLORS from '../../../constants/colors';
 import Text from '../../contents/text';
 import FONTS from '../../../constants/fonts';
 import ITableHeaderProps from './props';
-import ButtonIcon from '../../inputs/button-icon';
-import Icon from '../../contents/icon';
-import { ButtonSize } from '../../inputs/button-icon/types';
-import Avatar from '../../contents/avatar';
-import Role from '../../contents/role';
 import SearchInput from '../../inputs/search-icon';
 export default function TableHeader({}: ITableHeaderProps) {
     //Attributes
-    const [isHovered, setIsHovered] = useState<boolean>(false);
-    const [selectedValue, setSelectedValue] = useState<string>('');
     const [value, setValue] = useState<string>('');
 
     //Render

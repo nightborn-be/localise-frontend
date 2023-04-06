@@ -40,9 +40,11 @@ const SearchInput = <T extends object>({
                 flexWrap={'wrap'}
             >
                 <motion.div
-                    initial={{ translateX: 0 }}
+                    initial={{ translateX: 0, display: 'flex' }}
                     animate={
-                        launchAnime ? { translateX: -90 } : { translateX: 0 }
+                        launchAnime
+                            ? { translateX: -90, display: 'flex' }
+                            : { translateX: 0, display: 'flex' }
                     }
                     transition={{
                         ease: 'easeOut',
