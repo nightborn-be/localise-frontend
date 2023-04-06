@@ -15,6 +15,7 @@ import OrganizationMenu from '../contents/organisation-menu';
 import { useSidebarLogic } from './logic';
 import CreateProjectModal from './create-project-modal/index';
 import CreateOrganisationModal from './create-organisation-modal';
+
 export const SideBar = () => {
     const [filterValue, setFilterValue] = useState<string>('');
     const {
@@ -43,17 +44,17 @@ export const SideBar = () => {
     const createOrganisationModal = useDisclosure();
     return (
         <>
-            <VStack w={'244px'} h={'100vh'} spacing='0px'>
+            <VStack w={'15.25rem'} h={'100vh'} spacing='0px'>
                 <HStack
-                    w={'244px'}
-                    h={'52px'}
-                    padding='20px'
-                    spacing='8px'
-                    borderRight={`1px solid ${COLORS.Line.value}`}
+                    w={'15.25rem'}
+                    h={'3.25rem'}
+                    padding='1.25rem'
+                    spacing='0.5rem'
+                    borderRight={`0.0625rem solid ${COLORS.Line.value}`}
                 >
                     <Image
-                        width={'24px'}
-                        height={'24px'}
+                        width={'1.5rem'}
+                        height={'1.5rem'}
                         src='/assets/images/nightborn.png'
                         alt='nightborn'
                     />
@@ -67,11 +68,11 @@ export const SideBar = () => {
 
                 {/* FIRST MENU */}
                 <VStack
-                    w={'244px'}
-                    spacing='8px'
-                    padding='20px 8px'
-                    borderBottom={`1px solid ${COLORS.Line.value}`}
-                    borderRight={`1px solid ${COLORS.Line.value}`}
+                    w={'15.25rem'}
+                    spacing='0.5rem'
+                    padding='1.25rem 0.5rem'
+                    borderBottom={`0.0625rem solid ${COLORS.Line.value}`}
+                    borderRight={`0.0625rem solid ${COLORS.Line.value}`}
                 >
                     <SidebarProject
                         onClick={handleOnOptionClick}
@@ -96,10 +97,10 @@ export const SideBar = () => {
 
                 {/* SECOND MENU PROJECT */}
                 <HStack
-                    w={'244px'}
-                    spacing={'124px'}
-                    padding={'16px 8px 6px 20px'}
-                    borderRight={`1px solid ${COLORS.Line.value}`}
+                    w={'15.25rem'}
+                    spacing={'7.75rem'}
+                    padding={'1rem 0.5rem 0.375rem 1.25rem'}
+                    borderRight={`0.0625rem solid ${COLORS.Line.value}`}
                 >
                     <Text
                         color={COLORS.InputText.value}
@@ -115,39 +116,39 @@ export const SideBar = () => {
                         <Icon
                             name='add'
                             stroke={COLORS.InputText.value}
-                            width={'16px'}
-                            height={'16px'}
+                            width={'1rem'}
+                            height={'1rem'}
                         />
                     </ButtonIcon>
                 </HStack>
                 <HStack
-                    w={'244px'}
-                    padding='6px 8px'
-                    spacing='12px'
-                    borderRight={`1px solid ${COLORS.Line.value}`}
+                    w={'15.25rem'}
+                    padding='0.375rem 0.5rem'
+                    spacing='0.75rem'
+                    borderRight={`0.0625rem solid ${COLORS.Line.value}`}
                 >
                     <Searchbar
                         color={COLORS.Text.T400.value}
-                        w={'228px'}
-                        h={'32px'}
-                        padding={'4px 10px'}
-                        spacing={'8px'}
+                        w={'14.25rem'}
+                        h={'2rem'}
+                        padding={'0.25rem 0.625rem'}
+                        spacing={'0.5rem'}
                         background={COLORS.White.T500.value}
                         placeholder={'Search for a project...'}
                         placeholderColor={COLORS.InputText.value}
-                        borderRadius={'6px'}
+                        borderRadius={'0.375rem'}
                         value={filterValue}
                         onChange={(event) => setFilterValue(event.target.value)}
                         displayModal={false}
                     />
                 </HStack>
                 <VStack
-                    w={'244px'}
-                    padding='6px 8px 20px'
-                    spacing='6px'
+                    w={'15.25rem'}
+                    padding='0.375rem 0.5rem 1.25rem'
+                    spacing='0.375rem'
                     height={'full'}
                     overflowY={'scroll'}
-                    borderRight={`1px solid ${COLORS.Line.value}`}
+                    borderRight={`0.0625rem solid ${COLORS.Line.value}`}
                 >
                     {filter(filterValue)?.map((option, index) => {
                         return (
@@ -166,11 +167,11 @@ export const SideBar = () => {
 
                 {/* ORGANISATION MENU */}
                 <HStack
-                    w={'244px'}
-                    padding={'12px 8px'}
-                    borderRight={`1px solid ${COLORS.Line.value}`}
-                    borderBottom={`1px solid ${COLORS.Line.value}`}
-                    borderTop={`1px solid ${COLORS.Line.value}`}
+                    w={'15.25rem'}
+                    padding={'0.75rem 0.5rem'}
+                    borderRight={`0.0625rem solid ${COLORS.Line.value}`}
+                    borderBottom={`0.0625rem solid ${COLORS.Line.value}`}
+                    borderTop={`0.0625rem solid ${COLORS.Line.value}`}
                 >
                     <Button
                         justifyContent={'left'}
@@ -178,8 +179,8 @@ export const SideBar = () => {
                         font={FONTS.T1.T12px.Medium500.value}
                         backgroundColor='transparent'
                         borderRadius={'0.5rem'}
-                        w={'228px'}
-                        h={'40px'}
+                        w={'14.25rem'}
+                        h={'2.5rem'}
                         startEnhancer={(enhancer) => (
                             <Icon
                                 name='setting'
@@ -193,24 +194,24 @@ export const SideBar = () => {
                                 viewBox='0 0 16 16'
                             />
                         )}
-                        spacing={'12px'}
-                        padding={'12px'}
+                        spacing={'0.75rem'}
+                        padding={'0.75rem'}
                         onClick={() => {}}
                     >
                         Organisation settings
                     </Button>
                 </HStack>
                 <VStack
-                    w={'244px'}
-                    padding='12px 8px 20px'
-                    spacing={'0px'}
+                    w={'15.25rem'}
+                    padding='0.75rem 0.5rem 1.25rem'
+                    spacing={'0rem'}
                     borderRight={`1px solid ${COLORS.Line.value}`}
                 >
                     <Box
                         display={isOrganisationClicked ? 'visible' : 'none'}
                         position={'absolute'}
-                        bottom='76px'
-                        left='8px'
+                        bottom='4.75rem'
+                        left='0.5rem'
                     >
                         <OrganizationMenu
                             options={optionsOrganisation}
@@ -222,9 +223,9 @@ export const SideBar = () => {
                         />
                     </Box>
                     <SidebarOrganisation
-                        w={'228px'}
-                        h={'52px'}
-                        padding='10px 12px'
+                        w={'14.25rem'}
+                        h={'3.25rem'}
+                        padding='0.625rem 0.75rem'
                         topText={'Organisation'}
                         topTextFont={FONTS.T1.T10px.Regular400.value}
                         topTextColor={COLORS.InputText.value}
@@ -247,8 +248,8 @@ export const SideBar = () => {
                                 (obj) => obj.value === activeOrganizationKey,
                             )?.imageUrl ? (
                                 <Image
-                                    w={'32px'}
-                                    h={'32px'}
+                                    w={'2rem'}
+                                    h={'2rem'}
                                     src={
                                         optionsOrganisation.find(
                                             (obj) =>

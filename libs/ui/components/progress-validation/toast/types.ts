@@ -7,4 +7,5 @@ export interface IToastParams {
     type: ToastType;
     title: string;
     description?: string;
+    delay?: number;
 }

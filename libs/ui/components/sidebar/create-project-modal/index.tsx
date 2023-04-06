@@ -30,6 +30,7 @@ export const CreateProjectModal = ({
         filter,
         onTagDelete,
         handleOnSubmit,
+        resetForm,
         form,
     } = useCreateProjectLogic();
 
@@ -43,14 +44,20 @@ export const CreateProjectModal = ({
             <Modal
                 title={t<string>(tKeys.home.modal.create_project.title)}
                 isOpen={isOpen}
-                onClose={onClose}
+                onClose={() => {
+                    onClose();
+                    resetForm();
+                }}
                 handleOnSubmit={handleOnSubmit}
             >
                 <VStack spacing='0'>
-                    <HStack padding={'20px 20px 12px'} spacing='10px'>
+                    <HStack
+                        padding={'1.25rem 1.25rem 0.75rem'}
+                        spacing='0.625rem'
+                    >
                         <Input
-                            w={'590px'}
-                            padding='10px'
+                            w={'36.875rem'}
+                            padding='0.625rem'
                             placeholder={t<string>(
                                 tKeys.home.modal.create_project.form
                                     .project_name.placeholder,
@@ -112,7 +119,7 @@ export const CreateProjectModal = ({
                         />
 
                         <SearchBox<string>
-                            w='590px'
+                            w='36.875rem'
                             title={t<string>(
                                 tKeys.home.modal.create_project.form
                                     .target_languages.title,

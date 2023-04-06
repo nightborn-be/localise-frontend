@@ -14,6 +14,7 @@ export interface CreateProjectLogicType {
     filter: (value: string) => SearchBarOption<string>[];
     onTagDelete: (value: string) => void;
     handleOnSubmit: () => void;
+    resetForm: () => void;
     form: IForm<ICreateProjectForm> & IDefaultForm;
 }
 
