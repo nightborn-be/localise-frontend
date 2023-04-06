@@ -18,6 +18,7 @@ import { SidebarLogicType } from './types';
 export const useSidebarLogic = (): SidebarLogicType => {
     // Attributes
     const [activeOptionKey, setActiveOptionKey] = useState<string>('');
+    const [filterProjectValue, setFilterProjectValue] = useState<string>('');
     // const projectsData: ProjectPagingDTO = useGetProjects();
     const [activeProjectKey, setActiveProjectKey] = useState<string>('');
     const [isOrganisationClicked, setIsOrganisationClicked] =
@@ -33,7 +34,11 @@ export const useSidebarLogic = (): SidebarLogicType => {
         useGetOrganisationsForUser(userData?.userId as string);
     const { data: organisationProjectData } = useGetProjects(
         actualOrganisationUser?.id as string,
+        {
+            q: filterProjectValue,
+        },
     );
+
     // Functions
     function handleOnOptionClick(value: string) {
         setActiveOptionKey(value);
@@ -48,11 +53,7 @@ export const useSidebarLogic = (): SidebarLogicType => {
               value: project.id as string,
           }))
         : [];
-    function filter(value: string): SearchBarOption<string>[] {
-        return options?.filter((option) => {
-            return option.label.toLowerCase().includes(value.toLowerCase());
-        });
-    }
+
     function handleToggleIsOrganisationClicked() {
         setIsOrganisationClicked((prev) => !prev);
     }
@@ -90,7 +91,8 @@ export const useSidebarLogic = (): SidebarLogicType => {
     return {
         handleOnCreateOrganizationClick,
         handleToggleIsOrganisationClicked,
-        filter,
+        filterProjectValue,
+        setFilterProjectValue,
         handleOnProjectClick,
         handleOnOptionClick,
         isOrganisationClicked,

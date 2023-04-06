@@ -8,9 +8,10 @@ import { SearchBarOption } from '../inputs/searchbar/props';
 export interface SidebarLogicType {
     handleOnCreateOrganizationClick: () => void;
     handleToggleIsOrganisationClicked: () => void;
-    filter: (value: string) => SearchBarOption<string>[];
+    setFilterProjectValue: (value: string) => void;
     handleOnProjectClick: (value: string) => void;
     handleOnOptionClick: (value: string) => void;
+    filterProjectValue: string;
     actualOrganisationUser?: OrganisationDTO;
     isOrganisationClicked: boolean;
     setIsOrganisationClicked: (value: boolean) => void;

@@ -79,6 +79,14 @@ export const useOrganisationSettingsLogic =
                             });
                         },
                         onSuccess: () => {
+                            toast({
+                                type: ToastType.SUCCESS,
+                                title: t<string>(
+                                    tKeys.home.organisation_settings.success
+                                        .save,
+                                ),
+                                delay: 3000,
+                            });
                             refetchActualUserOrganisation();
                             refecthOrganisationUserData();
                         },

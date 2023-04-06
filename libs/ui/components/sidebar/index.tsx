@@ -16,11 +16,11 @@ import { useSidebarLogic } from './logic';
 import CreateProjectModal from './create-project-modal/index';
 
 export const SideBar = () => {
-    const [filterValue, setFilterValue] = useState<string>('');
     const {
         handleOnCreateOrganizationClick,
         handleToggleIsOrganisationClicked,
-        filter,
+        setFilterProjectValue,
+        filterProjectValue,
         handleOnProjectClick,
         handleOnOptionClick,
         actualOrganisationUser,
@@ -134,8 +134,10 @@ export const SideBar = () => {
                         placeholder={'Search for a project...'}
                         placeholderColor={COLORS.InputText.value}
                         borderRadius={'0.375rem'}
-                        value={filterValue}
-                        onChange={(event) => setFilterValue(event.target.value)}
+                        value={filterProjectValue}
+                        onChange={(event) =>
+                            setFilterProjectValue(event.target.value)
+                        }
                         displayModal={false}
                     />
                 </HStack>
@@ -147,7 +149,7 @@ export const SideBar = () => {
                     overflowY={'scroll'}
                     borderRight={`0.0625rem solid ${COLORS.Line.value}`}
                 >
-                    {filter(filterValue)?.map((option, index) => {
+                    {options?.map((option, index) => {
                         return (
                             <SidebarProject
                                 onClick={handleOnProjectClick}
