@@ -18,7 +18,7 @@ const useToast = () => {
         toast({
             isClosable: true,
             position: 'bottom',
-            duration: 100000,
+            duration: params.delay ?? 100000,
             render: ({ onClose }) => <Toast {...params} onClose={onClose} />,
         });
     }

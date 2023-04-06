@@ -1,5 +1,5 @@
+import React, { useState } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import React from 'react';
 import Icon from '../../contents/icon';
 import COLORS from '../../../constants/colors';
 import FONTS from '../../../constants/fonts';
@@ -12,29 +12,23 @@ export default {
 } as ComponentMeta<typeof SidebarProject>;
 const Template: ComponentStory<typeof SidebarProject> = (
     props: ISidebarProps,
-) => <SidebarProject {...props} />;
+) => {
+    const [activeKey, setActiveKey] = useState<string>('');
 
-const props: ISidebarProps = {
-    text: 'Mobile App',
-    textFont: FONTS.T1.T12px.Medium500.value,
-    textColor: COLORS.Text.T400.value,
-    projectIconColor: '#F74A3E',
-    notificationNumber: 1,
+    function handleOnClick(value) {
+        setActiveKey(value);
+    }
+    return (
+        <SidebarProject
+            onClick={handleOnClick}
+            activeKey={activeKey}
+            text={'Mobile App'}
+            textFont={FONTS.T1.T12px.Medium500.value}
+            textColor={COLORS.Text.T400.value}
+            projectIconColor={'#F74A3E'}
+            notificationNumber={1}
+        />
+    );
 };
 
 export const Project = Template.bind({});
-Project.args = { ...props };
-
-export const Default = Template.bind({});
-Default.args = {
-    ...props,
-    startEnhancer: <Icon name='section' />,
-    text: 'Profile',
-};
-export const DefaultGray = Template.bind({});
-DefaultGray.args = {
-    ...props,
-    startEnhancer: <Icon name='section' fill={COLORS.InputText.value} />,
-    text: 'Profile',
-    textColor: COLORS.InputText.value,
-};

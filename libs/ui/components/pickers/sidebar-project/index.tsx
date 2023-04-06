@@ -1,9 +1,12 @@
-import React, { useState, cloneElement } from 'react';
+import React, { useState, cloneElement, useRef } from 'react';
 import { Box, HStack } from '@chakra-ui/react';
 import COLORS from '../../../constants/colors';
 import Text from '../../contents/text';
 import { ISidebarProps } from './props';
 import Badge from '../../contents/badge';
+import Button from '../../inputs/button';
+import ProjectColorPicker from '../project-color-picker';
+import useOnClickOutside from '../../../../utils/hooks';
 const SidebarProject = ({
     textFont,
     textColor,
@@ -15,10 +18,20 @@ const SidebarProject = ({
     displayColorBox = true,
     w = '14.25rem',
     h = '2.5rem',
+    activeKey,
+    onClick,
 }: ISidebarProps) => {
-    //Attributes
-    const [isSelected, setIsSelected] = useState<boolean>(false);
-    //Function
+    // Attributes
+    const isSelected = activeKey === text;
+    const [currentSelectedColor, setCurrentSelectedColor] = useState<string>(
+        projectIconColor ?? '',
+    );
+    const [isColorPickerVisible, setIsColorPickerVisible] =
+        useState<boolean>(false);
+    const ref = useRef<HTMLDivElement>(null);
+    useOnClickOutside(ref, () => setIsColorPickerVisible(false));
+
+    // Functions
     const startEnhancerPicker = () => {
         if (startEnhancer)
             if (isSelected)
@@ -28,11 +41,15 @@ const SidebarProject = ({
             else return startEnhancer;
         if (displayColorBox)
             return (
-                <Box
+                <Button
                     w='0.5rem'
                     h='0.5rem'
+                    padding='0'
+                    minW='0.5rem'
+                    minH='0.5rem'
                     borderRadius='0.125rem'
-                    bg={projectIconColor}
+                    bg={currentSelectedColor}
+                    onClick={() => setIsColorPickerVisible(true)}
                 />
             );
 
@@ -52,9 +69,10 @@ const SidebarProject = ({
                     ? COLORS.Localize.Purple.T500.value
                     : COLORS.White.T500.value
             }
-            onClick={() => setIsSelected((prev) => !prev)}
+            onClick={() => onClick(text)}
+            ref={ref}
         >
-            <HStack w='full' h='2rem'>
+            <HStack w='full' h='2rem' position={'relative'}>
                 {startEnhancerPicker()}
                 {text && (
                     <Text
@@ -65,16 +83,31 @@ const SidebarProject = ({
                         {text}
                     </Text>
                 )}
+                <HStack
+                    position={'absolute'}
+                    maxW={w}
+                    top='18px'
+                    right='25px'
+                    display={isColorPickerVisible ? 'visible' : 'none'}
+                    zIndex='2'
+                >
+                    <ProjectColorPicker
+                        selected={currentSelectedColor}
+                        onSelect={setCurrentSelectedColor}
+                    />
+                </HStack>
             </HStack>
-            <Badge
-                color={
-                    isSelected
-                        ? COLORS.Localize.Purple.T600.value
-                        : COLORS.Error.T500.value
-                }
-            >
-                {notificationNumber}
-            </Badge>
+            {notificationNumber && notificationNumber > 0 && (
+                <Badge
+                    color={
+                        isSelected
+                            ? COLORS.Localize.Purple.T600.value
+                            : COLORS.Error.T500.value
+                    }
+                >
+                    {notificationNumber}
+                </Badge>
+            )}
         </HStack>
     );
 };

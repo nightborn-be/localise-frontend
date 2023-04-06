@@ -16,7 +16,10 @@ const SignUpPage = () => {
 
     // Render
     return (
-        <Page bgImage='/assets/images/AuthSignInBackground.png'>
+        <Page
+            bgImage='/assets/images/AuthSignInBackground.png'
+            displaySidebar={false}
+        >
             <HStack ml='8.5rem'>
                 <ContentSignUp
                     title={t<string>(tKeys.auth.sign_up.account.title)}

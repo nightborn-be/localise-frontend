@@ -11,14 +11,15 @@ export const OrganisationMenuItem = ({
     description,
     isActive,
     imageUrl,
+    color,
     onSelect,
 }: IOrganisationMenuItemProps) => {
     // Render
     return (
         <HStack
-            w='14.25rem'
+            w='15.75rem'
             h='3.25rem'
-            padding='0.625rem'
+            padding='10px'
             borderRadius='0.375rem'
             spacing='0.5rem'
             _hover={{ bg: COLORS.Tag.value }}
@@ -27,7 +28,7 @@ export const OrganisationMenuItem = ({
         >
             <Box
                 borderRadius='0.5rem'
-                bg={!imageUrl ? `#0EAE` : 'transparent'}
+                bg={!imageUrl ? color : 'transparent'}
                 w={'2rem'}
                 h={'2rem'}
             >
@@ -47,7 +48,7 @@ export const OrganisationMenuItem = ({
                     {description}
                 </Text>
             </VStack>
-            <Box w='1.25rem' h='1.25rem'>
+            <Box w='1.25rem' h='1.25rem' position={'absolute'} right='10px'>
                 {isActive && (
                     <Icon name='checked' width={'1.25rem'} height={'1.25rem'} />
                 )}

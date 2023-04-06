@@ -29,7 +29,7 @@ const Template: ComponentStory<typeof SearchBox<string>> = (args) => {
             setActiveKeys((prev) => [...prev, value]);
         else setActiveKeys((prev) => prev?.filter((option) => option != value));
     }
-    function filter(value: string) {
+    function filter(value: string): string[] {
         return options?.filter((option) =>
             option.value.toLowerCase().includes(value.toLowerCase()),
         );

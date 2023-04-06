@@ -1,13 +1,17 @@
 import { InputProps } from '@chakra-ui/react';
 import { SearchBarOption } from '../searchbar/props';
 
-export default interface ISearchbarSelectProps<T> extends InputProps {
+export default interface ISearchbarSelectProps<T>
+    extends Omit<InputProps, 'onSelect'> {
     placeholderColor?: string;
     marginLeftElement?: string;
     activeKey?: T;
     filterValue?: string;
     spacing?: string;
     options?: SearchBarOption<T>[];
-    onSelect?: (value) => void;
+    onSelect?: (value: string) => void;
     defaultSelectValue?: string;
+    label?: string;
+    description?: string;
+    noValueMsg?: string;
 }

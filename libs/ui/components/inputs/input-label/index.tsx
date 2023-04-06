@@ -10,6 +10,10 @@ const InputLabel = ({
     description,
     lineHeight = '15px',
     margin = '0',
+    labelFont = FONTS.T1.T12px.Medium500.value,
+    labelColor = COLORS.Text.T500.value,
+    descriptionFont = FONTS.T1.T12px.Regular400.value,
+    descriptionColor = COLORS.InputText.value,
 }: IInputLabelProps) => {
     //Attributes
 
@@ -21,8 +25,8 @@ const InputLabel = ({
                 <Text
                     lineHeight={lineHeight}
                     margin={margin}
-                    font={FONTS.T1.T12px.Medium500.value}
-                    color={COLORS.Text.T500.value}
+                    font={labelFont}
+                    color={labelColor}
                 >
                     {label}
                 </Text>
@@ -31,8 +35,8 @@ const InputLabel = ({
                 <Text
                     lineHeight={lineHeight}
                     margin={margin}
-                    font={FONTS.T1.T12px.Regular400.value}
-                    color={COLORS.InputText.value}
+                    font={descriptionFont}
+                    color={descriptionColor}
                 >
                     {description}
                 </Text>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, HStack, VStack } from '@chakra-ui/react';
+import { VStack, Wrap, WrapItem } from '@chakra-ui/react';
 import COLORS from '../../../constants/colors';
 import FONTS from '../../../constants/fonts';
 import Text from '../text';
@@ -16,6 +16,8 @@ const SearchBox = <T,>({
     onCheck,
     activeKeys,
     options,
+    noValueMsg,
+    onTagDelete,
 }: ISearchBoxProps<T>) => {
     // Render
     return (
@@ -59,17 +61,21 @@ const SearchBox = <T,>({
                     onCheck={onCheck}
                     activeKeys={activeKeys}
                     options={options}
+                    noValueMsg={noValueMsg}
                 />
                 {!!activeKeys?.length && (
-                    <HStack spacing={'0.25rem'}>
+                    <Wrap spacing={'0.25rem'} pr={'1.125rem'}>
                         {activeKeys.map((tag, index) => (
-                            <Tag
-                                key={`tag-${index}`}
-                                value={tag}
-                                font={FONTS.T1.T12px.Medium500.value}
-                            />
+                            <WrapItem>
+                                <Tag
+                                    key={`tag-${index}`}
+                                    value={tag}
+                                    font={FONTS.T1.T12px.Medium500.value}
+                                    onDelete={() => onTagDelete(tag)}
+                                />
+                            </WrapItem>
                         ))}
-                    </HStack>
+                    </Wrap>
                 )}
             </VStack>
         </>
