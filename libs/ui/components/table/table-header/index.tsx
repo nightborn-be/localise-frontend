@@ -19,7 +19,7 @@ export default function TableHeader({}: ITableHeaderProps) {
     //Render
     return (
         <HStack
-            w='fit-content'
+            w='full'
             h={'2.75rem'}
             alignItems='flex-start'
             borderRadius='0.5rem'
@@ -28,13 +28,15 @@ export default function TableHeader({}: ITableHeaderProps) {
             <HStack
                 padding='0.5rem 0rem 0.5rem 1.25rem'
                 spacing='0.625rem'
-                w='3rem'
+                w='9.375rem'
                 h='2.75rem'
+                alignItems={'right'}
+                justifyContent={'right'}
             ></HStack>
             <HStack
                 padding='0.5rem 1.25rem'
                 spacing='0.625rem'
-                w='14.3125rem'
+                w='full'
                 h='2.75rem'
                 alignItems={'center'}
             >
@@ -48,7 +50,7 @@ export default function TableHeader({}: ITableHeaderProps) {
             <HStack
                 padding='0.5rem 1.25rem'
                 spacing='0.625rem'
-                w='15.3125rem'
+                w='full'
                 h='2.75rem'
                 alignItems={'center'}
             >
@@ -62,7 +64,7 @@ export default function TableHeader({}: ITableHeaderProps) {
             <HStack
                 padding='0.5rem 1.25rem'
                 spacing='0.625rem'
-                w='13.5rem'
+                w='full'
                 h='2.75rem'
                 alignItems={'center'}
             >
@@ -77,7 +79,7 @@ export default function TableHeader({}: ITableHeaderProps) {
             <HStack
                 padding='0.5rem 0.5rem 0.5rem 1.25rem'
                 spacing='0.25rem'
-                w='fit-content'
+                w='full'
                 h='2.75rem'
                 alignItems={'center'}
                 justifyContent={'right'}

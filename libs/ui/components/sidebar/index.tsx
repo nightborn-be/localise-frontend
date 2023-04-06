@@ -216,7 +216,6 @@ export const SideBar = () => {
                                 value={actualOrganisationUser}
                                 onChange={(organizationValue) => {
                                     switchOrgansiation(organizationValue);
-                                    
                                 }}
                                 onClick={handleOnCreateOrganizationClick}
                             />

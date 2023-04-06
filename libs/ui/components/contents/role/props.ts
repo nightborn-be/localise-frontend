@@ -1,4 +1,4 @@
 export interface IRoleProps {
     selectedValue: string;
-    setSelectedValue: (value) => void;
+    setSelectedValue: (value: string) => void;
 }

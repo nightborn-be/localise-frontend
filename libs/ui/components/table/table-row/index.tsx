@@ -21,7 +21,7 @@ export default function TableRow({
     //Render
     return (
         <HStack
-            w='fit-content'
+            w='full'
             h={'2.75rem'}
             alignItems='flex-start'
             onMouseOver={() => setIsHovered(true)}
@@ -33,8 +33,10 @@ export default function TableRow({
             <HStack
                 padding='0.5rem 0rem 0.5rem 1.25rem'
                 spacing='0.625rem'
-                w='3rem'
+                w='9.375rem'
                 h='2.75rem'
+                alignItems={'right'}
+                justifyContent={'right'}
             >
                 <Avatar
                     name={firstName?.charAt(0) + lastName?.charAt(0)}
@@ -44,7 +46,7 @@ export default function TableRow({
             <HStack
                 padding='0.5rem 1.25rem'
                 spacing='0.625rem'
-                w='14.3125rem'
+                w='full'
                 h='2.75rem'
                 alignItems={'center'}
             >
@@ -58,7 +60,7 @@ export default function TableRow({
             <HStack
                 padding='0.5rem 1.25rem'
                 spacing='0.625rem'
-                w='15.3125rem'
+                w='full'
                 h='2.75rem'
                 alignItems={'center'}
             >
@@ -72,7 +74,7 @@ export default function TableRow({
             <HStack
                 padding='0.5rem 1.25rem'
                 spacing='0.625rem'
-                w='13.5rem'
+                w='full'
                 h='2.75rem'
                 alignItems={'center'}
             >
@@ -85,7 +87,7 @@ export default function TableRow({
             <HStack
                 padding='0.5rem 0.5rem 0.5rem 1.25rem'
                 spacing='0.25rem'
-                w='11.125rem'
+                w='full'
                 h='2.75rem'
                 alignItems={'center'}
                 justifyContent={'right'}

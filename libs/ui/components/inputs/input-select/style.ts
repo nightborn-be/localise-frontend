@@ -2,8 +2,8 @@ function backgroundStyleSwitch(
     isFocused: boolean,
     isSelected: boolean,
     isMultiple: boolean,
-    backgroundOptionColor,
-    focusBackgroundOptionColor,
+    backgroundOptionColor: string,
+    focusBackgroundOptionColor: string,
 ) {
     if (isSelected && !isMultiple) return backgroundOptionColor;
     if (isFocused) return focusBackgroundOptionColor;

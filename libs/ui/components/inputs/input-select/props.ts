@@ -24,7 +24,7 @@ export interface IInputSelectProps extends Omit<InputProps, 'onChange'> {
     isMultiple?: boolean;
     font?: Font;
     paddingContainer?: string;
-    onChange?: (value) => void;
+    onChange?: (value: any) => void;
 }
 
 export type Options = {

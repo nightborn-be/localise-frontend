@@ -7,7 +7,7 @@ import Button from '../../../../../../components/inputs/button';
 import FONTS from '../../../../../../constants/fonts';
 import Icon from '../../../../../../components/contents/icon';
 
-const Dropzone = ({ onDrag, label }: IDropzoneProps) => {
+const Dropzone = ({ onDrag, children }: IDropzoneProps) => {
     // Attributes
     const onDrop = useCallback(
         (acceptedFiles: File[]) => {
@@ -26,30 +26,7 @@ const Dropzone = ({ onDrag, label }: IDropzoneProps) => {
     return (
         <HStack {...getRootProps()}>
             <input {...getInputProps()} />
-            <Button
-                border={`0.125rem dashed ${COLORS.InputText.value}`}
-                font={FONTS.T1.T12px.Medium500.value}
-                borderRadius='1rem'
-                w='6.25rem'
-                h='6.25rem'
-                maxH='6.25rem'
-                maxW='6.25rem'
-                direction='column'
-                backgroundColor='transparent'
-                color={COLORS.InputText.value}
-                whiteSpace='pre-line'
-                spacing='0.4375rem'
-                startEnhancer={(): React.ReactElement => (
-                    <Icon
-                        name='uploadCloud'
-                        stroke={COLORS.InputText.value}
-                        width='24'
-                        height='24'
-                    />
-                )}
-            >
-                {label}
-            </Button>
+            {children}
         </HStack>
     );
 };

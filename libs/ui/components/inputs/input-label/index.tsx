@@ -21,7 +21,7 @@ const InputLabel = ({
     //Render
     if (!label && !description) return <></>;
     return (
-        <VStack spacing={spacing} align='left'>
+        <VStack spacing={spacing} align='left' w='full'>
             {label && (
                 <Text
                     lineHeight={lineHeight}

@@ -1,3 +1,1 @@
-export default interface ITableHeaderProps {
-
-}
+export default interface ITableHeaderProps {}

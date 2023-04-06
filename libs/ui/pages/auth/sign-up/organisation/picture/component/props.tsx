@@ -1,4 +1,4 @@
 export interface IDropzoneProps {
     onDrag?: (value: string) => void;
-    label: string;
+    children: React.ReactNode | React.ReactNode[];
 }
