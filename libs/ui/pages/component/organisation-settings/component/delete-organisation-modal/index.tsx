@@ -14,8 +14,11 @@ export const DeleteOrganisationModal = ({
     isOpen,
     onClose,
 }: IDeleteOrganisationProps) => {
+    // Attributes
     const { handleOnSubmit } = useDeleteOrganisationLogic();
     const { t } = useTranslation();
+
+    // Render
     return (
         <HStack>
             <Modal

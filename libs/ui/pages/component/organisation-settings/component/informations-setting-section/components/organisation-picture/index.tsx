@@ -15,6 +15,7 @@ const OrganisationPicture = ({
     organisationName,
     setOrganisationPicture,
 }: IOrganisationPictureProps) => {
+    // Render
     return (
         <HStack
             position={'relative'}

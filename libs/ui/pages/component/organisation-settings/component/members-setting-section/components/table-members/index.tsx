@@ -4,6 +4,7 @@ import TableHeader from '../../../../../../../components/table/table-header';
 import TableRow from '../../../../../../../components/table/table-row';
 
 const TableMembers = () => {
+    // Render
     return (
         <VStack
             alignItems={'left'}

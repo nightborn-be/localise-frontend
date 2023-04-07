@@ -16,7 +16,10 @@ const EditOrganisationContent = ({
     form,
     deleteOrganisationDisclosure,
 }: IEditOrganisationContentProps) => {
+    // Attributes
     const { t } = useTranslation();
+
+    // Render
     return (
         <VStack
             alignItems={'left'}

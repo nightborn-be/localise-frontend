@@ -13,9 +13,11 @@ import Button from '../../../../../components/inputs/button';
 import { EnhancerProps } from '../../../../../components/inputs/button/props';
 
 export const AddMembersModal = ({ isOpen, onClose }: IAddMembersProps) => {
+    // Attributes
     const { handleOnSubmit, form } = useAddMembersLogic();
-
     const { t } = useTranslation();
+
+    // Render
     return (
         <HStack>
             <Modal

@@ -16,7 +16,10 @@ export const MembersSettingSection = ({
     isLoading,
     handleOnSubmit,
 }: IMembersSettingSectionProps) => {
+    // Attributes
     const { t } = useTranslation();
+
+    // Render
     return (
         <>
             <VStack

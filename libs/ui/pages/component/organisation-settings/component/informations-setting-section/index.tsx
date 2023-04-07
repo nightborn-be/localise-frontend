@@ -12,6 +12,7 @@ export const InformationSettingSection = ({
     pictureUrl,
     setOrganisationPicture,
 }: IInformationSettingSectionProps) => {
+    // Render
     return (
         <HStack
             spacing='6.25rem'

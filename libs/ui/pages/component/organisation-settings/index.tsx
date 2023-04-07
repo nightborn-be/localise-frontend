@@ -26,7 +26,10 @@ const OrganisationSettings = () => {
         activeMenuSettingKey,
         setActiveMenuSettingKey,
     } = useOrganisationSettingsLogic();
+    // Attributes
     const { t } = useTranslation();
+
+    // Render
     return (
         <VStack h='full' w='full' alignItems={'left'} padding='0rem'>
             <Breadcrumb
