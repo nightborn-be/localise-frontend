@@ -122,19 +122,35 @@ export const CreateOrganisationModal = ({
                             />
                         </HStack>
                     ) : (
-                        <Dropzone
-                            onDrag={onDrag}
-                            label={t<string>(
-                                tKeys.auth.sign_up.organisation.form.picture
-                                    .label,
-                            )}
-                            h={'5rem'}
-                            w={'5rem'}
-                            font={FONTS.T1.T10px.Medium500.value}
-                            iconHeight='20'
-                            iconWidth='20'
-                            spacing='0.1975rem'
-                        />
+                        <Dropzone onDrag={onDrag}>
+                            <Button
+                                border={`0.125rem dashed ${COLORS.InputText.value}`}
+                                font={FONTS.T1.T10px.Medium500.value}
+                                borderRadius='1rem'
+                                w={'5rem'}
+                                h={'5rem'}
+                                maxH={'5rem'}
+                                maxW={'5rem'}
+                                direction='column'
+                                backgroundColor='transparent'
+                                color={COLORS.InputText.value}
+                                whiteSpace='pre-line'
+                                spacing={'0.1975rem'}
+                                startEnhancer={(): React.ReactElement => (
+                                    <Icon
+                                        name='uploadCloud'
+                                        stroke={COLORS.InputText.value}
+                                        width={'20'}
+                                        height={'20'}
+                                    />
+                                )}
+                            >
+                                {t<string>(
+                                    tKeys.auth.sign_up.organisation.form.picture
+                                        .label,
+                                )}
+                            </Button>
+                        </Dropzone>
                     )}
                 </VStack>
                 <VStack

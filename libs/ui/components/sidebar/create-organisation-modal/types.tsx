@@ -3,7 +3,7 @@ import { IDefaultForm, IForm } from '../../../../utils/formik';
 export interface CreateOrganisationLogicType {
     onDeletePicture: () => void;
     onDrag: (
-        value: string,
+        pictureUrl: string,
         binary?: string | ArrayBuffer | null | undefined,
     ) => void;
     picturePath?: string;

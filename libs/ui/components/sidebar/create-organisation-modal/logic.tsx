@@ -8,7 +8,6 @@ import useToast from '../../progress-validation/toast';
 import { ToastType } from '../../progress-validation/toast/types';
 import { useTranslation } from 'react-i18next';
 import { tKeys } from '../../../../i18n/keys';
-import { AxiosError } from 'axios';
 
 export const useCreateOrganisationLogic = (): CreateOrganisationLogicType => {
     // Attributes
@@ -42,7 +41,7 @@ export const useCreateOrganisationLogic = (): CreateOrganisationLogicType => {
                 {
                     data: toCreateOrganisationDTO(
                         form.organisationName.value,
-                        pictureBinary?.toString(),
+                        pictureBinary as ArrayBuffer,
                     ),
                 },
                 {
@@ -71,8 +70,8 @@ export const useCreateOrganisationLogic = (): CreateOrganisationLogicType => {
     function onDeletePicture() {
         setPicturePath('');
     }
-    function onDrag(value: string, binary?: string | ArrayBuffer | null) {
-        setPicturePath(value);
+    function onDrag(pictureUrl: string, binary?: string | ArrayBuffer | null) {
+        setPicturePath(pictureUrl);
         setPictureBinary(binary);
     }
     return {

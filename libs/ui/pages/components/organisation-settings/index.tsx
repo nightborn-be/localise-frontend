@@ -15,9 +15,9 @@ const OrganisationSettings = () => {
     const {
         form,
         actualOrganisationUser,
-        setOrganisationPicture,
+        onDrag,
         handleOnSubmit,
-        pictureUrl,
+        picturePath,
         isLoading,
         informationsRef,
         membersRef,
@@ -67,9 +67,9 @@ const OrganisationSettings = () => {
                         deleteOrganisationDisclosure={
                             deleteOrganisationDisclosure
                         }
-                        pictureUrl={pictureUrl}
+                        pictureUrl={picturePath}
                         form={form}
-                        setOrganisationPicture={setOrganisationPicture}
+                        onDrag={onDrag}
                     />
                     <LineSeparation />
                     <MembersSettingSection

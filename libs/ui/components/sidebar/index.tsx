@@ -220,7 +220,7 @@ export const SideBar = () => {
                                 onChange={(organizationValue) => {
                                     switchOrgansiation(organizationValue);
                                 }}
-                                onClick={handleOnCreateOrganizationClick}
+                                onClick={createOrganisationModal.onOpen}
                             />
                         )}
                     </Box>

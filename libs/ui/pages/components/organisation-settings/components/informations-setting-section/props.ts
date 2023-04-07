@@ -7,5 +7,5 @@ export interface IInformationSettingSectionProps {
     deleteOrganisationDisclosure: any;
     organisationName: string;
     pictureUrl: string;
-    setOrganisationPicture: (binary: string | ArrayBuffer | null) => void;
+    onDrag: (pictureUrl: string, binary: string | ArrayBuffer | null) => void;
 }

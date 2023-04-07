@@ -13,7 +13,7 @@ import { getInitialeName } from '../../../../../../../../utils/functions';
 const OrganisationPicture = ({
     pictureUrl,
     organisationName,
-    setOrganisationPicture,
+    onDrag,
 }: IOrganisationPictureProps) => {
     // Render
     return (
@@ -43,7 +43,7 @@ const OrganisationPicture = ({
                 </Text>
             )}
             <Box position={'absolute'} top='5.3125rem' bottom='0' right='0'>
-                <Dropzone onDrag={setOrganisationPicture}>
+                <Dropzone onDrag={onDrag}>
                     <ButtonIcon
                         size={ButtonSize.SMALL}
                         border={`0.25rem solid ${COLORS.White.T500.value}`}

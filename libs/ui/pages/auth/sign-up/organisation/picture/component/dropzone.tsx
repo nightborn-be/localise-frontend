@@ -13,7 +13,11 @@ const Dropzone = ({ onDrag, children }: IDropzoneProps) => {
         (acceptedFiles: File[]) => {
             const reader = new FileReader();
             reader.onload = () => {
-                onDrag && onDrag(reader.result);
+                onDrag &&
+                    onDrag(
+                        URL.createObjectURL(acceptedFiles[0]),
+                        reader.result,
+                    );
             };
             reader.readAsArrayBuffer(acceptedFiles[0]);
         },

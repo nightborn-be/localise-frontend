@@ -19,7 +19,7 @@ const OrganisationPicturePage = () => {
         handleOnContinue,
         handleOnLater,
         picturePath,
-        setPicturePath,
+        onDrag,
         onDeletePicture,
     } = usePictureLogic();
     const { t } = useTranslation();
@@ -74,12 +74,12 @@ const OrganisationPicturePage = () => {
                                 minW='6.25rem'
                                 color={COLORS.InputText.value}
                                 whiteSpace='pre-line'
-                                src={''}
+                                src={picturePath}
                                 alt='Organization picture'
                             />
                         </HStack>
                     ) : (
-                        <Dropzone onDrag={setPicturePath}>
+                        <Dropzone onDrag={onDrag}>
                             <Button
                                 border={`0.125rem dashed ${COLORS.InputText.value}`}
                                 font={FONTS.T1.T12px.Medium500.value}

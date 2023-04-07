@@ -5,9 +5,8 @@ import { PictureLogicType } from './types';
 export const usePictureLogic = (): PictureLogicType => {
     // Attributes
     const { push } = useRouter();
-    const [picturePath, setPicturePath] = useState<string | ArrayBuffer | null>(
-        '',
-    );
+    const [picturePath, setPicturePath] = useState<string>('')
+    const [pictureBinary, setPictureBinary] = useState<string | ArrayBuffer | null>();
 
     // Functions
     function handleOnContinue(picturePath: string) {
@@ -21,11 +20,16 @@ export const usePictureLogic = (): PictureLogicType => {
         setPicturePath('');
     }
 
+
+    function onDrag(pictureUrl: string, binary?: string | ArrayBuffer | null) {
+        setPicturePath(pictureUrl);
+        setPictureBinary(binary);
+    }
     return {
         handleOnContinue,
         handleOnLater,
         picturePath,
-        setPicturePath,
+        onDrag,
         onDeletePicture,
     };
 };

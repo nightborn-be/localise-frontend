@@ -5,8 +5,8 @@ import { MenuItemValue } from '../../../components/navigation/sidebar-menu-setti
 export interface OrganisationSettingsLogicType {
     handleOnSubmit: () => void;
     form: IForm<IOrganisationSettingsForm> & IDefaultForm;
-    setOrganisationPicture: (binary: string | ArrayBuffer | null) => void;
-    pictureUrl: string;
+    onDrag: (pictureUrl: string, binary: string | ArrayBuffer | null) => void;
+    picturePath: string;
     isLoading: boolean;
     actualOrganisationUser: OrganisationDTO | undefined;
     informationsRef: React.RefObject<HTMLDivElement>;

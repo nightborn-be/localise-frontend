@@ -10,7 +10,7 @@ export const InformationSettingSection = ({
     organisationName,
     deleteOrganisationDisclosure,
     pictureUrl,
-    setOrganisationPicture,
+    onDrag,
 }: IInformationSettingSectionProps) => {
     // Render
     return (
@@ -27,7 +27,7 @@ export const InformationSettingSection = ({
             <OrganisationPicture
                 pictureUrl={pictureUrl}
                 organisationName={organisationName}
-                setOrganisationPicture={setOrganisationPicture}
+                onDrag={onDrag}
             />
         </HStack>
     );

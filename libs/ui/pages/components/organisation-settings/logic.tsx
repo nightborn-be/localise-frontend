@@ -25,8 +25,8 @@ export const useOrganisationSettingsLogic =
         const toast = useToast();
         const [organisationPicture, setOrganisationPicture] = useState<
             string | ArrayBuffer | null
-        >('');
-        const [pictureUrl, setPictureUrl] = useState<string>('');
+        >();
+        const [picturePath, setPicturePath] = useState<string>('');
         const informationsRef = useRef<HTMLDivElement>(null);
         const membersRef = useRef<HTMLDivElement>(null);
         const deleteOrganisationDisclosure = useDisclosure();
@@ -58,11 +58,17 @@ export const useOrganisationSettingsLogic =
                 'organisationName',
                 actualOrganisationUser?.name,
             );
-            setPictureUrl(actualOrganisationUser?.pictureUrl as string);
+            setPicturePath(actualOrganisationUser?.pictureUrl as string);
         }, [actualOrganisationUser]);
 
         const form = createForm(values, rest);
-
+        function onDrag(
+            pictureUrl: string,
+            binary?: string | ArrayBuffer | null,
+        ) {
+            setPicturePath(pictureUrl);
+            setOrganisationPicture(binary);
+        }
         // Functions
         function handleOnSubmit() {
             try {
@@ -113,9 +119,9 @@ export const useOrganisationSettingsLogic =
         return {
             form,
             handleOnSubmit,
-            setOrganisationPicture,
+            onDrag,
             actualOrganisationUser,
-            pictureUrl,
+            picturePath,
             isLoading,
             informationsRef,
             membersRef,
