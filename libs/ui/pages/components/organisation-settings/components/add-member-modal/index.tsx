@@ -11,6 +11,7 @@ import InputSelectAndInput from '../../../../../components/inputs/input-text-sel
 import Icon from '../../../../../components/contents/icon';
 import Button from '../../../../../components/inputs/button';
 import { EnhancerProps } from '../../../../../components/inputs/button/props';
+import { tKeys } from '../../../../../../i18n/keys';
 
 export const AddMembersModal = ({ isOpen, onClose }: IAddMembersProps) => {
     // Attributes
@@ -21,19 +22,28 @@ export const AddMembersModal = ({ isOpen, onClose }: IAddMembersProps) => {
     return (
         <HStack>
             <Modal
-                title={'Add members'}
+                title={t<string>(
+                    tKeys.home.organisation_settings.menu.modal.add_members
+                        .title,
+                )}
                 isOpen={isOpen}
                 onClose={() => {
                     onClose();
                 }}
                 handleOnSubmit={handleOnSubmit}
                 footer={{
-                    firstCtaLabel: 'Cancel',
+                    firstCtaLabel: t<string>(
+                        tKeys.home.organisation_settings.menu.modal.add_members
+                            .cta.cancel,
+                    ),
                     firstCtaBgColor: 'transparent',
                     firstCtaBgHoverColor: COLORS.Localize.Purple.T500.value,
                     firstCtaColor: COLORS.InputText.value,
                     firstCtaFont: FONTS.T1.T12px.SemiBold600.value,
-                    secondCtaLabel: 'Invite',
+                    secondCtaLabel: t<string>(
+                        tKeys.home.organisation_settings.menu.modal.add_members
+                            .cta.Invite,
+                    ),
                     secondCtaBgColor: COLORS.Tag.value,
                     secondCtaFont: FONTS.T1.T12px.SemiBold600.value,
                     secondCtaColor: COLORS.InputText.value,
@@ -53,7 +63,10 @@ export const AddMembersModal = ({ isOpen, onClose }: IAddMembersProps) => {
                             font={FONTS.T1.T14px.Medium500.value}
                             w='full'
                         >
-                            Invite your teammates
+                            {t<string>(
+                                tKeys.home.organisation_settings.menu.modal
+                                    .add_members.form.teammates.title,
+                            )}
                         </Text>
                         <Text
                             color={COLORS.InputText.value}
@@ -72,12 +85,35 @@ export const AddMembersModal = ({ isOpen, onClose }: IAddMembersProps) => {
                             background: COLORS.White.T500.value,
                             border: 'transparent',
                             options: [
-                                { value: 'Admin', label: 'Admin' },
-                                { value: 'Member', label: 'Member' },
-                                { value: 'Utilisateur', label: 'Utilisateur' },
                                 {
-                                    value: 'Administrateur',
-                                    label: 'Administrateur',
+                                    value: t<string>(
+                                        tKeys.home.organisation_settings.menu
+                                            .modal.add_members.role.admin,
+                                    ),
+                                    label: t<string>(
+                                        tKeys.home.organisation_settings.menu
+                                            .modal.add_members.role.admin,
+                                    ),
+                                },
+                                {
+                                    value: t<string>(
+                                        tKeys.home.organisation_settings.menu
+                                            .modal.add_members.role.developer,
+                                    ),
+                                    label: t<string>(
+                                        tKeys.home.organisation_settings.menu
+                                            .modal.add_members.role.developer,
+                                    ),
+                                },
+                                {
+                                    value: t<string>(
+                                        tKeys.home.organisation_settings.menu
+                                            .modal.add_members.role.translator,
+                                    ),
+                                    label: t<string>(
+                                        tKeys.home.organisation_settings.menu
+                                            .modal.add_members.role.translator,
+                                    ),
                                 },
                             ],
                             fontWeight: '400',
@@ -98,7 +134,10 @@ export const AddMembersModal = ({ isOpen, onClose }: IAddMembersProps) => {
                             name: 'name',
                             value: null,
                             onChange: () => {},
-                            placeholder: 'Insert email',
+                            placeholder: t<string>(
+                                tKeys.home.organisation_settings.menu.modal
+                                    .add_members.form.teammates.placeholder,
+                            ),
                             w: '100%',
                             border: 'transparent',
                             font: FONTS.T1.T12px.Regular400.value,
@@ -152,7 +191,10 @@ export const AddMembersModal = ({ isOpen, onClose }: IAddMembersProps) => {
                         )}
                         hoverColor={COLORS.Localize.Purple.T500.value}
                     >
-                        Add a member
+                        {t<string>(
+                            tKeys.home.organisation_settings.menu.modal
+                                .add_members.cta.add,
+                        )}
                     </Button>
                 </VStack>
             </Modal>
