@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { HomeContentState } from './types';
-import OrganisationSettings from './component/organisation-settings';
+import OrganisationSettings from './components/organisation-settings';
 const HomePage = () => {
     // Attributes
     const [currentStatePage, setCurrentStatePage] = useState<HomeContentState>(

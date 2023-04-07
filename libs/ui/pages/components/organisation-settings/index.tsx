@@ -4,12 +4,12 @@ import Breadcrumb from '../../../components/navigation/breadcrumb';
 import { useOrganisationSettingsLogic } from './logic';
 import { useTranslation } from 'react-i18next';
 import { tKeys } from '../../../../i18n/keys';
-import DeleteOrganisationModal from './component/delete-organisation-modal/index';
-import AddMembersModal from './component/add-member-modal';
-import SidebarMenuSettingContent from './component/sidebar-menu-setting';
-import InformationSettingSection from './component/informations-setting-section';
-import LineSeparation from './component/line-separation';
-import MembersSettingSection from './component/members-setting-section';
+import DeleteOrganisationModal from './components/delete-organisation-modal/index';
+import AddMembersModal from './components/add-member-modal';
+import SidebarMenuSettingContent from './components/sidebar-menu-setting';
+import InformationSettingSection from './components/informations-setting-section';
+import LineSeparation from './components/line-separation';
+import MembersSettingSection from './components/members-setting-section';
 
 const OrganisationSettings = () => {
     const {
