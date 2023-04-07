@@ -7,11 +7,10 @@ WORKDIR /app
 COPY . .
 RUN npm install
 
-# Arguments
-ARG CURRENT_APPLICATION=front-end
+RUN npm run build:front-end
 
-RUN npm run build
-
+RUN apk add --no-cache --upgrade bash
+RUN ["chmod", "+x", "./apps/front-end/entrypoint.js"]
 EXPOSE 3000
-ENV APPLICATION=$CURRENT_APPLICATION
-CMD npm run start
+
+CMD [ "sh", "-c", "node ./apps/front-end/entrypoint.js && npm run start:front-end" ]

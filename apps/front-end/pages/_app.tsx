@@ -1,10 +1,11 @@
-import type { AppProps } from 'next/app';
+import type { AppContext, AppProps } from 'next/app';
 import { ChakraProvider } from '@chakra-ui/react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import React from 'react';
 import { getI18nInstance } from '../../../libs/i18n/index';
 import { I18nextProvider } from 'react-i18next';
 import { AuthProvider } from '../../../libs/ui/auth';
+import App from 'next/app';
 
 // Create query client
 const queryClient = new QueryClient({
@@ -14,17 +15,6 @@ const queryClient = new QueryClient({
         },
     },
 });
-
-// Init sentry
-// Sentry.init({
-// 	dsn: 'DSN_HERE',
-// 	integrations: [new BrowserTracing()],
-
-// 	// Set tracesSampleRate to 1.0 to capture 100%
-// 	// of transactions for performance monitoring.
-// 	// We recommend adjusting this value in production
-// 	tracesSampleRate: 1.0,
-// });
 
 function MyApp({ Component, pageProps }: AppProps) {
     // Attributes
@@ -44,6 +34,10 @@ function MyApp({ Component, pageProps }: AppProps) {
             </QueryClientProvider>
         </I18nextProvider>
     );
+}
+
+export async function getInitialProps(context: AppContext) {
+    return await App.getInitialProps(context);
 }
 
 export default MyApp;

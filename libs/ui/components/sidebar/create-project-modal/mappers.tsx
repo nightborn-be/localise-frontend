@@ -9,11 +9,13 @@ export const toCreateProjectDTO = (
     sourceLanguage: string,
     targetLanguages: string[],
 ): CreateProjectDTO => {
-    const languageMap = {};
-    languages.forEach((language) => (languageMap[language.name] = language));
+    const languageMap: any = {};
+    languages.forEach(
+        (language: any) => (languageMap[language.name] = language),
+    );
     const source: UpsertProjectLanguageDTO = languageMap[sourceLanguage];
     const target: UpsertProjectLanguageDTO[] = [];
-    targetLanguages.forEach((obj) => target.push(languageMap[obj]));
+    targetLanguages.forEach((obj: any) => target.push(languageMap[obj]));
 
     const res: CreateProjectDTO = {
         name: projectName,

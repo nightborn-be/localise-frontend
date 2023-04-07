@@ -40,7 +40,7 @@ export default function InputSelectAndInput<T>({
         setIsHovered(false);
     };
 
-    const iconChoice = (isHovered): any => {
+    const iconChoice = (isHovered: any): any => {
         if (isHovered && rightHoverIcon) return rightHoverIcon;
         return rightIcon;
     };

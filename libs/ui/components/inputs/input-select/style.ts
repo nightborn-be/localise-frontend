@@ -10,33 +10,33 @@ function backgroundStyleSwitch(
     return 'none';
 }
 export function getSelectStyle(
-    isValid,
-    border,
-    errorBorder,
-    borderRadius,
-    fontSize,
-    fontWeight,
-    fontFamily,
-    color,
-    selectMarginLeft,
-    placeholderColor,
-    menuOptionWidth,
-    menuRightOption,
-    menuLeftOption,
-    borderRadiusOption,
-    isMultiple,
-    selectedOptionColor,
-    textOptionColor,
-    dropdownArrowColor,
-    paddingLeft,
-    paddingRight,
-    backgroundOptionColor,
-    focusBackgroundOptionColor,
-    font,
-    paddingContainer,
+    isValid: any,
+    border: any,
+    errorBorder: any,
+    borderRadius: any,
+    fontSize: any,
+    fontWeight: any,
+    fontFamily: any,
+    color: any,
+    selectMarginLeft: any,
+    placeholderColor: any,
+    menuOptionWidth: any,
+    menuRightOption: any,
+    menuLeftOption: any,
+    borderRadiusOption: any,
+    isMultiple: any,
+    selectedOptionColor: any,
+    textOptionColor: any,
+    dropdownArrowColor: any,
+    paddingLeft: any,
+    paddingRight: any,
+    backgroundOptionColor: any,
+    focusBackgroundOptionColor: any,
+    font: any,
+    paddingContainer: any,
 ) {
     return {
-        valueContainer: (styles) => {
+        valueContainer: (styles: any) => {
             return {
                 ...styles,
                 padding: paddingContainer,
@@ -44,7 +44,7 @@ export function getSelectStyle(
                 height: 'fit-content',
             };
         },
-        control: (styles) => {
+        control: (styles: any) => {
             return {
                 ...styles,
                 border: isValid ? border : errorBorder,
@@ -58,14 +58,14 @@ export function getSelectStyle(
                 minHeight: '0px',
             };
         },
-        placeholder: (styles) => {
+        placeholder: (styles: any) => {
             return {
                 ...styles,
                 color: placeholderColor,
             };
         },
 
-        menu: (styles) => {
+        menu: (styles: any) => {
             return {
                 ...styles,
                 width: menuOptionWidth ?? '100%',
@@ -74,7 +74,7 @@ export function getSelectStyle(
                 left: menuLeftOption,
             };
         },
-        option: (styles, { isFocused, isSelected }) => {
+        option: (styles: any, { isFocused, isSelected }: any) => {
             return {
                 ...styles,
                 display: 'flex',
@@ -99,15 +99,15 @@ export function getSelectStyle(
                         : textOptionColor,
             };
         },
-        input: (styles) => ({
+        input: (styles: any) => ({
             ...styles,
         }),
-        singleValue: (styles) => ({
+        singleValue: (styles: any) => ({
             ...styles,
             overflow: 'visible',
             color: color,
         }),
-        dropdownIndicator: (base) => ({
+        dropdownIndicator: (base: any) => ({
             ...base,
             color: dropdownArrowColor,
             backgroundColor: 'transparent',
