@@ -1,5 +1,4 @@
 import { createContext } from 'react';
-import UserCredential from '@firebase/auth';
 export interface AuthContextState {
     isLogged: boolean;
     userEmail?: string;

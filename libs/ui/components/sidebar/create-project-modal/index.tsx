@@ -13,10 +13,7 @@ import languages from '../../../../utils/languages';
 import { useTranslation } from 'react-i18next';
 import { tKeys } from '../../../../i18n/keys';
 
-export const CreateProjectModal = ({
-    isOpen,
-    onClose,
-}: ICreateProjectProps) => {
+export const AddMembersModal = ({ isOpen, onClose }: ICreateProjectProps) => {
     const {
         sourceLanguageActiveKey,
         setSourceLanguageActiveKey,
@@ -150,4 +147,4 @@ export const CreateProjectModal = ({
     );
 };
 
-export default CreateProjectModal;
+export default AddMembersModal;

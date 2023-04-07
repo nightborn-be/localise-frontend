@@ -1,14 +1,14 @@
 import { HStack, Image, VStack } from '@chakra-ui/react';
 import React from 'react';
-import COLORS from '../../../constants/colors';
-import FONTS from '../../../constants/fonts';
-import Modal from '../../surface/modal';
 import { useTranslation } from 'react-i18next';
-import { tKeys } from '../../../../i18n/keys';
 import { useDeleteOrganisationLogic } from './logic';
 import { IDeleteOrganisationProps } from './props';
-import Icon from '../../contents/icon';
-import Text from '../../contents/text';
+import Modal from '../../../../../components/surface/modal';
+import { tKeys } from '../../../../../../i18n/keys';
+import COLORS from '../../../../../constants/colors';
+import FONTS from '../../../../../constants/fonts';
+import Text from '../../../../../components/contents/text';
+import Icon from '../../../../../components/contents/icon';
 
 export const DeleteOrganisationModal = ({
     isOpen,

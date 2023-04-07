@@ -1,14 +1,14 @@
-import { DeleteOrganisationLogicType } from './types';
-import useToast from '../../progress-validation/toast';
-import { ToastType } from '../../progress-validation/toast/types';
 import { useTranslation } from 'react-i18next';
-import { tKeys } from '../../../../i18n/keys';
-import { useGetMe } from '../../../../gateways/resource-api/users/users';
+import useToast from '../../../../../components/progress-validation/toast';
+import { DeleteOrganisationLogicType } from './types';
+import { useGetMe } from '../../../../../../gateways/resource-api/users/users';
 import {
     useDeleteOrganisation,
     useGetOrganisation,
     useGetOrganisationsForUser,
-} from '../../../../gateways/resource-api/organisations/organisations';
+} from '../../../../../../gateways/resource-api/organisations/organisations';
+import { ToastType } from '../../../../../components/progress-validation/toast/types';
+import { tKeys } from '../../../../../../i18n/keys';
 
 export const useDeleteOrganisationLogic = (): DeleteOrganisationLogicType => {
     // Attributes

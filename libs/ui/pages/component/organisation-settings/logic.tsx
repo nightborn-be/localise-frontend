@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useFormik } from 'formik';
 import { createForm } from '../../../../utils/formik';
 import { useTranslation } from 'react-i18next';
@@ -15,6 +15,8 @@ import {
 } from '../../../../gateways/resource-api/organisations/organisations';
 import useToast from '../../../components/progress-validation/toast';
 import { ToastType } from '../../../components/progress-validation/toast/types';
+import { useDisclosure } from '@chakra-ui/react';
+import { MenuItemValue } from '../../../components/navigation/sidebar-menu-setting/types';
 
 export const useOrganisationSettingsLogic =
     (): OrganisationSettingsLogicType => {
@@ -25,7 +27,13 @@ export const useOrganisationSettingsLogic =
             string | ArrayBuffer | null
         >('');
         const [pictureUrl, setPictureUrl] = useState<string>('');
-
+        const informationsRef = useRef<HTMLDivElement>(null);
+        const membersRef = useRef<HTMLDivElement>(null);
+        const deleteOrganisationDisclosure = useDisclosure();
+        const addMembersDisclosure = useDisclosure();
+        const [activeMenuSettingKey, setActiveMenuSettingKey] = useState(
+            MenuItemValue.INFORMATIONS,
+        );
         // Hooks
         const { mutateAsync: updateOrganisation, isLoading } =
             useUpdateOrganisation();
@@ -102,21 +110,18 @@ export const useOrganisationSettingsLogic =
                 });
             }
         }
-
-        function getInitialeName() {
-            const arraySplit = actualOrganisationUser?.name?.split(' ');
-            let inital = '';
-            arraySplit?.map((obj) => {
-                inital += obj.charAt(0);
-            });
-            return inital;
-        }
         return {
             form,
             handleOnSubmit,
             setOrganisationPicture,
-            getInitialeName,
+            actualOrganisationUser,
             pictureUrl,
             isLoading,
+            informationsRef,
+            membersRef,
+            activeMenuSettingKey,
+            setActiveMenuSettingKey,
+            deleteOrganisationDisclosure,
+            addMembersDisclosure,
         };
     };
