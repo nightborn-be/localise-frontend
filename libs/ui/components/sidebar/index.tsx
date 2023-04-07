@@ -223,40 +223,39 @@ export const SideBar = () => {
                             />
                         )}
                     </Box>
-                    {actualOrganisationUser && (
-                        <SidebarOrganisation
-                            w={'14.25rem'}
-                            h={'3.25rem'}
-                            padding='0.625rem 0.75rem'
-                            topText={'Organisation'}
-                            topTextFont={FONTS.T1.T10px.Regular400.value}
-                            topTextColor={COLORS.InputText.value}
-                            bottomText={actualOrganisationUser.name}
-                            bottomTextFont={FONTS.T1.T12px.Medium500.value}
-                            bottomTextColor={COLORS.Text.T400.value}
-                            marginLeftText={'0.5rem'}
-                            onClick={handleToggleIsOrganisationClicked}
-                            color={COLORS.Line.value}
-                            startEnhancer={
-                                actualOrganisationUser.pictureUrl ? (
-                                    <Image
-                                        w={'2rem'}
-                                        h={'2rem'}
-                                        src={actualOrganisationUser.pictureUrl}
-                                        alt='nightborn'
-                                    />
-                                ) : (
-                                    <Text
-                                        font={FONTS.T1.T12px.Medium500.value}
-                                        color={COLORS.Text.T400.value}
-                                    >
-                                        {getInitialeName()}
-                                    </Text>
-                                )
-                            }
-                            endEnhancer={<Icon name='editorialArrow' />}
-                        />
-                    )}
+
+                    <SidebarOrganisation
+                        w={'14.25rem'}
+                        h={'3.25rem'}
+                        padding='0.625rem 0.75rem'
+                        topText={'Organisation'}
+                        topTextFont={FONTS.T1.T10px.Regular400.value}
+                        topTextColor={COLORS.InputText.value}
+                        bottomText={actualOrganisationUser?.name ?? ''}
+                        bottomTextFont={FONTS.T1.T12px.Medium500.value}
+                        bottomTextColor={COLORS.Text.T400.value}
+                        marginLeftText={'0.5rem'}
+                        onClick={handleToggleIsOrganisationClicked}
+                        color={COLORS.Line.value}
+                        startEnhancer={
+                            actualOrganisationUser?.pictureUrl ? (
+                                <Image
+                                    w={'2rem'}
+                                    h={'2rem'}
+                                    src={actualOrganisationUser.pictureUrl}
+                                    alt='nightborn'
+                                />
+                            ) : (
+                                <Text
+                                    font={FONTS.T1.T12px.Medium500.value}
+                                    color={COLORS.Text.T400.value}
+                                >
+                                    {getInitialeName()}
+                                </Text>
+                            )
+                        }
+                        endEnhancer={<Icon name='editorialArrow' />}
+                    />
                 </VStack>
             </VStack>
             <CreateProjectModal isOpen={isOpen} onClose={onClose} />

@@ -12,10 +12,10 @@ export const usePictureLogic = (): PictureLogicType => {
 
     // Functions
     function handleOnContinue(picturePath: string) {
-        push('/auth/sign-up/teammates/');
+        push('/auth');
     }
     function handleOnLater() {
-        push('/auth/sign-up/teammates/');
+        push('/auth');
     }
 
     function onDeletePicture() {
