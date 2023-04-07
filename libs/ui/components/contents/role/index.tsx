@@ -54,7 +54,7 @@ const Role = ({ selectedValue, setSelectedValue }: IRoleProps) => {
                     dropdownIndicator={undefined}
                     placeholder='Admin'
                     menuOptionWidth='200px'
-                    onChange={(event) => setSelectedValue(event)}
+                    onChange={(event) => setSelectedValue(event.value)}
                 />
             </HStack>
         </>
