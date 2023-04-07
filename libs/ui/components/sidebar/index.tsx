@@ -14,8 +14,9 @@ import OrganizationMenu from '../contents/organisation-menu';
 import { useSidebarLogic } from './logic';
 import CreateProjectModal from './create-project-modal/index';
 import CreateOrganisationModal from './create-organisation-modal';
+import { ISideBarContentProps } from './props';
 
-export const SideBar = () => {
+export const SideBar = ({ handleOnCreateProject }: ISideBarContentProps) => {
     const {
         handleOnCreateOrganizationClick,
         handleToggleIsOrganisationClicked,
@@ -258,7 +259,7 @@ export const SideBar = () => {
                     />
                 </VStack>
             </VStack>
-            <CreateProjectModal isOpen={isOpen} onClose={onClose} />
+            <CreateProjectModal isOpen={isOpen} onClose={onClose} handleOnSubmit={handleOnCreateProject}/>
             <CreateOrganisationModal
                 isOpen={createOrganisationModal.isOpen}
                 onClose={createOrganisationModal.onClose}

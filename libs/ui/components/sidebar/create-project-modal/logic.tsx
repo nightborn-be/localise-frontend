@@ -5,16 +5,11 @@ import { useFormik } from 'formik';
 import { createForm } from '../../../../utils/formik';
 import languages from '../../../../utils/languages';
 import { toCreateProjectDTO } from './mappers';
-import {
-    useCreateProject,
-    useGetProjects,
-} from '../../../../gateways/resource-api/projects/projects';
+import { useCreateProject } from '../../../../gateways/resource-api/projects/projects';
 import useToast from '../../progress-validation/toast';
 import { ToastType } from '../../progress-validation/toast/types';
 import { useTranslation } from 'react-i18next';
 import { tKeys } from '../../../../i18n/keys';
-import { useGetMe } from '../../../../gateways/resource-api/users/users';
-import { useGetOrganisation } from '../../../../gateways/resource-api/organisations/organisations';
 
 export const useCreateProjectLogic = (): CreateProjectLogicType => {
     // Attributes
@@ -33,14 +28,7 @@ export const useCreateProjectLogic = (): CreateProjectLogicType => {
     const { t } = useTranslation();
     // Hooks
     const { mutateAsync: createProject } = useCreateProject();
-    const { data: userData, refetch: refetchUserData } = useGetMe();
-    const {
-        data: actualOrganisationUser,
-        refetch: refetchActualUserOrganisation,
-    } = useGetOrganisation(userData?.organisationId as string);
-    const { refetch: refetchOrganisationProjectData } = useGetProjects(
-        actualOrganisationUser?.id as string,
-    );
+
     // Formik
     const { values, ...rest } = useFormik<ICreateProjectForm>({
         initialValues: {
@@ -62,13 +50,10 @@ export const useCreateProjectLogic = (): CreateProjectLogicType => {
                         form.sourceLanguage.value,
                         form.targetLanguages.value,
                     ),
-                    organisationId: actualOrganisationUser?.id as string,
+                    organisationId: '539419f3-1b1e-4926-895b-92a8879aec5e',
                 },
                 {
                     onSuccess: async () => {
-                        refetchUserData();
-                        refetchActualUserOrganisation();
-                        refetchOrganisationProjectData();
                         resetForm();
                     },
                     onError: async () => {

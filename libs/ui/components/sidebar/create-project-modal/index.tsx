@@ -12,8 +12,13 @@ import { ICreateProjectProps } from './props';
 import languages from '../../../../utils/languages';
 import { useTranslation } from 'react-i18next';
 import { tKeys } from '../../../../i18n/keys';
+import { toCreateProjectDTO } from './mappers';
 
-export const AddMembersModal = ({ isOpen, onClose }: ICreateProjectProps) => {
+export const AddMembersModal = ({
+    isOpen,
+    onClose,
+    handleOnSubmit,
+}: ICreateProjectProps) => {
     const {
         sourceLanguageActiveKey,
         setSourceLanguageActiveKey,
@@ -26,7 +31,6 @@ export const AddMembersModal = ({ isOpen, onClose }: ICreateProjectProps) => {
         onCheck,
         filter,
         onTagDelete,
-        handleOnSubmit,
         resetForm,
         form,
     } = useCreateProjectLogic();
@@ -45,7 +49,14 @@ export const AddMembersModal = ({ isOpen, onClose }: ICreateProjectProps) => {
                     onClose();
                     resetForm();
                 }}
-                handleOnSubmit={handleOnSubmit}
+                handleOnSubmit={() => {
+                    const data = toCreateProjectDTO(
+                        form.projectName.value,
+                        form.sourceLanguage.value,
+                        form.targetLanguages.value,
+                    );
+                    handleOnSubmit(data);
+                }}
             >
                 <VStack spacing='0'>
                     <HStack
