@@ -8,8 +8,7 @@ import FONTS from '../../../../../constants/fonts';
 import Button from '../../../../../components/inputs/button';
 import Icon from '../../../../../components/contents/icon';
 import { IMembersSettingSectionProps } from './props';
-import TableHeader from '../../../../../components/table/table-header';
-import TableRow from '../../../../../components/table/table-row';
+import TableMembers from './components/table-members';
 
 export const MembersSettingSection = ({
     membersRef,
@@ -71,26 +70,7 @@ export const MembersSettingSection = ({
                     </Button>
                 </HStack>
             </VStack>
-            <VStack
-                alignItems={'left'}
-                w='full'
-                padding='0rem 2rem 2rem 1.25rem'
-                spacing={0}
-            >
-                <TableHeader />
-                <VStack spacing='0.5rem'>
-                    <TableRow
-                        avatarPicture='/assets/images/avatar.png'
-                        firstName='Pierre'
-                        lastName='De Moor'
-                    />
-                    <TableRow
-                        avatarPicture='/assets/images/avatar.png'
-                        firstName='Pierre'
-                        lastName='De Moor'
-                    />
-                </VStack>
-            </VStack>
+            <TableMembers />
             <HStack
                 w='full'
                 justifyContent={'right'}

@@ -1,7 +1,6 @@
-import React, { useRef, useState } from 'react';
-import { HStack, VStack, useDisclosure } from '@chakra-ui/react';
+import React from 'react';
+import { HStack, VStack } from '@chakra-ui/react';
 import Breadcrumb from '../../../components/navigation/breadcrumb';
-import { MenuItemValue } from '../../../components/navigation/sidebar-menu-setting/types';
 import { useOrganisationSettingsLogic } from './logic';
 import { useTranslation } from 'react-i18next';
 import { tKeys } from '../../../../i18n/keys';
