@@ -32,7 +32,7 @@ export const useSidebarLogic = (): SidebarLogicType => {
     } = useGetOrganisation(userData?.organisationId as string);
     const { data: organisationUserData, refetch: refecthOrganisationUserData } =
         useGetOrganisationsForUser(userData?.userId as string);
-    const { data: organisationProjectData } = useGetProjects(
+    const { data: organisationProjectData, refetch:refetchOrganisationProjectData } = useGetProjects(
         actualOrganisationUser?.id as string,
         {
             q: filterProjectValue,
