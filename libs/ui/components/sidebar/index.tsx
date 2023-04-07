@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Box, HStack, Image, useDisclosure, VStack } from '@chakra-ui/react';
 import React from 'react';
 import COLORS from '../../constants/colors';

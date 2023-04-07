@@ -14,10 +14,7 @@ import { ToastType } from '../../progress-validation/toast/types';
 import { useTranslation } from 'react-i18next';
 import { tKeys } from '../../../../i18n/keys';
 import { useGetMe } from '../../../../gateways/resource-api/users/users';
-import {
-    useGetOrganisation,
-    useGetOrganisationsForUser,
-} from '../../../../gateways/resource-api/organisations/organisations';
+import { useGetOrganisation } from '../../../../gateways/resource-api/organisations/organisations';
 
 export const useCreateProjectLogic = (): CreateProjectLogicType => {
     // Attributes

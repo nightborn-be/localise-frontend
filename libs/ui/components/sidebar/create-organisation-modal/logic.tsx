@@ -25,55 +25,55 @@ export const useCreateOrganisationLogic = (): CreateOrganisationLogicType => {
 
     // Hooks
     const { mutateAsync: createOrganisation } = useCreateOrganisation();
-        const { data: userData, refetch: refetchUserData } = useGetMe();
-        const { refetch: refetchActualUserOrganisation } = useGetOrganisation(
-            userData?.organisationId as string,
-        );
-        const { refetch: refecthOrganisationUserData } =
-            useGetOrganisationsForUser(userData?.userId as string);
-        // Formik
-        const { values, ...rest } = useFormik<ICreateOrganisationForm>({
-            initialValues: {
-                organisationName: '',
-            },
-            onSubmit: handleOnSubmit,
-            validateOnChange: false,
-        });
-        const form = createForm(values, rest);
-        useEffect(() => {
-            rest.setFieldValue('picturePath', picturePath);
-        }, [picturePath]);
+    const { data: userData, refetch: refetchUserData } = useGetMe();
+    const { refetch: refetchActualUserOrganisation } = useGetOrganisation(
+        userData?.organisationId as string,
+    );
+    const { refetch: refecthOrganisationUserData } = useGetOrganisationsForUser(
+        userData?.userId as string,
+    );
+    // Formik
+    const { values, ...rest } = useFormik<ICreateOrganisationForm>({
+        initialValues: {
+            organisationName: '',
+        },
+        onSubmit: handleOnSubmit,
+        validateOnChange: false,
+    });
+    const form = createForm(values, rest);
+    useEffect(() => {
+        rest.setFieldValue('picturePath', picturePath);
+    }, [picturePath]);
 
-        //Function
-        async function handleOnSubmit() {
-            try {
-                await createOrganisation(
-                    {
-                        data: toCreateOrganisationDTO(
-                            form.organisationName.value,
-                            pictureBinary as ArrayBuffer,
-                        ),
+    //Function
+    async function handleOnSubmit() {
+        try {
+            await createOrganisation(
+                {
+                    data: toCreateOrganisationDTO(
+                        form.organisationName.value,
+                        pictureBinary as ArrayBuffer,
+                    ),
+                },
+                {
+                    onSuccess: async () => {
+                        refetchUserData();
+                        refetchActualUserOrganisation();
+                        refecthOrganisationUserData();
+                        resetForm();
                     },
-                    {
-                        onSuccess: async () => {
-                            refetchUserData();
-                            refetchActualUserOrganisation();
-                            refecthOrganisationUserData();
-                            resetForm();
-                        },
-                        onError: async () => {
-                            toast({
-                                type: ToastType.ERROR,
-                                title: t<string>(
-                                    tKeys.home.modal.create_organisation.form
-                                        .error,
-                                ),
-                            });
-                        },
+                    onError: async () => {
+                        toast({
+                            type: ToastType.ERROR,
+                            title: t<string>(
+                                tKeys.home.modal.create_organisation.form.error,
+                            ),
+                        });
                     },
-                );
-            } catch (err) {}
-        }
+                },
+            );
+        } catch (err) {}
+    }
 
     function resetForm() {
         rest.setFieldValue('organisationName', '');

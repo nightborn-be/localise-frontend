@@ -1,11 +1,6 @@
 import { useState } from 'react';
-import COLORS from '../../constants/colors';
 import { SearchBarOption } from '../inputs/searchbar/props';
-import {
-    OrganisationDTO,
-    OrgnanisationPagingDTO,
-    ProjectPagingDTO,
-} from '../../../gateways/resource-api/types/index';
+import { OrganisationDTO } from '../../../gateways/resource-api/types/index';
 import { useGetMe } from '../../../gateways/resource-api/users/users';
 import { useGetProjects } from '../../../gateways/resource-api/projects/projects';
 import {
@@ -32,12 +27,12 @@ export const useSidebarLogic = (): SidebarLogicType => {
     } = useGetOrganisation(userData?.organisationId as string);
     const { data: organisationUserData, refetch: refecthOrganisationUserData } =
         useGetOrganisationsForUser(userData?.userId as string);
-    const { data: organisationProjectData, refetch:refetchOrganisationProjectData } = useGetProjects(
-        actualOrganisationUser?.id as string,
-        {
-            q: filterProjectValue,
-        },
-    );
+    const {
+        data: organisationProjectData,
+        refetch: refetchOrganisationProjectData,
+    } = useGetProjects(actualOrganisationUser?.id as string, {
+        q: filterProjectValue,
+    });
 
     // Functions
     function handleOnOptionClick(value: string) {
