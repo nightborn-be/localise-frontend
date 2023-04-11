@@ -14,6 +14,8 @@ const Page = ({
     organisationUserData,
     filterProjectValue,
     setFilterProjectValue,
+    activeProject,
+    setActiveProject,
 }: PageProps) => {
     // Render
     return (
@@ -33,6 +35,8 @@ const Page = ({
                         organisationProjectData={organisationProjectData}
                         filterProjectValue={filterProjectValue}
                         setFilterProjectValue={setFilterProjectValue}
+                        activeProject={activeProject}
+                        setActiveProject={setActiveProject}
                     />
                 )}
             <VStack

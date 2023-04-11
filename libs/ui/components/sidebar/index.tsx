@@ -26,6 +26,8 @@ export const SideBar = ({
     actualOrganisationUser,
     setFilterProjectValue,
     filterProjectValue,
+    activeProject,
+    setActiveProject,
 }: ISideBarContentProps) => {
     const {
         handleToggleIsOrganisationClicked,
@@ -153,7 +155,13 @@ export const SideBar = ({
                     {options?.map((option, index) => {
                         return (
                             <SidebarProject
-                                onClick={handleOnProjectClick}
+                                onClick={() => {
+                                    setActiveProject({
+                                        id: option.value,
+                                        name: option.label,
+                                    });
+                                    handleOnProjectClick(option.label);
+                                }}
                                 activeKey={activeProjectKey}
                                 text={option.label}
                                 key={option.value}

@@ -2,16 +2,19 @@ import React, { useState } from 'react';
 import { HomeContentState } from './types';
 import OrganisationSettings from './components/organisation-settings';
 import { IHomePageProps } from './props';
+import ProjectContent from './components/project';
 
 const HomePage = ({
     handleOnDeleteOrganisation,
     handleUpdateOrganisation,
     actualOrganisationUser,
     isLoadingUpdateOrganisation,
+    projectTerms,
+    activeProject,
 }: IHomePageProps) => {
     // Attributes
     const [currentStatePage, setCurrentStatePage] = useState<HomeContentState>(
-        HomeContentState.ORGANISATION_SETTINGS,
+        HomeContentState.PROJECTS,
     );
     // Function
     function renderPage(): React.ReactNode {
@@ -25,6 +28,13 @@ const HomePage = ({
                         isLoadingUpdateOrganisation={
                             isLoadingUpdateOrganisation
                         }
+                    />
+                );
+            case HomeContentState.PROJECTS:
+                return (
+                    <ProjectContent
+                        projectTerms={projectTerms}
+                        activeProject={activeProject}
                     />
                 );
         }

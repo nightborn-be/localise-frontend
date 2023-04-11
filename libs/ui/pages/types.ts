@@ -2,10 +2,11 @@ import { ICreateOrganisationForm } from 'ui/components/sidebar/create-organisati
 import { ICreateProjectForm } from 'ui/components/sidebar/create-project-modal/types';
 import { IDefaultForm, IForm } from 'utils/formik';
 import { IOrganisationSettingsForm } from './components/organisation-settings/types';
-import { OrganisationDTO, ProjectPagingDTO } from 'gateways/resource-api/types';
+import { OrganisationDTO, ProjectDTO, ProjectPagingDTO, TermPagingDTO } from 'gateways/resource-api/types';
 
 export const enum HomeContentState {
     ORGANISATION_SETTINGS = 'ORGANISATION_SETTINGS',
+    PROJECTS = 'PROJECTS',
 }
 
 export interface HomeLogicType {
@@ -25,4 +26,7 @@ export interface HomeLogicType {
     organisationProjectData?: ProjectPagingDTO;
     setFilterProjectValue: (value: string) => void;
     filterProjectValue: string;
+    projectTerms?: TermPagingDTO;
+    activeProject: ProjectDTO
+    setActiveProject: (value: ProjectDTO) => void
 }

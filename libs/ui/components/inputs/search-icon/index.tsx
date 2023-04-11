@@ -63,22 +63,22 @@ const SearchInput = <T extends object>({
                         initial={{
                             translateX: 0,
                             opacity: 0,
-                            display: 'inline',
+                            display: 'flex',
                         }}
                         animate={
                             launchAnime
                                 ? {
                                       opacity: 1,
-                                      display: 'inline',
+                                      display: 'flex',
                                   }
                                 : {
                                       opacity: 0,
-                                      display: 'inline',
+                                      display: 'flex',
                                   }
                         }
                         transition={{
                             ease: 'easeOut',
-                            duration: 0.5,
+                            duration: 0.2,
                         }}
                     >
                         <Input

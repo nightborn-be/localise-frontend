@@ -16,6 +16,9 @@ export default function Web() {
         organisationUserData,
         filterProjectValue,
         setFilterProjectValue,
+        projectTerms,
+        activeProject,
+        setActiveProject,
     } = useHomeLogic();
     return (
         <Page
@@ -27,12 +30,16 @@ export default function Web() {
             organisationUserData={organisationUserData}
             filterProjectValue={filterProjectValue}
             setFilterProjectValue={setFilterProjectValue}
+            activeProject={activeProject}
+            setActiveProject={setActiveProject}
         >
             <HomePage
                 handleOnDeleteOrganisation={handleOnDeleteOrganisation}
                 handleUpdateOrganisation={handleUpdateOrganisation}
                 actualOrganisationUser={actualOrganisationUser}
                 isLoadingUpdateOrganisation={isLoadingUpdateOrganisation}
+                projectTerms={projectTerms}
+                activeProject={activeProject}
             />
         </Page>
     );

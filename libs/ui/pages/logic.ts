@@ -20,17 +20,24 @@ import {
 import useToast from '../../ui/components/progress-validation/toast';
 import { ToastType } from '../components/progress-validation/toast/types';
 import { IOrganisationSettingsForm } from './components/organisation-settings/types';
-import { tKeys } from 'i18n/keys';
-import { OrganisationDTO } from 'gateways/resource-api/types';
+import { OrganisationDTO, ProjectDTO } from 'gateways/resource-api/types';
 import { useState } from 'react';
+import { tKeys } from '../../i18n/keys';
+import { useCreateTerm, useDeleteTerm, useGetTerms, useUpdateTerm } from '../../gateways/resource-api/terms/terms';
+import { useSaveTranslation } from '../../gateways/resource-api/translations/translations';
 
 export const useHomeLogic = () => {
     // Attributes
     const toast = useToast();
     const { t } = useTranslation();
     const [filterProjectValue, setFilterProjectValue] = useState<string>('');
+    const [activeProject, setActiveProject] = useState<ProjectDTO>({})
     // Hooks
     const { mutateAsync: createProject } = useCreateProject();
+    const { mutateAsync: createTerm } = useCreateTerm();
+    const { mutateAsync: updateTerm } = useUpdateTerm();
+    const { mutateAsync: deleteTerm } = useDeleteTerm();
+    const { mutateAsync: saveTranslation } = useSaveTranslation();
     const { mutateAsync: createOrganisation } = useCreateOrganisation();
     const { mutateAsync: deleteOrganisation } = useDeleteOrganisation();
     const { mutateAsync: updateOrganisation, isLoading: isLoadingUpdateOrganisation } =
@@ -50,6 +57,8 @@ export const useHomeLogic = () => {
     } = useGetProjects(actualOrganisationUser?.id as string, {
         q: filterProjectValue,
     });
+
+    const { data: projectTerms } = useGetTerms(activeProject.id as string);
 
     // Functions
     async function handleOnCreateProject(
@@ -214,7 +223,6 @@ export const useHomeLogic = () => {
         );
     }
 
-
     return {
         handleOnCreateProject,
         handleOnCreateOrganisation,
@@ -227,5 +235,8 @@ export const useHomeLogic = () => {
         organisationUserData,
         filterProjectValue,
         setFilterProjectValue,
+        projectTerms,
+        activeProject,
+        setActiveProject
     };
 };

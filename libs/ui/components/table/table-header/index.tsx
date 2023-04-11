@@ -5,7 +5,11 @@ import Text from '../../contents/text';
 import FONTS from '../../../constants/fonts';
 import ITableHeaderProps from './props';
 import SearchInput from '../../inputs/search-icon';
-export default function TableHeader({}: ITableHeaderProps) {
+export default function TableHeader({
+    firstColTitle,
+    secondColTitle,
+    thirdColTitle,
+}: ITableHeaderProps) {
     //Attributes
     const [value, setValue] = useState<string>('');
 
@@ -37,7 +41,7 @@ export default function TableHeader({}: ITableHeaderProps) {
                     font={FONTS.T1.T12px.SemiBold600.value}
                     color={COLORS.InputText.value}
                 >
-                    First name
+                    {firstColTitle}
                 </Text>
             </HStack>
             <HStack
@@ -51,7 +55,7 @@ export default function TableHeader({}: ITableHeaderProps) {
                     font={FONTS.T1.T12px.SemiBold600.value}
                     color={COLORS.InputText.value}
                 >
-                    Name
+                    {secondColTitle}
                 </Text>
             </HStack>
             <HStack
@@ -65,7 +69,7 @@ export default function TableHeader({}: ITableHeaderProps) {
                     font={FONTS.T1.T12px.SemiBold600.value}
                     color={COLORS.InputText.value}
                 >
-                    Role
+                    {thirdColTitle}
                 </Text>
             </HStack>
 

@@ -3,6 +3,7 @@ import {
     CreateProjectDTO,
     OrganisationDTO,
     OrgnanisationPagingDTO,
+    ProjectDTO,
     ProjectPagingDTO,
 } from '../../../gateways/resource-api/types';
 import { IDefaultForm, IForm } from '../../../utils/formik';
@@ -24,7 +25,8 @@ export interface ISideBarContentProps {
     organisationUserData?: OrgnanisationPagingDTO;
     setFilterProjectValue: (value: string) => void;
     filterProjectValue: string;
-
+    activeProject: ProjectDTO
+    setActiveProject: (value: ProjectDTO) => void
 }
 export interface ISidebarLogicProps {
     organisationProjectData?: ProjectPagingDTO
