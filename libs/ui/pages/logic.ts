@@ -51,6 +51,7 @@ export const useHomeLogic = () => {
         q: filterProjectValue,
     });
 
+    // Functions
     async function handleOnCreateProject(
         form: IForm<ICreateProjectForm> & IDefaultForm,
         resetForm: () => void,
@@ -92,8 +93,6 @@ export const useHomeLogic = () => {
         form: IForm<ICreateOrganisationForm> & IDefaultForm,
         resetForm: () => void,
     ) {
-        console.log(form.pictureBinary?.value);
-
         try {
             await createOrganisation(
                 {
@@ -190,8 +189,6 @@ export const useHomeLogic = () => {
                 },
             );
         } catch (e) {
-            console.log(e);
-
             toast({
                 type: ToastType.ERROR,
                 title: t<string>(
