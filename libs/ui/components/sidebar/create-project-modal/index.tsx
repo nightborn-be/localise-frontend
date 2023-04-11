@@ -24,7 +24,6 @@ export const AddProjectModals = ({
         filterValue,
         setFilterValue,
         activeKeys,
-        setActiveKeys,
         value,
         setValue,
         onCheck,

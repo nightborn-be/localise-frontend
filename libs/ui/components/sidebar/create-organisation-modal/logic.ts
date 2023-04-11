@@ -9,15 +9,18 @@ export const useCreateOrganisationLogic = (): CreateOrganisationLogicType => {
     const [pictureBinary, setPictureBinary] = useState<
         string | ArrayBuffer | null
     >();
+
     // Formik
     const { values, ...rest } = useFormik<ICreateOrganisationForm>({
         initialValues: {
             organisationName: '',
-            pictureBinary: '',
+            pictureBinary: undefined,
         },
         onSubmit: () => {},
         validateOnChange: false,
     });
+
+    // Functions
     const form = createForm(values, rest);
     useEffect(() => {
         rest.setFieldValue('pictureBinary', pictureBinary);

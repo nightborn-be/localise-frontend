@@ -22,7 +22,7 @@ const Page = ({
                 handleOnCreateProject &&
                 handleOnCreateOrganisation &&
                 handleSwitchOrgansiation &&
-                filterProjectValue &&
+                filterProjectValue != undefined &&
                 setFilterProjectValue && (
                     <SideBar
                         handleOnCreateProject={handleOnCreateProject}

@@ -6,7 +6,6 @@ import {
 import { SearchBarOption } from '../inputs/searchbar/props';
 
 export interface SidebarLogicType {
-    handleOnCreateOrganizationClick: () => void;
     handleToggleIsOrganisationClicked: () => void;
     handleOnProjectClick: (value: string) => void;
     handleOnOptionClick: (value: string) => void;
@@ -17,5 +16,4 @@ export interface SidebarLogicType {
     options: SearchBarOption<string>[];
     activeOptionKey: string;
     setActiveOptionKey: (value: string) => void;
-    handleOnCreateProject: () => void;
 }

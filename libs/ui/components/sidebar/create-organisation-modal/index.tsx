@@ -23,14 +23,8 @@ export const CreateOrganisationModal = ({
     onClose,
     handleOnSubmit,
 }: ICreateOrganisationProps) => {
-    const {
-        picturePath,
-        pictureBinary,
-        onDrag,
-        onDeletePicture,
-        resetForm,
-        form,
-    } = useCreateOrganisationLogic();
+    const { picturePath, onDrag, onDeletePicture, resetForm, form } =
+        useCreateOrganisationLogic();
 
     const { t } = useTranslation();
     return (

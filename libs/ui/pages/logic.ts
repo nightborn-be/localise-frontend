@@ -92,6 +92,8 @@ export const useHomeLogic = () => {
         form: IForm<ICreateOrganisationForm> & IDefaultForm,
         resetForm: () => void,
     ) {
+        console.log(form.pictureBinary?.value);
+
         try {
             await createOrganisation(
                 {
@@ -155,9 +157,10 @@ export const useHomeLogic = () => {
             await updateOrganisation(
                 {
                     organisationId: actualOrganisationUser?.id as string,
+
                     data: {
                         name: form.organisationName.value,
-                        pictureContent: Buffer.from(
+                        pictureContent: form.organisationPicture && Buffer.from(
                             form.organisationPicture?.value as ArrayBuffer,
                         ).toString('base64'),
                     },
@@ -187,6 +190,8 @@ export const useHomeLogic = () => {
                 },
             );
         } catch (e) {
+            console.log(e);
+
             toast({
                 type: ToastType.ERROR,
                 title: t<string>(
