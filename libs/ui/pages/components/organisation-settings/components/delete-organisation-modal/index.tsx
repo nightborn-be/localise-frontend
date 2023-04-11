@@ -13,9 +13,9 @@ import Icon from '../../../../../components/contents/icon';
 export const DeleteOrganisationModal = ({
     isOpen,
     onClose,
+    handleOnSubmit,
 }: IDeleteOrganisationProps) => {
     // Attributes
-    const { handleOnSubmit } = useDeleteOrganisationLogic();
     const { t } = useTranslation();
 
     // Render

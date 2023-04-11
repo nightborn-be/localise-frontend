@@ -1,3 +1,1 @@
-export interface DeleteOrganisationLogicType {
-    handleOnSubmit: () => void;
-}
+export interface DeleteOrganisationLogicType {}

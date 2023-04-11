@@ -13,8 +13,6 @@ import TableMembers from './components/table-members';
 export const MembersSettingSection = ({
     membersRef,
     addMembersDisclosure,
-    isLoading,
-    handleOnSubmit,
 }: IMembersSettingSectionProps) => {
     // Attributes
     const { t } = useTranslation();
@@ -74,27 +72,6 @@ export const MembersSettingSection = ({
                 </HStack>
             </VStack>
             <TableMembers />
-            <HStack
-                w='full'
-                justifyContent={'right'}
-                padding='0rem 2rem 2rem 1.25rem'
-            >
-                <Button
-                    isLoading={isLoading}
-                    padding='0.25rem 0.75rem 0.25rem 0.75rem'
-                    backgroundColor={COLORS.Localize.Purple.T500.value}
-                    gap='0.25rem'
-                    h={'2rem'}
-                    w={'5rem'}
-                    borderRadius={'0.5rem'}
-                    hoverBackgroundColor={COLORS.Localize.Purple.T600.value}
-                    font={FONTS.T1.T12px.SemiBold600.value}
-                    color={COLORS.White.T500.value}
-                    onClick={handleOnSubmit}
-                >
-                    {t<string>(tKeys.home.organisation_settings.cta.save)}
-                </Button>
-            </HStack>
         </>
     );
 };

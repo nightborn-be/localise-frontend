@@ -1,38 +1,18 @@
 import { useState } from 'react';
 import { SearchBarOption } from '../inputs/searchbar/props';
-import { OrganisationDTO } from '../../../gateways/resource-api/types/index';
-import { useGetMe } from '../../../gateways/resource-api/users/users';
-import { useGetProjects } from '../../../gateways/resource-api/projects/projects';
-import {
-    useGetOrganisation,
-    useGetOrganisationsForUser,
-    useSwitchUserOrganisation,
-} from '../../../gateways/resource-api/organisations/organisations';
-import { SidebarLogicType } from './types';
 
-export const useSidebarLogic = (): SidebarLogicType => {
+import { SidebarLogicType } from './types';
+import { ISidebarLogicProps } from './props';
+
+export const useSidebarLogic = ({
+    organisationProjectData,
+}: ISidebarLogicProps): SidebarLogicType => {
     // Attributes
     const [activeOptionKey, setActiveOptionKey] = useState<string>('');
-    const [filterProjectValue, setFilterProjectValue] = useState<string>('');
     // const projectsData: ProjectPagingDTO = useGetProjects();
     const [activeProjectKey, setActiveProjectKey] = useState<string>('');
     const [isOrganisationClicked, setIsOrganisationClicked] =
         useState<boolean>(false);
-    // Hooks
-    const { mutateAsync: switchUserOrganisation } = useSwitchUserOrganisation();
-    const { data: userData, refetch: refetchUserData } = useGetMe();
-    const {
-        data: actualOrganisationUser,
-        refetch: refetchActualUserOrganisation,
-    } = useGetOrganisation(userData?.organisationId as string);
-    const { data: organisationUserData, refetch: refecthOrganisationUserData } =
-        useGetOrganisationsForUser(userData?.userId as string);
-    const {
-        data: organisationProjectData,
-        refetch: refetchOrganisationProjectData,
-    } = useGetProjects(actualOrganisationUser?.id as string, {
-        q: filterProjectValue,
-    });
 
     // Functions
     function handleOnOptionClick(value: string) {
@@ -60,48 +40,18 @@ export const useSidebarLogic = (): SidebarLogicType => {
     function handleOnCreateProject() {}
 
     // Function
-    function getInitialeName() {
-        const arraySplit = actualOrganisationUser?.name?.split(' ');
-        let inital = '';
-        arraySplit?.map((obj) => {
-            inital += obj.charAt(0);
-        });
-        return inital;
-    }
-
-    function switchOrgansiation(organisation: OrganisationDTO) {
-        switchUserOrganisation(
-            {
-                userId: userData?.userId as string,
-                data: { organisationId: organisation.id as string },
-            },
-            {
-                onSuccess: () => {
-                    refetchUserData();
-                    setIsOrganisationClicked(false);
-                },
-            },
-        );
-    }
     return {
         handleOnCreateOrganizationClick,
         handleToggleIsOrganisationClicked,
-        filterProjectValue,
-        setFilterProjectValue,
         handleOnProjectClick,
         handleOnOptionClick,
         isOrganisationClicked,
         setIsOrganisationClicked,
-        organisationUserData,
         activeProjectKey,
         setActiveProjectKey,
         options,
-        // projectsData,
         activeOptionKey,
         setActiveOptionKey,
         handleOnCreateProject,
-        getInitialeName,
-        actualOrganisationUser,
-        switchOrgansiation,
     };
 };

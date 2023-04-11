@@ -21,12 +21,13 @@ import Text from '../../contents/text';
 export const CreateOrganisationModal = ({
     isOpen,
     onClose,
+    handleOnSubmit,
 }: ICreateOrganisationProps) => {
     const {
         picturePath,
+        pictureBinary,
         onDrag,
         onDeletePicture,
-        handleOnSubmit,
         resetForm,
         form,
     } = useCreateOrganisationLogic();
@@ -40,7 +41,9 @@ export const CreateOrganisationModal = ({
                 onClose();
                 resetForm();
             }}
-            handleOnSubmit={handleOnSubmit}
+            handleOnSubmit={() => {
+                handleOnSubmit(form, resetForm);
+            }}
         >
             <VStack spacing='0'>
                 <VStack padding={'1.25rem 1.25rem 0.75rem'} spacing='0.625rem'>

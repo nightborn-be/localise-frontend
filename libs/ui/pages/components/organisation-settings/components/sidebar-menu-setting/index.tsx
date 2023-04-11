@@ -13,7 +13,6 @@ const SidebarMenuSettingContent = ({
 }: ISidebarMenuSettingContentProps) => {
     // Attributes
     const { t } = useTranslation();
-
     // Render
     return (
         <VStack h='fit-content'>

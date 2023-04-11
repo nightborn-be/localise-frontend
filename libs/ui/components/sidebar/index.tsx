@@ -15,28 +15,28 @@ import { useSidebarLogic } from './logic';
 import CreateProjectModal from './create-project-modal/index';
 import CreateOrganisationModal from './create-organisation-modal';
 import { ISideBarContentProps } from './props';
+import { getInitialeName } from 'utils/functions';
 
-export const SideBar = ({ handleOnCreateProject }: ISideBarContentProps) => {
+export const SideBar = ({
+    handleOnCreateProject,
+    handleOnCreateOrganisation,
+    handleSwitchOrgansiation,
+    organisationProjectData,
+    organisationUserData,
+    actualOrganisationUser,
+    setFilterProjectValue,
+    filterProjectValue,
+}: ISideBarContentProps) => {
     const {
-        handleOnCreateOrganizationClick,
         handleToggleIsOrganisationClicked,
-        setFilterProjectValue,
-        filterProjectValue,
         handleOnProjectClick,
         handleOnOptionClick,
-        actualOrganisationUser,
         isOrganisationClicked,
-        setIsOrganisationClicked,
-        organisationUserData,
         activeProjectKey,
-        setActiveProjectKey,
         options,
-        projectsData,
         activeOptionKey,
-        setActiveOptionKey,
-        getInitialeName,
-        switchOrgansiation,
-    } = useSidebarLogic();
+        setIsOrganisationClicked,
+    } = useSidebarLogic({ organisationProjectData });
 
     const { isOpen, onOpen, onClose } = useDisclosure();
     const createOrganisationModal = useDisclosure();
@@ -218,7 +218,10 @@ export const SideBar = ({ handleOnCreateProject }: ISideBarContentProps) => {
                                 options={organisationUserData.data}
                                 value={actualOrganisationUser}
                                 onChange={(organizationValue) => {
-                                    switchOrgansiation(organizationValue);
+                                    handleSwitchOrgansiation(
+                                        organizationValue,
+                                        setIsOrganisationClicked,
+                                    );
                                 }}
                                 onClick={createOrganisationModal.onOpen}
                             />
@@ -251,7 +254,9 @@ export const SideBar = ({ handleOnCreateProject }: ISideBarContentProps) => {
                                     font={FONTS.T1.T12px.Medium500.value}
                                     color={COLORS.Text.T400.value}
                                 >
-                                    {getInitialeName()}
+                                    {getInitialeName(
+                                        actualOrganisationUser?.name ?? '',
+                                    )}
                                 </Text>
                             )
                         }
@@ -259,10 +264,15 @@ export const SideBar = ({ handleOnCreateProject }: ISideBarContentProps) => {
                     />
                 </VStack>
             </VStack>
-            <CreateProjectModal isOpen={isOpen} onClose={onClose} handleOnSubmit={handleOnCreateProject}/>
+            <CreateProjectModal
+                isOpen={isOpen}
+                onClose={onClose}
+                handleOnSubmit={handleOnCreateProject}
+            />
             <CreateOrganisationModal
                 isOpen={createOrganisationModal.isOpen}
                 onClose={createOrganisationModal.onClose}
+                handleOnSubmit={handleOnCreateOrganisation}
             />
         </>
     );

@@ -10,22 +10,28 @@ import SidebarMenuSettingContent from './components/sidebar-menu-setting';
 import InformationSettingSection from './components/informations-setting-section';
 import LineSeparation from './components/line-separation';
 import MembersSettingSection from './components/members-setting-section';
+import { IOrganisationSettingsProps } from './props';
+import Button from '../../../components/inputs/button';
+import COLORS from '../../../constants/colors';
+import FONTS from '../../../constants/fonts';
 
-const OrganisationSettings = () => {
+const OrganisationSettings = ({
+    handleOnDeleteOrganisation,
+    handleUpdateOrganisation,
+    actualOrganisationUser,
+    isLoadingUpdateOrganisation,
+}: IOrganisationSettingsProps) => {
     const {
         form,
-        actualOrganisationUser,
         onDrag,
-        handleOnSubmit,
         picturePath,
-        isLoading,
         informationsRef,
         membersRef,
         deleteOrganisationDisclosure,
         addMembersDisclosure,
         activeMenuSettingKey,
         setActiveMenuSettingKey,
-    } = useOrganisationSettingsLogic();
+    } = useOrganisationSettingsLogic({ actualOrganisationUser });
     // Attributes
     const { t } = useTranslation();
 
@@ -75,14 +81,40 @@ const OrganisationSettings = () => {
                     <MembersSettingSection
                         membersRef={membersRef}
                         addMembersDisclosure={addMembersDisclosure}
-                        isLoading={isLoading}
-                        handleOnSubmit={handleOnSubmit}
                     />
+                    <HStack
+                        w='full'
+                        justifyContent={'right'}
+                        padding='0rem 2rem 2rem 1.25rem'
+                    >
+                        <Button
+                            isLoading={isLoadingUpdateOrganisation}
+                            padding='0.25rem 0.75rem 0.25rem 0.75rem'
+                            backgroundColor={COLORS.Localize.Purple.T500.value}
+                            gap='0.25rem'
+                            h={'2rem'}
+                            w={'5rem'}
+                            borderRadius={'0.5rem'}
+                            hoverBackgroundColor={
+                                COLORS.Localize.Purple.T600.value
+                            }
+                            font={FONTS.T1.T12px.SemiBold600.value}
+                            color={COLORS.White.T500.value}
+                            onClick={() => {
+                                handleUpdateOrganisation(form);
+                            }}
+                        >
+                            {t<string>(
+                                tKeys.home.organisation_settings.cta.save,
+                            )}
+                        </Button>
+                    </HStack>
                 </VStack>
             </HStack>
             <DeleteOrganisationModal
                 isOpen={deleteOrganisationDisclosure.isOpen}
                 onClose={deleteOrganisationDisclosure.onClose}
+                handleOnSubmit={handleOnDeleteOrganisation}
             />
             <AddMembersModal
                 isOpen={addMembersDisclosure.isOpen}

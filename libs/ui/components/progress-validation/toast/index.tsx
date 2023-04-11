@@ -44,7 +44,6 @@ const Toast = ({ type, title, description, onClose }: IToastProps) => {
                 break;
             case ToastType.ERROR:
                 {
-                    console.log('error');
                     primaryColor = COLORS.Error.T500.value;
                     secondaryColor = COLORS.Toast.RedBG.value;
                 }

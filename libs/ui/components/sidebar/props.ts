@@ -1,5 +1,31 @@
-import { CreateProjectDTO } from "../../../gateways/resource-api/types";
+import {
+    CreateOrganisationDTO,
+    CreateProjectDTO,
+    OrganisationDTO,
+    OrgnanisationPagingDTO,
+    ProjectPagingDTO,
+} from '../../../gateways/resource-api/types';
+import { IDefaultForm, IForm } from '../../../utils/formik';
+import { ICreateOrganisationForm } from './create-organisation-modal/types';
+import { ICreateProjectForm } from './create-project-modal/types';
 
 export interface ISideBarContentProps {
-    handleOnCreateProject: (value: CreateProjectDTO) => void;
+    handleOnCreateProject: (
+        form: IForm<ICreateProjectForm> & IDefaultForm,
+        resetForm: () => void,
+    ) => void;
+    handleOnCreateOrganisation: (
+        form: IForm<ICreateOrganisationForm> & IDefaultForm,
+        resetForm: () => void,
+    ) => void;
+    handleSwitchOrgansiation: (organisation: OrganisationDTO, setIsOrganisationClicked: (value: boolean) => void) => void;
+    organisationProjectData?: ProjectPagingDTO;
+    actualOrganisationUser?: OrganisationDTO;
+    organisationUserData?: OrgnanisationPagingDTO;
+    setFilterProjectValue: (value: string) => void;
+    filterProjectValue: string;
+
+}
+export interface ISidebarLogicProps {
+    organisationProjectData?: ProjectPagingDTO
 }

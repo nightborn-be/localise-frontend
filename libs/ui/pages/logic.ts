@@ -1,33 +1,40 @@
+import { useTranslation } from 'react-i18next';
+import { IForm, IDefaultForm } from '../../utils/formik';
+import { ICreateOrganisationForm } from '../components/sidebar/create-organisation-modal/types';
+import { ICreateProjectForm } from '../components/sidebar/create-project-modal/types';
+import {
+    useCreateProject,
+    useGetProjects,
+} from '../../gateways/resource-api/projects/projects';
+import { useGetMe } from '../../gateways/resource-api/users/users';
+import { toCreateProjectDTO } from '../components/sidebar/create-project-modal/mappers';
+import { toCreateOrganisationDTO } from '../components/sidebar/create-organisation-modal/mappers';
 import {
     useCreateOrganisation,
     useDeleteOrganisation,
     useGetOrganisation,
     useGetOrganisationsForUser,
     useSwitchUserOrganisation,
-} from '../../../../gateways/resource-api/organisations/organisations';
-import {
-    useCreateProject,
-    useGetProjects,
-} from '../../../../gateways/resource-api/projects/projects';
-import { useGetMe } from '../../../../gateways/resource-api/users/users';
-import { tKeys } from '../../../../i18n/keys';
-import useToast from '../../progress-validation/toast';
-import { ToastType } from '../../progress-validation/toast/types';
-import { useTranslation } from 'react-i18next';
-import { toCreateOrganisationDTO } from '../../sidebar/create-organisation-modal/mappers';
-import { IDefaultForm, IForm } from '../../../../utils/formik';
-import { toCreateProjectDTO } from '../../sidebar/create-project-modal/mappers';
-import { ICreateProjectForm } from '../../sidebar/create-project-modal/types';
-import { ICreateOrganisationForm } from '../../sidebar/create-organisation-modal/types';
+    useUpdateOrganisation,
+} from '../../gateways/resource-api/organisations/organisations';
+import useToast from '../../ui/components/progress-validation/toast';
+import { ToastType } from '../components/progress-validation/toast/types';
+import { IOrganisationSettingsForm } from './components/organisation-settings/types';
+import { tKeys } from 'i18n/keys';
+import { OrganisationDTO } from 'gateways/resource-api/types';
+import { useState } from 'react';
 
-export const usePageLogic = () => {
+export const useHomeLogic = () => {
     // Attributes
     const toast = useToast();
     const { t } = useTranslation();
+    const [filterProjectValue, setFilterProjectValue] = useState<string>('');
     // Hooks
     const { mutateAsync: createProject } = useCreateProject();
     const { mutateAsync: createOrganisation } = useCreateOrganisation();
     const { mutateAsync: deleteOrganisation } = useDeleteOrganisation();
+    const { mutateAsync: updateOrganisation, isLoading: isLoadingUpdateOrganisation } =
+        useUpdateOrganisation();
     const { mutateAsync: switchUserOrganisation } = useSwitchUserOrganisation();
     const { data: userData, refetch: refetchUserData } = useGetMe();
     const {
@@ -36,11 +43,12 @@ export const usePageLogic = () => {
     } = useGetOrganisation(userData?.organisationId as string);
     const { data: organisationUserData, refetch: refecthOrganisationUserData } =
         useGetOrganisationsForUser(userData?.userId as string);
+
     const {
         data: organisationProjectData,
         refetch: refetchOrganisationProjectData,
     } = useGetProjects(actualOrganisationUser?.id as string, {
-        // q: filterProjectValue,
+        q: filterProjectValue,
     });
 
     async function handleOnCreateProject(
@@ -59,6 +67,10 @@ export const usePageLogic = () => {
                 },
                 {
                     onSuccess: async () => {
+                        refetchUserData();
+                        refetchActualUserOrganisation();
+                        refecthOrganisationUserData();
+                        refetchOrganisationProjectData();
                         resetForm();
                     },
                     onError: async () => {
@@ -73,7 +85,7 @@ export const usePageLogic = () => {
                     },
                 },
             );
-        } catch (e) {}
+        } catch (e) { }
     }
 
     async function handleOnCreateOrganisation(
@@ -105,7 +117,7 @@ export const usePageLogic = () => {
                     },
                 },
             );
-        } catch (err) {}
+        } catch (err) { }
     }
     async function handleOnDeleteOrganisation() {
         try {
@@ -138,5 +150,80 @@ export const usePageLogic = () => {
         }
     }
 
-    return { handleOnCreateProject, handleOnCreateOrganisation };
+    async function handleUpdateOrganisation(form: IForm<IOrganisationSettingsForm> & IDefaultForm) {
+        try {
+            await updateOrganisation(
+                {
+                    organisationId: actualOrganisationUser?.id as string,
+                    data: {
+                        name: form.organisationName.value,
+                        pictureContent: Buffer.from(
+                            form.organisationPicture?.value as ArrayBuffer,
+                        ).toString('base64'),
+                    },
+                },
+                {
+                    onError: () => {
+                        toast({
+                            type: ToastType.ERROR,
+                            title: t<string>(
+                                tKeys.home.organisation_settings.error.save,
+                            ),
+                            delay: 4000,
+                        });
+                    },
+                    onSuccess: () => {
+                        toast({
+                            type: ToastType.SUCCESS,
+                            title: t<string>(
+                                tKeys.home.organisation_settings.success
+                                    .save,
+                            ),
+                            delay: 3000,
+                        });
+                        refetchActualUserOrganisation();
+                        refecthOrganisationUserData();
+                    },
+                },
+            );
+        } catch (e) {
+            toast({
+                type: ToastType.ERROR,
+                title: t<string>(
+                    tKeys.home.organisation_settings.error.save,
+                ),
+                delay: 4000,
+            });
+        }
+    }
+
+    function handleSwitchOrgansiation(organisation: OrganisationDTO, setIsOrganisationClicked: (value: boolean) => void) {
+        switchUserOrganisation(
+            {
+                userId: userData?.userId as string,
+                data: { organisationId: organisation.id as string },
+            },
+            {
+                onSuccess: () => {
+                    refetchUserData();
+                    setIsOrganisationClicked(false);
+                },
+            },
+        );
+    }
+
+
+    return {
+        handleOnCreateProject,
+        handleOnCreateOrganisation,
+        handleOnDeleteOrganisation,
+        handleUpdateOrganisation,
+        actualOrganisationUser,
+        isLoadingUpdateOrganisation,
+        handleSwitchOrgansiation,
+        organisationProjectData,
+        organisationUserData,
+        filterProjectValue,
+        setFilterProjectValue,
+    };
 };

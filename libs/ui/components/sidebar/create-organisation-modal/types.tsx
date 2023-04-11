@@ -7,11 +7,12 @@ export interface CreateOrganisationLogicType {
         binary?: string | ArrayBuffer | null | undefined,
     ) => void;
     picturePath?: string;
-    handleOnSubmit: () => void;
     form: IForm<ICreateOrganisationForm> & IDefaultForm;
     resetForm: () => void;
+    pictureBinary?: string | ArrayBuffer | null;
 }
 
 export interface ICreateOrganisationForm {
     organisationName: string;
+    pictureBinary?: string | ArrayBuffer | null | undefined;
 }

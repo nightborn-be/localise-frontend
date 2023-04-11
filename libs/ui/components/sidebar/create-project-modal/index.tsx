@@ -12,9 +12,8 @@ import { ICreateProjectProps } from './props';
 import languages from '../../../../utils/languages';
 import { useTranslation } from 'react-i18next';
 import { tKeys } from '../../../../i18n/keys';
-import { toCreateProjectDTO } from './mappers';
 
-export const AddMembersModal = ({
+export const AddProjectModals = ({
     isOpen,
     onClose,
     handleOnSubmit,
@@ -50,12 +49,7 @@ export const AddMembersModal = ({
                     resetForm();
                 }}
                 handleOnSubmit={() => {
-                    const data = toCreateProjectDTO(
-                        form.projectName.value,
-                        form.sourceLanguage.value,
-                        form.targetLanguages.value,
-                    );
-                    handleOnSubmit(data);
+                    handleOnSubmit(form, resetForm);
                 }}
             >
                 <VStack spacing='0'>
@@ -158,4 +152,4 @@ export const AddMembersModal = ({
     );
 };
 
-export default AddMembersModal;
+export default AddProjectModals;
