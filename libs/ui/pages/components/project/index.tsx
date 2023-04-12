@@ -13,8 +13,9 @@ const ProjectContent = ({
     activeProject,
     handleOnSaveTranslations,
     handleOnCreateTerm,
+    handleOnDeleteTerm,
 }: IProjectContentProps) => {
-    const [activeKey, setActiveKey] = useState<React.Key>(0);
+    const [activeKey, setActiveKey] = useState<React.Key>();
     // Attributes
     const { t } = useTranslation();
 
@@ -44,6 +45,7 @@ const ProjectContent = ({
                         projectTerms={projectTerms}
                         handleOnSaveTranslations={handleOnSaveTranslations}
                         handleOnCreateTerm={handleOnCreateTerm}
+                        handleOnDeleteTerm={handleOnDeleteTerm}
                     />
                 </Tab>
                 <Tab title='Settings'>

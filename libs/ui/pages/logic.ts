@@ -228,6 +228,11 @@ export const useHomeLogic = () => {
             },
         );
     }
+
+    function handleOnDeleteTerm(projectId: string, termId: string) {
+        deleteTerm({ projectId: projectId, termId: termId })
+        refetchProjectTerms();
+    }
     function handleOnCreateTerm(projectId: string) {
         const term = createTerm({ projectId: projectId, data: { name: "Insert key", description: "" } })
     }
@@ -259,5 +264,6 @@ export const useHomeLogic = () => {
         setActiveProject,
         handleOnSaveTranslations,
         handleOnCreateTerm,
+        handleOnDeleteTerm
     };
 };

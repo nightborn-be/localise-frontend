@@ -11,7 +11,11 @@ import Icon from '../../../../../../../components/contents/icon';
 import TermEditContent from './components/term-edit-content';
 import { useTableRowTermLogic } from './logic';
 
-export default function TableRowTerm({ term, handleOnSaveTranslations }: ITableRowTermProps) {
+export default function TableRowTerm({
+    term,
+    handleOnSaveTranslations,
+    handleOnDeleteTerm,
+}: ITableRowTermProps) {
     //Attributes
     const [isHovered, setIsHovered] = useState<boolean>(false);
     const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -24,7 +28,7 @@ export default function TableRowTerm({ term, handleOnSaveTranslations }: ITableR
     }
     function targetLanguagesToDisplayValue() {
         let value = '';
-        translations?.data?.map((t) => {
+        translations?.data?.forEach((t) => {
             if (!t.language.isSource) {
                 value += t.language.abbreviation?.toUpperCase() + ' / ';
             }
@@ -150,6 +154,7 @@ export default function TableRowTerm({ term, handleOnSaveTranslations }: ITableR
                 form={form}
                 handleOnSaveTranslations={handleOnSaveTranslations}
                 updateTranslationsForm={updateTranslationsForm}
+                handleOnDeleteTerm={handleOnDeleteTerm}
             />
         </VStack>
     );

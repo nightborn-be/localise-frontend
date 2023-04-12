@@ -9,6 +9,7 @@ export interface ITermEditContentProps {
     form: IForm<ITableRowTermForm> & IDefaultForm
     handleOnSaveTranslations: (form: IForm<ITableRowTermForm> & IDefaultForm) => void
     updateTranslationsForm: (value: IEditInputForm) => void
+    handleOnDeleteTerm: (projectId: string, termId: string) => void
 }
 
 export interface ITermEditContentLogicProps { term: TermDTO }

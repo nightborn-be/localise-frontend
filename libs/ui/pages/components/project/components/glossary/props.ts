@@ -6,4 +6,5 @@ export interface IGlossaryProps {
     projectTerms?: TermPagingDTO
     handleOnSaveTranslations: (form: IForm<ITableRowTermForm> & IDefaultForm) => void
     handleOnCreateTerm: (projectId: string) => void
+    handleOnDeleteTerm: (projectId: string, termId: string) => void
 }

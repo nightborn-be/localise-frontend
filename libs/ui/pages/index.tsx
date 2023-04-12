@@ -13,6 +13,7 @@ const HomePage = ({
     activeProject,
     handleOnSaveTranslations,
     handleOnCreateTerm,
+    handleOnDeleteTerm,
 }: IHomePageProps) => {
     // Attributes
     const [currentStatePage, setCurrentStatePage] = useState<HomeContentState>(
@@ -39,6 +40,7 @@ const HomePage = ({
                         activeProject={activeProject}
                         handleOnSaveTranslations={handleOnSaveTranslations}
                         handleOnCreateTerm={handleOnCreateTerm}
+                        handleOnDeleteTerm={handleOnDeleteTerm}
                     />
                 );
         }

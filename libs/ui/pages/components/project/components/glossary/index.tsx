@@ -16,10 +16,10 @@ export const Glossary = ({
     projectTerms,
     handleOnSaveTranslations,
     handleOnCreateTerm,
+    handleOnDeleteTerm,
 }: IGlossaryProps) => {
     // Attributes
     const tableRef = useRef<HTMLDivElement>(null);
-    // Functions
     // Renders
     return (
         <VStack
@@ -57,11 +57,13 @@ export const Glossary = ({
                 </Button>
             </HStack>
             <TableTerm ref={tableRef}>
-                {projectTerms?.data?.map((term) => {
+                {projectTerms?.data?.map((term, i) => {
                     return (
                         <TableRowTerm
+                            key={i}
                             term={term}
                             handleOnSaveTranslations={handleOnSaveTranslations}
+                            handleOnDeleteTerm={handleOnDeleteTerm}
                         />
                     );
                 })}

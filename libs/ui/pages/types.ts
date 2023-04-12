@@ -32,4 +32,5 @@ export interface HomeLogicType {
     setActiveProject: (value: ProjectDTO) => void
     handleOnSaveTranslations: (form: IForm<ITableRowTermForm> & IDefaultForm) => void
     handleOnCreateTerm: (projectId: string) => void
+    handleOnDeleteTerm: (projectId: string, termId: string) => void
 }

@@ -7,6 +7,7 @@ export interface ITableRowTermProps {
     translations?: TranslationWithMetaPagingDTO
     term: TermDTO
     handleOnSaveTranslations: (form: IForm<ITableRowTermForm> & IDefaultForm) => void
+    handleOnDeleteTerm: (projectId: string, termId: string) => void
 }
 
 export interface ITableRowTermLogicProps {

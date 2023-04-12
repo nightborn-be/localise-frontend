@@ -14,4 +14,5 @@ export interface IHomePageProps {
     projectTerms?: TermPagingDTO
     activeProject?: ProjectDTO;
     handleOnCreateTerm: (projectId: string) => void
+    handleOnDeleteTerm: (projectId: string, termId: string) => void
 }
