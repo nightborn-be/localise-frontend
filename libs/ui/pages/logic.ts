@@ -20,11 +20,15 @@ import {
 import useToast from '../../ui/components/progress-validation/toast';
 import { ToastType } from '../components/progress-validation/toast/types';
 import { IOrganisationSettingsForm } from './components/organisation-settings/types';
-import { OrganisationDTO, ProjectDTO } from 'gateways/resource-api/types';
+import { OrganisationDTO, ProjectDTO, SaveTranslationDTO, UpdateTermDTO } from 'gateways/resource-api/types';
 import { useState } from 'react';
 import { tKeys } from '../../i18n/keys';
 import { useCreateTerm, useDeleteTerm, useGetTerms, useUpdateTerm } from '../../gateways/resource-api/terms/terms';
-import { useSaveTranslation } from '../../gateways/resource-api/translations/translations';
+import { useGetTranslations, useSaveTranslation, saveTranslation } from '../../gateways/resource-api/translations/translations';
+import { CreateTermDTO } from '../../gateways/resource-api/types/createTermDTO';
+import { IEditInputForm } from './components/project/components/glossary/components/table-row-term/components/edit-input/types';
+import { ITableRowTermForm } from './components/project/components/glossary/components/table-row-term/types';
+import { toUpdateTermDTO } from './components/project/components/glossary/components/table-row-term/mappers';
 
 export const useHomeLogic = () => {
     // Attributes
@@ -32,6 +36,7 @@ export const useHomeLogic = () => {
     const { t } = useTranslation();
     const [filterProjectValue, setFilterProjectValue] = useState<string>('');
     const [activeProject, setActiveProject] = useState<ProjectDTO>({})
+    const [activeTerm, setActiveTerm] = useState<string>('')
     // Hooks
     const { mutateAsync: createProject } = useCreateProject();
     const { mutateAsync: createTerm } = useCreateTerm();
@@ -58,7 +63,8 @@ export const useHomeLogic = () => {
         q: filterProjectValue,
     });
 
-    const { data: projectTerms } = useGetTerms(activeProject.id as string);
+    const { data: projectTerms, refetch: refetchProjectTerms } = useGetTerms(activeProject.id as string);
+
 
     // Functions
     async function handleOnCreateProject(
@@ -222,6 +228,19 @@ export const useHomeLogic = () => {
             },
         );
     }
+    function handleOnCreateTerm(projectId: string) {
+        const term = createTerm({ projectId: projectId, data: { name: "Insert key", description: "" } })
+    }
+
+
+
+    function handleOnSaveTranslations(form: IForm<ITableRowTermForm> & IDefaultForm) {
+        updateTerm({ projectId: form.projectId.value, termId: form.termId.value, data: toUpdateTermDTO(form.key.value, form.description.value) })
+        for (const translate in form.translations.value) {
+            const element = form.translations.value[translate] as IEditInputForm;
+            saveTranslation({ termId: element.termId, languageId: element.languageId, data: { translation: element.translation } })
+        }
+    }
 
     return {
         handleOnCreateProject,
@@ -237,6 +256,8 @@ export const useHomeLogic = () => {
         setFilterProjectValue,
         projectTerms,
         activeProject,
-        setActiveProject
+        setActiveProject,
+        handleOnSaveTranslations,
+        handleOnCreateTerm,
     };
 };

@@ -25,7 +25,6 @@ export default function TableHeaderTerm({}: ITableRowTermProps) {
             onMouseOver={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
             border={'transparent'}
-            borderRadius='0.5rem'
             spacing={0}
         >
             <HStack

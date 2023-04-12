@@ -11,9 +11,10 @@ import { Glossary } from './components/glossary/index';
 const ProjectContent = ({
     projectTerms,
     activeProject,
+    handleOnSaveTranslations,
+    handleOnCreateTerm,
 }: IProjectContentProps) => {
-    const {} = useProjectLogic({});
-    const [activeKey, setActiveKey] = useState<React.Key>();
+    const [activeKey, setActiveKey] = useState<React.Key>(0);
     // Attributes
     const { t } = useTranslation();
 
@@ -39,7 +40,11 @@ const ProjectContent = ({
 
             <Tabs activeKey={activeKey} onChange={(key) => setActiveKey(key)}>
                 <Tab title='Glossary'>
-                    <Glossary />
+                    <Glossary
+                        projectTerms={projectTerms}
+                        handleOnSaveTranslations={handleOnSaveTranslations}
+                        handleOnCreateTerm={handleOnCreateTerm}
+                    />
                 </Tab>
                 <Tab title='Settings'>
                     <Box bg='blue.100' h='31.25rem' />

@@ -19,6 +19,8 @@ export default function Web() {
         projectTerms,
         activeProject,
         setActiveProject,
+        handleOnSaveTranslations,
+        handleOnCreateTerm,
     } = useHomeLogic();
     return (
         <Page
@@ -34,8 +36,10 @@ export default function Web() {
             setActiveProject={setActiveProject}
         >
             <HomePage
+                handleOnCreateTerm={handleOnCreateTerm}
                 handleOnDeleteOrganisation={handleOnDeleteOrganisation}
                 handleUpdateOrganisation={handleUpdateOrganisation}
+                handleOnSaveTranslations={handleOnSaveTranslations}
                 actualOrganisationUser={actualOrganisationUser}
                 isLoadingUpdateOrganisation={isLoadingUpdateOrganisation}
                 projectTerms={projectTerms}

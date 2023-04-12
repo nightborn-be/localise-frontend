@@ -64,6 +64,8 @@ const SearchInput = <T extends object>({
                             translateX: 0,
                             opacity: 0,
                             display: 'flex',
+                            justifyContent: 'center',
+                            alignItems: 'center',
                         }}
                         animate={
                             launchAnime

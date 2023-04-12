@@ -1,16 +1,26 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import InputLabel from '../../../../../components/inputs/input-label/index';
 import COLORS from '../../../../../constants/colors';
 import FONTS from '../../../../../constants/fonts';
 import { HStack, VStack } from '@chakra-ui/react';
 import Button from '../../../../../components/inputs/button/index';
 import Icon from '../../../../../components/contents/icon';
-import TableHeader from '../../../../../components/table/table-header';
-import TableRow from '../../../../../components/table/table-row/index';
 import TableRowTerm from './components/table-row-term';
 import TableTerm from './components/table/index';
-import TermEditContent from './components/table-row-term/components/term-edit-content/index';
-export const Glossary = () => {
+import { IGlossaryProps } from './props';
+import ButtonIcon from '../../../../../components/inputs/button-icon';
+import { ButtonSize } from '../../../../../components/inputs/button-icon/types';
+import SHADOWS from '../../../../../constants/shadows';
+import { Translation } from 'react-i18next';
+export const Glossary = ({
+    projectTerms,
+    handleOnSaveTranslations,
+    handleOnCreateTerm,
+}: IGlossaryProps) => {
+    // Attributes
+    const tableRef = useRef<HTMLDivElement>(null);
+    // Functions
+    // Renders
     return (
         <VStack
             h='full'
@@ -30,30 +40,58 @@ export const Glossary = () => {
                     spacing='0.5rem'
                 />
                 <Button
-                    w={'32px'}
                     h={'32px'}
                     minH={'32px'}
-                    minW={'32px'}
                     padding={'4px 12px 4px 8px'}
                     borderRadius={'8px'}
+                    spacing='4px'
                     font={FONTS.T1.T12px.SemiBold600.value}
                     color={COLORS.Text.T400.value}
+                    bg={COLORS.White.T500.value}
                     hoverBackgroundColor={COLORS.Tag.value}
                     startEnhancer={() => (
-                        <Icon name='add' stroke={COLORS.Text.T400.value} />
+                        <Icon name='upload' stroke={COLORS.Text.T400.value} />
                     )}
                 >
                     Export
                 </Button>
             </HStack>
-            <TableTerm>
-                <TableRowTerm
-                    keyName={'test test test test'}
-                    sourceLanguage='EN'
-                    targetLanguage='FR / NL'
-                />
-                <TermEditContent />
+            <TableTerm ref={tableRef}>
+                {projectTerms?.data?.map((term) => {
+                    return (
+                        <TableRowTerm
+                            term={term}
+                            handleOnSaveTranslations={handleOnSaveTranslations}
+                        />
+                    );
+                })}
             </TableTerm>
+            <ButtonIcon
+                position={'absolute'}
+                right='32px'
+                bottom='32px'
+                borderRadius='6.25rem'
+                size={ButtonSize.XXL}
+                backgroundColor='#5F43E2'
+                hoverBackgroundColor='#4C36B5'
+                boxShadow={
+                    SHADOWS.Elevation.Light.Bottom.T04 +
+                    ',' +
+                    SHADOWS.Elevation.Light.Bottom.T04
+                }
+                handleOnClick={() => {
+                    handleOnCreateTerm(
+                        projectTerms?.data?.at(0)?.projectId as string,
+                    );
+                }}
+            >
+                <Icon
+                    name='addCircle'
+                    stroke='#FFFFFF'
+                    width={28}
+                    height={28}
+                />
+            </ButtonIcon>
         </VStack>
     );
 };

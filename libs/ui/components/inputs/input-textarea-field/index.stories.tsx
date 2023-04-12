@@ -26,7 +26,7 @@ RightAreaElementInput.args = {
     padding: '8px',
     gap: '10px',
     w: '520px',
-    h: '110px',
+    h: '50px',
     font: FONTS.T1.T12px.Regular400.value,
     placeHolder: 'Text',
     paddingRight: '50px',

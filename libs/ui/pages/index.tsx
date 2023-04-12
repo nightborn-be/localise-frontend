@@ -11,6 +11,8 @@ const HomePage = ({
     isLoadingUpdateOrganisation,
     projectTerms,
     activeProject,
+    handleOnSaveTranslations,
+    handleOnCreateTerm,
 }: IHomePageProps) => {
     // Attributes
     const [currentStatePage, setCurrentStatePage] = useState<HomeContentState>(
@@ -35,6 +37,8 @@ const HomePage = ({
                     <ProjectContent
                         projectTerms={projectTerms}
                         activeProject={activeProject}
+                        handleOnSaveTranslations={handleOnSaveTranslations}
+                        handleOnCreateTerm={handleOnCreateTerm}
                     />
                 );
         }

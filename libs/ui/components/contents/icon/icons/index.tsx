@@ -39,6 +39,7 @@ import CheckCircle from './check-circle';
 import AlertTriangle from './alert-triangle';
 import EyesHide from './EyesHide';
 import EyesShow from './EyesShow';
+import Upload from './upload';
 
 const Icons = {
     add: Add,
@@ -89,6 +90,7 @@ const Icons = {
     chevronDown: ChevronDown,
     checkCircle: CheckCircle,
     alertTriangle: AlertTriangle,
+    upload: Upload,
 };
 
 export default Icons;
