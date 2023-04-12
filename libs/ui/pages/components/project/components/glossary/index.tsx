@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import InputLabel from '../../../../../components/inputs/input-label/index';
 import COLORS from '../../../../../constants/colors';
 import FONTS from '../../../../../constants/fonts';
@@ -12,14 +12,21 @@ import ButtonIcon from '../../../../../components/inputs/button-icon';
 import { ButtonSize } from '../../../../../components/inputs/button-icon/types';
 import SHADOWS from '../../../../../constants/shadows';
 import { Translation } from 'react-i18next';
+import { TermDTO } from 'gateways/resource-api/types';
 export const Glossary = ({
     projectTerms,
+    activeProject,
     handleOnSaveTranslations,
     handleOnCreateTerm,
     handleOnDeleteTerm,
 }: IGlossaryProps) => {
     // Attributes
     const tableRef = useRef<HTMLDivElement>(null);
+    const [newRowTerm, setNewRowTerm] = useState<TermDTO[]>([]);
+    // Functions
+    function clearNewRowTerm() {
+        setNewRowTerm([]);
+    }
     // Renders
     return (
         <VStack
@@ -62,8 +69,22 @@ export const Glossary = ({
                         <TableRowTerm
                             key={i}
                             term={term}
+                            activeProject={activeProject}
                             handleOnSaveTranslations={handleOnSaveTranslations}
                             handleOnDeleteTerm={handleOnDeleteTerm}
+                            clearNewRowTerm={clearNewRowTerm}
+                        />
+                    );
+                })}
+                {newRowTerm.map((term, i) => {
+                    return (
+                        <TableRowTerm
+                            key={i}
+                            term={term}
+                            activeProject={activeProject}
+                            handleOnSaveTranslations={handleOnSaveTranslations}
+                            handleOnDeleteTerm={handleOnDeleteTerm}
+                            clearNewRowTerm={clearNewRowTerm}
                         />
                     );
                 })}
@@ -82,9 +103,10 @@ export const Glossary = ({
                     SHADOWS.Elevation.Light.Bottom.T04
                 }
                 handleOnClick={() => {
-                    handleOnCreateTerm(
-                        projectTerms?.data?.at(0)?.projectId as string,
-                    );
+                    // handleOnCreateTerm(
+                    //     projectTerms?.data?.at(0)?.projectId as string,
+                    // );
+                    setNewRowTerm([...newRowTerm, {}]);
                 }}
             >
                 <Icon

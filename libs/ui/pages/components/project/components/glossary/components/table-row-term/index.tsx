@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { HStack, VStack, useDisclosure } from '@chakra-ui/react';
+import { HStack, VStack } from '@chakra-ui/react';
 import { ITableRowTermProps } from './props';
 import ButtonIcon from '../../../../../../../components/inputs/button-icon';
 import { ButtonSize } from '../../../../../../../components/inputs/button-icon/types';
@@ -15,12 +15,14 @@ export default function TableRowTerm({
     term,
     handleOnSaveTranslations,
     handleOnDeleteTerm,
+    activeProject,
+    clearNewRowTerm,
 }: ITableRowTermProps) {
     //Attributes
     const [isHovered, setIsHovered] = useState<boolean>(false);
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const { form, updateTranslationsForm, translations } = useTableRowTermLogic(
-        { term },
+        { term, activeProject },
     );
     // Functions
     function toggleIsOpen() {
@@ -153,6 +155,7 @@ export default function TableRowTerm({
                 translations={translations}
                 form={form}
                 handleOnSaveTranslations={handleOnSaveTranslations}
+                clearNewRowTerm={clearNewRowTerm}
                 updateTranslationsForm={updateTranslationsForm}
                 handleOnDeleteTerm={handleOnDeleteTerm}
             />

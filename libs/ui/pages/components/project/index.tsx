@@ -16,6 +16,7 @@ const ProjectContent = ({
     handleOnDeleteTerm,
 }: IProjectContentProps) => {
     const [activeKey, setActiveKey] = useState<React.Key>();
+
     // Attributes
     const { t } = useTranslation();
 
@@ -43,6 +44,7 @@ const ProjectContent = ({
                 <Tab title='Glossary'>
                     <Glossary
                         projectTerms={projectTerms}
+                        activeProject={activeProject}
                         handleOnSaveTranslations={handleOnSaveTranslations}
                         handleOnCreateTerm={handleOnCreateTerm}
                         handleOnDeleteTerm={handleOnDeleteTerm}

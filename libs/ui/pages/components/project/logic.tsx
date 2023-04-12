@@ -2,24 +2,23 @@ import { useState, useEffect, useRef } from 'react';
 import { useFormik } from 'formik';
 import { createForm } from '../../../../utils/formik';
 import { IProjectContentProps } from './props';
-import { IProjectForm } from './types';
+import { IProjectForm, ProjectLogicType } from './types';
 
-export const useProjectLogic =
-    ({}: IProjectContentProps): IProjectContentProps => {
-        // Attributes
+export const useProjectLogic = ({}: IProjectContentProps): ProjectLogicType => {
+    // Attributes
 
-        // Formik
-        const { values, ...rest } = useFormik<IProjectForm>({
-            initialValues: {
-                organisationName: '',
-                organisationPicture: '',
-            },
-            onSubmit: () => {},
-            validateOnChange: false,
-        });
+    // Formik
+    const { values, ...rest } = useFormik<IProjectForm>({
+        initialValues: {
+            organisationName: '',
+            organisationPicture: '',
+        },
+        onSubmit: () => {},
+        validateOnChange: false,
+    });
 
-        const form = createForm(values, rest);
+    const form = createForm(values, rest);
 
-        // Functions
-        return {};
-    };
+    // Functions
+    return {};
+};

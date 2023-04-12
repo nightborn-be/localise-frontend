@@ -240,10 +240,15 @@ export const useHomeLogic = () => {
 
 
     function handleOnSaveTranslations(form: IForm<ITableRowTermForm> & IDefaultForm) {
-        updateTerm({ projectId: form.projectId.value, termId: form.termId.value, data: toUpdateTermDTO(form.key.value, form.description.value) })
-        for (const translate in form.translations.value) {
-            const element = form.translations.value[translate] as IEditInputForm;
-            saveTranslation({ termId: element.termId, languageId: element.languageId, data: { translation: element.translation } })
+        if (form.termId.value === undefined) {
+            const term = createTerm({ projectId: form.projectId.value, data: { name: form.key.value, description: form.description.value } })
+            refetchProjectTerms();
+        } else {
+            updateTerm({ projectId: form.projectId.value, termId: form.termId.value, data: toUpdateTermDTO(form.key.value, form.description.value) })
+            for (const translate in form.translations.value) {
+                const element = form.translations.value[translate] as IEditInputForm;
+                saveTranslation({ termId: element.termId, languageId: element.languageId, data: { translation: element.translation } })
+            }
         }
     }
 

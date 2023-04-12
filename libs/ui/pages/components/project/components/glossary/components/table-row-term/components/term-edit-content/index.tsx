@@ -19,6 +19,7 @@ export const TermEditContent = ({
     handleOnSaveTranslations,
     updateTranslationsForm,
     handleOnDeleteTerm,
+    clearNewRowTerm,
 }: ITermEditContentProps) => {
     return (
         <VStack
@@ -83,6 +84,7 @@ export const TermEditContent = ({
                         padding='4px 12px 4px 12px'
                         onClick={() => {
                             handleOnSaveTranslations(form);
+                            clearNewRowTerm();
                         }}
                     >
                         Save
