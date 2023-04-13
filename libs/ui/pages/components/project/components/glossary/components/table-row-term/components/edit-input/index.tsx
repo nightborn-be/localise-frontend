@@ -11,8 +11,11 @@ const EditInput = ({
     translation,
     updateTranslationsForm,
 }: IEditInputProps) => {
-    const [isFocused, setIsFocused] = useState<boolean>(false);
-    const { form } = useEditInputLogic({ translation });
+    // Attributes
+    const { form, isFocused, setIsFocused } = useEditInputLogic({
+        translation,
+    });
+    // Render
     return (
         <HStack w='full'>
             <Button

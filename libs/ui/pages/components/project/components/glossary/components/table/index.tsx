@@ -13,6 +13,7 @@ export const TableTerm = ({
     setIsDetectDuplicate,
     isDetectDuplicate,
 }: ITableTermProps) => {
+    // Render
     return (
         <VStack spacing='8px' ref={ref}>
             <TableHeaderTerm
@@ -22,7 +23,6 @@ export const TableTerm = ({
                 sortValue={sortValue}
                 setIsDetectDuplicate={setIsDetectDuplicate}
                 isDetectDuplicate={isDetectDuplicate}
-                
             />
             {children}
         </VStack>

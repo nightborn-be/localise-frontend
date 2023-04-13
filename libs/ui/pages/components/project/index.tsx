@@ -21,9 +21,8 @@ const ProjectContent = ({
     setIsDetectDuplicate,
     isDetectDuplicate,
 }: IProjectContentProps) => {
-    const [activeKey, setActiveKey] = useState<React.Key>();
-
     // Attributes
+    const { activeKey, setActiveKey } = useProjectLogic();
     const { t } = useTranslation();
 
     // Render

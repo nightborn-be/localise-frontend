@@ -21,6 +21,7 @@ export const TermEditContent = ({
     handleOnDeleteTerm,
     clearNewRowTerm,
 }: ITermEditContentProps) => {
+    // Render
     return (
         <VStack
             display={isOpen ? 'visible' : 'none'}

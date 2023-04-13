@@ -13,6 +13,7 @@ import ButtonIcon from 'ui/components/inputs/button-icon';
 import InputSelectSort from '../../../../../../../components/inputs/input-select-sort/index';
 import ToggleText from '../../../../../../../components/contents/toggle-text/index';
 import SHADOWS from '../../../../../../../constants/shadows';
+import { useTableHeaderTermLogic } from './logic';
 
 export default function TableHeaderTerm({
     setSearchFilterValue,
@@ -23,16 +24,13 @@ export default function TableHeaderTerm({
     isDetectDuplicate,
 }: ITableRowTermProps) {
     //Attributes
-    const [isHovered, setIsHovered] = useState<boolean>(false);
-    const [isMoreMenuOpen, setIsMoreMenuOpen] = useState<boolean>(false);
+    const { isMoreMenuOpen, toggleIsMoreMenuOpen } = useTableHeaderTermLogic();
     //Render
     return (
         <HStack
             w='full'
             h={'2.75rem'}
             alignItems='flex-start'
-            onMouseOver={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
             border={'transparent'}
             spacing={0}
         >
@@ -135,9 +133,7 @@ export default function TableHeaderTerm({
                                 : COLORS.White.T500.value
                         }
                         hoverBackgroundColor={COLORS.Stroke.value}
-                        handleOnClick={() => {
-                            setIsMoreMenuOpen((prev) => !prev);
-                        }}
+                        handleOnClick={toggleIsMoreMenuOpen}
                     >
                         <Icon
                             pointerEvents='none'

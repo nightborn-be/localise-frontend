@@ -37,4 +37,6 @@ export interface HomeLogicType {
     searchFilterValue: string
     setIsDetectDuplicate: (value: boolean) => void
     isDetectDuplicate: boolean,
+    currentStatePage: HomeContentState,
+    setCurrentStatePage: (value: HomeContentState) => void
 }

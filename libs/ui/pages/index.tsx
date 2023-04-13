@@ -3,6 +3,7 @@ import { HomeContentState } from './types';
 import OrganisationSettings from './components/organisation-settings';
 import { IHomePageProps } from './props';
 import ProjectContent from './components/project';
+import { useHomeLogic } from './logic';
 
 const HomePage = ({
     handleOnDeleteOrganisation,
@@ -22,9 +23,7 @@ const HomePage = ({
     isDetectDuplicate,
 }: IHomePageProps) => {
     // Attributes
-    const [currentStatePage, setCurrentStatePage] = useState<HomeContentState>(
-        HomeContentState.PROJECTS,
-    );
+    const { currentStatePage, setCurrentStatePage } = useHomeLogic();
     // Function
     function renderPage(): React.ReactNode {
         switch (currentStatePage) {

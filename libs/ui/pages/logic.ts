@@ -29,9 +29,14 @@ import { CreateTermDTO } from '../../gateways/resource-api/types/createTermDTO';
 import { IEditInputForm } from './components/project/components/glossary/components/table-row-term/components/edit-input/types';
 import { ITableRowTermForm } from './components/project/components/glossary/components/table-row-term/types';
 import { toUpdateTermDTO } from './components/project/components/glossary/components/table-row-term/mappers';
+import { HomeContentState } from './types';
 
 export const useHomeLogic = () => {
     // Attributes
+    const [currentStatePage, setCurrentStatePage] = useState<HomeContentState>(
+        HomeContentState.PROJECTS,
+    );
+
     const toast = useToast();
     const { t } = useTranslation();
     const [filterProjectValue, setFilterProjectValue] = useState<string>('');
@@ -275,6 +280,8 @@ export const useHomeLogic = () => {
         sortValue,
         setSortValue,
         isDetectDuplicate,
-        setIsDetectDuplicate
+        setIsDetectDuplicate,
+        currentStatePage,
+        setCurrentStatePage
     };
 };

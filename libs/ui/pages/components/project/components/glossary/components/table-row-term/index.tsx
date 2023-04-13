@@ -19,35 +19,15 @@ export default function TableRowTerm({
     clearNewRowTerm,
 }: ITableRowTermProps) {
     //Attributes
-    const [isHovered, setIsHovered] = useState<boolean>(false);
-    const [isOpen, setIsOpen] = useState<boolean>(false);
-    const { form, updateTranslationsForm, translations } = useTableRowTermLogic(
-        { term, activeProject },
-    );
-    // Functions
-    function toggleIsOpen() {
-        setIsOpen((prev) => !prev);
-    }
-    function targetLanguagesToDisplayValue() {
-        let value = '';
-        translations?.data?.forEach((t) => {
-            if (!t.language.isSource) {
-                value += t.language.abbreviation?.toUpperCase() + ' / ';
-            }
-        });
-
-        return value.slice(0, -3);
-    }
-
-    function getSourceLanguage(): string {
-        let value = '';
-        translations?.data?.forEach((t) => {
-            if (t.language.isSource && t.language.abbreviation) {
-                value = t.language.abbreviation?.toUpperCase();
-            }
-        });
-        return value;
-    }
+    const {
+        form,
+        updateTranslationsForm,
+        translations,
+        toggleIsOpen,
+        isOpen,
+        getSourceLanguage,
+        targetLanguagesToDisplayValue,
+    } = useTableRowTermLogic({ term, activeProject });
     //Render
     return (
         <VStack w='full' spacing={0}>
@@ -55,8 +35,6 @@ export default function TableRowTerm({
                 w='full'
                 h={'2.75rem'}
                 alignItems='flex-start'
-                onMouseOver={() => setIsHovered(true)}
-                onMouseLeave={() => setIsHovered(false)}
                 border={`0.0625rem solid ${COLORS.Line.value}`}
                 borderRadius={!isOpen ? '8px' : '0px'}
                 borderTopLeftRadius={'8px'}

@@ -23,4 +23,3 @@ export interface IProjectContentProps {
     isDetectDuplicate: boolean;
 }
 
-export interface IProjectContentPropsLogicProps {}

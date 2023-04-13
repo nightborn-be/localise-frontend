@@ -4,8 +4,6 @@ import { ITermEditContentLogicProps, ITermEditContentProps } from "./props";
 import { ITermEditContentForm, TermEditContentLogicType } from './types';
 export const useTermEditContentLogic =
     ({ term }: ITermEditContentLogicProps): TermEditContentLogicType => {
-        // Attributes
-
         // Formik
         const { values, ...rest } = useFormik<ITermEditContentForm>({
             initialValues: {
@@ -17,7 +15,5 @@ export const useTermEditContentLogic =
         });
 
         const form = createForm(values, rest);
-
-        // Functions
         return { form };
     };

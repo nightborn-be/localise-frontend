@@ -7,6 +7,11 @@ export type TableRowTermLogicType = {
     form: IForm<ITableRowTermForm> & IDefaultForm
     updateTranslationsForm: (value: IEditInputForm) => void
     translations?: TranslationWithMetaPagingDTO
+    isOpen: boolean
+    setIsOpen: (value: boolean) => void
+    toggleIsOpen: () => void
+    targetLanguagesToDisplayValue: () => string
+    getSourceLanguage: () => string
 }
 
 export interface ITableRowTermForm {

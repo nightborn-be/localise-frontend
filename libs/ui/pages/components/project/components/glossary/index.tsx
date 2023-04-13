@@ -11,8 +11,7 @@ import { IGlossaryProps } from './props';
 import ButtonIcon from '../../../../../components/inputs/button-icon';
 import { ButtonSize } from '../../../../../components/inputs/button-icon/types';
 import SHADOWS from '../../../../../constants/shadows';
-import { Translation } from 'react-i18next';
-import { TermDTO } from 'gateways/resource-api/types';
+import { useGlossaryLogic } from './logic';
 export const Glossary = ({
     projectTerms,
     activeProject,
@@ -27,12 +26,7 @@ export const Glossary = ({
     isDetectDuplicate,
 }: IGlossaryProps) => {
     // Attributes
-    const tableRef = useRef<HTMLDivElement>(null);
-    const [newRowTerm, setNewRowTerm] = useState<TermDTO[]>([]);
-    // Functions
-    function clearNewRowTerm() {
-        setNewRowTerm([]);
-    }
+    const { tableRef, newRowTerm, clearNewRowTerm } = useGlossaryLogic();
     // Renders
     return (
         <VStack
@@ -120,7 +114,7 @@ export const Glossary = ({
                     // handleOnCreateTerm(
                     //     projectTerms?.data?.at(0)?.projectId as string,
                     // );
-                    setNewRowTerm([...newRowTerm, {}]);
+                    clearNewRowTerm();
                 }}
             >
                 <Icon

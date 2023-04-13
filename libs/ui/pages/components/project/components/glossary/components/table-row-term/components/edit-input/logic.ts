@@ -2,10 +2,11 @@ import { useFormik } from "formik";
 import { IEditInputLogicProps } from "./props";
 import { EditInputLogicType, IEditInputForm } from "./types";
 import { createForm } from "utils/formik";
+import { useState } from "react";
 export const useEditInputLogic =
     ({ translation }: IEditInputLogicProps): EditInputLogicType => {
         // Attributes
-
+        const [isFocused, setIsFocused] = useState<boolean>(false);
         // Formik
         const { values, ...rest } = useFormik<IEditInputForm>({
             initialValues: {
@@ -20,5 +21,5 @@ export const useEditInputLogic =
         const form = createForm(values, rest);
 
         // Functions
-        return { form };
+        return { form, isFocused, setIsFocused };
     };
