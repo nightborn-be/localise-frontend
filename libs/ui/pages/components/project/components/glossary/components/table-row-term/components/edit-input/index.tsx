@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { HStack, Text } from '@chakra-ui/react';
+import React from 'react';
+import { HStack } from '@chakra-ui/react';
 import Button from '../../../../../../../../../components/inputs/button/index';
 import COLORS from '../../../../../../../../../constants/colors';
 import FONTS from '../../../../../../../../../constants/fonts';

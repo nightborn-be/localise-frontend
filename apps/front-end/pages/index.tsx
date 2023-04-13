@@ -1,4 +1,3 @@
-import { Box } from '@chakra-ui/react';
 import Page from '../../../libs/ui/components/contents/page';
 import HomePage from '../../../libs/ui/pages/index';
 import { useHomeLogic } from '../../../libs/ui/pages/logic';
@@ -29,6 +28,7 @@ export default function Web() {
         setIsDetectDuplicate,
         isDetectDuplicate,
     } = useHomeLogic();
+
     return (
         <Page
             handleOnCreateProject={handleOnCreateProject}

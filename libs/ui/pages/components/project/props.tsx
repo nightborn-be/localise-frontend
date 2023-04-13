@@ -1,9 +1,4 @@
-import {
-    ProjectDTO,
-    TermPagingDTO,
-    TranslationWithMetaDTO,
-    TranslationWithMetaPagingDTO,
-} from 'gateways/resource-api/types';
+import { ProjectDTO, TermPagingDTO } from 'gateways/resource-api/types';
 import { IDefaultForm, IForm } from 'utils/formik';
 import { ITableRowTermForm } from './components/glossary/components/table-row-term/types';
 

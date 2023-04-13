@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Breadcrumb from '../../../components/navigation/breadcrumb';
 import { useTranslation } from 'react-i18next';
 import { IProjectContentProps } from './props';

@@ -20,12 +20,7 @@ import {
 import useToast from '../../ui/components/progress-validation/toast';
 import { ToastType } from '../components/progress-validation/toast/types';
 import { IOrganisationSettingsForm } from './components/organisation-settings/types';
-import {
-    OrganisationDTO,
-    ProjectDTO,
-    SaveTranslationDTO,
-    UpdateTermDTO,
-} from 'gateways/resource-api/types';
+import { OrganisationDTO, ProjectDTO } from 'gateways/resource-api/types';
 import { useState } from 'react';
 import { tKeys } from '../../i18n/keys';
 import {
@@ -34,12 +29,7 @@ import {
     useGetTerms,
     useUpdateTerm,
 } from '../../gateways/resource-api/terms/terms';
-import {
-    useGetTranslations,
-    useSaveTranslation,
-    saveTranslation,
-} from '../../gateways/resource-api/translations/translations';
-import { CreateTermDTO } from '../../gateways/resource-api/types/createTermDTO';
+import { useSaveTranslation } from '../../gateways/resource-api/translations/translations';
 import { IEditInputForm } from './components/project/components/glossary/components/table-row-term/components/edit-input/types';
 import { ITableRowTermForm } from './components/project/components/glossary/components/table-row-term/types';
 import { toUpdateTermDTO } from './components/project/components/glossary/components/table-row-term/mappers';

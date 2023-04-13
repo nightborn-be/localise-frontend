@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React from 'react';
 import InputLabel from '../../../../../components/inputs/input-label/index';
 import COLORS from '../../../../../constants/colors';
 import FONTS from '../../../../../constants/fonts';
@@ -14,6 +14,7 @@ import SHADOWS from '../../../../../constants/shadows';
 import { useGlossaryLogic } from './logic';
 import { useTranslation } from 'react-i18next';
 import { tKeys } from '../../../../../../i18n/keys';
+
 export const Glossary = ({
     projectTerms,
     activeProject,

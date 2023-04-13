@@ -1,6 +1,5 @@
 import { IDefaultForm, IForm } from 'utils/formik';
 import { IEditInputForm } from './components/edit-input/types';
-import { FormikErrors } from 'formik';
 import { TranslationWithMetaPagingDTO } from 'gateways/resource-api/types';
 
 export type TableRowTermLogicType = {

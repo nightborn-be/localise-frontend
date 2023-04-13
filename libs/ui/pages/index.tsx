@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { HomeContentState } from './types';
 import OrganisationSettings from './components/organisation-settings';
 import { IHomePageProps } from './props';

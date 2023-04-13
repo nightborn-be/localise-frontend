@@ -1,7 +1,6 @@
 import {
     ProjectDTO,
     TermDTO,
-    TermPagingDTO,
     TranslationWithMetaDTO,
     TranslationWithMetaPagingDTO,
 } from 'gateways/resource-api/types';

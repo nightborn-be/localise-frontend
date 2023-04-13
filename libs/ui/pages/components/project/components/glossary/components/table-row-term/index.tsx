@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { HStack, VStack } from '@chakra-ui/react';
 import { ITableRowTermProps } from './props';
 import ButtonIcon from '../../../../../../../components/inputs/button-icon';

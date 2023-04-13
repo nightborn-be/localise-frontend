@@ -7,7 +7,6 @@ import {
     ProjectDTO,
     ProjectPagingDTO,
     TermPagingDTO,
-    TranslationWithMetaDTO,
 } from 'gateways/resource-api/types';
 import { ITableRowTermForm } from './components/project/components/glossary/components/table-row-term/types';
 

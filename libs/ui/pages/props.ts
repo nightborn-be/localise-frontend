@@ -4,7 +4,6 @@ import {
     OrganisationDTO,
     OrgnanisationPagingDTO,
     ProjectDTO,
-    TranslationWithMetaPagingDTO,
 } from 'gateways/resource-api/types';
 import { TermPagingDTO } from '../../gateways/resource-api/types/termPagingDTO';
 import { ITableRowTermForm } from './components/project/components/glossary/components/table-row-term/types';
