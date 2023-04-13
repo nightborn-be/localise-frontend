@@ -10,5 +10,9 @@ export const useGlossaryLogic = (): GlossaryLogicType => {
     function clearNewRowTerm() {
         setNewRowTerm([]);
     }
-    return { tableRef, newRowTerm, clearNewRowTerm };
+
+    function addNewRowTerm(term: TermDTO) {
+        setNewRowTerm((prev) => [...prev, term])
+    }
+    return { tableRef, newRowTerm, clearNewRowTerm, addNewRowTerm };
 };

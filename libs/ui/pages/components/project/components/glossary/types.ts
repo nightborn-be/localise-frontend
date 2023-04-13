@@ -5,4 +5,5 @@ export interface GlossaryLogicType {
     tableRef: RefObject<HTMLDivElement>;
     newRowTerm: TermDTO[];
     clearNewRowTerm: () => void;
+    addNewRowTerm: (term: TermDTO) => void;
 }

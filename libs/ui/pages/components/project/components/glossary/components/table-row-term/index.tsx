@@ -45,10 +45,10 @@ export default function TableRowTerm({
                 spacing={0}
             >
                 <HStack
-                    padding='8px 20px'
-                    spacing='10px'
+                    padding='0.5rem 1.25rem'
+                    spacing='0.625rem'
                     w='full'
-                    h='44px'
+                    h='2.75rem'
                     alignItems={'center'}
                     justifyContent={'left'}
                 >
@@ -94,7 +94,7 @@ export default function TableRowTerm({
                 </HStack>
 
                 <HStack
-                    padding='8px 20px'
+                    padding='0.5rem 1.25rem'
                     spacing='0.25rem'
                     w='full'
                     h='2.75rem'

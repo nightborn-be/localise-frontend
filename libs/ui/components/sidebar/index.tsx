@@ -149,7 +149,7 @@ export const SideBar = ({
                     padding='0.375rem 0.5rem 1.25rem'
                     spacing='0.375rem'
                     height={'full'}
-                    overflowY={'scroll'}
+                    overflowX={'scroll'}
                     borderRight={`0.0625rem solid ${COLORS.Line.value}`}
                 >
                     {options?.map((option, index) => {

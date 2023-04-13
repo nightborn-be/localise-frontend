@@ -15,13 +15,14 @@ const InputLabel = ({
     descriptionFont = FONTS.T1.T12px.Regular400.value,
     descriptionColor = COLORS.InputText.value,
     spacing = '0.25rem',
+    maxWidth
 }: IInputLabelProps) => {
     //Attributes
 
     //Render
     if (!label && !description) return <></>;
     return (
-        <VStack spacing={spacing} align='left' w='full'>
+        <VStack spacing={spacing} align='left' w='full' maxWidth={maxWidth}>
             {label && (
                 <Text
                     lineHeight={lineHeight}

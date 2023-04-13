@@ -43,7 +43,7 @@ const SearchInput = <T extends object>({
                     initial={{ translateX: 0, display: 'flex' }}
                     animate={
                         launchAnime
-                            ? { translateX: -90, display: 'flex' }
+                            ? { translateX: -100, display: 'flex' }
                             : { translateX: 0, display: 'flex' }
                     }
                     transition={{

@@ -2,7 +2,7 @@ import React from 'react';
 import InputLabel from '../../../../../components/inputs/input-label/index';
 import COLORS from '../../../../../constants/colors';
 import FONTS from '../../../../../constants/fonts';
-import { HStack, VStack } from '@chakra-ui/react';
+import { Box, HStack, VStack } from '@chakra-ui/react';
 import Button from '../../../../../components/inputs/button/index';
 import Icon from '../../../../../components/contents/icon';
 import TableRowTerm from './components/table-row-term';
@@ -29,7 +29,8 @@ export const Glossary = ({
     isDetectDuplicate,
 }: IGlossaryProps) => {
     // Attributes
-    const { tableRef, newRowTerm, clearNewRowTerm } = useGlossaryLogic();
+    const { tableRef, newRowTerm, clearNewRowTerm, addNewRowTerm } =
+        useGlossaryLogic();
     const { t } = useTranslation();
     // Renders
     return (
@@ -53,8 +54,12 @@ export const Glossary = ({
                     descriptionColor={COLORS.InputText.value}
                     descriptionFont={FONTS.T1.T12px.Regular400.value}
                     spacing='0.5rem'
+                    maxWidth='628px'
                 />
+                <Box w='full' />
                 <Button
+                    w={'fit-content'}
+                    minW={'fit-content'}
                     h={'32px'}
                     minH={'32px'}
                     padding={'4px 12px 4px 8px'}
@@ -122,7 +127,7 @@ export const Glossary = ({
                     // handleOnCreateTerm(
                     //     projectTerms?.data?.at(0)?.projectId as string,
                     // );
-                    clearNewRowTerm();
+                    addNewRowTerm({});
                 }}
             >
                 <Icon
