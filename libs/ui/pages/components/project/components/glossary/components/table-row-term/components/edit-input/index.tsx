@@ -6,6 +6,8 @@ import FONTS from '../../../../../../../../../constants/fonts';
 import Input from '../../../../../../../../../components/inputs/input';
 import { IEditInputProps } from './props';
 import { useEditInputLogic } from './logic';
+import { useTranslation } from 'react-i18next';
+import { tKeys } from '../../../../../../../../../../i18n/keys';
 
 const EditInput = ({
     translation,
@@ -15,6 +17,8 @@ const EditInput = ({
     const { form, isFocused, setIsFocused } = useEditInputLogic({
         translation,
     });
+    const { t } = useTranslation();
+
     // Render
     return (
         <HStack w='full'>
@@ -37,7 +41,10 @@ const EditInput = ({
             </Button>
             <Input
                 {...form.translation}
-                placeholder='Insert traduction'
+                placeholder={t<string>(
+                    tKeys.home.project.tab.glossary.content.table.content.row
+                        .input.traduction.placeholder,
+                )}
                 h='40px'
                 w='full'
                 padding='12px'

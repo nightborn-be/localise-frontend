@@ -22,4 +22,3 @@ export interface IProjectContentProps {
     setIsDetectDuplicate: (value: boolean) => void;
     isDetectDuplicate: boolean;
 }
-

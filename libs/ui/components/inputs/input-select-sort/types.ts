@@ -1,7 +1,7 @@
-import { ReactElement } from "react"
+import { ReactElement } from 'react';
 
 export type SortOption = {
-    value: string,
-    label: string,
-    icon?: ReactElement
-}
+    value: string;
+    label: string;
+    icon?: ReactElement;
+};

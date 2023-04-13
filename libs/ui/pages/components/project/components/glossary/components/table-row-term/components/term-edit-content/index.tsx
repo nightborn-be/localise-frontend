@@ -11,6 +11,8 @@ import InputTextAreaField from '../../../../../../../../../components/inputs/inp
 import EditInput from '../edit-input';
 import { ITermEditContentProps } from './props';
 import Button from '../../../../../../../../../components/inputs/button';
+import { tKeys } from '../../../../../../../../../../i18n/keys';
+import { useTranslation } from 'react-i18next';
 
 export const TermEditContent = ({
     isOpen,
@@ -21,6 +23,8 @@ export const TermEditContent = ({
     handleOnDeleteTerm,
     clearNewRowTerm,
 }: ITermEditContentProps) => {
+    // Attributes
+    const { t } = useTranslation();
     // Render
     return (
         <VStack
@@ -40,7 +44,10 @@ export const TermEditContent = ({
             <HStack padding='12px 12px 4px'>
                 <Input
                     {...form.key}
-                    placeholder={'Insert key'}
+                    placeholder={t<string>(
+                        tKeys.home.project.tab.glossary.content.table.content
+                            .row.input.key.placeholder,
+                    )}
                     color={COLORS.Text.T400.value}
                     border='0.0625rem solid transparent'
                     padding='0.5rem'
@@ -61,7 +68,10 @@ export const TermEditContent = ({
                                 lineHeight={'0.75rem'}
                                 font={FONTS.T1.T10px.SemiBold600.value}
                             >
-                                Enter
+                                {t<string>(
+                                    tKeys.home.project.tab.glossary.content
+                                        .table.content.row.input.key.submit,
+                                )}
                             </Text>
                         </>
                     }
@@ -88,7 +98,10 @@ export const TermEditContent = ({
                             clearNewRowTerm();
                         }}
                     >
-                        Save
+                        {t<string>(
+                            tKeys.home.project.tab.glossary.content.table
+                                .content.row.cta.save,
+                        )}
                     </Button>
                     <ButtonIcon
                         backgroundColor='#F46363'
@@ -117,7 +130,10 @@ export const TermEditContent = ({
                     w='609px'
                     h='50px'
                     font={FONTS.T1.T12px.Regular400.value}
-                    placeholder='Text'
+                    placeholder={t<string>(
+                        tKeys.home.project.tab.glossary.content.table.content
+                            .row.input.description.placeholder,
+                    )}
                     paddingRight='50px'
                     hoverBorder={`1px solid ${COLORS.Stroke.value}`}
                     rightElement={
@@ -129,7 +145,11 @@ export const TermEditContent = ({
                                 lineHeight={'12px'}
                                 font={FONTS.T1.T10px.SemiBold600.value}
                             >
-                                Enter
+                                {t<string>(
+                                    tKeys.home.project.tab.glossary.content
+                                        .table.content.row.input.description
+                                        .submit,
+                                )}
                             </Text>
                         </>
                     }

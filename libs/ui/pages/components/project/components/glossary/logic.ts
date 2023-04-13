@@ -1,6 +1,6 @@
-import { useRef, useState } from "react";
-import { GlossaryLogicType } from "./types";
-import { TermDTO } from "gateways/resource-api/types";
+import { useRef, useState } from 'react';
+import { GlossaryLogicType } from './types';
+import { TermDTO } from 'gateways/resource-api/types';
 
 export const useGlossaryLogic = (): GlossaryLogicType => {
     // Attributes

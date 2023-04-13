@@ -20,11 +20,25 @@ import {
 import useToast from '../../ui/components/progress-validation/toast';
 import { ToastType } from '../components/progress-validation/toast/types';
 import { IOrganisationSettingsForm } from './components/organisation-settings/types';
-import { OrganisationDTO, ProjectDTO, SaveTranslationDTO, UpdateTermDTO } from 'gateways/resource-api/types';
+import {
+    OrganisationDTO,
+    ProjectDTO,
+    SaveTranslationDTO,
+    UpdateTermDTO,
+} from 'gateways/resource-api/types';
 import { useState } from 'react';
 import { tKeys } from '../../i18n/keys';
-import { useCreateTerm, useDeleteTerm, useGetTerms, useUpdateTerm } from '../../gateways/resource-api/terms/terms';
-import { useGetTranslations, useSaveTranslation, saveTranslation } from '../../gateways/resource-api/translations/translations';
+import {
+    useCreateTerm,
+    useDeleteTerm,
+    useGetTerms,
+    useUpdateTerm,
+} from '../../gateways/resource-api/terms/terms';
+import {
+    useGetTranslations,
+    useSaveTranslation,
+    saveTranslation,
+} from '../../gateways/resource-api/translations/translations';
 import { CreateTermDTO } from '../../gateways/resource-api/types/createTermDTO';
 import { IEditInputForm } from './components/project/components/glossary/components/table-row-term/components/edit-input/types';
 import { ITableRowTermForm } from './components/project/components/glossary/components/table-row-term/types';
@@ -36,15 +50,15 @@ export const useHomeLogic = () => {
     const [currentStatePage, setCurrentStatePage] = useState<HomeContentState>(
         HomeContentState.PROJECTS,
     );
-
     const toast = useToast();
     const { t } = useTranslation();
     const [filterProjectValue, setFilterProjectValue] = useState<string>('');
     const [searchFilterValue, setSearchFilterValue] = useState<string>('');
-    const [sortValue, setSortValue] = useState<string>('')
-    const [isDetectDuplicate, setIsDetectDuplicate] = useState<boolean>(false)
-    const [activeProject, setActiveProject] = useState<ProjectDTO>({})
-    const [activeTerm, setActiveTerm] = useState<string>('')
+    const [sortValue, setSortValue] = useState<string>('');
+    const [isDetectDuplicate, setIsDetectDuplicate] = useState<boolean>(false);
+    const [activeProject, setActiveProject] = useState<ProjectDTO>({});
+    const [activeTerm, setActiveTerm] = useState<string>('');
+
     // Hooks
     const { mutateAsync: createProject } = useCreateProject();
     const { mutateAsync: createTerm } = useCreateTerm();
@@ -53,8 +67,10 @@ export const useHomeLogic = () => {
     const { mutateAsync: saveTranslation } = useSaveTranslation();
     const { mutateAsync: createOrganisation } = useCreateOrganisation();
     const { mutateAsync: deleteOrganisation } = useDeleteOrganisation();
-    const { mutateAsync: updateOrganisation, isLoading: isLoadingUpdateOrganisation } =
-        useUpdateOrganisation();
+    const {
+        mutateAsync: updateOrganisation,
+        isLoading: isLoadingUpdateOrganisation,
+    } = useUpdateOrganisation();
     const { mutateAsync: switchUserOrganisation } = useSwitchUserOrganisation();
     const { data: userData, refetch: refetchUserData } = useGetMe();
     const {
@@ -71,8 +87,10 @@ export const useHomeLogic = () => {
         q: filterProjectValue,
     });
 
-    const { data: projectTerms, refetch: refetchProjectTerms } = useGetTerms(activeProject.id as string, { q: searchFilterValue });
-
+    const { data: projectTerms, refetch: refetchProjectTerms } = useGetTerms(
+        activeProject.id as string,
+        { q: searchFilterValue },
+    );
 
     // Functions
     async function handleOnCreateProject(
@@ -109,7 +127,7 @@ export const useHomeLogic = () => {
                     },
                 },
             );
-        } catch (e) { }
+        } catch (e) {}
     }
 
     async function handleOnCreateOrganisation(
@@ -141,7 +159,7 @@ export const useHomeLogic = () => {
                     },
                 },
             );
-        } catch (err) { }
+        } catch (err) {}
     }
     async function handleOnDeleteOrganisation() {
         try {
@@ -174,7 +192,9 @@ export const useHomeLogic = () => {
         }
     }
 
-    async function handleUpdateOrganisation(form: IForm<IOrganisationSettingsForm> & IDefaultForm) {
+    async function handleUpdateOrganisation(
+        form: IForm<IOrganisationSettingsForm> & IDefaultForm,
+    ) {
         try {
             await updateOrganisation(
                 {
@@ -182,9 +202,11 @@ export const useHomeLogic = () => {
 
                     data: {
                         name: form.organisationName.value,
-                        pictureContent: form.organisationPicture && Buffer.from(
-                            form.organisationPicture?.value as ArrayBuffer,
-                        ).toString('base64'),
+                        pictureContent:
+                            form.organisationPicture &&
+                            Buffer.from(
+                                form.organisationPicture?.value as ArrayBuffer,
+                            ).toString('base64'),
                     },
                 },
                 {
@@ -201,8 +223,7 @@ export const useHomeLogic = () => {
                         toast({
                             type: ToastType.SUCCESS,
                             title: t<string>(
-                                tKeys.home.organisation_settings.success
-                                    .save,
+                                tKeys.home.organisation_settings.success.save,
                             ),
                             delay: 3000,
                         });
@@ -214,15 +235,16 @@ export const useHomeLogic = () => {
         } catch (e) {
             toast({
                 type: ToastType.ERROR,
-                title: t<string>(
-                    tKeys.home.organisation_settings.error.save,
-                ),
+                title: t<string>(tKeys.home.organisation_settings.error.save),
                 delay: 4000,
             });
         }
     }
 
-    function handleSwitchOrgansiation(organisation: OrganisationDTO, setIsOrganisationClicked: (value: boolean) => void) {
+    function handleSwitchOrgansiation(
+        organisation: OrganisationDTO,
+        setIsOrganisationClicked: (value: boolean) => void,
+    ) {
         switchUserOrganisation(
             {
                 userId: userData?.userId as string,
@@ -238,22 +260,42 @@ export const useHomeLogic = () => {
     }
 
     function handleOnDeleteTerm(projectId: string, termId: string) {
-        deleteTerm({ projectId: projectId, termId: termId })
+        deleteTerm({ projectId: projectId, termId: termId });
         refetchProjectTerms();
     }
+
+    // Need to do when the backend has implemented the missing things
     function handleOnCreateTerm(projectId: string) {
-        const term = createTerm({ projectId: projectId, data: { name: "Insert key", description: "" } })
+        // const term = createTerm({ projectId: projectId, data: { name: "Insert key", description: "" } })
     }
 
-    function handleOnSaveTranslations(form: IForm<ITableRowTermForm> & IDefaultForm) {
+    function handleOnSaveTranslations(
+        form: IForm<ITableRowTermForm> & IDefaultForm,
+    ) {
         if (form.termId.value === undefined) {
-            const term = createTerm({ projectId: form.projectId.value, data: { name: form.key.value, description: form.description.value } })
+            const term = createTerm({
+                projectId: form.projectId.value,
+                data: {
+                    name: form.key.value,
+                    description: form.description.value,
+                },
+            });
             refetchProjectTerms();
         } else {
-            updateTerm({ projectId: form.projectId.value, termId: form.termId.value, data: toUpdateTermDTO(form.key.value, form.description.value) })
+            updateTerm({
+                projectId: form.projectId.value,
+                termId: form.termId.value,
+                data: toUpdateTermDTO(form.key.value, form.description.value),
+            });
             for (const translate in form.translations.value) {
-                const element = form.translations.value[translate] as IEditInputForm;
-                saveTranslation({ termId: element.termId, languageId: element.languageId, data: { translation: element.translation } })
+                const element = form.translations.value[
+                    translate
+                ] as IEditInputForm;
+                saveTranslation({
+                    termId: element.termId,
+                    languageId: element.languageId,
+                    data: { translation: element.translation },
+                });
             }
         }
     }
@@ -282,6 +324,6 @@ export const useHomeLogic = () => {
         isDetectDuplicate,
         setIsDetectDuplicate,
         currentStatePage,
-        setCurrentStatePage
+        setCurrentStatePage,
     };
 };

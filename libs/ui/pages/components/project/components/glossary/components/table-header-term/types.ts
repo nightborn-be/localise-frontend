@@ -1,9 +1,8 @@
-import { IDefaultForm, IForm } from "utils/formik"
+import { IDefaultForm, IForm } from 'utils/formik';
 
 export type TableHeaderTermLogicType = {
-    isMoreMenuOpen: boolean
-    toggleIsMoreMenuOpen: () => void
-}
+    isMoreMenuOpen: boolean;
+    toggleIsMoreMenuOpen: () => void;
+};
 
-export interface ITableHeaderTermForm {
-}
+export interface ITableHeaderTermForm {}

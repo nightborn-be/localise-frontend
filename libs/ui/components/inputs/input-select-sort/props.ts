@@ -1,7 +1,7 @@
-import { SortOption } from "./types";
+import { SortOption } from './types';
 
 export interface IInputSelectSortProps {
-    options: SortOption[]
-    onClick: (value: string) => void
-    valueSelected: string
+    options: SortOption[];
+    onClick: (value: string) => void;
+    valueSelected: string;
 }

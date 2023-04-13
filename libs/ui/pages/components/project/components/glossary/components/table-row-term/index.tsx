@@ -10,6 +10,8 @@ import Input from '../../../../../../../components/inputs/input';
 import Icon from '../../../../../../../components/contents/icon';
 import TermEditContent from './components/term-edit-content';
 import { useTableRowTermLogic } from './logic';
+import { tKeys } from '../../../../../../../../i18n/keys';
+import { useTranslation } from 'react-i18next';
 
 export default function TableRowTerm({
     term,
@@ -28,6 +30,7 @@ export default function TableRowTerm({
         getSourceLanguage,
         targetLanguagesToDisplayValue,
     } = useTableRowTermLogic({ term, activeProject });
+    const { t } = useTranslation();
     //Render
     return (
         <VStack w='full' spacing={0}>
@@ -51,7 +54,10 @@ export default function TableRowTerm({
                 >
                     <Input
                         {...form.key}
-                        placeholder={'Insert key'}
+                        placeholder={t<string>(
+                            tKeys.home.project.tab.glossary.content.table
+                                .content.row.input.key.placeholder,
+                        )}
                         border='transparent'
                         w={'fit-content'}
                         color={COLORS.Text.T400.value}

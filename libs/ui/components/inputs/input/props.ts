@@ -35,6 +35,6 @@ export interface IInputProps<T> extends IFieldForm<T> {
     errorMsg?: string;
     isTouched?: boolean;
     rightElementMarginRight?: string;
-    onFocus?: () => void,
-    onBlur?: () => void,
+    onFocus?: () => void;
+    onBlur?: () => void;
 }

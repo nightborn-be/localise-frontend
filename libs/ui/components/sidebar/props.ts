@@ -19,15 +19,18 @@ export interface ISideBarContentProps {
         form: IForm<ICreateOrganisationForm> & IDefaultForm,
         resetForm: () => void,
     ) => void;
-    handleSwitchOrgansiation: (organisation: OrganisationDTO, setIsOrganisationClicked: (value: boolean) => void) => void;
+    handleSwitchOrgansiation: (
+        organisation: OrganisationDTO,
+        setIsOrganisationClicked: (value: boolean) => void,
+    ) => void;
     organisationProjectData?: ProjectPagingDTO;
     actualOrganisationUser?: OrganisationDTO;
     organisationUserData?: OrgnanisationPagingDTO;
     setFilterProjectValue: (value: string) => void;
     filterProjectValue: string;
-    activeProject: ProjectDTO
-    setActiveProject: (value: ProjectDTO) => void
+    activeProject: ProjectDTO;
+    setActiveProject: (value: ProjectDTO) => void;
 }
 export interface ISidebarLogicProps {
-    organisationProjectData?: ProjectPagingDTO
+    organisationProjectData?: ProjectPagingDTO;
 }

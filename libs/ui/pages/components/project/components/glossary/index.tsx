@@ -12,6 +12,8 @@ import ButtonIcon from '../../../../../components/inputs/button-icon';
 import { ButtonSize } from '../../../../../components/inputs/button-icon/types';
 import SHADOWS from '../../../../../constants/shadows';
 import { useGlossaryLogic } from './logic';
+import { useTranslation } from 'react-i18next';
+import { tKeys } from '../../../../../../i18n/keys';
 export const Glossary = ({
     projectTerms,
     activeProject,
@@ -27,6 +29,7 @@ export const Glossary = ({
 }: IGlossaryProps) => {
     // Attributes
     const { tableRef, newRowTerm, clearNewRowTerm } = useGlossaryLogic();
+    const { t } = useTranslation();
     // Renders
     return (
         <VStack
@@ -38,10 +41,14 @@ export const Glossary = ({
         >
             <HStack>
                 <InputLabel
-                    label='Glossary'
+                    label={t<string>(
+                        tKeys.home.project.tab.glossary.content.title,
+                    )}
                     labelColor={COLORS.Text.T400.value}
                     labelFont={FONTS.T1.T20px.SemiBold600.value}
-                    description='Lorem ipsum dolor sit amet consectetur. Velit habitant eros nisl at risus mollis in sagittis et. Sed venenatis aenean scelerisque aliquet justo amet vestibulum.'
+                    description={t<string>(
+                        tKeys.home.project.tab.glossary.content.description,
+                    )}
                     descriptionColor={COLORS.InputText.value}
                     descriptionFont={FONTS.T1.T12px.Regular400.value}
                     spacing='0.5rem'
@@ -60,7 +67,7 @@ export const Glossary = ({
                         <Icon name='upload' stroke={COLORS.Text.T400.value} />
                     )}
                 >
-                    Export
+                    {t<string>(tKeys.home.project.tab.glossary.content.export)}
                 </Button>
             </HStack>
             <TableTerm

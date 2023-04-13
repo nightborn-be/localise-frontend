@@ -1,6 +1,220 @@
 /* This file is auto-generated, manual edits in this file will be overwritten! */
 
 export const tKeys = {
+    home: {
+        project: {
+            tab: {
+                glossary: {
+                    title: 'home.project.tab.glossary.title',
+                    content: {
+                        description:
+                            'home.project.tab.glossary.content.description',
+                        table: {
+                            header: {
+                                column: {
+                                    source_language:
+                                        'home.project.tab.glossary.content.table.header.column.source_language',
+                                    key_name:
+                                        'home.project.tab.glossary.content.table.header.column.key_name',
+                                    target_language:
+                                        'home.project.tab.glossary.content.table.header.column.target_language',
+                                    param: {
+                                        sort: {
+                                            name: 'home.project.tab.glossary.content.table.header.column.param.sort.name',
+                                            author: 'home.project.tab.glossary.content.table.header.column.param.sort.author',
+                                            none: 'home.project.tab.glossary.content.table.header.column.param.sort.none',
+                                            date: 'home.project.tab.glossary.content.table.header.column.param.sort.date',
+                                        },
+                                        more: {
+                                            text: 'home.project.tab.glossary.content.table.header.column.param.more.text',
+                                        },
+                                        search: {
+                                            placeholder:
+                                                'home.project.tab.glossary.content.table.header.column.param.search.placeholder',
+                                        },
+                                    },
+                                },
+                            },
+                            content: {
+                                row: {
+                                    input: {
+                                        key: {
+                                            submit: 'home.project.tab.glossary.content.table.content.row.input.key.submit',
+                                            placeholder:
+                                                'home.project.tab.glossary.content.table.content.row.input.key.placeholder',
+                                        },
+                                        description: {
+                                            placeholder:
+                                                'home.project.tab.glossary.content.table.content.row.input.description.placeholder',
+                                            submit: 'home.project.tab.glossary.content.table.content.row.input.description.submit',
+                                        },
+                                        traduction: {
+                                            placeholder:
+                                                'home.project.tab.glossary.content.table.content.row.input.traduction.placeholder',
+                                        },
+                                    },
+                                    cta: {
+                                        save: 'home.project.tab.glossary.content.table.content.row.cta.save',
+                                    },
+                                },
+                            },
+                        },
+                        title: 'home.project.tab.glossary.content.title',
+                        export: 'home.project.tab.glossary.content.export',
+                    },
+                },
+                statistics: {
+                    title: 'home.project.tab.statistics.title',
+                },
+                settings: {
+                    title: 'home.project.tab.settings.title',
+                },
+                history: {
+                    title: 'home.project.tab.history.title',
+                },
+            },
+            breadcrumb: {
+                title: 'home.project.breadcrumb.title',
+            },
+        },
+        modal: {
+            create_project: {
+                form: {
+                    project_name: {
+                        placeholder:
+                            'home.modal.create_project.form.project_name.placeholder',
+                        title: 'home.modal.create_project.form.project_name.title',
+                        form: {
+                            error: 'home.modal.create_project.form.project_name.form.error',
+                        },
+                    },
+                    source_language: {
+                        description:
+                            'home.modal.create_project.form.source_language.description',
+                        title: 'home.modal.create_project.form.source_language.title',
+                        placeholder:
+                            'home.modal.create_project.form.source_language.placeholder',
+                        search: {
+                            placeholder:
+                                'home.modal.create_project.form.source_language.search.placeholder',
+                            not_found:
+                                'home.modal.create_project.form.source_language.search.not_found',
+                        },
+                    },
+                    target_languages: {
+                        title: 'home.modal.create_project.form.target_languages.title',
+                        description:
+                            'home.modal.create_project.form.target_languages.description',
+                        placeholder:
+                            'home.modal.create_project.form.target_languages.placeholder',
+                        not_found:
+                            'home.modal.create_project.form.target_languages.not_found',
+                    },
+                },
+                title: 'home.modal.create_project.title',
+            },
+            create_organisation: {
+                title: 'home.modal.create_organisation.title',
+                form: {
+                    organisation_name: {
+                        title: 'home.modal.create_organisation.form.organisation_name.title',
+                        placeholder:
+                            'home.modal.create_organisation.form.organisation_name.placeholder',
+                    },
+                    organisation_picture: {
+                        description:
+                            'home.modal.create_organisation.form.organisation_picture.description',
+                        title: 'home.modal.create_organisation.form.organisation_picture.title',
+                        alt: 'home.modal.create_organisation.form.organisation_picture.alt',
+                    },
+                    organisation_teammates: {
+                        cta: {
+                            add: 'home.modal.create_organisation.form.organisation_teammates.cta.add',
+                        },
+                        placeholder:
+                            'home.modal.create_organisation.form.organisation_teammates.placeholder',
+                        title: 'home.modal.create_organisation.form.organisation_teammates.title',
+                    },
+                    error: 'home.modal.create_organisation.form.error',
+                },
+            },
+            delete_project: {
+                content: {
+                    title: 'home.modal.delete_project.content.title',
+                    description:
+                        'home.modal.delete_project.content.description',
+                },
+                cta: {
+                    cancel: 'home.modal.delete_project.cta.cancel',
+                    delete: 'home.modal.delete_project.cta.delete',
+                },
+                title: 'home.modal.delete_project.title',
+            },
+        },
+        organisation_settings: {
+            menu_item: {
+                informations:
+                    'home.organisation_settings.menu_item.informations',
+                members: 'home.organisation_settings.menu_item.members',
+            },
+            menu: {
+                form: {
+                    informations: {
+                        title: 'home.organisation_settings.menu.form.informations.title',
+                        cta: {
+                            delete: 'home.organisation_settings.menu.form.informations.cta.delete',
+                        },
+                        description:
+                            'home.organisation_settings.menu.form.informations.description',
+                    },
+                    members: {
+                        description:
+                            'home.organisation_settings.menu.form.members.description',
+                        title: 'home.organisation_settings.menu.form.members.title',
+                        cta: {
+                            add_member:
+                                'home.organisation_settings.menu.form.members.cta.add_member',
+                        },
+                    },
+                },
+                modal: {
+                    add_members: {
+                        title: 'home.organisation_settings.menu.modal.add_members.title',
+                        cta: {
+                            Invite: 'home.organisation_settings.menu.modal.add_members.cta.Invite',
+                            add: 'home.organisation_settings.menu.modal.add_members.cta.add',
+                            cancel: 'home.organisation_settings.menu.modal.add_members.cta.cancel',
+                        },
+                        form: {
+                            teammates: {
+                                placeholder:
+                                    'home.organisation_settings.menu.modal.add_members.form.teammates.placeholder',
+                                title: 'home.organisation_settings.menu.modal.add_members.form.teammates.title',
+                            },
+                        },
+                        role: {
+                            translator:
+                                'home.organisation_settings.menu.modal.add_members.role.translator',
+                            admin: 'home.organisation_settings.menu.modal.add_members.role.admin',
+                            developer:
+                                'home.organisation_settings.menu.modal.add_members.role.developer',
+                        },
+                    },
+                },
+            },
+            cta: {
+                save: 'home.organisation_settings.cta.save',
+            },
+            error: {
+                delete: 'home.organisation_settings.error.delete',
+                save: 'home.organisation_settings.error.save',
+            },
+            breadcrumb: 'home.organisation_settings.breadcrumb',
+            success: {
+                save: 'home.organisation_settings.success.save',
+            },
+        },
+    },
     common: {
         test: 'common.test',
     },
@@ -100,145 +314,6 @@ export const tKeys = {
                         title: 'auth.organisation.picture.error.toast.title',
                     },
                 },
-            },
-        },
-    },
-    home: {
-        modal: {
-            create_project: {
-                form: {
-                    project_name: {
-                        placeholder:
-                            'home.modal.create_project.form.project_name.placeholder',
-                        title: 'home.modal.create_project.form.project_name.title',
-                        form: {
-                            error: 'home.modal.create_project.form.project_name.form.error',
-                        },
-                    },
-                    source_language: {
-                        description:
-                            'home.modal.create_project.form.source_language.description',
-                        title: 'home.modal.create_project.form.source_language.title',
-                        placeholder:
-                            'home.modal.create_project.form.source_language.placeholder',
-                        search: {
-                            placeholder:
-                                'home.modal.create_project.form.source_language.search.placeholder',
-                            not_found:
-                                'home.modal.create_project.form.source_language.search.not_found',
-                        },
-                    },
-                    target_languages: {
-                        title: 'home.modal.create_project.form.target_languages.title',
-                        description:
-                            'home.modal.create_project.form.target_languages.description',
-                        placeholder:
-                            'home.modal.create_project.form.target_languages.placeholder',
-                        not_found:
-                            'home.modal.create_project.form.target_languages.not_found',
-                    },
-                },
-                title: 'home.modal.create_project.title',
-            },
-            create_organisation: {
-                title: 'home.modal.create_organisation.title',
-                form: {
-                    organisation_name: {
-                        title: 'home.modal.create_organisation.form.organisation_name.title',
-                        placeholder:
-                            'home.modal.create_organisation.form.organisation_name.placeholder',
-                    },
-                    organisation_picture: {
-                        description:
-                            'home.modal.create_organisation.form.organisation_picture.description',
-                        title: 'home.modal.create_organisation.form.organisation_picture.title',
-                        alt: 'home.modal.create_organisation.form.organisation_picture.alt',
-                    },
-                    organisation_teammates: {
-                        cta: {
-                            add: 'home.modal.create_organisation.form.organisation_teammates.cta.add',
-                        },
-                        placeholder:
-                            'home.modal.create_organisation.form.organisation_teammates.placeholder',
-                        title: 'home.modal.create_organisation.form.organisation_teammates.title',
-                    },
-                    error: 'home.modal.create_organisation.form.error',
-                },
-            },
-            delete_project: {
-                title: 'home.modal.delete_project.title',
-                content: {
-                    title: 'home.modal.delete_project.content.title',
-                    description:
-                        'home.modal.delete_project.content.description',
-                },
-                cta: {
-                    cancel: 'home.modal.delete_project.cta.cancel',
-                    delete: 'home.modal.delete_project.cta.delete',
-                },
-            },
-        },
-        organisation_settings: {
-            menu_item: {
-                informations:
-                    'home.organisation_settings.menu_item.informations',
-                members: 'home.organisation_settings.menu_item.members',
-            },
-            menu: {
-                form: {
-                    informations: {
-                        title: 'home.organisation_settings.menu.form.informations.title',
-                        description:
-                            'home.organisation_settings.menu.form.informations.description',
-                        cta: {
-                            delete: 'home.organisation_settings.menu.form.informations.cta.delete',
-                        },
-                    },
-                    members: {
-                        title: 'home.organisation_settings.menu.form.members.title',
-                        description:
-                            'home.organisation_settings.menu.form.members.description',
-                        cta: {
-                            add_member:
-                                'home.organisation_settings.menu.form.members.cta.add_member',
-                        },
-                    },
-                },
-                modal: {
-                    add_members: {
-                        title: 'home.organisation_settings.menu.modal.add_members.title',
-                        cta: {
-                            cancel: 'home.organisation_settings.menu.modal.add_members.cta.cancel',
-                            Invite: 'home.organisation_settings.menu.modal.add_members.cta.Invite',
-                            add: 'home.organisation_settings.menu.modal.add_members.cta.add',
-                        },
-                        form: {
-                            teammates: {
-                                title: 'home.organisation_settings.menu.modal.add_members.form.teammates.title',
-                                placeholder:
-                                    'home.organisation_settings.menu.modal.add_members.form.teammates.placeholder',
-                            },
-                        },
-                        role: {
-                            admin: 'home.organisation_settings.menu.modal.add_members.role.admin',
-                            translator:
-                                'home.organisation_settings.menu.modal.add_members.role.translator',
-                            developer:
-                                'home.organisation_settings.menu.modal.add_members.role.developer',
-                        },
-                    },
-                },
-            },
-            cta: {
-                save: 'home.organisation_settings.cta.save',
-            },
-            breadcrumb: 'home.organisation_settings.breadcrumb',
-            error: {
-                save: 'home.organisation_settings.error.save',
-                delete: 'home.organisation_settings.error.delete',
-            },
-            success: {
-                save: 'home.organisation_settings.success.save',
             },
         },
     },

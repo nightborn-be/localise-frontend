@@ -7,6 +7,7 @@ import Tab from '../../../components/navigation/tabs/tab/index';
 import Tabs from '../../../components/navigation/tabs/index';
 import { Box, VStack } from '@chakra-ui/react';
 import { Glossary } from './components/glossary/index';
+import { tKeys } from '../../../../i18n/keys';
 
 const ProjectContent = ({
     projectTerms,
@@ -37,7 +38,7 @@ const ProjectContent = ({
             <Breadcrumb
                 elements={[
                     {
-                        label: 'Projects',
+                        label: t<string>(tKeys.home.project.breadcrumb.title),
                     },
                     {
                         label: activeProject?.name as string,
@@ -46,7 +47,7 @@ const ProjectContent = ({
             />
 
             <Tabs activeKey={activeKey} onChange={(key) => setActiveKey(key)}>
-                <Tab title='Glossary'>
+                <Tab title={t<string>(tKeys.home.project.tab.glossary.title)}>
                     <Glossary
                         projectTerms={projectTerms}
                         activeProject={activeProject}
@@ -61,13 +62,13 @@ const ProjectContent = ({
                         isDetectDuplicate={isDetectDuplicate}
                     />
                 </Tab>
-                <Tab title='Settings'>
+                <Tab title={t<string>(tKeys.home.project.tab.settings.title)}>
                     <Box bg='blue.100' h='31.25rem' />
                 </Tab>
-                <Tab title='Statistics'>
+                <Tab title={t<string>(tKeys.home.project.tab.statistics.title)}>
                     <Box bg='green.400' h='31.25rem' />
                 </Tab>
-                <Tab title='History'>
+                <Tab title={t<string>(tKeys.home.project.tab.history.title)}>
                     <Box bg='yellow.400' h='31.25rem' />
                 </Tab>
             </Tabs>

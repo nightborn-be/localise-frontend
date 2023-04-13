@@ -14,6 +14,8 @@ import InputSelectSort from '../../../../../../../components/inputs/input-select
 import ToggleText from '../../../../../../../components/contents/toggle-text/index';
 import SHADOWS from '../../../../../../../constants/shadows';
 import { useTableHeaderTermLogic } from './logic';
+import { useTranslation } from 'react-i18next';
+import { tKeys } from '../../../../../../../../i18n/keys';
 
 export default function TableHeaderTerm({
     setSearchFilterValue,
@@ -25,6 +27,7 @@ export default function TableHeaderTerm({
 }: ITableRowTermProps) {
     //Attributes
     const { isMoreMenuOpen, toggleIsMoreMenuOpen } = useTableHeaderTermLogic();
+    const { t } = useTranslation();
     //Render
     return (
         <HStack
@@ -46,7 +49,10 @@ export default function TableHeaderTerm({
                     font={FONTS.T1.T12px.SemiBold600.value}
                     color={COLORS.InputText.value}
                 >
-                    Key name
+                    {t<string>(
+                        tKeys.home.project.tab.glossary.content.table.header
+                            .column.key_name,
+                    )}
                 </Text>
             </HStack>
             <HStack
@@ -60,7 +66,10 @@ export default function TableHeaderTerm({
                     font={FONTS.T1.T12px.SemiBold600.value}
                     color={COLORS.InputText.value}
                 >
-                    Source language
+                    {t<string>(
+                        tKeys.home.project.tab.glossary.content.table.header
+                            .column.source_language,
+                    )}
                 </Text>
             </HStack>
             <HStack
@@ -74,7 +83,10 @@ export default function TableHeaderTerm({
                     font={FONTS.T1.T12px.SemiBold600.value}
                     color={COLORS.InputText.value}
                 >
-                    Target language
+                    {t<string>(
+                        tKeys.home.project.tab.glossary.content.table.header
+                            .column.target_language,
+                    )}
                 </Text>
             </HStack>
 
@@ -92,7 +104,10 @@ export default function TableHeaderTerm({
                     gap='0.5rem'
                     placeholderColor={COLORS.InputText.value}
                     borderRadius='0.375rem'
-                    placeholder='Type to search...'
+                    placeholder={t<string>(
+                        tKeys.home.project.tab.glossary.content.table.header
+                            .column.param.search.placeholder,
+                    )}
                     value={searchFilterValue}
                     onChange={(event) =>
                         setSearchFilterValue(event.target.value)
@@ -100,20 +115,35 @@ export default function TableHeaderTerm({
                 />
                 <InputSelectSort
                     options={[
-                        { value: 'None', label: 'None' },
+                        {
+                            value: 'None',
+                            label: t<string>(
+                                tKeys.home.project.tab.glossary.content.table
+                                    .header.column.param.sort.none,
+                            ),
+                        },
                         {
                             value: 'Name',
-                            label: 'Name',
+                            label: t<string>(
+                                tKeys.home.project.tab.glossary.content.table
+                                    .header.column.param.sort.name,
+                            ),
                             icon: <Icon name='sortName' />,
                         },
                         {
                             value: 'Author',
-                            label: 'Author',
+                            label: t<string>(
+                                tKeys.home.project.tab.glossary.content.table
+                                    .header.column.param.sort.author,
+                            ),
                             icon: <Icon name='sort' />,
                         },
                         {
                             value: 'Date',
-                            label: 'Date',
+                            label: t<string>(
+                                tKeys.home.project.tab.glossary.content.table
+                                    .header.column.param.sort.date,
+                            ),
                             icon: <Icon name='date' />,
                         },
                     ]}
@@ -153,7 +183,10 @@ export default function TableHeaderTerm({
                             toggleChecked={() =>
                                 setIsDetectDuplicate(!isDetectDuplicate)
                             }
-                            text='Detect duplicates'
+                            text={t<string>(
+                                tKeys.home.project.tab.glossary.content.table
+                                    .header.column.param.more.text,
+                            )}
                             textPaddingRight='2.5rem'
                             border={`0.0625rem solid ${COLORS.Line.value}`}
                             w='12.5rem'
