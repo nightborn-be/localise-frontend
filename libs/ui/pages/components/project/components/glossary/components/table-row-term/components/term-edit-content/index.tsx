@@ -107,6 +107,7 @@ export const TermEditContent = ({
                         backgroundColor='#F46363'
                         size={ButtonSize.XS}
                         hoverBackgroundColor='#E55252'
+                        borderRadius='8px'
                         padding='0.25rem'
                         gap='0.625rem'
                         handleOnClick={() => {
