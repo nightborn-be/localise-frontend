@@ -1,16 +1,9 @@
 import React from 'react';
-import { Box, HStack, VStack } from '@chakra-ui/react';
+import { HStack } from '@chakra-ui/react';
 import { ITableRowTermProps } from './props';
-import { ButtonSize } from '../../../../../../../components/inputs/button-icon/types';
 import COLORS from '../../../../../../../constants/colors';
 import FONTS from '../../../../../../../constants/fonts';
 import Text from '../../../../../../../components/contents/text';
-import Icon from '../../../../../../../components/contents/icon';
-import SearchInput from '../../../../../../../components/inputs/search-icon/index';
-import ButtonIcon from 'ui/components/inputs/button-icon';
-import InputSelectSort from '../../../../../../../components/inputs/input-select-sort/index';
-import ToggleText from '../../../../../../../components/contents/toggle-text/index';
-import SHADOWS from '../../../../../../../constants/shadows';
 import { useTableHeaderTermLogic } from './logic';
 import { useTranslation } from 'react-i18next';
 import { tKeys } from '../../../../../../../../i18n/keys';

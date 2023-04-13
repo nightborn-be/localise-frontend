@@ -2,8 +2,6 @@ import { useEffect } from 'react';
 import Page from '../../../libs/ui/components/contents/page';
 import HomePage from '../../../libs/ui/pages/index';
 import { useHomeLogic } from '../../../libs/ui/pages/logic';
-import { HomeContentState } from 'ui/pages/types';
-import { log } from 'console';
 
 export default function Web() {
     const {
