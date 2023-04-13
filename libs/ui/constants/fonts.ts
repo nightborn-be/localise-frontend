@@ -9,6 +9,7 @@ export interface Font {
 }
 
 export interface Fonts {
+    Bold64Px: { value: Font };
     T1: {
         T10px: {
             Black900: { value: Font };
@@ -131,6 +132,15 @@ export interface Fonts {
 }
 
 const FONTS: Fonts = {
+    Bold64Px: {
+        value: {
+            fontFamily: 'Inter',
+            fontSize: 64,
+            fontWeight: 700,
+            letterSpacing: 0,
+            lineHeight: '77.45px',
+        },
+    },
     T1: {
         T10px: {
             Black900: {
