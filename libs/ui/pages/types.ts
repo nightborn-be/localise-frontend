@@ -35,4 +35,6 @@ export interface HomeLogicType {
     handleOnDeleteTerm: (projectId: string, termId: string) => void
     setSearchFilterValue: (value: string) => void
     searchFilterValue: string
+    setIsDetectDuplicate: (value: boolean) => void
+    isDetectDuplicate: boolean,
 }

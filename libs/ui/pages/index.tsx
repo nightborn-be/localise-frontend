@@ -18,6 +18,8 @@ const HomePage = ({
     searchFilterValue,
     setSortValue,
     sortValue,
+    setIsDetectDuplicate,
+    isDetectDuplicate,
 }: IHomePageProps) => {
     // Attributes
     const [currentStatePage, setCurrentStatePage] = useState<HomeContentState>(
@@ -49,6 +51,8 @@ const HomePage = ({
                         searchFilterValue={searchFilterValue}
                         sortValue={sortValue}
                         setSortValue={setSortValue}
+                        setIsDetectDuplicate={setIsDetectDuplicate}
+                        isDetectDuplicate={isDetectDuplicate}
                     />
                 );
         }

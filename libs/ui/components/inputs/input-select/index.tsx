@@ -17,7 +17,7 @@ const InputSelect = ({
     placeholder = 'Select value',
     h,
     w,
-    errorBorder = `0.0625rem solid ${COLORS.Negative.value}`,
+    errorBorder = `0.0625rem solid ${COLORS.Error.T500.value}`,
     alignItems = 'left',
     fontSize = '0.75rem',
     fontWeight = '400',

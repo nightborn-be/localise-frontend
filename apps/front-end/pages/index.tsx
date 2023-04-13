@@ -26,6 +26,8 @@ export default function Web() {
         searchFilterValue,
         setSortValue,
         sortValue,
+        setIsDetectDuplicate,
+        isDetectDuplicate,
     } = useHomeLogic();
     return (
         <Page
@@ -54,6 +56,8 @@ export default function Web() {
                 searchFilterValue={searchFilterValue}
                 setSortValue={setSortValue}
                 sortValue={sortValue}
+                setIsDetectDuplicate={setIsDetectDuplicate}
+                isDetectDuplicate={isDetectDuplicate}
             />
         </Page>
     );

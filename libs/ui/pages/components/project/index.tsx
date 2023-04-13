@@ -18,6 +18,8 @@ const ProjectContent = ({
     searchFilterValue,
     sortValue,
     setSortValue,
+    setIsDetectDuplicate,
+    isDetectDuplicate,
 }: IProjectContentProps) => {
     const [activeKey, setActiveKey] = useState<React.Key>();
 
@@ -56,6 +58,8 @@ const ProjectContent = ({
                         searchFilterValue={searchFilterValue}
                         setSortValue={setSortValue}
                         sortValue={sortValue}
+                        setIsDetectDuplicate={setIsDetectDuplicate}
+                        isDetectDuplicate={isDetectDuplicate}
                     />
                 </Tab>
                 <Tab title='Settings'>

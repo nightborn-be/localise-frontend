@@ -14,7 +14,7 @@ export const InputSelectSort = ({
 }: IInputSelectSortProps) => {
     // Attributes
     const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
-    
+
     // Functions
     function toggleIsMenuOpen() {
         setIsMenuOpen((prev) => !prev);
@@ -67,8 +67,8 @@ export const InputSelectSort = ({
                 h={'fit-content'}
                 padding={'8px 6px'}
                 spacing='4px'
-                // change the shadow Menu 
-                shadow={'0px 4px 10px rgba(0, 0, 0, 0.04)'}
+                // change the shadow Menu
+                shadow={SHADOWS.Menu.value}
                 zIndex={'10'}
             >
                 {options.map((option) => (

@@ -29,7 +29,7 @@ export default function Input<T>({
     h,
     w,
     maxWidth,
-    errorBorder = `0.0625rem solid ${COLORS.Negative.value}`,
+    errorBorder = `0.0625rem solid ${COLORS.Error.T500.value}`,
     font,
     hoverBorder,
     alignItems = 'left',

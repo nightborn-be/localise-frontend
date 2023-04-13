@@ -37,6 +37,7 @@ export const useHomeLogic = () => {
     const [filterProjectValue, setFilterProjectValue] = useState<string>('');
     const [searchFilterValue, setSearchFilterValue] = useState<string>('');
     const [sortValue, setSortValue] = useState<string>('')
+    const [isDetectDuplicate, setIsDetectDuplicate] = useState<boolean>(false)
     const [activeProject, setActiveProject] = useState<ProjectDTO>({})
     const [activeTerm, setActiveTerm] = useState<string>('')
     // Hooks
@@ -239,8 +240,6 @@ export const useHomeLogic = () => {
         const term = createTerm({ projectId: projectId, data: { name: "Insert key", description: "" } })
     }
 
-
-
     function handleOnSaveTranslations(form: IForm<ITableRowTermForm> & IDefaultForm) {
         if (form.termId.value === undefined) {
             const term = createTerm({ projectId: form.projectId.value, data: { name: form.key.value, description: form.description.value } })
@@ -275,5 +274,7 @@ export const useHomeLogic = () => {
         searchFilterValue,
         sortValue,
         setSortValue,
+        isDetectDuplicate,
+        setIsDetectDuplicate
     };
 };

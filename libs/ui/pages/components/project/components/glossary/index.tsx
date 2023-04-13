@@ -23,6 +23,8 @@ export const Glossary = ({
     searchFilterValue,
     setSortValue,
     sortValue,
+    setIsDetectDuplicate,
+    isDetectDuplicate,
 }: IGlossaryProps) => {
     // Attributes
     const tableRef = useRef<HTMLDivElement>(null);
@@ -73,6 +75,8 @@ export const Glossary = ({
                 searchFilterValue={searchFilterValue}
                 setSortValue={setSortValue}
                 sortValue={sortValue}
+                setIsDetectDuplicate={setIsDetectDuplicate}
+                isDetectDuplicate={isDetectDuplicate}
             >
                 {projectTerms?.data?.map((term, i) => {
                     return (

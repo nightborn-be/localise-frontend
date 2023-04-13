@@ -3,7 +3,6 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import InputSelectSort from '.';
 import { IInputSelectSortProps } from './props';
 import Icon from '../../contents/icon';
-import { Box } from '@chakra-ui/react';
 
 export default {
     title: 'Components/Inputs/InputSelectSort',

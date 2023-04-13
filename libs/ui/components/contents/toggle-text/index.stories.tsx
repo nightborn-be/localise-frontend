@@ -1,9 +1,8 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import React, { useState } from 'react';
 import COLORS from '../../../constants/colors';
-import SwitchText from '.';
-import { IToggleTextProps } from './props';
 import ToggleText from '.';
+import { IToggleTextProps } from './props';
 
 export default {
     title: 'Components/Contents/ToggleText',
@@ -15,7 +14,7 @@ const Template: ComponentStory<typeof ToggleText> = (
     const [isChecked, setIsChecked] = useState<boolean>(false);
 
     return (
-        <SwitchText
+        <ToggleText
             {...props}
             isChecked={isChecked}
             toggleChecked={() => setIsChecked((prev) => !prev)}
