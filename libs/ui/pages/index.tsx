@@ -21,9 +21,8 @@ const HomePage = ({
     sortValue,
     setIsDetectDuplicate,
     isDetectDuplicate,
+    currentStatePage,
 }: IHomePageProps) => {
-    // Attributes
-    const { currentStatePage, setCurrentStatePage } = useHomeLogic();
     // Function
     function renderPage(): React.ReactNode {
         switch (currentStatePage) {

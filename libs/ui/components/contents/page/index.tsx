@@ -1,6 +1,8 @@
 import React, { HStack, VStack } from '@chakra-ui/react';
 import SideBar from '../../sidebar';
 import { PageProps } from './props';
+import { HomeContentState } from 'ui/pages/types';
+import { useEffect } from 'react';
 const Page = ({
     children,
     bg,
@@ -16,7 +18,12 @@ const Page = ({
     setFilterProjectValue,
     activeProject,
     setActiveProject,
+    setCurrentStatePage,
 }: PageProps) => {
+    useEffect(() => {
+        setCurrentStatePage(HomeContentState.ORGANISATION_SETTINGS);
+    }, []);
+
     // Render
     return (
         <HStack justify={'center'} w='100%' h='100vh' spacing={'0'}>
@@ -37,6 +44,7 @@ const Page = ({
                         setFilterProjectValue={setFilterProjectValue}
                         activeProject={activeProject}
                         setActiveProject={setActiveProject}
+                        setCurrentStatePage={setCurrentStatePage}
                     />
                 )}
             <VStack

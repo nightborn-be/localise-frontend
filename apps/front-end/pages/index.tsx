@@ -1,6 +1,9 @@
+import { useEffect } from 'react';
 import Page from '../../../libs/ui/components/contents/page';
 import HomePage from '../../../libs/ui/pages/index';
 import { useHomeLogic } from '../../../libs/ui/pages/logic';
+import { HomeContentState } from 'ui/pages/types';
+import { log } from 'console';
 
 export default function Web() {
     const {
@@ -27,6 +30,8 @@ export default function Web() {
         sortValue,
         setIsDetectDuplicate,
         isDetectDuplicate,
+        setCurrentStatePage,
+        currentStatePage,
     } = useHomeLogic();
 
     return (
@@ -41,6 +46,7 @@ export default function Web() {
             setFilterProjectValue={setFilterProjectValue}
             activeProject={activeProject}
             setActiveProject={setActiveProject}
+            setCurrentStatePage={setCurrentStatePage}
         >
             <HomePage
                 handleOnCreateTerm={handleOnCreateTerm}
@@ -58,6 +64,7 @@ export default function Web() {
                 sortValue={sortValue}
                 setIsDetectDuplicate={setIsDetectDuplicate}
                 isDetectDuplicate={isDetectDuplicate}
+                currentStatePage={currentStatePage}
             />
         </Page>
     );

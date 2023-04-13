@@ -7,6 +7,7 @@ import {
 } from 'gateways/resource-api/types';
 import { TermPagingDTO } from '../../gateways/resource-api/types/termPagingDTO';
 import { ITableRowTermForm } from './components/project/components/glossary/components/table-row-term/types';
+import { HomeContentState } from './types';
 
 export interface IHomePageProps {
     handleOnDeleteOrganisation: () => void;
@@ -29,4 +30,5 @@ export interface IHomePageProps {
     sortValue: string;
     setIsDetectDuplicate: (value: boolean) => void;
     isDetectDuplicate: boolean;
+    currentStatePage: HomeContentState;
 }

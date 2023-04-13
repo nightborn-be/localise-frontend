@@ -8,6 +8,7 @@ import {
     ProjectDTO,
     ProjectPagingDTO,
 } from 'gateways/resource-api/types';
+import { HomeContentState } from 'ui/pages/types';
 
 export interface PageProps {
     children: ReactNode | ReactNode[];
@@ -33,4 +34,5 @@ export interface PageProps {
     filterProjectValue?: string;
     activeProject: ProjectDTO;
     setActiveProject: (value: ProjectDTO) => void;
+    setCurrentStatePage: (value: HomeContentState) => void;
 }

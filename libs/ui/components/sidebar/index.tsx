@@ -1,5 +1,5 @@
 import { Box, HStack, Image, useDisclosure, VStack } from '@chakra-ui/react';
-import React from 'react';
+import React, { useEffect } from 'react';
 import COLORS from '../../constants/colors';
 import FONTS from '../../constants/fonts';
 import Icon from '../contents/icon';
@@ -16,6 +16,7 @@ import CreateProjectModal from './create-project-modal/index';
 import CreateOrganisationModal from './create-organisation-modal';
 import { ISideBarContentProps } from './props';
 import { getInitialeName } from 'utils/functions';
+import { HomeContentState } from 'ui/pages/types';
 
 export const SideBar = ({
     handleOnCreateProject,
@@ -28,6 +29,7 @@ export const SideBar = ({
     filterProjectValue,
     activeProject,
     setActiveProject,
+    setCurrentStatePage,
 }: ISideBarContentProps) => {
     const {
         handleToggleIsOrganisationClicked,
@@ -160,6 +162,9 @@ export const SideBar = ({
                                         id: option.value,
                                         name: option.label,
                                     });
+                                    setCurrentStatePage(
+                                        HomeContentState.PROJECTS,
+                                    );
                                     handleOnProjectClick(option.label);
                                 }}
                                 activeKey={activeProjectKey}
@@ -204,7 +209,11 @@ export const SideBar = ({
                         )}
                         spacing={'0.75rem'}
                         padding={'0.75rem'}
-                        onClick={() => {}}
+                        onClick={() => {
+                            setCurrentStatePage(
+                                HomeContentState.ORGANISATION_SETTINGS,
+                            );
+                        }}
                     >
                         Organisation settings
                     </Button>

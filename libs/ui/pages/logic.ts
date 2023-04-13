@@ -21,7 +21,7 @@ import useToast from '../../ui/components/progress-validation/toast';
 import { ToastType } from '../components/progress-validation/toast/types';
 import { IOrganisationSettingsForm } from './components/organisation-settings/types';
 import { OrganisationDTO, ProjectDTO } from 'gateways/resource-api/types';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { tKeys } from '../../i18n/keys';
 import {
     useCreateTerm,
@@ -34,13 +34,11 @@ import { IEditInputForm } from './components/project/components/glossary/compone
 import { ITableRowTermForm } from './components/project/components/glossary/components/table-row-term/types';
 import { toUpdateTermDTO } from './components/project/components/glossary/components/table-row-term/mappers';
 import { HomeContentState } from './types';
-import { delay } from 'framer-motion';
+import { AxiosError } from 'axios';
 
 export const useHomeLogic = () => {
     // Attributes
-    const [currentStatePage, setCurrentStatePage] = useState<HomeContentState>(
-        HomeContentState.PROJECTS,
-    );
+    const [currentStatePage, setCurrentStatePage] = useState<HomeContentState>(HomeContentState.ORGANISATION_SETTINGS);
     const toast = useToast();
     const { t } = useTranslation();
     const [filterProjectValue, setFilterProjectValue] = useState<string>('');
@@ -257,10 +255,11 @@ export const useHomeLogic = () => {
                     refetchProjectTerms();
                 },
             },);
-        } catch (e) {
+        } catch (error) {
+            const err = error as AxiosError
             toast({
                 type: ToastType.ERROR,
-                title: e.response.data,
+                title: err.response?.data as string,
                 delay: 5000,
             })
         }
@@ -286,10 +285,11 @@ export const useHomeLogic = () => {
                     },
                 },
             )
-        } catch (e) {
+        } catch (error) {
+            const err = error as AxiosError
             toast({
                 type: ToastType.ERROR,
-                title: e.response.data,
+                title: err.response?.data as string,
                 delay: 5000,
             })
         };
@@ -301,10 +301,11 @@ export const useHomeLogic = () => {
                 termId: form.termId.value,
                 data: toUpdateTermDTO(form.key.value, form.description.value),
             });
-        } catch (e) {
+        } catch (error) {
+            const err = error as AxiosError
             toast({
                 type: ToastType.ERROR,
-                title: e.response.data,
+                title: err.response?.data as string,
                 delay: 5000,
             })
         }
@@ -320,10 +321,11 @@ export const useHomeLogic = () => {
                         languageId: element.languageId,
                         data: { translation: element.translation },
                     });
-                } catch (e) {
+                } catch (error) {
+                    const err = error as AxiosError
                     toast({
                         type: ToastType.ERROR,
-                        title: e.response.data,
+                        title: err.response?.data as string,
                         delay: 5000,
                     })
                 }
@@ -338,6 +340,11 @@ export const useHomeLogic = () => {
             callUpdateTerm(form);
             callSaveTranslations(form);
         }
+    }
+
+    function changeContentState(value: HomeContentState) {
+        setCurrentStatePage(value);
+        setActiveProject({});
     }
     return {
         handleOnCreateProject,
