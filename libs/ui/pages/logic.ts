@@ -34,6 +34,7 @@ import { IEditInputForm } from './components/project/components/glossary/compone
 import { ITableRowTermForm } from './components/project/components/glossary/components/table-row-term/types';
 import { toUpdateTermDTO } from './components/project/components/glossary/components/table-row-term/mappers';
 import { HomeContentState } from './types';
+import { delay } from 'framer-motion';
 
 export const useHomeLogic = () => {
     // Attributes
@@ -249,9 +250,20 @@ export const useHomeLogic = () => {
         );
     }
 
-    function handleOnDeleteTerm(projectId: string, termId: string) {
-        deleteTerm({ projectId: projectId, termId: termId });
-        refetchProjectTerms();
+    async function handleOnDeleteTerm(projectId: string, termId: string) {
+        try {
+            await deleteTerm({ projectId: projectId, termId: termId }, {
+                onSuccess: () => {
+                    refetchProjectTerms();
+                },
+            },);
+        } catch (e) {
+            toast({
+                type: ToastType.ERROR,
+                title: e.response.data,
+                delay: 5000,
+            })
+        }
     }
 
     // Need to do when the backend has implemented the missing things
@@ -259,34 +271,72 @@ export const useHomeLogic = () => {
         // const term = createTerm({ projectId: projectId, data: { name: "Insert key", description: "" } })
     }
 
-    function handleOnSaveTranslations(
-        form: IForm<ITableRowTermForm> & IDefaultForm,
-    ) {
-        if (form.termId.value === undefined) {
-            const term = createTerm({
+    async function callCreateTerm(form: IForm<ITableRowTermForm> & IDefaultForm,) {
+        try {
+            await createTerm({
                 projectId: form.projectId.value,
                 data: {
                     name: form.key.value,
                     description: form.description.value,
                 },
-            });
-            refetchProjectTerms();
-        } else {
-            updateTerm({
+            },
+                {
+                    onSuccess: () => {
+                        refetchProjectTerms();
+                    },
+                },
+            )
+        } catch (e) {
+            toast({
+                type: ToastType.ERROR,
+                title: e.response.data,
+                delay: 5000,
+            })
+        };
+    };
+    async function callUpdateTerm(form: IForm<ITableRowTermForm> & IDefaultForm,) {
+        try {
+            await updateTerm({
                 projectId: form.projectId.value,
                 termId: form.termId.value,
                 data: toUpdateTermDTO(form.key.value, form.description.value),
             });
+        } catch (e) {
+            toast({
+                type: ToastType.ERROR,
+                title: e.response.data,
+                delay: 5000,
+            })
+        }
+    }
+    async function callSaveTranslations(form: IForm<ITableRowTermForm> & IDefaultForm,) {
             for (const translate in form.translations.value) {
                 const element = form.translations.value[
                     translate
                 ] as IEditInputForm;
-                saveTranslation({
-                    termId: element.termId,
-                    languageId: element.languageId,
-                    data: { translation: element.translation },
-                });
-            }
+                try {
+                    await saveTranslation({
+                        termId: element.termId,
+                        languageId: element.languageId,
+                        data: { translation: element.translation },
+                    });
+                } catch (e) {
+                    toast({
+                        type: ToastType.ERROR,
+                        title: e.response.data,
+                        delay: 5000,
+                    })
+                }
+        }
+    }
+    async function handleOnSaveTranslations(
+        form: IForm<ITableRowTermForm> & IDefaultForm,
+    ) {
+        if (form.termId.value === undefined) {
+            callCreateTerm(form);
+        } else {
+            callUpdateTerm(form);
+            callSaveTranslations(form);
         }
     }
     return {
@@ -316,4 +366,5 @@ export const useHomeLogic = () => {
         currentStatePage,
         setCurrentStatePage,
     };
+
 };
