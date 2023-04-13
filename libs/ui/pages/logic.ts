@@ -35,6 +35,8 @@ export const useHomeLogic = () => {
     const toast = useToast();
     const { t } = useTranslation();
     const [filterProjectValue, setFilterProjectValue] = useState<string>('');
+    const [searchFilterValue, setSearchFilterValue] = useState<string>('');
+    const [sortValue, setSortValue] = useState<string>('')
     const [activeProject, setActiveProject] = useState<ProjectDTO>({})
     const [activeTerm, setActiveTerm] = useState<string>('')
     // Hooks
@@ -63,7 +65,7 @@ export const useHomeLogic = () => {
         q: filterProjectValue,
     });
 
-    const { data: projectTerms, refetch: refetchProjectTerms } = useGetTerms(activeProject.id as string);
+    const { data: projectTerms, refetch: refetchProjectTerms } = useGetTerms(activeProject.id as string, { q: searchFilterValue });
 
 
     // Functions
@@ -251,7 +253,6 @@ export const useHomeLogic = () => {
             }
         }
     }
-
     return {
         handleOnCreateProject,
         handleOnCreateOrganisation,
@@ -269,6 +270,10 @@ export const useHomeLogic = () => {
         setActiveProject,
         handleOnSaveTranslations,
         handleOnCreateTerm,
-        handleOnDeleteTerm
+        handleOnDeleteTerm,
+        setSearchFilterValue,
+        searchFilterValue,
+        sortValue,
+        setSortValue,
     };
 };

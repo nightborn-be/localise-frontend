@@ -33,4 +33,6 @@ export interface HomeLogicType {
     handleOnSaveTranslations: (form: IForm<ITableRowTermForm> & IDefaultForm) => void
     handleOnCreateTerm: (projectId: string) => void
     handleOnDeleteTerm: (projectId: string, termId: string) => void
+    setSearchFilterValue: (value: string) => void
+    searchFilterValue: string
 }

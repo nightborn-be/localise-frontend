@@ -15,6 +15,10 @@ export interface IProjectContentProps {
     ) => void;
     handleOnCreateTerm: (projectId: string) => void;
     handleOnDeleteTerm: (projectId: string, termId: string) => void;
+    setSearchFilterValue: (value: string) => void;
+    searchFilterValue: string;
+    setSortValue: (value: string) => void;
+    sortValue: string;
 }
 
 export interface IProjectContentPropsLogicProps {}

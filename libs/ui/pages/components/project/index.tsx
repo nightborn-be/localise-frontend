@@ -14,6 +14,10 @@ const ProjectContent = ({
     handleOnSaveTranslations,
     handleOnCreateTerm,
     handleOnDeleteTerm,
+    setSearchFilterValue,
+    searchFilterValue,
+    sortValue,
+    setSortValue,
 }: IProjectContentProps) => {
     const [activeKey, setActiveKey] = useState<React.Key>();
 
@@ -48,6 +52,10 @@ const ProjectContent = ({
                         handleOnSaveTranslations={handleOnSaveTranslations}
                         handleOnCreateTerm={handleOnCreateTerm}
                         handleOnDeleteTerm={handleOnDeleteTerm}
+                        setSearchFilterValue={setSearchFilterValue}
+                        searchFilterValue={searchFilterValue}
+                        setSortValue={setSortValue}
+                        sortValue={sortValue}
                     />
                 </Tab>
                 <Tab title='Settings'>

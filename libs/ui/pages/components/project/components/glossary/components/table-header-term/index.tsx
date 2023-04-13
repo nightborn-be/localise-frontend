@@ -10,12 +10,16 @@ import Input from '../../../../../../../components/inputs/input';
 import Icon from '../../../../../../../components/contents/icon';
 import SearchInput from '../../../../../../../components/inputs/search-icon/index';
 import ButtonIcon from 'ui/components/inputs/button-icon';
+import InputSelectSort from '../../../../../../../components/inputs/input-select-sort/index';
 
-export default function TableHeaderTerm({}: ITableRowTermProps) {
+export default function TableHeaderTerm({
+    setSearchFilterValue,
+    searchFilterValue,
+    setSortValue,
+    sortValue,
+}: ITableRowTermProps) {
     //Attributes
     const [isHovered, setIsHovered] = useState<boolean>(false);
-    const [selectedValue, setSelectedValue] = useState<string>('');
-    const [value, setValue] = useState<string>('');
     //Render
     return (
         <HStack
@@ -86,22 +90,33 @@ export default function TableHeaderTerm({}: ITableRowTermProps) {
                     placeholderColor={COLORS.InputText.value}
                     borderRadius='0.375rem'
                     placeholder='Type to search...'
-                    value={value}
-                    onChange={(value) => setValue(value.target.value)}
+                    value={searchFilterValue}
+                    onChange={(event) =>
+                        setSearchFilterValue(event.target.value)
+                    }
                 />
-                <Button
-                    font={FONTS.T1.T12px.Regular400.value}
-                    backgroundColor='transparent'
-                    hoverBackgroundColor={COLORS.Disabled.value}
-                    height='1.75rem'
-                    padding='0.375rem 0.5rem'
-                    gap='0.25rem'
-                    borderRadius='0.25rem'
-                    color={COLORS.InputText.value}
-                    hoverColor={COLORS.Localize.Purple.T500.value}
-                >
-                    Sort
-                </Button>
+                <InputSelectSort
+                    options={[
+                        { value: 'None', label: 'None' },
+                        {
+                            value: 'Name',
+                            label: 'Name',
+                            icon: <Icon name='sortName' />,
+                        },
+                        {
+                            value: 'Author',
+                            label: 'Author',
+                            icon: <Icon name='sort' />,
+                        },
+                        {
+                            value: 'Date',
+                            label: 'Date',
+                            icon: <Icon name='date' />,
+                        },
+                    ]}
+                    onClick={setSortValue}
+                    valueSelected={sortValue}
+                />
 
                 <ButtonIcon
                     aria-label=''

@@ -19,6 +19,10 @@ export const Glossary = ({
     handleOnSaveTranslations,
     handleOnCreateTerm,
     handleOnDeleteTerm,
+    setSearchFilterValue,
+    searchFilterValue,
+    setSortValue,
+    sortValue,
 }: IGlossaryProps) => {
     // Attributes
     const tableRef = useRef<HTMLDivElement>(null);
@@ -63,7 +67,13 @@ export const Glossary = ({
                     Export
                 </Button>
             </HStack>
-            <TableTerm ref={tableRef}>
+            <TableTerm
+                ref={tableRef}
+                setSearchFilterValue={setSearchFilterValue}
+                searchFilterValue={searchFilterValue}
+                setSortValue={setSortValue}
+                sortValue={sortValue}
+            >
                 {projectTerms?.data?.map((term, i) => {
                     return (
                         <TableRowTerm

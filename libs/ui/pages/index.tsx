@@ -14,6 +14,10 @@ const HomePage = ({
     handleOnSaveTranslations,
     handleOnCreateTerm,
     handleOnDeleteTerm,
+    setSearchFilterValue,
+    searchFilterValue,
+    setSortValue,
+    sortValue,
 }: IHomePageProps) => {
     // Attributes
     const [currentStatePage, setCurrentStatePage] = useState<HomeContentState>(
@@ -41,6 +45,10 @@ const HomePage = ({
                         handleOnSaveTranslations={handleOnSaveTranslations}
                         handleOnCreateTerm={handleOnCreateTerm}
                         handleOnDeleteTerm={handleOnDeleteTerm}
+                        setSearchFilterValue={setSearchFilterValue}
+                        searchFilterValue={searchFilterValue}
+                        sortValue={sortValue}
+                        setSortValue={setSortValue}
                     />
                 );
         }

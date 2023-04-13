@@ -22,6 +22,10 @@ export default function Web() {
         handleOnSaveTranslations,
         handleOnCreateTerm,
         handleOnDeleteTerm,
+        setSearchFilterValue,
+        searchFilterValue,
+        setSortValue,
+        sortValue,
     } = useHomeLogic();
     return (
         <Page
@@ -46,6 +50,10 @@ export default function Web() {
                 isLoadingUpdateOrganisation={isLoadingUpdateOrganisation}
                 projectTerms={projectTerms}
                 activeProject={activeProject}
+                setSearchFilterValue={setSearchFilterValue}
+                searchFilterValue={searchFilterValue}
+                setSortValue={setSortValue}
+                sortValue={sortValue}
             />
         </Page>
     );

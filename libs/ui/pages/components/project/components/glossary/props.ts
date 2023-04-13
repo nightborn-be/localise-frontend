@@ -8,4 +8,8 @@ export interface IGlossaryProps {
     handleOnCreateTerm: (projectId: string) => void
     handleOnDeleteTerm: (projectId: string, termId: string) => void
     activeProject?: ProjectDTO;
+    setSearchFilterValue: (value: string) => void
+    searchFilterValue: string
+    setSortValue: (value: string) => void,
+    sortValue: string,
 }
