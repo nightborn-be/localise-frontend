@@ -37,6 +37,7 @@ export interface Shadows {
             };
         };
     };
+    Menu: { value: Shadow };
     Shadow: { Input: { value: Shadow } };
     Sidebar: { value: Shadow };
 }
@@ -116,6 +117,7 @@ const SHADOWS: Shadows = {
             },
         },
     },
+    Menu: { value: '0px 4px 10px rgba(0, 0, 0, 0.04)' },
     Shadow: { Input: { value: '0px 4px 8px rgba(0, 0, 0, 0.02)' } },
     Sidebar: { value: '4px 1px 84px rgba(0, 0, 0, 0.12)' },
 };
