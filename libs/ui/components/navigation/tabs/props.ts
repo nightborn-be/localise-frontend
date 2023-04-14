@@ -4,7 +4,9 @@ import { ITabProps } from './tab/props';
 export interface ITabsProps {
     activeKey?: React.Key;
     onChange?: (activeKey: React.Key) => void;
-    children: ReactElement<ITabProps> | Array<ReactElement<ITabProps>>;
+    children:
+    | ReactElement<ITabProps>
+    | undefined
+    | false
+    | Array<ReactElement<ITabProps> | undefined | false>;
 }
-
-export default ITabsProps;

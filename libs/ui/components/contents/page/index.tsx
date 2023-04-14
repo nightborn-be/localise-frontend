@@ -20,7 +20,13 @@ const Page = ({
 }: PageProps) => {
     // Render
     return (
-        <HStack justify={'center'} w='100%' h='100vh' spacing={'0'}>
+        <HStack
+            justify={'center'}
+            w='100%'
+            h='100vh'
+            overflowY='hidden'
+            spacing={'0'}
+        >
             {displaySidebar &&
                 handleOnCreateProject &&
                 handleOnCreateOrganisation &&

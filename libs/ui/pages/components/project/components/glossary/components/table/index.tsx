@@ -24,9 +24,7 @@ export const TableTerm = ({
                 setIsDetectDuplicate={setIsDetectDuplicate}
                 isDetectDuplicate={isDetectDuplicate}
             />
-            <VStack overflowY='scroll' w='full' h='45rem'>
-                {children}
-            </VStack>
+            {children}
         </VStack>
     );
 };

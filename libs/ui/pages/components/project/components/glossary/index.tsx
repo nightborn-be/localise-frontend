@@ -46,6 +46,8 @@ export const Glossary = ({
             alignItems={'left'}
             padding='2rem'
             spacing='2rem'
+            overflowY='scroll'
+            paddingBottom={'7px'}
         >
             <HStack>
                 <InputLabel

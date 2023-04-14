@@ -1,8 +1,6 @@
 import { ReactNode } from 'react';
 
 export interface ITabProps {
-    title: string;
+    title: string,
     children?: ReactNode | ReactNode[];
-    onSelect?: () => void;
-    isActive?: boolean;
 }

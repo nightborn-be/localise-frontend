@@ -34,6 +34,7 @@ const ProjectContent = ({
         <VStack
             h='full'
             w='full'
+            maxH='full'
             alignItems={'left'}
             padding='0rem'
             spacing={0}
