@@ -15,7 +15,7 @@ export const TableTerm = ({
 }: ITableTermProps) => {
     // Render
     return (
-        <VStack spacing='8px' ref={ref}>
+        <VStack spacing='0.5rem' ref={ref}>
             <TableHeaderTerm
                 setSearchFilterValue={setSearchFilterValue}
                 searchFilterValue={searchFilterValue}
@@ -24,7 +24,9 @@ export const TableTerm = ({
                 setIsDetectDuplicate={setIsDetectDuplicate}
                 isDetectDuplicate={isDetectDuplicate}
             />
-            {children}
+            <VStack overflowY='scroll' w='full' h='45rem'>
+                {children}
+            </VStack>
         </VStack>
     );
 };

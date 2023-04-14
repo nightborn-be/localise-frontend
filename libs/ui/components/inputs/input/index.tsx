@@ -50,6 +50,7 @@ export default function Input<T>({
     rightElementMarginRight,
     onFocus,
     onBlur,
+    isDisabled,
     ...props
 }: IInputProps<T>) {
     //Attributes
@@ -120,6 +121,8 @@ export default function Input<T>({
                     maxH={h}
                 >
                     <ChakraInput
+                        disabled={isDisabled}
+                        _disabled={{ color: color, ...font }}
                         padding={padding}
                         h={h}
                         minH={h}

@@ -101,7 +101,7 @@ const OptionColumn = ({
                 <Box
                     display={isMoreMenuOpen ? 'visibile' : 'none'}
                     position={'absolute'}
-                    right='0px'
+                    right='0rem'
                     top='1.75rem'
                     zIndex='10'
                 >

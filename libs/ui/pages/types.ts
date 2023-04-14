@@ -6,6 +6,7 @@ import {
     OrganisationDTO,
     ProjectDTO,
     ProjectPagingDTO,
+    TermDTO,
     TermPagingDTO,
 } from 'gateways/resource-api/types';
 import { ITableRowTermForm } from './components/project/components/glossary/components/table-row-term/types';
@@ -51,4 +52,8 @@ export interface HomeLogicType {
     isDetectDuplicate: boolean;
     currentStatePage: HomeContentState;
     setCurrentStatePage: (value: HomeContentState) => void;
+    newRowTerm: TermDTO[]
+    setNewRowTerm: (value: TermDTO[]) => void,
+    clearNewRowTerm: () => void,
+    addNewRowTerm: (term: TermDTO) => void
 }

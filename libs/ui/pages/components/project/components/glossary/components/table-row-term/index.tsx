@@ -12,6 +12,9 @@ import TermEditContent from './components/term-edit-content';
 import { useTableRowTermLogic } from './logic';
 import { tKeys } from '../../../../../../../../i18n/keys';
 import { useTranslation } from 'react-i18next';
+import Tooltip from '../../../../../../../components/contents/tooltip';
+import { TooltipType } from '../../../../../../../components/contents/tooltip/props';
+import { Default } from '../../../../../../../components/contents/role/index.stories';
 
 export default function TableRowTerm({
     term,
@@ -19,6 +22,7 @@ export default function TableRowTerm({
     handleOnDeleteTerm,
     activeProject,
     clearNewRowTerm,
+    isDisabled,
 }: ITableRowTermProps) {
     //Attributes
     const {
@@ -39,10 +43,11 @@ export default function TableRowTerm({
                 h={'2.75rem'}
                 alignItems='flex-start'
                 border={`0.0625rem solid ${COLORS.Line.value}`}
-                borderRadius={!isOpen ? '8px' : '0px'}
-                borderTopLeftRadius={'8px'}
-                borderTopRightRadius={'8px'}
+                borderRadius={!isOpen ? '0.5rem' : '0rem'}
+                borderTopLeftRadius={'0.5rem'}
+                borderTopRightRadius={'0.5rem'}
                 spacing={0}
+                onClick={toggleIsOpen}
             >
                 <HStack
                     padding='0.5rem 1.25rem'
@@ -54,6 +59,7 @@ export default function TableRowTerm({
                 >
                     <Input
                         {...form.key}
+                        isDisabled={isDisabled}
                         placeholder={t<string>(
                             tKeys.home.project.tab.glossary.content.table
                                 .content.row.input.key.placeholder,
@@ -101,21 +107,27 @@ export default function TableRowTerm({
                     alignItems={'center'}
                     justifyContent={'right'}
                 >
-                    <ButtonIcon
-                        aria-label=''
-                        borderRadius='0.375rem'
-                        size={ButtonSize.SMALL}
-                        padding='0.25rem'
-                        gap='0.625rem'
-                        backgroundColor={COLORS.White.T500.value}
-                        hoverBackgroundColor={COLORS.Stroke.value}
+                    <Tooltip
+                        type={TooltipType.DEFAULT}
+                        label={'Open key page'}
+                        placement={'bottom'}
                     >
-                        <Icon
-                            pointerEvents='none'
-                            name={'expand'}
-                            fill={COLORS.InputText.value}
-                        />
-                    </ButtonIcon>
+                        <ButtonIcon
+                            aria-label=''
+                            borderRadius='0.375rem'
+                            size={ButtonSize.SMALL}
+                            padding='0.25rem'
+                            gap='0.625rem'
+                            backgroundColor={COLORS.White.T500.value}
+                            hoverBackgroundColor={COLORS.Stroke.value}
+                        >
+                            <Icon
+                                pointerEvents='none'
+                                name={'expand'}
+                                fill={COLORS.InputText.value}
+                            />
+                        </ButtonIcon>
+                    </Tooltip>
                     <ButtonIcon
                         aria-label=''
                         borderRadius='0.375rem'
@@ -124,7 +136,6 @@ export default function TableRowTerm({
                         gap='0.625rem'
                         backgroundColor={COLORS.White.T500.value}
                         hoverBackgroundColor={COLORS.Stroke.value}
-                        handleOnClick={toggleIsOpen}
                     >
                         <Icon
                             pointerEvents='none'

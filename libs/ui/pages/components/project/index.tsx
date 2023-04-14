@@ -21,6 +21,10 @@ const ProjectContent = ({
     setSortValue,
     setIsDetectDuplicate,
     isDetectDuplicate,
+    newRowTerm,
+    setNewRowTerm,
+    clearNewRowTerm,
+    addNewRowTerm,
 }: IProjectContentProps) => {
     // Attributes
     const { activeKey, setActiveKey } = useProjectLogic();
@@ -62,6 +66,10 @@ const ProjectContent = ({
                         sortValue={sortValue}
                         setIsDetectDuplicate={setIsDetectDuplicate}
                         isDetectDuplicate={isDetectDuplicate}
+                        newRowTerm={newRowTerm}
+                        setNewRowTerm={setNewRowTerm}
+                        clearNewRowTerm={clearNewRowTerm}
+                        addNewRowTerm={addNewRowTerm}
                     />
                 </Tab>
                 <Tab title={t<string>(tKeys.home.project.tab.settings.title)}>

@@ -1,18 +1,24 @@
-import { useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { GlossaryLogicType } from './types';
 import { TermDTO } from 'gateways/resource-api/types';
+import { IGlossaryLogicProps } from './props';
 
-export const useGlossaryLogic = (): GlossaryLogicType => {
+export const useGlossaryLogic = ({ addNewRowTerm }: IGlossaryLogicProps): GlossaryLogicType => {
     // Attributes
     const tableRef = useRef<HTMLDivElement>(null);
-    const [newRowTerm, setNewRowTerm] = useState<TermDTO[]>([]);
-    // Functions
-    function clearNewRowTerm() {
-        setNewRowTerm([]);
-    }
+    const handleOnShortCut = useCallback((event: KeyboardEvent) => {
+        if (event.code === "KeyT") {
+            event.preventDefault();
+            addNewRowTerm({})
+        }
+    }, [])
 
-    function addNewRowTerm(term: TermDTO) {
-        setNewRowTerm((prev) => [...prev, term])
-    }
-    return { tableRef, newRowTerm, clearNewRowTerm, addNewRowTerm };
+    useEffect(() => {
+        document.addEventListener('keydown', handleOnShortCut);
+
+        return () => {
+            document.removeEventListener('keydown', handleOnShortCut);
+        };
+    }, [handleOnShortCut]);
+    return { tableRef };
 };

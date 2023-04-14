@@ -35,13 +35,13 @@ export const TermEditContent = ({
             h='full'
             spacing={0}
             bg={COLORS.BG.value}
-            borderLeft={`1px solid ${COLORS.Line.value}`}
-            borderBottom={`1px solid ${COLORS.Line.value}`}
-            borderRight={`1px solid ${COLORS.Line.value}`}
-            borderBottomLeftRadius={'8px'}
-            borderBottomRightRadius={'8px'}
+            borderLeft={`0.0625rem solid ${COLORS.Line.value}`}
+            borderBottom={`0.0625rem solid ${COLORS.Line.value}`}
+            borderRight={`0.0625rem solid ${COLORS.Line.value}`}
+            borderBottomLeftRadius={'0.5rem'}
+            borderBottomRightRadius={'0.5rem'}
         >
-            <HStack padding='12px 12px 4px'>
+            <HStack padding='0.75rem 0.75rem 0.25rem'>
                 <Input
                     {...form.key}
                     placeholder={t<string>(
@@ -52,8 +52,8 @@ export const TermEditContent = ({
                     border='0.0625rem solid transparent'
                     padding='0.5rem'
                     gap='0.75rem'
-                    w='600px'
-                    h='18px'
+                    w='37.5rem'
+                    h='1.875rem'
                     font={FONTS.T1.T14px.SemiBold600.value}
                     paddingRight='3.125rem'
                     focusBorderColor={`${COLORS.Stroke.value}`}
@@ -80,19 +80,19 @@ export const TermEditContent = ({
                     w='full'
                     alignItems='right'
                     justifyContent={'right'}
-                    padding='12px 12px 4px'
-                    spacing='8px'
+                    padding='0.75rem 0.75rem 0.25rem'
+                    spacing='0.5rem'
                 >
                     <Button
-                        h={'28px'}
-                        maxH={'28px'}
-                        minH={'28px'}
+                        h={'1.75rem'}
+                        maxH={'1.75rem'}
+                        minH={'1.75rem'}
                         w={'fit-content'}
-                        borderRadius='8px'
+                        borderRadius='0.5rem'
                         color={COLORS.White.T500.value}
                         font={FONTS.T1.T12px.SemiBold600.value}
                         bg={COLORS.Text.T500.value}
-                        padding='4px 12px 4px 12px'
+                        padding='0.25rem 0.75rem 0.25rem 0.75rem'
                         onClick={() => {
                             handleOnSaveTranslations(form);
                             clearNewRowTerm();
@@ -107,7 +107,7 @@ export const TermEditContent = ({
                         backgroundColor='#F46363'
                         size={ButtonSize.XS}
                         hoverBackgroundColor='#E55252'
-                        borderRadius='8px'
+                        borderRadius='0.5rem'
                         padding='0.25rem'
                         gap='0.625rem'
                         handleOnClick={() => {
@@ -121,29 +121,28 @@ export const TermEditContent = ({
                     </ButtonIcon>
                 </HStack>
             </HStack>
-            <HStack padding='0px 12px 12px' top='0px'>
+            <HStack padding='0rem 0.75rem 0.75rem' top='0rem'>
                 <InputTextAreaField
                     {...form.description}
                     color={COLORS.Text.T400.value}
-                    border='1px solid transparent'
-                    padding='8px'
-                    gap='10px'
-                    w='609px'
-                    h='50px'
+                    border='0.0625rem solid transparent'
+                    gap='0.625rem'
+                    w='38.0625rem'
+                    h='3.125rem'
                     font={FONTS.T1.T12px.Regular400.value}
                     placeholder={t<string>(
                         tKeys.home.project.tab.glossary.content.table.content
                             .row.input.description.placeholder,
                     )}
-                    paddingRight='50px'
-                    hoverBorder={`1px solid ${COLORS.Stroke.value}`}
+                    paddingRight='3.125rem'
+                    hoverBorder={`0.0625rem solid ${COLORS.Stroke.value}`}
                     rightElement={
                         <>
                             <Icon name='enter' />
                             <Text
-                                ml={'2px'}
+                                ml={'0.125rem'}
                                 color={COLORS.InputText.value}
-                                lineHeight={'12px'}
+                                lineHeight={'0.75rem'}
                                 font={FONTS.T1.T10px.SemiBold600.value}
                             >
                                 {t<string>(
@@ -159,8 +158,8 @@ export const TermEditContent = ({
 
             <VStack
                 w='full'
-                spacing={'10px'}
-                padding='4px 20px 20px'
+                spacing={'0.625rem'}
+                padding='0.25rem 1.25rem 1.25rem'
                 justifyContent={'center'}
                 alignItems={'flex-start'}
             >

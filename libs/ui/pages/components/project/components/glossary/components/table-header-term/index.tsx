@@ -24,7 +24,7 @@ export default function TableHeaderTerm({
     return (
         <HStack
             w='full'
-            h={'28px'}
+            h={'1.75rem'}
             alignItems='flex-start'
             border={'transparent'}
             spacing={0}
@@ -33,7 +33,7 @@ export default function TableHeaderTerm({
                 padding='0.5rem 1.25rem'
                 spacing='0.625rem'
                 w='full'
-                h={'28px'}
+                h={'1.75rem'}
                 alignItems={'center'}
                 justifyContent={'left'}
             >
@@ -51,7 +51,7 @@ export default function TableHeaderTerm({
                 padding='0.5rem 1.25rem'
                 spacing='0.625rem'
                 w='full'
-                h={'28px'}
+                h={'1.75rem'}
                 alignItems={'center'}
             >
                 <Text
@@ -69,7 +69,7 @@ export default function TableHeaderTerm({
                 pr='3.75rem'
                 spacing='0.625rem'
                 w='full'
-                h={'28px'}
+                h={'1.75rem'}
                 alignItems={'center'}
             >
                 <Text
@@ -86,7 +86,7 @@ export default function TableHeaderTerm({
             <HStack
                 spacing='0.25rem'
                 w='full'
-                h={'28px'}
+                h={'1.75rem'}
                 alignItems={'center'}
                 justifyContent={'right'}
             >

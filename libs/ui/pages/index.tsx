@@ -22,6 +22,10 @@ const HomePage = ({
     setIsDetectDuplicate,
     isDetectDuplicate,
     currentStatePage,
+    newRowTerm,
+    setNewRowTerm,
+    clearNewRowTerm,
+    addNewRowTerm,
 }: IHomePageProps) => {
     // Function
     function renderPage(): React.ReactNode {
@@ -51,6 +55,10 @@ const HomePage = ({
                         setSortValue={setSortValue}
                         setIsDetectDuplicate={setIsDetectDuplicate}
                         isDetectDuplicate={isDetectDuplicate}
+                        newRowTerm={newRowTerm}
+                        setNewRowTerm={setNewRowTerm}
+                        clearNewRowTerm={clearNewRowTerm}
+                        addNewRowTerm={addNewRowTerm}
                     />
                 );
         }

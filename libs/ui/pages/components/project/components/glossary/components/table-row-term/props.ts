@@ -11,11 +11,12 @@ export interface ITableRowTermProps {
     translation?: TranslationWithMetaDTO;
     translations?: TranslationWithMetaPagingDTO;
     term: TermDTO;
+    activeProject?: ProjectDTO;
+    isDisabled?: boolean
     handleOnSaveTranslations: (
         form: IForm<ITableRowTermForm> & IDefaultForm,
     ) => void;
     handleOnDeleteTerm: (projectId: string, termId: string) => void;
-    activeProject?: ProjectDTO;
     clearNewRowTerm: () => void;
 }
 

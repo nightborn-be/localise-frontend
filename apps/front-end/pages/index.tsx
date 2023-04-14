@@ -30,6 +30,10 @@ export default function Web() {
         isDetectDuplicate,
         setCurrentStatePage,
         currentStatePage,
+        newRowTerm,
+        setNewRowTerm,
+        clearNewRowTerm,
+        addNewRowTerm,
     } = useHomeLogic();
 
     return (
@@ -63,6 +67,10 @@ export default function Web() {
                 setIsDetectDuplicate={setIsDetectDuplicate}
                 isDetectDuplicate={isDetectDuplicate}
                 currentStatePage={currentStatePage}
+                newRowTerm={newRowTerm}
+                setNewRowTerm={setNewRowTerm}
+                clearNewRowTerm={clearNewRowTerm}
+                addNewRowTerm={addNewRowTerm}
             />
         </Page>
     );

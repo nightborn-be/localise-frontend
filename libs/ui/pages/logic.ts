@@ -20,8 +20,8 @@ import {
 import useToast from '../../ui/components/progress-validation/toast';
 import { ToastType } from '../components/progress-validation/toast/types';
 import { IOrganisationSettingsForm } from './components/organisation-settings/types';
-import { OrganisationDTO, ProjectDTO } from 'gateways/resource-api/types';
-import { useEffect, useState } from 'react';
+import { OrganisationDTO, ProjectDTO, TermDTO } from 'gateways/resource-api/types';
+import { useState } from 'react';
 import { tKeys } from '../../i18n/keys';
 import {
     useCreateTerm,
@@ -38,7 +38,7 @@ import { AxiosError } from 'axios';
 
 export const useHomeLogic = () => {
     // Attributes
-    const [currentStatePage, setCurrentStatePage] = useState<HomeContentState>(HomeContentState.ORGANISATION_SETTINGS);
+    const [currentStatePage, setCurrentStatePage] = useState<HomeContentState>();
     const toast = useToast();
     const { t } = useTranslation();
     const [filterProjectValue, setFilterProjectValue] = useState<string>('');
@@ -47,6 +47,8 @@ export const useHomeLogic = () => {
     const [isDetectDuplicate, setIsDetectDuplicate] = useState<boolean>(false);
     const [activeProject, setActiveProject] = useState<ProjectDTO>({});
     const [activeTerm, setActiveTerm] = useState<string>('');
+    const [newRowTerm, setNewRowTerm] = useState<TermDTO[]>([]);
+
 
     // Hooks
     const { mutateAsync: createProject } = useCreateProject();
@@ -342,9 +344,11 @@ export const useHomeLogic = () => {
         }
     }
 
-    function changeContentState(value: HomeContentState) {
-        setCurrentStatePage(value);
-        setActiveProject({});
+    function clearNewRowTerm() {
+        setNewRowTerm([]);
+    }
+    function addNewRowTerm(term: TermDTO) {
+        setNewRowTerm((prev) => [...prev, term])
     }
     return {
         handleOnCreateProject,
@@ -372,6 +376,10 @@ export const useHomeLogic = () => {
         setIsDetectDuplicate,
         currentStatePage,
         setCurrentStatePage,
+        newRowTerm,
+        setNewRowTerm,
+        clearNewRowTerm,
+        addNewRowTerm,
     };
 
 };

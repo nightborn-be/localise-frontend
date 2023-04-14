@@ -4,6 +4,7 @@ import {
     OrganisationDTO,
     OrgnanisationPagingDTO,
     ProjectDTO,
+    TermDTO,
 } from 'gateways/resource-api/types';
 import { TermPagingDTO } from '../../gateways/resource-api/types/termPagingDTO';
 import { ITableRowTermForm } from './components/project/components/glossary/components/table-row-term/types';
@@ -30,5 +31,9 @@ export interface IHomePageProps {
     sortValue: string;
     setIsDetectDuplicate: (value: boolean) => void;
     isDetectDuplicate: boolean;
-    currentStatePage: HomeContentState;
+    currentStatePage?: HomeContentState;
+    newRowTerm: TermDTO[]
+    setNewRowTerm: (value: TermDTO[]) => void,
+    clearNewRowTerm: () => void,
+    addNewRowTerm: (term: TermDTO) => void
 }
