@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Breadcrumb from '../../../components/navigation/breadcrumb';
 import { useTranslation } from 'react-i18next';
 import { IProjectContentProps } from './props';
@@ -29,9 +29,6 @@ const ProjectContent = ({
     // Attributes
     const { activeKey, setActiveKey } = useProjectLogic();
     const { t } = useTranslation();
-    useEffect(() => {
-        setActiveKey(0);
-    }, []);
     // Render
     return (
         <VStack

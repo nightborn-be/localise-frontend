@@ -7,7 +7,7 @@ export const useGlossaryLogic = ({ addNewRowTerm }: IGlossaryLogicProps): Glossa
     // Attributes
     const tableRef = useRef<HTMLDivElement>(null);
     const handleOnShortCut = useCallback((event: KeyboardEvent) => {
-        if (event.code === "KeyT") {
+        if (event.code === "KeyT" && !(event.target as Element).matches("input,textarea")) {
             event.preventDefault();
             addNewRowTerm({})
         }
