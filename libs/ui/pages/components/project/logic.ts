@@ -5,7 +5,7 @@ export const useProjectLogic = (): ProjectLogicType => {
     // Attributes
     const [activeKey, setActiveKey] = useState<React.Key>();
     useEffect(() => {
-        setActiveKey(0);
+        setActiveKey(1);
     }, []);
     // Functions
     return { activeKey, setActiveKey };

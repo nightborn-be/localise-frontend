@@ -3,10 +3,20 @@ import { HStack } from '@chakra-ui/react';
 import COLORS from '../../../constants/colors';
 import { IProjectColorPickerProps } from './props';
 import ColorPicker from './color-picker';
+import SHADOWS from '../../../constants/shadows';
 
 const ProjectColorPicker = ({
     onSelect,
     selected,
+    w = '11rem',
+    padding = '0.9375rem',
+    bg = COLORS.White.T500.value,
+    border = `0.0625rem solid ${COLORS.Line.value}`,
+    colorPickerSize,
+    borderRadius,
+    boxShadow,
+    widthIcon,
+    heightIcon,
 }: IProjectColorPickerProps) => {
     // Attributes
     const colors: string[] = [
@@ -24,21 +34,25 @@ const ProjectColorPicker = ({
     return (
         <>
             <HStack
-                padding={'0.9375rem'}
+                padding={padding}
                 paddingBottom='1.125rem'
-                gap='0.75rem'
-                width='11rem'
+                gap='12px'
+                width={w}
                 height='fit-content'
-                maxW='11rem'
-                border={`0.0625rem solid ${COLORS.Line.value}`}
-                bg={COLORS.White.T500.value}
+                maxW={w}
+                border={border}
+                bg={bg}
                 borderRadius={'0.5rem'}
                 flexWrap={'wrap'}
                 alignContent={'space-between'}
-                boxShadow='0rem 0.125rem 0.5rem rgba(40, 41, 61, 0.04), 0rem 1.625rem 2.125rem rgba(96, 97, 112, 0.06)'
+                boxShadow={boxShadow}
             >
                 {colors.map((color, i) => (
                     <ColorPicker
+                        widthIcon={widthIcon}
+                        heightIcon={heightIcon}
+                        borderRadius={borderRadius}
+                        size={colorPickerSize}
                         key={i}
                         onSelect={onSelect}
                         isSelected={selected === color}

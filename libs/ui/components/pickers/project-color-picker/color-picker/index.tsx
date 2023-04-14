@@ -3,7 +3,15 @@ import { Box } from '@chakra-ui/react';
 import Icon from '../../../contents/icon';
 import { IColorPickerProps } from './props';
 
-const ColorPicker = ({ color, isSelected, onSelect }: IColorPickerProps) => {
+const ColorPicker = ({
+    size = '0.875rem',
+    borderRadius = '0.25rem',
+    color,
+    isSelected,
+    onSelect,
+    widthIcon,
+    heightIcon,
+}: IColorPickerProps) => {
     // Attributes
     const [isHovered, setIsHovered] = useState<boolean>(false);
 
@@ -16,13 +24,13 @@ const ColorPicker = ({ color, isSelected, onSelect }: IColorPickerProps) => {
     // Render
     return (
         <Box
-            w='0.875rem'
-            h='0.875rem'
+            w={size}
+            h={size}
             display='flex'
             justifyContent={'center'}
             alignItems={'center'}
             backgroundColor={color}
-            borderRadius={'0.25rem'}
+            borderRadius={borderRadius}
             marginInlineStart='0rem !important'
             onMouseOver={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
@@ -32,6 +40,8 @@ const ColorPicker = ({ color, isSelected, onSelect }: IColorPickerProps) => {
                 pointerEvents='none'
                 name={'checkedColor'}
                 opacity={opacityValue()}
+                width={widthIcon}
+                height={heightIcon}
             />
         </Box>
     );
