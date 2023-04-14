@@ -52,15 +52,32 @@ export const tKeys = {
                                             placeholder:
                                                 'home.project.tab.glossary.content.table.content.row.input.traduction.placeholder',
                                         },
+                                        tooltip:
+                                            'home.project.tab.glossary.content.table.content.row.input.tooltip',
                                     },
                                     cta: {
                                         save: 'home.project.tab.glossary.content.table.content.row.cta.save',
                                     },
                                 },
                             },
+                            row: {
+                                expand: {
+                                    tooltip:
+                                        'home.project.tab.glossary.content.table.row.expand.tooltip',
+                                },
+                            },
                         },
                         title: 'home.project.tab.glossary.content.title',
                         export: 'home.project.tab.glossary.content.export',
+                        cta: {
+                            add: {
+                                tooltip: {
+                                    value: 'home.project.tab.glossary.content.cta.add.tooltip.value',
+                                    shortcut:
+                                        'home.project.tab.glossary.content.cta.add.tooltip.shortcut',
+                                },
+                            },
+                        },
                     },
                 },
                 statistics: {

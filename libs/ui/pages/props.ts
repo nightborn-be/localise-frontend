@@ -32,8 +32,8 @@ export interface IHomePageProps {
     setIsDetectDuplicate: (value: boolean) => void;
     isDetectDuplicate: boolean;
     currentStatePage?: HomeContentState;
-    newRowTerm: TermDTO[]
-    setNewRowTerm: (value: TermDTO[]) => void,
-    clearNewRowTerm: () => void,
-    addNewRowTerm: (term: TermDTO) => void
+    newRowTerm: TermDTO[];
+    setNewRowTerm: (value: TermDTO[]) => void;
+    clearNewRowTerm: () => void;
+    addNewRowTerm: (term: TermDTO) => void;
 }

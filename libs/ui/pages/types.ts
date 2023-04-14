@@ -52,8 +52,8 @@ export interface HomeLogicType {
     isDetectDuplicate: boolean;
     currentStatePage: HomeContentState;
     setCurrentStatePage: (value: HomeContentState) => void;
-    newRowTerm: TermDTO[]
-    setNewRowTerm: (value: TermDTO[]) => void,
-    clearNewRowTerm: () => void,
-    addNewRowTerm: (term: TermDTO) => void
+    newRowTerm: TermDTO[];
+    setNewRowTerm: (value: TermDTO[]) => void;
+    clearNewRowTerm: () => void;
+    addNewRowTerm: (term: TermDTO) => void;
 }

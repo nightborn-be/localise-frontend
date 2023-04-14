@@ -3,4 +3,4 @@ export type OptionColumnLogicType = {
     toggleIsMoreMenuOpen: () => void;
 };
 
-export interface IOptionColumnForm { }
+export interface IOptionColumnForm {}

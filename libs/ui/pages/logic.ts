@@ -20,7 +20,11 @@ import {
 import useToast from '../../ui/components/progress-validation/toast';
 import { ToastType } from '../components/progress-validation/toast/types';
 import { IOrganisationSettingsForm } from './components/organisation-settings/types';
-import { OrganisationDTO, ProjectDTO, TermDTO } from 'gateways/resource-api/types';
+import {
+    OrganisationDTO,
+    ProjectDTO,
+    TermDTO,
+} from 'gateways/resource-api/types';
 import { useState } from 'react';
 import { tKeys } from '../../i18n/keys';
 import {
@@ -38,7 +42,8 @@ import { AxiosError } from 'axios';
 
 export const useHomeLogic = () => {
     // Attributes
-    const [currentStatePage, setCurrentStatePage] = useState<HomeContentState>();
+    const [currentStatePage, setCurrentStatePage] =
+        useState<HomeContentState>();
     const toast = useToast();
     const { t } = useTranslation();
     const [filterProjectValue, setFilterProjectValue] = useState<string>('');
@@ -48,7 +53,6 @@ export const useHomeLogic = () => {
     const [activeProject, setActiveProject] = useState<ProjectDTO>({});
     const [activeTerm, setActiveTerm] = useState<string>('');
     const [newRowTerm, setNewRowTerm] = useState<TermDTO[]>([]);
-
 
     // Hooks
     const { mutateAsync: createProject } = useCreateProject();
@@ -252,18 +256,21 @@ export const useHomeLogic = () => {
 
     async function handleOnDeleteTerm(projectId: string, termId: string) {
         try {
-            await deleteTerm({ projectId: projectId, termId: termId }, {
-                onSuccess: () => {
-                    refetchProjectTerms();
+            await deleteTerm(
+                { projectId: projectId, termId: termId },
+                {
+                    onSuccess: () => {
+                        refetchProjectTerms();
+                    },
                 },
-            },);
+            );
         } catch (error) {
-            const err = error as AxiosError
+            const err = error as AxiosError;
             toast({
                 type: ToastType.ERROR,
                 title: err.response?.data as string,
                 delay: 5000,
-            })
+            });
         }
     }
 
@@ -272,31 +279,36 @@ export const useHomeLogic = () => {
         // const term = createTerm({ projectId: projectId, data: { name: "Insert key", description: "" } })
     }
 
-    async function callCreateTerm(form: IForm<ITableRowTermForm> & IDefaultForm,) {
+    async function callCreateTerm(
+        form: IForm<ITableRowTermForm> & IDefaultForm,
+    ) {
         try {
-            await createTerm({
-                projectId: form.projectId.value,
-                data: {
-                    name: form.key.value,
-                    description: form.description.value,
+            await createTerm(
+                {
+                    projectId: form.projectId.value,
+                    data: {
+                        name: form.key.value,
+                        description: form.description.value,
+                    },
                 },
-            },
                 {
                     onSuccess: () => {
                         refetchProjectTerms();
                     },
                 },
-            )
+            );
         } catch (error) {
-            const err = error as AxiosError
+            const err = error as AxiosError;
             toast({
                 type: ToastType.ERROR,
                 title: err.response?.data as string,
                 delay: 5000,
-            })
-        };
-    };
-    async function callUpdateTerm(form: IForm<ITableRowTermForm> & IDefaultForm,) {
+            });
+        }
+    }
+    async function callUpdateTerm(
+        form: IForm<ITableRowTermForm> & IDefaultForm,
+    ) {
         try {
             await updateTerm({
                 projectId: form.projectId.value,
@@ -304,33 +316,35 @@ export const useHomeLogic = () => {
                 data: toUpdateTermDTO(form.key.value, form.description.value),
             });
         } catch (error) {
-            const err = error as AxiosError
+            const err = error as AxiosError;
             toast({
                 type: ToastType.ERROR,
                 title: err.response?.data as string,
                 delay: 5000,
-            })
+            });
         }
     }
-    async function callSaveTranslations(form: IForm<ITableRowTermForm> & IDefaultForm,) {
-            for (const translate in form.translations.value) {
-                const element = form.translations.value[
-                    translate
-                ] as IEditInputForm;
-                try {
-                    await saveTranslation({
-                        termId: element.termId,
-                        languageId: element.languageId,
-                        data: { translation: element.translation },
-                    });
-                } catch (error) {
-                    const err = error as AxiosError
-                    toast({
-                        type: ToastType.ERROR,
-                        title: err.response?.data as string,
-                        delay: 5000,
-                    })
-                }
+    async function callSaveTranslations(
+        form: IForm<ITableRowTermForm> & IDefaultForm,
+    ) {
+        for (const translate in form.translations.value) {
+            const element = form.translations.value[
+                translate
+            ] as IEditInputForm;
+            try {
+                await saveTranslation({
+                    termId: element.termId,
+                    languageId: element.languageId,
+                    data: { translation: element.translation },
+                });
+            } catch (error) {
+                const err = error as AxiosError;
+                toast({
+                    type: ToastType.ERROR,
+                    title: err.response?.data as string,
+                    delay: 5000,
+                });
+            }
         }
     }
     async function handleOnSaveTranslations(
@@ -348,7 +362,7 @@ export const useHomeLogic = () => {
         setNewRowTerm([]);
     }
     function addNewRowTerm(term: TermDTO) {
-        setNewRowTerm((prev) => [...prev, term])
+        setNewRowTerm((prev) => [...prev, term]);
     }
     return {
         handleOnCreateProject,
@@ -381,5 +395,4 @@ export const useHomeLogic = () => {
         clearNewRowTerm,
         addNewRowTerm,
     };
-
 };

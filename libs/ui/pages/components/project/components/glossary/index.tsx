@@ -16,6 +16,7 @@ import { useTranslation } from 'react-i18next';
 import { tKeys } from '../../../../../../i18n/keys';
 import Tooltip from '../../../../../components/contents/tooltip';
 import { TooltipType } from '../../../../../components/contents/tooltip/props';
+import Text from '../../../../../components/contents/text';
 
 export const Glossary = ({
     projectTerms,
@@ -128,8 +129,21 @@ export const Glossary = ({
             >
                 <Tooltip
                     type={TooltipType.COMMAND}
-                    command={<Icon name='shortKey' />}
-                    label={'Add a new key'}
+                    command={
+                        <Text
+                            font={FONTS.T1.T10px.Regular400.value}
+                            color={COLORS.InputText.value}
+                        >
+                            {t<string>(
+                                tKeys.home.project.tab.glossary.content.cta.add
+                                    .tooltip.shortcut,
+                            )}
+                        </Text>
+                    }
+                    label={t<string>(
+                        tKeys.home.project.tab.glossary.content.cta.add.tooltip
+                            .value,
+                    )}
                     placement={'top'}
                     marginRight={'4.25rem'}
                     left='2.125rem'

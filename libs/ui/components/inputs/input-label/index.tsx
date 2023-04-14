@@ -15,7 +15,7 @@ const InputLabel = ({
     descriptionFont = FONTS.T1.T12px.Regular400.value,
     descriptionColor = COLORS.InputText.value,
     spacing = '0.25rem',
-    maxWidth
+    maxWidth,
 }: IInputLabelProps) => {
     //Attributes
 
