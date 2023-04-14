@@ -155,6 +155,7 @@ export default function TableRowTerm({
                 clearNewRowTerm={clearNewRowTerm}
                 updateTranslationsForm={updateTranslationsForm}
                 handleOnDeleteTerm={handleOnDeleteTerm}
+                toggleIsOpen={toggleIsOpen}
             />
         </VStack>
     );

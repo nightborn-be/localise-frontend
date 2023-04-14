@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import InputLabel from '../../../../../components/inputs/input-label/index';
 import COLORS from '../../../../../constants/colors';
 import FONTS from '../../../../../constants/fonts';
-import { Box, HStack, VStack } from '@chakra-ui/react';
+import { Box, HStack, VStack, useForceUpdate } from '@chakra-ui/react';
 import Button from '../../../../../components/inputs/button/index';
 import Icon from '../../../../../components/contents/icon';
 import TableRowTerm from './components/table-row-term';
@@ -37,7 +37,6 @@ export const Glossary = ({
 }: IGlossaryProps) => {
     // Attributes
     const { tableRef } = useGlossaryLogic({ addNewRowTerm });
-
     const { t } = useTranslation();
     // Renders
     return (

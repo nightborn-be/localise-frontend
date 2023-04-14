@@ -16,6 +16,7 @@ export interface ITermEditContentProps {
     updateTranslationsForm: (value: IEditInputForm) => void;
     handleOnDeleteTerm: (projectId: string, termId: string) => void;
     clearNewRowTerm: () => void;
+    toggleIsOpen: () => void;
 }
 
 export interface ITermEditContentLogicProps {
