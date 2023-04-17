@@ -20,7 +20,7 @@ export default function InputSelectAndInput<T>({
     borderRadius = '0.5rem',
     alignItems,
     isValid = true,
-    errorBorder = `1px solid ${COLORS.Negative.value}`,
+    errorBorder = `1px solid ${COLORS.Error.T500.value}`,
     rightIcon,
     rightHoverIcon,
     menuOptionWidth = '200px',
