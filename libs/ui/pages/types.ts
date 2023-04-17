@@ -26,7 +26,7 @@ export interface HomeLogicType {
     handleOnUpdateProject: (
         form: IForm<IUpdateProjectForm> & IDefaultForm,
     ) => void;
-    handleOnDeleteProject: () => void
+    handleOnDeleteProject: () => void;
     handleOnCreateOrganisation: (
         form: IForm<ICreateOrganisationForm> & IDefaultForm,
         resetForm: () => void,
@@ -58,8 +58,8 @@ export interface HomeLogicType {
     isDetectDuplicate: boolean;
     currentStatePage: HomeContentState;
     setCurrentStatePage: (value: HomeContentState) => void;
-    newRowTerm: TermDTO[]
-    setNewRowTerm: (value: TermDTO[]) => void,
-    clearNewRowTerm: () => void,
-    addNewRowTerm: (term: TermDTO) => void
+    newRowTerm: TermDTO[];
+    setNewRowTerm: (value: TermDTO[]) => void;
+    clearNewRowTerm: () => void;
+    addNewRowTerm: (term: TermDTO) => void;
 }

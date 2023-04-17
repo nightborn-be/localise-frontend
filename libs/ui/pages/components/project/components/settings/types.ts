@@ -1,6 +1,6 @@
-import { IDefaultForm, IForm } from "utils/formik";
-import { MenuItemValue } from "../../../../../components/navigation/sidebar-menu-setting/types";
-import { SearchBarOption } from "../../../../../components/inputs/searchbar/props";
+import { IDefaultForm, IForm } from 'utils/formik';
+import { MenuItemValue } from '../../../../../components/navigation/sidebar-menu-setting/types';
+import { SearchBarOption } from '../../../../../components/inputs/searchbar/props';
 
 export interface SettingsLogicType {
     form: IForm<IUpdateProjectForm> & IDefaultForm;
@@ -30,5 +30,4 @@ export interface IUpdateProjectForm {
     projectName: string;
     sourceLanguage: string;
     targetLanguages: string[];
-
 }

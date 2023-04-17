@@ -75,7 +75,7 @@ const ProjectContent = ({
                 </Tab>
                 <Tab title={t<string>(tKeys.home.project.tab.settings.title)}>
                     <Settings
-                    activeProject={activeProject}
+                        activeProject={activeProject}
                         handleOnUpdateProject={handleOnUpdateProject}
                         handleOnDeleteProject={handleOnDeleteProject}
                     />

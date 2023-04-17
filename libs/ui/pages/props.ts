@@ -22,7 +22,7 @@ export interface IHomePageProps {
     handleOnUpdateProject: (
         form: IForm<IUpdateProjectForm> & IDefaultForm,
     ) => void;
-    handleOnDeleteProject: () => void,
+    handleOnDeleteProject: () => void;
     isLoadingUpdateOrganisation: boolean;
     actualOrganisationUser?: OrganisationDTO;
     organisationUserData?: OrgnanisationPagingDTO;
@@ -37,8 +37,8 @@ export interface IHomePageProps {
     setIsDetectDuplicate: (value: boolean) => void;
     isDetectDuplicate: boolean;
     currentStatePage?: HomeContentState;
-    newRowTerm: TermDTO[]
-    setNewRowTerm: (value: TermDTO[]) => void,
-    clearNewRowTerm: () => void,
-    addNewRowTerm: (term: TermDTO) => void
+    newRowTerm: TermDTO[];
+    setNewRowTerm: (value: TermDTO[]) => void;
+    clearNewRowTerm: () => void;
+    addNewRowTerm: (term: TermDTO) => void;
 }

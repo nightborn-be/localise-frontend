@@ -3,15 +3,20 @@ import { GlossaryLogicType } from './types';
 import { TermDTO } from 'gateways/resource-api/types';
 import { IGlossaryLogicProps } from './props';
 
-export const useGlossaryLogic = ({ addNewRowTerm }: IGlossaryLogicProps): GlossaryLogicType => {
+export const useGlossaryLogic = ({
+    addNewRowTerm,
+}: IGlossaryLogicProps): GlossaryLogicType => {
     // Attributes
     const tableRef = useRef<HTMLDivElement>(null);
     const handleOnShortCut = useCallback((event: KeyboardEvent) => {
-        if (event.code === "KeyT" && !(event.target as Element).matches("input,textarea")) {
+        if (
+            event.code === 'KeyT' &&
+            !(event.target as Element).matches('input,textarea')
+        ) {
             event.preventDefault();
-            addNewRowTerm({})
+            addNewRowTerm({});
         }
-    }, [])
+    }, []);
 
     useEffect(() => {
         document.addEventListener('keydown', handleOnShortCut);

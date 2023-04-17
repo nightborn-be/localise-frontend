@@ -96,17 +96,17 @@ const Settings = ({
                             spacing='0.5rem'
                             background={COLORS.White.T500.value}
                             placeholder={t<string>(
-                                tKeys.home.modal.create_project.form
+                                tKeys.home.project.tab.settings.content
                                     .source_language.search.placeholder,
                             )}
                             placeholderColor={COLORS.InputText.value}
                             borderRadius='0.375rem'
                             defaultSelectValue={t<string>(
-                                tKeys.home.modal.create_project.form
+                                tKeys.home.project.tab.settings.content
                                     .source_language.placeholder,
                             )}
                             noValueMsg={t<string>(
-                                tKeys.home.modal.create_project.form
+                                tKeys.home.project.tab.settings.content
                                     .source_language.search.not_found,
                             )}
                             filterValue={filterValue}
@@ -124,11 +124,11 @@ const Settings = ({
                                     .includes(filterValue.toLowerCase()),
                             )}
                             label={t<string>(
-                                tKeys.home.modal.create_project.form
+                                tKeys.home.project.tab.settings.content
                                     .source_language.title,
                             )}
                             description={t<string>(
-                                tKeys.home.modal.create_project.form
+                                tKeys.home.project.tab.settings.content
                                     .source_language.description,
                             )}
                         />
@@ -145,19 +145,19 @@ const Settings = ({
                             border='none'
                             padding='0px'
                             title={t<string>(
-                                tKeys.home.modal.create_project.form
+                                tKeys.home.project.tab.settings.content
                                     .target_languages.title,
                             )}
                             description={t<string>(
-                                tKeys.home.modal.create_project.form
+                                tKeys.home.project.tab.settings.content
                                     .target_languages.description,
                             )}
                             placeholder={t<string>(
-                                tKeys.home.modal.create_project.form
+                                tKeys.home.project.tab.settings.content
                                     .target_languages.placeholder,
                             )}
                             noValueMsg={t<string>(
-                                tKeys.home.modal.create_project.form
+                                tKeys.home.project.tab.settings.content
                                     .target_languages.not_found,
                             )}
                             onTagDelete={onTagDelete}
@@ -188,7 +188,10 @@ const Settings = ({
                                 handleOnUpdateProject(form);
                             }}
                         >
-                            Save
+                            {t<string>(
+                                tKeys.home.project.tab.settings.content.cta
+                                    .save,
+                            )}
                         </Button>
                     </HStack>
                 </VStack>
@@ -197,11 +200,15 @@ const Settings = ({
                 isOpen={deleteProjectDisclosure.isOpen}
                 onClose={deleteProjectDisclosure.onClose}
                 handleOnSubmit={handleOnDeleteProject}
-                titleModal={'Delete project'}
-                title={'Are you sure you want to delete ?'}
-                description={
-                    'By deleting this project you will loose all the informations and keys related to this project.'
-                }
+                titleModal={t<string>(
+                    tKeys.home.project.tab.settings.delete_modal.title_header,
+                )}
+                title={t<string>(
+                    tKeys.home.project.tab.settings.delete_modal.title,
+                )}
+                description={t<string>(
+                    tKeys.home.project.tab.settings.delete_modal.description,
+                )}
             />
         </VStack>
     );

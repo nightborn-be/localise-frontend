@@ -32,9 +32,12 @@ export const ProjectColorsSettingSection = ({
             ref={projectColorsRef}
         >
             <InputLabel
-                label={'Project colors'}
+                label={t<string>(
+                    tKeys.home.project.tab.settings.content.project_colors
+                        .title,
+                )}
                 description={t<string>(
-                    tKeys.home.organisation_settings.menu.form.informations
+                    tKeys.home.project.tab.settings.content.project_colors
                         .description,
                 )}
                 labelColor={COLORS.Text.T400.value}

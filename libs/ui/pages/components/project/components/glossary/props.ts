@@ -1,4 +1,8 @@
-import { ProjectDTO, TermDTO, TermPagingDTO } from 'gateways/resource-api/types';
+import {
+    ProjectDTO,
+    TermDTO,
+    TermPagingDTO,
+} from 'gateways/resource-api/types';
 import { IDefaultForm, IForm } from 'utils/formik';
 import { ITableRowTermForm } from './components/table-row-term/types';
 
@@ -16,13 +20,12 @@ export interface IGlossaryProps {
     sortValue: string;
     setIsDetectDuplicate: (value: boolean) => void;
     isDetectDuplicate: boolean;
-    newRowTerm: TermDTO[]
-    setNewRowTerm: (value: TermDTO[]) => void,
-    clearNewRowTerm: () => void,
-    addNewRowTerm: (term: TermDTO) => void
+    newRowTerm: TermDTO[];
+    setNewRowTerm: (value: TermDTO[]) => void;
+    clearNewRowTerm: () => void;
+    addNewRowTerm: (term: TermDTO) => void;
 }
 
-
 export interface IGlossaryLogicProps {
-    addNewRowTerm: (term: TermDTO) => void
+    addNewRowTerm: (term: TermDTO) => void;
 }

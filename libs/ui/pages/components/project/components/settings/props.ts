@@ -6,11 +6,10 @@ export interface ISettingsProps {
     handleOnUpdateProject: (
         form: IForm<IUpdateProjectForm> & IDefaultForm,
     ) => void;
-    handleOnDeleteProject: () => void
-    activeProject?: ProjectDTO
-
+    handleOnDeleteProject: () => void;
+    activeProject?: ProjectDTO;
 }
 
 export interface ISettingsLogicProps {
-    activeProject?: ProjectDTO
+    activeProject?: ProjectDTO;
 }

@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { ISidebarMenuSettingContentProps } from './props';
 import SidebarMenuSetting from '../../../../../../../components/navigation/sidebar-menu-setting';
 import { MenuItemValue } from '../../../../../../../components/navigation/sidebar-menu-setting/types';
+import { tKeys } from 'i18n/keys';
 const SidebarMenuSettingContent = ({
     activeMenuSettingKey,
     setActiveMenuSettingKey,
@@ -20,19 +21,31 @@ const SidebarMenuSettingContent = ({
             <SidebarMenuSetting
                 options={[
                     {
-                        title: 'Informations',
+                        title: t<string>(
+                            tKeys.home.project.tab.settings.menu_item
+                                .informations,
+                        ),
                         value: MenuItemValue.INFORMATIONS,
                     },
                     {
-                        title: 'Project color',
+                        title: t<string>(
+                            tKeys.home.project.tab.settings.menu_item
+                                .project_color,
+                        ),
                         value: MenuItemValue.PROJET_COLOR,
                     },
                     {
-                        title: 'Source language',
+                        title: t<string>(
+                            tKeys.home.project.tab.settings.menu_item
+                                .source_language,
+                        ),
                         value: MenuItemValue.SOURCE_LANGUAGE,
                     },
                     {
-                        title: 'Target languages',
+                        title: t<string>(
+                            tKeys.home.project.tab.settings.menu_item
+                                .target_languages,
+                        ),
                         value: MenuItemValue.TARGET_LANGUAGES,
                     },
                 ]}

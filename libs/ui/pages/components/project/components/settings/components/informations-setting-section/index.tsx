@@ -31,16 +31,15 @@ export const InformationSettingSection = ({
             alignItems={'left'}
             spacing='1.25rem'
             w='full'
-            padding={'32px 32px 0px 20px'}
+            padding={'2rem 2rem 0rem 1.25rem'}
             ref={informationsRef}
         >
             <InputLabel
                 label={t<string>(
-                    tKeys.home.organisation_settings.menu.form.informations
-                        .title,
+                    tKeys.home.project.tab.settings.content.informations.title,
                 )}
                 description={t<string>(
-                    tKeys.home.organisation_settings.menu.form.informations
+                    tKeys.home.project.tab.settings.content.informations
                         .description,
                 )}
                 labelColor={COLORS.Text.T400.value}
@@ -61,6 +60,10 @@ export const InformationSettingSection = ({
                 />
                 <InputProjectKey
                     color={COLORS.Text.T500.value}
+                    text={t<string>(
+                        tKeys.home.project.tab.settings.content.informations
+                            .project_key.title,
+                    )}
                     border={`0.0625rem solid ${COLORS.Stroke.value}`}
                     borderRadius='0.5rem'
                     padding='0rem'
@@ -73,12 +76,15 @@ export const InformationSettingSection = ({
                             size={ButtonSize.XS}
                             backgroundColor={COLORS.BG.value}
                             hoverBackgroundColor={COLORS.Line.value}
-                            aria-label='test'
+                            aria-label=''
                             handleOnClick={() => {
                                 navigator.clipboard.writeText(projectId);
                                 toast({
                                     type: ToastType.INFOMRATION,
-                                    title: 'Link copied successfully to your clipboard',
+                                    title: t<string>(
+                                        tKeys.home.project.tab.settings.content
+                                            .informations.toast.copy_message,
+                                    ),
                                     delay: 2000,
                                 });
                             }}
@@ -115,7 +121,10 @@ export const InformationSettingSection = ({
                     />
                 )}
             >
-                Do you want to delete this project ?
+                {t<string>(
+                    tKeys.home.project.tab.settings.content.informations.cta
+                        .delete_project,
+                )}
             </Button>
         </VStack>
     );

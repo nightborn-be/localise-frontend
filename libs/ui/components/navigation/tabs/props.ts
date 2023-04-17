@@ -5,8 +5,8 @@ export interface ITabsProps {
     activeKey?: React.Key;
     onChange?: (activeKey: React.Key) => void;
     children:
-    | ReactElement<ITabProps>
-    | undefined
-    | false
-    | Array<ReactElement<ITabProps> | undefined | false>;
+        | ReactElement<ITabProps>
+        | undefined
+        | false
+        | Array<ReactElement<ITabProps> | undefined | false>;
 }

@@ -1,4 +1,4 @@
-import { MenuItemValue } from "../../../../../../../components/navigation/sidebar-menu-setting/types";
+import { MenuItemValue } from '../../../../../../../components/navigation/sidebar-menu-setting/types';
 
 export interface ISidebarMenuSettingContentProps {
     activeMenuSettingKey: MenuItemValue;

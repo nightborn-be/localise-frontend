@@ -7,13 +7,16 @@ import { useDisclosure } from '@chakra-ui/react';
 import { SearchBarOption } from '../../../../../components/inputs/searchbar/props';
 import languages from 'utils/languages';
 import { ISettingsLogicProps } from './props';
-const useSettingsLogic = ({ activeProject }: ISettingsLogicProps): SettingsLogicType => {
-    // Attribute
+const useSettingsLogic = ({
+    activeProject,
+}: ISettingsLogicProps): SettingsLogicType => {
+    // Attributes
     const [activeMenuSettingKey, setActiveMenuSettingKey] = useState(
         MenuItemValue.INFORMATIONS,
     );
     const deleteProjectDisclosure = useDisclosure();
-    const [currentSelectedColor, setCurrentSelectedColor] = useState<string>('');
+    const [currentSelectedColor, setCurrentSelectedColor] =
+        useState<string>('');
     const [sourceLanguageActiveKey, setSourceLanguageActiveKey] =
         useState<string>('');
     const [filterValue, setFilterValue] = useState<string>('');
@@ -31,7 +34,19 @@ const useSettingsLogic = ({ activeProject }: ISettingsLogicProps): SettingsLogic
     const sourceLanguageRef = useRef<HTMLDivElement>(null);
     const targetLanguageRef = useRef<HTMLDivElement>(null);
 
-    // function
+    // Formik
+    const { values, ...rest } = useFormik<IUpdateProjectForm>({
+        initialValues: {
+            projectName: '',
+            sourceLanguage: '',
+            targetLanguages: [],
+        },
+        onSubmit: () => {},
+        validateOnChange: false,
+    });
+    const form = createForm(values, rest);
+
+    // Functions
     function filter(value: string): SearchBarOption<string>[] {
         return optionsSearchBox?.filter((option) =>
             option.value.toLowerCase().includes(value.toLowerCase()),
@@ -54,20 +69,14 @@ const useSettingsLogic = ({ activeProject }: ISettingsLogicProps): SettingsLogic
         rest.setFieldValue('projectName', activeProject?.name);
     }, [activeProject]);
 
-    // Formik
-    const { values, ...rest } = useFormik<IUpdateProjectForm>({
-        initialValues: {
-            projectName: '',
-            sourceLanguage: '',
-            targetLanguages: [],
-        },
-        onSubmit: () => { },
-        validateOnChange: false,
-    });
-    const form = createForm(values, rest);
-
     return {
-        form, activeMenuSettingKey, setActiveMenuSettingKey, deleteProjectDisclosure, currentSelectedColor, setCurrentSelectedColor, sourceLanguageActiveKey,
+        form,
+        activeMenuSettingKey,
+        setActiveMenuSettingKey,
+        deleteProjectDisclosure,
+        currentSelectedColor,
+        setCurrentSelectedColor,
+        sourceLanguageActiveKey,
         setSourceLanguageActiveKey,
         filterValue,
         setFilterValue,
@@ -82,7 +91,7 @@ const useSettingsLogic = ({ activeProject }: ISettingsLogicProps): SettingsLogic
         projectColorRef,
         sourceLanguageRef,
         targetLanguageRef,
-    }
-}
+    };
+};
 
 export default useSettingsLogic;

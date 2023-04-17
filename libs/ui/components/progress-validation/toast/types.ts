@@ -1,7 +1,7 @@
 export const enum ToastType {
     SUCCESS = 'SUCCESS',
     ERROR = 'ERROR',
-    INFOMRATION = 'INFORMATION'
+    INFOMRATION = 'INFORMATION',
 }
 
 export interface IToastParams {
