@@ -97,7 +97,7 @@ const Toast = ({ type, title, description, onClose }: IToastProps) => {
             px='1rem'
             py='1.25rem'
             boxShadow={'0px 4px 12px rgba(0, 0, 0, 0.1)'} // TODO: ADD SHADOW
-            w={type === ToastType.INFOMRATION ? '17rem' : '28rem'}
+            w={type === ToastType.INFOMRATION ? '20rem' : '28rem'}
         >
             {/* Header */}
             <HStack
