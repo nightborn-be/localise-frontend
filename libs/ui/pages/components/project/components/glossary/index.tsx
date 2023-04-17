@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import InputLabel from '../../../../../components/inputs/input-label/index';
 import COLORS from '../../../../../constants/colors';
 import FONTS from '../../../../../constants/fonts';
-import { Box, HStack, VStack, useForceUpdate } from '@chakra-ui/react';
+import { Box, HStack, VStack } from '@chakra-ui/react';
 import Button from '../../../../../components/inputs/button/index';
 import Icon from '../../../../../components/contents/icon';
 import TableRowTerm from './components/table-row-term';
@@ -84,6 +84,7 @@ export const Glossary = ({
                     {t<string>(tKeys.home.project.tab.glossary.content.export)}
                 </Button>
             </HStack>
+
             <TableTerm
                 ref={tableRef}
                 setSearchFilterValue={setSearchFilterValue}
@@ -96,7 +97,7 @@ export const Glossary = ({
                 {projectTerms?.data?.map((term, i) => {
                     return (
                         <TableRowTerm
-                            key={i}
+                            key={term.id}
                             isDisabled={true}
                             term={term}
                             activeProject={activeProject}
