@@ -18,21 +18,25 @@ const SearchBox = <T,>({
     options,
     noValueMsg,
     onTagDelete,
+    bgColor = COLORS.Disabled.value,
+    border = `0.0625rem solid ${COLORS.Line.value}`,
+    padding = '1.25rem',
+    w = '36.875rem',
 }: ISearchBoxProps<T>) => {
     // Render
     return (
         <>
             <VStack
-                w={'36.875rem'}
+                w={w}
                 h='fit-content'
-                bg={COLORS.Disabled.value}
-                padding={'1.25rem'}
+                bg={bgColor}
+                padding={padding}
                 spacing={'0.75rem'}
-                border={`0.0625rem solid ${COLORS.Line.value}`}
+                border={border}
                 borderRadius={'0.5rem'}
                 alignItems={'left'}
             >
-                <VStack align={'left'} spacing='0.25rem'>
+                <VStack align={'left'} w={w} spacing='0.25rem'>
                     <Text
                         font={FONTS.T1.T14px.Medium500.value}
                         color={COLORS.Text.T400.value}
@@ -48,7 +52,7 @@ const SearchBox = <T,>({
                 </VStack>
                 <Searchbar
                     color={COLORS.Text.T400.value}
-                    w='34.375rem'
+                    w='full'
                     h='2.5rem'
                     padding='0.25rem 0.625rem'
                     spacing='0.5rem'

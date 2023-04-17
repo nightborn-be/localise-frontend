@@ -13,6 +13,8 @@ import Icon from '../../../../../../../components/contents/icon';
 import InputProjectKey from '../../../../../../../components/inputs/input-project-key';
 import ButtonIcon from '../../../../../../../components/inputs/button-icon';
 import { ButtonSize } from '../../../../../../../components/inputs/button-icon/types';
+import useToast from 'ui/components/progress-validation/toast';
+import { ToastType } from 'ui/components/progress-validation/toast/types';
 
 export const InformationSettingSection = ({
     informationsRef,
@@ -22,6 +24,7 @@ export const InformationSettingSection = ({
 }: IInformationSettingSectionProps) => {
     // Attributes
     const { t } = useTranslation();
+    const toast = useToast();
     // Render
     return (
         <VStack
@@ -73,6 +76,11 @@ export const InformationSettingSection = ({
                             aria-label='test'
                             handleOnClick={() => {
                                 navigator.clipboard.writeText(projectId);
+                                toast({
+                                    type: ToastType.INFOMRATION,
+                                    title: 'Link copied successfully to your clipboard',
+                                    delay: 2000,
+                                });
                             }}
                         >
                             <Icon name='copyClipBoardLarge' />

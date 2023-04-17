@@ -8,7 +8,9 @@ const SidebarMenuSettingContent = ({
     activeMenuSettingKey,
     setActiveMenuSettingKey,
     informationsRef,
-    membersRef,
+    projectColorRef,
+    sourceLanguageRef,
+    targetLanguageRef,
 }: ISidebarMenuSettingContentProps) => {
     // Attributes
     const { t } = useTranslation();
@@ -43,8 +45,18 @@ const SidebarMenuSettingContent = ({
                                 behavior: 'smooth',
                             });
                             break;
-                        case MenuItemValue.MEMBERS:
-                            membersRef?.current?.scrollIntoView({
+                        case MenuItemValue.PROJET_COLOR:
+                            projectColorRef?.current?.scrollIntoView({
+                                behavior: 'smooth',
+                            });
+                            break;
+                        case MenuItemValue.SOURCE_LANGUAGE:
+                            sourceLanguageRef?.current?.scrollIntoView({
+                                behavior: 'smooth',
+                            });
+                            break;
+                        case MenuItemValue.TARGET_LANGUAGES:
+                            targetLanguageRef?.current?.scrollIntoView({
                                 behavior: 'smooth',
                             });
                             break;

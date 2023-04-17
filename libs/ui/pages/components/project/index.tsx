@@ -26,6 +26,8 @@ const ProjectContent = ({
     setNewRowTerm,
     clearNewRowTerm,
     addNewRowTerm,
+    handleOnUpdateProject,
+    handleOnDeleteProject,
 }: IProjectContentProps) => {
     // Attributes
     const { activeKey, setActiveKey } = useProjectLogic();
@@ -72,7 +74,11 @@ const ProjectContent = ({
                     />
                 </Tab>
                 <Tab title={t<string>(tKeys.home.project.tab.settings.title)}>
-                    <Settings />
+                    <Settings
+                    activeProject={activeProject}
+                        handleOnUpdateProject={handleOnUpdateProject}
+                        handleOnDeleteProject={handleOnDeleteProject}
+                    />
                 </Tab>
                 <Tab title={t<string>(tKeys.home.project.tab.statistics.title)}>
                     <Box bg='green.400' h='31.25rem' />

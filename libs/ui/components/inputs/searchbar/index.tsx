@@ -49,7 +49,7 @@ const Searchbar = <T,>({
         <VStack
             alignItems={'left'}
             ref={inputRef}
-            w={'fit-content'}
+            w={'full'}
             spacing={'0.25rem'}
             position='relative'
         >

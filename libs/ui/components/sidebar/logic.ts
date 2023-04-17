@@ -8,7 +8,6 @@ export const useSidebarLogic = ({
 }: ISidebarLogicProps): SidebarLogicType => {
     // Attributes
     const [activeOptionKey, setActiveOptionKey] = useState<string>('');
-    const [activeProjectKey, setActiveProjectKey] = useState<string>('');
     const [isOrganisationClicked, setIsOrganisationClicked] =
         useState<boolean>(false);
 
@@ -16,10 +15,7 @@ export const useSidebarLogic = ({
     function handleOnOptionClick(value: string) {
         setActiveOptionKey(value);
     }
-    function handleOnProjectClick(value: string) {
-        //make the call api to get the data of the project
-        setActiveProjectKey(value);
-    }
+
     const options: SearchBarOption<string>[] = organisationProjectData?.data
         ? organisationProjectData?.data?.map((project) => ({
               label: project.name as string,
@@ -33,12 +29,9 @@ export const useSidebarLogic = ({
 
     return {
         handleToggleIsOrganisationClicked,
-        handleOnProjectClick,
         handleOnOptionClick,
         isOrganisationClicked,
         setIsOrganisationClicked,
-        activeProjectKey,
-        setActiveProjectKey,
         options,
         activeOptionKey,
         setActiveOptionKey,

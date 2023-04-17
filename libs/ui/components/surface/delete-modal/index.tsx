@@ -3,17 +3,20 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDeleteOrganisationLogic } from './logic';
 import { IDeleteOrganisationProps } from './props';
-import Modal from '../../../../../components/surface/modal';
-import { tKeys } from '../../../../../../i18n/keys';
-import COLORS from '../../../../../constants/colors';
-import FONTS from '../../../../../constants/fonts';
-import Text from '../../../../../components/contents/text';
-import Icon from '../../../../../components/contents/icon';
+import Modal from '../modal';
+import { tKeys } from '../../../../i18n/keys';
+import COLORS from '../../../constants/colors';
+import FONTS from '../../../constants/fonts';
+import Text from '../../contents/text';
+import Icon from '../../contents/icon';
 
-export const DeleteOrganisationModal = ({
+export const DeleteModal = ({
     isOpen,
     onClose,
     handleOnSubmit,
+    titleModal,
+    title,
+    description,
 }: IDeleteOrganisationProps) => {
     // Attributes
     const { t } = useTranslation();
@@ -22,7 +25,7 @@ export const DeleteOrganisationModal = ({
     return (
         <HStack>
             <Modal
-                title={t<string>(tKeys.home.modal.delete_project.title)}
+                title={titleModal}
                 isOpen={isOpen}
                 onClose={() => {
                     onClose();
@@ -84,18 +87,13 @@ export const DeleteOrganisationModal = ({
                             color={COLORS.Text.T400.value}
                             font={FONTS.T1.T20px.SemiBold600.value}
                         >
-                            {t<string>(
-                                tKeys.home.modal.delete_project.content.title,
-                            )}
+                            {title}
                         </Text>
                         <Text
                             color={COLORS.InputText.value}
                             font={FONTS.T1.T14px.Regular400.value}
                         >
-                            {t<string>(
-                                tKeys.home.modal.delete_project.content
-                                    .description,
-                            )}
+                            {description}
                         </Text>
                     </VStack>
                 </VStack>
@@ -104,4 +102,4 @@ export const DeleteOrganisationModal = ({
     );
 };
 
-export default DeleteOrganisationModal;
+export default DeleteModal;

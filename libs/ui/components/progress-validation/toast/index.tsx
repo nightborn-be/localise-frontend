@@ -48,6 +48,13 @@ const Toast = ({ type, title, description, onClose }: IToastProps) => {
                     secondaryColor = COLORS.Toast.RedBG.value;
                 }
                 break;
+
+            case ToastType.INFOMRATION:
+                {
+                    primaryColor = COLORS.White.T500.value;
+                    secondaryColor = COLORS.ToastBlack.value;
+                }
+                break;
         }
 
         return [primaryColor, secondaryColor];
@@ -80,18 +87,25 @@ const Toast = ({ type, title, description, onClose }: IToastProps) => {
     return (
         <VStack
             spacing='1rem'
-            alignItems='flex-start'
+            alignItems='flex'
             bgColor={secondaryColor}
-            borderRadius='.375rem'
+            borderRadius={
+                type === ToastType.INFOMRATION ? '0.5rem' : '0.375rem'
+            }
             border='1px solid'
             borderColor={primaryColor}
             px='1rem'
             py='1.25rem'
             boxShadow={'0px 4px 12px rgba(0, 0, 0, 0.1)'} // TODO: ADD SHADOW
-            w='28rem'
+            w={type === ToastType.INFOMRATION ? '17rem' : '28rem'}
         >
             {/* Header */}
-            <HStack justifyContent='space-between' w='full'>
+            <HStack
+                justifyContent={
+                    type === ToastType.INFOMRATION ? 'center' : 'space-beetween'
+                }
+                w='full'
+            >
                 {/* Left */}
                 <HStack spacing='0.5rem'>
                     {/* Icon */}
@@ -99,7 +113,11 @@ const Toast = ({ type, title, description, onClose }: IToastProps) => {
 
                     {/* Title */}
                     <Text
-                        font={FONTS.T1.T12px.SemiBold600.value}
+                        font={
+                            type === ToastType.INFOMRATION
+                                ? FONTS.T1.T12px.Regular400.value
+                                : FONTS.T1.T12px.SemiBold600.value
+                        }
                         color={primaryColor}
                     >
                         {title}
@@ -107,19 +125,21 @@ const Toast = ({ type, title, description, onClose }: IToastProps) => {
                 </HStack>
 
                 {/* Right */}
-                <ButtonIcon
-                    size={ButtonSize.XXS}
-                    handleOnClick={onClose}
-                    backgroundColor='transparent'
-                    right='0'
-                >
-                    <Icon
-                        name='cross'
-                        width={18}
-                        height={18}
-                        stroke={primaryColor}
-                    />
-                </ButtonIcon>
+                {type != ToastType.INFOMRATION && (
+                    <ButtonIcon
+                        size={ButtonSize.XXS}
+                        handleOnClick={onClose}
+                        backgroundColor='transparent'
+                        right='0'
+                    >
+                        <Icon
+                            name='cross'
+                            width={18}
+                            height={18}
+                            stroke={primaryColor}
+                        />
+                    </ButtonIcon>
+                )}
             </HStack>
 
             {/* Content */}

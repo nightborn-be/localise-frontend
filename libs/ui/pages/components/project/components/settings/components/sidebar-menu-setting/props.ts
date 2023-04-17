@@ -3,6 +3,8 @@ import { MenuItemValue } from "../../../../../../../components/navigation/sideba
 export interface ISidebarMenuSettingContentProps {
     activeMenuSettingKey: MenuItemValue;
     setActiveMenuSettingKey: (value: MenuItemValue) => void;
-    informationsRef?: React.RefObject<HTMLDivElement>;
-    membersRef?: React.RefObject<HTMLDivElement>;
+    informationsRef: React.RefObject<HTMLDivElement>;
+    projectColorRef: React.RefObject<HTMLDivElement>;
+    sourceLanguageRef: React.RefObject<HTMLDivElement>;
+    targetLanguageRef: React.RefObject<HTMLDivElement>;
 }

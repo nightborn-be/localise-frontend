@@ -3,7 +3,6 @@ import { HomeContentState } from './types';
 import OrganisationSettings from './components/organisation-settings';
 import { IHomePageProps } from './props';
 import ProjectContent from './components/project';
-import { useHomeLogic } from './logic';
 
 const HomePage = ({
     handleOnDeleteOrganisation,
@@ -26,6 +25,8 @@ const HomePage = ({
     setNewRowTerm,
     clearNewRowTerm,
     addNewRowTerm,
+    handleOnUpdateProject,
+    handleOnDeleteProject,
 }: IHomePageProps) => {
     // Function
     function renderPage(): React.ReactNode {
@@ -59,6 +60,8 @@ const HomePage = ({
                         setNewRowTerm={setNewRowTerm}
                         clearNewRowTerm={clearNewRowTerm}
                         addNewRowTerm={addNewRowTerm}
+                        handleOnUpdateProject={handleOnUpdateProject}
+                        handleOnDeleteProject={handleOnDeleteProject}
                     />
                 );
         }

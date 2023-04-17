@@ -33,10 +33,8 @@ export const SideBar = ({
 }: ISideBarContentProps) => {
     const {
         handleToggleIsOrganisationClicked,
-        handleOnProjectClick,
         handleOnOptionClick,
         isOrganisationClicked,
-        activeProjectKey,
         options,
         activeOptionKey,
         setIsOrganisationClicked,
@@ -165,9 +163,8 @@ export const SideBar = ({
                                     setCurrentStatePage(
                                         HomeContentState.PROJECTS,
                                     );
-                                    handleOnProjectClick(option.label);
                                 }}
-                                activeKey={activeProjectKey}
+                                activeKey={activeProject.name as string}
                                 text={option.label}
                                 key={option.value}
                                 textFont={FONTS.T1.T12px.Medium500.value}

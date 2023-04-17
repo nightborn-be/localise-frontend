@@ -5,6 +5,7 @@ import {
 } from 'gateways/resource-api/types';
 import { IDefaultForm, IForm } from 'utils/formik';
 import { ITableRowTermForm } from './components/glossary/components/table-row-term/types';
+import { IUpdateProjectForm } from './components/settings/types';
 
 export interface IProjectContentProps {
     projectTerms?: TermPagingDTO;
@@ -24,4 +25,8 @@ export interface IProjectContentProps {
     setNewRowTerm: (value: TermDTO[]) => void;
     clearNewRowTerm: () => void;
     addNewRowTerm: (term: TermDTO) => void;
+    handleOnUpdateProject: (
+        form: IForm<IUpdateProjectForm> & IDefaultForm,
+    ) => void;
+    handleOnDeleteProject: () => void;
 }
