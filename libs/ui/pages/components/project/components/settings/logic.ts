@@ -22,6 +22,10 @@ const useSettingsLogic = ({
     const [filterValue, setFilterValue] = useState<string>('');
     const [activeKeys, setActiveKeys] = useState<string[]>([]);
     const [value, setValue] = useState<string>('');
+    const optionsSourceLanguage: SearchBarOption<string>[] = languages.map((language) => ({
+        value: language.name,
+        label: language.name,
+    }));
     const optionsSearchBox: SearchBarOption<string>[] = languages.map(
         (language) => ({
             value: language.name,
@@ -32,7 +36,7 @@ const useSettingsLogic = ({
     const informationsRef = useRef<HTMLDivElement>(null);
     const projectColorRef = useRef<HTMLDivElement>(null);
     const sourceLanguageRef = useRef<HTMLDivElement>(null);
-    const targetLanguageRef = useRef<HTMLDivElement>(null);
+    const targetLanguagesRef = useRef<HTMLDivElement>(null);
 
     // Formik
     const { values, ...rest } = useFormik<IUpdateProjectForm>({
@@ -90,7 +94,8 @@ const useSettingsLogic = ({
         informationsRef,
         projectColorRef,
         sourceLanguageRef,
-        targetLanguageRef,
+        targetLanguagesRef,
+        optionsSourceLanguage
     };
 };
 

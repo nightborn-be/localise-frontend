@@ -6,5 +6,5 @@ export interface ISidebarMenuSettingContentProps {
     informationsRef: React.RefObject<HTMLDivElement>;
     projectColorRef: React.RefObject<HTMLDivElement>;
     sourceLanguageRef: React.RefObject<HTMLDivElement>;
-    targetLanguageRef: React.RefObject<HTMLDivElement>;
+    targetLanguagesRef: React.RefObject<HTMLDivElement>;
 }

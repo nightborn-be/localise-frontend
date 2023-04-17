@@ -1,17 +1,10 @@
 import React from 'react';
-import { HStack, VStack } from '@chakra-ui/react';
+import { VStack } from '@chakra-ui/react';
 import InputLabel from '../../../../../../../components/inputs/input-label';
 import { useTranslation } from 'react-i18next';
 import { tKeys } from '../../../../../../../../i18n/keys';
 import COLORS from '../../../../../../../constants/colors';
 import FONTS from '../../../../../../../constants/fonts';
-import Input from '../../../../../../../components/inputs/input';
-import Button from '../../../../../../../components/inputs/button';
-import { EnhancerProps } from '../../../../../../../components/inputs/button/props';
-import Icon from '../../../../../../../components/contents/icon';
-import InputProjectKey from '../../../../../../../components/inputs/input-project-key';
-import ButtonIcon from '../../../../../../../components/inputs/button-icon';
-import { ButtonSize } from '../../../../../../../components/inputs/button-icon/types';
 import { IProjectColorsSettingSectionProps } from './props';
 import ProjectColorPicker from '../../../../../../../components/pickers/project-color-picker';
 
@@ -28,7 +21,7 @@ export const ProjectColorsSettingSection = ({
             alignItems={'left'}
             spacing='1.25rem'
             w='full'
-            padding={'0px 32px 0px 20px'}
+            padding={'0rem 2rem 0rem 1.25rem'}
             ref={projectColorsRef}
         >
             <InputLabel
@@ -48,13 +41,13 @@ export const ProjectColorsSettingSection = ({
             />
             <ProjectColorPicker
                 bg={COLORS.BG.value}
-                borderRadius='8px'
-                border={`1px solid ${COLORS.Stroke.value}`}
-                padding='12px'
+                borderRadius='0.5rem'
+                border={`0.0625rem solid ${COLORS.Stroke.value}`}
+                padding='0.75rem'
                 w='full'
                 widthIcon='20'
                 heightIcon='20'
-                colorPickerSize='40px'
+                colorPickerSize='2.5rem'
                 selected={currentSelectedColor}
                 onSelect={setCurrentSelectedColor}
             />

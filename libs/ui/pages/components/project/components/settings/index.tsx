@@ -1,4 +1,4 @@
-import { Box, HStack, VStack } from '@chakra-ui/react';
+import { HStack, VStack } from '@chakra-ui/react';
 import React from 'react';
 import SidebarMenuSettingContent from './components/sidebar-menu-setting';
 import useSettingsLogic from './logic';
@@ -9,13 +9,11 @@ import { useTranslation } from 'react-i18next';
 import InformationSettingSection from './components/informations-setting-section';
 import LineSeparation from '../../../organisation-settings/components/line-separation';
 import ProjectColorsSettingSection from './components/project-colors-setting-section';
-import SearchbarSelect from '../../../../../components/inputs/searchbar-select';
-import { SearchBarOption } from '../../../../../components/inputs/searchbar/props';
-import languages from 'utils/languages';
-import SearchBox from '../../../../../components/contents/search-box';
 import Button from '../../../../../components/inputs/button';
 import { ISettingsProps } from './props';
 import { DeleteModal } from '../../../../../components/surface/delete-modal';
+import SearchBarSelectSettingSection from './components/searchbar-select-setting-section/index';
+import SearchBoxSettingSection from './components/search-box-setting-section/index';
 const Settings = ({
     handleOnUpdateProject,
     handleOnDeleteProject,
@@ -26,6 +24,7 @@ const Settings = ({
         setSourceLanguageActiveKey,
         filterValue,
         setFilterValue,
+        setActiveKeys,
         activeKeys,
         value,
         setValue,
@@ -41,161 +40,102 @@ const Settings = ({
         informationsRef,
         projectColorRef,
         sourceLanguageRef,
-        targetLanguageRef,
+        targetLanguagesRef,
+        optionsSourceLanguage,
     } = useSettingsLogic({ activeProject });
-    const options: SearchBarOption<string>[] = languages.map((language) => ({
-        value: language.name,
-        label: language.name,
-    }));
+
     const { t } = useTranslation();
     return (
-        <VStack
-            h='full'
-            w='full'
-            alignItems={'left'}
-            padding='0rem'
-            overflowY={'scroll'}
-        >
-            <HStack
+        <>
+            <VStack
+                h='full'
                 w='full'
-                alignItems='start'
-                justifyContent={'start'}
-                spacing='0rem'
+                alignItems={'left'}
+                padding='0rem'
+                overflowY={'scroll'}
             >
-                <SidebarMenuSettingContent
-                    setActiveMenuSettingKey={setActiveMenuSettingKey}
-                    activeMenuSettingKey={activeMenuSettingKey}
-                    informationsRef={informationsRef}
-                    projectColorRef={projectColorRef}
-                    sourceLanguageRef={sourceLanguageRef}
-                    targetLanguageRef={targetLanguageRef}
-                />
-                <VStack w='full'>
-                    <InformationSettingSection
-                        projectId={activeProject?.id as string}
-                        form={form}
-                        deleteProjectDisclosure={deleteProjectDisclosure}
+                <HStack
+                    w='full'
+                    alignItems='start'
+                    justifyContent={'start'}
+                    spacing='0rem'
+                >
+                    <SidebarMenuSettingContent
+                        setActiveMenuSettingKey={setActiveMenuSettingKey}
+                        activeMenuSettingKey={activeMenuSettingKey}
                         informationsRef={informationsRef}
+                        projectColorRef={projectColorRef}
+                        sourceLanguageRef={sourceLanguageRef}
+                        targetLanguagesRef={targetLanguagesRef}
                     />
-                    <LineSeparation />
-                    <ProjectColorsSettingSection
-                        currentSelectedColor={currentSelectedColor}
-                        setCurrentSelectedColor={setCurrentSelectedColor}
-                        projectColorsRef={projectColorRef}
-                    />
-                    <LineSeparation />
-                    <Box
-                        w='full'
-                        padding='0rem 2rem 0rem 1.25rem'
-                        ref={sourceLanguageRef}
-                    >
-                        <SearchbarSelect
-                            color={COLORS.Text.T400.value}
-                            h='2.5rem'
-                            padding='0rem 2rem 0rem 1.25rem'
-                            spacing='0.5rem'
-                            background={COLORS.White.T500.value}
-                            placeholder={t<string>(
-                                tKeys.home.project.tab.settings.content
-                                    .source_language.search.placeholder,
-                            )}
-                            placeholderColor={COLORS.InputText.value}
-                            borderRadius='0.375rem'
-                            defaultSelectValue={t<string>(
-                                tKeys.home.project.tab.settings.content
-                                    .source_language.placeholder,
-                            )}
-                            noValueMsg={t<string>(
-                                tKeys.home.project.tab.settings.content
-                                    .source_language.search.not_found,
-                            )}
+                    <VStack w='full'>
+                        <InformationSettingSection
+                            projectId={activeProject?.id as string}
+                            form={form}
+                            deleteProjectDisclosure={deleteProjectDisclosure}
+                            informationsRef={informationsRef}
+                        />
+                        <LineSeparation />
+                        <ProjectColorsSettingSection
+                            currentSelectedColor={currentSelectedColor}
+                            setCurrentSelectedColor={setCurrentSelectedColor}
+                            projectColorsRef={projectColorRef}
+                        />
+                        <LineSeparation />
+                        <SearchBarSelectSettingSection
+                            sourceLanguageRef={sourceLanguageRef}
                             filterValue={filterValue}
-                            activeKey={sourceLanguageActiveKey}
-                            onSelect={(value) => {
-                                setSourceLanguageActiveKey(value);
-                                form.sourceLanguage.onChange(value);
-                            }}
-                            onChange={(event) =>
-                                setFilterValue(event.target.value)
+                            form={form}
+                            optionsSourceLanguage={optionsSourceLanguage}
+                            setFilterValue={setFilterValue}
+                            setSourceLanguageActiveKey={
+                                setSourceLanguageActiveKey
                             }
-                            options={options.filter((option) =>
-                                option.value
-                                    .toLowerCase()
-                                    .includes(filterValue.toLowerCase()),
-                            )}
-                            label={t<string>(
-                                tKeys.home.project.tab.settings.content
-                                    .source_language.title,
-                            )}
-                            description={t<string>(
-                                tKeys.home.project.tab.settings.content
-                                    .source_language.description,
-                            )}
+                            sourceLanguageActiveKey={sourceLanguageActiveKey}
                         />
-                    </Box>
-                    <LineSeparation />
-                    <Box
-                        w='full'
-                        padding='0rem 2rem 2rem 1.25rem'
-                        ref={targetLanguageRef}
-                    >
-                        <SearchBox<string>
-                            w='full'
-                            bgColor={COLORS.White.T500.value}
-                            border='none'
-                            padding='0px'
-                            title={t<string>(
-                                tKeys.home.project.tab.settings.content
-                                    .target_languages.title,
-                            )}
-                            description={t<string>(
-                                tKeys.home.project.tab.settings.content
-                                    .target_languages.description,
-                            )}
-                            placeholder={t<string>(
-                                tKeys.home.project.tab.settings.content
-                                    .target_languages.placeholder,
-                            )}
-                            noValueMsg={t<string>(
-                                tKeys.home.project.tab.settings.content
-                                    .target_languages.not_found,
-                            )}
-                            onTagDelete={onTagDelete}
-                            value={value}
-                            onChange={(event) => setValue(event.target.value)}
-                            onCheck={onCheck}
-                            activeKeys={activeKeys}
-                            options={filter(value)}
-                        />
-                    </Box>
-                    <HStack
-                        w={'full'}
-                        padding={'0rem 2rem 2rem'}
-                        justifyContent={'right'}
-                        alignItems={'center'}
-                    >
-                        <Button
-                            backgroundColor={COLORS.Localize.Purple.T500.value}
-                            font={FONTS.T1.T12px.SemiBold600.value}
-                            color={COLORS.White.T500.value}
-                            padding={'0.25rem 0.75rem'}
-                            gap={'0.25rem'}
-                            spacing='0.25rem'
-                            height={'2rem'}
-                            w={'5rem'}
-                            borderRadius={'8px'}
-                            onClick={() => {
-                                handleOnUpdateProject(form);
-                            }}
-                        >
-                            {t<string>(
-                                tKeys.home.project.tab.settings.content.cta
-                                    .save,
-                            )}
-                        </Button>
-                    </HStack>
-                </VStack>
-            </HStack>
+                        <LineSeparation />
+                        <VStack w='full' spacing={'0rem'}>
+                            <SearchBoxSettingSection
+                                targetLanguagesRef={targetLanguagesRef}
+                                activeKeys={activeKeys}
+                                filter={filter}
+                                value={value}
+                                onCheck={onCheck}
+                                onTagDelete={onTagDelete}
+                                setValue={setValue}
+                            />
+                            <HStack
+                                w={'full'}
+                                padding={'0rem 2rem 2rem'}
+                                justifyContent={'right'}
+                                alignItems={'center'}
+                            >
+                                <Button
+                                    backgroundColor={
+                                        COLORS.Localize.Purple.T500.value
+                                    }
+                                    font={FONTS.T1.T12px.SemiBold600.value}
+                                    color={COLORS.White.T500.value}
+                                    padding={'0.25rem 0.75rem'}
+                                    gap={'0.25rem'}
+                                    spacing='0.25rem'
+                                    height={'2rem'}
+                                    w={'5rem'}
+                                    borderRadius={'0.5rem'}
+                                    onClick={() => {
+                                        handleOnUpdateProject(form);
+                                    }}
+                                >
+                                    {t<string>(
+                                        tKeys.home.project.tab.settings.content
+                                            .cta.save,
+                                    )}
+                                </Button>
+                            </HStack>
+                        </VStack>
+                    </VStack>
+                </HStack>
+            </VStack>
             <DeleteModal
                 isOpen={deleteProjectDisclosure.isOpen}
                 onClose={deleteProjectDisclosure.onClose}
@@ -210,7 +150,7 @@ const Settings = ({
                     tKeys.home.project.tab.settings.delete_modal.description,
                 )}
             />
-        </VStack>
+        </>
     );
 };
 export default Settings;

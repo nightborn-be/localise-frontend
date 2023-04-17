@@ -11,7 +11,7 @@ const SidebarMenuSettingContent = ({
     informationsRef,
     projectColorRef,
     sourceLanguageRef,
-    targetLanguageRef,
+    targetLanguagesRef,
 }: ISidebarMenuSettingContentProps) => {
     // Attributes
     const { t } = useTranslation();
@@ -69,7 +69,7 @@ const SidebarMenuSettingContent = ({
                             });
                             break;
                         case MenuItemValue.TARGET_LANGUAGES:
-                            targetLanguageRef?.current?.scrollIntoView({
+                            targetLanguagesRef?.current?.scrollIntoView({
                                 behavior: 'smooth',
                             });
                             break;

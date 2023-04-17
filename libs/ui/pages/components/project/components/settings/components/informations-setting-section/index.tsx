@@ -1,5 +1,5 @@
 import React from 'react';
-import { HStack, VStack } from '@chakra-ui/react';
+import { VStack } from '@chakra-ui/react';
 import { IInformationSettingSectionProps } from './props';
 import InputLabel from '../../../../../../../components/inputs/input-label';
 import { useTranslation } from 'react-i18next';

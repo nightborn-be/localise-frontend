@@ -23,7 +23,8 @@ export interface SettingsLogicType {
     informationsRef: React.RefObject<HTMLDivElement>;
     projectColorRef: React.RefObject<HTMLDivElement>;
     sourceLanguageRef: React.RefObject<HTMLDivElement>;
-    targetLanguageRef: React.RefObject<HTMLDivElement>;
+    targetLanguagesRef: React.RefObject<HTMLDivElement>;
+    optionsSourceLanguage: SearchBarOption<string>[]
 }
 
 export interface IUpdateProjectForm {
