@@ -39,7 +39,7 @@ jobs:
         with:
           project_id: ${{ env.PROJECT_ID }}
           deliverables: apps/front-end/app.yaml
-          image_url: ${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.ARTIFACT_REPO }}/${{ env.SERVICE }}:a18441999b3ed733d3ca5927dc9dee0160ccf028
+          image_url: ${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.ARTIFACT_REPO }}/${{ env.SERVICE }}:a184419
           promote: true
 
       - name: Show Output
