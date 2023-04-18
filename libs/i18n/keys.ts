@@ -17,6 +17,15 @@ export const tKeys = {
         sign_in: {
             title: 'auth.sign_in.title',
             form: {
+                email: {
+                    title: 'auth.sign_in.form.email.title',
+                    placeholder: 'auth.sign_in.form.email.placeholder',
+                    error: {
+                        required: 'auth.sign_in.form.email.error.required',
+                        invalid: 'auth.sign_in.form.email.error.invalid',
+                        wrong: 'auth.sign_in.form.email.error.wrong',
+                    },
+                },
                 password: {
                     title: 'auth.sign_in.form.password.title',
                     placeholder: 'auth.sign_in.form.password.placeholder',
@@ -25,25 +34,23 @@ export const tKeys = {
                         wrong: 'auth.sign_in.form.password.error.wrong',
                     },
                 },
-                email: {
-                    title: 'auth.sign_in.form.email.title',
-                    placeholder: 'auth.sign_in.form.email.placeholder',
-                    error: {
-                        invalid: 'auth.sign_in.form.email.error.invalid',
-                        required: 'auth.sign_in.form.email.error.required',
-                        wrong: 'auth.sign_in.form.email.error.wrong',
-                    },
-                },
             },
             cta: {
                 sign_in: 'auth.sign_in.cta.sign_in',
             },
         },
         sign_up: {
+            cta: {
+                continue: 'auth.sign_up.cta.continue',
+                later: 'auth.sign_up.cta.later',
+            },
             account: {
                 title: 'auth.sign_up.account.title',
             },
             organisation: {
+                name: {
+                    title: 'auth.sign_up.organisation.name.title',
+                },
                 form: {
                     name: {
                         label: 'auth.sign_up.organisation.form.name.label',
@@ -58,33 +65,26 @@ export const tKeys = {
                         label: 'auth.sign_up.organisation.form.picture.label',
                     },
                 },
-                name: {
-                    title: 'auth.sign_up.organisation.name.title',
-                },
                 picture: {
                     title: 'auth.sign_up.organisation.picture.title',
                 },
             },
-            cta: {
-                continue: 'auth.sign_up.cta.continue',
-                later: 'auth.sign_up.cta.later',
-            },
             form: {
                 email: {
-                    placeholder: 'auth.sign_up.form.email.placeholder',
                     title: 'auth.sign_up.form.email.title',
+                    placeholder: 'auth.sign_up.form.email.placeholder',
                     error: {
                         required: 'auth.sign_up.form.email.error.required',
                         invalid: 'auth.sign_up.form.email.error.invalid',
                     },
                 },
                 password: {
+                    title: 'auth.sign_up.form.password.title',
                     placeholder: 'auth.sign_up.form.password.placeholder',
                     error: {
                         required: 'auth.sign_up.form.password.error.required',
                         min: 'auth.sign_up.form.password.error.min',
                     },
-                    title: 'auth.sign_up.form.password.title',
                 },
             },
             error: {
@@ -106,19 +106,20 @@ export const tKeys = {
     home: {
         modal: {
             create_project: {
+                title: 'home.modal.create_project.title',
                 form: {
                     project_name: {
+                        title: 'home.modal.create_project.form.project_name.title',
                         placeholder:
                             'home.modal.create_project.form.project_name.placeholder',
-                        title: 'home.modal.create_project.form.project_name.title',
                         form: {
                             error: 'home.modal.create_project.form.project_name.form.error',
                         },
                     },
                     source_language: {
+                        title: 'home.modal.create_project.form.source_language.title',
                         description:
                             'home.modal.create_project.form.source_language.description',
-                        title: 'home.modal.create_project.form.source_language.title',
                         placeholder:
                             'home.modal.create_project.form.source_language.placeholder',
                         search: {
@@ -138,29 +139,28 @@ export const tKeys = {
                             'home.modal.create_project.form.target_languages.not_found',
                     },
                 },
-                title: 'home.modal.create_project.title',
             },
             create_organisation: {
                 title: 'home.modal.create_organisation.title',
                 form: {
                     organisation_name: {
-                        title: 'home.modal.create_organisation.form.organisation_name.title',
                         placeholder:
                             'home.modal.create_organisation.form.organisation_name.placeholder',
+                        title: 'home.modal.create_organisation.form.organisation_name.title',
                     },
                     organisation_picture: {
+                        title: 'home.modal.create_organisation.form.organisation_picture.title',
                         description:
                             'home.modal.create_organisation.form.organisation_picture.description',
-                        title: 'home.modal.create_organisation.form.organisation_picture.title',
                         alt: 'home.modal.create_organisation.form.organisation_picture.alt',
                     },
                     organisation_teammates: {
+                        title: 'home.modal.create_organisation.form.organisation_teammates.title',
                         cta: {
                             add: 'home.modal.create_organisation.form.organisation_teammates.cta.add',
                         },
                         placeholder:
                             'home.modal.create_organisation.form.organisation_teammates.placeholder',
-                        title: 'home.modal.create_organisation.form.organisation_teammates.title',
                     },
                     error: 'home.modal.create_organisation.form.error',
                 },
@@ -239,6 +239,163 @@ export const tKeys = {
             },
             success: {
                 save: 'home.organisation_settings.success.save',
+            },
+        },
+        project: {
+            breadcrumb: {
+                title: 'home.project.breadcrumb.title',
+            },
+            tab: {
+                glossary: {
+                    title: 'home.project.tab.glossary.title',
+                    content: {
+                        title: 'home.project.tab.glossary.content.title',
+                        description:
+                            'home.project.tab.glossary.content.description',
+                        export: 'home.project.tab.glossary.content.export',
+                        table: {
+                            header: {
+                                column: {
+                                    key_name:
+                                        'home.project.tab.glossary.content.table.header.column.key_name',
+                                    source_language:
+                                        'home.project.tab.glossary.content.table.header.column.source_language',
+                                    target_language:
+                                        'home.project.tab.glossary.content.table.header.column.target_language',
+                                    param: {
+                                        search: {
+                                            placeholder:
+                                                'home.project.tab.glossary.content.table.header.column.param.search.placeholder',
+                                        },
+                                        sort: {
+                                            name: 'home.project.tab.glossary.content.table.header.column.param.sort.name',
+                                            none: 'home.project.tab.glossary.content.table.header.column.param.sort.none',
+                                            author: 'home.project.tab.glossary.content.table.header.column.param.sort.author',
+                                            date: 'home.project.tab.glossary.content.table.header.column.param.sort.date',
+                                        },
+                                        more: {
+                                            text: 'home.project.tab.glossary.content.table.header.column.param.more.text',
+                                        },
+                                    },
+                                },
+                            },
+                            content: {
+                                row: {
+                                    input: {
+                                        key: {
+                                            placeholder:
+                                                'home.project.tab.glossary.content.table.content.row.input.key.placeholder',
+                                            submit: 'home.project.tab.glossary.content.table.content.row.input.key.submit',
+                                        },
+                                        description: {
+                                            placeholder:
+                                                'home.project.tab.glossary.content.table.content.row.input.description.placeholder',
+                                            submit: 'home.project.tab.glossary.content.table.content.row.input.description.submit',
+                                        },
+                                        traduction: {
+                                            placeholder:
+                                                'home.project.tab.glossary.content.table.content.row.input.traduction.placeholder',
+                                        },
+                                        tooltip:
+                                            'home.project.tab.glossary.content.table.content.row.input.tooltip',
+                                    },
+                                    cta: {
+                                        save: 'home.project.tab.glossary.content.table.content.row.cta.save',
+                                    },
+                                },
+                            },
+                            row: {
+                                expand: {
+                                    tooltip:
+                                        'home.project.tab.glossary.content.table.row.expand.tooltip',
+                                },
+                            },
+                        },
+                        cta: {
+                            add: {
+                                tooltip: {
+                                    value: 'home.project.tab.glossary.content.cta.add.tooltip.value',
+                                    shortcut:
+                                        'home.project.tab.glossary.content.cta.add.tooltip.shortcut',
+                                },
+                            },
+                        },
+                    },
+                },
+                settings: {
+                    title: 'home.project.tab.settings.title',
+                    delete_modal: {
+                        title_header:
+                            'home.project.tab.settings.delete_modal.title_header',
+                        title: 'home.project.tab.settings.delete_modal.title',
+                        description:
+                            'home.project.tab.settings.delete_modal.description',
+                    },
+                    content: {
+                        cta: {
+                            save: 'home.project.tab.settings.content.cta.save',
+                        },
+                        target_languages: {
+                            title: 'home.project.tab.settings.content.target_languages.title',
+                            description:
+                                'home.project.tab.settings.content.target_languages.description',
+                            placeholder:
+                                'home.project.tab.settings.content.target_languages.placeholder',
+                            not_found:
+                                'home.project.tab.settings.content.target_languages.not_found',
+                        },
+                        source_language: {
+                            search: {
+                                placeholder:
+                                    'home.project.tab.settings.content.source_language.search.placeholder',
+                                not_found:
+                                    'home.project.tab.settings.content.source_language.search.not_found',
+                            },
+                            placeholder:
+                                'home.project.tab.settings.content.source_language.placeholder',
+                            title: 'home.project.tab.settings.content.source_language.title',
+                            description:
+                                'home.project.tab.settings.content.source_language.description',
+                        },
+                        project_colors: {
+                            description:
+                                'home.project.tab.settings.content.project_colors.description',
+                            title: 'home.project.tab.settings.content.project_colors.title',
+                        },
+                        informations: {
+                            description:
+                                'home.project.tab.settings.content.informations.description',
+                            title: 'home.project.tab.settings.content.informations.title',
+                            toast: {
+                                copy_message:
+                                    'home.project.tab.settings.content.informations.toast.copy_message',
+                            },
+                            project_key: {
+                                title: 'home.project.tab.settings.content.informations.project_key.title',
+                            },
+                            cta: {
+                                delete_project:
+                                    'home.project.tab.settings.content.informations.cta.delete_project',
+                            },
+                        },
+                    },
+                    menu_item: {
+                        informations:
+                            'home.project.tab.settings.menu_item.informations',
+                        project_color:
+                            'home.project.tab.settings.menu_item.project_color',
+                        source_language:
+                            'home.project.tab.settings.menu_item.source_language',
+                        target_languages:
+                            'home.project.tab.settings.menu_item.target_languages',
+                    },
+                },
+                statistics: {
+                    title: 'home.project.tab.statistics.title',
+                },
+                history: {
+                    title: 'home.project.tab.history.title',
+                },
             },
         },
     },

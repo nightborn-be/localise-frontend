@@ -1,9 +1,6 @@
 /* This file is auto-generated, manual edits in this file will be overwritten! */
-
 export type Color = string;
-
 export interface Colors {
-    HoverRed: { value: Color };
     BG: { value: Color };
     Bancontact: {
         Blue: { value: Color };
@@ -39,8 +36,8 @@ export interface Colors {
         T800: { value: Color };
         T900: { value: Color };
     };
-
-    Negative: { value: Color };
+    HeaderGrey: { value: Color };
+    HoverRed: { value: Color };
     InputText: { value: Color };
     Line: { value: Color };
     Localize: {
@@ -70,6 +67,7 @@ export interface Colors {
     Monizze: { Grey: { value: Color }; Orange: { value: Color } };
     NightbornBlue: { value: Color };
     PlaceholderBG: { value: Color };
+    ProjectColors: { Pink: { value: Color } };
     Social: { FacebookBlue: { value: Color } };
     Sodexo: { Blue: { value: Color }; Red: { value: Color } };
     Stripe: { Purple: { value: Color } };
@@ -98,6 +96,7 @@ export interface Colors {
         T900: { value: Color };
     };
     Toast: { GreenBG: { value: Color }; RedBG: { value: Color } };
+    ToastBlack: { value: Color };
     ToastPurple: { value: Color };
     ToastPurpleBG: { value: Color };
     Visa: {
@@ -126,7 +125,6 @@ export interface Colors {
 }
 
 const COLORS: Colors = {
-    HoverRed: { value: '#E55252' },
     BG: { value: '#f8f9fc' },
     Bancontact: {
         Blue: { value: '#005697' },
@@ -162,7 +160,8 @@ const COLORS: Colors = {
         T800: { value: '#612727' },
         T900: { value: '#301313' },
     },
-    Negative: { value: '#F35959' },
+    HeaderGrey: { value: '#ecedf1' },
+    HoverRed: { value: '#e55252' },
     InputText: { value: '#8f95b2' },
     Line: { value: '#e7e9f4' },
     Localize: {
@@ -192,6 +191,7 @@ const COLORS: Colors = {
     Monizze: { Grey: { value: '#4f5d5b' }, Orange: { value: '#f59100' } },
     NightbornBlue: { value: '#065aee' },
     PlaceholderBG: { value: '#e2e4f3' },
+    ProjectColors: { Pink: { value: '#df73ff' } },
     Social: { FacebookBlue: { value: '#1877f2' } },
     Sodexo: { Blue: { value: '#293896' }, Red: { value: '#ed1c24' } },
     Stripe: { Purple: { value: '#6772e5' } },
@@ -220,6 +220,7 @@ const COLORS: Colors = {
         T900: { value: '#01000b' },
     },
     Toast: { GreenBG: { value: '#eaf5ef' }, RedBG: { value: '#f5eaea' } },
+    ToastBlack: { value: '#292831' },
     ToastPurple: { value: '#6772e5' },
     ToastPurpleBG: { value: '#c2c6f4' },
     Visa: {
