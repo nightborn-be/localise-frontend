@@ -7,5 +7,5 @@ WORKDIR /app
 COPY . .
 RUN npm install
 
-EXPOSE 6006
+EXPOSE 8080
 CMD npm run start:storybook
