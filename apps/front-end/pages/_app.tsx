@@ -6,6 +6,9 @@ import { getI18nInstance } from '../../../libs/i18n/index';
 import { I18nextProvider } from 'react-i18next';
 import { AuthProvider } from '../../../libs/ui/auth';
 import App from 'next/app';
+import { Inter } from 'next/font/google';
+
+const inter = Inter({ subsets: ['latin'] });
 
 // Create query client
 const queryClient = new QueryClient({
@@ -24,15 +27,17 @@ function MyApp({ Component, pageProps }: AppProps) {
 
     // Render
     return (
-        <I18nextProvider i18n={getI18nInstance()}>
-            <QueryClientProvider client={queryClient}>
-                <AuthProvider>
-                    <ChakraProvider>
-                        <Component {...pageProps} />
-                    </ChakraProvider>
-                </AuthProvider>
-            </QueryClientProvider>
-        </I18nextProvider>
+        <main className={inter.className}>
+            <I18nextProvider i18n={getI18nInstance()}>
+                <QueryClientProvider client={queryClient}>
+                    <AuthProvider>
+                        <ChakraProvider>
+                            <Component {...pageProps} />
+                        </ChakraProvider>
+                    </AuthProvider>
+                </QueryClientProvider>
+            </I18nextProvider>
+        </main>
     );
 }
 
