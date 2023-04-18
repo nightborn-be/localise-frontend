@@ -1,7 +1,5 @@
 /* This file is auto-generated, manual edits in this file will be overwritten! */
-
 export type Color = string;
-
 export interface Colors {
     BG: { value: Color };
     Bancontact: {
@@ -98,6 +96,7 @@ export interface Colors {
         T900: { value: Color };
     };
     Toast: { GreenBG: { value: Color }; RedBG: { value: Color } };
+    ToastBlack: { value: Color };
     ToastPurple: { value: Color };
     ToastPurpleBG: { value: Color };
     Visa: {
@@ -221,6 +220,7 @@ const COLORS: Colors = {
         T900: { value: '#01000b' },
     },
     Toast: { GreenBG: { value: '#eaf5ef' }, RedBG: { value: '#f5eaea' } },
+    ToastBlack: { value: '#292831' },
     ToastPurple: { value: '#6772e5' },
     ToastPurpleBG: { value: '#c2c6f4' },
     Visa: {
