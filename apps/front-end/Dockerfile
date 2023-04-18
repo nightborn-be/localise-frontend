@@ -11,6 +11,6 @@ RUN npm run build:front-end
 
 RUN apk add --no-cache --upgrade bash
 RUN ["chmod", "+x", "./apps/front-end/entrypoint.js"]
-EXPOSE 3000
+EXPOSE 8080
 
 CMD [ "sh", "-c", "node ./apps/front-end/entrypoint.js && npm run start:front-end" ]
