@@ -22,6 +22,7 @@ export const TermEditContent = ({
     updateTranslationsForm,
     handleOnDeleteTerm,
     clearNewRowTerm,
+    toggleIsOpen,
 }: ITermEditContentProps) => {
     // Attributes
     const { t } = useTranslation();
@@ -96,6 +97,7 @@ export const TermEditContent = ({
                         onClick={() => {
                             handleOnSaveTranslations(form);
                             clearNewRowTerm();
+                            toggleIsOpen();
                         }}
                     >
                         {t<string>(

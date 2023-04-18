@@ -14,7 +14,6 @@ import { tKeys } from '../../../../../../../../i18n/keys';
 import { useTranslation } from 'react-i18next';
 import Tooltip from '../../../../../../../components/contents/tooltip';
 import { TooltipType } from '../../../../../../../components/contents/tooltip/props';
-import { Default } from '../../../../../../../components/contents/role/index.stories';
 
 export default function TableRowTerm({
     term,
@@ -109,7 +108,10 @@ export default function TableRowTerm({
                 >
                     <Tooltip
                         type={TooltipType.DEFAULT}
-                        label={'Open key page'}
+                        label={t<string>(
+                            tKeys.home.project.tab.glossary.content.table.row
+                                .expand.tooltip,
+                        )}
                         placement={'bottom'}
                     >
                         <ButtonIcon
@@ -153,6 +155,7 @@ export default function TableRowTerm({
                 clearNewRowTerm={clearNewRowTerm}
                 updateTranslationsForm={updateTranslationsForm}
                 handleOnDeleteTerm={handleOnDeleteTerm}
+                toggleIsOpen={toggleIsOpen}
             />
         </VStack>
     );

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import InputLabel from '../../../../../components/inputs/input-label/index';
 import COLORS from '../../../../../constants/colors';
 import FONTS from '../../../../../constants/fonts';
@@ -16,6 +16,7 @@ import { useTranslation } from 'react-i18next';
 import { tKeys } from '../../../../../../i18n/keys';
 import Tooltip from '../../../../../components/contents/tooltip';
 import { TooltipType } from '../../../../../components/contents/tooltip/props';
+import Text from '../../../../../components/contents/text';
 
 export const Glossary = ({
     projectTerms,
@@ -36,7 +37,6 @@ export const Glossary = ({
 }: IGlossaryProps) => {
     // Attributes
     const { tableRef } = useGlossaryLogic({ addNewRowTerm });
-
     const { t } = useTranslation();
     // Renders
     return (
@@ -84,6 +84,7 @@ export const Glossary = ({
                     {t<string>(tKeys.home.project.tab.glossary.content.export)}
                 </Button>
             </HStack>
+
             <TableTerm
                 ref={tableRef}
                 setSearchFilterValue={setSearchFilterValue}
@@ -96,7 +97,7 @@ export const Glossary = ({
                 {projectTerms?.data?.map((term, i) => {
                     return (
                         <TableRowTerm
-                            key={i}
+                            key={term.id}
                             isDisabled={true}
                             term={term}
                             activeProject={activeProject}
@@ -128,8 +129,21 @@ export const Glossary = ({
             >
                 <Tooltip
                     type={TooltipType.COMMAND}
-                    command={<Icon name='shortKey' />}
-                    label={'Add a new key'}
+                    command={
+                        <Text
+                            font={FONTS.T1.T10px.Regular400.value}
+                            color={COLORS.InputText.value}
+                        >
+                            {t<string>(
+                                tKeys.home.project.tab.glossary.content.cta.add
+                                    .tooltip.shortcut,
+                            )}
+                        </Text>
+                    }
+                    label={t<string>(
+                        tKeys.home.project.tab.glossary.content.cta.add.tooltip
+                            .value,
+                    )}
                     placement={'top'}
                     marginRight={'4.25rem'}
                     left='2.125rem'

@@ -23,7 +23,12 @@ const EditInput = ({
     // Render
     return (
         <HStack w='full'>
-            <Tooltip label={`Source language : ${translation.language.name}`}>
+            <Tooltip
+                label={`${t<string>(
+                    tKeys.home.project.tab.glossary.content.table.content.row
+                        .input.tooltip,
+                )}: ${translation.language.name}`}
+            >
                 <Button
                     pointerEvents={'none'}
                     w='2.5rem'

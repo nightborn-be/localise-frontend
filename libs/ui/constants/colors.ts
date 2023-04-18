@@ -1,7 +1,5 @@
 /* This file is auto-generated, manual edits in this file will be overwritten! */
-
 export type Color = string;
-
 export interface Colors {
     BG: { value: Color };
     Bancontact: {

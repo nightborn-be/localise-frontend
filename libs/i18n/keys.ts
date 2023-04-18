@@ -399,4 +399,167 @@ export const tKeys = {
             },
         },
     },
+    common: {
+        test: 'common.test',
+    },
+    auth: {
+        home: {
+            cta: {
+                sign_in: 'auth.home.cta.sign_in',
+                sign_up: 'auth.home.cta.sign_up',
+            },
+            tab: {
+                glossary: {
+                    title: 'home.project.tab.glossary.title',
+                    content: {
+                        title: 'home.project.tab.glossary.content.title',
+                        description:
+                            'home.project.tab.glossary.content.description',
+                        export: 'home.project.tab.glossary.content.export',
+                        table: {
+                            header: {
+                                column: {
+                                    key_name:
+                                        'home.project.tab.glossary.content.table.header.column.key_name',
+                                    source_language:
+                                        'home.project.tab.glossary.content.table.header.column.source_language',
+                                    target_language:
+                                        'home.project.tab.glossary.content.table.header.column.target_language',
+                                    param: {
+                                        search: {
+                                            placeholder:
+                                                'home.project.tab.glossary.content.table.header.column.param.search.placeholder',
+                                        },
+                                        sort: {
+                                            name: 'home.project.tab.glossary.content.table.header.column.param.sort.name',
+                                            none: 'home.project.tab.glossary.content.table.header.column.param.sort.none',
+                                            author: 'home.project.tab.glossary.content.table.header.column.param.sort.author',
+                                            date: 'home.project.tab.glossary.content.table.header.column.param.sort.date',
+                                        },
+                                        more: {
+                                            text: 'home.project.tab.glossary.content.table.header.column.param.more.text',
+                                        },
+                                    },
+                                },
+                            },
+                            content: {
+                                row: {
+                                    input: {
+                                        key: {
+                                            placeholder:
+                                                'home.project.tab.glossary.content.table.content.row.input.key.placeholder',
+                                            submit: 'home.project.tab.glossary.content.table.content.row.input.key.submit',
+                                        },
+                                        description: {
+                                            placeholder:
+                                                'home.project.tab.glossary.content.table.content.row.input.description.placeholder',
+                                            submit: 'home.project.tab.glossary.content.table.content.row.input.description.submit',
+                                        },
+                                        traduction: {
+                                            placeholder:
+                                                'home.project.tab.glossary.content.table.content.row.input.traduction.placeholder',
+                                        },
+                                        tooltip:
+                                            'home.project.tab.glossary.content.table.content.row.input.tooltip',
+                                    },
+                                    cta: {
+                                        save: 'home.project.tab.glossary.content.table.content.row.cta.save',
+                                    },
+                                },
+                            },
+                            row: {
+                                expand: {
+                                    tooltip:
+                                        'home.project.tab.glossary.content.table.row.expand.tooltip',
+                                },
+                            },
+                        },
+                        cta: {
+                            add: {
+                                tooltip: {
+                                    value: 'home.project.tab.glossary.content.cta.add.tooltip.value',
+                                    shortcut:
+                                        'home.project.tab.glossary.content.cta.add.tooltip.shortcut',
+                                },
+                            },
+                        },
+                    },
+                },
+                settings: {
+                    title: 'home.project.tab.settings.title',
+                    delete_modal: {
+                        title_header:
+                            'home.project.tab.settings.delete_modal.title_header',
+                        title: 'home.project.tab.settings.delete_modal.title',
+                        description:
+                            'home.project.tab.settings.delete_modal.description',
+                    },
+                    content: {
+                        cta: {
+                            save: 'home.project.tab.settings.content.cta.save',
+                        },
+                        target_languages: {
+                            title: 'home.project.tab.settings.content.target_languages.title',
+                            description:
+                                'home.project.tab.settings.content.target_languages.description',
+                            placeholder:
+                                'home.project.tab.settings.content.target_languages.placeholder',
+                            not_found:
+                                'home.project.tab.settings.content.target_languages.not_found',
+                        },
+                        source_language: {
+                            search: {
+                                placeholder:
+                                    'home.project.tab.settings.content.source_language.search.placeholder',
+                                not_found:
+                                    'home.project.tab.settings.content.source_language.search.not_found',
+                            },
+                            placeholder:
+                                'home.project.tab.settings.content.source_language.placeholder',
+                            title: 'home.project.tab.settings.content.source_language.title',
+                            description:
+                                'home.project.tab.settings.content.source_language.description',
+                        },
+                        project_colors: {
+                            description:
+                                'home.project.tab.settings.content.project_colors.description',
+                            title: 'home.project.tab.settings.content.project_colors.title',
+                        },
+                        informations: {
+                            description:
+                                'home.project.tab.settings.content.informations.description',
+                            title: 'home.project.tab.settings.content.informations.title',
+                            toast: {
+                                copy_message:
+                                    'home.project.tab.settings.content.informations.toast.copy_message',
+                            },
+                            project_key: {
+                                title: 'home.project.tab.settings.content.informations.project_key.title',
+                            },
+                            cta: {
+                                delete_project:
+                                    'home.project.tab.settings.content.informations.cta.delete_project',
+                            },
+                        },
+                    },
+                    menu_item: {
+                        informations:
+                            'home.project.tab.settings.menu_item.informations',
+                        project_color:
+                            'home.project.tab.settings.menu_item.project_color',
+                        source_language:
+                            'home.project.tab.settings.menu_item.source_language',
+                        target_languages:
+                            'home.project.tab.settings.menu_item.target_languages',
+                    },
+                },
+                statistics: {
+                    title: 'home.project.tab.statistics.title',
+                },
+                history: {
+                    title: 'home.project.tab.history.title',
+                },
+            },
+        },
+    },
 };
