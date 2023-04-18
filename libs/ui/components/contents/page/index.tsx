@@ -14,10 +14,19 @@ const Page = ({
     organisationUserData,
     filterProjectValue,
     setFilterProjectValue,
+    activeProject,
+    setActiveProject,
+    setCurrentStatePage,
 }: PageProps) => {
     // Render
     return (
-        <HStack justify={'center'} w='100%' h='100vh' spacing={'0'}>
+        <HStack
+            justify={'center'}
+            w='100%'
+            h='100vh'
+            overflowY='hidden'
+            spacing={'0'}
+        >
             {displaySidebar &&
                 handleOnCreateProject &&
                 handleOnCreateOrganisation &&
@@ -33,6 +42,9 @@ const Page = ({
                         organisationProjectData={organisationProjectData}
                         filterProjectValue={filterProjectValue}
                         setFilterProjectValue={setFilterProjectValue}
+                        activeProject={activeProject}
+                        setActiveProject={setActiveProject}
+                        setCurrentStatePage={setCurrentStatePage}
                     />
                 )}
             <VStack

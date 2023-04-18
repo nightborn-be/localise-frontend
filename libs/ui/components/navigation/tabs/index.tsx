@@ -1,62 +1,75 @@
-import { Box, Flex, Stack } from '@chakra-ui/react';
-import React, { Children, ReactElement, ReactNode } from 'react';
+import { HStack, VStack } from '@chakra-ui/react';
+import React, { Children, ReactElement } from 'react';
 import COLORS from '../../../constants/colors';
-import ITabsProps from './props';
 import { ITabProps } from './tab/props';
+import { ITabsProps } from './props';
+import TabTitle from './tab-title';
 
-const Tabs = ({ children, activeKey, onChange }: ITabsProps): JSX.Element => {
+const Tabs = ({ children, activeKey, onChange }: ITabsProps) => {
     // Render
-    const renderTabs = (): ReactNode => {
+    function renderTabs() {
         return Children.map(
             children,
-            (child: ReactElement<ITabProps>, index) => {
+            (child: ReactElement<ITabProps> | undefined | false, index) => {
                 if (!child) return;
-                const key = index as React.Key;
+                const key = child.key ?? (index as React.Key);
 
-                return React.cloneElement(child, {
-                    key,
-                    isActive: key === activeKey,
-                    onSelect: () => onChange?.(key),
-                    children: child.props.title,
+                return React.createElement(() => {
+                    return (
+                        <TabTitle
+                            key={key}
+                            active={`${key}` === `${activeKey ?? ''}`}
+                            onSelect={() => onChange?.(key)}
+                            title={child.props.title}
+                        />
+                    );
                 });
             },
         );
-    };
+    }
 
-    const renderPanels = (): ReactNode => {
+    function renderPanels() {
         return Children.map(
             children,
-            (child: ReactElement<ITabProps>, index) => {
+            (child: ReactElement<ITabProps> | undefined | false, index) => {
                 if (!child) return;
 
-                const key = index as React.Key;
-                const isActive = key === activeKey;
+                const key = child.key ?? (index as React.Key);
+                const isActive = `${key}` === `${activeKey ?? ''}`;
 
                 if (!isActive) return;
 
-                return <Box key={`panel_${key}`}>{child}</Box>;
+                return child;
             },
         );
-    };
+    }
 
     return (
-        <Flex direction='column'>
+        <VStack
+            flex={1}
+            flexGrow={1}
+            w='full'
+            h='full'
+            align='flex-start'
+            spacing='0'
+        >
             {/* Tab bar */}
-            <Stack
+            <HStack
                 py={'0.6563rem'}
                 px={'2rem'}
                 direction='row'
                 spacing={'1.5rem'}
                 align='center'
-                w='100%'
+                w='full'
+                h='2.25rem'
                 bg={COLORS.Tag.value}
             >
                 {renderTabs()}
-            </Stack>
+            </HStack>
 
             {/* Content */}
             {renderPanels()}
-        </Flex>
+        </VStack>
     );
 };
 

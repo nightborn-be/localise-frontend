@@ -5,8 +5,10 @@ import { ICreateOrganisationForm } from 'ui/components/sidebar/create-organisati
 import {
     OrganisationDTO,
     OrgnanisationPagingDTO,
+    ProjectDTO,
     ProjectPagingDTO,
 } from 'gateways/resource-api/types';
+import { HomeContentState } from 'ui/pages/types';
 
 export interface PageProps {
     children: ReactNode | ReactNode[];
@@ -30,4 +32,7 @@ export interface PageProps {
     organisationUserData?: OrgnanisationPagingDTO;
     setFilterProjectValue?: (value: string) => void;
     filterProjectValue?: string;
+    activeProject: ProjectDTO;
+    setActiveProject: (value: ProjectDTO) => void;
+    setCurrentStatePage: (value: HomeContentState) => void;
 }

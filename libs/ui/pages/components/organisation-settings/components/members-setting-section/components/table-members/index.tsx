@@ -12,7 +12,11 @@ const TableMembers = () => {
             padding='0rem 2rem 2rem 1.25rem'
             spacing={0}
         >
-            <TableHeader />
+            <TableHeader
+                firstColTitle='First name'
+                secondColTitle='Name'
+                thirdColTitle='Role'
+            />
             <VStack spacing='0.5rem'>
                 <TableRow
                     avatarPicture='/assets/images/avatar.png'

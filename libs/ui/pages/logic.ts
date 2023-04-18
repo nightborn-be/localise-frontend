@@ -20,21 +20,52 @@ import {
 import useToast from '../../ui/components/progress-validation/toast';
 import { ToastType } from '../components/progress-validation/toast/types';
 import { IOrganisationSettingsForm } from './components/organisation-settings/types';
-import { tKeys } from 'i18n/keys';
-import { OrganisationDTO } from 'gateways/resource-api/types';
+import {
+    OrganisationDTO,
+    ProjectDTO,
+    TermDTO,
+} from 'gateways/resource-api/types';
 import { useState } from 'react';
+import { tKeys } from '../../i18n/keys';
+import {
+    useCreateTerm,
+    useDeleteTerm,
+    useGetTerms,
+    useUpdateTerm,
+} from '../../gateways/resource-api/terms/terms';
+import { useSaveTranslation } from '../../gateways/resource-api/translations/translations';
+import { IEditInputForm } from './components/project/components/glossary/components/table-row-term/components/edit-input/types';
+import { ITableRowTermForm } from './components/project/components/glossary/components/table-row-term/types';
+import { toUpdateTermDTO } from './components/project/components/glossary/components/table-row-term/mappers';
+import { HomeContentState } from './types';
+import { AxiosError } from 'axios';
 
 export const useHomeLogic = () => {
     // Attributes
+    const [currentStatePage, setCurrentStatePage] =
+        useState<HomeContentState>();
     const toast = useToast();
     const { t } = useTranslation();
     const [filterProjectValue, setFilterProjectValue] = useState<string>('');
+    const [searchFilterValue, setSearchFilterValue] = useState<string>('');
+    const [sortValue, setSortValue] = useState<string>('');
+    const [isDetectDuplicate, setIsDetectDuplicate] = useState<boolean>(false);
+    const [activeProject, setActiveProject] = useState<ProjectDTO>({});
+    const [activeTerm, setActiveTerm] = useState<string>('');
+    const [newRowTerm, setNewRowTerm] = useState<TermDTO[]>([]);
+
     // Hooks
     const { mutateAsync: createProject } = useCreateProject();
+    const { mutateAsync: createTerm } = useCreateTerm();
+    const { mutateAsync: updateTerm } = useUpdateTerm();
+    const { mutateAsync: deleteTerm } = useDeleteTerm();
+    const { mutateAsync: saveTranslation } = useSaveTranslation();
     const { mutateAsync: createOrganisation } = useCreateOrganisation();
     const { mutateAsync: deleteOrganisation } = useDeleteOrganisation();
-    const { mutateAsync: updateOrganisation, isLoading: isLoadingUpdateOrganisation } =
-        useUpdateOrganisation();
+    const {
+        mutateAsync: updateOrganisation,
+        isLoading: isLoadingUpdateOrganisation,
+    } = useUpdateOrganisation();
     const { mutateAsync: switchUserOrganisation } = useSwitchUserOrganisation();
     const { data: userData, refetch: refetchUserData } = useGetMe();
     const {
@@ -50,6 +81,11 @@ export const useHomeLogic = () => {
     } = useGetProjects(actualOrganisationUser?.id as string, {
         q: filterProjectValue,
     });
+
+    const { data: projectTerms, refetch: refetchProjectTerms } = useGetTerms(
+        activeProject.id as string,
+        { q: searchFilterValue },
+    );
 
     // Functions
     async function handleOnCreateProject(
@@ -86,7 +122,7 @@ export const useHomeLogic = () => {
                     },
                 },
             );
-        } catch (e) { }
+        } catch (e) {}
     }
 
     async function handleOnCreateOrganisation(
@@ -118,7 +154,7 @@ export const useHomeLogic = () => {
                     },
                 },
             );
-        } catch (err) { }
+        } catch (err) {}
     }
     async function handleOnDeleteOrganisation() {
         try {
@@ -151,7 +187,9 @@ export const useHomeLogic = () => {
         }
     }
 
-    async function handleUpdateOrganisation(form: IForm<IOrganisationSettingsForm> & IDefaultForm) {
+    async function handleUpdateOrganisation(
+        form: IForm<IOrganisationSettingsForm> & IDefaultForm,
+    ) {
         try {
             await updateOrganisation(
                 {
@@ -159,9 +197,11 @@ export const useHomeLogic = () => {
 
                     data: {
                         name: form.organisationName.value,
-                        pictureContent: form.organisationPicture && Buffer.from(
-                            form.organisationPicture?.value as ArrayBuffer,
-                        ).toString('base64'),
+                        pictureContent:
+                            form.organisationPicture &&
+                            Buffer.from(
+                                form.organisationPicture?.value as ArrayBuffer,
+                            ).toString('base64'),
                     },
                 },
                 {
@@ -178,8 +218,7 @@ export const useHomeLogic = () => {
                         toast({
                             type: ToastType.SUCCESS,
                             title: t<string>(
-                                tKeys.home.organisation_settings.success
-                                    .save,
+                                tKeys.home.organisation_settings.success.save,
                             ),
                             delay: 3000,
                         });
@@ -191,15 +230,16 @@ export const useHomeLogic = () => {
         } catch (e) {
             toast({
                 type: ToastType.ERROR,
-                title: t<string>(
-                    tKeys.home.organisation_settings.error.save,
-                ),
+                title: t<string>(tKeys.home.organisation_settings.error.save),
                 delay: 4000,
             });
         }
     }
 
-    function handleSwitchOrgansiation(organisation: OrganisationDTO, setIsOrganisationClicked: (value: boolean) => void) {
+    function handleSwitchOrgansiation(
+        organisation: OrganisationDTO,
+        setIsOrganisationClicked: (value: boolean) => void,
+    ) {
         switchUserOrganisation(
             {
                 userId: userData?.userId as string,
@@ -214,7 +254,116 @@ export const useHomeLogic = () => {
         );
     }
 
+    async function handleOnDeleteTerm(projectId: string, termId: string) {
+        try {
+            await deleteTerm(
+                { projectId: projectId, termId: termId },
+                {
+                    onSuccess: () => {
+                        refetchProjectTerms();
+                    },
+                },
+            );
+        } catch (error) {
+            const err = error as AxiosError;
+            toast({
+                type: ToastType.ERROR,
+                title: err.response?.data as string,
+                delay: 5000,
+            });
+        }
+    }
 
+    // Need to do when the backend has implemented the missing things
+    function handleOnCreateTerm(projectId: string) {
+        // const term = createTerm({ projectId: projectId, data: { name: "Insert key", description: "" } })
+    }
+
+    async function callCreateTerm(
+        form: IForm<ITableRowTermForm> & IDefaultForm,
+    ) {
+        try {
+            await createTerm(
+                {
+                    projectId: form.projectId.value,
+                    data: {
+                        name: form.key.value,
+                        description: form.description.value,
+                    },
+                },
+                {
+                    onSuccess: () => {
+                        refetchProjectTerms();
+                    },
+                },
+            );
+        } catch (error) {
+            const err = error as AxiosError;
+            toast({
+                type: ToastType.ERROR,
+                title: err.response?.data as string,
+                delay: 5000,
+            });
+        }
+    }
+    async function callUpdateTerm(
+        form: IForm<ITableRowTermForm> & IDefaultForm,
+    ) {
+        try {
+            await updateTerm({
+                projectId: form.projectId.value,
+                termId: form.termId.value,
+                data: toUpdateTermDTO(form.key.value, form.description.value),
+            });
+        } catch (error) {
+            const err = error as AxiosError;
+            toast({
+                type: ToastType.ERROR,
+                title: err.response?.data as string,
+                delay: 5000,
+            });
+        }
+    }
+    async function callSaveTranslations(
+        form: IForm<ITableRowTermForm> & IDefaultForm,
+    ) {
+        for (const translate in form.translations.value) {
+            const element = form.translations.value[
+                translate
+            ] as IEditInputForm;
+            try {
+                await saveTranslation({
+                    termId: element.termId,
+                    languageId: element.languageId,
+                    data: { translation: element.translation },
+                });
+            } catch (error) {
+                const err = error as AxiosError;
+                toast({
+                    type: ToastType.ERROR,
+                    title: err.response?.data as string,
+                    delay: 5000,
+                });
+            }
+        }
+    }
+    async function handleOnSaveTranslations(
+        form: IForm<ITableRowTermForm> & IDefaultForm,
+    ) {
+        if (form.termId.value === undefined) {
+            callCreateTerm(form);
+        } else {
+            callUpdateTerm(form);
+            callSaveTranslations(form);
+        }
+    }
+
+    function clearNewRowTerm() {
+        setNewRowTerm([]);
+    }
+    function addNewRowTerm(term: TermDTO) {
+        setNewRowTerm((prev) => [...prev, term]);
+    }
     return {
         handleOnCreateProject,
         handleOnCreateOrganisation,
@@ -227,5 +376,23 @@ export const useHomeLogic = () => {
         organisationUserData,
         filterProjectValue,
         setFilterProjectValue,
+        projectTerms,
+        activeProject,
+        setActiveProject,
+        handleOnSaveTranslations,
+        handleOnCreateTerm,
+        handleOnDeleteTerm,
+        setSearchFilterValue,
+        searchFilterValue,
+        sortValue,
+        setSortValue,
+        isDetectDuplicate,
+        setIsDetectDuplicate,
+        currentStatePage,
+        setCurrentStatePage,
+        newRowTerm,
+        setNewRowTerm,
+        clearNewRowTerm,
+        addNewRowTerm,
     };
 };

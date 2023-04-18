@@ -48,6 +48,9 @@ export default function Input<T>({
     errorMsg,
     isTouched,
     rightElementMarginRight,
+    onFocus,
+    onBlur,
+    isDisabled,
     ...props
 }: IInputProps<T>) {
     //Attributes
@@ -90,6 +93,8 @@ export default function Input<T>({
                 spacing='0.5rem'
                 h={h}
                 w={w}
+                maxH={h}
+                minH={h}
                 maxWidth={maxWidth}
                 alignItems={alignItems}
                 zIndex={zIndex}
@@ -110,9 +115,18 @@ export default function Input<T>({
                     onFocus={handleToggleVisibility}
                     onBlur={handleToggleVisibility}
                     outlineOffset='0'
+                    borderRadius={'8px'}
+                    h={h}
+                    minH={h}
+                    maxH={h}
                 >
                     <ChakraInput
+                        disabled={isDisabled}
+                        _disabled={{ color: color, ...font }}
                         padding={padding}
+                        h={h}
+                        minH={h}
+                        maxH={h}
                         gap={gap}
                         value={value}
                         onChange={(e) => {
@@ -135,6 +149,8 @@ export default function Input<T>({
                         _hover={{
                             border: borderCondition,
                         }}
+                        onFocus={onFocus}
+                        onBlur={onBlur}
                         color={color}
                         fontFamily={font?.fontFamily}
                         fontSize={font?.fontSize}
@@ -155,6 +171,9 @@ export default function Input<T>({
                         visibility={visibility}
                         mr={rightElementMarginRight}
                         w='fit-content'
+                        h={h}
+                        minH={h}
+                        maxH={h}
                     >
                         {rightElement}
 

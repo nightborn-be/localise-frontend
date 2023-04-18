@@ -1,5 +1,5 @@
 import { Box, HStack, Image, useDisclosure, VStack } from '@chakra-ui/react';
-import React from 'react';
+import React, { useEffect } from 'react';
 import COLORS from '../../constants/colors';
 import FONTS from '../../constants/fonts';
 import Icon from '../contents/icon';
@@ -16,6 +16,7 @@ import CreateProjectModal from './create-project-modal/index';
 import CreateOrganisationModal from './create-organisation-modal';
 import { ISideBarContentProps } from './props';
 import { getInitialeName } from 'utils/functions';
+import { HomeContentState } from 'ui/pages/types';
 
 export const SideBar = ({
     handleOnCreateProject,
@@ -26,6 +27,9 @@ export const SideBar = ({
     actualOrganisationUser,
     setFilterProjectValue,
     filterProjectValue,
+    activeProject,
+    setActiveProject,
+    setCurrentStatePage,
 }: ISideBarContentProps) => {
     const {
         handleToggleIsOrganisationClicked,
@@ -147,13 +151,22 @@ export const SideBar = ({
                     padding='0.375rem 0.5rem 1.25rem'
                     spacing='0.375rem'
                     height={'full'}
-                    overflowY={'scroll'}
+                    overflowX={'scroll'}
                     borderRight={`0.0625rem solid ${COLORS.Line.value}`}
                 >
                     {options?.map((option, index) => {
                         return (
                             <SidebarProject
-                                onClick={handleOnProjectClick}
+                                onClick={() => {
+                                    setActiveProject({
+                                        id: option.value,
+                                        name: option.label,
+                                    });
+                                    setCurrentStatePage(
+                                        HomeContentState.PROJECTS,
+                                    );
+                                    handleOnProjectClick(option.label);
+                                }}
                                 activeKey={activeProjectKey}
                                 text={option.label}
                                 key={option.value}
@@ -196,7 +209,11 @@ export const SideBar = ({
                         )}
                         spacing={'0.75rem'}
                         padding={'0.75rem'}
-                        onClick={() => {}}
+                        onClick={() => {
+                            setCurrentStatePage(
+                                HomeContentState.ORGANISATION_SETTINGS,
+                            );
+                        }}
                     >
                         Organisation settings
                     </Button>

@@ -17,7 +17,7 @@ const Template: ComponentStory<typeof Input> = (props: ITableHeaderProps) => (
 export const TableHeaderDefault = Template.bind({});
 TableHeaderDefault.args = {
     avatarPicture: '/assets/images/avatar.png',
-    firstName: 'First name',
-    lastName: 'Last name',
-    role: 'Admin',
+    firstColTitle: 'First name',
+    secondColTitle: 'Name',
+    thirdColTitle: 'Role',
 };

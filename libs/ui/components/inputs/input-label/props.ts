@@ -10,4 +10,5 @@ export interface IInputLabelProps {
     descriptionFont?: Font;
     descriptionColor?: string;
     spacing?: string;
+    maxWidth?: string;
 }

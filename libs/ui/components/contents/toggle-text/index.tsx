@@ -28,6 +28,7 @@ const ToggleText = ({
             gap={gap}
             borderRadius={borderRadius}
             boxShadow={boxShadow}
+            bg={COLORS.White.T500.value}
         >
             <HStack
                 w='11rem'
