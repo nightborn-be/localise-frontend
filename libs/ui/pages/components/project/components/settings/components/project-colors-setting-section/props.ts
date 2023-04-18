@@ -1,4 +1,3 @@
-
 export interface IProjectColorsSettingSectionProps {
     projectColorsRef?: React.RefObject<HTMLDivElement>;
     currentSelectedColor: string;

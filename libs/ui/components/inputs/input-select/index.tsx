@@ -1,8 +1,8 @@
 import React from 'react';
 import { VStack } from '@chakra-ui/react';
-import Select from 'react-select';
+import Select, { MultiValue, SingleValue } from 'react-select';
 import COLORS from '../../../constants/colors';
-import { IInputSelectProps } from './props';
+import { IInputSelectProps, Options } from './props';
 import InputLabel from '../input-label';
 import { getSelectStyle } from './style';
 import Option from './input-select-option';
@@ -39,7 +39,7 @@ const InputSelect = ({
     menuRightOption,
     menuLeftOption,
     selectMarginLeft,
-    isMultiple = false,
+    isMultiple,
     font,
     paddingContainer,
     onChange,
@@ -61,7 +61,7 @@ const InputSelect = ({
                     isClearable={false}
                     options={options}
                     placeholder={placeholder}
-                    onChange={onChange}
+                    onChange={(v, a) => onChange?.(v as any, a)}
                     styles={{
                         ...getSelectStyle(
                             isValid,
@@ -102,7 +102,7 @@ const InputSelect = ({
                             );
                         },
                         Option: (props) => (
-                            <Option props={props} isMultiple={isMultiple} />
+                            <Option props={props} isMultiple={!!isMultiple} />
                         ),
                     }}
                 />

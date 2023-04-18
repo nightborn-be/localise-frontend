@@ -22,10 +22,12 @@ const useSettingsLogic = ({
     const [filterValue, setFilterValue] = useState<string>('');
     const [activeKeys, setActiveKeys] = useState<string[]>([]);
     const [value, setValue] = useState<string>('');
-    const optionsSourceLanguage: SearchBarOption<string>[] = languages.map((language) => ({
-        value: language.name,
-        label: language.name,
-    }));
+    const optionsSourceLanguage: SearchBarOption<string>[] = languages.map(
+        (language) => ({
+            value: language.name,
+            label: language.name,
+        }),
+    );
     const optionsSearchBox: SearchBarOption<string>[] = languages.map(
         (language) => ({
             value: language.name,
@@ -95,7 +97,7 @@ const useSettingsLogic = ({
         projectColorRef,
         sourceLanguageRef,
         targetLanguagesRef,
-        optionsSourceLanguage
+        optionsSourceLanguage,
     };
 };
 

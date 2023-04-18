@@ -4,6 +4,8 @@ import FONTS from '../../../constants/fonts';
 import { HStack } from '@chakra-ui/react';
 import InputSelect from '../../inputs/input-select';
 import COLORS from '../../../constants/colors';
+import { Options } from '../../inputs/input-select/props';
+import { SingleValue } from 'react-select';
 const Role = ({ selectedValue, setSelectedValue }: IRoleProps) => {
     // Functions
     function getColor() {
@@ -54,7 +56,9 @@ const Role = ({ selectedValue, setSelectedValue }: IRoleProps) => {
                     dropdownIndicator={undefined}
                     placeholder='Admin'
                     menuOptionWidth='200px'
-                    onChange={(event) => setSelectedValue(event.value)}
+                    onChange={(event: SingleValue<Options>) =>
+                        setSelectedValue(event?.value ?? '')
+                    }
                 />
             </HStack>
         </>

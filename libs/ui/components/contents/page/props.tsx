@@ -32,7 +32,7 @@ export interface PageProps {
     organisationUserData?: OrgnanisationPagingDTO;
     setFilterProjectValue?: (value: string) => void;
     filterProjectValue?: string;
-    activeProject: ProjectDTO;
-    setActiveProject: (value: ProjectDTO) => void;
-    setCurrentStatePage: (value: HomeContentState) => void;
+    activeProject?: ProjectDTO;
+    setActiveProject?: (value: ProjectDTO) => void;
+    setCurrentStatePage?: (value: HomeContentState) => void;
 }

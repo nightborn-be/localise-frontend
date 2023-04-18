@@ -9,5 +9,5 @@ export interface ISearchBarSelectSettingSectionProps {
     form: IForm<IUpdateProjectForm> & IDefaultForm;
     sourceLanguageActiveKey?: string;
     setSourceLanguageActiveKey: (value: string) => void;
-    optionsSourceLanguage: SearchBarOption<string>[]
+    optionsSourceLanguage: SearchBarOption<string>[];
 }

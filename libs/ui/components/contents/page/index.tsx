@@ -31,6 +31,9 @@ const Page = ({
                 handleOnCreateProject &&
                 handleOnCreateOrganisation &&
                 handleSwitchOrgansiation &&
+                activeProject &&
+                setActiveProject &&
+                setCurrentStatePage &&
                 filterProjectValue != undefined &&
                 setFilterProjectValue && (
                     <SideBar
