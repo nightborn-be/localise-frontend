@@ -11,11 +11,11 @@ export default {
 const Template: ComponentStory<
     typeof SidebarMenuSetting<MenuItemValue>
 > = ({}: ISidebarMenuSettingProps<MenuItemValue>) => {
-    const [activeKey, setActiveKey] = useState(MenuItemValue.INFORMATION);
+    const [activeKey, setActiveKey] = useState(MenuItemValue.INFORMATIONS);
     return (
         <SidebarMenuSetting
             options={[
-                { title: 'Information', value: MenuItemValue.INFORMATION },
+                { title: 'Informations', value: MenuItemValue.INFORMATIONS },
                 { title: 'Projet color', value: MenuItemValue.PROJET_COLOR },
                 {
                     title: 'Source language',

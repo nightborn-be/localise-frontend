@@ -22,7 +22,7 @@ import SortName from './sort-name';
 import Checked from './checked';
 import Edit from './edit';
 import CheckedColor from './checked-color';
-import DropdownIndicator from './dropdownIndicator';
+import DropdownIndicator from './dropdownindicator';
 import CheckboxOn from './checkboxOn';
 import CheckboxOff from './checkboxOff';
 import { ProjectLine } from './projectLine';

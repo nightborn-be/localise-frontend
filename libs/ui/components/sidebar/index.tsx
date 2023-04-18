@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Box, HStack, Image, useDisclosure, VStack } from '@chakra-ui/react';
 import React from 'react';
 import COLORS from '../../constants/colors';
@@ -15,30 +14,29 @@ import OrganizationMenu from '../contents/organisation-menu';
 import { useSidebarLogic } from './logic';
 import CreateProjectModal from './create-project-modal/index';
 import CreateOrganisationModal from './create-organisation-modal';
+import { ISideBarContentProps } from './props';
+import { getInitialeName } from 'utils/functions';
 
-export const SideBar = () => {
-    const [filterValue, setFilterValue] = useState<string>('');
+export const SideBar = ({
+    handleOnCreateProject,
+    handleOnCreateOrganisation,
+    handleSwitchOrgansiation,
+    organisationProjectData,
+    organisationUserData,
+    actualOrganisationUser,
+    setFilterProjectValue,
+    filterProjectValue,
+}: ISideBarContentProps) => {
     const {
-        handleOnCreateOrganizationClick,
         handleToggleIsOrganisationClicked,
-        filter,
         handleOnProjectClick,
         handleOnOptionClick,
-        activeOrganizationKey,
-        setActiveOrganizationKey,
-        organizationValue,
-        setOrganizationValue,
         isOrganisationClicked,
-        setIsOrganisationClicked,
-        optionsOrganisation,
-        organisationUserData,
         activeProjectKey,
-        setActiveProjectKey,
         options,
-        projectsData,
         activeOptionKey,
-        setActiveOptionKey,
-    } = useSidebarLogic();
+        setIsOrganisationClicked,
+    } = useSidebarLogic({ organisationProjectData });
 
     const { isOpen, onOpen, onClose } = useDisclosure();
     const createOrganisationModal = useDisclosure();
@@ -137,8 +135,10 @@ export const SideBar = () => {
                         placeholder={'Search for a project...'}
                         placeholderColor={COLORS.InputText.value}
                         borderRadius={'0.375rem'}
-                        value={filterValue}
-                        onChange={(event) => setFilterValue(event.target.value)}
+                        value={filterProjectValue}
+                        onChange={(event) =>
+                            setFilterProjectValue(event.target.value)
+                        }
                         displayModal={false}
                     />
                 </HStack>
@@ -150,13 +150,13 @@ export const SideBar = () => {
                     overflowY={'scroll'}
                     borderRight={`0.0625rem solid ${COLORS.Line.value}`}
                 >
-                    {filter(filterValue)?.map((option, index) => {
+                    {options?.map((option, index) => {
                         return (
                             <SidebarProject
                                 onClick={handleOnProjectClick}
                                 activeKey={activeProjectKey}
-                                text={option.value}
-                                key={index}
+                                text={option.label}
+                                key={option.value}
                                 textFont={FONTS.T1.T12px.Medium500.value}
                                 textColor={COLORS.Text.T400.value}
                                 projectIconColor='#1ABC9C'
@@ -213,15 +213,21 @@ export const SideBar = () => {
                         bottom='4.75rem'
                         left='0.5rem'
                     >
-                        <OrganizationMenu
-                            options={optionsOrganisation}
-                            value={activeOrganizationKey}
-                            onChange={(organizationValue) => {
-                                setActiveOrganizationKey(organizationValue);
-                            }}
-                            onClick={createOrganisationModal.onOpen}
-                        />
+                        {organisationUserData?.data && (
+                            <OrganizationMenu
+                                options={organisationUserData.data}
+                                value={actualOrganisationUser}
+                                onChange={(organizationValue) => {
+                                    handleSwitchOrgansiation(
+                                        organizationValue,
+                                        setIsOrganisationClicked,
+                                    );
+                                }}
+                                onClick={createOrganisationModal.onOpen}
+                            />
+                        )}
                     </Box>
+
                     <SidebarOrganisation
                         w={'14.25rem'}
                         h={'3.25rem'}
@@ -229,49 +235,44 @@ export const SideBar = () => {
                         topText={'Organisation'}
                         topTextFont={FONTS.T1.T10px.Regular400.value}
                         topTextColor={COLORS.InputText.value}
-                        bottomText={
-                            optionsOrganisation.find(
-                                (obj: any) =>
-                                    obj.value === activeOrganizationKey,
-                            )?.title
-                        }
+                        bottomText={actualOrganisationUser?.name ?? ''}
                         bottomTextFont={FONTS.T1.T12px.Medium500.value}
                         bottomTextColor={COLORS.Text.T400.value}
                         marginLeftText={'0.5rem'}
                         onClick={handleToggleIsOrganisationClicked}
-                        color={
-                            optionsOrganisation.find(
-                                (obj: any) =>
-                                    obj.value === activeOrganizationKey,
-                            )?.color
-                        }
+                        color={COLORS.Line.value}
                         startEnhancer={
-                            optionsOrganisation.find(
-                                (obj: any) =>
-                                    obj.value === activeOrganizationKey,
-                            )?.imageUrl ? (
+                            actualOrganisationUser?.pictureUrl ? (
                                 <Image
                                     w={'2rem'}
                                     h={'2rem'}
-                                    src={
-                                        optionsOrganisation.find(
-                                            (obj: any) =>
-                                                obj.value ===
-                                                activeOrganizationKey,
-                                        )?.imageUrl
-                                    }
+                                    src={actualOrganisationUser.pictureUrl}
                                     alt='nightborn'
                                 />
-                            ) : undefined
+                            ) : (
+                                <Text
+                                    font={FONTS.T1.T12px.Medium500.value}
+                                    color={COLORS.Text.T400.value}
+                                >
+                                    {getInitialeName(
+                                        actualOrganisationUser?.name ?? '',
+                                    )}
+                                </Text>
+                            )
                         }
                         endEnhancer={<Icon name='editorialArrow' />}
                     />
                 </VStack>
             </VStack>
-            <CreateProjectModal isOpen={isOpen} onClose={onClose} />
+            <CreateProjectModal
+                isOpen={isOpen}
+                onClose={onClose}
+                handleOnSubmit={handleOnCreateProject}
+            />
             <CreateOrganisationModal
                 isOpen={createOrganisationModal.isOpen}
                 onClose={createOrganisationModal.onClose}
+                handleOnSubmit={handleOnCreateOrganisation}
             />
         </>
     );

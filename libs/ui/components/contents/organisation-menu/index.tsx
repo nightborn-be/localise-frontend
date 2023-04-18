@@ -29,13 +29,12 @@ export default function OrganisationMenu<T>({
         >
             {options.map((option, index) => (
                 <OrganisationMenuItem
-                    title={option.title}
+                    title={option.name}
                     key={index}
-                    color={option.color}
-                    description={option.description}
-                    isActive={value === option.value}
-                    imageUrl={option.imageUrl}
-                    onSelect={() => onChange?.(option.value)}
+                    // description={option.description}
+                    isActive={value?.id === option.id}
+                    imageUrl={option.pictureUrl ?? undefined}
+                    onSelect={() => onChange?.(option)}
                 />
             ))}
             <Button

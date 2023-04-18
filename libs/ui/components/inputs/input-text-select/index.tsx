@@ -107,7 +107,7 @@ export default function InputSelectAndInput<T>({
                             opacity: isHovered ? 1 : 0,
                             zIndex: 20,
                         }}
-                        transition={{ ease: 'easeOut', duration: 0.5 }}
+                        transition={{ ease: 'easeOut', duration: 0.2 }}
                     >
                         <ButtonIcon
                             borderRadius='0.375rem'

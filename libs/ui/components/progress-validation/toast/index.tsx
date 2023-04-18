@@ -36,14 +36,18 @@ const Toast = ({ type, title, description, onClose }: IToastProps) => {
         let secondaryColor: string;
 
         switch (type) {
-            case ToastType.SUCCESS: {
-                primaryColor = COLORS.Success.T500.value;
-                secondaryColor = COLORS.Toast.GreenBG.value;
-            }
-            case ToastType.ERROR: {
-                primaryColor = COLORS.Error.T500.value;
-                secondaryColor = COLORS.Toast.RedBG.value;
-            }
+            case ToastType.SUCCESS:
+                {
+                    primaryColor = COLORS.Success.T500.value;
+                    secondaryColor = COLORS.Toast.GreenBG.value;
+                }
+                break;
+            case ToastType.ERROR:
+                {
+                    primaryColor = COLORS.Error.T500.value;
+                    secondaryColor = COLORS.Toast.RedBG.value;
+                }
+                break;
         }
 
         return [primaryColor, secondaryColor];

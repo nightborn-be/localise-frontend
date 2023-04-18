@@ -9,4 +9,5 @@ export interface IInputLabelProps {
     labelColor?: string;
     descriptionFont?: Font;
     descriptionColor?: string;
+    spacing?: string;
 }

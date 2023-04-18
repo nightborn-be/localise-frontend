@@ -4,7 +4,6 @@ import FONTS from '../../../constants/fonts';
 import { HStack } from '@chakra-ui/react';
 import InputSelect from '../../inputs/input-select';
 import COLORS from '../../../constants/colors';
-
 const Role = ({ selectedValue, setSelectedValue }: IRoleProps) => {
     // Functions
     function getColor() {

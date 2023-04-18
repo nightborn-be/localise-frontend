@@ -10,6 +10,8 @@ import { usePictureLogic } from './logic';
 import Dropzone from './component/dropzone';
 import { useTranslation } from 'react-i18next';
 import { tKeys } from '../../../../../../i18n/keys';
+import Button from '../../../../../components/inputs/button';
+import FONTS from '../../../../../constants/fonts';
 
 const OrganisationPicturePage = () => {
     // Attributes
@@ -17,7 +19,7 @@ const OrganisationPicturePage = () => {
         handleOnContinue,
         handleOnLater,
         picturePath,
-        setPicturePath,
+        onDrag,
         onDeletePicture,
     } = usePictureLogic();
     const { t } = useTranslation();
@@ -33,7 +35,7 @@ const OrganisationPicturePage = () => {
                     title={t<string>(
                         tKeys.auth.sign_up.organisation.picture.title,
                     )}
-                    handleOnContinue={() => handleOnContinue(picturePath)}
+                    handleOnContinue={() => handleOnContinue('')}
                     handleOnLater={handleOnLater}
                     isLater={true}
                     w='27.375rem'
@@ -77,13 +79,35 @@ const OrganisationPicturePage = () => {
                             />
                         </HStack>
                     ) : (
-                        <Dropzone
-                            onDrag={setPicturePath}
-                            label={t<string>(
-                                tKeys.auth.sign_up.organisation.form.picture
-                                    .label,
-                            )}
-                        />
+                        <Dropzone onDrag={onDrag}>
+                            <Button
+                                border={`0.125rem dashed ${COLORS.InputText.value}`}
+                                font={FONTS.T1.T12px.Medium500.value}
+                                borderRadius='1rem'
+                                w='6.25rem'
+                                h='6.25rem'
+                                maxH='6.25rem'
+                                maxW='6.25rem'
+                                direction='column'
+                                backgroundColor='transparent'
+                                color={COLORS.InputText.value}
+                                whiteSpace='pre-line'
+                                spacing='0.4375rem'
+                                startEnhancer={(): React.ReactElement => (
+                                    <Icon
+                                        name='uploadCloud'
+                                        stroke={COLORS.InputText.value}
+                                        width='24'
+                                        height='24'
+                                    />
+                                )}
+                            >
+                                {t<string>(
+                                    tKeys.auth.sign_up.organisation.form.picture
+                                        .label,
+                                )}
+                            </Button>
+                        </Dropzone>
                     )}
                 </ContentSignIn>
             </HStack>

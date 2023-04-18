@@ -30,14 +30,15 @@ const SidebarOrganisation = ({
             onClick={onClick}
         >
             <HStack w='full' h='2rem'>
-                <Box
+                <HStack
                     borderRadius='0.5rem'
-                    bg={!startEnhancer ? color : 'transparent'}
+                    justifyContent='center'
+                    bg={color}
                     w={'2rem'}
                     h={'2rem'}
                 >
                     {startEnhancer}
-                </Box>
+                </HStack>
                 <VStack spacing={'0rem'} alignItems='left'>
                     {topText && (
                         <Text font={topTextFont} color={topTextColor}>

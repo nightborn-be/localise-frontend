@@ -14,6 +14,15 @@ export const OrganisationMenuItem = ({
     color,
     onSelect,
 }: IOrganisationMenuItemProps) => {
+    // Function
+    function getInitialeName() {
+        const arraySplit = title?.split(' ');
+        let inital = '';
+        arraySplit?.map((obj) => {
+            inital += obj.charAt(0);
+        });
+        return inital;
+    }
     // Render
     return (
         <HStack
@@ -26,14 +35,25 @@ export const OrganisationMenuItem = ({
             onClick={onSelect}
             position='relative'
         >
-            <Box
+            <HStack
                 borderRadius='0.5rem'
-                bg={!imageUrl ? color : 'transparent'}
+                bg={!imageUrl ? COLORS.Line.value : 'transparent'}
                 w={'2rem'}
                 h={'2rem'}
+                justifyContent='center'
+                alignItems='center'
             >
-                {imageUrl && <Image src={imageUrl} alt='' />}
-            </Box>
+                {imageUrl ? (
+                    <Image src={imageUrl} alt='' />
+                ) : (
+                    <Text
+                        font={FONTS.T1.T12px.Medium500.value}
+                        color={COLORS.Text.T400.value}
+                    >
+                        {getInitialeName()}
+                    </Text>
+                )}
+            </HStack>
             <VStack alignItems='left' spacing='0' w='9.25rem' pr='0.5rem'>
                 <Text
                     font={FONTS.T1.T12px.Medium500.value}

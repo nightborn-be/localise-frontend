@@ -36,9 +36,7 @@ const Template: ComponentStory<typeof Modal> = (props: IModalProps) => {
     });
     const form = createForm(values, rest);
 
-    function handleOnSubmit() {
-        console.log(values);
-    }
+    function handleOnSubmit() {}
 
     // Attributes
     const options: SearchBarOption<string>[] = [

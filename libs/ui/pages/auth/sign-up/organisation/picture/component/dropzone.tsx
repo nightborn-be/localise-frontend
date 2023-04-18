@@ -7,16 +7,7 @@ import Button from '../../../../../../components/inputs/button';
 import FONTS from '../../../../../../constants/fonts';
 import Icon from '../../../../../../components/contents/icon';
 
-const Dropzone = ({
-    onDrag,
-    label,
-    h = '6.25rem',
-    w = '6.25rem',
-    font = FONTS.T1.T12px.Medium500.value,
-    iconHeight = '24',
-    iconWidth = '24',
-    spacing = '0.4375rem',
-}: IDropzoneProps) => {
+const Dropzone = ({ onDrag, children }: IDropzoneProps) => {
     // Attributes
     const onDrop = useCallback(
         (acceptedFiles: File[]) => {
@@ -28,7 +19,7 @@ const Dropzone = ({
                         reader.result,
                     );
             };
-            reader.readAsBinaryString(acceptedFiles[0]);
+            reader.readAsArrayBuffer(acceptedFiles[0]);
         },
         [onDrag],
     );
@@ -43,30 +34,7 @@ const Dropzone = ({
     return (
         <HStack {...getRootProps()} spacing='0'>
             <input {...getInputProps()} />
-            <Button
-                border={`0.125rem dashed ${COLORS.InputText.value}`}
-                font={font}
-                borderRadius='1rem'
-                w={w}
-                h={h}
-                maxH={h}
-                maxW={w}
-                direction='column'
-                backgroundColor='transparent'
-                color={COLORS.InputText.value}
-                whiteSpace='pre-line'
-                spacing={spacing}
-                startEnhancer={(): React.ReactElement => (
-                    <Icon
-                        name='uploadCloud'
-                        stroke={COLORS.InputText.value}
-                        width={iconWidth}
-                        height={iconHeight}
-                    />
-                )}
-            >
-                {label}
-            </Button>
+            {children}
         </HStack>
     );
 };
