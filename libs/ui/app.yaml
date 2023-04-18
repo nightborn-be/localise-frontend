@@ -1,4 +1,4 @@
-service: front-end
+service: storybook
 runtime: custom
 env: flex
 
