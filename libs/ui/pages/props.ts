@@ -9,6 +9,7 @@ import {
 import { TermPagingDTO } from '../../gateways/resource-api/types/termPagingDTO';
 import { ITableRowTermForm } from './components/project/components/glossary/components/table-row-term/types';
 import { HomeContentState } from './types';
+import { IUpdateProjectForm } from './components/project/components/settings/types';
 
 export interface IHomePageProps {
     handleOnDeleteOrganisation: () => void;
@@ -18,6 +19,10 @@ export interface IHomePageProps {
     handleOnSaveTranslations: (
         form: IForm<ITableRowTermForm> & IDefaultForm,
     ) => void;
+    handleOnUpdateProject: (
+        form: IForm<IUpdateProjectForm> & IDefaultForm,
+    ) => void;
+    handleOnDeleteProject: () => void;
     isLoadingUpdateOrganisation: boolean;
     actualOrganisationUser?: OrganisationDTO;
     organisationUserData?: OrgnanisationPagingDTO;

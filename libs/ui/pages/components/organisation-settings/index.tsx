@@ -4,7 +4,7 @@ import Breadcrumb from '../../../components/navigation/breadcrumb';
 import { useOrganisationSettingsLogic } from './logic';
 import { useTranslation } from 'react-i18next';
 import { tKeys } from '../../../../i18n/keys';
-import DeleteOrganisationModal from './components/delete-organisation-modal/index';
+import { DeleteModal } from '../../../components/surface/delete-modal/index';
 import AddMembersModal from './components/add-member-modal';
 import SidebarMenuSettingContent from './components/sidebar-menu-setting';
 import InformationSettingSection from './components/informations-setting-section';
@@ -111,10 +111,15 @@ const OrganisationSettings = ({
                     </HStack>
                 </VStack>
             </HStack>
-            <DeleteOrganisationModal
+            <DeleteModal
                 isOpen={deleteOrganisationDisclosure.isOpen}
                 onClose={deleteOrganisationDisclosure.onClose}
                 handleOnSubmit={handleOnDeleteOrganisation}
+                titleModal={t<string>(tKeys.home.modal.delete_project.title)}
+                title={t<string>(tKeys.home.modal.delete_project.content.title)}
+                description={t<string>(
+                    tKeys.home.modal.delete_project.content.description,
+                )}
             />
             <AddMembersModal
                 isOpen={addMembersDisclosure.isOpen}

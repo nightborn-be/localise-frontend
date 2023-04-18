@@ -4,7 +4,9 @@ import { ICreateOrganisationForm } from '../components/sidebar/create-organisati
 import { ICreateProjectForm } from '../components/sidebar/create-project-modal/types';
 import {
     useCreateProject,
+    useDeleteProject,
     useGetProjects,
+    useUpdateProject,
 } from '../../gateways/resource-api/projects/projects';
 import { useGetMe } from '../../gateways/resource-api/users/users';
 import { toCreateProjectDTO } from '../components/sidebar/create-project-modal/mappers';
@@ -39,6 +41,8 @@ import { ITableRowTermForm } from './components/project/components/glossary/comp
 import { toUpdateTermDTO } from './components/project/components/glossary/components/table-row-term/mappers';
 import { HomeContentState } from './types';
 import { AxiosError } from 'axios';
+import { IUpdateProjectForm } from './components/project/components/settings/types';
+import { toUpdateProjectDTO } from './mappers';
 
 export const useHomeLogic = () => {
     // Attributes
@@ -56,6 +60,9 @@ export const useHomeLogic = () => {
 
     // Hooks
     const { mutateAsync: createProject } = useCreateProject();
+    const { mutateAsync: updateProject } = useUpdateProject();
+    const { mutateAsync: deleteProject } = useDeleteProject();
+
     const { mutateAsync: createTerm } = useCreateTerm();
     const { mutateAsync: updateTerm } = useUpdateTerm();
     const { mutateAsync: deleteTerm } = useDeleteTerm();
@@ -124,7 +131,77 @@ export const useHomeLogic = () => {
             );
         } catch (e) {}
     }
+    async function handleOnUpdateProject(
+        form: IForm<IUpdateProjectForm> & IDefaultForm,
+    ) {
+        try {
+            await updateProject(
+                {
+                    data: toUpdateProjectDTO(
+                        form.projectName.value,
+                        form.sourceLanguage.value,
+                        form.targetLanguages.value,
+                    ),
+                    organisationId: actualOrganisationUser?.id as string,
+                    projectId: activeProject.id as string,
+                },
+                {
+                    onSuccess: async () => {
+                        refetchUserData();
+                        refetchActualUserOrganisation();
+                        refecthOrganisationUserData();
+                        refetchOrganisationProjectData();
+                        setActiveProject({
+                            ...activeProject,
+                            name: form.projectName.value,
+                        });
+                    },
+                    onError: async () => {
+                        toast({
+                            type: ToastType.ERROR,
+                            title: t(
+                                tKeys.home.modal.create_project.form
+                                    .project_name.form.error,
+                            ),
+                            delay: 5000,
+                        });
+                    },
+                },
+            );
+        } catch (e) {}
+    }
 
+    async function handleOnDeleteProject() {
+        try {
+            await deleteProject(
+                {
+                    organisationId: actualOrganisationUser?.id as string,
+                    projectId: activeProject.id as string,
+                },
+                {
+                    onSuccess: async () => {
+                        refetchUserData();
+                        refetchActualUserOrganisation();
+                        refecthOrganisationUserData();
+                        refetchOrganisationProjectData();
+                        setActiveProject(
+                            organisationProjectData?.data?.at(0) as ProjectDTO,
+                        );
+                    },
+                    onError: async () => {
+                        toast({
+                            type: ToastType.ERROR,
+                            title: t(
+                                tKeys.home.modal.create_project.form
+                                    .project_name.form.error,
+                            ),
+                            delay: 5000,
+                        });
+                    },
+                },
+            );
+        } catch (e) {}
+    }
     async function handleOnCreateOrganisation(
         form: IForm<ICreateOrganisationForm> & IDefaultForm,
         resetForm: () => void,
@@ -394,5 +471,7 @@ export const useHomeLogic = () => {
         setNewRowTerm,
         clearNewRowTerm,
         addNewRowTerm,
+        handleOnUpdateProject,
+        handleOnDeleteProject,
     };
 };

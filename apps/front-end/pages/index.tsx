@@ -34,6 +34,8 @@ export default function Web() {
         setNewRowTerm,
         clearNewRowTerm,
         addNewRowTerm,
+        handleOnDeleteProject,
+        handleOnUpdateProject,
     } = useHomeLogic();
 
     return (
@@ -71,6 +73,8 @@ export default function Web() {
                 setNewRowTerm={setNewRowTerm}
                 clearNewRowTerm={clearNewRowTerm}
                 addNewRowTerm={addNewRowTerm}
+                handleOnUpdateProject={handleOnUpdateProject}
+                handleOnDeleteProject={handleOnDeleteProject}
             />
         </Page>
     );

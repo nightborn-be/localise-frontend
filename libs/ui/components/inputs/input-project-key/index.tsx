@@ -28,7 +28,7 @@ const InputProjectKey = ({
     // Render
     return (
         <>
-            <HStack>
+            <HStack w={w}>
                 {/* ICON SECTION */}
                 <Box mb='1.25rem' ml='1.25rem'>
                     <Icon name='projectLine' />

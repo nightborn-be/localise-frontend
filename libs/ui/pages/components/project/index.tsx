@@ -8,6 +8,7 @@ import Tabs from '../../../components/navigation/tabs/index';
 import { Box, VStack } from '@chakra-ui/react';
 import { Glossary } from './components/glossary/index';
 import { tKeys } from '../../../../i18n/keys';
+import Settings from './components/settings';
 
 const ProjectContent = ({
     projectTerms,
@@ -25,6 +26,8 @@ const ProjectContent = ({
     setNewRowTerm,
     clearNewRowTerm,
     addNewRowTerm,
+    handleOnUpdateProject,
+    handleOnDeleteProject,
 }: IProjectContentProps) => {
     // Attributes
     const { activeKey, setActiveKey } = useProjectLogic();
@@ -71,7 +74,11 @@ const ProjectContent = ({
                     />
                 </Tab>
                 <Tab title={t<string>(tKeys.home.project.tab.settings.title)}>
-                    <Box bg='blue.100' h='31.25rem' />
+                    <Settings
+                        activeProject={activeProject}
+                        handleOnUpdateProject={handleOnUpdateProject}
+                        handleOnDeleteProject={handleOnDeleteProject}
+                    />
                 </Tab>
                 <Tab title={t<string>(tKeys.home.project.tab.statistics.title)}>
                     <Box bg='green.400' h='31.25rem' />

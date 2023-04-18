@@ -7,6 +7,7 @@ import Badge from '../../contents/badge';
 import Button from '../../inputs/button';
 import ProjectColorPicker from '../project-color-picker';
 import useOnClickOutside from '../../../../utils/hooks';
+import SHADOWS from '../../../constants/shadows';
 const SidebarProject = ({
     textFont,
     textColor,
@@ -92,6 +93,7 @@ const SidebarProject = ({
                     zIndex='2'
                 >
                     <ProjectColorPicker
+                        boxShadow={SHADOWS.Menu.value}
                         selected={currentSelectedColor}
                         onSelect={setCurrentSelectedColor}
                     />

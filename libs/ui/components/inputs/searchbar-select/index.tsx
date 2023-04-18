@@ -75,6 +75,7 @@ const SearchbarSelect = <T,>({
                     h={'fit-content'}
                     maxH='12.25rem'
                     w={w}
+                    minW={'full'}
                     borderRadius={'0.5rem'}
                     boxShadow={SHADOWS.Elevation.Light.Bottom.T05.value}
                     border={`0.0625rem solid ${COLORS.Line.value}`}

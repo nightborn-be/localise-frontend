@@ -10,6 +10,7 @@ import {
     TermPagingDTO,
 } from 'gateways/resource-api/types';
 import { ITableRowTermForm } from './components/project/components/glossary/components/table-row-term/types';
+import { IUpdateProjectForm } from './components/project/components/settings/types';
 
 export const enum HomeContentState {
     ORGANISATION_SETTINGS = 'ORGANISATION_SETTINGS',
@@ -21,6 +22,11 @@ export interface HomeLogicType {
         form: IForm<ICreateProjectForm> & IDefaultForm,
         resetForm: () => void,
     ) => void;
+
+    handleOnUpdateProject: (
+        form: IForm<IUpdateProjectForm> & IDefaultForm,
+    ) => void;
+    handleOnDeleteProject: () => void;
     handleOnCreateOrganisation: (
         form: IForm<ICreateOrganisationForm> & IDefaultForm,
         resetForm: () => void,

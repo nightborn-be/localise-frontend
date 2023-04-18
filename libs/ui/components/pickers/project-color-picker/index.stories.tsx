@@ -2,6 +2,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import React, { useState } from 'react';
 import ProjectColorPicker from '.';
 import { IProjectColorPickerProps } from './props';
+import SHADOWS from '../../../constants/shadows';
 
 export default {
     title: 'Components/Sidebars/ProjectColorPicker',
@@ -16,6 +17,7 @@ const Template: ComponentStory<typeof ProjectColorPicker> = (
     return (
         <ProjectColorPicker
             {...props}
+            boxShadow={SHADOWS.Menu.value}
             selected={currentSelectedColor}
             onSelect={setCurrentSelectedColor}
         />
