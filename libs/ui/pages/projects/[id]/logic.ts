@@ -60,7 +60,7 @@ export const useProjectLogic = ({
     const { mutateAsync: saveTranslation } = useSaveTranslation();
     const { data: projectTerms, refetch: refetchProjectTerms } = useGetTerms(
         id as string,
-        { q: searchFilterValue },
+        { q: searchFilterValue as string },
     );
 
     // Functions

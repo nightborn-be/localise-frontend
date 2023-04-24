@@ -48,6 +48,7 @@ export default function TableRowTerm({
                 borderTopRightRadius={'0.5rem'}
                 spacing={0}
                 onClick={toggleIsOpen}
+                cursor={'pointer'}
             >
                 <HStack
                     padding='0.5rem 1.25rem'

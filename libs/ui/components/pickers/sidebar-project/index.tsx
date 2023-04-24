@@ -70,6 +70,7 @@ const SidebarProject = ({
                     ? COLORS.Localize.Purple.T500.value
                     : COLORS.White.T500.value
             }
+            cursor={'pointer'}
             onClick={() => onClick(text)}
             ref={ref}
         >

@@ -35,6 +35,7 @@ const ColorPicker = ({
             onMouseOver={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
             onClick={() => onSelect(color)}
+            cursor={'pointer'}
         >
             <Icon
                 pointerEvents='none'
