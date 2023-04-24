@@ -107,7 +107,7 @@ const Toast = ({ type, title, description, onClose }: IToastProps) => {
                 w='full'
             >
                 {/* Left */}
-                <HStack spacing='0.5rem'>
+                <HStack spacing='0.5rem' w="full">
                     {/* Icon */}
                     {renderIcon()}
 

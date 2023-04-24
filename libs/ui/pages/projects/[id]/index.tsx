@@ -6,7 +6,6 @@ import Tab from '../../../components/navigation/tabs/tab/index';
 import Tabs from '../../../components/navigation/tabs/index';
 import { Box, VStack } from '@chakra-ui/react';
 import { tKeys } from '../../../../i18n/keys';
-import { useRouter } from 'next/router';
 import Page from '../../../components/contents/page/index';
 import SidebarPage from '../../../components/contents/sidebar-page/index';
 import { Glossary } from '../../../components/contents/project/glossary';
@@ -16,8 +15,6 @@ import { useSidebarPageLogic } from '../../../components/contents/sidebar-page/l
 const ProjectPage = () => {
     // Attributes
     const { t } = useTranslation();
-    const router = useRouter();
-    const { id } = router.query;
     const {
         handleOnCreateProject,
         handleOnCreateOrganisation,
@@ -63,7 +60,6 @@ const ProjectPage = () => {
         refetchActualUserOrganisation,
         refetchOrganisationProjectData,
         refetchUserData,
-        id,
     });
 
     // Render

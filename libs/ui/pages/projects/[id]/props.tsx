@@ -13,5 +13,4 @@ export interface IProjectContentLogicProps {
     refecthOrganisationUserData: any;
     refetchUserData: any;
     refetchOrganisationProjectData: any;
-    id?: string | string[];
 }
