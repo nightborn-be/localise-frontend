@@ -16,7 +16,7 @@ import CreateProjectModal from './create-project-modal/index';
 import CreateOrganisationModal from './create-organisation-modal';
 import { ISideBarContentProps } from './props';
 import { getInitialeName } from 'utils/functions';
-import { HomeContentState } from 'ui/pages/types';
+import { useRouter } from 'next/router';
 
 export const SideBar = ({
     handleOnCreateProject,
@@ -29,7 +29,6 @@ export const SideBar = ({
     filterProjectValue,
     activeProject,
     setActiveProject,
-    setCurrentStatePage,
 }: ISideBarContentProps) => {
     const {
         handleToggleIsOrganisationClicked,
@@ -42,6 +41,7 @@ export const SideBar = ({
 
     const { isOpen, onOpen, onClose } = useDisclosure();
     const createOrganisationModal = useDisclosure();
+    const { push } = useRouter();
     return (
         <>
             <VStack w={'15.25rem'} h={'100vh'} spacing='0px'>
@@ -160,9 +160,6 @@ export const SideBar = ({
                                         id: option.value,
                                         name: option.label,
                                     });
-                                    setCurrentStatePage(
-                                        HomeContentState.PROJECTS,
-                                    );
                                 }}
                                 activeKey={activeProject.name as string}
                                 text={option.label}
@@ -207,9 +204,7 @@ export const SideBar = ({
                         spacing={'0.75rem'}
                         padding={'0.75rem'}
                         onClick={() => {
-                            setCurrentStatePage(
-                                HomeContentState.ORGANISATION_SETTINGS,
-                            );
+                            push('/organisation/settings');
                         }}
                     >
                         Organisation settings

@@ -2,6 +2,8 @@ import { useEffect } from 'react';
 import Page from '../../../libs/ui/components/contents/page';
 import HomePage from '../../../libs/ui/pages/index';
 import { useHomeLogic } from '../../../libs/ui/pages/logic';
+import SideBar from 'ui/components/sidebar';
+import SidebarPage from 'ui/pages/components/sidebar-page';
 
 export default function Web() {
     const {
@@ -39,19 +41,8 @@ export default function Web() {
     } = useHomeLogic();
 
     return (
-        <Page
-            handleOnCreateProject={handleOnCreateProject}
-            handleOnCreateOrganisation={handleOnCreateOrganisation}
-            handleSwitchOrgansiation={handleSwitchOrgansiation}
-            organisationProjectData={organisationProjectData}
-            actualOrganisationUser={actualOrganisationUser}
-            organisationUserData={organisationUserData}
-            filterProjectValue={filterProjectValue}
-            setFilterProjectValue={setFilterProjectValue}
-            activeProject={activeProject}
-            setActiveProject={setActiveProject}
-            setCurrentStatePage={setCurrentStatePage}
-        >
+        <Page>
+            <SidebarPage />
             <HomePage
                 handleOnCreateTerm={handleOnCreateTerm}
                 handleOnDeleteOrganisation={handleOnDeleteOrganisation}

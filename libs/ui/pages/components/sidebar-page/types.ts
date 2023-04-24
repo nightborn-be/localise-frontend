@@ -1,17 +1,9 @@
-import { HomeContentState } from 'ui/pages/types';
-import {
-    CreateOrganisationDTO,
-    CreateProjectDTO,
-    OrganisationDTO,
-    OrgnanisationPagingDTO,
-    ProjectDTO,
-    ProjectPagingDTO,
-} from '../../../gateways/resource-api/types';
-import { IDefaultForm, IForm } from '../../../utils/formik';
-import { ICreateOrganisationForm } from './create-organisation-modal/types';
-import { ICreateProjectForm } from './create-project-modal/types';
+import { IDefaultForm, IForm } from "utils/formik";
+import { ICreateProjectForm } from "../../../components/sidebar/create-project-modal/types";
+import { ICreateOrganisationForm } from "../../../components/sidebar/create-organisation-modal/types";
+import { OrganisationDTO, OrgnanisationPagingDTO, ProjectDTO, ProjectPagingDTO } from "gateways/resource-api/types";
 
-export interface ISideBarContentProps {
+export interface SidebarPageLogicType {
     handleOnCreateProject: (
         form: IForm<ICreateProjectForm> & IDefaultForm,
         resetForm: () => void,
@@ -24,14 +16,12 @@ export interface ISideBarContentProps {
         organisation: OrganisationDTO,
         setIsOrganisationClicked: (value: boolean) => void,
     ) => void;
-    organisationProjectData?: ProjectPagingDTO;
     actualOrganisationUser?: OrganisationDTO;
+    organisationProjectData?: ProjectPagingDTO;
     organisationUserData?: OrgnanisationPagingDTO;
     setFilterProjectValue: (value: string) => void;
     filterProjectValue: string;
     activeProject: ProjectDTO;
     setActiveProject: (value: ProjectDTO) => void;
-}
-export interface ISidebarLogicProps {
-    organisationProjectData?: ProjectPagingDTO;
+
 }

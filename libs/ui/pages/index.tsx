@@ -64,6 +64,17 @@ const HomePage = ({
                         handleOnDeleteProject={handleOnDeleteProject}
                     />
                 );
+            default:
+                return (
+                    <OrganisationSettings
+                        handleOnDeleteOrganisation={handleOnDeleteOrganisation}
+                        handleUpdateOrganisation={handleUpdateOrganisation}
+                        actualOrganisationUser={actualOrganisationUser}
+                        isLoadingUpdateOrganisation={
+                            isLoadingUpdateOrganisation
+                        }
+                    />
+                );
         }
     }
     // Render
