@@ -1,6 +1,5 @@
-import { OrganisationDTO } from "../../../../gateways/resource-api/types";
+import { IOrganisationSettingsForm } from "ui/components/contents/organisation-settings/types";
 import { IDefaultForm, IForm } from "../../../../utils/formik";
-import { IOrganisationSettingsForm } from "../../components/organisation-settings/types";
 
 export interface OrganisationSettingsPageLogicType {
     handleOnDeleteOrganisation: () => void;

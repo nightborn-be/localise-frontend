@@ -1,14 +1,12 @@
-import { useCreateOrganisation, useDeleteOrganisation, useGetOrganisation, useGetOrganisationsForUser, useUpdateOrganisation } from '../../../../gateways/resource-api/organisations/organisations';
+import { useDeleteOrganisation, useGetOrganisation, useGetOrganisationsForUser, useUpdateOrganisation } from '../../../../gateways/resource-api/organisations/organisations';
 import { useGetMe } from '../../../../gateways/resource-api/users/users';
 import { IDefaultForm, IForm } from '../../../../utils/formik';
-import { ICreateOrganisationForm } from '../../../components/sidebar/create-organisation-modal/types';
-import { toCreateOrganisationDTO } from '../../../components/sidebar/create-organisation-modal/mappers';
 import { ToastType } from 'ui/components/progress-validation/toast/types';
 import { tKeys } from '../../../../i18n/keys';
 import useToast from 'ui/components/progress-validation/toast';
-import { IOrganisationSettingsForm } from '../../components/organisation-settings/types';
 import { OrganisationSettingsPageLogicType } from './types';
 import { useTranslation } from 'react-i18next';
+import { IOrganisationSettingsForm } from 'ui/components/contents/organisation-settings/types';
 export const useOrganisationSettingsPageLogic = (): OrganisationSettingsPageLogicType => {
     // Attributes
     const toast = useToast()

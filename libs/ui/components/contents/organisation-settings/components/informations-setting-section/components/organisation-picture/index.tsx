@@ -2,13 +2,13 @@ import { Box, HStack, Image } from '@chakra-ui/react';
 import { IOrganisationPictureProps } from './props';
 import COLORS from '../../../../../../../constants/colors';
 import Text from '../../../../../../../components/contents/text';
-import Dropzone from '../../../../../../auth/sign-up/organisation/picture/component/dropzone';
 import ButtonIcon from '../../../../../../../components/inputs/button-icon';
 import Icon from '../../../../../../../components/contents/icon';
 import React from 'react';
 import { ButtonSize } from '../../../../../../../components/inputs/button-icon/types';
 import FONTS from '../../../../../../../constants/fonts';
 import { getInitialeName } from '../../../../../../../../utils/functions';
+import Dropzone from '../../../../../../../pages/auth/sign-up/organisation/picture/component/dropzone';
 
 const OrganisationPicture = ({
     pictureUrl,

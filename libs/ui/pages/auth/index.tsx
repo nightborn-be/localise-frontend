@@ -16,14 +16,13 @@ export default function AuthHomePage() {
 
     // Render
     return (
-        <Page
-            bgImage='./assets/images/AuthHomeBackground.png'
-            displaySidebar={false}
-        >
+        <Page bgImage='./assets/images/AuthHomeBackground.png'>
             <VStack
+                h='full'
                 spacing='1.25rem'
                 padding='0'
                 alignItems={'left'}
+                justifyContent={'center'}
                 ml='12.5rem'
             >
                 <VStack spacing={'0'} alignItems='left'>

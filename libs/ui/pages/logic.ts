@@ -21,7 +21,6 @@ import {
 } from '../../gateways/resource-api/organisations/organisations';
 import useToast from '../../ui/components/progress-validation/toast';
 import { ToastType } from '../components/progress-validation/toast/types';
-import { IOrganisationSettingsForm } from './components/organisation-settings/types';
 import {
     OrganisationDTO,
     ProjectDTO,
@@ -36,13 +35,14 @@ import {
     useUpdateTerm,
 } from '../../gateways/resource-api/terms/terms';
 import { useSaveTranslation } from '../../gateways/resource-api/translations/translations';
-import { IEditInputForm } from './components/project/components/glossary/components/table-row-term/components/edit-input/types';
-import { ITableRowTermForm } from './components/project/components/glossary/components/table-row-term/types';
-import { toUpdateTermDTO } from './components/project/components/glossary/components/table-row-term/mappers';
 import { HomeContentState } from './types';
 import { AxiosError } from 'axios';
-import { IUpdateProjectForm } from './components/project/components/settings/types';
 import { toUpdateProjectDTO } from './mappers';
+import { IUpdateProjectForm } from '../components/contents/project/components/settings/types';
+import { IOrganisationSettingsForm } from '../components/contents/organisation-settings/types';
+import { ITableRowTermForm } from '../components/contents/project/components/glossary/components/table-row-term/types';
+import { toUpdateTermDTO } from '../components/contents/project/components/glossary/components/table-row-term/mappers';
+import { IEditInputForm } from '../components/contents/project/components/glossary/components/table-row-term/components/edit-input/types';
 
 export const useHomeLogic = () => {
     // Attributes

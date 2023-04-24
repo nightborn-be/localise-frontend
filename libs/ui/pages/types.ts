@@ -1,7 +1,6 @@
 import { ICreateOrganisationForm } from 'ui/components/sidebar/create-organisation-modal/types';
 import { ICreateProjectForm } from 'ui/components/sidebar/create-project-modal/types';
 import { IDefaultForm, IForm } from 'utils/formik';
-import { IOrganisationSettingsForm } from './components/organisation-settings/types';
 import {
     OrganisationDTO,
     ProjectDTO,
@@ -9,8 +8,9 @@ import {
     TermDTO,
     TermPagingDTO,
 } from 'gateways/resource-api/types';
-import { ITableRowTermForm } from './components/project/components/glossary/components/table-row-term/types';
-import { IUpdateProjectForm } from './components/project/components/settings/types';
+import { IUpdateProjectForm } from 'ui/components/contents/project/components/settings/types';
+import { IOrganisationSettingsForm } from 'ui/components/contents/organisation-settings/types';
+import { ITableRowTermForm } from '../components/contents/project/components/glossary/components/table-row-term/types';
 
 export const enum HomeContentState {
     ORGANISATION_SETTINGS = 'ORGANISATION_SETTINGS',
