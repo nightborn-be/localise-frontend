@@ -1,7 +1,12 @@
-import { IDefaultForm, IForm } from "utils/formik";
-import { ICreateProjectForm } from "../../../components/sidebar/create-project-modal/types";
-import { ICreateOrganisationForm } from "../../../components/sidebar/create-organisation-modal/types";
-import { OrganisationDTO, OrgnanisationPagingDTO, ProjectDTO, ProjectPagingDTO } from "gateways/resource-api/types";
+import { IDefaultForm, IForm } from 'utils/formik';
+import { ICreateProjectForm } from '../../../components/sidebar/create-project-modal/types';
+import { ICreateOrganisationForm } from '../../../components/sidebar/create-organisation-modal/types';
+import {
+    OrganisationDTO,
+    OrgnanisationPagingDTO,
+    ProjectDTO,
+    ProjectPagingDTO,
+} from 'gateways/resource-api/types';
 
 export interface SidebarPageLogicType {
     handleOnCreateProject: (
@@ -23,5 +28,8 @@ export interface SidebarPageLogicType {
     filterProjectValue: string;
     activeProject: ProjectDTO;
     setActiveProject: (value: ProjectDTO) => void;
-
+    refetchActualUserOrganisation?: any;
+    refecthOrganisationUserData?: any;
+    refetchUserData?: any;
+    refetchOrganisationProjectData?: any;
 }

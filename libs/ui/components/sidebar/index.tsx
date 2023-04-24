@@ -160,6 +160,7 @@ export const SideBar = ({
                                         id: option.value,
                                         name: option.label,
                                     });
+                                    push(`/projects/${option.value}`);
                                 }}
                                 activeKey={activeProject.name as string}
                                 text={option.label}

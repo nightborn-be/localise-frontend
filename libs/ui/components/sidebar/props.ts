@@ -1,7 +1,4 @@
-import { HomeContentState } from 'ui/pages/types';
 import {
-    CreateOrganisationDTO,
-    CreateProjectDTO,
     OrganisationDTO,
     OrgnanisationPagingDTO,
     ProjectDTO,

@@ -1,7 +1,15 @@
 import { useState } from 'react';
-import { useCreateProject, useGetProjects } from '../../../../gateways/resource-api/projects/projects';
+import {
+    useCreateProject,
+    useGetProjects,
+} from '../../../../gateways/resource-api/projects/projects';
 import { OrganisationDTO, ProjectDTO } from 'gateways/resource-api/types';
-import { useCreateOrganisation, useGetOrganisation, useGetOrganisationsForUser, useSwitchUserOrganisation } from '../../../../gateways/resource-api/organisations/organisations';
+import {
+    useCreateOrganisation,
+    useGetOrganisation,
+    useGetOrganisationsForUser,
+    useSwitchUserOrganisation,
+} from '../../../../gateways/resource-api/organisations/organisations';
 import { useGetMe } from '../../../../gateways/resource-api/users/users';
 import { IDefaultForm, IForm } from 'utils/formik';
 import { ICreateProjectForm } from '../../../components/sidebar/create-project-modal/types';
@@ -17,8 +25,8 @@ export const useSidebarPageLogic = (): SidebarPageLogicType => {
     // Attributes
     const [filterProjectValue, setFilterProjectValue] = useState<string>('');
     const [activeProject, setActiveProject] = useState<ProjectDTO>({});
-    const { t } = useTranslation()
-    const toast = useToast()
+    const { t } = useTranslation();
+    const toast = useToast();
     // Hooks
     const { mutateAsync: createProject } = useCreateProject();
     const { mutateAsync: createOrganisation } = useCreateOrganisation();
@@ -73,7 +81,7 @@ export const useSidebarPageLogic = (): SidebarPageLogicType => {
                     },
                 },
             );
-        } catch (e) { }
+        } catch (e) {}
     }
 
     async function handleOnCreateOrganisation(
@@ -105,7 +113,7 @@ export const useSidebarPageLogic = (): SidebarPageLogicType => {
                     },
                 },
             );
-        } catch (err) { }
+        } catch (err) {}
     }
     function handleSwitchOrgansiation(
         organisation: OrganisationDTO,
@@ -134,6 +142,10 @@ export const useSidebarPageLogic = (): SidebarPageLogicType => {
         filterProjectValue,
         setFilterProjectValue,
         activeProject,
-        setActiveProject
-    }
-}
+        setActiveProject,
+        refecthOrganisationUserData,
+        refetchActualUserOrganisation,
+        refetchOrganisationProjectData,
+        refetchUserData,
+    };
+};
