@@ -14,7 +14,6 @@ export const useOrganisationSettingsPageLogic = (): OrganisationSettingsPageLogi
     const toast = useToast()
     const { t } = useTranslation();
     // Hooks
-    const { mutateAsync: createOrganisation } = useCreateOrganisation();
     const { mutateAsync: deleteOrganisation } = useDeleteOrganisation();
     const {
         mutateAsync: updateOrganisation,
@@ -109,5 +108,5 @@ export const useOrganisationSettingsPageLogic = (): OrganisationSettingsPageLogi
         }
     }
 
-    return { handleUpdateOrganisation, handleOnDeleteOrganisation, actualOrganisationUser, isLoadingUpdateOrganisation }
+    return { handleUpdateOrganisation, handleOnDeleteOrganisation, isLoadingUpdateOrganisation }
 }

@@ -1,5 +1,4 @@
-import React, { HStack, VStack } from '@chakra-ui/react';
-import SideBar from '../../sidebar';
+import React, { HStack } from '@chakra-ui/react';
 import { PageProps } from './props';
 const Page = ({ children, bg, bgImage }: PageProps) => {
     // Render
@@ -20,7 +19,7 @@ const Page = ({ children, bg, bgImage }: PageProps) => {
                 alignItems='start'
                 bgImage={bgImage}
                 bgSize='cover'
-                justifyContent='center'
+                justifyContent='left'
             >
                 {children}
             </HStack>

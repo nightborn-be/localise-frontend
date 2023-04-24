@@ -4,12 +4,7 @@ import { HStack } from '@chakra-ui/react';
 import Page from 'ui/components/contents/page';
 
 const OrganisationSettingsWeb = () => {
-    return (
-        <Page>
-            <SidebarPage />
-            <OrganisationSettingsPage />;
-        </Page>
-    );
+    return <OrganisationSettingsPage />;
 };
 
 export default OrganisationSettingsWeb;

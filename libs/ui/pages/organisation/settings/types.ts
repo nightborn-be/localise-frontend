@@ -8,5 +8,4 @@ export interface OrganisationSettingsPageLogicType {
         form: IForm<IOrganisationSettingsForm> & IDefaultForm,
     ) => void;
     isLoadingUpdateOrganisation: boolean;
-    actualOrganisationUser?: OrganisationDTO;
 }

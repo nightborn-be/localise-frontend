@@ -1,19 +1,19 @@
 import React from 'react';
 import SideBar from '../../../components/sidebar/index';
-import { useSidebarPageLogic } from './logic';
-const SidebarPage = () => {
-    const {
-        handleOnCreateProject,
-        handleOnCreateOrganisation,
-        handleSwitchOrgansiation,
-        actualOrganisationUser,
-        organisationUserData,
-        organisationProjectData,
-        filterProjectValue,
-        setFilterProjectValue,
-        activeProject,
-        setActiveProject,
-    } = useSidebarPageLogic();
+import { ISidebarPageProps } from './props';
+const SidebarPage = ({
+    handleOnCreateProject,
+    handleOnCreateOrganisation,
+    handleSwitchOrgansiation,
+    organisationProjectData,
+    organisationUserData,
+    actualOrganisationUser,
+    setFilterProjectValue,
+    filterProjectValue,
+    activeProject,
+    setActiveProject,
+}: ISidebarPageProps) => {
+    // Render
     return (
         <SideBar
             handleOnCreateProject={handleOnCreateProject}
