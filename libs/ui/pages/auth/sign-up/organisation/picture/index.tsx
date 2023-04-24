@@ -90,7 +90,7 @@ const OrganisationPicturePage = () => {
                                 backgroundColor='transparent'
                                 color={COLORS.InputText.value}
                                 whiteSpace='pre-line'
-                                spacing='7px'
+                                spacing='0.4375rem'
                                 marginInlineStart={'0 !important'}
                                 startEnhancer={(): React.ReactElement => (
                                     <Icon

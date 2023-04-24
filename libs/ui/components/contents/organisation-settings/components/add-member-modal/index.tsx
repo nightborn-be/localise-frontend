@@ -47,16 +47,16 @@ export const AddMembersModal = ({ isOpen, onClose }: IAddMembersProps) => {
                     secondCtaBgColor: COLORS.Tag.value,
                     secondCtaFont: FONTS.T1.T12px.SemiBold600.value,
                     secondCtaColor: COLORS.InputText.value,
-                    secondCtaWidth: '80px',
-                    secondCtaHeight: '32px',
+                    secondCtaWidth: '5rem',
+                    secondCtaHeight: '2rem',
                 }}
             >
-                <VStack spacing='12px' padding='20px'>
+                <VStack spacing='0.75rem' padding='1.25rem'>
                     <HStack
                         justifyContent='left'
                         alignItems={'center'}
                         w='full'
-                        mb='4px'
+                        mb='0.25rem'
                     >
                         <Text
                             color={COLORS.Text.T500.value}
@@ -81,7 +81,7 @@ export const AddMembersModal = ({ isOpen, onClose }: IAddMembersProps) => {
                             placeholderColor: COLORS.Localize.Purple.T500.value,
                             dropdownArrowColor:
                                 COLORS.Localize.Purple.T500.value,
-                            w: '100px',
+                            w: '6.25rem',
                             background: COLORS.White.T500.value,
                             border: 'transparent',
                             options: [
@@ -120,14 +120,14 @@ export const AddMembersModal = ({ isOpen, onClose }: IAddMembersProps) => {
                             dropdownIndicator: (
                                 <Icon name='dropdownIndicator' />
                             ),
-                            fontSize: '12px',
-                            lineHeight: '15px',
-                            padding: '0px',
-                            gap: '4px',
+                            fontSize: '0.75rem',
+                            lineHeight: '0.9375rem',
+                            padding: '0rem',
+                            gap: '0.25rem',
                             placeholder: 'Admin',
                             paddingRight: '0',
                             paddingLeft: '0',
-                            paddingContainer: '10px',
+                            paddingContainer: '0.625rem',
                             font: FONTS.T1.T12px.Regular400.value,
                         }}
                         inputProps={{
@@ -144,9 +144,9 @@ export const AddMembersModal = ({ isOpen, onClose }: IAddMembersProps) => {
                             zIndex: '10',
                         }}
                         w='full'
-                        h='40px'
-                        border={`1px solid ${COLORS.Line.value}`}
-                        borderRadius='8px'
+                        h='2.5rem'
+                        border={`0.0625rem solid ${COLORS.Line.value}`}
+                        borderRadius='0.5rem'
                         onDelete={() => {}}
                         rightIcon={
                             <Icon
@@ -169,7 +169,7 @@ export const AddMembersModal = ({ isOpen, onClose }: IAddMembersProps) => {
                         border={`0.0625rem dashed ${COLORS.Line.value}`}
                         borderRadius='0.5rem'
                         w='full'
-                        h='40px'
+                        h='2.5rem'
                         padding='0.25rem 0.75rem 0.25rem 0.5rem'
                         gap='0.25rem'
                         justifyContent='flex-start'

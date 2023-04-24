@@ -1,4 +1,5 @@
 import React from 'react';
+import COLORS from '../../../../constants/colors';
 
 const CheckboxOn = (props: React.SVGProps<SVGSVGElement>) => (
     <svg
@@ -8,7 +9,12 @@ const CheckboxOn = (props: React.SVGProps<SVGSVGElement>) => (
         fill='none'
         xmlns='http://www.w3.org/2000/svg'
     >
-        <rect width='16' height='16' rx='4' fill={props.fill ?? '#5F43E2'} />
+        <rect
+            width='16'
+            height='16'
+            rx='4'
+            fill={props.fill ?? COLORS.Localize.Purple.T500.value}
+        />
         <path
             d='M11.3337 5.5L6.75033 10.0833L4.66699 8'
             stroke='white'

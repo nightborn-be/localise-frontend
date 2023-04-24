@@ -66,7 +66,7 @@ const EditInput = ({
                 color={COLORS.Text.T500.value}
                 font={FONTS.T1.T12px.Regular400.value}
                 placeholderColor={COLORS.InputText.value}
-                border={`1px solid ${COLORS.Line.value}`}
+                border={`0.0625rem solid ${COLORS.Line.value}`}
                 borderRadius='0.5rem'
                 onBlur={() => {
                     updateTranslationsForm({

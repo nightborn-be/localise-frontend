@@ -16,14 +16,14 @@ export default function OrganisationMenu<T>({
     // Render
     return (
         <VStack
-            width={'264px'}
-            maxH={'280px'}
-            spacing='4px'
+            width={'16.5rem'}
+            maxH={'17.5rem'}
+            spacing='0.25rem'
             alignItems={'left'}
             backgroundColor={COLORS.White.T500.value}
-            border={`1px solid ${COLORS.Line.value}`}
-            borderRadius={'8px'}
-            padding={'8px 6px'}
+            border={`0.0625rem solid ${COLORS.Line.value}`}
+            borderRadius={'0.5rem'}
+            padding={'0.5rem 0.375rem'}
             boxShadow={SHADOWS.Shadow.Input.value}
             overflowY='scroll'
         >
@@ -46,11 +46,11 @@ export default function OrganisationMenu<T>({
                         stroke={COLORS.White.T500.value}
                     />
                 )}
-                h='40px'
+                h='2.5rem'
                 justifyContent='left'
                 font={FONTS.T1.T12px.Medium500.value}
                 color={COLORS.Text.T400.value}
-                spacing='8px'
+                spacing='0.5rem'
                 backgroundColor={'transparent'}
                 hoverBackgroundColor={COLORS.Tag.value}
                 onClick={onClick}

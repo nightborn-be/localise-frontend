@@ -106,9 +106,9 @@ export const TermEditContent = ({
                         )}
                     </Button>
                     <ButtonIcon
-                        backgroundColor='#F46363'
+                        backgroundColor={COLORS.Error.T500.value}
                         size={ButtonSize.XS}
-                        hoverBackgroundColor='#E55252'
+                        hoverBackgroundColor={COLORS.HoverRed.value}
                         borderRadius='0.5rem'
                         padding='0.25rem'
                         gap='0.625rem'
@@ -116,7 +116,11 @@ export const TermEditContent = ({
                             handleOnDeleteTerm(form.termId.value);
                         }}
                     >
-                        <Icon name='trashSmall' stroke='none' fill='#FFFFFF' />
+                        <Icon
+                            name='trashSmall'
+                            stroke='none'
+                            fill={COLORS.White.T500.value}
+                        />
                     </ButtonIcon>
                 </HStack>
             </HStack>

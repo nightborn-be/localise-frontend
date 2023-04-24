@@ -399,4 +399,17 @@ export const tKeys = {
             },
         },
     },
+    sidebar: {
+        organisation_section: {
+            organisation_settings: {
+                title: 'sidebar.organisation_section.organisation_settings.title',
+            },
+        },
+        project_section: {
+            title: 'sidebar.project_section.title',
+        },
+        projects_section: {
+            title: 'sidebar.projects_section.title',
+        },
+    },
 };

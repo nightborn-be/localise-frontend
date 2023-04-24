@@ -36,10 +36,10 @@ const Role = ({ selectedValue, setSelectedValue }: IRoleProps) => {
         <>
             <HStack
                 backgroundColor={getBackground()}
-                py='4px'
-                px='8px'
+                py='0.25rem'
+                px='0.5rem'
                 width='fit-content'
-                borderRadius={'4px'}
+                borderRadius={'0.25rem'}
             >
                 <InputSelect
                     font={FONTS.T1.T12px.Medium500.value}
@@ -55,7 +55,7 @@ const Role = ({ selectedValue, setSelectedValue }: IRoleProps) => {
                     ]}
                     dropdownIndicator={undefined}
                     placeholder='Admin'
-                    menuOptionWidth='200px'
+                    menuOptionWidth='12.5rem'
                     onChange={(event: SingleValue<Options>) =>
                         setSelectedValue(event?.value ?? '')
                     }

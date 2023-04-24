@@ -46,14 +46,14 @@ const Template: ComponentStory<typeof Searchbar<string>> = (args) => {
 };
 const props: SearchbarProps<string> = {
     color: COLORS.Text.T400.value,
-    w: '228px',
-    h: '32px',
-    padding: '4px 10px',
-    spacing: '8px',
+    w: '14.25rem',
+    h: '2rem',
+    padding: '0.25rem 0.625rem',
+    spacing: '0.5rem',
     background: COLORS.White.T500.value,
     placeholder: 'Search for a project...',
     placeholderColor: COLORS.InputText.value,
-    borderRadius: '6px',
+    borderRadius: '0.375rem',
 };
 
 export const SideBar = Template.bind({});
@@ -62,7 +62,7 @@ SideBar.args = { ...props, displayModal: false };
 export const AddProject = Template.bind({});
 AddProject.args = {
     ...props,
-    w: '550px',
-    h: '40px',
+    w: '34.375rem',
+    h: '2.5rem',
     backgroundColor: COLORS.White.T500.value,
 };

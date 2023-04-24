@@ -3,7 +3,7 @@ import { useOrganisationSettingsPageLogic } from './logic';
 import Page from 'ui/components/contents/page';
 import { useSidebarPageLogic } from 'ui/components/contents/sidebar-page/logic';
 import SidebarPage from 'ui/components/contents/sidebar-page';
-import OrganisationSettings from '../../../components/contents/organisation-settings/index';
+import OrganisationSettings from '../../components/contents/organisation-settings/index';
 
 const OrganisationSettingsPage = () => {
     // Attributes

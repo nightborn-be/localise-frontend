@@ -92,11 +92,11 @@ const Toast = ({ type, title, description, onClose }: IToastProps) => {
             borderRadius={
                 type === ToastType.INFOMRATION ? '0.5rem' : '0.375rem'
             }
-            border='1px solid'
+            border='0.0625rem solid'
             borderColor={primaryColor}
             px='1rem'
             py='1.25rem'
-            boxShadow={'0px 4px 12px rgba(0, 0, 0, 0.1)'} // TODO: ADD SHADOW
+            boxShadow={'0rem 0.25rem 0.75rem rgba(0, 0, 0, 0.1)'} // TODO: ADD SHADOW
             w={type === ToastType.INFOMRATION ? '20rem' : '28rem'}
         >
             {/* Header */}
@@ -107,7 +107,7 @@ const Toast = ({ type, title, description, onClose }: IToastProps) => {
                 w='full'
             >
                 {/* Left */}
-                <HStack spacing='0.5rem' w="full">
+                <HStack spacing='0.5rem' w='full'>
                     {/* Icon */}
                     {renderIcon()}
 

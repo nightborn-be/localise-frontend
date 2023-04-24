@@ -47,14 +47,14 @@ const Template: ComponentStory<typeof Modal> = (props: IModalProps) => {
     ];
     const searchbarProps: ISearchbarSelectProps<string> = {
         color: COLORS.Text.T400.value,
-        w: '590px',
-        h: '40px',
-        padding: '4px 10px',
-        spacing: '8px',
+        w: '36.875rem',
+        h: '2.5rem',
+        padding: '0.25rem 0.625rem',
+        spacing: '0.5rem',
         background: COLORS.White.T500.value,
         placeholder: 'Search for a project...',
         placeholderColor: COLORS.InputText.value,
-        borderRadius: '6px',
+        borderRadius: '0.375rem',
         defaultSelectValue: 'Choose a source language',
         noValueMsg: 'We could’nt find the language you were looking for.',
     };
@@ -87,7 +87,7 @@ const Template: ComponentStory<typeof Modal> = (props: IModalProps) => {
         setActiveKeys((prev) => prev?.filter((option) => option != value));
     }
     const searchBoxProps: ISearchBoxProps<string> = {
-        w: '590px',
+        w: '36.875rem',
         title: 'Target languages',
         description:
             'Target languages are secondary languages you want to add to your project.',
@@ -105,10 +105,13 @@ const Template: ComponentStory<typeof Modal> = (props: IModalProps) => {
                 handleOnSubmit={handleOnSubmit}
             >
                 <VStack spacing='0'>
-                    <HStack padding={'20px 20px 12px'} spacing='10px'>
+                    <HStack
+                        padding={'1.25rem 1.25rem 0.75rem'}
+                        spacing='0.625rem'
+                    >
                         <Input
-                            w={'590px'}
-                            padding='10px'
+                            w={'36.875rem'}
+                            padding='0.625rem'
                             placeholder='Write your project name...'
                             label={'Project name'}
                             font={FONTS.T1.T12px.Regular400.value}
@@ -117,7 +120,7 @@ const Template: ComponentStory<typeof Modal> = (props: IModalProps) => {
                             {...form.projectName}
                         />
                     </HStack>
-                    <VStack padding={'12px 20px'} spacing='16px'>
+                    <VStack padding={'0.75rem 1.25rem'} spacing='1rem'>
                         <SearchbarSelect
                             {...searchbarProps}
                             filterValue={filterValue}

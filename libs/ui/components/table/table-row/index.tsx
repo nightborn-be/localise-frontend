@@ -99,8 +99,8 @@ export default function TableRow({
                         size={ButtonSize.SMALL}
                         padding='0.25rem'
                         gap='0.625rem'
-                        backgroundColor='#FFFFFF'
-                        hoverBackgroundColor='#F2F4F9'
+                        backgroundColor={COLORS.White.T500.value}
+                        hoverBackgroundColor={COLORS.Tag.value}
                     >
                         {(isHovered) => (
                             <Icon

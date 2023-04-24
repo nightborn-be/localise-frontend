@@ -12,7 +12,7 @@ import * as CSS from 'csstype';
 import { IInputTextAreaFieldProps } from './props';
 export default function InputTextAreaField<T>({
     color = COLORS.Text.T500.value,
-    border = `1px solid ${COLORS.Stroke.value}`,
+    border = `0.0625rem solid ${COLORS.Stroke.value}`,
     placeholderColor = COLORS.InputText.value,
     placeholder,
     h,
@@ -51,7 +51,7 @@ export default function InputTextAreaField<T>({
         <VStack
             position={'relative'}
             direction='column'
-            spacing={'12px'}
+            spacing={'0.75rem'}
             w={w}
             h={'fit-content'}
             minH={'fit-content'}
@@ -59,7 +59,7 @@ export default function InputTextAreaField<T>({
             {/* Input field section */}
             <Textarea
                 position={'relative'}
-                padding={'8px'}
+                padding={'0.5rem'}
                 overflow='hidden'
                 w={w}
                 h={'fit-content'}
@@ -67,15 +67,15 @@ export default function InputTextAreaField<T>({
                 border={
                     visibility === 'visible'
                         ? hoverBorder
-                        : '1px solid transparent'
+                        : '0.0625rem solid transparent'
                 }
-                borderRadius='6px'
+                borderRadius='0.375rem'
                 _hover={{
                     border: borderCondition,
                 }}
                 gap={gap}
                 resize='none'
-                paddingTop='0px'
+                paddingTop='0rem'
                 value={value}
                 onChange={(e) => {
                     onChange && onChange(e.currentTarget.value);
@@ -96,8 +96,8 @@ export default function InputTextAreaField<T>({
                 letterSpacing={font?.letterSpacing}
                 onFocus={handleToggleVisibility}
                 onBlur={handleToggleVisibility}
-                paddingInlineStart='0px'
-                paddingInlineEnd='0px'
+                paddingInlineStart='0rem'
+                paddingInlineEnd='0rem'
                 onKeyDown={(event) =>
                     event.key === 'Enter' ? event.currentTarget.blur() : null
                 }
@@ -110,8 +110,8 @@ export default function InputTextAreaField<T>({
                 borderRadius='0.25rem'
                 alignItems={'center'}
                 justifyContent={'right'}
-                right='6px'
-                bottom={'4px'}
+                right='0.375rem'
+                bottom={'0.25rem'}
             >
                 {rightElement}
             </Flex>

@@ -12,12 +12,12 @@ const SearchInput = <T extends object>({
     color = COLORS.Text.T500.value,
     placeholderColor = COLORS.InputText.value,
     placeholder,
-    marginLeft = '150px',
+    marginLeft = '9.375rem',
     backgroundColor = COLORS.BG.value,
-    inputWidth = '95px',
-    inputHeight = '15px',
+    inputWidth = '5.9375rem',
+    inputHeight = '0.9375rem',
     inputBorder = 'transparent',
-    inputBorderRadius = '0px',
+    inputBorderRadius = '0rem',
     value,
     onChange,
     ...props
@@ -35,8 +35,8 @@ const SearchInput = <T extends object>({
             <HStack
                 onClick={() => setLaunchAnime(true)}
                 ref={boxRef}
-                w={'28px'}
-                h={'28px'}
+                w={'1.75rem'}
+                h={'1.75rem'}
                 flexWrap={'wrap'}
             >
                 <motion.div

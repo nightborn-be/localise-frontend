@@ -20,11 +20,11 @@ export default function InputSelectAndInput<T>({
     borderRadius = '0.5rem',
     alignItems,
     isValid = true,
-    errorBorder = `1px solid ${COLORS.Error.T500.value}`,
+    errorBorder = `0.0625rem solid ${COLORS.Error.T500.value}`,
     rightIcon,
     rightHoverIcon,
-    menuOptionWidth = '200px',
-    menuRightOption = '-44px',
+    menuOptionWidth = '12.5rem',
+    menuRightOption = '-2.75rem',
     menuMinWOption = '12.5rem',
     backgroundColor,
     onDelete,
@@ -67,10 +67,10 @@ export default function InputSelectAndInput<T>({
                 px='0.75rem'
                 spacing={0}
                 justifyContent='space-between'
-                paddingRight='8px'
-                paddingLeft='12px'
+                paddingRight='0.5rem'
+                paddingLeft='0.75rem'
                 transition='marginRight 2s'
-                marginRight='200px'
+                marginRight='12.5rem'
                 onMouseOver={setIsHoveredToTrue}
                 onMouseLeave={setIsHoveredToFalse}
                 position='relative'
@@ -95,7 +95,7 @@ export default function InputSelectAndInput<T>({
                         menuOptionWidth={menuOptionWidth}
                         menuRightOption={menuRightOption}
                         minW={menuMinWOption}
-                        selectMarginLeft={isHovered ? '30px' : '0px'}
+                        selectMarginLeft={isHovered ? '1.875rem' : '0rem'}
                     />
                 </motion.div>
 
@@ -118,9 +118,9 @@ export default function InputSelectAndInput<T>({
                             size={ButtonSize.XS}
                             aria-label=''
                             position='absolute'
-                            right='8px'
-                            top='5px'
-                            bottom='6px'
+                            right='0.5rem'
+                            top='0.3125rem'
+                            bottom='0.375rem'
                             handleOnClick={onDelete}
                         >
                             {() => iconChoice(isHovered)}
