@@ -67,7 +67,6 @@ export const SideBar = ({
                         {t<string>(tKeys.sidebar.project_section.title)}
                     </Text>
                 </HStack>
-
                 {/* FIRST MENU */}
                 <VStack
                     w={'15.25rem'}
@@ -96,7 +95,6 @@ export const SideBar = ({
                         startEnhancer={<Icon name='myProfile' />}
                     />
                 </VStack>
-
                 {/* SECOND MENU PROJECT */}
                 <HStack
                     w={'15.25rem'}
@@ -151,7 +149,7 @@ export const SideBar = ({
                     padding='0.375rem 0.5rem 1.25rem'
                     spacing='0.375rem'
                     height={'full'}
-                    overflowX={'scroll'}
+                    overflowX={'hidden'}
                     borderRight={`0.0625rem solid ${COLORS.Line.value}`}
                 >
                     {options?.map((option, index) => {
@@ -173,11 +171,8 @@ export const SideBar = ({
                             />
                         );
                     })}
-                </VStack>;
-
-                {
-                    /* ORGANISATION MENU */
-                }
+                </VStack>
+                ;{/* ORGANISATION MENU */}
                 <HStack
                     w={'15.25rem'}
                     padding={'0.75rem 0.5rem'}
@@ -217,7 +212,8 @@ export const SideBar = ({
                                 .organisation_settings.title,
                         )}
                     </Button>
-                </HStack>;
+                </HStack>
+                ;
                 <VStack
                     w={'15.25rem'}
                     padding='0.75rem 0.5rem 1.25rem'
