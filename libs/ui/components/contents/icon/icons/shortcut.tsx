@@ -9,13 +9,7 @@ const ShortCut = (props: React.SVGProps<SVGSVGElement>) => (
         fill='none'
         xmlns='http://www.w3.org/2000/svg'
     >
-        <rect
-            y='0.5'
-            width='30'
-            height='19'
-            rx='4'
-            fill={COLORS.Line.value}
-        />
+        <rect y='0.5' width='30' height='19' rx='4' fill={COLORS.Line.value} />
         <mask id='path-2-inside-1_4674_1559' fill='white'>
             <rect
                 x='8.33398'
