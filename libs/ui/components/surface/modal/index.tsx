@@ -44,11 +44,11 @@ const Modal = ({
         secondCtaBgColor: COLORS.Localize.Purple.value,
         secondCtaColor: COLORS.White.T500.value,
         secondCtaFont: FONTS.T1.T12px.SemiBold600.value,
-        secondCtaWidth: '80px',
-        secondCtaHeight: '32px',
+        secondCtaWidth: '5rem',
+        secondCtaHeight: '2rem',
     },
     body = {
-        padding: '0px',
+        padding: '0rem',
     },
 }: IModalProps) => {
     // Render
@@ -60,11 +60,15 @@ const Modal = ({
             isCentered
         >
             <ModalOverlay opacity={'0.6'} />
-            <ModalContent w={'630px'} minW={'630px'} borderRadius={'12px'}>
+            <ModalContent
+                w={'39.375rem'}
+                minW={'39.375rem'}
+                borderRadius={'0.75rem'}
+            >
                 <ModalHeader
-                    padding='20px'
-                    h={'56px'}
-                    borderTopRadius={'12px'}
+                    padding='1.25rem'
+                    h={'3.5rem'}
+                    borderTopRadius={'0.75rem'}
                     bg={header.bg}
                 >
                     <Text font={header.font} color={header.color}>
@@ -79,7 +83,7 @@ const Modal = ({
                         _hover={{
                             bg: header.closeButtonHoverBgColor,
                         }}
-                        top='13px'
+                        top='0.8125rem'
                     >
                         <Icon
                             name='removeLarge'
@@ -94,14 +98,14 @@ const Modal = ({
                 >
                     <HStack alignItems={'center'} zIndex='0'>
                         <Button
-                            w={'72px'}
-                            h={'32px'}
-                            borderRadius='8px'
+                            w={'4.5rem'}
+                            h={'2rem'}
+                            borderRadius='0.5rem'
                             backgroundColor={footer.firstCtaBgColor}
                             hoverColor={footer.firstCtaBgHoverColor}
                             font={footer.firstCtaFont}
                             color={footer.firstCtaColor}
-                            padding={'4px 12px'}
+                            padding={'0.25rem 0.75rem'}
                             onClick={onClose}
                             _active={{
                                 bg: 'none',
@@ -112,14 +116,14 @@ const Modal = ({
                         <Button
                             minW={footer.secondCtaWidth}
                             h={footer.secondCtaHeight}
-                            borderRadius='8px'
+                            borderRadius='0.5rem'
                             backgroundColor={footer.secondCtaBgColor}
-                            spacing='8px'
-                            gap='8px'
+                            spacing='0.5rem'
+                            gap='0.5rem'
                             hoverBackgroundColor={footer.secondCtaBgHoverColor}
                             font={footer.secondCtaFont}
                             color={footer.secondCtaColor}
-                            padding={'4px 12px'}
+                            padding={'0.25rem 0.75rem'}
                             onClick={() => {
                                 handleOnSubmit();
                                 onClose();

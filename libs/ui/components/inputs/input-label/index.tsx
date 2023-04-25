@@ -8,7 +8,7 @@ import { IInputLabelProps } from './props';
 const InputLabel = ({
     label,
     description,
-    lineHeight = '15px',
+    lineHeight = '0.9375rem',
     margin = '0',
     labelFont = FONTS.T1.T12px.Medium500.value,
     labelColor = COLORS.Text.T500.value,

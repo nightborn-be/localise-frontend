@@ -13,11 +13,7 @@ export default {
 export const Tooltips = () => {
     return (
         <Tooltip label={'Source language: English'}>
-            <Role
-                text='Admin'
-                color={COLORS.Localize.Purple.T500.value}
-                backgroundColor={COLORS.Localize.Purple.T100.value}
-            />
+            <Role selectedValue={'Admin'} setSelectedValue={() => {}} />
         </Tooltip>
     );
 };
@@ -30,12 +26,8 @@ export const TooltipIcon = () => {
             label={'Add a new key'}
             placement={'top'}
         >
-            <HStack mt='50px'>
-                <Role
-                    text='Admin'
-                    color={COLORS.Localize.Purple.T500.value}
-                    backgroundColor={COLORS.Localize.Purple.T100.value}
-                />
+            <HStack mt='3.125rem'>
+                <Role selectedValue={'Admin'} setSelectedValue={() => {}} />
             </HStack>
         </Tooltip>
     );

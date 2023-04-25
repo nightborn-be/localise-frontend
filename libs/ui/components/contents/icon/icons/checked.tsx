@@ -1,4 +1,5 @@
 import React from 'react';
+import COLORS from '../../../../constants/colors';
 
 const Checked = (props: React.SVGProps<SVGSVGElement>) => (
     <svg
@@ -10,7 +11,7 @@ const Checked = (props: React.SVGProps<SVGSVGElement>) => (
     >
         <path
             d='M16.6663 5L7.49967 14.1667L3.33301 10'
-            stroke={props.fill ?? '#5F43E2'}
+            stroke={props.fill ?? COLORS.Localize.Purple.T500.value}
             strokeWidth='2'
             strokeLinecap='round'
             strokeLinejoin='round'

@@ -39,13 +39,13 @@ export const DeleteModal = ({
                     closeButtonHoverBgColor: COLORS.Line.value,
                     closeButtonColor: COLORS.InputText.value,
                 }}
-                body={{ padding: '64px 20px 32px 20px' }}
+                body={{ padding: '4rem 1.25rem 2rem 1.25rem' }}
                 footer={{
                     bg: COLORS.Localize.Purple.T500.value,
                     color: COLORS.White.T500.value,
                     font: FONTS.T1.T16px.SemiBold600.value,
                     justifyContent: 'center',
-                    padding: '0px 20px 64px 20px',
+                    padding: '0rem 1.25rem 4rem 1.25rem',
                     firstCtaLabel: t<string>(
                         tKeys.home.modal.delete_project.cta.cancel,
                     ),
@@ -59,8 +59,8 @@ export const DeleteModal = ({
                     secondCtaBgColor: COLORS.Error.T500.value,
                     secondCtaColor: COLORS.White.T500.value,
                     secondCtaFont: FONTS.T1.T12px.SemiBold600.value,
-                    secondCtaHeight: '36px',
-                    secondCtaWidth: '76px',
+                    secondCtaHeight: '2.25rem',
+                    secondCtaWidth: '4.75rem',
                     secondCtaBgHoverColor: COLORS.HoverRed.value,
                     secondCtaStartEnhancer: (
                         <Icon

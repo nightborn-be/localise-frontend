@@ -27,7 +27,7 @@ const ProjectColorPicker = ({
         COLORS.Social.FacebookBlue.value,
         COLORS.Bancontact.Payconiq.value,
         COLORS.Visa.Yellow.value,
-        '#DF73FF',
+        COLORS.ProjectColors.Pink.value,
     ];
 
     // Render
@@ -36,7 +36,7 @@ const ProjectColorPicker = ({
             <HStack
                 padding={padding}
                 paddingBottom='1.125rem'
-                gap='12px'
+                gap='0.75rem'
                 width={w}
                 height='fit-content'
                 maxW={w}

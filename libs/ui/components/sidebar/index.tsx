@@ -16,7 +16,9 @@ import CreateProjectModal from './create-project-modal/index';
 import CreateOrganisationModal from './create-organisation-modal';
 import { ISideBarContentProps } from './props';
 import { getInitialeName } from 'utils/functions';
-import { HomeContentState } from 'ui/pages/types';
+import { useRouter } from 'next/router';
+import { useTranslation } from 'react-i18next';
+import { tKeys } from '../../../i18n/keys';
 
 export const SideBar = ({
     handleOnCreateProject,
@@ -29,7 +31,6 @@ export const SideBar = ({
     filterProjectValue,
     activeProject,
     setActiveProject,
-    setCurrentStatePage,
 }: ISideBarContentProps) => {
     const {
         handleToggleIsOrganisationClicked,
@@ -39,9 +40,10 @@ export const SideBar = ({
         activeOptionKey,
         setIsOrganisationClicked,
     } = useSidebarLogic({ organisationProjectData });
-
+    const { t } = useTranslation();
     const { isOpen, onOpen, onClose } = useDisclosure();
     const createOrganisationModal = useDisclosure();
+    const { push } = useRouter();
     return (
         <>
             <VStack w={'15.25rem'} h={'100vh'} spacing='0px'>
@@ -62,7 +64,7 @@ export const SideBar = ({
                         font={FONTS.T1.T14px.SemiBold600.value}
                         color={COLORS.Text.T500.value}
                     >
-                        Localize
+                        {t<string>(tKeys.sidebar.project_section.title)}
                     </Text>
                 </HStack>
 
@@ -80,7 +82,7 @@ export const SideBar = ({
                         text={'Activity'}
                         textFont={FONTS.T1.T12px.Medium500.value}
                         textColor={COLORS.Text.T400.value}
-                        projectIconColor='#F74A3E'
+                        projectIconColor={COLORS.Error.T500.value}
                         notificationNumber={1}
                         startEnhancer={<Icon name='section' />}
                     />
@@ -90,7 +92,7 @@ export const SideBar = ({
                         text={'Profile'}
                         textFont={FONTS.T1.T12px.Medium500.value}
                         textColor={COLORS.Text.T400.value}
-                        projectIconColor='#F74A3E'
+                        projectIconColor={COLORS.Error.T500.value}
                         startEnhancer={<Icon name='myProfile' />}
                     />
                 </VStack>
@@ -106,7 +108,7 @@ export const SideBar = ({
                         color={COLORS.InputText.value}
                         font={FONTS.T1.T12px.SemiBold600.value}
                     >
-                        PROJECTS
+                        {t<string>(tKeys.sidebar.projects_section.title)}
                     </Text>
                     <ButtonIcon
                         handleOnClick={onOpen}
@@ -160,22 +162,22 @@ export const SideBar = ({
                                         id: option.value,
                                         name: option.label,
                                     });
-                                    setCurrentStatePage(
-                                        HomeContentState.PROJECTS,
-                                    );
+                                    push(`/projects/${option.value}`);
                                 }}
                                 activeKey={activeProject.name as string}
                                 text={option.label}
                                 key={option.value}
                                 textFont={FONTS.T1.T12px.Medium500.value}
                                 textColor={COLORS.Text.T400.value}
-                                projectIconColor='#1ABC9C'
+                                projectIconColor={COLORS.Success.T300.value}
                             />
                         );
                     })}
-                </VStack>
+                </VStack>;
 
-                {/* ORGANISATION MENU */}
+                {
+                    /* ORGANISATION MENU */
+                }
                 <HStack
                     w={'15.25rem'}
                     padding={'0.75rem 0.5rem'}
@@ -207,14 +209,15 @@ export const SideBar = ({
                         spacing={'0.75rem'}
                         padding={'0.75rem'}
                         onClick={() => {
-                            setCurrentStatePage(
-                                HomeContentState.ORGANISATION_SETTINGS,
-                            );
+                            push('/settings');
                         }}
                     >
-                        Organisation settings
+                        {t<string>(
+                            tKeys.sidebar.organisation_section
+                                .organisation_settings.title,
+                        )}
                     </Button>
-                </HStack>
+                </HStack>;
                 <VStack
                     w={'15.25rem'}
                     padding='0.75rem 0.5rem 1.25rem'

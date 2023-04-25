@@ -28,6 +28,7 @@ const SidebarOrganisation = ({
             _hover={{ bg: COLORS.Tag.value }}
             bg={COLORS.White.T500.value}
             onClick={onClick}
+            cursor='pointer'
         >
             <HStack w='full' h='2rem'>
                 <HStack

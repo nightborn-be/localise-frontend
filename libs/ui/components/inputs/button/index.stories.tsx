@@ -262,7 +262,7 @@ AddPicture.args = {
 export const AddLanguage = Template.bind({});
 AddLanguage.args = {
     children: 'Add another target language',
-    color: '#393360',
+    color: COLORS.Text.T500.value,
     font: FONTS.T1.T12px.Medium500.value,
     width: '11.8125rem',
     height: '1rem',
@@ -291,7 +291,7 @@ DeleteProject.args = {
     font: FONTS.T1.T12px.Medium500.value,
     width: '6.3125rem',
     height: '0.9375rem',
-    borderRadius: '0px',
+    borderRadius: '0rem',
     padding: '0rem',
     gap: '0.5rem',
     backgroundColor: 'transparent',
@@ -356,11 +356,11 @@ CreateOrganisation.args = {
             stroke={COLORS.White.T500.value}
         />
     ),
-    w: '252px',
-    h: '40px',
+    w: '15.75rem',
+    h: '2.5rem',
     justifyContent: 'left',
     children: 'Create new organisation',
     font: FONTS.T1.T12px.Medium500.value,
     color: COLORS.Text.T400.value,
-    spacing: '8px',
+    spacing: '0.5rem',
 };

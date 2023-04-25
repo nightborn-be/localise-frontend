@@ -46,7 +46,8 @@ export default function SidebarMenuSettingItem({
                 onMouseOver={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
                 onClick={onSelect}
-                spacing='14px'
+                cursor={'pointer'}
+                spacing='0.875rem'
             >
                 <Box
                     w='0.125rem'

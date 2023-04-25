@@ -1,4 +1,5 @@
 import React from 'react';
+import COLORS from '../../../../constants/colors';
 
 const CheckboxOff = (props: React.SVGProps<SVGSVGElement>) => (
     <svg
@@ -14,7 +15,7 @@ const CheckboxOff = (props: React.SVGProps<SVGSVGElement>) => (
             width='15'
             height='15'
             rx='3.5'
-            stroke={props.stroke ?? '#E7E9F4'}
+            stroke={props.stroke ?? COLORS.Line.value}
         />
     </svg>
 );

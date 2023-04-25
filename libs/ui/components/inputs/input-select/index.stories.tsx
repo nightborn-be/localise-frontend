@@ -25,7 +25,7 @@ const props: IInputSelectProps = {
     font: FONTS.T1.T12px.Regular400.value,
     borderRadius: '0.5rem',
     dropdownIndicator: <Icon name='chevronDown' />,
-    paddingContainer: '12px',
+    paddingContainer: '0.75rem',
     options: [
         { value: 'Admin', label: 'Admin' },
         { value: 'Member', label: 'Member' },
@@ -58,11 +58,11 @@ IsInvalidSelect.args = {
 
 const selectSortProps: IInputSelectProps = {
     color: COLORS.Text.T400.value,
-    h: '32px',
+    h: '2rem',
     background: COLORS.White.T500.value,
     dropdownIndicator: <Icon name='chevronDown' />,
     font: FONTS.T1.T12px.Regular400.value,
-    paddingContainer: '12px',
+    paddingContainer: '0.75rem',
     borderRadius: '0.5rem',
     options: [
         { value: 'None', label: 'None' },

@@ -1,73 +1,42 @@
 import React from 'react';
-import { HomeContentState } from './types';
-import OrganisationSettings from './components/organisation-settings';
-import { IHomePageProps } from './props';
-import ProjectContent from './components/project';
+import Page from 'ui/components/contents/page';
+import { useHomeLogic } from './logic';
+import { useSidebarPageLogic } from 'ui/components/contents/sidebar-page/logic';
+import SidebarPage from 'ui/components/contents/sidebar-page';
 
-const HomePage = ({
-    handleOnDeleteOrganisation,
-    handleUpdateOrganisation,
-    actualOrganisationUser,
-    isLoadingUpdateOrganisation,
-    projectTerms,
-    activeProject,
-    handleOnSaveTranslations,
-    handleOnCreateTerm,
-    handleOnDeleteTerm,
-    setSearchFilterValue,
-    searchFilterValue,
-    setSortValue,
-    sortValue,
-    setIsDetectDuplicate,
-    isDetectDuplicate,
-    currentStatePage,
-    newRowTerm,
-    setNewRowTerm,
-    clearNewRowTerm,
-    addNewRowTerm,
-    handleOnUpdateProject,
-    handleOnDeleteProject,
-}: IHomePageProps) => {
-    // Function
-    function renderPage(): React.ReactNode {
-        switch (currentStatePage) {
-            case HomeContentState.ORGANISATION_SETTINGS:
-                return (
-                    <OrganisationSettings
-                        handleOnDeleteOrganisation={handleOnDeleteOrganisation}
-                        handleUpdateOrganisation={handleUpdateOrganisation}
-                        actualOrganisationUser={actualOrganisationUser}
-                        isLoadingUpdateOrganisation={
-                            isLoadingUpdateOrganisation
-                        }
-                    />
-                );
-            case HomeContentState.PROJECTS:
-                return (
-                    <ProjectContent
-                        projectTerms={projectTerms}
-                        activeProject={activeProject}
-                        handleOnSaveTranslations={handleOnSaveTranslations}
-                        handleOnCreateTerm={handleOnCreateTerm}
-                        handleOnDeleteTerm={handleOnDeleteTerm}
-                        setSearchFilterValue={setSearchFilterValue}
-                        searchFilterValue={searchFilterValue}
-                        sortValue={sortValue}
-                        setSortValue={setSortValue}
-                        setIsDetectDuplicate={setIsDetectDuplicate}
-                        isDetectDuplicate={isDetectDuplicate}
-                        newRowTerm={newRowTerm}
-                        setNewRowTerm={setNewRowTerm}
-                        clearNewRowTerm={clearNewRowTerm}
-                        addNewRowTerm={addNewRowTerm}
-                        handleOnUpdateProject={handleOnUpdateProject}
-                        handleOnDeleteProject={handleOnDeleteProject}
-                    />
-                );
-        }
-    }
+const HomePage = () => {
+    // Attributes
+    const {} = useHomeLogic();
+
+    const {
+        handleOnCreateProject,
+        handleOnCreateOrganisation,
+        handleSwitchOrgansiation,
+        actualOrganisationUser,
+        organisationUserData,
+        organisationProjectData,
+        filterProjectValue,
+        setFilterProjectValue,
+        activeProject,
+        setActiveProject,
+    } = useSidebarPageLogic();
     // Render
-    return <>{renderPage()}</>;
+    return (
+        <Page>
+            <SidebarPage
+                handleOnCreateProject={handleOnCreateProject}
+                handleOnCreateOrganisation={handleOnCreateOrganisation}
+                handleSwitchOrgansiation={handleSwitchOrgansiation}
+                actualOrganisationUser={actualOrganisationUser}
+                organisationUserData={organisationUserData}
+                organisationProjectData={organisationProjectData}
+                filterProjectValue={filterProjectValue}
+                setFilterProjectValue={setFilterProjectValue}
+                activeProject={activeProject}
+                setActiveProject={setActiveProject}
+            />
+        </Page>
+    );
 };
 
 export default HomePage;

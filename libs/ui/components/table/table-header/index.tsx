@@ -83,10 +83,10 @@ export default function TableHeader({
             >
                 <SearchInput
                     color={COLORS.Text.T400.value}
-                    padding='4px 10px'
-                    gap='8px'
+                    padding='0.25rem 0.625rem'
+                    gap='0.5rem'
                     placeholderColor={COLORS.InputText.value}
-                    borderRadius='6px'
+                    borderRadius='0.375rem'
                     placeholder='Type to search...'
                     value={value}
                     onChange={(value) => setValue(value.target.value)}

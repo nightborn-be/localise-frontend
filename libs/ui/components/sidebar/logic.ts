@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { SearchBarOption } from '../inputs/searchbar/props';
 import { SidebarLogicType } from './types';
 import { ISidebarLogicProps } from './props';
+import { useRouter } from 'next/router';
 
 export const useSidebarLogic = ({
     organisationProjectData,

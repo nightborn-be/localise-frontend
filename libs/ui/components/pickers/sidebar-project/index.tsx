@@ -70,6 +70,7 @@ const SidebarProject = ({
                     ? COLORS.Localize.Purple.T500.value
                     : COLORS.White.T500.value
             }
+            cursor={'pointer'}
             onClick={() => onClick(text)}
             ref={ref}
         >
@@ -87,8 +88,8 @@ const SidebarProject = ({
                 <HStack
                     position={'absolute'}
                     maxW={w}
-                    top='18px'
-                    right='25px'
+                    top='1.125rem'
+                    right='1.5625rem'
                     display={isColorPickerVisible ? 'visible' : 'none'}
                     zIndex='2'
                 >
