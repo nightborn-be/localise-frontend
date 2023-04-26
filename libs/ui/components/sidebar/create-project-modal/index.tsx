@@ -50,6 +50,7 @@ export const AddProjectModals = ({
                 handleOnSubmit={() => {
                     handleOnSubmit(form, resetForm);
                 }}
+                isDisabled={form.projectName.value == ''}
             >
                 <VStack spacing='0'>
                     <HStack

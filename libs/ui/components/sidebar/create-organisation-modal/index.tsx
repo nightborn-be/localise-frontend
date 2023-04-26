@@ -38,6 +38,7 @@ export const CreateOrganisationModal = ({
             handleOnSubmit={() => {
                 handleOnSubmit(form, resetForm);
             }}
+            isDisabled={form.organisationName.value == ''}
         >
             <VStack spacing='0'>
                 <VStack padding={'1.25rem 1.25rem 0.75rem'} spacing='0.625rem'>
