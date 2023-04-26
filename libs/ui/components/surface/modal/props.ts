@@ -6,6 +6,7 @@ export interface IModalProps {
     title?: string;
     isOpen: boolean;
     handleOnSubmit: () => void;
+    isLoading?: boolean;
     onClose: () => void;
     header?: IModalHeaderProps;
     footer?: IModalFooterProps;

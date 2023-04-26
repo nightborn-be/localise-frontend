@@ -16,7 +16,7 @@ const OrganisationPage = () => {
 
     // Render
     return (
-        <Page bgImage='/assets/images/AuthSignInBackground.png'>
+        <Page bgImage='/assets/images/AuthOrganisationBackground.png'>
             <VStack h='full' justifyContent='center' ml='8.5rem'>
                 <ContentSignUp
                     title={t<string>(
@@ -25,7 +25,7 @@ const OrganisationPage = () => {
                     handleOnContinue={handleOnSubmit}
                 >
                     <Input
-                        {...form.organizationName}
+                        {...form.organisationName}
                         w='20.4375rem'
                         padding='0.75rem'
                         gap='0.5rem'
@@ -40,10 +40,10 @@ const OrganisationPage = () => {
                         bg={COLORS.White.T500.value}
                         font={FONTS.T1.T12px.Regular400.value}
                         color={COLORS.Text.T400.value}
-                        errorMsg={form.organizationName.meta?.error}
-                        isTouched={form.organizationName.meta?.touched}
+                        errorMsg={form.organisationName.meta?.error}
+                        isTouched={form.organisationName.meta?.touched}
                         isValid={
-                            form.organizationName.meta?.error === undefined
+                            form.organisationName.meta?.error === undefined
                         }
                     />
                 </ContentSignUp>

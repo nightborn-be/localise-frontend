@@ -51,6 +51,8 @@ const ProjectPage = () => {
         addNewRowTerm,
         handleOnUpdateProject,
         handleOnDeleteProject,
+        isLoadingUpdateProject,
+        isLoadingDeleteProject,
     } = useProjectLogic({
         activeProject,
         setActiveProject,
@@ -130,6 +132,8 @@ const ProjectPage = () => {
                             activeProject={activeProject}
                             handleOnUpdateProject={handleOnUpdateProject}
                             handleOnDeleteProject={handleOnDeleteProject}
+                            isLoadingUpdateProject={isLoadingUpdateProject}
+                            isLoadingDeleteProject={isLoadingDeleteProject}
                         />
                     </Tab>
                     <Tab

@@ -360,6 +360,9 @@ export const tKeys = {
                 picture: {
                     title: 'auth.sign_up.organisation.picture.title',
                 },
+                toast: {
+                    error: 'auth.sign_up.organisation.toast.error',
+                },
             },
             cta: {
                 continue: 'auth.sign_up.cta.continue',
@@ -386,6 +389,26 @@ export const tKeys = {
             error: {
                 toast: {
                     title: 'auth.sign_up.error.toast.title',
+                },
+            },
+            add_members: {
+                form: {
+                    title: 'auth.sign_up.add_members.form.title',
+                    email: {
+                        placeholder:
+                            'auth.sign_up.add_members.form.email.placeholder',
+                    },
+                    role: {
+                        developer:
+                            'auth.sign_up.add_members.form.role.developer',
+                        admin: 'auth.sign_up.add_members.form.role.admin',
+                        translator:
+                            'auth.sign_up.add_members.form.role.translator',
+                    },
+                    cta: {
+                        add_member:
+                            'auth.sign_up.add_members.form.cta.add_member',
+                    },
                 },
             },
         },

@@ -17,6 +17,7 @@ export const DeleteModal = ({
     titleModal,
     title,
     description,
+    isLoading,
 }: IDeleteOrganisationProps) => {
     // Attributes
     const { t } = useTranslation();
@@ -27,6 +28,7 @@ export const DeleteModal = ({
             <Modal
                 title={titleModal}
                 isOpen={isOpen}
+                isLoading={isLoading}
                 onClose={() => {
                     onClose();
                 }}

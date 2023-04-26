@@ -52,8 +52,8 @@ export const useProjectLogic = ({
     }, []);
 
     // Hooks
-    const { mutateAsync: updateProject } = useUpdateProject();
-    const { mutateAsync: deleteProject } = useDeleteProject();
+    const { mutateAsync: updateProject, isLoading: isLoadingUpdateProject } = useUpdateProject();
+    const { mutateAsync: deleteProject, isLoading: isLoadingDeleteProject } = useDeleteProject();
     const { mutateAsync: createTerm } = useCreateTerm();
     const { mutateAsync: updateTerm } = useUpdateTerm();
     const { mutateAsync: deleteTerm } = useDeleteTerm();
@@ -265,5 +265,7 @@ export const useProjectLogic = ({
         addNewRowTerm,
         handleOnUpdateProject,
         handleOnDeleteProject,
+        isLoadingUpdateProject,
+        isLoadingDeleteProject
     };
 };
