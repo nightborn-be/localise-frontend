@@ -4,7 +4,6 @@ import { HStack, VStack } from '@chakra-ui/react';
 import Page from '../../../../../components/contents/page';
 import Icon from '../../../../../components/contents/icon';
 import ContentSignIn from '../../component/content-signup';
-
 import { useTranslation } from 'react-i18next';
 import { tKeys } from '../../../../../../i18n/keys';
 import { useAddMembersLogic } from './logic';
