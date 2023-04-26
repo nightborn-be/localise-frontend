@@ -6,7 +6,7 @@ import {
     useDisclosure,
     VStack,
 } from '@chakra-ui/react';
-import React, { useEffect } from 'react';
+import React from 'react';
 import COLORS from '../../constants/colors';
 import FONTS from '../../constants/fonts';
 import Icon from '../contents/icon';
@@ -26,7 +26,6 @@ import { getInitialeName } from 'utils/functions';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'react-i18next';
 import { tKeys } from '../../../i18n/keys';
-import Option from '../inputs/input-select/input-select-option';
 
 export const SideBar = ({
     handleOnCreateProject,
@@ -40,6 +39,8 @@ export const SideBar = ({
     activeProject,
     setActiveProject,
     isLoadingSearchProject,
+    clearNewRowTerm,
+    setSearchFilterValue,
 }: ISideBarContentProps) => {
     const {
         handleToggleIsOrganisationClicked,
@@ -161,7 +162,7 @@ export const SideBar = ({
                         borderRight={`0.0625rem solid ${COLORS.Line.value}`}
                     >
                         <Spinner
-                            size='xl'
+                            size='lg'
                             thickness='4px'
                             speed='0.65s'
                             emptyColor={COLORS.Line.value}
@@ -182,11 +183,19 @@ export const SideBar = ({
                                 return (
                                     <SidebarProject
                                         onClick={() => {
-                                            setActiveProject({
-                                                id: option.value,
-                                                name: option.label,
-                                            });
-                                            push(`/projects/${option.value}`);
+                                            if (
+                                                activeProject.id != option.value
+                                            ) {
+                                                setActiveProject({
+                                                    id: option.value,
+                                                    name: option.label,
+                                                });
+                                                clearNewRowTerm();
+                                                setSearchFilterValue('');
+                                                push(
+                                                    `/projects/${option.value}`,
+                                                );
+                                            }
                                         }}
                                         activeKey={activeProject.name as string}
                                         text={option.label}
@@ -202,10 +211,14 @@ export const SideBar = ({
                                 );
                             })
                         ) : (
-                            <Text color={COLORS.InputText.value}>
-                                We could’nt find the project you were looking
-                                for.
-                            </Text>
+                            <Box padding='0rem 0.1875rem 1.25rem'>
+                                <Text color={COLORS.InputText.value}>
+                                    {t<string>(
+                                        tKeys.sidebar.project_section.search
+                                            .not_found,
+                                    )}
+                                </Text>
+                            </Box>
                         )}
                     </VStack>
                 )}

@@ -12,7 +12,9 @@ const SidebarPage = ({
     filterProjectValue,
     activeProject,
     setActiveProject,
-    isLoadingSearchProject
+    isLoadingSearchProject,
+    clearNewRowTerm,
+    setSearchFilterValue,
 }: ISidebarPageProps) => {
     // Render
     return (
@@ -28,6 +30,8 @@ const SidebarPage = ({
             activeProject={activeProject}
             setActiveProject={setActiveProject}
             isLoadingSearchProject={isLoadingSearchProject}
+            clearNewRowTerm={clearNewRowTerm}
+            setSearchFilterValue={setSearchFilterValue}
         />
     );
 };

@@ -42,7 +42,7 @@ export const useSidebarPageLogic = (): SidebarPageLogicType => {
     const {
         data: organisationProjectData,
         refetch: refetchOrganisationProjectData,
-        isLoading: isLoadingSearchProject
+        isLoading: isLoadingSearchProject,
     } = useGetProjects(actualOrganisationUser?.id as string, {
         q: filterProjectValue,
     });

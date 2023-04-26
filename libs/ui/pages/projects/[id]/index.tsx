@@ -30,6 +30,7 @@ const ProjectPage = () => {
         refetchActualUserOrganisation,
         refetchOrganisationProjectData,
         refetchUserData,
+        isLoadingSearchProject,
     } = useSidebarPageLogic();
 
     const {
@@ -53,6 +54,7 @@ const ProjectPage = () => {
         handleOnDeleteProject,
         isLoadingUpdateProject,
         isLoadingDeleteProject,
+        isLoadingSearchTerms,
     } = useProjectLogic({
         activeProject,
         setActiveProject,
@@ -78,6 +80,9 @@ const ProjectPage = () => {
                 setFilterProjectValue={setFilterProjectValue}
                 activeProject={activeProject}
                 setActiveProject={setActiveProject}
+                isLoadingSearchProject={isLoadingSearchProject}
+                clearNewRowTerm={clearNewRowTerm}
+                setSearchFilterValue={setSearchFilterValue}
             />
             <VStack
                 h='full'
@@ -123,6 +128,7 @@ const ProjectPage = () => {
                             setNewRowTerm={setNewRowTerm}
                             clearNewRowTerm={clearNewRowTerm}
                             addNewRowTerm={addNewRowTerm}
+                            isLoadingSearchTerms={isLoadingSearchTerms}
                         />
                     </Tab>
                     <Tab

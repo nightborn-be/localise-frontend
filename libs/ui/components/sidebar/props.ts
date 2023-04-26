@@ -28,7 +28,9 @@ export interface ISideBarContentProps {
     filterProjectValue: string;
     activeProject: ProjectDTO;
     setActiveProject: (value: ProjectDTO) => void;
-    isLoadingSearchProject: boolean
+    isLoadingSearchProject: boolean;
+    clearNewRowTerm: () => void;
+    setSearchFilterValue: (value: string) => void;
 }
 export interface ISidebarLogicProps {
     organisationProjectData?: ProjectPagingDTO;

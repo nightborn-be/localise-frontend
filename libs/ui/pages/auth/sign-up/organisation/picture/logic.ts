@@ -36,7 +36,7 @@ export const usePictureLogic = (): PictureLogicType => {
                         router.push('/');
                     },
                     onError: async (error) => {
-                        const err = error as AxiosError
+                        const err = error as AxiosError;
                         toast({
                             type: ToastType.ERROR,
                             title: err.response?.data as string,
@@ -45,7 +45,7 @@ export const usePictureLogic = (): PictureLogicType => {
                     },
                 },
             );
-        } catch (err) { }
+        } catch (err) {}
     }
     async function handleOnLater() {
         const { organisationName } = router.query;
@@ -62,16 +62,16 @@ export const usePictureLogic = (): PictureLogicType => {
                         router.push('/');
                     },
                     onError: async (error) => {
-                        const err = error as AxiosError
+                        const err = error as AxiosError;
                         toast({
                             type: ToastType.ERROR,
                             title: err.response?.data as string,
-                            delay: 5000
+                            delay: 5000,
                         });
                     },
                 },
             );
-        } catch (err) { }
+        } catch (err) {}
     }
 
     function onDeletePicture() {

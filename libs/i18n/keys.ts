@@ -78,6 +78,15 @@ export const tKeys = {
                                 },
                             },
                         },
+                        missing: {
+                            title: 'home.project.tab.glossary.content.missing.title',
+                            cta: {
+                                add_key:
+                                    'home.project.tab.glossary.content.missing.cta.add_key',
+                            },
+                            description:
+                                'home.project.tab.glossary.content.missing.description',
+                        },
                     },
                 },
                 statistics: {
@@ -430,6 +439,9 @@ export const tKeys = {
         },
         project_section: {
             title: 'sidebar.project_section.title',
+            search: {
+                not_found: 'sidebar.project_section.search.not_found',
+            },
         },
         projects_section: {
             title: 'sidebar.projects_section.title',

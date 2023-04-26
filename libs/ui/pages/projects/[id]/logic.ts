@@ -52,13 +52,15 @@ export const useProjectLogic = ({
     }, []);
 
     // Hooks
-    const { mutateAsync: updateProject, isLoading: isLoadingUpdateProject } = useUpdateProject();
-    const { mutateAsync: deleteProject, isLoading: isLoadingDeleteProject } = useDeleteProject();
+    const { mutateAsync: updateProject, isLoading: isLoadingUpdateProject } =
+        useUpdateProject();
+    const { mutateAsync: deleteProject, isLoading: isLoadingDeleteProject } =
+        useDeleteProject();
     const { mutateAsync: createTerm } = useCreateTerm();
     const { mutateAsync: updateTerm } = useUpdateTerm();
     const { mutateAsync: deleteTerm } = useDeleteTerm();
     const { mutateAsync: saveTranslation } = useSaveTranslation();
-    const { data: projectTerms, refetch: refetchProjectTerms } = useGetTerms(
+    const { data: projectTerms, refetch: refetchProjectTerms, isLoading: isLoadingSearchTerms } = useGetTerms(
         id as string,
         { q: searchFilterValue as string },
     );
@@ -266,6 +268,7 @@ export const useProjectLogic = ({
         handleOnUpdateProject,
         handleOnDeleteProject,
         isLoadingUpdateProject,
-        isLoadingDeleteProject
+        isLoadingDeleteProject,
+        isLoadingSearchTerms,
     };
 };
