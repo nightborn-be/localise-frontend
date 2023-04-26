@@ -31,7 +31,7 @@ export const InputSelectSort = ({
     }
     // Renders
     return (
-        <VStack position='relative' spacing='4px'>
+        <VStack position='relative' spacing='0.25rem'>
             <Button
                 font={FONTS.T1.T12px.Regular400.value}
                 backgroundColor={
@@ -58,15 +58,15 @@ export const InputSelectSort = ({
             <VStack
                 display={isMenuOpen ? 'visible' : 'none'}
                 position={'absolute'}
-                top='28px'
-                right='0px'
+                top='1.75rem'
+                right='0rem'
                 bg={COLORS.White.T500.value}
-                border={`1px solid ${COLORS.Line.value}`}
-                borderRadius={'8px'}
-                w={'200px'}
+                border={`0.0625rem solid ${COLORS.Line.value}`}
+                borderRadius={'0.5rem'}
+                w={'12.5rem'}
                 h={'fit-content'}
-                padding={'8px 6px'}
-                spacing='4px'
+                padding={'0.5rem 0.375rem'}
+                spacing='0.25rem'
                 // change the shadow Menu
                 shadow={SHADOWS.Menu.value}
                 zIndex={'10'}

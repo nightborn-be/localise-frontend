@@ -1,12 +1,18 @@
 import { Box, Stack, Text } from '@chakra-ui/react';
 import React from 'react';
 import SidebarHeader from './header';
+import COLORS from '../../../constants/colors';
 
 const Sidebar = ({ projects }: any) => {
     return (
-        <Box w='245px' borderRight={'1px solid #E7E9F4'}>
+        <Box w='15.3125rem' borderRight={`1px solid ${COLORS.Line.value}`}>
             <SidebarHeader />
-            <Stack px={'8px'} py='6px' direction='column' spacing='12px'>
+            <Stack
+                px={'0.5rem'}
+                py='0.375rem'
+                direction='column'
+                spacing='0.75rem'
+            >
                 {projects?.data?.map((project: any) => (
                     <ProjectCard key={project.id} project={project} />
                 ))}
@@ -20,13 +26,18 @@ const ProjectCard = ({ project }: any) => {
         <Stack
             alignItems={'center'}
             borderRadius={6}
-            bg={'#5F43E2'}
-            p={'12.5px'}
+            bg={COLORS.Localize.Purple.T500.value}
+            p={'0.7813rem'}
             direction={'row'}
-            spacing='12px'
+            spacing='0.75rem'
         >
-            <Box borderRadius={'2px'} w={'8px'} h={'8px'} bg={'green'} />
-            <Text fontSize={'12px'} fontWeight={'500'} color='white'>
+            <Box
+                borderRadius={'0.125rem'}
+                w={'0.5rem'}
+                h={'0.5rem'}
+                bg={'green'}
+            />
+            <Text fontSize={'0.75rem'} fontWeight={'500'} color='white'>
                 {project.name}
             </Text>
         </Stack>

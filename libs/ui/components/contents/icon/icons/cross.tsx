@@ -1,4 +1,5 @@
 import React from 'react';
+import COLORS from '../../../../constants/colors';
 
 const Cross = (props: React.SVGProps<SVGSVGElement>) => (
     <svg
@@ -12,14 +13,14 @@ const Cross = (props: React.SVGProps<SVGSVGElement>) => (
     >
         <path
             d='M12 4L4 12'
-            stroke={props.stroke ?? '#8F95B2'}
+            stroke={props.stroke ?? COLORS.InputText.value}
             strokeWidth='1.6'
             strokeLinecap='round'
             strokeLinejoin='round'
         />
         <path
             d='M4 4L12 12'
-            stroke={props.stroke ?? '#8F95B2'}
+            stroke={props.stroke ?? COLORS.InputText.value}
             strokeWidth='1.6'
             strokeLinecap='round'
             strokeLinejoin='round'

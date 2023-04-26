@@ -13,7 +13,6 @@ const Text = ({
     return (
         <ChakraText
             color={color}
-            fontFamily={font?.fontFamily}
             fontSize={font?.fontSize}
             fontWeight={font?.fontWeight}
             lineHeight={font?.lineHeight}

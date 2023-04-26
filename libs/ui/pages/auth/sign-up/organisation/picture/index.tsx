@@ -26,11 +26,8 @@ const OrganisationPicturePage = () => {
 
     // Render
     return (
-        <Page
-            bgImage='/assets/images/AuthSignInBackground.png'
-            displaySidebar={false}
-        >
-            <HStack ml='8.5rem'>
+        <Page bgImage='/assets/images/AuthSignInBackground.png'>
+            <HStack h='full' justifyContent='center' ml='8.5rem'>
                 <ContentSignIn
                     title={t<string>(
                         tKeys.auth.sign_up.organisation.picture.title,
@@ -44,14 +41,15 @@ const OrganisationPicturePage = () => {
                         <HStack
                             w='6.25rem'
                             h='6.25rem'
-                            maxH='6.25rem'
-                            maxW='6.25rem'
+                            minH='6.25rem'
+                            minW='6.25rem'
                             position={'relative'}
+                            spacing='0rem'
                         >
                             <ButtonIcon
                                 position={'absolute'}
                                 top='-0.4375rem'
-                                right='-1.0625rem'
+                                right='-0.5625rem'
                                 aria-label='remove'
                                 borderRadius='100%'
                                 size={ButtonSize.XS}
@@ -86,13 +84,14 @@ const OrganisationPicturePage = () => {
                                 borderRadius='1rem'
                                 w='6.25rem'
                                 h='6.25rem'
-                                maxH='6.25rem'
-                                maxW='6.25rem'
+                                minH='6.25rem'
+                                minW='6.25rem'
                                 direction='column'
                                 backgroundColor='transparent'
                                 color={COLORS.InputText.value}
                                 whiteSpace='pre-line'
                                 spacing='0.4375rem'
+                                marginInlineStart={'0 !important'}
                                 startEnhancer={(): React.ReactElement => (
                                     <Icon
                                         name='uploadCloud'

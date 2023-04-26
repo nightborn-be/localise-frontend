@@ -14,16 +14,16 @@ export const InputSelectSortOption = ({
     // Render
     return (
         <HStack
-            spacing={'12px'}
-            h='32px'
+            spacing={'0.75rem'}
+            h='2rem'
             w='full'
             onClick={() => {
                 onClick(option.value);
                 setIsMenuOpen(false);
             }}
             bg={isSelected ? COLORS.Localize.Purple.T500.value : undefined}
-            padding={'12px'}
-            borderRadius={'4px'}
+            padding={'0.75rem'}
+            borderRadius={'0.25rem'}
             _hover={{
                 bg: isSelected
                     ? COLORS.Localize.Purple.T500.value

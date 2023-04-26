@@ -1,4 +1,5 @@
 import React from 'react';
+import COLORS from '../../../../constants/colors';
 
 const ChevronDown = (props: React.SVGProps<SVGSVGElement>) => (
     <svg
@@ -11,7 +12,7 @@ const ChevronDown = (props: React.SVGProps<SVGSVGElement>) => (
     >
         <path
             d='M5 7.5L10 12.5L15 7.5'
-            stroke={props.stroke ?? '#8F95B2'}
+            stroke={props.stroke ?? COLORS.InputText.value}
             strokeWidth='2'
             strokeLinecap='round'
             strokeLinejoin='round'

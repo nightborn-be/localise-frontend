@@ -1,7 +1,4 @@
-import { HomeContentState } from 'ui/pages/types';
 import {
-    CreateOrganisationDTO,
-    CreateProjectDTO,
     OrganisationDTO,
     OrgnanisationPagingDTO,
     ProjectDTO,
@@ -31,7 +28,6 @@ export interface ISideBarContentProps {
     filterProjectValue: string;
     activeProject: ProjectDTO;
     setActiveProject: (value: ProjectDTO) => void;
-    setCurrentStatePage: (value: HomeContentState) => void;
 }
 export interface ISidebarLogicProps {
     organisationProjectData?: ProjectPagingDTO;

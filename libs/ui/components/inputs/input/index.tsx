@@ -23,7 +23,7 @@ export default function Input<T>({
     description,
     descriptionColor,
     descriptionFont,
-    border = `1px solid ${COLORS.Stroke.value}`,
+    border = `0.0625rem solid ${COLORS.Stroke.value}`,
     placeholderColor = COLORS.InputText.value,
     placeholder,
     h,

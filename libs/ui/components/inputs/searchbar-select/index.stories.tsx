@@ -43,14 +43,14 @@ const Template: ComponentStory<typeof SearchbarSelect<string>> = (args) => {
 };
 const props: ISearchbarSelectProps<string> = {
     color: COLORS.Text.T400.value,
-    w: '590px',
-    h: '36px',
-    padding: '4px 10px',
-    spacing: '8px',
+    w: '36.875rem',
+    h: '2.25rem',
+    padding: '0.25rem 0.625rem',
+    spacing: '0.5rem',
     background: COLORS.White.T500.value,
     placeholder: 'Search for a project...',
     placeholderColor: COLORS.InputText.value,
-    borderRadius: '6px',
+    borderRadius: '0.375rem',
     defaultSelectValue: 'Choose a source language',
 };
 

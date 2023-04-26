@@ -16,11 +16,11 @@ export default {
 const Template: ComponentStory<typeof Tag> = (args) => <Tag {...args} />;
 const props: ITagProps<string> = {
     w: 'fit-content',
-    h: '28px',
-    padding: '6px 10px',
-    gap: '4px',
+    h: '1.75rem',
+    padding: '0.375rem 0.625rem',
+    gap: '0.25rem',
     bg: COLORS.Line.value,
-    borderRadius: '36px',
+    borderRadius: '2.25rem',
     font: FONTS.T1.T12px.Medium500.value,
     color: COLORS.Text.T400.value,
     value: 'French',

@@ -25,7 +25,7 @@ const Template: ComponentStory<typeof SidebarProject> = (
             text={'Mobile App'}
             textFont={FONTS.T1.T12px.Medium500.value}
             textColor={COLORS.Text.T400.value}
-            projectIconColor={'#F74A3E'}
+            projectIconColor={COLORS.Error.T500.value}
             notificationNumber={1}
         />
     );

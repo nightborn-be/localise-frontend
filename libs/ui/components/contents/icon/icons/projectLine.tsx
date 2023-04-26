@@ -1,4 +1,5 @@
 import React from 'react';
+import COLORS from '../../../../constants/colors';
 
 export const ProjectLine = (props: React.SVGProps<SVGSVGElement>) => (
     <svg
@@ -10,7 +11,7 @@ export const ProjectLine = (props: React.SVGProps<SVGSVGElement>) => (
     >
         <path
             d='M1 1V9C1 15.6274 6.37258 21 13 21H21'
-            stroke={props.stroke ?? '#E7E9F4'}
+            stroke={props.stroke ?? COLORS.Line.value}
             strokeWidth='2'
             strokeLinecap='round'
         />

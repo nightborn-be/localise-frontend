@@ -11,13 +11,13 @@ const Checkbox = ({ isSelected, label, onSelect }: ICheckBoxProps) => {
     return (
         <HStack
             w='full'
-            minH='32px'
-            spacing={'12px'}
+            minH='2rem'
+            spacing={'0.75rem'}
             onClick={onSelect}
             _hover={{ bg: COLORS.Tag.value }}
-            borderRadius='6px'
+            borderRadius='0.375rem'
         >
-            <Box w='1rem' h='1rem' ms={'12px'}>
+            <Box w='1rem' h='1rem' ms={'0.75rem'}>
                 <Icon name={isSelected ? 'checkboxOn' : 'checkboxOff'} />
             </Box>
             <Text
