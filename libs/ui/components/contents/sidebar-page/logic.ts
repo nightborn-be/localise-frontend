@@ -42,6 +42,7 @@ export const useSidebarPageLogic = (): SidebarPageLogicType => {
     const {
         data: organisationProjectData,
         refetch: refetchOrganisationProjectData,
+        isLoading: isLoadingSearchProject
     } = useGetProjects(actualOrganisationUser?.id as string, {
         q: filterProjectValue,
     });
@@ -132,6 +133,7 @@ export const useSidebarPageLogic = (): SidebarPageLogicType => {
             },
         );
     }
+
     return {
         handleOnCreateProject,
         handleOnCreateOrganisation,
@@ -147,5 +149,6 @@ export const useSidebarPageLogic = (): SidebarPageLogicType => {
         refetchActualUserOrganisation,
         refetchOrganisationProjectData,
         refetchUserData,
+        isLoadingSearchProject,
     };
 };

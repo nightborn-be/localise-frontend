@@ -32,4 +32,5 @@ export interface SidebarPageLogicType {
     refecthOrganisationUserData?: any;
     refetchUserData?: any;
     refetchOrganisationProjectData?: any;
+    isLoadingSearchProject: boolean
 }

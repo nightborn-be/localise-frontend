@@ -12,6 +12,7 @@ const SidebarPage = ({
     filterProjectValue,
     activeProject,
     setActiveProject,
+    isLoadingSearchProject
 }: ISidebarPageProps) => {
     // Render
     return (
@@ -26,6 +27,7 @@ const SidebarPage = ({
             setFilterProjectValue={setFilterProjectValue}
             activeProject={activeProject}
             setActiveProject={setActiveProject}
+            isLoadingSearchProject={isLoadingSearchProject}
         />
     );
 };

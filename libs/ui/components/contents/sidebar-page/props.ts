@@ -25,4 +25,5 @@ export interface ISidebarPageProps {
     filterProjectValue: string;
     activeProject: ProjectDTO;
     setActiveProject: (value: ProjectDTO) => void;
+    isLoadingSearchProject: boolean
 }
