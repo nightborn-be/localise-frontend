@@ -40,7 +40,7 @@ const AddMembersPage = () => {
                         justifyContent={'left'}
                     >
                         {form.members.value.map(
-                            (obj: IMembersType, i: number) => {
+                            (obj: IMembersType, index: number) => {
                                 return (
                                     <MemberRow
                                         key={`members_id_${obj.customId}`}
@@ -54,6 +54,7 @@ const AddMembersPage = () => {
                                         onDelete={() => {
                                             removeMember(obj.customId);
                                         }}
+                                        index={index}
                                     />
                                 );
                             },

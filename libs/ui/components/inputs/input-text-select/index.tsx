@@ -28,6 +28,7 @@ export default function InputSelectAndInput<T>({
     menuMinWOption = '12.5rem',
     backgroundColor,
     onDelete,
+    index
 }: IInputSelectAndInputProps<T>) {
     //Attributes
     const [isHovered, setIsHovered] = useState<boolean>(false);
@@ -83,9 +84,11 @@ export default function InputSelectAndInput<T>({
                     initial={false}
                     animate={{
                         translateX: isHovered ? -40 : 0,
-                        zIndex: 20,
                     }}
                     transition={{ ease: 'easeOut', duration: 0.5 }}
+                    style={{
+                        zIndex: 2000 - index,
+                    }}
                 >
                     <InputSelect
                         {...selectProps}
@@ -105,7 +108,6 @@ export default function InputSelectAndInput<T>({
                         initial={false}
                         animate={{
                             opacity: isHovered ? 1 : 0,
-                            zIndex: 20,
                         }}
                         transition={{ ease: 'easeOut', duration: 0.2 }}
                     >

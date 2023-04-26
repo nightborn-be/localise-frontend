@@ -8,7 +8,7 @@ import FONTS from '../../../../../../../constants/fonts';
 import React, { useState } from 'react';
 import { useMemberRowLogic } from './logic';
 
-const MemberRow = ({ onChange, onDelete }: IMemberRowProps) => {
+const MemberRow = ({ onChange, onDelete, index }: IMemberRowProps) => {
     const { t } = useTranslation();
 
     const {} = useMemberRowLogic();
@@ -101,6 +101,7 @@ const MemberRow = ({ onChange, onDelete }: IMemberRowProps) => {
                     stroke={COLORS.Error.T500.value}
                 />
             }
+            index={index}
         />
     );
 };
