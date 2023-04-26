@@ -25,6 +25,7 @@ import { toUpdateTermDTO } from '../../../components/contents/project/glossary/c
 import { ToastType } from 'ui/components/progress-validation/toast/types';
 import useToast from 'ui/components/progress-validation/toast';
 import { useRouter } from 'next/router';
+import { useInfinitePaging } from 'utils/infinite-paging/infinite-paging';
 
 export const useProjectLogic = ({
     actualOrganisationUser,
@@ -60,9 +61,20 @@ export const useProjectLogic = ({
     const { mutateAsync: saveTranslation } = useSaveTranslation();
     const { data: projectTerms, refetch: refetchProjectTerms } = useGetTerms(
         id as string,
-        { q: searchFilterValue as string },
+        { q: searchFilterValue as string, page: 0, size: 0 },
     );
 
+    const {
+        data: productsData,
+        isLoading: isProductsLoading,
+        refetch: refetchProducts,
+        fetchNextPage: onFetchProductsNextPage,
+        isFetchingNextPage: isFetchingProductsNextPage,
+    } = useInfinitePaging({
+        useQueryFn: useGetTerms(id as string,
+            { q: searchFilterValue as string, page: 0, size: 0 },),
+        // pathParams: [projectId],
+    });
     // Functions
     async function handleOnDeleteTerm(termId: string) {
         try {
