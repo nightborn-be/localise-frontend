@@ -24,7 +24,6 @@ const AddMembersPage = () => {
         form,
     } = useAddMembersLogic();
     const { t } = useTranslation();
-
     // Render
     return (
         <Page bgImage='/assets/images/SignUpAddMembersBackground.png'>
@@ -59,39 +58,43 @@ const AddMembersPage = () => {
                                 );
                             },
                         )}
-                        <Button
-                            font={FONTS.T1.T14px.Regular400.value}
-                            border={`0.0625rem dashed ${COLORS.Line.value}`}
-                            borderRadius='0.5rem'
-                            w='20.4375rem'
-                            h='2.5rem'
-                            padding='0.25rem 0.75rem 0.25rem 0.5rem'
-                            gap='0.25rem'
-                            justifyContent='flex-start'
-                            backgroundColor='transparent'
-                            color={COLORS.InputText.value}
-                            startEnhancer={(
-                                enhancer: EnhancerProps,
-                            ): React.ReactElement => (
-                                <Icon
-                                    name='add'
-                                    stroke={
-                                        enhancer.isHovered
-                                            ? COLORS.Localize.Purple.T500.value
-                                            : COLORS.InputText.value
-                                    }
-                                    width='20'
-                                    height='20'
-                                />
-                            )}
-                            hoverColor={COLORS.Localize.Purple.T500.value}
-                            onClick={addEmptyMember}
-                        >
-                            {t<string>(
-                                tKeys.auth.sign_up.add_members.form.cta
-                                    .add_member,
-                            )}
-                        </Button>
+
+                        {form.members.value.length < 5 && (
+                            <Button
+                                font={FONTS.T1.T14px.Regular400.value}
+                                border={`0.0625rem dashed ${COLORS.Line.value}`}
+                                borderRadius='0.5rem'
+                                w='20.4375rem'
+                                h='2.5rem'
+                                padding='0.25rem 0.75rem 0.25rem 0.5rem'
+                                gap='0.25rem'
+                                justifyContent='flex-start'
+                                backgroundColor='transparent'
+                                color={COLORS.InputText.value}
+                                startEnhancer={(
+                                    enhancer: EnhancerProps,
+                                ): React.ReactElement => (
+                                    <Icon
+                                        name='add'
+                                        stroke={
+                                            enhancer.isHovered
+                                                ? COLORS.Localize.Purple.T500
+                                                      .value
+                                                : COLORS.InputText.value
+                                        }
+                                        width='20'
+                                        height='20'
+                                    />
+                                )}
+                                hoverColor={COLORS.Localize.Purple.T500.value}
+                                onClick={addEmptyMember}
+                            >
+                                {t<string>(
+                                    tKeys.auth.sign_up.add_members.form.cta
+                                        .add_member,
+                                )}
+                            </Button>
+                        )}
                     </VStack>
                 </ContentSignIn>
             </HStack>
