@@ -44,17 +44,17 @@ jobs:
 
       - name: Create .env file
         run: |-
-          touch /apps/front-end/.env
-          secrets.NEXT_PUBLIC_DEFAULT_LANGUAGE >> /apps/front-end/.env
-          secrets.NEXT_PUBLIC_AVAILABLE_LANGUAGES >> /apps/front-end/.env
-          secrets.NEXT_PUBLIC_FIREBASE_API_KEY_STG >> /apps/front-end/.env
-          secrets.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN_STG >> /apps/front-end/.env
-          secrets.NEXT_PUBLIC_FIREBASE_PROJECT_ID_STG >> /apps/front-end/.env
-          secrets.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET_STG >> /apps/front-end/.env
-          secrets.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID_STG >> /apps/front-end/.env
-          secrets.NEXT_PUBLIC_FIREBASE_API_ID_STG >> /apps/front-end/.env
-          secrets.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID_STG >> /apps/front-end/.env
-          secrets.NEXT_PUBLIC_BACKEND_URL_STG >> /apps/front-end/.env
+          touch apps/front-end/.env
+          NEXT_PUBLIC_DEFAULT_LANGUAGE=${{secrets.NEXT_PUBLIC_DEFAULT_LANGUAGE}} >> apps/front-end/.env
+          NEXT_PUBLIC_AVAILABLE_LANGUAGES=${{secrets.NEXT_PUBLIC_AVAILABLE_LANGUAGES}} >> apps/front-end/.env
+          NEXT_PUBLIC_FIREBASE_API_KEY=${{secrets.NEXT_PUBLIC_FIREBASE_API_KEY_STG}} >> apps/front-end/.env
+          NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=${{secrets.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN_STG}} >> apps/front-end/.env
+          NEXT_PUBLIC_FIREBASE_PROJECT_ID=${{secrets.NEXT_PUBLIC_FIREBASE_PROJECT_ID_STG}} >> apps/front-end/.env
+          NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=${{secrets.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET_STG}} >> apps/front-end/.env
+          NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=${{secrets.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID_STG}} >> apps/front-end/.env
+          NEXT_PUBLIC_FIREBASE_API_ID=${{secrets.NEXT_PUBLIC_FIREBASE_API_ID_STG}} >> apps/front-end/.env
+          NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID=${{secrets.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID_STG}} >> apps/front-end/.env
+          NEXT_PUBLIC_BACKEND_URL=${{secrets.NEXT_PUBLIC_BACKEND_URL_STG}} >> apps/front-end/.env
 
       - name: Build and Push Container
         run: |-
