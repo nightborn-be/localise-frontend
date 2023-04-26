@@ -35,6 +35,7 @@ const AddMembersPage = () => {
                     <VStack
                         spacing='0.75rem'
                         alignItems='left'
+                        w='20.4375rem'
                         justifyContent={'left'}
                     >
                         {form.members.value.map(

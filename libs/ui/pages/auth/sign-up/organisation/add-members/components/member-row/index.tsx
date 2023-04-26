@@ -81,7 +81,7 @@ const MemberRow = ({ onChange, onDelete, index }: IMemberRowProps) => {
                 font: FONTS.T1.T12px.Regular400.value,
                 zIndex: '10',
             }}
-            w='20.4375rem'
+            w='full'
             h='2.5rem'
             border={`0.0625rem solid ${COLORS.Line.value}`}
             borderRadius='0.5rem'
