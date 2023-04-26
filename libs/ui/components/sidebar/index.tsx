@@ -163,7 +163,7 @@ export const SideBar = ({
                     >
                         <Spinner
                             size='lg'
-                            thickness='4px'
+                            thickness='0.25rem'
                             speed='0.65s'
                             emptyColor={COLORS.Line.value}
                             color={COLORS.Localize.Purple.T500.value}

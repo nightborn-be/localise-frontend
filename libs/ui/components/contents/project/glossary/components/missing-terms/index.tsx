@@ -15,7 +15,7 @@ const MissingTerms = ({ addNewRowTerm }: IMissingTermsProps) => {
 
     // Render
     return (
-        <VStack spacing='32px' h='full' w='full' justifyContent={'center'}>
+        <VStack spacing='2rem' h='full' w='full' justifyContent={'center'}>
             <Image
                 src='/assets/images/RetroMacError.png'
                 alt='Retro Mac error'
@@ -40,12 +40,12 @@ const MissingTerms = ({ addNewRowTerm }: IMissingTermsProps) => {
                 </Text>
             </VStack>
             <Button
-                width={'140px'}
-                minW={'140px'}
-                height={'36px'}
-                padding={'4px 12px 4px 8px'}
+                width={'8.75rem'}
+                minW={'8.75rem'}
+                height={'2.25rem'}
+                padding={'0.25rem 0.75rem 0.25rem 0.5rem'}
                 font={FONTS.T1.T12px.SemiBold600.value}
-                spacing='4px'
+                spacing='0.25rem'
                 color={COLORS.White.T500.value}
                 backgroundColor={COLORS.Localize.Purple.T500.value}
                 hoverBackgroundColor={COLORS.Localize.Purple.T600.value}

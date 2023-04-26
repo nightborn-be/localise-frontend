@@ -115,7 +115,7 @@ export default function Input<T>({
                     onFocus={handleToggleVisibility}
                     onBlur={handleToggleVisibility}
                     outlineOffset='0'
-                    borderRadius={'8px'}
+                    borderRadius={'0.5rem'}
                     h={h}
                     minH={h}
                     maxH={h}
