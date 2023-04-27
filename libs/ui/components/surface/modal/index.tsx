@@ -23,6 +23,7 @@ const Modal = ({
     isOpen,
     handleOnSubmit,
     onClose,
+    isDisableOnClose,
     header = {
         bg: COLORS.Localize.Purple.T500.value,
         color: COLORS.White.T500.value,
@@ -56,7 +57,7 @@ const Modal = ({
         <ChakraModal
             autoFocus={false}
             isOpen={isOpen}
-            onClose={onClose}
+            onClose={isDisableOnClose ? () => {} : onClose}
             isCentered
         >
             <ModalOverlay opacity={'0.6'} />
@@ -98,6 +99,7 @@ const Modal = ({
                 >
                     <HStack alignItems={'center'} zIndex='0'>
                         <Button
+                            isDisabled={isDisableOnClose}
                             w={'4.5rem'}
                             h={'2rem'}
                             borderRadius='0.5rem'
@@ -106,7 +108,7 @@ const Modal = ({
                             font={footer.firstCtaFont}
                             color={footer.firstCtaColor}
                             padding={'0.25rem 0.75rem'}
-                            onClick={onClose}
+                            onClick={isDisableOnClose ? () => {} : onClose}
                             _active={{
                                 bg: 'none',
                             }}

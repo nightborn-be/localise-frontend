@@ -15,13 +15,13 @@ import { AxiosError } from 'axios';
 import { useTranslation } from 'react-i18next';
 import { IDefaultForm, IForm } from 'utils/formik';
 import { useSaveTranslation } from 'gateways/resource-api/translations/translations';
-import { toUpdateProjectDTO } from '../../../pages/mappers';
-import { tKeys } from '../../../../i18n/keys';
+import { toUpdateProjectDTO } from '../../../../pages/mappers';
+import { tKeys } from '../../../../../i18n/keys';
 import { IProjectContentLogicProps } from './props';
-import { IEditInputForm } from '../../../components/contents/project/glossary/components/table-row-term/components/edit-input/types';
-import { ITableRowTermForm } from '../../../components/contents/project/glossary/components/table-row-term/types';
-import { IUpdateProjectForm } from '../../../components/contents/project/settings/types';
-import { toUpdateTermDTO } from '../../../components/contents/project/glossary/components/table-row-term/mappers';
+import { IEditInputForm } from '../../../../components/contents/project/glossary/components/table-row-term/components/edit-input/types';
+import { ITableRowTermForm } from '../../../../components/contents/project/glossary/components/table-row-term/types';
+import { IUpdateProjectForm } from '../../../../components/contents/project/settings/types';
+import { toUpdateTermDTO } from '../../../../components/contents/project/glossary/components/table-row-term/mappers';
 import { ToastType } from 'ui/components/progress-validation/toast/types';
 import useToast from 'ui/components/progress-validation/toast';
 import { useRouter } from 'next/router';
@@ -212,7 +212,7 @@ export const useProjectLogic = ({
                     },
                 },
             );
-        } catch (e) {}
+        } catch (e) { }
     }
 
     async function handleOnDeleteProject() {
@@ -244,7 +244,7 @@ export const useProjectLogic = ({
                     },
                 },
             );
-        } catch (e) {}
+        } catch (e) { }
     }
     return {
         activeKey,

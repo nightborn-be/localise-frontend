@@ -17,6 +17,7 @@ export const AddProjectModals = ({
     isOpen,
     onClose,
     handleOnSubmit,
+    isDisableOnCloseProjectModal,
 }: ICreateProjectProps) => {
     const {
         sourceLanguageActiveKey,
@@ -47,6 +48,7 @@ export const AddProjectModals = ({
                     onClose();
                     resetForm();
                 }}
+                isDisableOnClose={isDisableOnCloseProjectModal}
                 handleOnSubmit={() => {
                     handleOnSubmit(form, resetForm);
                 }}

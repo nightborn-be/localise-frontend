@@ -1,9 +1,19 @@
+import { useRouter } from 'next/router';
 import { useEffect } from 'react';
-import Page from '../../../libs/ui/components/contents/page';
-import HomePage from '../../../libs/ui/pages/index';
-import { useHomeLogic } from '../../../libs/ui/pages/logic';
-import SideBar from 'ui/components/sidebar';
+import { useAuth } from 'ui/auth';
 
-export default function HomeWeb() {
-    return <HomePage />;
-}
+const Home = () => {
+    const auth = useAuth();
+    console.log(auth);
+
+    const { push } = useRouter();
+    useEffect(() => {
+        if (!auth.isLogged) {
+            push('/auth');
+        } else {
+            push('/dashboard');
+        }
+    }, []);
+};
+
+export default Home;

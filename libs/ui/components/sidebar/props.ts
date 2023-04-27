@@ -28,6 +28,8 @@ export interface ISideBarContentProps {
     filterProjectValue: string;
     activeProject: ProjectDTO;
     setActiveProject: (value: ProjectDTO) => void;
+    createProjectModalDisclosure: any;
+    isDisableOnCloseProjectModal: boolean;
 }
 export interface ISidebarLogicProps {
     organisationProjectData?: ProjectPagingDTO;

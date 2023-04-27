@@ -12,6 +12,8 @@ const SidebarPage = ({
     filterProjectValue,
     activeProject,
     setActiveProject,
+    createProjectModalDisclosure,
+    isDisableOnCloseProjectModal,
 }: ISidebarPageProps) => {
     // Render
     return (
@@ -26,6 +28,8 @@ const SidebarPage = ({
             setFilterProjectValue={setFilterProjectValue}
             activeProject={activeProject}
             setActiveProject={setActiveProject}
+            createProjectModalDisclosure={createProjectModalDisclosure}
+            isDisableOnCloseProjectModal={isDisableOnCloseProjectModal}
         />
     );
 };

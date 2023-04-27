@@ -1,12 +1,12 @@
 import React from 'react';
 import Page from 'ui/components/contents/page';
-import { useHomeLogic } from './logic';
 import { useSidebarPageLogic } from 'ui/components/contents/sidebar-page/logic';
 import SidebarPage from 'ui/components/contents/sidebar-page';
+import { useDashboardLogic } from './logic';
 
 const Dashboard = () => {
     // Attributes
-    const {} = useHomeLogic();
+    const {} = useDashboardLogic();
 
     const {
         handleOnCreateProject,

@@ -32,4 +32,6 @@ export interface SidebarPageLogicType {
     refecthOrganisationUserData?: any;
     refetchUserData?: any;
     refetchOrganisationProjectData?: any;
+    createProjectModalDisclosure: any
+    isDisableOnCloseProjectModal: boolean
 }

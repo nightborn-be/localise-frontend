@@ -25,4 +25,6 @@ export interface ISidebarPageProps {
     filterProjectValue: string;
     activeProject: ProjectDTO;
     setActiveProject: (value: ProjectDTO) => void;
+    createProjectModalDisclosure: any
+    isDisableOnCloseProjectModal: boolean;
 }

@@ -31,6 +31,8 @@ export const SideBar = ({
     filterProjectValue,
     activeProject,
     setActiveProject,
+    createProjectModalDisclosure,
+    isDisableOnCloseProjectModal,
 }: ISideBarContentProps) => {
     const {
         handleToggleIsOrganisationClicked,
@@ -41,7 +43,6 @@ export const SideBar = ({
         setIsOrganisationClicked,
     } = useSidebarLogic({ organisationProjectData });
     const { t } = useTranslation();
-    const { isOpen, onOpen, onClose } = useDisclosure();
     const createOrganisationModal = useDisclosure();
     const { push } = useRouter();
     return (
@@ -109,7 +110,7 @@ export const SideBar = ({
                         {t<string>(tKeys.sidebar.projects_section.title)}
                     </Text>
                     <ButtonIcon
-                        handleOnClick={onOpen}
+                        handleOnClick={createProjectModalDisclosure.onOpen}
                         size={ButtonSize.XS}
                         bgColor='white'
                     >
@@ -278,9 +279,10 @@ export const SideBar = ({
                 </VStack>
             </VStack>
             <CreateProjectModal
-                isOpen={isOpen}
-                onClose={onClose}
+                isOpen={createProjectModalDisclosure.isOpen}
+                onClose={createProjectModalDisclosure.onClose}
                 handleOnSubmit={handleOnCreateProject}
+                isDisableOnCloseProjectModal={isDisableOnCloseProjectModal}
             />
             <CreateOrganisationModal
                 isOpen={createOrganisationModal.isOpen}

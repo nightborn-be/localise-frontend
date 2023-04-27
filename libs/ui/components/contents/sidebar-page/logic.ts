@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
     useCreateProject,
     useGetProjects,
@@ -21,12 +21,18 @@ import useToast from 'ui/components/progress-validation/toast';
 import { ICreateOrganisationForm } from '../../../components/sidebar/create-organisation-modal/types';
 import { toCreateOrganisationDTO } from '../../../components/sidebar/create-organisation-modal/mappers';
 import { SidebarPageLogicType } from './types';
+import { useRouter } from 'next/router';
+import { useDisclosure } from '@chakra-ui/react';
 export const useSidebarPageLogic = (): SidebarPageLogicType => {
     // Attributes
     const [filterProjectValue, setFilterProjectValue] = useState<string>('');
     const [activeProject, setActiveProject] = useState<ProjectDTO>({});
+    const [isDisableOnCloseProjectModal, setIsDisableOnCloseProjectModal] = useState<boolean>(false)
+    const createProjectModalDisclosure = useDisclosure();
+
     const { t } = useTranslation();
     const toast = useToast();
+    const { push } = useRouter();
     // Hooks
     const { mutateAsync: createProject } = useCreateProject();
     const { mutateAsync: createOrganisation } = useCreateOrganisation();
@@ -42,9 +48,27 @@ export const useSidebarPageLogic = (): SidebarPageLogicType => {
     const {
         data: organisationProjectData,
         refetch: refetchOrganisationProjectData,
+        isFetched: isOrganisationProjectDataFetched
     } = useGetProjects(actualOrganisationUser?.id as string, {
         q: filterProjectValue,
     });
+
+    useEffect(() => {
+        if (isOrganisationProjectDataFetched) {
+            const project = organisationProjectData?.data?.at(0)
+            if (project !== undefined) {
+                setActiveProject(project)
+                push(`/dashboard/projects/${project.id}`)
+                setIsDisableOnCloseProjectModal(false)
+
+            } else if (filterProjectValue === '' && project === undefined) {
+                push('/dashboard')
+                createProjectModalDisclosure.onOpen()
+                setIsDisableOnCloseProjectModal(true)
+            }
+        }
+    }
+        , [organisationProjectData])
 
     // Functions
     async function handleOnCreateProject(
@@ -147,5 +171,7 @@ export const useSidebarPageLogic = (): SidebarPageLogicType => {
         refetchActualUserOrganisation,
         refetchOrganisationProjectData,
         refetchUserData,
+        createProjectModalDisclosure,
+        isDisableOnCloseProjectModal,
     };
 };
