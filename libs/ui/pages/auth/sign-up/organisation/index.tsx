@@ -7,7 +7,7 @@ import ContentSignUp from '../component/content-signup';
 import { useOrganisationLogic } from './logic';
 import { useTranslation } from 'react-i18next';
 import { tKeys } from '../../../../../i18n/keys';
-import { HStack, VStack } from '@chakra-ui/react';
+import { VStack } from '@chakra-ui/react';
 
 const OrganisationPage = () => {
     // Attributes

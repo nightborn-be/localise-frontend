@@ -1,12 +1,12 @@
-import { AddMembersLogicType } from './types';
+import { useRouter } from 'next/router';
+import { AddMembersLogicType, IAddMembersForm, IMembersType } from './types';
 import { useFormik } from 'formik';
-import { createForm } from '../../../../../../utils/formik';
-import {
-    IAddMembersForm,
-    IMembersType,
-} from '../../../../../pages/auth/sign-up/organisation/add-members/types';
+import { createForm } from 'utils/formik';
 import { v4 as uuidv4 } from 'uuid';
 export const useAddMembersLogic = (): AddMembersLogicType => {
+    // Attributes
+    const { push } = useRouter();
+
     // Formik
     const { values, ...rest } = useFormik<IAddMembersForm>({
         initialValues: {
@@ -15,15 +15,16 @@ export const useAddMembersLogic = (): AddMembersLogicType => {
             ],
         },
         onSubmit: handleOnSubmit,
-        validateOnChange: false,
     });
     const form = createForm(values, rest);
 
     // Functions
-    function handleOnSubmit() {}
+    function handleOnSubmit() {
+        push('/auth');
+    }
 
     function addEmptyMember() {
-        if (form.members.value.length < 6) {
+        if (form.members.value.length < 5) {
             const member: IMembersType = {
                 customId: uuidv4(),
                 email: undefined,
@@ -34,6 +35,8 @@ export const useAddMembersLogic = (): AddMembersLogicType => {
     }
 
     function updateMemberData(customId: string, email?: string, role?: string) {
+        console.log("test");
+
         const index = findMembers(customId);
         if (index < 0) {
             return;
@@ -57,12 +60,11 @@ export const useAddMembersLogic = (): AddMembersLogicType => {
             (obj: IMembersType) => obj.customId == id,
         );
     }
-
     return {
-        form,
         handleOnSubmit,
         addEmptyMember,
         updateMemberData,
         removeMember,
+        form,
     };
 };

@@ -1,6 +1,6 @@
 import React from 'react';
 import COLORS from '../../../../../constants/colors';
-import { Box, HStack, Image } from '@chakra-ui/react';
+import { HStack, Image } from '@chakra-ui/react';
 import Page from '../../../../../components/contents/page';
 import Icon from '../../../../../components/contents/icon';
 import ButtonIcon from '../../../../../components/inputs/button-icon';
