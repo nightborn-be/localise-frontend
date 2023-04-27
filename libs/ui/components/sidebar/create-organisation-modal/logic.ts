@@ -59,6 +59,7 @@ export const useCreateOrganisationLogic = (): CreateOrganisationLogicType => {
         if (index < 0) {
             return;
         }
+
         const member = form.members.value;
         member[index].email = email;
         member[index].role = role;

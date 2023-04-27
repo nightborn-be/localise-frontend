@@ -1,5 +1,5 @@
 import { HStack, VStack } from '@chakra-ui/react';
-import React from 'react';
+import React, { ReactElement } from 'react';
 import COLORS from '../../../../../constants/colors';
 import FONTS from '../../../../../constants/fonts';
 import { useAddMembersLogic } from './logic';
@@ -117,7 +117,7 @@ export const AddMembersModal = ({ isOpen, onClose }: IAddMembersProps) => {
                             color={COLORS.InputText.value}
                             startEnhancer={(
                                 enhancer: EnhancerProps,
-                            ): React.ReactElement => (
+                            ): ReactElement => (
                                 <Icon
                                     name='add'
                                     stroke={

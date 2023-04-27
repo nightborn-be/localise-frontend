@@ -7,6 +7,8 @@ import Icon from '../../../../../../../components/contents/icon';
 import FONTS from '../../../../../../../constants/fonts';
 import React, { useState } from 'react';
 import { useMemberRowLogic } from './logic';
+import { SingleValue } from 'react-select';
+import { Options } from '../../../../../../../components/inputs/input-select/props';
 
 const MemberRow = ({ onChange, onDelete, index }: IMemberRowProps) => {
     const { t } = useTranslation();
@@ -61,15 +63,15 @@ const MemberRow = ({ onChange, onDelete, index }: IMemberRowProps) => {
                 paddingLeft: '0',
                 paddingContainer: '0.625rem',
                 font: FONTS.T1.T12px.Regular400.value,
-                onChange: (v: any) => {
-                    setRole(v.value);
+                onChange: (event: SingleValue<Options>) => {
+                    setRole(event?.value);
                     onChange(email, role);
                 },
             }}
             inputProps={{
                 name: '',
                 value: undefined,
-                onChange: (v) => {
+                onChange: (v: string) => {
                     setEmail(v);
                     onChange(email, role);
                 },

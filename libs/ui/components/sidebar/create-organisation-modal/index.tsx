@@ -1,5 +1,5 @@
 import { HStack, Image, VStack } from '@chakra-ui/react';
-import React from 'react';
+import React, { ReactElement } from 'react';
 import COLORS from '../../../constants/colors';
 import FONTS from '../../../constants/fonts';
 import Input from '../../inputs/input/index';
@@ -142,7 +142,7 @@ export const CreateOrganisationModal = ({
                                 color={COLORS.InputText.value}
                                 whiteSpace='pre-line'
                                 spacing={'0.1975rem'}
-                                startEnhancer={(): React.ReactElement => (
+                                startEnhancer={(): ReactElement => (
                                     <Icon
                                         name='uploadCloud'
                                         stroke={COLORS.InputText.value}
@@ -217,7 +217,7 @@ export const CreateOrganisationModal = ({
                             color={COLORS.InputText.value}
                             startEnhancer={(
                                 enhancer: EnhancerProps,
-                            ): React.ReactElement => (
+                            ): ReactElement => (
                                 <Icon
                                     name='add'
                                     stroke={
