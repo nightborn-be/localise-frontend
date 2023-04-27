@@ -23,11 +23,13 @@ const OrganisationSettingsPage = () => {
         setFilterProjectValue,
         activeProject,
         setActiveProject,
+        isLoadingSearchProject,
     } = useSidebarPageLogic();
     // Render
     return (
         <Page>
             <SidebarPage
+                isLoadingSearchProject={isLoadingSearchProject}
                 handleOnCreateProject={handleOnCreateProject}
                 handleOnCreateOrganisation={handleOnCreateOrganisation}
                 handleSwitchOrgansiation={handleSwitchOrgansiation}
@@ -38,6 +40,8 @@ const OrganisationSettingsPage = () => {
                 setFilterProjectValue={setFilterProjectValue}
                 activeProject={activeProject}
                 setActiveProject={setActiveProject}
+                clearNewRowTerm={() => {}}
+                setSearchFilterValue={(value: string) => {}}
             />
             <OrganisationSettings
                 handleOnDeleteOrganisation={handleOnDeleteOrganisation}

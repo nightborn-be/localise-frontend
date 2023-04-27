@@ -36,6 +36,8 @@ const HomePage = () => {
                 activeProject={activeProject}
                 setActiveProject={setActiveProject}
                 isLoadingSearchProject={isLoadingSearchProject}
+                clearNewRowTerm={() => {}}
+                setSearchFilterValue={(value: string) => {}}
             />
         </Page>
     );
