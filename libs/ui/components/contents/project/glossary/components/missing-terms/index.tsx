@@ -1,5 +1,5 @@
 import { Image, VStack } from '@chakra-ui/react';
-import React from 'react';
+import React, { ReactElement } from 'react';
 import Text from '../../../../text';
 import FONTS from '../../../../../../constants/fonts';
 import COLORS from '../../../../../../constants/colors';
@@ -49,7 +49,7 @@ const MissingTerms = ({ addNewRowTerm }: IMissingTermsProps) => {
                 color={COLORS.White.T500.value}
                 backgroundColor={COLORS.Localize.Purple.T500.value}
                 hoverBackgroundColor={COLORS.Localize.Purple.T600.value}
-                startEnhancer={(): React.ReactElement => (
+                startEnhancer={(): ReactElement => (
                     <Icon name='add' stroke={COLORS.White.T500.value} />
                 )}
                 onClick={() => {

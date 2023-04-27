@@ -60,10 +60,11 @@ export const useProjectLogic = ({
     const { mutateAsync: updateTerm } = useUpdateTerm();
     const { mutateAsync: deleteTerm } = useDeleteTerm();
     const { mutateAsync: saveTranslation } = useSaveTranslation();
-    const { data: projectTerms, refetch: refetchProjectTerms, isLoading: isLoadingSearchTerms } = useGetTerms(
-        id as string,
-        { q: searchFilterValue as string },
-    );
+    const {
+        data: projectTerms,
+        refetch: refetchProjectTerms,
+        isLoading: isLoadingSearchTerms,
+    } = useGetTerms(id as string, { q: searchFilterValue as string });
 
     // Functions
     async function handleOnDeleteTerm(termId: string) {

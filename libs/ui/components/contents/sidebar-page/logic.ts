@@ -27,6 +27,7 @@ export const useSidebarPageLogic = (): SidebarPageLogicType => {
     const [activeProject, setActiveProject] = useState<ProjectDTO>({});
     const { t } = useTranslation();
     const toast = useToast();
+
     // Hooks
     const { mutateAsync: createProject } = useCreateProject();
     const { mutateAsync: createOrganisation } = useCreateOrganisation();
@@ -133,7 +134,7 @@ export const useSidebarPageLogic = (): SidebarPageLogicType => {
             },
         );
     }
-
+    
     return {
         handleOnCreateProject,
         handleOnCreateOrganisation,

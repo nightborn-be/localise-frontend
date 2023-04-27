@@ -5,5 +5,5 @@ export interface IDeleteOrganisationProps {
     titleModal: string;
     title: string;
     description: string;
-    isLoading: boolean;
+    isLoading?: boolean;
 }

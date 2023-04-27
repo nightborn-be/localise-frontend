@@ -49,6 +49,7 @@ export const SideBar = ({
         options,
         activeOptionKey,
         setIsOrganisationClicked,
+        handleOnClickProject,
     } = useSidebarLogic({ organisationProjectData });
     const { t } = useTranslation();
     const { isOpen, onOpen, onClose } = useDisclosure();
@@ -182,21 +183,15 @@ export const SideBar = ({
                             options?.map((option) => {
                                 return (
                                     <SidebarProject
-                                        onClick={() => {
-                                            if (
-                                                activeProject.id != option.value
-                                            ) {
-                                                setActiveProject({
-                                                    id: option.value,
-                                                    name: option.label,
-                                                });
-                                                clearNewRowTerm();
-                                                setSearchFilterValue('');
-                                                push(
-                                                    `/projects/${option.value}`,
-                                                );
-                                            }
-                                        }}
+                                        onClick={() =>
+                                            handleOnClickProject(
+                                                option,
+                                                clearNewRowTerm,
+                                                setFilterProjectValue,
+                                                activeProject,
+                                                setActiveProject,
+                                            )
+                                        }
                                         activeKey={activeProject.name as string}
                                         text={option.label}
                                         key={option.value}

@@ -193,9 +193,6 @@ export const Glossary = ({
                                     SHADOWS.Elevation.Light.Bottom.T04
                                 }
                                 handleOnClick={() => {
-                                    // handleOnCreateTerm(
-                                    //     projectTerms?.data?.at(0)?.projectId as string,
-                                    // );
                                     addNewRowTerm({});
                                 }}
                             >
