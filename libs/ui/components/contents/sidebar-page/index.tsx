@@ -30,7 +30,9 @@ const SidebarPage = ({
             activeProject={activeProject}
             setActiveProject={setActiveProject}
             isLoadingSearchProject={isLoadingSearchProject}
-            clearNewRowTerm={clearNewRowTerm}
+            clearNewRowTerm={() => {
+                clearNewRowTerm();
+            }}
             setSearchFilterValue={setSearchFilterValue}
         />
     );
