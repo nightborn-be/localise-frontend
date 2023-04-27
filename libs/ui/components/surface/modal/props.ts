@@ -11,6 +11,7 @@ export interface IModalProps {
     header?: IModalHeaderProps;
     footer?: IModalFooterProps;
     body?: IModalBodyProps;
+    isDisabled?: boolean;
 }
 
 interface IModalHeaderProps {
