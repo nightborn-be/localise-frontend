@@ -38,9 +38,11 @@ export const SideBar = ({
     activeOptionKey,
     setIsOrganisationClicked,
 }: ISideBarContentProps) => {
+    // Attributes
     const { t } = useTranslation();
     const createOrganisationModal = useDisclosure();
     const { push } = useRouter();
+    // Render
     return (
         <>
             <VStack w={'15.25rem'} h={'100vh'} spacing='0px'>
@@ -169,7 +171,7 @@ export const SideBar = ({
                         );
                     })}
                 </VStack>
-                ;{/* ORGANISATION MENU */}
+                {/* ORGANISATION MENU */}
                 <HStack
                     w={'15.25rem'}
                     padding={'0.75rem 0.5rem'}
@@ -201,7 +203,7 @@ export const SideBar = ({
                         spacing={'0.75rem'}
                         padding={'0.75rem'}
                         onClick={() => {
-                            push('/settings');
+                            push('/dashboard/settings');
                         }}
                     >
                         {t<string>(

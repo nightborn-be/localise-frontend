@@ -23,10 +23,12 @@ export const CreateOrganisationModal = ({
     onClose,
     handleOnSubmit,
 }: ICreateOrganisationProps) => {
+    // Attributes
     const { picturePath, onDrag, onDeletePicture, resetForm, form } =
         useCreateOrganisationLogic();
 
     const { t } = useTranslation();
+    // Render
     return (
         <Modal
             title={t<string>(tKeys.home.modal.create_organisation.title)}

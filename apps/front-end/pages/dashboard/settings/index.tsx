@@ -1,4 +1,4 @@
-import OrganisationSettingsPage from '../../../../libs/ui/pages/settings/index';
+import OrganisationSettingsPage from '../../../../../libs/ui/pages/dashboard/settings/index';
 
 const OrganisationSettingsWeb = () => {
     return <OrganisationSettingsPage />;

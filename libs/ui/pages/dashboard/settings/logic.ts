@@ -7,7 +7,7 @@ import {
 import { useGetMe } from 'gateways/resource-api/users/users';
 import { IDefaultForm, IForm } from 'utils/formik';
 import { ToastType } from 'ui/components/progress-validation/toast/types';
-import { tKeys } from '../../../i18n/keys';
+import { tKeys } from '../../../../i18n/keys';
 import useToast from 'ui/components/progress-validation/toast';
 import { OrganisationSettingsPageLogicType } from './types';
 import { useTranslation } from 'react-i18next';

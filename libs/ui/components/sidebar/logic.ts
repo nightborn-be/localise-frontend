@@ -1,13 +1,10 @@
 import { useEffect, useState } from 'react';
 import { SearchBarOption } from '../inputs/searchbar/props';
 import { SidebarLogicType } from './types';
-
 import { IDefaultForm, IForm } from 'utils/formik';
 import { ToastType } from 'ui/components/progress-validation/toast/types';
-
 import { useTranslation } from 'react-i18next';
 import useToast from 'ui/components/progress-validation/toast';
-
 import { useRouter } from 'next/router';
 import { useDisclosure } from '@chakra-ui/react';
 import { OrganisationDTO, ProjectDTO } from 'gateways/resource-api/types';
@@ -31,7 +28,7 @@ export const useSidebarLogic = (): SidebarLogicType => {
 
     const { t } = useTranslation();
     const toast = useToast();
-    const { push } = useRouter();
+    const { asPath, push } = useRouter();
     // Hooks
     const { mutateAsync: createProject } = useCreateProject();
     const { mutateAsync: createOrganisation } = useCreateOrganisation();
@@ -53,21 +50,19 @@ export const useSidebarLogic = (): SidebarLogicType => {
     });
 
     useEffect(() => {
-        if (isOrganisationProjectDataFetched) {
+        if (asPath != '/dashboard/settings' && isOrganisationProjectDataFetched) {
             const project = organisationProjectData?.data?.at(0)
             if (project !== undefined) {
                 setActiveProject(project)
                 push(`/dashboard/projects/${project.id}`)
                 setIsDisableOnCloseProjectModal(false)
-
             } else if (filterProjectValue === '' && project === undefined) {
                 push('/dashboard')
                 createProjectModalDisclosure.onOpen()
                 setIsDisableOnCloseProjectModal(true)
             }
         }
-    }
-        , [organisationProjectData])
+    }, [organisationProjectData])
 
     // Functions
     function handleOnOptionClick(value: string) {

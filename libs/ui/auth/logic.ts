@@ -11,6 +11,7 @@ export const useLogic = () => {
     // Attributes
     const [isLogged, setIsLogged] = useState<boolean>(false);
     const [firebaseUser, setFirebaseUser] = useState<UserCredential.User>();
+    console.log(isLogged);
 
     // Functions
     async function signIn(email: string, password: string): Promise<void> {

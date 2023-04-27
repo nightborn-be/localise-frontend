@@ -4,16 +4,20 @@ import { useAuth } from 'ui/auth';
 
 const Home = () => {
     const auth = useAuth();
-    console.log(auth);
+    console.log('home', auth);
 
-    const { push } = useRouter();
+    const router = useRouter();
     useEffect(() => {
-        if (!auth.isLogged) {
-            push('/auth');
-        } else {
-            push('/dashboard');
+        if (router.isReady) {
+            if (!auth.isLogged) {
+                router.push('/auth');
+            } else {
+                router.push('/dashboard');
+            }
         }
     }, []);
+
+    return <></>;
 };
 
 export default Home;

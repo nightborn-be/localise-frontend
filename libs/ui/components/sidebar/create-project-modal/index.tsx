@@ -19,6 +19,7 @@ export const AddProjectModals = ({
     handleOnSubmit,
     isDisableOnCloseProjectModal,
 }: ICreateProjectProps) => {
+    // Attributes
     const {
         sourceLanguageActiveKey,
         setSourceLanguageActiveKey,
@@ -39,6 +40,7 @@ export const AddProjectModals = ({
         label: language.name,
     }));
     const { t } = useTranslation();
+    // Render
     return (
         <HStack>
             <Modal

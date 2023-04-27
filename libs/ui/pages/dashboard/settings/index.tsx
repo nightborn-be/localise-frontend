@@ -1,9 +1,9 @@
 import React from 'react';
 import { useOrganisationSettingsPageLogic } from './logic';
 import Page from 'ui/components/contents/page';
-import OrganisationSettings from '../../components/contents/organisation-settings/index';
-import SideBar from '../../components/sidebar/index';
-import { useSidebarLogic } from '../../components/sidebar/logic';
+import OrganisationSettings from '../../../components/contents/organisation-settings/index';
+import SideBar from '../../../components/sidebar/index';
+import { useSidebarLogic } from '../../../components/sidebar/logic';
 
 const OrganisationSettingsPage = () => {
     // Attributes
