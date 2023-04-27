@@ -7,10 +7,10 @@ import Tabs from '../../../../components/navigation/tabs/index';
 import { Box, VStack } from '@chakra-ui/react';
 import { tKeys } from '../../../../../i18n/keys';
 import Page from '../../../../components/contents/page/index';
-import SidebarPage from '../../../../components/contents/sidebar-page/index';
 import { Glossary } from '../../../../components/contents/project/glossary';
 import Settings from '../../../../components/contents/project/settings/index';
-import { useSidebarPageLogic } from '../../../../components/contents/sidebar-page/logic';
+import SideBar from '../../../../components/sidebar';
+import { useSidebarLogic } from '../../../../components/sidebar/logic';
 
 const ProjectPage = () => {
     // Attributes
@@ -32,7 +32,13 @@ const ProjectPage = () => {
         refetchUserData,
         createProjectModalDisclosure,
         isDisableOnCloseProjectModal,
-    } = useSidebarPageLogic();
+        handleToggleIsOrganisationClicked,
+        handleOnOptionClick,
+        isOrganisationClicked,
+        options,
+        activeOptionKey,
+        setIsOrganisationClicked,
+    } = useSidebarLogic();
 
     const {
         activeKey,
@@ -67,14 +73,21 @@ const ProjectPage = () => {
     // Render
     return (
         <Page>
-            <SidebarPage
+            <SideBar
+                handleToggleIsOrganisationClicked={
+                    handleToggleIsOrganisationClicked
+                }
+                handleOnOptionClick={handleOnOptionClick}
+                isOrganisationClicked={isOrganisationClicked}
+                options={options}
+                activeOptionKey={activeOptionKey}
+                setIsOrganisationClicked={setIsOrganisationClicked}
                 createProjectModalDisclosure={createProjectModalDisclosure}
                 handleOnCreateProject={handleOnCreateProject}
                 handleOnCreateOrganisation={handleOnCreateOrganisation}
                 handleSwitchOrgansiation={handleSwitchOrgansiation}
                 actualOrganisationUser={actualOrganisationUser}
                 organisationUserData={organisationUserData}
-                organisationProjectData={organisationProjectData}
                 filterProjectValue={filterProjectValue}
                 setFilterProjectValue={setFilterProjectValue}
                 activeProject={activeProject}

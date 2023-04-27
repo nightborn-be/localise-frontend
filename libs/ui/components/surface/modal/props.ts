@@ -5,7 +5,7 @@ export interface IModalProps {
     children?: React.ReactElement | React.ReactElement[];
     title?: string;
     isOpen: boolean;
-    isDisableOnClose: boolean;
+    isDisableOnClose?: boolean;
     handleOnSubmit: () => void;
     onClose: () => void;
     header?: IModalHeaderProps;

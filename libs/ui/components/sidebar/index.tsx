@@ -1,5 +1,5 @@
 import { Box, HStack, Image, useDisclosure, VStack } from '@chakra-ui/react';
-import React, { useEffect } from 'react';
+import React from 'react';
 import COLORS from '../../constants/colors';
 import FONTS from '../../constants/fonts';
 import Icon from '../contents/icon';
@@ -11,7 +11,6 @@ import { ButtonSize } from '../inputs/button-icon/types';
 import Searchbar from '../inputs/searchbar';
 import SidebarOrganisation from '../pickers/sidebar-organisation';
 import OrganizationMenu from '../contents/organisation-menu';
-import { useSidebarLogic } from './logic';
 import CreateProjectModal from './create-project-modal/index';
 import CreateOrganisationModal from './create-organisation-modal';
 import { ISideBarContentProps } from './props';
@@ -24,7 +23,6 @@ export const SideBar = ({
     handleOnCreateProject,
     handleOnCreateOrganisation,
     handleSwitchOrgansiation,
-    organisationProjectData,
     organisationUserData,
     actualOrganisationUser,
     setFilterProjectValue,
@@ -33,15 +31,13 @@ export const SideBar = ({
     setActiveProject,
     createProjectModalDisclosure,
     isDisableOnCloseProjectModal,
+    handleToggleIsOrganisationClicked,
+    handleOnOptionClick,
+    isOrganisationClicked,
+    options,
+    activeOptionKey,
+    setIsOrganisationClicked,
 }: ISideBarContentProps) => {
-    const {
-        handleToggleIsOrganisationClicked,
-        handleOnOptionClick,
-        isOrganisationClicked,
-        options,
-        activeOptionKey,
-        setIsOrganisationClicked,
-    } = useSidebarLogic({ organisationProjectData });
     const { t } = useTranslation();
     const createOrganisationModal = useDisclosure();
     const { push } = useRouter();
@@ -161,7 +157,7 @@ export const SideBar = ({
                                         id: option.value,
                                         name: option.label,
                                     });
-                                    push(`/projects/${option.value}`);
+                                    push(`/dashboard/projects/${option.value}`);
                                 }}
                                 activeKey={activeProject.name as string}
                                 text={option.label}

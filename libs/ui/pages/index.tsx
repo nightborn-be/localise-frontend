@@ -1,8 +1,8 @@
 import React from 'react';
 import Page from 'ui/components/contents/page';
 import { useHomeLogic } from './logic';
-import { useSidebarPageLogic } from 'ui/components/contents/sidebar-page/logic';
-import SidebarPage from 'ui/components/contents/sidebar-page';
+import SideBar from '../components/sidebar';
+import { useSidebarLogic } from '../components/sidebar/logic';
 
 const Dashboard = () => {
     // Attributes
@@ -14,24 +14,36 @@ const Dashboard = () => {
         handleSwitchOrgansiation,
         actualOrganisationUser,
         organisationUserData,
-        organisationProjectData,
         filterProjectValue,
         setFilterProjectValue,
         activeProject,
         setActiveProject,
         createProjectModalDisclosure,
         isDisableOnCloseProjectModal,
-    } = useSidebarPageLogic();
+        handleToggleIsOrganisationClicked,
+        handleOnOptionClick,
+        isOrganisationClicked,
+        options,
+        activeOptionKey,
+        setIsOrganisationClicked,
+    } = useSidebarLogic();
     // Render
     return (
         <Page>
-            <SidebarPage
+            <SideBar
+                handleToggleIsOrganisationClicked={
+                    handleToggleIsOrganisationClicked
+                }
+                handleOnOptionClick={handleOnOptionClick}
+                isOrganisationClicked={isOrganisationClicked}
+                options={options}
+                activeOptionKey={activeOptionKey}
+                setIsOrganisationClicked={setIsOrganisationClicked}
                 handleOnCreateProject={handleOnCreateProject}
                 handleOnCreateOrganisation={handleOnCreateOrganisation}
                 handleSwitchOrgansiation={handleSwitchOrgansiation}
                 actualOrganisationUser={actualOrganisationUser}
                 organisationUserData={organisationUserData}
-                organisationProjectData={organisationProjectData}
                 filterProjectValue={filterProjectValue}
                 setFilterProjectValue={setFilterProjectValue}
                 activeProject={activeProject}

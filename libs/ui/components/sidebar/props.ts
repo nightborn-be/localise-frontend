@@ -5,6 +5,7 @@ import {
     ProjectPagingDTO,
 } from '../../../gateways/resource-api/types';
 import { IDefaultForm, IForm } from '../../../utils/formik';
+import { SearchBarOption } from '../inputs/searchbar/props';
 import { ICreateOrganisationForm } from './create-organisation-modal/types';
 import { ICreateProjectForm } from './create-project-modal/types';
 
@@ -21,7 +22,6 @@ export interface ISideBarContentProps {
         organisation: OrganisationDTO,
         setIsOrganisationClicked: (value: boolean) => void,
     ) => void;
-    organisationProjectData?: ProjectPagingDTO;
     actualOrganisationUser?: OrganisationDTO;
     organisationUserData?: OrgnanisationPagingDTO;
     setFilterProjectValue: (value: string) => void;
@@ -30,7 +30,10 @@ export interface ISideBarContentProps {
     setActiveProject: (value: ProjectDTO) => void;
     createProjectModalDisclosure: any;
     isDisableOnCloseProjectModal: boolean;
-}
-export interface ISidebarLogicProps {
-    organisationProjectData?: ProjectPagingDTO;
+    handleToggleIsOrganisationClicked: () => void;
+    handleOnOptionClick: (value: string) => void;
+    isOrganisationClicked: boolean;
+    setIsOrganisationClicked: (value: boolean) => void;
+    options: SearchBarOption<string>[];
+    activeOptionKey: string;
 }
