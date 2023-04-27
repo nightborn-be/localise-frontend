@@ -22,6 +22,7 @@ const Modal = ({
     title,
     isOpen,
     handleOnSubmit,
+    isLoading,
     onClose,
     isDisabled,
     header = {
@@ -116,6 +117,7 @@ const Modal = ({
                         </Button>
                         <Button
                             isDisabled={isDisabled}
+                            isLoading={isLoading}
                             minW={footer.secondCtaWidth}
                             h={footer.secondCtaHeight}
                             borderRadius='0.5rem'

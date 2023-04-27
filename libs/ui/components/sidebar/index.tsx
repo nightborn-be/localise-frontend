@@ -1,5 +1,12 @@
-import { Box, HStack, Image, useDisclosure, VStack } from '@chakra-ui/react';
-import React, { useEffect } from 'react';
+import {
+    Box,
+    HStack,
+    Image,
+    Spinner,
+    useDisclosure,
+    VStack,
+} from '@chakra-ui/react';
+import React from 'react';
 import COLORS from '../../constants/colors';
 import FONTS from '../../constants/fonts';
 import Icon from '../contents/icon';
@@ -31,6 +38,9 @@ export const SideBar = ({
     filterProjectValue,
     activeProject,
     setActiveProject,
+    isLoadingSearchProject,
+    clearNewRowTerm,
+    setSearchFilterValue,
 }: ISideBarContentProps) => {
     const {
         handleToggleIsOrganisationClicked,
@@ -39,6 +49,7 @@ export const SideBar = ({
         options,
         activeOptionKey,
         setIsOrganisationClicked,
+        handleOnClickProject,
     } = useSidebarLogic({ organisationProjectData });
     const { t } = useTranslation();
     const { isOpen, onOpen, onClose } = useDisclosure();
@@ -144,35 +155,69 @@ export const SideBar = ({
                         displayModal={false}
                     />
                 </HStack>
-                <VStack
-                    w={'15.25rem'}
-                    padding='0.375rem 0.5rem 1.25rem'
-                    spacing='0.375rem'
-                    height={'full'}
-                    overflowX={'hidden'}
-                    borderRight={`0.0625rem solid ${COLORS.Line.value}`}
-                >
-                    {options?.map((option, index) => {
-                        return (
-                            <SidebarProject
-                                onClick={() => {
-                                    setActiveProject({
-                                        id: option.value,
-                                        name: option.label,
-                                    });
-                                    push(`/projects/${option.value}`);
-                                }}
-                                activeKey={activeProject.name as string}
-                                text={option.label}
-                                key={option.value}
-                                textFont={FONTS.T1.T12px.Medium500.value}
-                                textColor={COLORS.Text.T400.value}
-                                projectIconColor={COLORS.Success.T300.value}
-                            />
-                        );
-                    })}
-                </VStack>
-                ;{/* ORGANISATION MENU */}
+                {isLoadingSearchProject ? (
+                    <VStack
+                        w={'15.25rem'}
+                        h='full'
+                        justifyContent={'center'}
+                        borderRight={`0.0625rem solid ${COLORS.Line.value}`}
+                    >
+                        <Spinner
+                            size='lg'
+                            thickness='0.25rem'
+                            speed='0.65s'
+                            emptyColor={COLORS.Line.value}
+                            color={COLORS.Localize.Purple.T500.value}
+                        />
+                    </VStack>
+                ) : (
+                    <VStack
+                        w={'15.25rem'}
+                        padding='0.375rem 0.5rem 1.25rem'
+                        spacing='0.375rem'
+                        height={'full'}
+                        overflowX={'hidden'}
+                        borderRight={`0.0625rem solid ${COLORS.Line.value}`}
+                    >
+                        {!!options?.length ? (
+                            options?.map((option) => {
+                                return (
+                                    <SidebarProject
+                                        onClick={() =>
+                                            handleOnClickProject(
+                                                option,
+                                                clearNewRowTerm,
+                                                setFilterProjectValue,
+                                                activeProject,
+                                                setActiveProject,
+                                            )
+                                        }
+                                        activeKey={activeProject.name as string}
+                                        text={option.label}
+                                        key={option.value}
+                                        textFont={
+                                            FONTS.T1.T12px.Medium500.value
+                                        }
+                                        textColor={COLORS.Text.T400.value}
+                                        projectIconColor={
+                                            COLORS.Success.T300.value
+                                        }
+                                    />
+                                );
+                            })
+                        ) : (
+                            <Box padding='0rem 0.1875rem 1.25rem'>
+                                <Text color={COLORS.InputText.value}>
+                                    {t<string>(
+                                        tKeys.sidebar.project_section.search
+                                            .not_found,
+                                    )}
+                                </Text>
+                            </Box>
+                        )}
+                    </VStack>
+                )}
+                {/* ORGANISATION MENU */}
                 <HStack
                     w={'15.25rem'}
                     padding={'0.75rem 0.5rem'}

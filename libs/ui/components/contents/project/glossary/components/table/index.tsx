@@ -15,7 +15,7 @@ export const TableTerm = ({
 }: ITableTermProps) => {
     // Render
     return (
-        <VStack spacing='0.5rem' ref={ref}>
+        <VStack spacing='0.5rem' ref={ref} height={'full'}>
             <TableHeaderTerm
                 setSearchFilterValue={setSearchFilterValue}
                 searchFilterValue={searchFilterValue}

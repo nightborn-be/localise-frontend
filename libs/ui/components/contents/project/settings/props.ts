@@ -8,6 +8,8 @@ export interface ISettingsProps {
     ) => void;
     handleOnDeleteProject: () => void;
     activeProject?: ProjectDTO;
+    isLoadingUpdateProject: boolean;
+    isLoadingDeleteProject: boolean;
 }
 
 export interface ISettingsLogicProps {

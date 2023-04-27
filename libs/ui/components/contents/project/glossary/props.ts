@@ -24,6 +24,7 @@ export interface IGlossaryProps {
     setNewRowTerm: (value: TermDTO[]) => void;
     clearNewRowTerm: () => void;
     addNewRowTerm: (term: TermDTO) => void;
+    isLoadingSearchTerms: boolean;
 }
 
 export interface IGlossaryLogicProps {

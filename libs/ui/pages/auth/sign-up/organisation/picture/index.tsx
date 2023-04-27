@@ -1,6 +1,6 @@
 import React from 'react';
 import COLORS from '../../../../../constants/colors';
-import { Box, HStack, Image } from '@chakra-ui/react';
+import { HStack, Image } from '@chakra-ui/react';
 import Page from '../../../../../components/contents/page';
 import Icon from '../../../../../components/contents/icon';
 import ButtonIcon from '../../../../../components/inputs/button-icon';
@@ -21,21 +21,23 @@ const OrganisationPicturePage = () => {
         picturePath,
         onDrag,
         onDeletePicture,
+        isLoading,
     } = usePictureLogic();
     const { t } = useTranslation();
 
     // Render
     return (
-        <Page bgImage='/assets/images/AuthSignInBackground.png'>
+        <Page bgImage='/assets/images/AuthOrganisationBackground.png'>
             <HStack h='full' justifyContent='center' ml='8.5rem'>
                 <ContentSignIn
                     title={t<string>(
                         tKeys.auth.sign_up.organisation.picture.title,
                     )}
-                    handleOnContinue={() => handleOnContinue('')}
+                    handleOnContinue={handleOnContinue}
                     handleOnLater={handleOnLater}
                     isLater={true}
                     w='27.375rem'
+                    isLoading={isLoading}
                 >
                     {picturePath ? (
                         <HStack

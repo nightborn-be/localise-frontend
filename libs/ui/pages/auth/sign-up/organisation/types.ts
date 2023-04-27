@@ -6,5 +6,5 @@ export type OrganisationLogicResponse = {
 };
 
 export interface IOrganisationForm {
-    organizationName: string;
+    organisationName: string;
 }

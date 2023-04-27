@@ -3,6 +3,7 @@ export interface IContentSignUpProps {
     title: string;
     w?: string;
     isLater?: boolean;
+    isLoading?: boolean;
     handleOnContinue: () => void;
     handleOnLater?: () => void;
 }
