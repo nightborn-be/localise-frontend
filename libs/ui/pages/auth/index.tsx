@@ -8,10 +8,11 @@ import { HStack, Image, VStack } from '@chakra-ui/react';
 import { useAuthHomeLogic } from './logic';
 import { useTranslation } from 'react-i18next';
 import { tKeys } from '../../../i18n/keys';
-export default function AuthHomePage() {
+import { IAuthHomePageProps } from './props';
+export default function AuthHomePage({ redirectUrl }: IAuthHomePageProps) {
     // Attributes
     const { handleSignInRedirection, handleSignUpRedirection } =
-        useAuthHomeLogic();
+        useAuthHomeLogic({ redirectUrl });
     const { t } = useTranslation();
 
     // Render

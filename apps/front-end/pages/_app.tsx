@@ -19,7 +19,7 @@ const queryClient = new QueryClient({
     },
 });
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps, router }: AppProps) {
     // Attributes
 
     // suppress useLayoutEffect warnings when running outside a browser
@@ -32,7 +32,7 @@ function MyApp({ Component, pageProps }: AppProps) {
                 <QueryClientProvider client={queryClient}>
                     <AuthProvider>
                         <ChakraProvider>
-                            <Component {...pageProps} />
+                            <Component {...pageProps} router={router} />
                         </ChakraProvider>
                     </AuthProvider>
                 </QueryClientProvider>

@@ -16,6 +16,7 @@ import { toCreateProjectDTO } from './create-project-modal/mappers';
 import { ICreateOrganisationForm } from './create-organisation-modal/types';
 import { toCreateOrganisationDTO } from './create-organisation-modal/mappers';
 import { tKeys } from '../../../i18n/keys';
+
 export const useSidebarLogic = (): SidebarLogicType => {
     // Attributes
     const [activeOptionKey, setActiveOptionKey] = useState<string>('');

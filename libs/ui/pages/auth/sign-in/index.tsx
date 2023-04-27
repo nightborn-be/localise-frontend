@@ -9,10 +9,12 @@ import Button from '../../../components/inputs/button';
 import { useTranslation } from 'react-i18next';
 import { tKeys } from '../../../../i18n/keys';
 import { useSignInLogic } from './logic';
-export default function SignInPage() {
+import { ISignInPageProps } from './props';
+export default function SignInPage({ redirectUrl }: ISignInPageProps) {
     // Attributes
     const { t } = useTranslation();
-    const { handleOnSubmit, form } = useSignInLogic();
+    const { handleOnSubmit, form } = useSignInLogic({ redirectUrl });
+
     // Render
     return (
         <Page bgImage='/assets/images/AuthSignInBackground.png'>

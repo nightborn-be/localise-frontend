@@ -1,7 +1,6 @@
 import { HStack, Image, VStack } from '@chakra-ui/react';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { useDeleteOrganisationLogic } from './logic';
 import { IDeleteOrganisationProps } from './props';
 import Modal from '../modal';
 import { tKeys } from '../../../../i18n/keys';

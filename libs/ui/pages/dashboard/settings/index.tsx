@@ -4,6 +4,7 @@ import Page from 'ui/components/contents/page';
 import OrganisationSettings from '../../../components/contents/organisation-settings/index';
 import SideBar from '../../../components/sidebar/index';
 import { useSidebarLogic } from '../../../components/sidebar/logic';
+import { useAuthRedirect } from 'ui/auth/auth-redirect';
 
 const OrganisationSettingsPage = () => {
     // Attributes
@@ -31,6 +32,8 @@ const OrganisationSettingsPage = () => {
         activeOptionKey,
         setIsOrganisationClicked,
     } = useSidebarLogic();
+    useAuthRedirect();
+
     // Render
     return (
         <Page>

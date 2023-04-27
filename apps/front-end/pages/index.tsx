@@ -1,22 +1,7 @@
-import { useRouter } from 'next/router';
-import { useEffect } from 'react';
-import { useAuth } from 'ui/auth';
+import { useAuthRedirect } from '../../../libs/ui/auth/auth-redirect';
 
 const Home = () => {
-    const auth = useAuth();
-    console.log('home', auth);
-
-    const router = useRouter();
-    useEffect(() => {
-        if (router.isReady) {
-            if (!auth.isLogged) {
-                router.push('/auth');
-            } else {
-                router.push('/dashboard');
-            }
-        }
-    }, []);
-
+    useAuthRedirect('/dashboard');
     return <></>;
 };
 

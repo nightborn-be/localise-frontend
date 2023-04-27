@@ -1,5 +1,17 @@
+import { useRouter } from 'next/router';
 import AuthHomePage from '../../../../libs/ui/pages/auth';
 const AuthHome = () => {
-    return <AuthHomePage />;
+    const { query } = useRouter();
+    const { redirectUrl } = query;
+
+    return (
+        <AuthHomePage
+            redirectUrl={
+                redirectUrl
+                    ? decodeURIComponent(redirectUrl as string)
+                    : undefined
+            }
+        />
+    );
 };
 export default AuthHome;
