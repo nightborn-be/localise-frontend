@@ -28,7 +28,7 @@ export default function InputSelectAndInput<T>({
     menuMinWOption = '12.5rem',
     backgroundColor,
     onDelete,
-    index
+    index,
 }: IInputSelectAndInputProps<T>) {
     //Attributes
     const [isHovered, setIsHovered] = useState<boolean>(false);

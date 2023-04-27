@@ -11,7 +11,3 @@ export interface AddMembersLogicType {
     updateMemberData: (customId: string, email?: string, role?: string) => void;
     removeMember: (customId: string) => void;
 }
-
-
-
-
