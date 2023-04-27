@@ -18,6 +18,8 @@ const Settings = ({
     handleOnUpdateProject,
     handleOnDeleteProject,
     activeProject,
+    isLoadingUpdateProject,
+    isLoadingDeleteProject,
 }: ISettingsProps) => {
     const {
         sourceLanguageActiveKey,
@@ -111,6 +113,7 @@ const Settings = ({
                                 alignItems={'center'}
                             >
                                 <Button
+                                    isLoading={isLoadingUpdateProject}
                                     backgroundColor={
                                         COLORS.Localize.Purple.T500.value
                                     }
@@ -137,6 +140,7 @@ const Settings = ({
                 </HStack>
             </VStack>
             <DeleteModal
+                isLoading={isLoadingDeleteProject}
                 isOpen={deleteProjectDisclosure.isOpen}
                 onClose={deleteProjectDisclosure.onClose}
                 handleOnSubmit={handleOnDeleteProject}

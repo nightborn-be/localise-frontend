@@ -12,7 +12,7 @@ import { useSignInLogic } from './logic';
 export default function SignInPage() {
     // Attributes
     const { t } = useTranslation();
-    const { handleOnSubmit, form } = useSignInLogic();
+    const { handleOnSubmit, form, isLoading } = useSignInLogic();
     // Render
     return (
         <Page bgImage='/assets/images/AuthSignInBackground.png'>
@@ -70,6 +70,7 @@ export default function SignInPage() {
                     />
                 </VStack>
                 <Button
+                    isLoading={isLoading}
                     color={COLORS.White.T500.value}
                     backgroundColor={COLORS.Localize.Purple.T500.value}
                     borderRadius='0.5rem'

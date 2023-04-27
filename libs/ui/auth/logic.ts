@@ -10,6 +10,7 @@ import { TokenKey } from '../../utils/token/token-keys';
 export const useLogic = () => {
     // Attributes
     const [isLogged, setIsLogged] = useState<boolean>(false);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
     const [firebaseUser, setFirebaseUser] = useState<UserCredential.User>();
 
     // Functions
@@ -18,7 +19,9 @@ export const useLogic = () => {
         if (!auth) {
             return;
         }
+        setIsLoading(true);
         const data = await signInWithEmailAndPassword(auth, email, password);
+        setIsLoading(false);
         if (data) {
             setIsLogged(true);
             setFirebaseUser(data.user);
@@ -38,6 +41,7 @@ export const useLogic = () => {
     return {
         isLogged,
         setIsLogged,
+        isLoading,
         signIn,
     };
 };

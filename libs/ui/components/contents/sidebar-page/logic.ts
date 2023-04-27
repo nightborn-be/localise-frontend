@@ -27,6 +27,7 @@ export const useSidebarPageLogic = (): SidebarPageLogicType => {
     const [activeProject, setActiveProject] = useState<ProjectDTO>({});
     const { t } = useTranslation();
     const toast = useToast();
+
     // Hooks
     const { mutateAsync: createProject } = useCreateProject();
     const { mutateAsync: createOrganisation } = useCreateOrganisation();
@@ -42,6 +43,7 @@ export const useSidebarPageLogic = (): SidebarPageLogicType => {
     const {
         data: organisationProjectData,
         refetch: refetchOrganisationProjectData,
+        isLoading: isLoadingSearchProject,
     } = useGetProjects(actualOrganisationUser?.id as string, {
         q: filterProjectValue,
     });
@@ -132,6 +134,7 @@ export const useSidebarPageLogic = (): SidebarPageLogicType => {
             },
         );
     }
+    
     return {
         handleOnCreateProject,
         handleOnCreateOrganisation,
@@ -147,5 +150,6 @@ export const useSidebarPageLogic = (): SidebarPageLogicType => {
         refetchActualUserOrganisation,
         refetchOrganisationProjectData,
         refetchUserData,
+        isLoadingSearchProject,
     };
 };

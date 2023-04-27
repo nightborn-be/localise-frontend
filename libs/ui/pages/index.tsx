@@ -19,6 +19,7 @@ const HomePage = () => {
         setFilterProjectValue,
         activeProject,
         setActiveProject,
+        isLoadingSearchProject,
     } = useSidebarPageLogic();
     // Render
     return (
@@ -34,6 +35,7 @@ const HomePage = () => {
                 setFilterProjectValue={setFilterProjectValue}
                 activeProject={activeProject}
                 setActiveProject={setActiveProject}
+                isLoadingSearchProject={isLoadingSearchProject}
             />
         </Page>
     );

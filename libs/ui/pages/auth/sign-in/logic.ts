@@ -43,6 +43,7 @@ export const useSignInLogic = (): SignInLogicType => {
     }
     return {
         handleOnSubmit: form?.submitForm,
+        isLoading: auth.isLoading,
         form,
     };
 };
