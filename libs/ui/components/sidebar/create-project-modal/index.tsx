@@ -12,7 +12,6 @@ import { ICreateProjectProps } from './props';
 import languages from '../../../../utils/languages';
 import { useTranslation } from 'react-i18next';
 import { tKeys } from '../../../../i18n/keys';
-import { useRouter } from 'next/router';
 
 export const AddProjectModals = ({
     isOpen,
