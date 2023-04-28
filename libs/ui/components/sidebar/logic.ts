@@ -64,15 +64,7 @@ export const useSidebarLogic = (): SidebarLogicType => {
                 setIsDisableOnCloseProjectModal(true)
             }
         }
-    }, [actualOrganisationUser])
-
-
-    // useEffect(() => {
-    //     if (actualOrganisationUser == undefined) {
-    //         return;
-    //     }
-    //     handleSwitchOrgansiation(actualOrganisationUser)
-    // }, [actualOrganisationUser])
+    }, [organisationProjectData])
 
     // Functions
     function handleOnOptionClick(value: string) {
