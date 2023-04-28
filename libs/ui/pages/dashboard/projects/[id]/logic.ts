@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { ProjectLogicType } from './types';
 import {
     useDeleteProject,
+    useGetProject,
     useUpdateProject,
 } from 'gateways/resource-api/projects/projects';
 import {
@@ -64,6 +65,19 @@ export const useProjectLogic = ({
         refetch: refetchProjectTerms,
         isLoading: isLoadingSearchTerms,
     } = useGetTerms(id as string, { q: searchFilterValue as string });
+
+    const { data: projectData, refetch: refetchProjectData } = useGetProject(actualOrganisationUser?.id as string, id as string, {
+        query: {
+            onSuccess: (data) => {
+                console.log(data);
+
+            },
+            onError: (d) => {
+                console.log(d);
+
+            }
+        }
+    })
 
     // Functions
     async function handleOnDeleteTerm(termId: string) {

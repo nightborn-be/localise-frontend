@@ -12,12 +12,17 @@ import useToast from 'ui/components/progress-validation/toast';
 import { OrganisationSettingsPageLogicType } from './types';
 import { useTranslation } from 'react-i18next';
 import { IOrganisationSettingsForm } from 'ui/components/contents/organisation-settings/types';
+import { useRouter } from 'next/router';
+import { useGetProject } from 'gateways/resource-api/projects/projects';
 
 export const useOrganisationSettingsPageLogic =
     (): OrganisationSettingsPageLogicType => {
         // Attributes
         const toast = useToast();
         const { t } = useTranslation();
+
+        const { query } = useRouter();
+        const { id } = query;
         // Hooks
         const { mutateAsync: deleteOrganisation } = useDeleteOrganisation();
         const {

@@ -11,6 +11,7 @@ import { Glossary } from '../../../../components/contents/project/glossary';
 import Settings from '../../../../components/contents/project/settings/index';
 import SideBar from '../../../../components/sidebar';
 import { useSidebarLogic } from '../../../../components/sidebar/logic';
+import { useRouter } from 'next/router';
 
 const ProjectPage = () => {
     // Attributes
@@ -74,6 +75,8 @@ const ProjectPage = () => {
         refetchOrganisationProjectData,
         refetchUserData,
     });
+    const { query } = useRouter();
+    const { id } = query;
 
     // Render
     return (
@@ -133,7 +136,7 @@ const ProjectPage = () => {
                     >
                         <Glossary
                             projectTerms={projectTerms}
-                            activeProject={activeProject}
+                            activeProject={id as string}
                             handleOnSaveTranslations={handleOnSaveTranslations}
                             handleOnCreateTerm={handleOnCreateTerm}
                             handleOnDeleteTerm={handleOnDeleteTerm}

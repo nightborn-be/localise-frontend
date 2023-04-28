@@ -11,7 +11,7 @@ export interface ITableRowTermProps {
     translation?: TranslationWithMetaDTO;
     translations?: TranslationWithMetaPagingDTO;
     term: TermDTO;
-    activeProject?: ProjectDTO;
+    activeProject?: string;
     isDisabled?: boolean;
     handleOnSaveTranslations: (
         form: IForm<ITableRowTermForm> & IDefaultForm,
@@ -22,5 +22,5 @@ export interface ITableRowTermProps {
 
 export interface ITableRowTermLogicProps {
     term: TermDTO;
-    activeProject?: ProjectDTO;
+    activeProject?: string;
 }
