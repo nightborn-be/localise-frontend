@@ -20,7 +20,6 @@ export interface ISideBarContentProps {
     ) => void;
     handleSwitchOrgansiation: (
         organisation: OrganisationDTO,
-        setIsOrganisationClicked: (value: boolean) => void,
     ) => void;
     actualOrganisationUser?: OrganisationDTO;
     organisationUserData?: OrgnanisationPagingDTO;

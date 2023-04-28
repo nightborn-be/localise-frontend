@@ -25,10 +25,7 @@ export interface SidebarLogicType {
         form: IForm<ICreateOrganisationForm> & IDefaultForm,
         resetForm: () => void,
     ) => void;
-    handleSwitchOrgansiation: (
-        organisation: OrganisationDTO,
-        setIsOrganisationClicked: (value: boolean) => void,
-    ) => void;
+    handleSwitchOrgansiation: (organisation: OrganisationDTO) => void;
     actualOrganisationUser?: OrganisationDTO;
     organisationProjectData?: ProjectPagingDTO;
     organisationUserData?: OrgnanisationPagingDTO;

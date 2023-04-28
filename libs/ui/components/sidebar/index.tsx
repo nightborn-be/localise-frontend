@@ -275,8 +275,7 @@ export const SideBar = ({
                                 value={actualOrganisationUser}
                                 onChange={(organizationValue) => {
                                     handleSwitchOrgansiation(
-                                        organizationValue,
-                                        setIsOrganisationClicked,
+                                        organizationValue
                                     );
                                 }}
                                 onClick={createOrganisationModal.onOpen}

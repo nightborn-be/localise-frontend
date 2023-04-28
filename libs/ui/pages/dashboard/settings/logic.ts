@@ -12,7 +12,7 @@ import useToast from 'ui/components/progress-validation/toast';
 import { OrganisationSettingsPageLogicType } from './types';
 import { useTranslation } from 'react-i18next';
 import { IOrganisationSettingsForm } from 'ui/components/contents/organisation-settings/types';
-import { useAuthRedirect } from 'ui/auth/auth-redirect';
+
 export const useOrganisationSettingsPageLogic =
     (): OrganisationSettingsPageLogicType => {
         // Attributes

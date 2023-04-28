@@ -66,6 +66,14 @@ export const useSidebarLogic = (): SidebarLogicType => {
         }
     }, [organisationProjectData])
 
+
+    // useEffect(() => {
+    //     if (actualOrganisationUser == undefined) {
+    //         return;
+    //     }
+    //     handleSwitchOrgansiation(actualOrganisationUser)
+    // }, [actualOrganisationUser])
+
     // Functions
     function handleOnOptionClick(value: string) {
         setActiveOptionKey(value);
@@ -118,26 +126,27 @@ export const useSidebarLogic = (): SidebarLogicType => {
         } catch (e) { }
     }
 
-    async function handleOnCreateOrganisation(
+    function handleOnCreateOrganisation(
         form: IForm<ICreateOrganisationForm> & IDefaultForm,
         resetForm: () => void,
     ) {
+
         try {
-            await createOrganisation(
+            createOrganisation(
                 {
                     data: toCreateOrganisationDTO(
                         form.organisationName.value,
-                        form.pictureBinary?.value,
+                        form.pictureBinary?.value == undefined ? new ArrayBuffer(0) : form.pictureBinary?.value,
                     ),
                 },
                 {
-                    onSuccess: async () => {
+                    onSuccess: () => {
                         refetchUserData();
                         refetchActualUserOrganisation();
                         refecthOrganisationUserData();
                         resetForm();
                     },
-                    onError: async () => {
+                    onError: () => {
                         toast({
                             type: ToastType.ERROR,
                             title: t<string>(
@@ -149,11 +158,10 @@ export const useSidebarLogic = (): SidebarLogicType => {
             );
         } catch (err) { }
     }
-    function handleSwitchOrgansiation(
+    async function handleSwitchOrgansiation(
         organisation: OrganisationDTO,
-        setIsOrganisationClicked: (value: boolean) => void,
     ) {
-        switchUserOrganisation(
+        await switchUserOrganisation(
             {
                 userId: userData?.userId as string,
                 data: { organisationId: organisation.id as string },
@@ -161,6 +169,8 @@ export const useSidebarLogic = (): SidebarLogicType => {
             {
                 onSuccess: () => {
                     refetchUserData();
+                    refetchActualUserOrganisation();
+                    refecthOrganisationUserData();
                     setIsOrganisationClicked(false);
                 },
             },
