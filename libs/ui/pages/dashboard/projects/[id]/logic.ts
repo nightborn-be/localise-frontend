@@ -212,7 +212,7 @@ export const useProjectLogic = ({
                     },
                 },
             );
-        } catch (e) { }
+        } catch (e) {}
     }
 
     async function handleOnDeleteProject() {
@@ -244,7 +244,7 @@ export const useProjectLogic = ({
                     },
                 },
             );
-        } catch (e) { }
+        } catch (e) {}
     }
     return {
         activeKey,

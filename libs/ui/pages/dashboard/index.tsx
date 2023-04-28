@@ -7,7 +7,7 @@ import { useSidebarLogic } from '../../components/sidebar/logic';
 const Dashboard = () => {
     // Attributes
     const {} = useDashboardLogic();
-    
+
     const {
         handleOnCreateProject,
         handleOnCreateOrganisation,

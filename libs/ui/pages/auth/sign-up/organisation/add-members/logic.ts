@@ -35,7 +35,6 @@ export const useAddMembersLogic = (): AddMembersLogicType => {
     }
 
     function updateMemberData(customId: string, email?: string, role?: string) {
-
         const index = findMembers(customId);
         if (index < 0) {
             return;

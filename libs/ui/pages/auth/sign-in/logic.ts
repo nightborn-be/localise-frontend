@@ -8,12 +8,14 @@ import { useAuth } from '../../../auth/index';
 import { tKeys } from '../../../../i18n/keys';
 import { ISignInPageLogicProps } from './props';
 
-export const useSignInLogic = ({ redirectUrl }: ISignInPageLogicProps): SignInLogicType => {
+export const useSignInLogic = ({
+    redirectUrl,
+}: ISignInPageLogicProps): SignInLogicType => {
     // Attributes
     const { push } = useRouter();
     const { t } = useTranslation();
     const auth = useAuth();
-    
+
     // Formik
     const { values, ...rest } = useFormik<ISignInFormik>({
         initialValues: {
@@ -34,11 +36,10 @@ export const useSignInLogic = ({ redirectUrl }: ISignInPageLogicProps): SignInLo
             if (redirectUrl) {
                 push(redirectUrl);
             } else {
-                push('/')
+                push('/');
             }
-
         } catch (error) {
-            auth.setIsLoading(false)
+            auth.setIsLoading(false);
             setFieldError(
                 'email',
                 t<string>(tKeys.auth.sign_in.form.email.error.wrong),

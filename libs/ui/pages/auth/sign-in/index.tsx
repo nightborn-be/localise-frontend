@@ -14,7 +14,7 @@ export default function SignInPage({ redirectUrl }: ISignInPageProps) {
     // Attributes
     const { t } = useTranslation();
 
-    const { handleOnSubmit, form, isLoading } = useSignInLogic({redirectUrl});
+    const { handleOnSubmit, form, isLoading } = useSignInLogic({ redirectUrl });
     // Render
     return (
         <Page bgImage='/assets/images/AuthSignInBackground.png'>

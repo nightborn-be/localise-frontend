@@ -18,9 +18,7 @@ export interface ISideBarContentProps {
         form: IForm<ICreateOrganisationForm> & IDefaultForm,
         resetForm: () => void,
     ) => void;
-    handleSwitchOrgansiation: (
-        organisation: OrganisationDTO,
-    ) => void;
+    handleSwitchOrgansiation: (organisation: OrganisationDTO) => void;
     actualOrganisationUser?: OrganisationDTO;
     organisationUserData?: OrgnanisationPagingDTO;
     setFilterProjectValue: (value: string) => void;

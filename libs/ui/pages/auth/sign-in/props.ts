@@ -1,8 +1,7 @@
 export interface ISignInPageProps {
-    redirectUrl?: string
+    redirectUrl?: string;
 }
 
 export interface ISignInPageLogicProps {
-    redirectUrl?: string
-
+    redirectUrl?: string;
 }

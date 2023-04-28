@@ -6,7 +6,7 @@ import { useLogic } from './logic';
 export function AuthProvider({ children }: { children: ReactNode }) {
     // Attributes
     const auth = useLogic();
-    
+
     // Render
     return <AuthContext.Provider value={auth}>{children}</AuthContext.Provider>;
 }

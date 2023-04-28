@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react';
 import { useGetMe } from '../../gateways/resource-api/users/users';
 import { TokenKey } from '../../utils/token/token-keys';
@@ -7,7 +6,7 @@ import { useRouter } from 'next/router';
 
 export const useAuthRedirect = async (route?: string) => {
     // Attributes
-    const router = useRouter()
+    const router = useRouter();
     let currentRoute = route ?? router.asPath;
     const [hasToken, setHasToken] = useState<boolean>(false);
     useGetMe({
@@ -42,7 +41,5 @@ export const useAuthRedirect = async (route?: string) => {
 };
 
 export function redirectSignIn(push: (url: string) => void, url?: string) {
-    push(
-        `/auth/${url ? `?redirectUrl=${encodeURIComponent(url)}` : ''}`,
-    );
+    push(`/auth/${url ? `?redirectUrl=${encodeURIComponent(url)}` : ''}`);
 }

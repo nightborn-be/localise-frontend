@@ -8,8 +8,16 @@ import useToast from 'ui/components/progress-validation/toast';
 import { useRouter } from 'next/router';
 import { useDisclosure } from '@chakra-ui/react';
 import { OrganisationDTO, ProjectDTO } from 'gateways/resource-api/types';
-import { useCreateProject, useGetProjects } from 'gateways/resource-api/projects/projects';
-import { useCreateOrganisation, useGetOrganisation, useGetOrganisationsForUser, useSwitchUserOrganisation } from 'gateways/resource-api/organisations/organisations';
+import {
+    useCreateProject,
+    useGetProjects,
+} from 'gateways/resource-api/projects/projects';
+import {
+    useCreateOrganisation,
+    useGetOrganisation,
+    useGetOrganisationsForUser,
+    useSwitchUserOrganisation,
+} from 'gateways/resource-api/organisations/organisations';
 import { useGetMe } from 'gateways/resource-api/users/users';
 import { ICreateProjectForm } from './create-project-modal/types';
 import { toCreateProjectDTO } from './create-project-modal/mappers';
@@ -24,7 +32,8 @@ export const useSidebarLogic = (): SidebarLogicType => {
         useState<boolean>(false);
     const [filterProjectValue, setFilterProjectValue] = useState<string>('');
     const [activeProject, setActiveProject] = useState<ProjectDTO>({});
-    const [isDisableOnCloseProjectModal, setIsDisableOnCloseProjectModal] = useState<boolean>(false)
+    const [isDisableOnCloseProjectModal, setIsDisableOnCloseProjectModal] =
+        useState<boolean>(false);
     const createProjectModalDisclosure = useDisclosure();
 
     const { t } = useTranslation();
@@ -52,19 +61,22 @@ export const useSidebarLogic = (): SidebarLogicType => {
     });
 
     useEffect(() => {
-        if (asPath != '/dashboard/settings' && isOrganisationProjectDataFetched) {
-            const project = organisationProjectData?.data?.at(0)
+        if (
+            asPath != '/dashboard/settings' &&
+            isOrganisationProjectDataFetched
+        ) {
+            const project = organisationProjectData?.data?.at(0);
             if (project !== undefined) {
-                setActiveProject(project)
-                push(`/dashboard/projects/${project.id}`)
-                setIsDisableOnCloseProjectModal(false)
+                setActiveProject(project);
+                push(`/dashboard/projects/${project.id}`);
+                setIsDisableOnCloseProjectModal(false);
             } else if (filterProjectValue === '' && project === undefined) {
-                push('/dashboard')
-                createProjectModalDisclosure.onOpen()
-                setIsDisableOnCloseProjectModal(true)
+                push('/dashboard');
+                createProjectModalDisclosure.onOpen();
+                setIsDisableOnCloseProjectModal(true);
             }
         }
-    }, [organisationProjectData])
+    }, [organisationProjectData]);
 
     // Functions
     function handleOnOptionClick(value: string) {
@@ -115,20 +127,21 @@ export const useSidebarLogic = (): SidebarLogicType => {
                     },
                 },
             );
-        } catch (e) { }
+        } catch (e) {}
     }
 
     function handleOnCreateOrganisation(
         form: IForm<ICreateOrganisationForm> & IDefaultForm,
         resetForm: () => void,
     ) {
-
         try {
             createOrganisation(
                 {
                     data: toCreateOrganisationDTO(
                         form.organisationName.value,
-                        form.pictureBinary?.value == undefined ? new ArrayBuffer(0) : form.pictureBinary?.value,
+                        form.pictureBinary?.value == undefined
+                            ? new ArrayBuffer(0)
+                            : form.pictureBinary?.value,
                     ),
                 },
                 {
@@ -148,11 +161,9 @@ export const useSidebarLogic = (): SidebarLogicType => {
                     },
                 },
             );
-        } catch (err) { }
+        } catch (err) {}
     }
-    async function handleSwitchOrgansiation(
-        organisation: OrganisationDTO,
-    ) {
+    async function handleSwitchOrgansiation(organisation: OrganisationDTO) {
         await switchUserOrganisation(
             {
                 userId: userData?.userId as string,
@@ -168,15 +179,14 @@ export const useSidebarLogic = (): SidebarLogicType => {
             },
         );
     }
-    function handleOnClickProject(option: SearchBarOption<string>,
+    function handleOnClickProject(
+        option: SearchBarOption<string>,
         activeProject: ProjectDTO,
         setActiveProject: (value: ProjectDTO) => void,
         clearNewRowTerm?: () => void,
         setSearchFilterValue?: (value: string) => void,
     ) {
-        if (
-            activeProject.id != option.value
-        ) {
+        if (activeProject.id != option.value) {
             setActiveProject({
                 id: option.value,
                 name: option.label,
@@ -186,9 +196,7 @@ export const useSidebarLogic = (): SidebarLogicType => {
             if (setFilterProjectValue != undefined) {
                 setFilterProjectValue('');
             }
-            push(
-                `/dashboard/projects/${option.value}`,
-            );
+            push(`/dashboard/projects/${option.value}`);
         }
     }
     return {
