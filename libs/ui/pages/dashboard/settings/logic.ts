@@ -53,6 +53,7 @@ export const useOrganisationSettingsPageLogic =
                             });
                         },
                         onSuccess: () => {
+                            refetchUserData();
                             refetchActualUserOrganisation();
                             refecthOrganisationUserData();
                         },

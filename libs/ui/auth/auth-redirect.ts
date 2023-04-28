@@ -12,6 +12,7 @@ export const useAuthRedirect = async (route?: string) => {
     useGetMe({
         query: {
             enabled: hasToken,
+            retry: 0,
             onSuccess: () => {
                 if (!route) {
                     return;

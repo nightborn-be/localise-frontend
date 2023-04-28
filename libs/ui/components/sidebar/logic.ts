@@ -145,7 +145,8 @@ export const useSidebarLogic = (): SidebarLogicType => {
                     ),
                 },
                 {
-                    onSuccess: () => {
+                    onSuccess: (organisation) => {
+                        handleSwitchOrgansiation(organisation)
                         refetchUserData();
                         refetchActualUserOrganisation();
                         refecthOrganisationUserData();
