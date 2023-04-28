@@ -37,8 +37,15 @@ export interface ISideBarContentProps {
     options: SearchBarOption<string>[];
     activeOptionKey: string;
     isLoadingSearchProject: boolean;
-    clearNewRowTerm: () => void;
-    setSearchFilterValue: (value: string) => void;
+    clearNewRowTerm?: () => void;
+    setSearchFilterValue?: (value: string) => void;
+    handleOnClickProject: (
+        option: SearchBarOption<string>,
+        activeProject: ProjectDTO,
+        setActiveProject: (value: ProjectDTO) => void,
+        clearNewRowTerm?: () => void,
+        setSearchFilterValue?: (value: string) => void,
+    ) => void;
 }
 export interface ISidebarLogicProps {
     organisationProjectData?: ProjectPagingDTO;

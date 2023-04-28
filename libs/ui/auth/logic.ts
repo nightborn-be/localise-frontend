@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { FirebaseApp, initializeApp } from 'firebase/app';
-import UserCredential, {
+import { initializeApp } from 'firebase/app';
+import {
     getAuth,
     signInWithEmailAndPassword,
 } from '@firebase/auth';
@@ -9,6 +9,7 @@ import { firebaseConfig } from './config';
 import { TokenKey } from '../../utils/token/token-keys';
 export const useLogic = () => {
     // Attributes
+    const [isLoading, setIsLoading] = useState<boolean>(false)
     const [isFirebaseLoading, setIsFirebaseLoading] = useState<boolean>(true);
 
     // Functions

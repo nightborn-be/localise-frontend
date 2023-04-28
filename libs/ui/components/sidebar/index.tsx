@@ -184,10 +184,10 @@ export const SideBar = ({
                                         onClick={() =>
                                             handleOnClickProject(
                                                 option,
-                                                clearNewRowTerm,
-                                                setFilterProjectValue,
                                                 activeProject,
                                                 setActiveProject,
+                                                clearNewRowTerm,
+                                                setFilterProjectValue,
                                             )
                                         }
                                         activeKey={activeProject.name as string}

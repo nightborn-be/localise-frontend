@@ -45,7 +45,8 @@ export const useSidebarLogic = (): SidebarLogicType => {
     const {
         data: organisationProjectData,
         refetch: refetchOrganisationProjectData,
-        isFetched: isOrganisationProjectDataFetched
+        isFetched: isOrganisationProjectDataFetched,
+        isLoading: isLoadingSearchProject,
     } = useGetProjects(actualOrganisationUser?.id as string, {
         q: filterProjectValue,
     });
@@ -164,11 +165,13 @@ export const useSidebarLogic = (): SidebarLogicType => {
                 },
             },
         );
+    }
     function handleOnClickProject(option: SearchBarOption<string>,
-        clearNewRowTerm: () => void,
-        setSearchFilterValue: (value: string) => void,
         activeProject: ProjectDTO,
-        setActiveProject: (value: ProjectDTO) => void,) {
+        setActiveProject: (value: ProjectDTO) => void,
+        clearNewRowTerm?: () => void,
+        setSearchFilterValue?: (value: string) => void,
+    ) {
         if (
             activeProject.id != option.value
         ) {
@@ -176,10 +179,13 @@ export const useSidebarLogic = (): SidebarLogicType => {
                 id: option.value,
                 name: option.label,
             });
-            clearNewRowTerm();
-            setSearchFilterValue('');
+
+            clearNewRowTerm && clearNewRowTerm();
+            if (setFilterProjectValue != undefined) {
+                setFilterProjectValue('');
+            }
             push(
-                `/projects/${option.value}`,
+                `/dashboard/projects/${option.value}`,
             );
         }
     }
@@ -208,5 +214,6 @@ export const useSidebarLogic = (): SidebarLogicType => {
         createProjectModalDisclosure,
         isDisableOnCloseProjectModal,
         handleOnClickProject,
-    }
-}
+        isLoadingSearchProject,
+    };
+};

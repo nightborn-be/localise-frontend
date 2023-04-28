@@ -26,6 +26,8 @@ const Dashboard = () => {
         options,
         activeOptionKey,
         setIsOrganisationClicked,
+        handleOnClickProject,
+        isLoadingSearchProject,
     } = useSidebarLogic();
     // Render
     return (
@@ -50,6 +52,8 @@ const Dashboard = () => {
                 options={options}
                 activeOptionKey={activeOptionKey}
                 setIsOrganisationClicked={setIsOrganisationClicked}
+                handleOnClickProject={handleOnClickProject}
+                isLoadingSearchProject={isLoadingSearchProject}
             />
         </Page>
     );

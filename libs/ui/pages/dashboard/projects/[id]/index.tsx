@@ -39,6 +39,7 @@ const ProjectPage = () => {
         activeOptionKey,
         setIsOrganisationClicked,
         isLoadingSearchProject,
+        handleOnClickProject,
     } = useSidebarLogic();
 
     const {
@@ -100,6 +101,7 @@ const ProjectPage = () => {
                 isLoadingSearchProject={isLoadingSearchProject}
                 clearNewRowTerm={clearNewRowTerm}
                 setSearchFilterValue={setSearchFilterValue}
+                handleOnClickProject={handleOnClickProject}
             />
             <VStack
                 h='full'

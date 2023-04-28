@@ -26,6 +26,8 @@ const Dashboard = () => {
         options,
         activeOptionKey,
         setIsOrganisationClicked,
+        isLoadingSearchProject,
+        handleOnClickProject,
     } = useSidebarLogic();
     // Render
     return (
@@ -51,8 +53,7 @@ const Dashboard = () => {
                 createProjectModalDisclosure={createProjectModalDisclosure}
                 isDisableOnCloseProjectModal={isDisableOnCloseProjectModal}
                 isLoadingSearchProject={isLoadingSearchProject}
-                clearNewRowTerm={() => {}}
-                setSearchFilterValue={(value: string) => {}}
+                handleOnClickProject={handleOnClickProject}
             />
         </Page>
     );

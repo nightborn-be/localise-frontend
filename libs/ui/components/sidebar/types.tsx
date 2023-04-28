@@ -44,9 +44,10 @@ export interface SidebarLogicType {
     isDisableOnCloseProjectModal: boolean;
     handleOnClickProject: (
         option: SearchBarOption<string>,
-        clearNewRowTerm: () => void,
-        setSearchFilterValue: (value: string) => void,
         activeProject: ProjectDTO,
         setActiveProject: (value: ProjectDTO) => void,
+        clearNewRowTerm?: () => void,
+        setSearchFilterValue?: (value: string) => void,
     ) => void;
+    isLoadingSearchProject: boolean;
 }
