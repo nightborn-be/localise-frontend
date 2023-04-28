@@ -15,6 +15,8 @@ const ContentSignUp = ({
     title,
     handleOnContinue,
     handleOnLater,
+    isLoading,
+    isDisabledContinue,
 }: IContentSignUpProps) => {
     // Attributes
     const { t } = useTranslation();
@@ -33,6 +35,8 @@ const ContentSignUp = ({
             </VStack>
             <VStack spacing='0.25rem' alignItems={'left'}>
                 <Button
+                    isLoading={isLoading}
+                    isDisabled={isDisabledContinue}
                     color={COLORS.White.T500.value}
                     backgroundColor={COLORS.Localize.Purple.T500.value}
                     hoverBackgroundColor={COLORS.Localize.Purple.T600.value}

@@ -22,8 +22,10 @@ const Modal = ({
     title,
     isOpen,
     handleOnSubmit,
+    isLoading,
     onClose,
     isDisableOnClose,
+    isDisabled,
     header = {
         bg: COLORS.Localize.Purple.T500.value,
         color: COLORS.White.T500.value,
@@ -116,6 +118,8 @@ const Modal = ({
                             {footer.firstCtaLabel}
                         </Button>
                         <Button
+                            isDisabled={isDisabled}
+                            isLoading={isLoading}
                             minW={footer.secondCtaWidth}
                             h={footer.secondCtaHeight}
                             borderRadius='0.5rem'

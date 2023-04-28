@@ -29,4 +29,7 @@ export interface ProjectLogicType {
         form: IForm<IUpdateProjectForm> & IDefaultForm,
     ) => void;
     handleOnDeleteProject: () => void;
+    isLoadingUpdateProject: boolean;
+    isLoadingDeleteProject: boolean;
+    isLoadingSearchTerms: boolean;
 }

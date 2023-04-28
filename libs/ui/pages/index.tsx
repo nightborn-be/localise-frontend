@@ -50,6 +50,9 @@ const Dashboard = () => {
                 setActiveProject={setActiveProject}
                 createProjectModalDisclosure={createProjectModalDisclosure}
                 isDisableOnCloseProjectModal={isDisableOnCloseProjectModal}
+                isLoadingSearchProject={isLoadingSearchProject}
+                clearNewRowTerm={() => {}}
+                setSearchFilterValue={(value: string) => {}}
             />
         </Page>
     );

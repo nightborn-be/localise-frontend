@@ -50,6 +50,7 @@ export const useSignInLogic = ({ redirectUrl }: ISignInPageLogicProps): SignInLo
     }
     return {
         handleOnSubmit: form?.submitForm,
+        isLoading: auth.isLoading,
         form,
     };
 };

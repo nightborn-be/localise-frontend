@@ -1,5 +1,5 @@
 export type PictureLogicType = {
-    handleOnContinue: (picturePath: string) => void;
+    handleOnContinue: () => void;
     handleOnLater: () => void;
     picturePath: string;
     onDrag: (
@@ -7,4 +7,5 @@ export type PictureLogicType = {
         binary?: string | ArrayBuffer | null | undefined,
     ) => void;
     onDeletePicture: () => void;
+    isLoading: boolean;
 };

@@ -7,10 +7,12 @@ export interface IModalProps {
     isOpen: boolean;
     isDisableOnClose?: boolean;
     handleOnSubmit: () => void;
+    isLoading?: boolean;
     onClose: () => void;
     header?: IModalHeaderProps;
     footer?: IModalFooterProps;
     body?: IModalBodyProps;
+    isDisabled?: boolean;
 }
 
 interface IModalHeaderProps {

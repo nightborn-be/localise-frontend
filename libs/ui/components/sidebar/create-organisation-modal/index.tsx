@@ -1,5 +1,5 @@
 import { HStack, Image, VStack } from '@chakra-ui/react';
-import React from 'react';
+import React, { ReactElement } from 'react';
 import COLORS from '../../../constants/colors';
 import FONTS from '../../../constants/fonts';
 import Input from '../../inputs/input/index';
@@ -13,19 +13,27 @@ import Dropzone from '../../../pages/auth/sign-up/organisation/picture/component
 import ButtonIcon from '../../inputs/button-icon';
 import { ButtonSize } from '../../inputs/button-icon/types';
 import Icon from '../../contents/icon';
-import InputSelectAndInput from '../../inputs/input-text-select';
 import { EnhancerProps } from '../../inputs/button/props';
 import Button from '../../inputs/button';
 import Text from '../../contents/text';
+import MemberRow from '../../../pages/auth/sign-up/organisation/add-members/components/member-row';
+import { IMembersType } from '../../../pages/auth/sign-up/organisation/add-members/types';
 
 export const CreateOrganisationModal = ({
     isOpen,
     onClose,
     handleOnSubmit,
 }: ICreateOrganisationProps) => {
-    // Attributes
-    const { picturePath, onDrag, onDeletePicture, resetForm, form } =
-        useCreateOrganisationLogic();
+    const {
+        picturePath,
+        onDrag,
+        onDeletePicture,
+        resetForm,
+        updateMemberData,
+        removeMember,
+        addEmptyMember,
+        form,
+    } = useCreateOrganisationLogic();
 
     const { t } = useTranslation();
     // Render
@@ -40,6 +48,7 @@ export const CreateOrganisationModal = ({
             handleOnSubmit={() => {
                 handleOnSubmit(form, resetForm);
             }}
+            isDisabled={form.organisationName.value == ''}
         >
             <VStack spacing='0'>
                 <VStack padding={'1.25rem 1.25rem 0.75rem'} spacing='0.625rem'>
@@ -135,7 +144,7 @@ export const CreateOrganisationModal = ({
                                 color={COLORS.InputText.value}
                                 whiteSpace='pre-line'
                                 spacing={'0.1975rem'}
-                                startEnhancer={(): React.ReactElement => (
+                                startEnhancer={(): ReactElement => (
                                     <Icon
                                         name='uploadCloud'
                                         stroke={COLORS.InputText.value}
@@ -173,108 +182,64 @@ export const CreateOrganisationModal = ({
                             font={FONTS.T1.T12px.Medium500.value}
                             color={COLORS.InputText.value}
                         >
-                            1/3
+                            {form.members.value.length}/3
                         </Text>
                     </HStack>
-                    <InputSelectAndInput
-                        selectProps={{
-                            color: COLORS.Localize.Purple.T500.value,
-                            placeholderColor: COLORS.Localize.Purple.T500.value,
-                            dropdownArrowColor:
-                                COLORS.Localize.Purple.T500.value,
-                            w: '6.25rem',
-                            background: COLORS.White.T500.value,
-                            border: 'transparent',
-                            options: [
-                                { value: 'Admin', label: 'Admin' },
-                                { value: 'Member', label: 'Member' },
-                                { value: 'Utilisateur', label: 'Utilisateur' },
-                                {
-                                    value: 'Administrateur',
-                                    label: 'Administrateur',
-                                },
-                            ],
-                            fontWeight: '400',
-                            dropdownIndicator: (
-                                <Icon name='dropdownIndicator' />
-                            ),
-                            fontSize: '0.75rem',
-                            lineHeight: '0.9375rem',
-                            padding: '0rem',
-                            gap: '0.25rem',
-                            placeholder: 'Admin',
-                            paddingRight: '0',
-                            paddingLeft: '0',
-                            paddingContainer: '0.625rem',
-                            font: FONTS.T1.T12px.Regular400.value,
-                        }}
-                        inputProps={{
-                            name: 'name',
-                            value: '',
-                            onChange: () => {},
-                            placeholder: t<string>(
+                    {form.members.value.map(
+                        (obj: IMembersType, index: number) => {
+                            return (
+                                <MemberRow
+                                    key={`members_id_${obj.customId}`}
+                                    onChange={(email, role) => {
+                                        updateMemberData(
+                                            obj.customId,
+                                            email,
+                                            role,
+                                        );
+                                    }}
+                                    onDelete={() => {
+                                        removeMember(obj.customId);
+                                    }}
+                                    index={index}
+                                />
+                            );
+                        },
+                    )}
+                    {form.members.value.length < 3 && (
+                        <Button
+                            font={FONTS.T1.T14px.Regular400.value}
+                            border={`0.0625rem dashed ${COLORS.Line.value}`}
+                            borderRadius='0.5rem'
+                            w='full'
+                            h='2.5rem'
+                            padding='0.25rem 0.75rem 0.25rem 0.5rem'
+                            gap='0.25rem'
+                            justifyContent='flex-start'
+                            backgroundColor='transparent'
+                            color={COLORS.InputText.value}
+                            startEnhancer={(
+                                enhancer: EnhancerProps,
+                            ): ReactElement => (
+                                <Icon
+                                    name='add'
+                                    stroke={
+                                        enhancer.isHovered
+                                            ? COLORS.Localize.Purple.T500.value
+                                            : COLORS.InputText.value
+                                    }
+                                    width='20'
+                                    height='20'
+                                />
+                            )}
+                            hoverColor={COLORS.Localize.Purple.T500.value}
+                            onClick={addEmptyMember}
+                        >
+                            {t<string>(
                                 tKeys.home.modal.create_organisation.form
-                                    .organisation_teammates.placeholder,
-                            ),
-                            w: '100%',
-                            border: 'transparent',
-                            font: FONTS.T1.T12px.Regular400.value,
-                            zIndex: '10',
-                        }}
-                        w='full'
-                        h='2.5rem'
-                        border={`0.0625rem solid ${COLORS.Line.value}`}
-                        borderRadius='0.5rem'
-                        onDelete={() => {}}
-                        rightIcon={
-                            <Icon
-                                pointerEvents={'none'}
-                                name='removeSmall'
-                                stroke={COLORS.InputText.value}
-                            />
-                        }
-                        rightHoverIcon={
-                            <Icon
-                                pointerEvents={'none'}
-                                name='removeSmall'
-                                stroke={COLORS.Error.T500.value}
-                            />
-                        }
-                    />
-                    <Button
-                        border={`1px dashed ${COLORS.Line.value}`}
-                        borderRadius='0.5rem'
-                        w='full'
-                        h='2.5rem'
-                        padding='0.25rem 0.75rem 0.25rem 0.5rem'
-                        gap='0.25rem'
-                        fontSize='0.75rem'
-                        fontWeight={400}
-                        lineHeight='0.9375rem'
-                        justifyContent='flex-start'
-                        backgroundColor='transparent'
-                        color={COLORS.InputText.value}
-                        hoverColor={COLORS.Localize.Purple.T500.value}
-                        startEnhancer={(
-                            enhancer: EnhancerProps,
-                        ): React.ReactElement => (
-                            <Icon
-                                name='add'
-                                stroke={
-                                    enhancer.isHovered
-                                        ? COLORS.Localize.Purple.T500.value
-                                        : COLORS.InputText.value
-                                }
-                                width='20'
-                                height='20'
-                            />
-                        )}
-                    >
-                        {t<string>(
-                            tKeys.home.modal.create_organisation.form
-                                .organisation_teammates.cta.add,
-                        )}
-                    </Button>
+                                    .organisation_teammates.cta.add,
+                            )}
+                        </Button>
+                    )}
                 </VStack>
             </VStack>
         </Modal>

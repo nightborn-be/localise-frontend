@@ -12,7 +12,7 @@ import { HStack } from '@chakra-ui/react';
 const SignUpPage = () => {
     // Attributes
     const { t } = useTranslation();
-    const { handleOnSubmit, form } = useSignUpLogic();
+    const { handleOnSubmit, isLoading, form } = useSignUpLogic();
 
     // Render
     return (
@@ -21,6 +21,7 @@ const SignUpPage = () => {
                 <ContentSignUp
                     title={t<string>(tKeys.auth.sign_up.account.title)}
                     handleOnContinue={handleOnSubmit}
+                    isLoading={isLoading}
                 >
                     <Input
                         {...form.email}

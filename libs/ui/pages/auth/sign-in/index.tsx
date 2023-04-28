@@ -13,8 +13,8 @@ import { ISignInPageProps } from './props';
 export default function SignInPage({ redirectUrl }: ISignInPageProps) {
     // Attributes
     const { t } = useTranslation();
-    const { handleOnSubmit, form } = useSignInLogic({ redirectUrl });
 
+    const { handleOnSubmit, form, isLoading } = useSignInLogic({redirectUrl});
     // Render
     return (
         <Page bgImage='/assets/images/AuthSignInBackground.png'>
@@ -72,6 +72,7 @@ export default function SignInPage({ redirectUrl }: ISignInPageProps) {
                     />
                 </VStack>
                 <Button
+                    isLoading={isLoading}
                     color={COLORS.White.T500.value}
                     backgroundColor={COLORS.Localize.Purple.T500.value}
                     borderRadius='0.5rem'

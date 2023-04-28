@@ -164,6 +164,24 @@ export const useSidebarLogic = (): SidebarLogicType => {
                 },
             },
         );
+    function handleOnClickProject(option: SearchBarOption<string>,
+        clearNewRowTerm: () => void,
+        setSearchFilterValue: (value: string) => void,
+        activeProject: ProjectDTO,
+        setActiveProject: (value: ProjectDTO) => void,) {
+        if (
+            activeProject.id != option.value
+        ) {
+            setActiveProject({
+                id: option.value,
+                name: option.label,
+            });
+            clearNewRowTerm();
+            setSearchFilterValue('');
+            push(
+                `/projects/${option.value}`,
+            );
+        }
     }
     return {
         handleToggleIsOrganisationClicked,
@@ -189,5 +207,6 @@ export const useSidebarLogic = (): SidebarLogicType => {
         refetchUserData,
         createProjectModalDisclosure,
         isDisableOnCloseProjectModal,
-    };
-};
+        handleOnClickProject,
+    }
+}

@@ -57,6 +57,9 @@ const OrganisationSettingsPage = () => {
                 activeProject={activeProject}
                 setActiveProject={setActiveProject}
                 isDisableOnCloseProjectModal={isDisableOnCloseProjectModal}
+                clearNewRowTerm={() => {}}
+                setSearchFilterValue={(value: string) => {}}
+                isLoadingSearchProject={isLoadingSearchProject}
             />
             <OrganisationSettings
                 handleOnDeleteOrganisation={handleOnDeleteOrganisation}

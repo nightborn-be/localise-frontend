@@ -52,16 +52,19 @@ export const useProjectLogic = ({
     }, []);
 
     // Hooks
-    const { mutateAsync: updateProject } = useUpdateProject();
-    const { mutateAsync: deleteProject } = useDeleteProject();
+    const { mutateAsync: updateProject, isLoading: isLoadingUpdateProject } =
+        useUpdateProject();
+    const { mutateAsync: deleteProject, isLoading: isLoadingDeleteProject } =
+        useDeleteProject();
     const { mutateAsync: createTerm } = useCreateTerm();
     const { mutateAsync: updateTerm } = useUpdateTerm();
     const { mutateAsync: deleteTerm } = useDeleteTerm();
     const { mutateAsync: saveTranslation } = useSaveTranslation();
-    const { data: projectTerms, refetch: refetchProjectTerms } = useGetTerms(
-        id as string,
-        { q: searchFilterValue as string },
-    );
+    const {
+        data: projectTerms,
+        refetch: refetchProjectTerms,
+        isLoading: isLoadingSearchTerms,
+    } = useGetTerms(id as string, { q: searchFilterValue as string });
 
     // Functions
     async function handleOnDeleteTerm(termId: string) {
@@ -177,8 +180,6 @@ export const useProjectLogic = ({
         form: IForm<IUpdateProjectForm> & IDefaultForm,
     ) {
         try {
-            console.log(activeProject);
-
             await updateProject(
                 {
                     data: toUpdateProjectDTO(
@@ -265,5 +266,8 @@ export const useProjectLogic = ({
         addNewRowTerm,
         handleOnUpdateProject,
         handleOnDeleteProject,
+        isLoadingUpdateProject,
+        isLoadingDeleteProject,
+        isLoadingSearchTerms,
     };
 };

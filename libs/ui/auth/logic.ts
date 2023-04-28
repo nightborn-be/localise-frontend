@@ -17,7 +17,9 @@ export const useLogic = () => {
         if (!auth) {
             return;
         }
+        setIsLoading(true);
         const data = await signInWithEmailAndPassword(auth, email, password);
+        setIsLoading(false);
         if (data) {
             auth.currentUser?.getIdToken().then((token) => {
                 tokenStorage.save({ [TokenKey.ID_TOKEN]: token });
@@ -33,6 +35,7 @@ export const useLogic = () => {
     return {
         isLogged: !isFirebaseLoading && getAuth().currentUser != null,
         isAuthLoading: isFirebaseLoading,
+        isLoading,
         signIn,
     };
 };
