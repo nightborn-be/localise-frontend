@@ -38,6 +38,7 @@ const OrganisationPicturePage = () => {
                     isLater={true}
                     w='27.375rem'
                     isLoading={isLoading}
+                    isDisabledContinue={picturePath == ''}
                 >
                     {picturePath ? (
                         <HStack

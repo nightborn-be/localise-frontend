@@ -20,7 +20,7 @@ export const useAddMembersLogic = (): AddMembersLogicType => {
 
     // Functions
     function handleOnSubmit() {
-        push('/auth');
+        push('/');
     }
 
     function addEmptyMember() {
@@ -35,7 +35,6 @@ export const useAddMembersLogic = (): AddMembersLogicType => {
     }
 
     function updateMemberData(customId: string, email?: string, role?: string) {
-        console.log("test");
 
         const index = findMembers(customId);
         if (index < 0) {

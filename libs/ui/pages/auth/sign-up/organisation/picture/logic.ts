@@ -33,7 +33,7 @@ export const usePictureLogic = (): PictureLogicType => {
                 },
                 {
                     onSuccess: async () => {
-                        router.push('/');
+                        router.push('/auth/sign-up/organisation/add-members');
                     },
                     onError: async (error) => {
                         const err = error as AxiosError;
@@ -59,7 +59,7 @@ export const usePictureLogic = (): PictureLogicType => {
                 },
                 {
                     onSuccess: async () => {
-                        router.push('/');
+                        router.push('/auth/sign-up/organisation/add-members');
                     },
                     onError: async (error) => {
                         const err = error as AxiosError;

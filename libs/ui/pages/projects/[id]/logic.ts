@@ -180,8 +180,6 @@ export const useProjectLogic = ({
         form: IForm<IUpdateProjectForm> & IDefaultForm,
     ) {
         try {
-            console.log(activeProject);
-
             await updateProject(
                 {
                     data: toUpdateProjectDTO(
