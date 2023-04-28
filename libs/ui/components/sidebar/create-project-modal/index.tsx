@@ -21,7 +21,6 @@ export const AddProjectModals = ({
     isDisableOnCloseProjectModal,
 }: ICreateProjectProps) => {
     // Attributes
-    useRouter();
     const {
         sourceLanguageActiveKey,
         setSourceLanguageActiveKey,

@@ -38,6 +38,7 @@ export const useSignInLogic = ({ redirectUrl }: ISignInPageLogicProps): SignInLo
             }
 
         } catch (error) {
+            auth.setIsLoading(false)
             setFieldError(
                 'email',
                 t<string>(tKeys.auth.sign_in.form.email.error.wrong),
