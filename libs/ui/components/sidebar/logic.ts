@@ -64,7 +64,7 @@ export const useSidebarLogic = (): SidebarLogicType => {
                 setIsDisableOnCloseProjectModal(true)
             }
         }
-    }, [organisationProjectData])
+    }, [isOrganisationProjectDataFetched])
 
 
     // useEffect(() => {

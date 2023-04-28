@@ -25,7 +25,6 @@ import { toUpdateTermDTO } from '../../../../components/contents/project/glossar
 import { ToastType } from 'ui/components/progress-validation/toast/types';
 import useToast from 'ui/components/progress-validation/toast';
 import { useRouter } from 'next/router';
-import { useAuthRedirect } from 'ui/auth/auth-redirect';
 
 export const useProjectLogic = ({
     actualOrganisationUser,
