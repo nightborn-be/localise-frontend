@@ -58,26 +58,22 @@ export const useSidebarLogic = (): SidebarLogicType => {
         isLoading: isLoadingSearchProject,
     } = useGetProjects(actualOrganisationUser?.id as string, {
         q: filterProjectValue,
-    });
-
-    useEffect(() => {
-        if (
-            asPath != '/dashboard/settings' &&
-            isOrganisationProjectDataFetched
-        ) {
-            const project = organisationProjectData?.data?.at(0);
-            if (project !== undefined) {
-                setActiveProject(project);
-                push(`/dashboard/projects/${project.id}`);
-                setIsDisableOnCloseProjectModal(false);
-            } else if (filterProjectValue === '' && project === undefined) {
-                push('/dashboard');
-                createProjectModalDisclosure.onOpen();
-                setIsDisableOnCloseProjectModal(true);
+    }, {
+        query: {
+            onSuccess: (projects) => {
+                const project = projects?.data?.at(0);
+                if (project !== undefined) {
+                    setActiveProject(project)
+                    push(`/dashboard/projects/${projects.data?.at(0)?.id}`);
+                    setIsDisableOnCloseProjectModal(false);
+                } else {
+                    push('/dashboard');
+                    createProjectModalDisclosure.onOpen();
+                    setIsDisableOnCloseProjectModal(true);
+                }
             }
         }
-    }, [organisationProjectData]);
-
+    });
     // Functions
     function handleOnOptionClick(value: string) {
         setActiveOptionKey(value);

@@ -147,6 +147,71 @@ export const useCreateProject = <
     >(mutationFn, mutationOptions);
 };
 /**
+ * Returns a specific project of an organisation
+ */
+export const getProject = (
+    organisationId: string,
+    projectId: string,
+    signal?: AbortSignal,
+) => {
+    return customInstance<ProjectDTO>({
+        url: `/organisations/${organisationId}/projects/${projectId}`,
+        method: 'get',
+        signal,
+    });
+};
+
+export const getGetProjectQueryKey = (
+    organisationId: string,
+    projectId: string,
+) => [`/organisations/${organisationId}/projects/${projectId}`] as const;
+
+export type GetProjectQueryResult = NonNullable<
+    Awaited<ReturnType<typeof getProject>>
+>;
+export type GetProjectQueryError = unknown;
+
+export const useGetProject = <
+    TData = Awaited<ReturnType<typeof getProject>>,
+    TError = unknown,
+>(
+    organisationId: string,
+    projectId: string,
+    options?: {
+        query?: UseQueryOptions<
+            Awaited<ReturnType<typeof getProject>>,
+            TError,
+            TData
+        >;
+    },
+): UseQueryResult<TData, TError> & { queryKey: QueryKey } => {
+    const { query: queryOptions } = options ?? {};
+
+    const queryKey =
+        queryOptions?.queryKey ??
+        getGetProjectQueryKey(organisationId, projectId);
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof getProject>>> = ({
+        signal,
+    }) => getProject(organisationId, projectId, signal);
+
+    const query = useQuery<
+        Awaited<ReturnType<typeof getProject>>,
+        TError,
+        TData
+    >({
+        queryKey,
+        queryFn,
+        enabled: !!(organisationId && projectId),
+        ...queryOptions,
+    }) as UseQueryResult<TData, TError> & { queryKey: QueryKey };
+
+    query.queryKey = queryKey;
+
+    return query;
+};
+
+/**
  * Update a project
  */
 export const updateProject = (
