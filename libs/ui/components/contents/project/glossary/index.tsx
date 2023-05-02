@@ -137,6 +137,7 @@ export const Glossary = ({
                                 ))}
                                 {newRowTerm.map((term, i) => (
                                     <TableRowTerm
+                                        isNewRow={true}
                                         key={i}
                                         term={term}
                                         activeProject={activeProject}

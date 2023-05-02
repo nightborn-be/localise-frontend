@@ -22,6 +22,7 @@ export default function TableRowTerm({
     activeProject,
     clearNewRowTerm,
     isDisabled,
+    isNewRow,
 }: ITableRowTermProps) {
     //Attributes
     const {
@@ -47,8 +48,8 @@ export default function TableRowTerm({
                 borderTopLeftRadius={'0.5rem'}
                 borderTopRightRadius={'0.5rem'}
                 spacing={0}
-                onClick={toggleIsOpen}
-                cursor={'pointer'}
+                onClick={isNewRow ? () => {} : toggleIsOpen}
+                cursor={isNewRow ? '' : 'pointer'}
             >
                 <HStack
                     padding='0.5rem 1.25rem'
@@ -140,6 +141,7 @@ export default function TableRowTerm({
                         gap='0.625rem'
                         backgroundColor={COLORS.White.T500.value}
                         hoverBackgroundColor={COLORS.Stroke.value}
+                        handleOnClick={isNewRow ? toggleIsOpen : () => {}}
                     >
                         <Icon
                             pointerEvents='none'

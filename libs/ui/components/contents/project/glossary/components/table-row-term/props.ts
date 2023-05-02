@@ -18,6 +18,7 @@ export interface ITableRowTermProps {
     ) => void;
     handleOnDeleteTerm: (termId: string) => void;
     clearNewRowTerm: () => void;
+    isNewRow?: boolean;
 }
 
 export interface ITableRowTermLogicProps {
