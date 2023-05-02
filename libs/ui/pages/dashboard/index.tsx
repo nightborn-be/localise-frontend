@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Page from 'ui/components/contents/page';
 import { useDashboardLogic } from './logic';
 import SideBar from '../../components/sidebar';
 import { useSidebarLogic } from '../../components/sidebar/logic';
+import { useRouter } from 'next/router';
 
 const Dashboard = () => {
     // Attributes
-    const {} = useDashboardLogic();
 
     const {
         handleOnCreateProject,
@@ -29,6 +29,8 @@ const Dashboard = () => {
         handleOnClickProject,
         isLoadingSearchProject,
     } = useSidebarLogic();
+
+    const {} = useDashboardLogic({ createProjectModalDisclosure });
     // Render
     return (
         <Page>

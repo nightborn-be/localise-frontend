@@ -9,19 +9,12 @@ export const toUpdateProjectDTO = (
     sourceLanguage: string,
     targetLanguages: string[],
 ): UpdateProjectDTO => {
-    const languageMap: any = {};
-    languages.forEach(
-        (language: any) => (languageMap[language.name] = language),
-    );
-    const source: UpsertProjectLanguageDTO = languageMap[sourceLanguage];
-    const target: UpsertProjectLanguageDTO[] = [];
-    targetLanguages.forEach((obj: any) => target.push(languageMap[obj]));
-
+    const source = languages.find(language => language.name === sourceLanguage)
+    const targets = targetLanguages.map(language => languages.find(lang => lang.name === language))
     const res: UpdateProjectDTO = {
         name: projectName,
-        sourceLanguage: source,
-        languages: target,
+        sourceLanguage: source as UpsertProjectLanguageDTO,
+        languages: targets as UpsertProjectLanguageDTO[],
     };
-
     return res;
 };

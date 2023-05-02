@@ -63,8 +63,14 @@ export const useProjectLogic = ({
         data: projectTerms,
         refetch: refetchProjectTerms,
         isLoading: isLoadingSearchTerms,
-    } = useGetTerms(id as string, { q: searchFilterValue as string });
 
+    } = useGetTerms(id as string, { q: searchFilterValue as string }, {
+        query: {
+            onSuccess: () => {
+                clearNewRowTerm()
+            }
+        }
+    });
     // Functions
     async function handleOnDeleteTerm(termId: string) {
         try {
@@ -178,6 +184,12 @@ export const useProjectLogic = ({
     async function handleOnUpdateProject(
         form: IForm<IUpdateProjectForm> & IDefaultForm,
     ) {
+        console.log(toUpdateProjectDTO(
+            form.projectName.value,
+            form.sourceLanguage.value,
+            form.targetLanguages.value,
+        ));
+
         try {
             await updateProject(
                 {

@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Page from 'ui/components/contents/page';
 import { useHomeLogic } from './logic';
 import SideBar from '../components/sidebar';
 import { useSidebarLogic } from '../components/sidebar/logic';
+import { useRouter } from 'next/router';
 
 const Dashboard = () => {
     // Attributes
@@ -29,6 +30,7 @@ const Dashboard = () => {
         isLoadingSearchProject,
         handleOnClickProject,
     } = useSidebarLogic();
+
     // Render
     return (
         <Page>

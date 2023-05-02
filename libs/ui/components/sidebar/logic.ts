@@ -67,12 +67,11 @@ export const useSidebarLogic = (): SidebarLogicType => {
         ) {
             const project = organisationProjectData?.data?.at(0);
             if (project !== undefined) {
-                setActiveProject(project);
                 push(`/dashboard/projects/${project.id}`);
                 setIsDisableOnCloseProjectModal(false);
             } else if (filterProjectValue === '' && project === undefined) {
-                push('/dashboard');
-                createProjectModalDisclosure.onOpen();
+                push('/dashboard?projectModalIsOpen=true');
+                // createProjectModalDisclosure.onOpen();
                 setIsDisableOnCloseProjectModal(true);
             }
         }
@@ -183,20 +182,13 @@ export const useSidebarLogic = (): SidebarLogicType => {
     function handleOnClickProject(
         option: SearchBarOption<string>,
         activeProject: ProjectDTO,
-        setActiveProject: (value: ProjectDTO) => void,
-        clearNewRowTerm?: () => void,
-        setSearchFilterValue?: (value: string) => void,
     ) {
         if (activeProject.id != option.value) {
             setActiveProject({
                 id: option.value,
                 name: option.label,
             });
-
-            clearNewRowTerm && clearNewRowTerm();
-            if (setFilterProjectValue != undefined) {
-                setFilterProjectValue('');
-            }
+            setFilterProjectValue('')
             push(`/dashboard/projects/${option.value}`);
         }
     }

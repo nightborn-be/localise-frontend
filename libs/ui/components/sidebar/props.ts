@@ -39,11 +39,7 @@ export interface ISideBarContentProps {
     handleOnClickProject: (
         option: SearchBarOption<string>,
         activeProject: ProjectDTO,
-        setActiveProject: (value: ProjectDTO) => void,
-        clearNewRowTerm?: () => void,
-        setSearchFilterValue?: (value: string) => void,
     ) => void;
 }
 export interface ISidebarLogicProps {
-    organisationProjectData?: ProjectPagingDTO;
 }

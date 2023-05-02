@@ -11,20 +11,20 @@ export const useAuthHomeLogic = ({
     // Functions
     function handleSignUpRedirection() {
         if (redirectUrl) {
-            router.push(
+            return router.push(
                 `auth/sign-up?redirectUrl=${encodeURIComponent(redirectUrl)}`,
             );
         }
-        router.push('/auth/sign-up');
+        return router.push('/auth/sign-up');
     }
 
     function handleSignInRedirection() {
         if (redirectUrl) {
-            router.push(
+            return router.push(
                 `auth/sign-in?redirectUrl=${encodeURIComponent(redirectUrl)}`,
             );
         }
-        router.push('auth/sign-in');
+        return router.push('auth/sign-in');
     }
 
     return {

@@ -42,9 +42,6 @@ export interface SidebarLogicType {
     handleOnClickProject: (
         option: SearchBarOption<string>,
         activeProject: ProjectDTO,
-        setActiveProject: (value: ProjectDTO) => void,
-        clearNewRowTerm?: () => void,
-        setSearchFilterValue?: (value: string) => void,
     ) => void;
     isLoadingSearchProject: boolean;
 }
