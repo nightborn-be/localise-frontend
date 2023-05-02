@@ -66,19 +66,21 @@ export const useProjectLogic = ({
         isLoading: isLoadingSearchTerms,
     } = useGetTerms(id as string, { q: searchFilterValue as string });
 
-    const { data: projectData, refetch: refetchProjectData } = useGetProject(actualOrganisationUser?.id as string, id as string, {
-        query: {
-            onSuccess: (data) => {
-                console.log(data);
-
-            },
-            onError: (d) => {
-                console.log(d);
-
-            }
-        }
-    })
-
+    // const { data: projectData, refetch: refetchProjectData } = useGetProject(
+    //     actualOrganisationUser?.id as string,
+    //     id as string,
+    //     {
+    //         query: {
+    //             onSuccess: (data) => {
+    //                 console.log(data);
+    //             },
+    //             onError: (d) => {
+    //                 console.log(d);
+    //             },
+    //         },
+    //     },
+    // );
+    const projectData = undefined
     // Functions
     async function handleOnDeleteTerm(termId: string) {
         try {
@@ -260,6 +262,11 @@ export const useProjectLogic = ({
             );
         } catch (e) {}
     }
+
+    function handleOnDeleteNewTerm(id: string) {
+        const terms = newRowTerm.filter((term) => term.id != id);
+        setNewRowTerm(terms)
+    }
     return {
         activeKey,
         setActiveKey,
@@ -282,5 +289,7 @@ export const useProjectLogic = ({
         isLoadingUpdateProject,
         isLoadingDeleteProject,
         isLoadingSearchTerms,
+        projectData,
+        handleOnDeleteNewTerm
     };
 };

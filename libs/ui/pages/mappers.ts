@@ -22,7 +22,7 @@ export const toUpdateProjectDTO = (
         name: projectName,
         sourceLanguage: source,
         languages: target,
-        iconColor: COLORS.ProjectColors.Pink.value
+        iconColor: COLORS.ProjectColors.Pink.value,
     };
 
     return res;

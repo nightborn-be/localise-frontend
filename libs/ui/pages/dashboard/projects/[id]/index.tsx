@@ -65,6 +65,8 @@ const ProjectPage = () => {
         isLoadingUpdateProject,
         isLoadingDeleteProject,
         isLoadingSearchTerms,
+        projectData,
+        handleOnDeleteNewTerm,
     } = useProjectLogic({
         activeProject,
         setActiveProject,
@@ -135,6 +137,7 @@ const ProjectPage = () => {
                         title={t<string>(tKeys.home.project.tab.glossary.title)}
                     >
                         <Glossary
+                            projectData={projectData}
                             projectTerms={projectTerms}
                             activeProject={id as string}
                             handleOnSaveTranslations={handleOnSaveTranslations}
@@ -151,6 +154,7 @@ const ProjectPage = () => {
                             clearNewRowTerm={clearNewRowTerm}
                             addNewRowTerm={addNewRowTerm}
                             isLoadingSearchTerms={isLoadingSearchTerms}
+                            handleOnDeleteNewTerm={handleOnDeleteNewTerm}
                         />
                     </Tab>
                     <Tab

@@ -20,6 +20,7 @@ const Settings = ({
     activeProject,
     isLoadingUpdateProject,
     isLoadingDeleteProject,
+    projectData,
 }: ISettingsProps) => {
     const {
         sourceLanguageActiveKey,
@@ -44,7 +45,7 @@ const Settings = ({
         sourceLanguageRef,
         targetLanguagesRef,
         optionsSourceLanguage,
-    } = useSettingsLogic({ activeProject });
+    } = useSettingsLogic({ activeProject, projectData });
 
     const { t } = useTranslation();
     return (

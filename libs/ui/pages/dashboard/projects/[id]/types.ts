@@ -32,4 +32,6 @@ export interface ProjectLogicType {
     isLoadingUpdateProject: boolean;
     isLoadingDeleteProject: boolean;
     isLoadingSearchTerms: boolean;
+    projectData?: ProjectDTO;
+    handleOnDeleteNewTerm: (id: string) => void;
 }

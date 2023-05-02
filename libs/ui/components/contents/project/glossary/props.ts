@@ -13,6 +13,7 @@ export interface IGlossaryProps {
     ) => void;
     handleOnCreateTerm: (projectId: string) => void;
     handleOnDeleteTerm: (termId: string) => void;
+    handleOnDeleteNewTerm: (id: string) => void;
     activeProject?: string;
     setSearchFilterValue: (value: string) => void;
     searchFilterValue: string;
@@ -25,6 +26,7 @@ export interface IGlossaryProps {
     clearNewRowTerm: () => void;
     addNewRowTerm: (term: TermDTO) => void;
     isLoadingSearchTerms: boolean;
+    projectData?: ProjectDTO;
 }
 
 export interface IGlossaryLogicProps {

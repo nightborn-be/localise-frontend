@@ -18,7 +18,7 @@ import Tooltip from '../../tooltip';
 import { TooltipType } from '../../tooltip/props';
 import Text from '../../text';
 import MissingTerms from './components/missing-terms';
-
+import { v4 as uuidv4 } from 'uuid';
 export const Glossary = ({
     projectTerms,
     activeProject,
@@ -36,6 +36,8 @@ export const Glossary = ({
     clearNewRowTerm,
     addNewRowTerm,
     isLoadingSearchTerms,
+    projectData,
+    handleOnDeleteNewTerm,
 }: IGlossaryProps) => {
     // Attributes
     const { tableRef } = useGlossaryLogic({ addNewRowTerm });
@@ -137,13 +139,15 @@ export const Glossary = ({
                                 ))}
                                 {newRowTerm.map((term, i) => (
                                     <TableRowTerm
-                                        key={i}
+                                        key={`newTerm_${uuidv4()}`}
                                         term={term}
                                         activeProject={activeProject}
                                         handleOnSaveTranslations={
                                             handleOnSaveTranslations
                                         }
-                                        handleOnDeleteTerm={handleOnDeleteTerm}
+                                        handleOnDeleteTerm={
+                                            handleOnDeleteNewTerm
+                                        }
                                         clearNewRowTerm={clearNewRowTerm}
                                     />
                                 ))}
@@ -193,7 +197,7 @@ export const Glossary = ({
                                     SHADOWS.Elevation.Light.Bottom.T04
                                 }
                                 handleOnClick={() => {
-                                    addNewRowTerm({});
+                                    addNewRowTerm({ id: uuidv4() });
                                 }}
                             >
                                 <Icon

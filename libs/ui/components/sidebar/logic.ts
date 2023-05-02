@@ -56,24 +56,28 @@ export const useSidebarLogic = (): SidebarLogicType => {
         refetch: refetchOrganisationProjectData,
         isFetched: isOrganisationProjectDataFetched,
         isLoading: isLoadingSearchProject,
-    } = useGetProjects(actualOrganisationUser?.id as string, {
-        q: filterProjectValue,
-    }, {
-        query: {
-            onSuccess: (projects) => {
-                const project = projects?.data?.at(0);
-                if (project !== undefined) {
-                    setActiveProject(project)
-                    push(`/dashboard/projects/${projects.data?.at(0)?.id}`);
-                    setIsDisableOnCloseProjectModal(false);
-                } else {
-                    push('/dashboard');
-                    createProjectModalDisclosure.onOpen();
-                    setIsDisableOnCloseProjectModal(true);
-                }
-            }
-        }
-    });
+    } = useGetProjects(
+        actualOrganisationUser?.id as string,
+        {
+            q: filterProjectValue,
+        },
+        {
+            query: {
+                onSuccess: (projects) => {
+                    const project = projects?.data?.at(0);
+                    if (project !== undefined) {
+                        setActiveProject(project);
+                        push(`/dashboard/projects/${projects.data?.at(0)?.id}`);
+                        setIsDisableOnCloseProjectModal(false);
+                    } else {
+                        push('/dashboard');
+                        createProjectModalDisclosure.onOpen();
+                        setIsDisableOnCloseProjectModal(true);
+                    }
+                },
+            },
+        },
+    );
     // Functions
     function handleOnOptionClick(value: string) {
         setActiveOptionKey(value);

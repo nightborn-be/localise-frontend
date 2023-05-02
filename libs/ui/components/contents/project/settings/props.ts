@@ -10,8 +10,10 @@ export interface ISettingsProps {
     activeProject?: ProjectDTO;
     isLoadingUpdateProject: boolean;
     isLoadingDeleteProject: boolean;
+    projectData?: ProjectDTO;
 }
 
 export interface ISettingsLogicProps {
     activeProject?: ProjectDTO;
+    projectData?: ProjectDTO;
 }
