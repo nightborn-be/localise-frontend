@@ -83,7 +83,7 @@ export default function AuthHomePage({ redirectUrl }: IAuthHomePageProps) {
                     </Button>
                     <Button
                         color={COLORS.Localize.Purple.T500.value}
-                        backgroundColor={COLORS.White.T500.value}
+                        backgroundColor={COLORS.BG.value}
                         hoverBackgroundColor={COLORS.Communication.BG.value}
                         border={`0.0625rem solid ${COLORS.Localize.Purple.T500.value}`}
                         w={'17.1875rem'}

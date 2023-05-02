@@ -84,6 +84,7 @@ export default function InputTextAreaField<T>({
                 placeholder={placeholder}
                 _placeholder={{
                     color: placeholderColor,
+                    fontFamily: font?.fontFamily,
                     fontSize: font?.fontSize,
                     fontWeight: font?.fontWeight,
                     lineHeight: font?.lineHeight,

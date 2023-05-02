@@ -1,13 +1,11 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Page from 'ui/components/contents/page';
 import { useDashboardLogic } from './logic';
 import SideBar from '../../components/sidebar';
 import { useSidebarLogic } from '../../components/sidebar/logic';
-import { useRouter } from 'next/router';
 
 const Dashboard = () => {
     // Attributes
-
     const {
         handleOnCreateProject,
         handleOnCreateOrganisation,
@@ -31,6 +29,7 @@ const Dashboard = () => {
     } = useSidebarLogic();
 
     const {} = useDashboardLogic({ createProjectModalDisclosure });
+    
     // Render
     return (
         <Page>

@@ -154,7 +154,7 @@ export const Glossary = ({
                         alignItems={'center'}
                         justifyContent={'right'}
                         position={'absolute'}
-                        bottom='0.625rem'
+                        bottom='2.1875rem'
                         right='2rem'
                     >
                         <Tooltip
@@ -195,6 +195,9 @@ export const Glossary = ({
                                 handleOnClick={() => {
                                     addNewRowTerm({});
                                 }}
+                                shadow={
+                                    SHADOWS.Elevation.Light.Bottom.T04.value
+                                }
                             >
                                 <Icon
                                     name='addCircle'

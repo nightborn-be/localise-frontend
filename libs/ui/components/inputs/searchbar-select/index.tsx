@@ -80,7 +80,7 @@ const SearchbarSelect = <T,>({
                     boxShadow={SHADOWS.Elevation.Light.Bottom.T05.value}
                     border={`0.0625rem solid ${COLORS.Line.value}`}
                     padding='0.5rem 0.375rem 0.25rem'
-                    overflowY={'scroll'}
+                    overflowY={'hidden'}
                     alignItems={'flex-start'}
                     display={showModal ? 'visible' : 'none'}
                 >

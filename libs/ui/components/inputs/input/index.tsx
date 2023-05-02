@@ -1,11 +1,6 @@
 import React, { useState } from 'react';
 import { IInputProps } from './props';
-import {
-    Input as ChakraInput,
-    InputGroup,
-    InputRightElement,
-    VStack,
-} from '@chakra-ui/react';
+import { Input as ChakraInput, HStack, VStack } from '@chakra-ui/react';
 import COLORS from '../../../constants/colors';
 import * as CSS from 'csstype';
 import InputLabel from '../input-label';
@@ -93,8 +88,6 @@ export default function Input<T>({
                 spacing='0.5rem'
                 h={h}
                 w={w}
-                maxH={h}
-                minH={h}
                 maxWidth={maxWidth}
                 alignItems={alignItems}
                 zIndex={zIndex}
@@ -110,23 +103,28 @@ export default function Input<T>({
                 />
                 {/* Input field section */}
 
-                <InputGroup
+                <HStack
                     bg={bg}
+                    h={h}
+                    w={w}
                     onFocus={handleToggleVisibility}
                     onBlur={handleToggleVisibility}
-                    outlineOffset='0'
+                    border={isValid ? border : errorBorder}
+                    _focus={{
+                        border: borderCondition,
+                    }}
+                    _hover={{
+                        border: borderCondition,
+                    }}
                     borderRadius={'0.5rem'}
-                    h={h}
-                    minH={h}
-                    maxH={h}
+                    justifyContent={'center'}
+                    alignItems={'center'}
                 >
                     <ChakraInput
+                        variant={'unstyled'}
                         disabled={isDisabled}
                         _disabled={{ color: color, ...font }}
                         padding={padding}
-                        h={h}
-                        minH={h}
-                        maxH={h}
                         gap={gap}
                         value={value}
                         onChange={(e) => {
@@ -134,21 +132,16 @@ export default function Input<T>({
                         }}
                         name={name as string}
                         type={getTypeInput()}
+                        border={'transparent'}
                         placeholder={placeholder}
                         _placeholder={{
                             color: placeholderColor,
+                            fontFamily: font?.fontFamily,
                             fontSize: font?.fontSize,
                             fontWeight: font?.fontWeight,
                             lineHeight: font?.lineHeight,
                         }}
-                        _focus={{
-                            border: borderCondition,
-                        }}
                         focusBorderColor={'transparent'}
-                        border={isValid ? border : errorBorder}
-                        _hover={{
-                            border: borderCondition,
-                        }}
                         onFocus={onFocus}
                         onBlur={onBlur}
                         color={color}
@@ -167,13 +160,10 @@ export default function Input<T>({
                                 : ''
                         }
                     />
-                    <InputRightElement
+                    <HStack
                         visibility={visibility}
                         mr={rightElementMarginRight}
                         w='fit-content'
-                        h={h}
-                        minH={h}
-                        maxH={h}
                     >
                         {rightElement}
 
@@ -192,8 +182,8 @@ export default function Input<T>({
                                 />
                             </ButtonIcon>
                         )}
-                    </InputRightElement>
-                </InputGroup>
+                    </HStack>
+                </HStack>
                 {errorMsg && isTouched ? (
                     <Text
                         font={FONTS.T1.T12px.Regular400.value}

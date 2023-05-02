@@ -41,7 +41,7 @@ export default function TableRowTerm({
             <HStack
                 w='full'
                 h={'2.75rem'}
-                alignItems='flex-start'
+                alignItems='center'
                 border={`0.0625rem solid ${COLORS.Line.value}`}
                 borderRadius={!isOpen ? '0.5rem' : '0rem'}
                 borderTopLeftRadius={'0.5rem'}
