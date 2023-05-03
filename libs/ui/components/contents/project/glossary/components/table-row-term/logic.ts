@@ -13,7 +13,7 @@ export const useTableRowTermLogic = ({
 }: ITableRowTermLogicProps): TableRowTermLogicType => {
     // Attributes
     const { data: translations, refetch: refetchTranslations } =
-        useGetTranslations(term.id as string);
+        useGetTranslations(term.id as string, {}, { query: { enabled: !isNewTerm } });
     const [isOpen, setIsOpen] = useState<boolean>(false);
 
     // Formik

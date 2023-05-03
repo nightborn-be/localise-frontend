@@ -37,17 +37,17 @@ const useSettingsLogic = ({
             label: language.name,
         }),
     );
+    const informationsRef = useRef<HTMLDivElement>(null);
+    const projectColorRef = useRef<HTMLDivElement>(null);
+    const sourceLanguageRef = useRef<HTMLDivElement>(null);
+    const targetLanguagesRef = useRef<HTMLDivElement>(null);
+
     useEffect(() => {
         const source = getSourceLanguage();
         const target = getTargetLanguages();
         setSourceLanguageActiveKey(source?.name ?? '');
         setActiveKeys(target);
     }, [projectLanguages]);
-    const informationsRef = useRef<HTMLDivElement>(null);
-    const projectColorRef = useRef<HTMLDivElement>(null);
-    const sourceLanguageRef = useRef<HTMLDivElement>(null);
-    const targetLanguagesRef = useRef<HTMLDivElement>(null);
-
     // Formik
     const { values, ...rest } = useFormik<IUpdateProjectForm>({
         initialValues: {

@@ -89,7 +89,7 @@ export const useSidebarLogic = (): SidebarLogicType => {
         actualOrganisationUser?.id as string,
         id as string,
     );
-    const { data: languages } = useGetProjectLanguages(id as string);
+    const { data: languages } = useGetProjectLanguages(id as string, {}, { query: { retry: 0 } });
 
     const options: SearchBarColorOption<string>[] = organisationProjectData?.data
         ? organisationProjectData?.data?.map((project) => ({
