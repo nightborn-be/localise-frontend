@@ -7,16 +7,19 @@ import { useDisclosure } from '@chakra-ui/react';
 import { SearchBarOption } from '../../../../components/inputs/searchbar/props';
 import languages from 'utils/languages';
 import { ISettingsLogicProps } from './props';
+import { LanguageDTO } from 'gateways/resource-api/types';
 const useSettingsLogic = ({
-    projectData
+    projectData,
+    projectLanguages,
 }: ISettingsLogicProps): SettingsLogicType => {
     // Attributes
     const [activeMenuSettingKey, setActiveMenuSettingKey] = useState(
         MenuItemValue.INFORMATIONS,
     );
     const deleteProjectDisclosure = useDisclosure();
-    const [currentSelectedColor, setCurrentSelectedColor] =
-        useState<string>(projectData?.iconColor as string);
+    const [currentSelectedColor, setCurrentSelectedColor] = useState<string>(
+        projectData?.iconColor as string,
+    );
     const [sourceLanguageActiveKey, setSourceLanguageActiveKey] =
         useState<string>('');
     const [filterValue, setFilterValue] = useState<string>('');
@@ -26,15 +29,22 @@ const useSettingsLogic = ({
         (language) => ({
             value: language.name,
             label: language.name,
+            iconColor: '',
         }),
     );
     const optionsSearchBox: SearchBarOption<string>[] = languages.map(
         (language) => ({
             value: language.name,
             label: language.name,
+            iconColor: '',
         }),
     );
-
+    useEffect(() => {
+        const source = getSourceLanguage();
+        const target = getTargetLanguages();
+        setSourceLanguageActiveKey(source?.name ?? '');
+        setActiveKeys(target);
+    }, [projectLanguages]);
     const informationsRef = useRef<HTMLDivElement>(null);
     const projectColorRef = useRef<HTMLDivElement>(null);
     const sourceLanguageRef = useRef<HTMLDivElement>(null);
@@ -68,6 +78,31 @@ const useSettingsLogic = ({
             setActiveKeys((prev) => [...prev, value]);
         else setActiveKeys((prev) => prev?.filter((option) => option != value));
     }
+    function getSourceLanguage(): LanguageDTO {
+        let sourceLanguage: LanguageDTO = {
+            id: '',
+            isSource: false,
+            name: '',
+            abbreviation: '',
+            projectId: '',
+        };
+        projectLanguages?.data?.forEach((element) => {
+            if (element.isSource) {
+                sourceLanguage = element;
+            }
+        });
+        return sourceLanguage;
+    }
+
+    function getTargetLanguages(): string[] {
+        let targetLanguages: string[] = [];
+        projectLanguages?.data?.forEach((element) => {
+            if (!element.isSource) {
+                targetLanguages.push(element.name);
+            }
+        });
+        return targetLanguages;
+    }
     useEffect(() => {
         rest.setFieldValue('targetLanguages', activeKeys);
     }, [activeKeys]);
@@ -77,8 +112,16 @@ const useSettingsLogic = ({
     }, [projectData]);
 
     useEffect(() => {
-        rest.setFieldValue('iconColor', currentSelectedColor)
-    }, [currentSelectedColor])
+        rest.setFieldValue('iconColor', currentSelectedColor);
+    }, [currentSelectedColor]);
+    useEffect(() => {
+        rest.setFieldValue('sourceLanguage', sourceLanguageActiveKey);
+    }, [sourceLanguageActiveKey]);
+
+    useEffect(() => {
+        rest.setFieldValue('targetLanguages', activeKeys);
+    }, [activeKeys]);
+
     return {
         form,
         activeMenuSettingKey,

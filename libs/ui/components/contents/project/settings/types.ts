@@ -33,3 +33,8 @@ export interface IUpdateProjectForm {
     targetLanguages: string[];
     iconColor: string;
 }
+
+export type SearchSelectLanguageOption<T> = {
+    value: T;
+    label: string;
+};

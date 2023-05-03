@@ -1,8 +1,6 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 import { GlossaryLogicType } from './types';
-import { TermDTO } from 'gateways/resource-api/types';
 import { IGlossaryLogicProps } from './props';
-import { v4 as uuidv4 } from 'uuid';
 
 export const useGlossaryLogic = ({
     addNewRowTerm,
@@ -15,7 +13,7 @@ export const useGlossaryLogic = ({
             !(event.target as Element).matches('input,textarea')
         ) {
             event.preventDefault();
-            addNewRowTerm({ id: uuidv4() });
+            addNewRowTerm({});
         }
     }, []);
 

@@ -6,14 +6,19 @@ import { useState } from 'react';
 
 export const useEditInputLogic = ({
     translation,
+    language,
 }: IEditInputLogicProps): EditInputLogicType => {
     // Attributes
     // Formik
     const { values, ...rest } = useFormik<IEditInputForm>({
         initialValues: {
-            translation: translation.translation as string,
-            termId: translation.termId as string,
-            languageId: translation.languageId as string,
+            translation: translation
+                ? (translation?.translation as string)
+                : '',
+            termId: translation ? (translation?.termId as string) : '',
+            languageId: translation
+                ? (translation.languageId as string)
+                : (language?.id as string),
         },
         onSubmit: () => {},
         validateOnChange: false,

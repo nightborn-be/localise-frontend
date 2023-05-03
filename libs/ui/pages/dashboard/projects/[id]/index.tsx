@@ -49,7 +49,6 @@ const ProjectPage = () => {
         setActiveKey,
         projectTerms,
         handleOnSaveTranslations,
-        handleOnCreateTerm,
         handleOnDeleteTerm,
         setSearchFilterValue,
         searchFilterValue,
@@ -68,6 +67,7 @@ const ProjectPage = () => {
         isLoadingSearchTerms,
         projectData,
         handleOnDeleteNewTerm,
+        projectLanguages,
     } = useProjectLogic({
         activeProject,
         setActiveProject,
@@ -143,7 +143,6 @@ const ProjectPage = () => {
                             projectTerms={projectTerms}
                             activeProject={id as string}
                             handleOnSaveTranslations={handleOnSaveTranslations}
-                            handleOnCreateTerm={handleOnCreateTerm}
                             handleOnDeleteTerm={handleOnDeleteTerm}
                             setSearchFilterValue={setSearchFilterValue}
                             searchFilterValue={searchFilterValue}
@@ -157,12 +156,14 @@ const ProjectPage = () => {
                             addNewRowTerm={addNewRowTerm}
                             isLoadingSearchTerms={isLoadingSearchTerms}
                             handleOnDeleteNewTerm={handleOnDeleteNewTerm}
+                            projectLanguages={projectLanguages}
                         />
                     </Tab>
                     <Tab
                         title={t<string>(tKeys.home.project.tab.settings.title)}
                     >
                         <Settings
+                            projectLanguages={projectLanguages}
                             projectData={projectData}
                             handleOnUpdateProject={handleOnUpdateProject}
                             handleOnDeleteProject={handleOnDeleteProject}

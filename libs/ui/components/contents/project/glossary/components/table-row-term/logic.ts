@@ -8,7 +8,8 @@ import { useState } from 'react';
 
 export const useTableRowTermLogic = ({
     term,
-    activeProject,
+    languages,
+    isNewTerm,
 }: ITableRowTermLogicProps): TableRowTermLogicType => {
     // Attributes
     const { data: translations, refetch: refetchTranslations } =
@@ -22,6 +23,7 @@ export const useTableRowTermLogic = ({
             key: term.name as string,
             description: term.description as string,
             translations: [],
+            isNewTerm: isNewTerm,
         },
         onSubmit: () => {},
         validateOnChange: false,
@@ -37,9 +39,9 @@ export const useTableRowTermLogic = ({
     }
     function targetLanguagesToDisplayValue(): string {
         let value = '';
-        translations?.data?.forEach((t) => {
-            if (!t.language.isSource) {
-                value += t.language.abbreviation?.toUpperCase() + ' / ';
+        languages?.data?.forEach((language) => {
+            if (!language.isSource) {
+                value += language.abbreviation?.toUpperCase() + ' / ';
             }
         });
 
@@ -48,9 +50,9 @@ export const useTableRowTermLogic = ({
 
     function getSourceLanguage(): string {
         let value = '';
-        translations?.data?.forEach((t) => {
-            if (t.language.isSource && t.language.abbreviation) {
-                value = t.language.abbreviation?.toUpperCase();
+        languages?.data?.forEach((language) => {
+            if (language.isSource && language.abbreviation) {
+                value = language.abbreviation?.toUpperCase();
             }
         });
         return value;

@@ -40,9 +40,7 @@ export interface ISideBarContentProps {
         option: SearchBarOption<string>,
         clearNewRowTerm?: () => void,
     ) => void;
-    handleOnUpdateColorProject: (
-        iconColor: string,
-    ) => void;
+    handleOnUpdateColorProject: (iconColor: string) => void;
 }
 export interface ISidebarLogicProps {
     organisationProjectData?: ProjectPagingDTO;

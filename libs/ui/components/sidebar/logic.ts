@@ -81,8 +81,7 @@ export const useSidebarLogic = (): SidebarLogicType => {
                 },
             },
         },
-        );
-
+    );
 
     const { data: projectData, refetch: refetchProjectData } = useGetProject(
         actualOrganisationUser?.id as string,
@@ -94,7 +93,7 @@ export const useSidebarLogic = (): SidebarLogicType => {
         ? organisationProjectData?.data?.map((project) => ({
               label: project.name as string,
               value: project.id as string,
-            iconColor: project.iconColor as string,
+              iconColor: project.iconColor as string,
           }))
         : [];
 
@@ -106,7 +105,6 @@ export const useSidebarLogic = (): SidebarLogicType => {
     function handleToggleIsOrganisationClicked() {
         setIsOrganisationClicked((prev) => !prev);
     }
-
 
     async function handleOnCreateProject(
         form: IForm<ICreateProjectForm> & IDefaultForm,
@@ -199,17 +197,13 @@ export const useSidebarLogic = (): SidebarLogicType => {
         option: SearchBarOption<string>,
         clearNewRowTerm?: () => void,
     ) {
-
-            clearNewRowTerm && clearNewRowTerm();
-            if (setFilterProjectValue != undefined) {
-                setFilterProjectValue('');
-            }
+        clearNewRowTerm && clearNewRowTerm();
+        if (setFilterProjectValue != undefined) {
+            setFilterProjectValue('');
+        }
         push(`/dashboard/projects/${option.value}`);
     }
-    async function handleOnUpdateColorProject(
-        iconColor: string
-    ) {
-
+    async function handleOnUpdateColorProject(iconColor: string) {
         try {
             await updateProject(
                 {
@@ -241,7 +235,7 @@ export const useSidebarLogic = (): SidebarLogicType => {
                     },
                 },
             );
-        } catch (e) { }
+        } catch (e) {}
     }
     return {
         handleToggleIsOrganisationClicked,

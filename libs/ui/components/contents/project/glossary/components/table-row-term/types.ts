@@ -18,4 +18,5 @@ export interface ITableRowTermForm {
     key: string;
     description: string;
     translations: IEditInputForm[];
+    isNewTerm?: boolean;
 }

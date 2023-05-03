@@ -26,6 +26,8 @@ import { toUpdateTermDTO } from '../../../../components/contents/project/glossar
 import { ToastType } from 'ui/components/progress-validation/toast/types';
 import useToast from 'ui/components/progress-validation/toast';
 import { useRouter } from 'next/router';
+import { useGetProjectLanguages } from 'gateways/resource-api/languages/languages';
+import { v4 as uuidv4 } from 'uuid';
 
 export const useProjectLogic = ({
     actualOrganisationUser,
@@ -70,6 +72,7 @@ export const useProjectLogic = ({
         actualOrganisationUser?.id as string,
         id as string,
     );
+    const { data: projectLanguages } = useGetProjectLanguages(id as string);
     // Functions
     async function handleOnDeleteTerm(termId: string) {
         try {
@@ -91,25 +94,21 @@ export const useProjectLogic = ({
         }
     }
 
-    // Need to do when the backend has implemented the missing things
-    function handleOnCreateTerm(projectId: string) {
-        // const term = createTerm({ projectId: projectId, data: { name: "Insert key", description: "" } })
-    }
     async function callCreateTerm(
         form: IForm<ITableRowTermForm> & IDefaultForm,
     ) {
         try {
             await createTerm(
                 {
-                    projectId: activeProject.id as string,
+                    projectId: id as string,
                     data: {
                         name: form.key.value,
                         description: form.description.value,
                     },
                 },
                 {
-                    onSuccess: () => {
-                        refetchProjectTerms();
+                    onSuccess: (data) => {
+                        callSaveTranslations(form, data.id);
                     },
                 },
             );
@@ -142,17 +141,28 @@ export const useProjectLogic = ({
     }
     async function callSaveTranslations(
         form: IForm<ITableRowTermForm> & IDefaultForm,
+        termId?: string,
     ) {
         for (const translate in form.translations.value) {
             const element = form.translations.value[
                 translate
             ] as IEditInputForm;
             try {
-                await saveTranslation({
-                    termId: element.termId,
-                    languageId: element.languageId,
-                    data: { translation: element.translation },
-                });
+                await saveTranslation(
+                    {
+                        termId: form.isNewTerm
+                            ? (termId as string)
+                            : element.termId,
+                        languageId: element.languageId,
+                        data: { translation: element.translation },
+                    },
+                    {
+                        onSuccess: () => {
+                            refetchProjectTerms();
+                            handleOnDeleteNewTerm(form.termId.value);
+                        },
+                    },
+                );
             } catch (error) {
                 const err = error as AxiosError;
                 toast({
@@ -162,11 +172,12 @@ export const useProjectLogic = ({
                 });
             }
         }
+        refetchProjectTerms();
     }
     async function handleOnSaveTranslations(
         form: IForm<ITableRowTermForm> & IDefaultForm,
     ) {
-        if (form.termId.value === undefined) {
+        if (form.isNewTerm?.value === true) {
             callCreateTerm(form);
         } else {
             callUpdateTerm(form);
@@ -178,6 +189,7 @@ export const useProjectLogic = ({
         setNewRowTerm([]);
     }
     function addNewRowTerm(term: TermDTO) {
+        term.id = uuidv4();
         setNewRowTerm((prev) => [...prev, term]);
     }
     async function handleOnUpdateProject(
@@ -259,7 +271,6 @@ export const useProjectLogic = ({
         setActiveKey,
         projectTerms,
         handleOnSaveTranslations,
-        handleOnCreateTerm,
         handleOnDeleteTerm,
         setSearchFilterValue,
         searchFilterValue,
@@ -277,6 +288,7 @@ export const useProjectLogic = ({
         isLoadingDeleteProject,
         isLoadingSearchTerms,
         projectData,
+        projectLanguages,
         handleOnDeleteNewTerm,
     };
 };

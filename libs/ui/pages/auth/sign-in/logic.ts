@@ -39,7 +39,6 @@ export const useSignInLogic = ({
                 push('/');
             }
         } catch (error) {
-            auth.setIsLoading(false);
             setFieldError(
                 'email',
                 t<string>(tKeys.auth.sign_in.form.email.error.wrong),

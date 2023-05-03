@@ -18,12 +18,11 @@ import Tooltip from '../../tooltip';
 import { TooltipType } from '../../tooltip/props';
 import Text from '../../text';
 import MissingTerms from './components/missing-terms';
-import { v4 as uuidv4 } from 'uuid';
+
 export const Glossary = ({
     projectTerms,
     activeProject,
     handleOnSaveTranslations,
-    handleOnCreateTerm,
     handleOnDeleteTerm,
     setSearchFilterValue,
     searchFilterValue,
@@ -32,12 +31,11 @@ export const Glossary = ({
     setIsDetectDuplicate,
     isDetectDuplicate,
     newRowTerm,
-    setNewRowTerm,
-    clearNewRowTerm,
     addNewRowTerm,
     isLoadingSearchTerms,
     projectData,
     handleOnDeleteNewTerm,
+    projectLanguages,
 }: IGlossaryProps) => {
     // Attributes
     const { tableRef } = useGlossaryLogic({ addNewRowTerm });
@@ -134,23 +132,26 @@ export const Glossary = ({
                                             handleOnSaveTranslations
                                         }
                                         handleOnDeleteTerm={handleOnDeleteTerm}
-                                        clearNewRowTerm={clearNewRowTerm}
+                                        projectLanguages={projectLanguages}
                                     />
                                 ))}
-                                {newRowTerm.map((term, i) => (
-                                    <TableRowTerm
-                                        key={`newTerm_${uuidv4()}`}
-                                        term={term}
-                                        activeProject={activeProject}
-                                        handleOnSaveTranslations={
-                                            handleOnSaveTranslations
-                                        }
-                                        handleOnDeleteTerm={
-                                            handleOnDeleteNewTerm
-                                        }
-                                        clearNewRowTerm={clearNewRowTerm}
-                                    />
-                                ))}
+                                {newRowTerm.map((term, i) => {
+                                    return (
+                                        <TableRowTerm
+                                            key={`newTerm_${term.id}`}
+                                            isNewTerm={true}
+                                            term={term}
+                                            activeProject={activeProject}
+                                            handleOnSaveTranslations={
+                                                handleOnSaveTranslations
+                                            }
+                                            handleOnDeleteTerm={
+                                                handleOnDeleteNewTerm
+                                            }
+                                            projectLanguages={projectLanguages}
+                                        />
+                                    );
+                                })}
                             </>
                         )}
                     </TableTerm>
@@ -197,7 +198,7 @@ export const Glossary = ({
                                     SHADOWS.Elevation.Light.Bottom.T04
                                 }
                                 handleOnClick={() => {
-                                    addNewRowTerm({ id: uuidv4() });
+                                    addNewRowTerm({});
                                 }}
                             >
                                 <Icon

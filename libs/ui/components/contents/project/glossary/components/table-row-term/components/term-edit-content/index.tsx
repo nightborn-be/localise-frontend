@@ -21,11 +21,12 @@ export const TermEditContent = ({
     handleOnSaveTranslations,
     updateTranslationsForm,
     handleOnDeleteTerm,
-    clearNewRowTerm,
     toggleIsOpen,
+    projectLanguages,
 }: ITermEditContentProps) => {
     // Attributes
     const { t } = useTranslation();
+
     // Render
     return (
         <VStack
@@ -96,7 +97,6 @@ export const TermEditContent = ({
                         padding='0.25rem 0.75rem 0.25rem 0.75rem'
                         onClick={() => {
                             handleOnSaveTranslations(form);
-                            clearNewRowTerm();
                             toggleIsOpen();
                         }}
                     >
@@ -166,14 +166,24 @@ export const TermEditContent = ({
                 justifyContent={'center'}
                 alignItems={'flex-start'}
             >
-                {translations?.data?.map((t) => {
-                    return (
-                        <EditInput
-                            translation={t}
-                            updateTranslationsForm={updateTranslationsForm}
-                        />
-                    );
-                })}
+                {translations !== undefined &&
+                    translations?.data?.map((t) => {
+                        return (
+                            <EditInput
+                                translation={t}
+                                updateTranslationsForm={updateTranslationsForm}
+                            />
+                        );
+                    })}
+                {projectLanguages !== undefined &&
+                    projectLanguages?.data?.map((l) => {
+                        return (
+                            <EditInput
+                                language={l}
+                                updateTranslationsForm={updateTranslationsForm}
+                            />
+                        );
+                    })}
             </VStack>
         </VStack>
     );
