@@ -184,12 +184,6 @@ export const useProjectLogic = ({
     async function handleOnUpdateProject(
         form: IForm<IUpdateProjectForm> & IDefaultForm,
     ) {
-        console.log(toUpdateProjectDTO(
-            form.projectName.value,
-            form.sourceLanguage.value,
-            form.targetLanguages.value,
-        ));
-
         try {
             await updateProject(
                 {

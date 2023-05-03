@@ -30,7 +30,9 @@ const Dashboard = () => {
         isLoadingSearchProject,
     } = useSidebarLogic();
 
-    const {} = useDashboardLogic({ createProjectModalDisclosure });
+    const {} = useDashboardLogic({
+        onOpenProjectModal: createProjectModalDisclosure.onOpen,
+    });
     // Render
     return (
         <Page>
