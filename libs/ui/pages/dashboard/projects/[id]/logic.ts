@@ -66,21 +66,10 @@ export const useProjectLogic = ({
         isLoading: isLoadingSearchTerms,
     } = useGetTerms(id as string, { q: searchFilterValue as string });
 
-    // const { data: projectData, refetch: refetchProjectData } = useGetProject(
-    //     actualOrganisationUser?.id as string,
-    //     id as string,
-    //     {
-    //         query: {
-    //             onSuccess: (data) => {
-    //                 console.log(data);
-    //             },
-    //             onError: (d) => {
-    //                 console.log(d);
-    //             },
-    //         },
-    //     },
-    // );
-    const projectData = undefined
+    const { data: projectData, refetch: refetchProjectData } = useGetProject(
+        actualOrganisationUser?.id as string,
+        id as string,
+    );
     // Functions
     async function handleOnDeleteTerm(termId: string) {
         try {
@@ -201,9 +190,10 @@ export const useProjectLogic = ({
                         form.projectName.value,
                         form.sourceLanguage.value,
                         form.targetLanguages.value,
+                        form.iconColor.value,
                     ),
                     organisationId: actualOrganisationUser?.id as string,
-                    projectId: activeProject.id as string,
+                    projectId: projectData?.id as string,
                 },
                 {
                     onSuccess: async () => {
@@ -211,10 +201,7 @@ export const useProjectLogic = ({
                         refetchActualUserOrganisation();
                         refecthOrganisationUserData();
                         refetchOrganisationProjectData();
-                        setActiveProject({
-                            id: activeProject.id as string,
-                            name: form.projectName.value,
-                        });
+                        refetchProjectData();
                     },
                     onError: async () => {
                         toast({
@@ -236,7 +223,7 @@ export const useProjectLogic = ({
             await deleteProject(
                 {
                     organisationId: actualOrganisationUser?.id as string,
-                    projectId: activeProject.id as string,
+                    projectId: projectData?.id as string,
                 },
                 {
                     onSuccess: async () => {
@@ -265,7 +252,7 @@ export const useProjectLogic = ({
 
     function handleOnDeleteNewTerm(id: string) {
         const terms = newRowTerm.filter((term) => term.id != id);
-        setNewRowTerm(terms)
+        setNewRowTerm(terms);
     }
     return {
         activeKey,
@@ -290,6 +277,6 @@ export const useProjectLogic = ({
         isLoadingDeleteProject,
         isLoadingSearchTerms,
         projectData,
-        handleOnDeleteNewTerm
+        handleOnDeleteNewTerm,
     };
 };

@@ -4,5 +4,4 @@ export const useTermEditContentLogic = ({
     term,
 }: ITermEditContentLogicProps) => {
     // Formik
-
 };

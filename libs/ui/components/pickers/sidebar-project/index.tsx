@@ -21,6 +21,7 @@ const SidebarProject = ({
     h = '2.5rem',
     activeKey,
     onClick,
+    handleOnUpdateColorProject,
 }: ISidebarProps) => {
     // Attributes
     const isSelected = activeKey === text;
@@ -96,7 +97,7 @@ const SidebarProject = ({
                     <ProjectColorPicker
                         boxShadow={SHADOWS.Menu.value}
                         selected={currentSelectedColor}
-                        onSelect={setCurrentSelectedColor}
+                        onSelect={handleOnUpdateColorProject}
                     />
                 </HStack>
             </HStack>

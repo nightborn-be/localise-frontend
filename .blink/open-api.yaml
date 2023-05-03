@@ -993,24 +993,14 @@ components:
                     format: date-time
                 email:
                     type: string
-                firstName:
-                    type: string
-                lastName:
-                    type: string
         CreateUserDTO:
             description: A user object to create
             type: object
             required:
                 - email
-                - firstName
-                - lastName
                 - password
             properties:
                 email:
-                    type: string
-                firstName:
-                    type: string
-                lastName:
                     type: string
                 password:
                     type: string
@@ -1028,7 +1018,4 @@ components:
                     nullable: true
                 email:
                     type: string
-                firstName:
-                    type: string
-                lastName:
-                    type: string
+

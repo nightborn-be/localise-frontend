@@ -7,13 +7,11 @@ export interface ISettingsProps {
         form: IForm<IUpdateProjectForm> & IDefaultForm,
     ) => void;
     handleOnDeleteProject: () => void;
-    activeProject?: ProjectDTO;
     isLoadingUpdateProject: boolean;
     isLoadingDeleteProject: boolean;
     projectData?: ProjectDTO;
 }
 
 export interface ISettingsLogicProps {
-    activeProject?: ProjectDTO;
     projectData?: ProjectDTO;
 }

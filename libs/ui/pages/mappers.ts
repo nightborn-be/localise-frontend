@@ -9,6 +9,7 @@ export const toUpdateProjectDTO = (
     projectName: string,
     sourceLanguage: string,
     targetLanguages: string[],
+    iconColor: string,
 ): UpdateProjectDTO => {
     const languageMap: any = {};
     languages.forEach(
@@ -22,7 +23,7 @@ export const toUpdateProjectDTO = (
         name: projectName,
         sourceLanguage: source,
         languages: target,
-        iconColor: COLORS.ProjectColors.Pink.value,
+        iconColor: iconColor,
     };
 
     return res;

@@ -31,4 +31,5 @@ export interface IUpdateProjectForm {
     projectName: string;
     sourceLanguage: string;
     targetLanguages: string[];
+    iconColor: string;
 }

@@ -17,7 +17,6 @@ import SearchBoxSettingSection from './components/search-box-setting-section/ind
 const Settings = ({
     handleOnUpdateProject,
     handleOnDeleteProject,
-    activeProject,
     isLoadingUpdateProject,
     isLoadingDeleteProject,
     projectData,
@@ -45,7 +44,7 @@ const Settings = ({
         sourceLanguageRef,
         targetLanguagesRef,
         optionsSourceLanguage,
-    } = useSettingsLogic({ activeProject, projectData });
+    } = useSettingsLogic({ projectData });
 
     const { t } = useTranslation();
     return (
@@ -73,7 +72,7 @@ const Settings = ({
                     />
                     <VStack w='full'>
                         <InformationSettingSection
-                            projectId={activeProject?.id as string}
+                            projectId={projectData?.id as string}
                             form={form}
                             deleteProjectDisclosure={deleteProjectDisclosure}
                             informationsRef={informationsRef}

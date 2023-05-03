@@ -23,7 +23,7 @@ export interface ISideBarContentProps {
     organisationUserData?: OrgnanisationPagingDTO;
     setFilterProjectValue: (value: string) => void;
     filterProjectValue: string;
-    activeProject: ProjectDTO;
+    projectData?: ProjectDTO;
     setActiveProject: (value: ProjectDTO) => void;
     createProjectModalDisclosure: any;
     isDisableOnCloseProjectModal: boolean;
@@ -38,10 +38,10 @@ export interface ISideBarContentProps {
     setSearchFilterValue?: (value: string) => void;
     handleOnClickProject: (
         option: SearchBarOption<string>,
-        activeProject: ProjectDTO,
-        setActiveProject: (value: ProjectDTO) => void,
         clearNewRowTerm?: () => void,
-        setSearchFilterValue?: (value: string) => void,
+    ) => void;
+    handleOnUpdateColorProject: (
+        iconColor: string,
     ) => void;
 }
 export interface ISidebarLogicProps {

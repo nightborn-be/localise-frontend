@@ -15,4 +15,5 @@ export default interface SearchbarProps<T> extends InputProps {
 export type SearchBarOption<T> = {
     value: T;
     label: string;
+    iconColor: string;
 };

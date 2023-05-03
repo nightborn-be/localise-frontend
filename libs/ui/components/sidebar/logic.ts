@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { SearchBarOption } from '../inputs/searchbar/props';
 import { SidebarLogicType } from './types';
 import { IDefaultForm, IForm } from 'utils/formik';
@@ -10,7 +10,9 @@ import { useDisclosure } from '@chakra-ui/react';
 import { OrganisationDTO, ProjectDTO } from 'gateways/resource-api/types';
 import {
     useCreateProject,
+    useGetProject,
     useGetProjects,
+    useUpdateProject,
 } from 'gateways/resource-api/projects/projects';
 import {
     useCreateOrganisation,
@@ -24,6 +26,8 @@ import { toCreateProjectDTO } from './create-project-modal/mappers';
 import { ICreateOrganisationForm } from './create-organisation-modal/types';
 import { toCreateOrganisationDTO } from './create-organisation-modal/mappers';
 import { tKeys } from '../../../i18n/keys';
+import { useGetProjectLanguages } from '../../../gateways/resource-api/languages/languages';
+import { toUpdateColorProjectDTO } from './mappers';
 
 export const useSidebarLogic = (): SidebarLogicType => {
     // Attributes
@@ -38,9 +42,11 @@ export const useSidebarLogic = (): SidebarLogicType => {
 
     const { t } = useTranslation();
     const toast = useToast();
-    const { asPath, push } = useRouter();
+    const { push, query } = useRouter();
+    const { id } = query;
     // Hooks
     const { mutateAsync: createProject } = useCreateProject();
+    const { mutateAsync: updateProject } = useUpdateProject();
     const { mutateAsync: createOrganisation } = useCreateOrganisation();
     const { mutateAsync: switchUserOrganisation } = useSwitchUserOrganisation();
     const { data: userData, refetch: refetchUserData } = useGetMe();
@@ -50,11 +56,9 @@ export const useSidebarLogic = (): SidebarLogicType => {
     } = useGetOrganisation(userData?.organisationId as string);
     const { data: organisationUserData, refetch: refecthOrganisationUserData } =
         useGetOrganisationsForUser(userData?.userId as string);
-
     const {
         data: organisationProjectData,
         refetch: refetchOrganisationProjectData,
-        isFetched: isOrganisationProjectDataFetched,
         isLoading: isLoadingSearchProject,
     } = useGetProjects(
         actualOrganisationUser?.id as string,
@@ -77,22 +81,33 @@ export const useSidebarLogic = (): SidebarLogicType => {
                 },
             },
         },
+        );
+
+
+    const { data: projectData, refetch: refetchProjectData } = useGetProject(
+        actualOrganisationUser?.id as string,
+        id as string,
     );
-    // Functions
-    function handleOnOptionClick(value: string) {
-        setActiveOptionKey(value);
-    }
+    const { data: languages } = useGetProjectLanguages(id as string);
 
     const options: SearchBarOption<string>[] = organisationProjectData?.data
         ? organisationProjectData?.data?.map((project) => ({
               label: project.name as string,
               value: project.id as string,
+            iconColor: project.iconColor as string,
           }))
         : [];
+
+    // Functions
+    function handleOnOptionClick(value: string) {
+        setActiveOptionKey(value);
+    }
 
     function handleToggleIsOrganisationClicked() {
         setIsOrganisationClicked((prev) => !prev);
     }
+
+
     async function handleOnCreateProject(
         form: IForm<ICreateProjectForm> & IDefaultForm,
         resetForm: () => void,
@@ -182,23 +197,51 @@ export const useSidebarLogic = (): SidebarLogicType => {
     }
     function handleOnClickProject(
         option: SearchBarOption<string>,
-        activeProject: ProjectDTO,
-        setActiveProject: (value: ProjectDTO) => void,
         clearNewRowTerm?: () => void,
-        setSearchFilterValue?: (value: string) => void,
     ) {
-        if (activeProject.id != option.value) {
-            setActiveProject({
-                id: option.value,
-                name: option.label,
-            });
 
             clearNewRowTerm && clearNewRowTerm();
             if (setFilterProjectValue != undefined) {
                 setFilterProjectValue('');
             }
-            push(`/dashboard/projects/${option.value}`);
-        }
+        push(`/dashboard/projects/${option.value}`);
+    }
+    async function handleOnUpdateColorProject(
+        iconColor: string
+    ) {
+
+        try {
+            await updateProject(
+                {
+                    data: toUpdateColorProjectDTO(
+                        projectData?.name as string,
+                        languages,
+                        iconColor,
+                    ),
+                    organisationId: actualOrganisationUser?.id as string,
+                    projectId: id as string,
+                },
+                {
+                    onSuccess: async () => {
+                        refetchUserData();
+                        refetchActualUserOrganisation();
+                        refecthOrganisationUserData();
+                        refetchOrganisationProjectData();
+                        refetchProjectData();
+                    },
+                    onError: async () => {
+                        toast({
+                            type: ToastType.ERROR,
+                            title: t(
+                                tKeys.home.modal.create_project.form
+                                    .project_name.form.error,
+                            ),
+                            delay: 5000,
+                        });
+                    },
+                },
+            );
+        } catch (e) { }
     }
     return {
         handleToggleIsOrganisationClicked,
@@ -226,5 +269,6 @@ export const useSidebarLogic = (): SidebarLogicType => {
         isDisableOnCloseProjectModal,
         handleOnClickProject,
         isLoadingSearchProject,
+        handleOnUpdateColorProject,
     };
 };

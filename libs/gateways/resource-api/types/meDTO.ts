@@ -13,6 +13,4 @@ export interface MeDTO {
     /** The last used organisation id */
     organisationId?: string | null;
     email?: string;
-    firstName?: string;
-    lastName?: string;
 }

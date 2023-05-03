@@ -8,7 +8,7 @@ import { SearchBarOption } from '../../../../components/inputs/searchbar/props';
 import languages from 'utils/languages';
 import { ISettingsLogicProps } from './props';
 const useSettingsLogic = ({
-    activeProject,
+    projectData
 }: ISettingsLogicProps): SettingsLogicType => {
     // Attributes
     const [activeMenuSettingKey, setActiveMenuSettingKey] = useState(
@@ -16,7 +16,7 @@ const useSettingsLogic = ({
     );
     const deleteProjectDisclosure = useDisclosure();
     const [currentSelectedColor, setCurrentSelectedColor] =
-        useState<string>('');
+        useState<string>(projectData?.iconColor as string);
     const [sourceLanguageActiveKey, setSourceLanguageActiveKey] =
         useState<string>('');
     const [filterValue, setFilterValue] = useState<string>('');
@@ -46,6 +46,7 @@ const useSettingsLogic = ({
             projectName: '',
             sourceLanguage: '',
             targetLanguages: [],
+            iconColor: projectData?.iconColor ?? '',
         },
         onSubmit: () => {},
         validateOnChange: false,
@@ -72,9 +73,12 @@ const useSettingsLogic = ({
     }, [activeKeys]);
 
     useEffect(() => {
-        rest.setFieldValue('projectName', activeProject?.name);
-    }, [activeProject]);
+        rest.setFieldValue('projectName', projectData?.name);
+    }, [projectData]);
 
+    useEffect(() => {
+        rest.setFieldValue('iconColor', currentSelectedColor)
+    }, [currentSelectedColor])
     return {
         form,
         activeMenuSettingKey,

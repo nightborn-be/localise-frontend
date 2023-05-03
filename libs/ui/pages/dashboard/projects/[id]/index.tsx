@@ -41,6 +41,7 @@ const ProjectPage = () => {
         setIsOrganisationClicked,
         isLoadingSearchProject,
         handleOnClickProject,
+        handleOnUpdateColorProject,
     } = useSidebarLogic();
 
     const {
@@ -100,13 +101,14 @@ const ProjectPage = () => {
                 organisationUserData={organisationUserData}
                 filterProjectValue={filterProjectValue}
                 setFilterProjectValue={setFilterProjectValue}
-                activeProject={activeProject}
+                projectData={projectData}
                 setActiveProject={setActiveProject}
                 isDisableOnCloseProjectModal={isDisableOnCloseProjectModal}
                 isLoadingSearchProject={isLoadingSearchProject}
                 clearNewRowTerm={clearNewRowTerm}
                 setSearchFilterValue={setSearchFilterValue}
                 handleOnClickProject={handleOnClickProject}
+                handleOnUpdateColorProject={handleOnUpdateColorProject}
             />
             <VStack
                 h='full'
@@ -124,7 +126,7 @@ const ProjectPage = () => {
                             ),
                         },
                         {
-                            label: activeProject?.name as string,
+                            label: projectData?.name as string,
                         },
                     ]}
                 />
@@ -161,7 +163,7 @@ const ProjectPage = () => {
                         title={t<string>(tKeys.home.project.tab.settings.title)}
                     >
                         <Settings
-                            activeProject={activeProject}
+                            projectData={projectData}
                             handleOnUpdateProject={handleOnUpdateProject}
                             handleOnDeleteProject={handleOnDeleteProject}
                             isLoadingUpdateProject={isLoadingUpdateProject}
