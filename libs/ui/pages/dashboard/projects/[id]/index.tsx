@@ -151,8 +151,6 @@ const ProjectPage = () => {
                             setIsDetectDuplicate={setIsDetectDuplicate}
                             isDetectDuplicate={isDetectDuplicate}
                             newRowTerm={newRowTerm}
-                            setNewRowTerm={setNewRowTerm}
-                            clearNewRowTerm={clearNewRowTerm}
                             addNewRowTerm={addNewRowTerm}
                             isLoadingSearchTerms={isLoadingSearchTerms}
                             handleOnDeleteNewTerm={handleOnDeleteNewTerm}

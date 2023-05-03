@@ -29,14 +29,12 @@ const useSettingsLogic = ({
         (language) => ({
             value: language.name,
             label: language.name,
-            iconColor: '',
         }),
     );
     const optionsSearchBox: SearchBarOption<string>[] = languages.map(
         (language) => ({
             value: language.name,
             label: language.name,
-            iconColor: '',
         }),
     );
     useEffect(() => {

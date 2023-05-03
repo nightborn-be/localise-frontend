@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { SearchBarOption } from '../inputs/searchbar/props';
-import { SidebarLogicType } from './types';
+import { SearchBarColorOption, SidebarLogicType } from './types';
 import { IDefaultForm, IForm } from 'utils/formik';
 import { ToastType } from 'ui/components/progress-validation/toast/types';
 import { useTranslation } from 'react-i18next';
@@ -42,7 +42,7 @@ export const useSidebarLogic = (): SidebarLogicType => {
 
     const { t } = useTranslation();
     const toast = useToast();
-    const { push, query } = useRouter();
+    const { asPath, push, query } = useRouter();
     const { id } = query;
     // Hooks
     const { mutateAsync: createProject } = useCreateProject();
@@ -69,14 +69,16 @@ export const useSidebarLogic = (): SidebarLogicType => {
             query: {
                 onSuccess: (projects) => {
                     const project = projects?.data?.at(0);
-                    if (project !== undefined) {
-                        setActiveProject(project);
-                        push(`/dashboard/projects/${projects.data?.at(0)?.id}`);
-                        setIsDisableOnCloseProjectModal(false);
-                    } else {
-                        push('/dashboard');
-                        createProjectModalDisclosure.onOpen();
-                        setIsDisableOnCloseProjectModal(true);
+                    if (filterProjectValue === '' && asPath !== '/dashboard/settings') {
+                        if (project !== undefined) {
+                            setActiveProject(project);
+                            push(`/dashboard/projects/${projects.data?.at(0)?.id}`);
+                            setIsDisableOnCloseProjectModal(false);
+                        } else {
+                            push('/dashboard');
+                            createProjectModalDisclosure.onOpen();
+                            setIsDisableOnCloseProjectModal(true);
+                        }
                     }
                 },
             },
@@ -89,7 +91,7 @@ export const useSidebarLogic = (): SidebarLogicType => {
     );
     const { data: languages } = useGetProjectLanguages(id as string);
 
-    const options: SearchBarOption<string>[] = organisationProjectData?.data
+    const options: SearchBarColorOption<string>[] = organisationProjectData?.data
         ? organisationProjectData?.data?.map((project) => ({
               label: project.name as string,
               value: project.id as string,

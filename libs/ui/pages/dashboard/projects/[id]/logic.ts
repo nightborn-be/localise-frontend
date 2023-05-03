@@ -72,7 +72,7 @@ export const useProjectLogic = ({
         actualOrganisationUser?.id as string,
         id as string,
     );
-    const { data: projectLanguages } = useGetProjectLanguages(id as string);
+    const { data: projectLanguages, } = useGetProjectLanguages(id as string, {}, { query: { retry: 0 } });
     // Functions
     async function handleOnDeleteTerm(termId: string) {
         try {

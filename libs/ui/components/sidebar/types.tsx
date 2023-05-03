@@ -14,7 +14,7 @@ export interface SidebarLogicType {
     handleOnOptionClick: (value: string) => void;
     isOrganisationClicked: boolean;
     setIsOrganisationClicked: (value: boolean) => void;
-    options: SearchBarOption<string>[];
+    options: SearchBarColorOption<string>[];
     activeOptionKey: string;
     setActiveOptionKey: (value: string) => void;
     handleOnCreateProject: (
@@ -40,9 +40,15 @@ export interface SidebarLogicType {
     createProjectModalDisclosure: any;
     isDisableOnCloseProjectModal: boolean;
     handleOnClickProject: (
-        option: SearchBarOption<string>,
+        option: SearchBarColorOption<string>,
         clearNewRowTerm?: () => void,
     ) => void;
     isLoadingSearchProject: boolean;
     handleOnUpdateColorProject: (iconColor: string) => void;
 }
+
+export type SearchBarColorOption<T> = {
+    value: T;
+    label: string;
+    iconColor: string;
+};

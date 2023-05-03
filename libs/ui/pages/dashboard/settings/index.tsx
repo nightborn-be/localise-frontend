@@ -33,8 +33,8 @@ const OrganisationSettingsPage = () => {
         setIsOrganisationClicked,
         isLoadingSearchProject,
         handleOnClickProject,
+        handleOnUpdateColorProject,
     } = useSidebarLogic();
-    useAuthRedirect();
 
     // Render
     return (
@@ -56,11 +56,11 @@ const OrganisationSettingsPage = () => {
                 organisationUserData={organisationUserData}
                 filterProjectValue={filterProjectValue}
                 setFilterProjectValue={setFilterProjectValue}
-                activeProject={activeProject}
                 setActiveProject={setActiveProject}
                 isDisableOnCloseProjectModal={isDisableOnCloseProjectModal}
                 isLoadingSearchProject={isLoadingSearchProject}
                 handleOnClickProject={handleOnClickProject}
+                handleOnUpdateColorProject={handleOnUpdateColorProject}
             />
             <OrganisationSettings
                 handleOnDeleteOrganisation={handleOnDeleteOrganisation}

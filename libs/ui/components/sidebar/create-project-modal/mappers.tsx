@@ -3,6 +3,7 @@ import {
     UpsertProjectLanguageDTO,
 } from '../../../../gateways/resource-api/types';
 import languages from '../../../../utils/languages';
+import COLORS from '../../../constants/colors';
 
 export const toCreateProjectDTO = (
     projectName: string,
@@ -21,6 +22,7 @@ export const toCreateProjectDTO = (
         name: projectName,
         sourceLanguage: source,
         languages: target,
+        iconColor: COLORS.ProjectColors.Pink.value,
     };
 
     return res;
