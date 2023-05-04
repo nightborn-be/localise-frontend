@@ -78,6 +78,8 @@ export const SideBar = ({
                 </HStack>
                 {/* FIRST MENU */}
                 <VStack
+                    // not displayed because not implemented
+                    display={'none'}
                     w={'15.25rem'}
                     spacing='0.5rem'
                     padding='1.25rem 0.5rem'

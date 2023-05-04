@@ -161,18 +161,23 @@ const ProjectPage = () => {
                             isLoadingDeleteProject={isLoadingDeleteProject}
                         />
                     </Tab>
-                    <Tab
-                        title={t<string>(
-                            tKeys.home.project.tab.statistics.title,
-                        )}
-                    >
-                        <Box bg='green.400' h='31.25rem' />
-                    </Tab>
-                    <Tab
-                        title={t<string>(tKeys.home.project.tab.history.title)}
-                    >
-                        <Box bg='yellow.400' h='31.25rem' />
-                    </Tab>
+                    {/* No displayed because not implemented 'Delete Box component to display' */}
+                    <Box display={'none'}>
+                        <Tab
+                            title={t<string>(
+                                tKeys.home.project.tab.statistics.title,
+                            )}
+                        >
+                            <Box bg='green.400' h='31.25rem' />
+                        </Tab>
+                        <Tab
+                            title={t<string>(
+                                tKeys.home.project.tab.history.title,
+                            )}
+                        >
+                            <Box bg='yellow.400' h='31.25rem' />
+                        </Tab>
+                    </Box>
                 </Tabs>
             </VStack>
         </Page>

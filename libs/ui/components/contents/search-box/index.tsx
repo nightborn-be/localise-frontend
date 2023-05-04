@@ -44,7 +44,7 @@ const SearchBox = <T,>({
                         {title}
                     </Text>
                     <Text
-                        font={FONTS.T1.T10px.Medium500.value}
+                        font={FONTS.T1.T12px.Regular400.value}
                         color={COLORS.InputText.value}
                     >
                         {description}
