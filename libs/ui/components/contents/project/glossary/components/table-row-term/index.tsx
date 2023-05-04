@@ -22,6 +22,9 @@ export default function TableRowTerm({
     handleOnDeleteTerm,
     isDisabled,
     isNewTerm = false,
+    isLoadingCreateTerm,
+    isLoadingUpdateTerm,
+    isLoadingDeleteTerm,
 }: ITableRowTermProps) {
     //Attributes
     const {
@@ -177,6 +180,9 @@ export default function TableRowTerm({
                 updateTranslationsForm={updateTranslationsForm}
                 handleOnDeleteTerm={handleOnDeleteTerm}
                 toggleIsOpen={toggleIsOpen}
+                isLoadingCreateTerm={isLoadingCreateTerm}
+                isLoadingUpdateTerm={isLoadingUpdateTerm}
+                isLoadingDeleteTerm={isLoadingDeleteTerm}
             />
         </VStack>
     );

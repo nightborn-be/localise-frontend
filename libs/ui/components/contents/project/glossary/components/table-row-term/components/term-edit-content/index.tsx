@@ -23,6 +23,9 @@ export const TermEditContent = ({
     handleOnDeleteTerm,
     toggleIsOpen,
     projectLanguages,
+    isLoadingCreateTerm,
+    isLoadingUpdateTerm,
+    isLoadingDeleteTerm,
 }: ITermEditContentProps) => {
     // Attributes
     const { t } = useTranslation();
@@ -86,6 +89,7 @@ export const TermEditContent = ({
                     spacing='0.5rem'
                 >
                     <Button
+                        isLoading={isLoadingCreateTerm || isLoadingUpdateTerm}
                         h={'1.75rem'}
                         maxH={'1.75rem'}
                         minH={'1.75rem'}
@@ -106,6 +110,7 @@ export const TermEditContent = ({
                         )}
                     </Button>
                     <ButtonIcon
+                        isLoading={isLoadingDeleteTerm}
                         backgroundColor={COLORS.Error.T500.value}
                         size={ButtonSize.XS}
                         hoverBackgroundColor={COLORS.HoverRed.value}

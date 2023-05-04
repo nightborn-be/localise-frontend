@@ -35,6 +35,9 @@ export const Glossary = ({
     projectData,
     handleOnDeleteNewTerm,
     projectLanguages,
+    isLoadingCreateTerm,
+    isLoadingUpdateTerm,
+    isLoadingDeleteTerm,
 }: IGlossaryProps) => {
     // Attributes
     const { tableRef } = useGlossaryLogic({ addNewRowTerm });
@@ -115,6 +118,9 @@ export const Glossary = ({
                                 }
                                 handleOnDeleteTerm={handleOnDeleteNewTerm}
                                 projectLanguages={projectLanguages}
+                                isLoadingCreateTerm={isLoadingCreateTerm}
+                                isLoadingUpdateTerm={isLoadingUpdateTerm}
+                                isLoadingDeleteTerm={isLoadingDeleteTerm}
                             />
                         ))}
                         {isLoadingSearchTerms ? (
@@ -143,6 +149,15 @@ export const Glossary = ({
                                         }
                                         handleOnDeleteTerm={handleOnDeleteTerm}
                                         projectLanguages={projectLanguages}
+                                        isLoadingCreateTerm={
+                                            isLoadingCreateTerm
+                                        }
+                                        isLoadingUpdateTerm={
+                                            isLoadingUpdateTerm
+                                        }
+                                        isLoadingDeleteTerm={
+                                            isLoadingDeleteTerm
+                                        }
                                     />
                                 ))}
                             </>

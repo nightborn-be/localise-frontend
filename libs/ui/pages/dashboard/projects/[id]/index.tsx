@@ -66,6 +66,9 @@ const ProjectPage = () => {
         projectData,
         handleOnDeleteNewTerm,
         projectLanguages,
+        isLoadingCreateTerm,
+        isLoadingUpdateTerm,
+        isLoadingDeleteTerm,
     } = useProjectLogic({
         actualOrganisationUser,
         organisationProjectData,
@@ -149,6 +152,9 @@ const ProjectPage = () => {
                             isLoadingSearchTerms={isLoadingSearchTerms}
                             handleOnDeleteNewTerm={handleOnDeleteNewTerm}
                             projectLanguages={projectLanguages}
+                            isLoadingCreateTerm={isLoadingCreateTerm}
+                            isLoadingUpdateTerm={isLoadingUpdateTerm}
+                            isLoadingDeleteTerm={isLoadingDeleteTerm}
                         />
                     </Tab>
                     <Tab

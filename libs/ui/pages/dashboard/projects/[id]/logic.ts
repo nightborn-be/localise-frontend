@@ -56,10 +56,10 @@ export const useProjectLogic = ({
         useUpdateProject();
     const { mutateAsync: deleteProject, isLoading: isLoadingDeleteProject } =
         useDeleteProject();
-    const { mutateAsync: createTerm } = useCreateTerm();
-    const { mutateAsync: updateTerm } = useUpdateTerm();
-    const { mutateAsync: deleteTerm } = useDeleteTerm();
-    const { mutateAsync: saveTranslation } = useSaveTranslation();
+    const { mutateAsync: createTerm, isLoading: isLoadingCreateTerm } = useCreateTerm();
+    const { mutateAsync: updateTerm, isLoading: isLoadingUpdateTerm } = useUpdateTerm();
+    const { mutateAsync: deleteTerm, isLoading: isLoadingDeleteTerm } = useDeleteTerm();
+    const { mutateAsync: saveTranslation } = useSaveTranslation(); 
     const {
         data: projectTerms,
         refetch: refetchProjectTerms,
@@ -287,5 +287,8 @@ export const useProjectLogic = ({
         projectData,
         projectLanguages,
         handleOnDeleteNewTerm,
+        isLoadingCreateTerm,
+        isLoadingUpdateTerm,
+        isLoadingDeleteTerm,
     };
 };

@@ -25,6 +25,9 @@ export interface IGlossaryProps {
     isLoadingSearchTerms: boolean;
     projectData?: ProjectDTO;
     projectLanguages: LanguagePagingDTO | undefined;
+    isLoadingCreateTerm: boolean;
+    isLoadingUpdateTerm: boolean;
+    isLoadingDeleteTerm: boolean;
 }
 
 export interface IGlossaryLogicProps {
