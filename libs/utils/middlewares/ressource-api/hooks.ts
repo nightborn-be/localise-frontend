@@ -35,7 +35,7 @@ const useResourcesAPIMiddleware = () => {
                 }
                 if (error.response.status === 500 && !originalConfig._retry) {
                     originalConfig._retry = true;
-                    push('/Error500')
+                    push('/server-error')
                 }
                 // Return the request
                 return axios(originalConfig);

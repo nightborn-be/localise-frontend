@@ -2,7 +2,7 @@ import React from 'react';
 import Text from '../../components/contents/text/index';
 import FONTS from 'ui/constants/fonts';
 import COLORS from 'ui/constants/colors';
-const Error500 = () => {
+const ServerError = () => {
     return (
         <Text
             font={FONTS.T1.T44px.Bold700.value}
@@ -13,4 +13,4 @@ const Error500 = () => {
     );
 };
 
-export default Error500;
+export default ServerError;
