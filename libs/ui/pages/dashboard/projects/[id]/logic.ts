@@ -11,7 +11,7 @@ import {
     useGetTerms,
     useUpdateTerm,
 } from 'gateways/resource-api/terms/terms';
-import { ProjectDTO, TermDTO } from 'gateways/resource-api/types';
+import { TermDTO } from 'gateways/resource-api/types';
 import { AxiosError } from 'axios';
 import { useTranslation } from 'react-i18next';
 import { IDefaultForm, IForm } from 'utils/formik';

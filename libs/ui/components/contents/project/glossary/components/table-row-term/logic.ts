@@ -4,7 +4,7 @@ import { ITableRowTermLogicProps } from './props';
 import { ITableRowTermForm, TableRowTermLogicType } from './types';
 import { IEditInputForm } from './components/edit-input/types';
 import { useGetTranslations } from 'gateways/resource-api/translations/translations';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 export const useTableRowTermLogic = ({
     term,

@@ -13,7 +13,6 @@ import { OrganisationSettingsPageLogicType } from './types';
 import { useTranslation } from 'react-i18next';
 import { IOrganisationSettingsForm } from 'ui/components/contents/organisation-settings/types';
 import { useRouter } from 'next/router';
-import { useGetProject } from 'gateways/resource-api/projects/projects';
 
 export const useOrganisationSettingsPageLogic =
     (): OrganisationSettingsPageLogicType => {

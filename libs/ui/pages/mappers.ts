@@ -3,7 +3,6 @@ import {
     UpsertProjectLanguageDTO,
 } from 'gateways/resource-api/types';
 import languages from 'utils/languages';
-import COLORS from '../constants/colors';
 
 export const toUpdateProjectDTO = (
     projectName: string,
