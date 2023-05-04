@@ -13,8 +13,8 @@ export interface SettingsLogicType {
     setSourceLanguageActiveKey: (value: string) => void;
     filterValue: string;
     setFilterValue: (value: string) => void;
-    activeKeys: string[];
-    setActiveKeys: (value: string[]) => void;
+    targetLanguageChoice: string[];
+    setTargetLanguageChoice: (value: string[]) => void;
     value: string;
     setValue: (value: string) => void;
     filter: (value: string) => SearchBarOption<string>[];

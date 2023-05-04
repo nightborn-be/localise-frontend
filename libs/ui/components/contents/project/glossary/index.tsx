@@ -106,6 +106,19 @@ export const Glossary = ({
                         setIsDetectDuplicate={setIsDetectDuplicate}
                         isDetectDuplicate={isDetectDuplicate}
                     >
+                        {newRowTerm.map((term, i) => (
+                            <TableRowTerm
+                                key={`newTerm_${term.id}`}
+                                isNewTerm={true}
+                                term={term}
+                                activeProject={activeProject}
+                                handleOnSaveTranslations={
+                                    handleOnSaveTranslations
+                                }
+                                handleOnDeleteTerm={handleOnDeleteNewTerm}
+                                projectLanguages={projectLanguages}
+                            />
+                        ))}
                         {isLoadingSearchTerms ? (
                             <VStack
                                 justifyContent={'center'}
@@ -135,23 +148,6 @@ export const Glossary = ({
                                         projectLanguages={projectLanguages}
                                     />
                                 ))}
-                                {newRowTerm.map((term, i) => {
-                                    return (
-                                        <TableRowTerm
-                                            key={`newTerm_${term.id}`}
-                                            isNewTerm={true}
-                                            term={term}
-                                            activeProject={activeProject}
-                                            handleOnSaveTranslations={
-                                                handleOnSaveTranslations
-                                            }
-                                            handleOnDeleteTerm={
-                                                handleOnDeleteNewTerm
-                                            }
-                                            projectLanguages={projectLanguages}
-                                        />
-                                    );
-                                })}
                             </>
                         )}
                     </TableTerm>

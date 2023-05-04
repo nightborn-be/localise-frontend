@@ -72,7 +72,8 @@ export const useProjectLogic = ({
         actualOrganisationUser?.id as string,
         id as string,
     );
-    const { data: projectLanguages } = useGetProjectLanguages(id as string);
+    const { data: projectLanguages, refetch: refetchProjectLanguages } = useGetProjectLanguages(id as string);
+
     // Functions
     async function handleOnDeleteTerm(termId: string) {
         try {
@@ -214,6 +215,8 @@ export const useProjectLogic = ({
                         refecthOrganisationUserData();
                         refetchOrganisationProjectData();
                         refetchProjectData();
+                        refetchProjectTerms();
+                        refetchProjectLanguages();
                     },
                     onError: async () => {
                         toast({

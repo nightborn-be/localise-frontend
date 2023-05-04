@@ -68,11 +68,17 @@ export const useSidebarLogic = (): SidebarLogicType => {
         {
             query: {
                 onSuccess: (projects) => {
-                    const project = projects?.data?.at(0);
+                    const sortProject = projects.data?.sort((a, b) => {
+                        const dateA = new Date(a.modifiedAt as string).getTime();
+                        const dateB = new Date(b.modifiedAt as string).getTime();
+                        return dateB - dateA
+                    })
+
+
+                    const project = sortProject?.at(0);
                     if (filterProjectValue === '' && asPath !== '/dashboard/settings') {
                         if (project !== undefined) {
-                            setActiveProject(project);
-                            push(`/dashboard/projects/${projects.data?.at(0)?.id}`);
+                            push(`/dashboard/projects/${project.id}`);
                             setIsDisableOnCloseProjectModal(false);
                         } else {
                             push('/dashboard');
@@ -83,7 +89,8 @@ export const useSidebarLogic = (): SidebarLogicType => {
                 },
             },
         },
-    );
+        );
+
 
     const { data: projectData, refetch: refetchProjectData } = useGetProject(
         actualOrganisationUser?.id as string,

@@ -27,8 +27,8 @@ const Settings = ({
         setSourceLanguageActiveKey,
         filterValue,
         setFilterValue,
-        setActiveKeys,
-        activeKeys,
+        setTargetLanguageChoice,
+        targetLanguageChoice,
         value,
         setValue,
         form,
@@ -100,7 +100,7 @@ const Settings = ({
                         <VStack w='full' spacing={'0rem'}>
                             <SearchBoxSettingSection
                                 targetLanguagesRef={targetLanguagesRef}
-                                activeKeys={activeKeys}
+                                activeKeys={targetLanguageChoice}
                                 filter={filter}
                                 value={value}
                                 onCheck={onCheck}

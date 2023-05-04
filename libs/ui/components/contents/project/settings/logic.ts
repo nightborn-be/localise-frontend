@@ -23,7 +23,7 @@ const useSettingsLogic = ({
     const [sourceLanguageActiveKey, setSourceLanguageActiveKey] =
         useState<string>('');
     const [filterValue, setFilterValue] = useState<string>('');
-    const [activeKeys, setActiveKeys] = useState<string[]>([]);
+    const [targetLanguageChoice, setTargetLanguageChoice] = useState<string[]>([]);
     const [value, setValue] = useState<string>('');
     const optionsSourceLanguage: SearchBarOption<string>[] = languages.map(
         (language) => ({
@@ -42,19 +42,13 @@ const useSettingsLogic = ({
     const sourceLanguageRef = useRef<HTMLDivElement>(null);
     const targetLanguagesRef = useRef<HTMLDivElement>(null);
 
-    useEffect(() => {
-        const source = getSourceLanguage();
-        const target = getTargetLanguages();
-        setSourceLanguageActiveKey(source?.name ?? '');
-        setActiveKeys(target);
-    }, [projectLanguages]);
     // Formik
     const { values, ...rest } = useFormik<IUpdateProjectForm>({
         initialValues: {
-            projectName: '',
+            projectName: projectData?.name as string,
             sourceLanguage: '',
             targetLanguages: [],
-            iconColor: projectData?.iconColor ?? '',
+            iconColor: projectData?.iconColor as string,
         },
         onSubmit: () => {},
         validateOnChange: false,
@@ -69,12 +63,12 @@ const useSettingsLogic = ({
     }
 
     function onTagDelete(value: string) {
-        setActiveKeys((prev) => prev?.filter((option) => option != value));
+        setTargetLanguageChoice((prev) => prev?.filter((option) => option != value));
     }
     function onCheck(value: string) {
-        if (!activeKeys?.some((option) => option === value))
-            setActiveKeys((prev) => [...prev, value]);
-        else setActiveKeys((prev) => prev?.filter((option) => option != value));
+        if (!targetLanguageChoice?.some((option) => option === value))
+            setTargetLanguageChoice((prev) => [...prev, value]);
+        else setTargetLanguageChoice((prev) => prev?.filter((option) => option != value));
     }
     function getSourceLanguage(): LanguageDTO {
         let sourceLanguage: LanguageDTO = {
@@ -102,23 +96,20 @@ const useSettingsLogic = ({
         return targetLanguages;
     }
     useEffect(() => {
-        rest.setFieldValue('targetLanguages', activeKeys);
-    }, [activeKeys]);
+        rest.setFieldValue('targetLanguages', targetLanguageChoice);
+    }, [targetLanguageChoice]);
 
-    useEffect(() => {
-        rest.setFieldValue('projectName', projectData?.name);
-    }, [projectData]);
 
-    useEffect(() => {
-        rest.setFieldValue('iconColor', currentSelectedColor);
-    }, [currentSelectedColor]);
     useEffect(() => {
         rest.setFieldValue('sourceLanguage', sourceLanguageActiveKey);
     }, [sourceLanguageActiveKey]);
 
     useEffect(() => {
-        rest.setFieldValue('targetLanguages', activeKeys);
-    }, [activeKeys]);
+        const source = getSourceLanguage();
+        const target = getTargetLanguages();
+        setSourceLanguageActiveKey(source?.name ?? '');
+        setTargetLanguageChoice(target);
+    }, [projectLanguages]);
 
     return {
         form,
@@ -131,8 +122,8 @@ const useSettingsLogic = ({
         setSourceLanguageActiveKey,
         filterValue,
         setFilterValue,
-        activeKeys,
-        setActiveKeys,
+        targetLanguageChoice,
+        setTargetLanguageChoice,
         value,
         setValue,
         filter,
