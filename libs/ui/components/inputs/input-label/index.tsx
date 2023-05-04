@@ -1,5 +1,5 @@
 import React from 'react';
-import { VStack } from '@chakra-ui/react';
+import { Box, VStack } from '@chakra-ui/react';
 import COLORS from '../../../constants/colors';
 import Text from '../../contents/text';
 import FONTS from '../../../constants/fonts';
@@ -16,6 +16,7 @@ const InputLabel = ({
     descriptionColor = COLORS.InputText.value,
     spacing = '0.25rem',
     maxWidth,
+    maxHeight,
 }: IInputLabelProps) => {
     //Attributes
 

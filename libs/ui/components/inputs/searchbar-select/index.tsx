@@ -50,7 +50,9 @@ const SearchbarSelect = <T,>({
                     borderRadius={'0.5rem'}
                     padding='0.75rem'
                     h={'2.5rem'}
-                    onClick={() => setShowModal(true)}
+                    onClick={() => {
+                        setShowModal((prev) => !prev);
+                    }}
                     w={'full'}
                 >
                     <Text

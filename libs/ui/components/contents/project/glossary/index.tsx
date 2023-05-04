@@ -70,7 +70,7 @@ export const Glossary = ({
                             descriptionColor={COLORS.InputText.value}
                             descriptionFont={FONTS.T1.T12px.Regular400.value}
                             spacing='0.5rem'
-                            maxWidth='39.25rem'
+                            maxWidth='28.125rem'
                         />
                         <Box w='full' />
                         <Button
