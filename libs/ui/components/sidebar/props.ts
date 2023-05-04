@@ -25,7 +25,6 @@ export interface ISideBarContentProps {
     setFilterProjectValue: (value: string) => void;
     filterProjectValue: string;
     projectData?: ProjectDTO;
-    setActiveProject: (value: ProjectDTO) => void;
     createProjectModalDisclosure: any;
     isDisableOnCloseProjectModal: boolean;
     handleToggleIsOrganisationClicked: () => void;

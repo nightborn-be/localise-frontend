@@ -16,8 +16,6 @@ const Dashboard = () => {
         organisationUserData,
         filterProjectValue,
         setFilterProjectValue,
-        activeProject,
-        setActiveProject,
         createProjectModalDisclosure,
         isDisableOnCloseProjectModal,
         handleToggleIsOrganisationClicked,
@@ -41,7 +39,6 @@ const Dashboard = () => {
                 organisationUserData={organisationUserData}
                 filterProjectValue={filterProjectValue}
                 setFilterProjectValue={setFilterProjectValue}
-                setActiveProject={setActiveProject}
                 createProjectModalDisclosure={createProjectModalDisclosure}
                 isDisableOnCloseProjectModal={isDisableOnCloseProjectModal}
                 handleToggleIsOrganisationClicked={

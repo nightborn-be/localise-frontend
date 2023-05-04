@@ -14,7 +14,6 @@ export interface IGlossaryProps {
     ) => void;
     handleOnDeleteTerm: (termId: string) => void;
     handleOnDeleteNewTerm: (id: string) => void;
-    activeProject?: string;
     setSearchFilterValue: (value: string) => void;
     searchFilterValue: string;
     setSortValue: (value: string) => void;

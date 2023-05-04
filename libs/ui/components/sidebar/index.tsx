@@ -35,7 +35,6 @@ export const SideBar = ({
     setFilterProjectValue,
     filterProjectValue,
     projectData,
-    setActiveProject,
     createProjectModalDisclosure,
     isDisableOnCloseProjectModal,
     handleToggleIsOrganisationClicked,

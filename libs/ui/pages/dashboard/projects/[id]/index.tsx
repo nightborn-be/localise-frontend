@@ -25,8 +25,6 @@ const ProjectPage = () => {
         organisationProjectData,
         filterProjectValue,
         setFilterProjectValue,
-        activeProject,
-        setActiveProject,
         refecthOrganisationUserData,
         refetchActualUserOrganisation,
         refetchOrganisationProjectData,
@@ -69,8 +67,6 @@ const ProjectPage = () => {
         handleOnDeleteNewTerm,
         projectLanguages,
     } = useProjectLogic({
-        activeProject,
-        setActiveProject,
         actualOrganisationUser,
         organisationProjectData,
         refecthOrganisationUserData,
@@ -102,7 +98,6 @@ const ProjectPage = () => {
                 filterProjectValue={filterProjectValue}
                 setFilterProjectValue={setFilterProjectValue}
                 projectData={projectData}
-                setActiveProject={setActiveProject}
                 isDisableOnCloseProjectModal={isDisableOnCloseProjectModal}
                 isLoadingSearchProject={isLoadingSearchProject}
                 clearNewRowTerm={clearNewRowTerm}
@@ -141,7 +136,6 @@ const ProjectPage = () => {
                         <Glossary
                             projectData={projectData}
                             projectTerms={projectTerms}
-                            activeProject={id as string}
                             handleOnSaveTranslations={handleOnSaveTranslations}
                             handleOnDeleteTerm={handleOnDeleteTerm}
                             setSearchFilterValue={setSearchFilterValue}

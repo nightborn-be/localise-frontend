@@ -5,8 +5,6 @@ import {
 } from 'gateways/resource-api/types';
 
 export interface IProjectContentLogicProps {
-    activeProject: ProjectDTO;
-    setActiveProject: (value: ProjectDTO) => void;
     actualOrganisationUser?: OrganisationDTO;
     organisationProjectData?: ProjectPagingDTO;
     refetchActualUserOrganisation: any;

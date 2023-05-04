@@ -21,8 +21,6 @@ const OrganisationSettingsPage = () => {
         organisationUserData,
         filterProjectValue,
         setFilterProjectValue,
-        activeProject,
-        setActiveProject,
         createProjectModalDisclosure,
         isDisableOnCloseProjectModal,
         handleToggleIsOrganisationClicked,
@@ -56,7 +54,6 @@ const OrganisationSettingsPage = () => {
                 organisationUserData={organisationUserData}
                 filterProjectValue={filterProjectValue}
                 setFilterProjectValue={setFilterProjectValue}
-                setActiveProject={setActiveProject}
                 isDisableOnCloseProjectModal={isDisableOnCloseProjectModal}
                 isLoadingSearchProject={isLoadingSearchProject}
                 handleOnClickProject={handleOnClickProject}

@@ -36,8 +36,6 @@ export const useProjectLogic = ({
     refetchUserData,
     refetchOrganisationProjectData,
     organisationProjectData,
-    activeProject,
-    setActiveProject,
 }: IProjectContentLogicProps): ProjectLogicType => {
     // Attributes
     const toast = useToast();
@@ -78,7 +76,7 @@ export const useProjectLogic = ({
     async function handleOnDeleteTerm(termId: string) {
         try {
             await deleteTerm(
-                { projectId: activeProject.id as string, termId: termId },
+                { projectId: id as string, termId: termId },
                 {
                     onSuccess: () => {
                         refetchProjectTerms();
@@ -108,8 +106,8 @@ export const useProjectLogic = ({
                     },
                 },
                 {
-                    onSuccess: (data) => {
-                        callSaveTranslations(form, data.id);
+                    onSuccess: async (data) => {
+                        await callSaveTranslations(form, data.id);
                     },
                 },
             );
@@ -127,7 +125,7 @@ export const useProjectLogic = ({
     ) {
         try {
             await updateTerm({
-                projectId: activeProject.id as string,
+                projectId: id as string,
                 termId: form.termId.value,
                 data: toUpdateTermDTO(form.key.value, form.description.value),
             });
@@ -158,7 +156,7 @@ export const useProjectLogic = ({
                         data: { translation: element.translation },
                     },
                     {
-                        onSuccess: () => {
+                        onSuccess: async () => {
                             refetchProjectTerms();
                             handleOnDeleteNewTerm(form.termId.value);
                         },
@@ -173,7 +171,6 @@ export const useProjectLogic = ({
                 });
             }
         }
-        refetchProjectTerms();
     }
     async function handleOnSaveTranslations(
         form: IForm<ITableRowTermForm> & IDefaultForm,
@@ -246,9 +243,6 @@ export const useProjectLogic = ({
                         refetchActualUserOrganisation();
                         refecthOrganisationUserData();
                         refetchOrganisationProjectData();
-                        setActiveProject(
-                            organisationProjectData?.data?.at(0) as ProjectDTO,
-                        );
                     },
                     onError: async () => {
                         toast({

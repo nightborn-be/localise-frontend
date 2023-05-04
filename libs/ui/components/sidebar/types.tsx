@@ -31,8 +31,6 @@ export interface SidebarLogicType {
     organisationUserData?: OrgnanisationPagingDTO;
     setFilterProjectValue: (value: string) => void;
     filterProjectValue: string;
-    activeProject: ProjectDTO;
-    setActiveProject: (value: ProjectDTO) => void;
     refetchActualUserOrganisation?: any;
     refecthOrganisationUserData?: any;
     refetchUserData?: any;

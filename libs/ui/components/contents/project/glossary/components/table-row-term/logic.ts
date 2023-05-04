@@ -4,7 +4,7 @@ import { ITableRowTermLogicProps } from './props';
 import { ITableRowTermForm, TableRowTermLogicType } from './types';
 import { IEditInputForm } from './components/edit-input/types';
 import { useGetTranslations } from 'gateways/resource-api/translations/translations';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export const useTableRowTermLogic = ({
     term,
@@ -15,7 +15,6 @@ export const useTableRowTermLogic = ({
     const { data: translations, refetch: refetchTranslations } =
         useGetTranslations(term.id as string, {}, { query: { enabled: !isNewTerm } });
     const [isOpen, setIsOpen] = useState<boolean>(false);
-
     // Formik
     const { values, ...rest } = useFormik<ITableRowTermForm>({
         initialValues: {

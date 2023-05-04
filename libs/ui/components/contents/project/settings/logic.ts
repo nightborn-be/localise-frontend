@@ -48,7 +48,7 @@ const useSettingsLogic = ({
             projectName: projectData?.name as string,
             sourceLanguage: '',
             targetLanguages: [],
-            iconColor: projectData?.iconColor as string,
+            iconColor: '',
         },
         onSubmit: () => {},
         validateOnChange: false,
@@ -103,6 +103,10 @@ const useSettingsLogic = ({
     useEffect(() => {
         rest.setFieldValue('sourceLanguage', sourceLanguageActiveKey);
     }, [sourceLanguageActiveKey]);
+
+    useEffect(() => {
+        rest.setFieldValue('iconColor', currentSelectedColor);
+    }, [currentSelectedColor]);
 
     useEffect(() => {
         const source = getSourceLanguage();

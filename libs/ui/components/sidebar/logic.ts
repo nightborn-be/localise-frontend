@@ -35,7 +35,6 @@ export const useSidebarLogic = (): SidebarLogicType => {
     const [isOrganisationClicked, setIsOrganisationClicked] =
         useState<boolean>(false);
     const [filterProjectValue, setFilterProjectValue] = useState<string>('');
-    const [activeProject, setActiveProject] = useState<ProjectDTO>({});
     const [isDisableOnCloseProjectModal, setIsDisableOnCloseProjectModal] =
         useState<boolean>(false);
     const createProjectModalDisclosure = useDisclosure();
@@ -262,8 +261,6 @@ export const useSidebarLogic = (): SidebarLogicType => {
         organisationProjectData,
         filterProjectValue,
         setFilterProjectValue,
-        activeProject,
-        setActiveProject,
         refecthOrganisationUserData,
         refetchActualUserOrganisation,
         refetchOrganisationProjectData,

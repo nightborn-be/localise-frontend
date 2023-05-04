@@ -21,7 +21,6 @@ import MissingTerms from './components/missing-terms';
 
 export const Glossary = ({
     projectTerms,
-    activeProject,
     handleOnSaveTranslations,
     handleOnDeleteTerm,
     setSearchFilterValue,
@@ -111,7 +110,6 @@ export const Glossary = ({
                                 key={`newTerm_${term.id}`}
                                 isNewTerm={true}
                                 term={term}
-                                activeProject={activeProject}
                                 handleOnSaveTranslations={
                                     handleOnSaveTranslations
                                 }
@@ -140,7 +138,6 @@ export const Glossary = ({
                                         key={term.id}
                                         isDisabled={true}
                                         term={term}
-                                        activeProject={activeProject}
                                         handleOnSaveTranslations={
                                             handleOnSaveTranslations
                                         }
