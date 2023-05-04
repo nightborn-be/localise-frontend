@@ -9,8 +9,12 @@ export const toUpdateProjectDTO = (
     sourceLanguage: string,
     targetLanguages: string[],
 ): UpdateProjectDTO => {
-    const source = languages.find(language => language.name === sourceLanguage)
-    const targets = targetLanguages.map(language => languages.find(lang => lang.name === language))
+    const source = languages.find(
+        (language) => language.name === sourceLanguage,
+    );
+    const targets = targetLanguages.map((language) =>
+        languages.find((lang) => lang.name === language),
+    );
     const res: UpdateProjectDTO = {
         name: projectName,
         sourceLanguage: source as UpsertProjectLanguageDTO,

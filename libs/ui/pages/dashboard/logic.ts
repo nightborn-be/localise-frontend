@@ -1,7 +1,9 @@
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import { IDashboardLogicProps } from './props';
-export const useDashboardLogic = ({ createProjectModalDisclosure } : IDashboardLogicProps) => {
+export const useDashboardLogic = ({
+    createProjectModalDisclosure,
+}: IDashboardLogicProps) => {
     const { query } = useRouter();
     const { projectModalIsOpen } = query;
 

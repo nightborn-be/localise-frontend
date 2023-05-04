@@ -29,7 +29,7 @@ const Dashboard = () => {
     } = useSidebarLogic();
 
     const {} = useDashboardLogic({ createProjectModalDisclosure });
-    
+
     // Render
     return (
         <Page>

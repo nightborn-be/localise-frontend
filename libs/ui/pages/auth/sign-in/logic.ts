@@ -15,7 +15,7 @@ export const useSignInLogic = ({
     // Attributes
     const { push } = useRouter();
     const { t } = useTranslation();
-    const [isLoading, setIsLoading] = useState<boolean>(false)
+    const [isLoading, setIsLoading] = useState<boolean>(false);
     const auth = useAuth();
 
     // Formik

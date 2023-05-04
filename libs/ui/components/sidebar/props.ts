@@ -41,5 +41,4 @@ export interface ISideBarContentProps {
         activeProject: ProjectDTO,
     ) => void;
 }
-export interface ISidebarLogicProps {
-}
+export interface ISidebarLogicProps {}
