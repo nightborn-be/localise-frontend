@@ -23,7 +23,9 @@ const useSettingsLogic = ({
     const [sourceLanguageActiveKey, setSourceLanguageActiveKey] =
         useState<string>('');
     const [filterValue, setFilterValue] = useState<string>('');
-    const [targetLanguageChoice, setTargetLanguageChoice] = useState<string[]>([]);
+    const [targetLanguageChoice, setTargetLanguageChoice] = useState<string[]>(
+        [],
+    );
     const [value, setValue] = useState<string>('');
     const optionsSourceLanguage: SearchBarOption<string>[] = languages.map(
         (language) => ({
@@ -63,12 +65,17 @@ const useSettingsLogic = ({
     }
 
     function onTagDelete(value: string) {
-        setTargetLanguageChoice((prev) => prev?.filter((option) => option != value));
+        setTargetLanguageChoice((prev) =>
+            prev?.filter((option) => option != value),
+        );
     }
     function onCheck(value: string) {
         if (!targetLanguageChoice?.some((option) => option === value))
             setTargetLanguageChoice((prev) => [...prev, value]);
-        else setTargetLanguageChoice((prev) => prev?.filter((option) => option != value));
+        else
+            setTargetLanguageChoice((prev) =>
+                prev?.filter((option) => option != value),
+            );
     }
     function getSourceLanguage(): LanguageDTO {
         let sourceLanguage: LanguageDTO = {
@@ -98,7 +105,6 @@ const useSettingsLogic = ({
     useEffect(() => {
         rest.setFieldValue('targetLanguages', targetLanguageChoice);
     }, [targetLanguageChoice]);
-
 
     useEffect(() => {
         rest.setFieldValue('sourceLanguage', sourceLanguageActiveKey);

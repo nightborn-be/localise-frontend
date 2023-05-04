@@ -18,9 +18,9 @@ export interface ITermEditContentProps {
     handleOnDeleteTerm: (termId: string) => void;
     toggleIsOpen: () => void;
     projectLanguages?: LanguagePagingDTO;
-    isLoadingCreateTerm: boolean
-    isLoadingUpdateTerm: boolean
-    isLoadingDeleteTerm: boolean
+    isLoadingCreateTerm: boolean;
+    isLoadingUpdateTerm: boolean;
+    isLoadingDeleteTerm: boolean;
 }
 
 export interface ITermEditContentLogicProps {

@@ -35,7 +35,7 @@ export interface ProjectLogicType {
     projectData?: ProjectDTO;
     handleOnDeleteNewTerm: (id: string) => void;
     projectLanguages: LanguagePagingDTO | undefined;
-    isLoadingCreateTerm: boolean
-    isLoadingUpdateTerm: boolean
-    isLoadingDeleteTerm: boolean
+    isLoadingCreateTerm: boolean;
+    isLoadingUpdateTerm: boolean;
+    isLoadingDeleteTerm: boolean;
 }

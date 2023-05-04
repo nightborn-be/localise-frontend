@@ -68,14 +68,20 @@ export const useSidebarLogic = (): SidebarLogicType => {
             query: {
                 onSuccess: (projects) => {
                     const sortProject = projects.data?.sort((a, b) => {
-                        const dateA = new Date(a.modifiedAt as string).getTime();
-                        const dateB = new Date(b.modifiedAt as string).getTime();
-                        return dateB - dateA
-                    })
-
+                        const dateA = new Date(
+                            a.modifiedAt as string,
+                        ).getTime();
+                        const dateB = new Date(
+                            b.modifiedAt as string,
+                        ).getTime();
+                        return dateB - dateA;
+                    });
 
                     const project = sortProject?.at(0);
-                    if (filterProjectValue === '' && asPath !== '/dashboard/settings') {
+                    if (
+                        filterProjectValue === '' &&
+                        asPath !== '/dashboard/settings'
+                    ) {
                         if (project !== undefined) {
                             push(`/dashboard/projects/${project.id}`);
                             setIsDisableOnCloseProjectModal(false);
@@ -88,22 +94,26 @@ export const useSidebarLogic = (): SidebarLogicType => {
                 },
             },
         },
-        );
-
+    );
 
     const { data: projectData, refetch: refetchProjectData } = useGetProject(
         actualOrganisationUser?.id as string,
         id as string,
     );
-    const { data: languages } = useGetProjectLanguages(id as string, {}, { query: { retry: 0 } });
+    const { data: languages } = useGetProjectLanguages(
+        id as string,
+        {},
+        { query: { retry: 0 } },
+    );
 
-    const options: SearchBarColorOption<string>[] = organisationProjectData?.data
-        ? organisationProjectData?.data?.map((project) => ({
-              label: project.name as string,
-              value: project.id as string,
-              iconColor: project.iconColor as string,
-          }))
-        : [];
+    const options: SearchBarColorOption<string>[] =
+        organisationProjectData?.data
+            ? organisationProjectData?.data?.map((project) => ({
+                  label: project.name as string,
+                  value: project.id as string,
+                  iconColor: project.iconColor as string,
+              }))
+            : [];
 
     // Functions
     function handleOnOptionClick(value: string) {
