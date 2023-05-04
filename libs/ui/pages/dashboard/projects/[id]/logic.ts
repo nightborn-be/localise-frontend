@@ -146,35 +146,24 @@ export const useProjectLogic = ({
         form: IForm<ITableRowTermForm> & IDefaultForm,
         termId?: string,
     ) {
-        for (const translate in form.translations.value) {
-            const element = form.translations.value[
-                translate
-            ] as IEditInputForm;
-            try {
-                await saveTranslation(
-                    {
-                        termId: form.isNewTerm
-                            ? (termId as string)
-                            : element.termId,
-                        languageId: element.languageId,
-                        data: { translation: element.translation },
-                    },
-                    {
-                        onSuccess: async () => {
-                            refetchProjectTerms();
-                            handleOnDeleteNewTerm(form.termId.value);
-                        },
-                    },
-                );
-            } catch (error) {
-                const err = error as AxiosError;
-                toast({
-                    type: ToastType.ERROR,
-                    title: err.response?.data as string,
-                    delay: 5000,
-                });
-            }
-        }
+        await Promise.all(form.translations.value.map((elt: IEditInputForm) => saveTranslation({
+            termId: form.isNewTerm
+                ? (termId as string)
+                : elt.termId,
+            languageId: elt.languageId,
+            data: { translation: elt.translation },
+        },))).then(() => {
+            refetchProjectTerms();
+            handleOnDeleteNewTerm(form.termId.value)
+        }).catch((error) => {
+            const err = error as AxiosError;
+            toast({
+                type: ToastType.ERROR,
+                title: err.response?.data as string,
+                delay: 5000,
+            });
+        });
+
     }
     async function handleOnSaveTranslations(
         form: IForm<ITableRowTermForm> & IDefaultForm,
