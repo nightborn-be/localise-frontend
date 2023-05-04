@@ -52,8 +52,11 @@ const Settings = ({
             <VStack
                 h='full'
                 w='full'
+                maxWidth={'full'}
+                maxHeight={'full'}
                 alignItems={'left'}
                 padding='0rem'
+                position={'relative'}
                 overflowY={'scroll'}
             >
                 <HStack

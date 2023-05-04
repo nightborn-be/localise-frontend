@@ -110,6 +110,7 @@ const ProjectPage = () => {
                 alignItems={'left'}
                 padding='0rem'
                 spacing={0}
+                overflow={'hidden'}
             >
                 <Breadcrumb
                     elements={[
