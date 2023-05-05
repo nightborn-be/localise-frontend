@@ -4,7 +4,7 @@ import Text from '../../components/contents/text';
 import COLORS from '../../constants/colors';
 import FONTS from '../../constants/fonts';
 import Button from '../../components/inputs/button';
-import { HStack, Image, VStack } from '@chakra-ui/react';
+import { HStack, Image, Link, VStack } from '@chakra-ui/react';
 import { useAuthHomeLogic } from './logic';
 import { useTranslation } from 'react-i18next';
 import { tKeys } from '../../../i18n/keys';
@@ -94,6 +94,26 @@ export default function AuthHomePage({ redirectUrl }: IAuthHomePageProps) {
                         {t<string>(tKeys.auth.home.cta.sign_up)}
                     </Button>
                 </VStack>
+                <HStack
+                    spacing='0.75rem'
+                    justifyContent={'center'}
+                    alignItems={'right'}
+                >
+                    <Text
+                        color={COLORS.Text.T400.value}
+                        font={FONTS.T1.T16px.SemiBold600.value}
+                    >
+                        Looking for the old Localize ?
+                        <Link
+                            marginLeft={'0.3125rem'}
+                            variant={'unstyled'}
+                            href='https://legacy.localize.nightborn.com'
+                            color={COLORS.Localize.Purple.T500.value}
+                        >
+                            Click here
+                        </Link>
+                    </Text>
+                </HStack>
             </VStack>
         </Page>
     );
