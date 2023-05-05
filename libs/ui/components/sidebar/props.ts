@@ -2,10 +2,8 @@ import {
     OrganisationDTO,
     OrgnanisationPagingDTO,
     ProjectDTO,
-    ProjectPagingDTO,
 } from '../../../gateways/resource-api/types';
 import { IDefaultForm, IForm } from '../../../utils/formik';
-import { SearchBarOption } from '../inputs/searchbar/props';
 import { ICreateOrganisationForm } from './create-organisation-modal/types';
 import { ICreateProjectForm } from './create-project-modal/types';
 import { SearchBarColorOption } from './types';

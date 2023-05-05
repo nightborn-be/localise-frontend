@@ -110,7 +110,7 @@ export default function TableRowTerm({
                     alignItems={'center'}
                     justifyContent={'right'}
                 >
-                    {isNewTerm ? (
+                    {isNewTerm && (
                         <Badge
                             mr='0.625rem'
                             p={'0.25rem'}
@@ -125,8 +125,6 @@ export default function TableRowTerm({
                                     .content.row.badge.unsaved,
                             )}
                         </Badge>
-                    ) : (
-                        ''
                     )}
                     <Tooltip
                         type={TooltipType.DEFAULT}

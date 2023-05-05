@@ -1,7 +1,5 @@
 import { IDefaultForm, IForm } from '../../../../utils/formik';
 import { SearchSelectLanguageOption } from '../../contents/project/settings/types';
-import { SearchBarOption } from '../../inputs/searchbar/props';
-
 export interface CreateProjectLogicType {
     sourceLanguageActiveKey?: string;
     setSourceLanguageActiveKey: (value: string) => void;

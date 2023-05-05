@@ -4,7 +4,6 @@ import {
     UpdateProjectDTO,
     UpsertProjectLanguageDTO,
 } from 'gateways/resource-api/types';
-import languages from 'utils/languages';
 
 export const toUpdateColorProjectDTO = (
     projectName: string,

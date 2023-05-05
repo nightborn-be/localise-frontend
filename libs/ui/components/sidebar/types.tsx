@@ -3,9 +3,7 @@ import {
     OrgnanisationPagingDTO,
     OrganisationDTO,
     ProjectPagingDTO,
-    ProjectDTO,
 } from '../../../gateways/resource-api/types';
-import { SearchBarOption } from '../inputs/searchbar/props';
 import { ICreateProjectForm } from './create-project-modal/types';
 import { ICreateOrganisationForm } from './create-organisation-modal/types';
 

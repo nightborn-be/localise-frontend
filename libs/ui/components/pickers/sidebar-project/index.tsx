@@ -1,5 +1,5 @@
-import React, { useState, cloneElement, useRef, useEffect } from 'react';
-import { Box, HStack } from '@chakra-ui/react';
+import React, { useState, cloneElement, useRef } from 'react';
+import { HStack } from '@chakra-ui/react';
 import COLORS from '../../../constants/colors';
 import Text from '../../contents/text';
 import { ISidebarProps } from './props';
@@ -8,6 +8,7 @@ import Button from '../../inputs/button';
 import ProjectColorPicker from '../project-color-picker';
 import useOnClickOutside from '../../../../utils/hooks';
 import SHADOWS from '../../../constants/shadows';
+
 const SidebarProject = ({
     textFont,
     textColor,

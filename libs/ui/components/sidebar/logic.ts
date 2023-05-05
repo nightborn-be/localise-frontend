@@ -138,14 +138,14 @@ export const useSidebarLogic = (): SidebarLogicType => {
                     organisationId: actualOrganisationUser?.id as string,
                 },
                 {
-                    onSuccess: async () => {
+                    onSuccess: () => {
                         refetchUserData();
                         refetchActualUserOrganisation();
                         refecthOrganisationUserData();
                         refetchOrganisationProjectData();
                         resetForm();
                     },
-                    onError: async () => {
+                    onError: () => {
                         toast({
                             type: ToastType.ERROR,
                             title: t(
@@ -233,14 +233,14 @@ export const useSidebarLogic = (): SidebarLogicType => {
                     projectId: id as string,
                 },
                 {
-                    onSuccess: async () => {
+                    onSuccess: () => {
                         refetchUserData();
                         refetchActualUserOrganisation();
                         refecthOrganisationUserData();
                         refetchOrganisationProjectData();
                         refetchProjectData();
                     },
-                    onError: async () => {
+                    onError: () => {
                         toast({
                             type: ToastType.ERROR,
                             title: t(

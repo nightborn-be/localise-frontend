@@ -1,6 +1,5 @@
 import React from 'react';
 import { Font } from '../../../constants/fonts';
-import { ProjectDTO } from 'gateways/resource-api/types';
 export interface ISidebarProps {
     text?: string;
     textFont?: Font;
