@@ -10,35 +10,40 @@ export const toUpdateProjectDTO = (
     targetLanguages: string[],
     iconColor: string,
 ): UpdateProjectDTO | undefined => {
-    const source = languages.find(language => language.name === sourceLanguage)
-    const targets = targetLanguages.map(language => languages.find(lang => lang.name === language))
+    const source = languages.find(
+        (language) => language.name === sourceLanguage,
+    );
+    const targets = targetLanguages.map((language) =>
+        languages.find((lang) => lang.name === language),
+    );
     if (source === undefined) {
-        return undefined
+        return undefined;
     }
     if (targets === undefined) {
-        return undefined
+        return undefined;
     }
     const res: UpdateProjectDTO = {
         name: projectName,
         sourceLanguage: source,
         languages: toUpsertProjectLanguageDTOArray(targets),
         iconColor: iconColor,
-    }
+    };
 
     return res;
 };
 
-const toUpsertProjectLanguageDTOArray = (object: (UpsertProjectLanguageDTO | undefined)[]): UpsertProjectLanguageDTO[] => {
+const toUpsertProjectLanguageDTOArray = (
+    object: (UpsertProjectLanguageDTO | undefined)[],
+): UpsertProjectLanguageDTO[] => {
     if (object === undefined) {
-        return []
+        return [];
     }
-    let newObject: UpsertProjectLanguageDTO[] = []
+    let newObject: UpsertProjectLanguageDTO[] = [];
     for (let index = 0; index < object.length; index++) {
         const element = object[index];
         if (element) {
-            newObject[index] = element
+            newObject[index] = element;
         }
-
     }
     return newObject;
-}
+};

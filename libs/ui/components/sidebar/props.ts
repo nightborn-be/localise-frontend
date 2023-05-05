@@ -40,5 +40,4 @@ export interface ISideBarContentProps {
     ) => void;
     handleOnUpdateColorProject: (iconColor: string) => void;
 }
-export interface ISidebarLogicProps {
-}
+export interface ISidebarLogicProps {}

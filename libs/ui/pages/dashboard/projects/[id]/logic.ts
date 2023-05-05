@@ -146,24 +146,27 @@ export const useProjectLogic = ({
         form: IForm<ITableRowTermForm> & IDefaultForm,
         termId?: string,
     ) {
-        await Promise.all(form.translations.value.map((elt: IEditInputForm) => saveTranslation({
-            termId: form.isNewTerm
-                ? (termId as string)
-                : elt.termId,
-            languageId: elt.languageId,
-            data: { translation: elt.translation },
-        },))).then(() => {
-            refetchProjectTerms();
-            handleOnDeleteNewTerm(form.termId.value)
-        }).catch((error) => {
-            const err = error as AxiosError;
-            toast({
-                type: ToastType.ERROR,
-                title: err.response?.data as string,
-                delay: 5000,
+        await Promise.all(
+            form.translations.value.map((elt: IEditInputForm) =>
+                saveTranslation({
+                    termId: form.isNewTerm ? (termId as string) : elt.termId,
+                    languageId: elt.languageId,
+                    data: { translation: elt.translation },
+                }),
+            ),
+        )
+            .then(() => {
+                refetchProjectTerms();
+                handleOnDeleteNewTerm(form.termId.value);
+            })
+            .catch((error) => {
+                const err = error as AxiosError;
+                toast({
+                    type: ToastType.ERROR,
+                    title: err.response?.data as string,
+                    delay: 5000,
+                });
             });
-        });
-
     }
     async function handleOnSaveTranslations(
         form: IForm<ITableRowTermForm> & IDefaultForm,
@@ -186,18 +189,19 @@ export const useProjectLogic = ({
     async function handleOnUpdateProject(
         form: IForm<IUpdateProjectForm> & IDefaultForm,
     ) {
-
-        const projectData = toUpdateProjectDTO(form.projectName.value,
+        const projectData = toUpdateProjectDTO(
+            form.projectName.value,
             form.sourceLanguage.value,
             form.targetLanguages.value,
-            form.iconColor.value,)
+            form.iconColor.value,
+        );
 
         if (projectData === undefined) {
             toast({
                 type: ToastType.ERROR,
                 title: t(
-                    tKeys.home.modal.create_project.form
-                        .project_name.form.error,
+                    tKeys.home.modal.create_project.form.project_name.form
+                        .error,
                 ),
                 delay: 5000,
             });

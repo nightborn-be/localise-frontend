@@ -30,9 +30,8 @@ export const useOrganisationSettingsPageLogic =
             data: actualOrganisationUser,
             refetch: refetchActualUserOrganisation,
         } = useGetOrganisation(userData?.organisationId as string);
-        const {
-            refetch: refecthOrganisationUserData,
-        } = useGetOrganisationsForUser(userData?.userId as string);
+        const { refetch: refecthOrganisationUserData } =
+            useGetOrganisationsForUser(userData?.userId as string);
 
         // Functions
         async function handleOnDeleteOrganisation() {
