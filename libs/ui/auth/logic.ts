@@ -18,10 +18,10 @@ export const useLogic = () => {
         try {
             setIsLoading(true)
             const data = await signInWithEmailAndPassword(auth, email, password);
-            setIsLoading(false)
             if (data) {
                 auth.currentUser?.getIdToken().then((token) => {
                     tokenStorage.save({ [TokenKey.ID_TOKEN]: token });
+                    setIsLoading(false)
                 });
             }
         } catch (e) {
