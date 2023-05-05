@@ -13,4 +13,5 @@ export interface ProjectDTO {
     createdAt?: string;
     modifiedAt?: string;
     name?: string;
+    iconColor?: string;
 }

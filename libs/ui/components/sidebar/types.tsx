@@ -3,9 +3,7 @@ import {
     OrgnanisationPagingDTO,
     OrganisationDTO,
     ProjectPagingDTO,
-    ProjectDTO,
 } from '../../../gateways/resource-api/types';
-import { SearchBarOption } from '../inputs/searchbar/props';
 import { ICreateProjectForm } from './create-project-modal/types';
 import { ICreateOrganisationForm } from './create-organisation-modal/types';
 
@@ -14,7 +12,7 @@ export interface SidebarLogicType {
     handleOnOptionClick: (value: string) => void;
     isOrganisationClicked: boolean;
     setIsOrganisationClicked: (value: boolean) => void;
-    options: SearchBarOption<string>[];
+    options: SearchBarColorOption<string>[];
     activeOptionKey: string;
     setActiveOptionKey: (value: string) => void;
     handleOnCreateProject: (
@@ -31,8 +29,6 @@ export interface SidebarLogicType {
     organisationUserData?: OrgnanisationPagingDTO;
     setFilterProjectValue: (value: string) => void;
     filterProjectValue: string;
-    activeProject: ProjectDTO;
-    setActiveProject: (value: ProjectDTO) => void;
     refetchActualUserOrganisation?: any;
     refecthOrganisationUserData?: any;
     refetchUserData?: any;
@@ -40,8 +36,15 @@ export interface SidebarLogicType {
     createProjectModalDisclosure: any;
     isDisableOnCloseProjectModal: boolean;
     handleOnClickProject: (
-        option: SearchBarOption<string>,
-        activeProject: ProjectDTO,
+        option: SearchBarColorOption<string>,
+        clearNewRowTerm?: () => void,
     ) => void;
     isLoadingSearchProject: boolean;
+    handleOnUpdateColorProject: (iconColor: string) => void;
 }
+
+export type SearchBarColorOption<T> = {
+    value: T;
+    label: string;
+    iconColor: string;
+};

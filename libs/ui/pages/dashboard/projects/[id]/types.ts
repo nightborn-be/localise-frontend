@@ -1,4 +1,5 @@
 import {
+    LanguagePagingDTO,
     ProjectDTO,
     TermDTO,
     TermPagingDTO,
@@ -13,7 +14,6 @@ export interface ProjectLogicType {
     handleOnSaveTranslations: (
         form: IForm<ITableRowTermForm> & IDefaultForm,
     ) => void;
-    handleOnCreateTerm: (projectId: string) => void;
     handleOnDeleteTerm: (termId: string) => void;
     setSearchFilterValue: (value: string) => void;
     searchFilterValue: string;
@@ -32,4 +32,10 @@ export interface ProjectLogicType {
     isLoadingUpdateProject: boolean;
     isLoadingDeleteProject: boolean;
     isLoadingSearchTerms: boolean;
+    projectData?: ProjectDTO;
+    handleOnDeleteNewTerm: (id: string) => void;
+    projectLanguages: LanguagePagingDTO | undefined;
+    isLoadingCreateTerm: boolean;
+    isLoadingUpdateTerm: boolean;
+    isLoadingDeleteTerm: boolean;
 }

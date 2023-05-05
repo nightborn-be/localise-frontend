@@ -13,6 +13,4 @@ export interface UserDTO {
     createdAt?: string;
     modifiedAt?: string;
     email?: string;
-    firstName?: string;
-    lastName?: string;
 }

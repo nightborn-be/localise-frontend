@@ -1,9 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Page from 'ui/components/contents/page';
 import { useDashboardLogic } from './logic';
 import SideBar from '../../components/sidebar';
 import { useSidebarLogic } from '../../components/sidebar/logic';
-import { useRouter } from 'next/router';
 
 const Dashboard = () => {
     // Attributes
@@ -16,8 +15,6 @@ const Dashboard = () => {
         organisationUserData,
         filterProjectValue,
         setFilterProjectValue,
-        activeProject,
-        setActiveProject,
         createProjectModalDisclosure,
         isDisableOnCloseProjectModal,
         handleToggleIsOrganisationClicked,
@@ -28,6 +25,7 @@ const Dashboard = () => {
         setIsOrganisationClicked,
         handleOnClickProject,
         isLoadingSearchProject,
+        handleOnUpdateColorProject,
     } = useSidebarLogic();
 
     const {} = useDashboardLogic({
@@ -44,8 +42,6 @@ const Dashboard = () => {
                 organisationUserData={organisationUserData}
                 filterProjectValue={filterProjectValue}
                 setFilterProjectValue={setFilterProjectValue}
-                activeProject={activeProject}
-                setActiveProject={setActiveProject}
                 createProjectModalDisclosure={createProjectModalDisclosure}
                 isDisableOnCloseProjectModal={isDisableOnCloseProjectModal}
                 handleToggleIsOrganisationClicked={
@@ -58,6 +54,7 @@ const Dashboard = () => {
                 setIsOrganisationClicked={setIsOrganisationClicked}
                 handleOnClickProject={handleOnClickProject}
                 isLoadingSearchProject={isLoadingSearchProject}
+                handleOnUpdateColorProject={handleOnUpdateColorProject}
             />
         </Page>
     );

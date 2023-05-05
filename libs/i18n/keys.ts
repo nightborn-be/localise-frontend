@@ -5,11 +5,37 @@ export const tKeys = {
         project: {
             tab: {
                 glossary: {
-                    title: 'home.project.tab.glossary.title',
                     content: {
-                        description:
-                            'home.project.tab.glossary.content.description',
                         table: {
+                            content: {
+                                row: {
+                                    badge: {
+                                        unsaved:
+                                            'home.project.tab.glossary.content.table.content.row.badge.unsaved',
+                                    },
+                                    input: {
+                                        key: {
+                                            submit: 'home.project.tab.glossary.content.table.content.row.input.key.submit',
+                                            placeholder:
+                                                'home.project.tab.glossary.content.table.content.row.input.key.placeholder',
+                                        },
+                                        description: {
+                                            placeholder:
+                                                'home.project.tab.glossary.content.table.content.row.input.description.placeholder',
+                                            submit: 'home.project.tab.glossary.content.table.content.row.input.description.submit',
+                                        },
+                                        traduction: {
+                                            placeholder:
+                                                'home.project.tab.glossary.content.table.content.row.input.traduction.placeholder',
+                                        },
+                                        tooltip:
+                                            'home.project.tab.glossary.content.table.content.row.input.tooltip',
+                                    },
+                                    cta: {
+                                        save: 'home.project.tab.glossary.content.table.content.row.cta.save',
+                                    },
+                                },
+                            },
                             header: {
                                 column: {
                                     source_language:
@@ -35,31 +61,6 @@ export const tKeys = {
                                     },
                                 },
                             },
-                            content: {
-                                row: {
-                                    input: {
-                                        key: {
-                                            submit: 'home.project.tab.glossary.content.table.content.row.input.key.submit',
-                                            placeholder:
-                                                'home.project.tab.glossary.content.table.content.row.input.key.placeholder',
-                                        },
-                                        description: {
-                                            placeholder:
-                                                'home.project.tab.glossary.content.table.content.row.input.description.placeholder',
-                                            submit: 'home.project.tab.glossary.content.table.content.row.input.description.submit',
-                                        },
-                                        traduction: {
-                                            placeholder:
-                                                'home.project.tab.glossary.content.table.content.row.input.traduction.placeholder',
-                                        },
-                                        tooltip:
-                                            'home.project.tab.glossary.content.table.content.row.input.tooltip',
-                                    },
-                                    cta: {
-                                        save: 'home.project.tab.glossary.content.table.content.row.cta.save',
-                                    },
-                                },
-                            },
                             row: {
                                 expand: {
                                     tooltip:
@@ -67,6 +68,8 @@ export const tKeys = {
                                 },
                             },
                         },
+                        description:
+                            'home.project.tab.glossary.content.description',
                         title: 'home.project.tab.glossary.content.title',
                         export: 'home.project.tab.glossary.content.export',
                         cta: {
@@ -88,6 +91,7 @@ export const tKeys = {
                                 'home.project.tab.glossary.content.missing.description',
                         },
                     },
+                    title: 'home.project.tab.glossary.title',
                 },
                 statistics: {
                     title: 'home.project.tab.statistics.title',

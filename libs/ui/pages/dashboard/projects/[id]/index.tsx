@@ -11,6 +11,7 @@ import { Glossary } from '../../../../components/contents/project/glossary';
 import Settings from '../../../../components/contents/project/settings/index';
 import SideBar from '../../../../components/sidebar';
 import { useSidebarLogic } from '../../../../components/sidebar/logic';
+import { useRouter } from 'next/router';
 
 const ProjectPage = () => {
     // Attributes
@@ -24,8 +25,6 @@ const ProjectPage = () => {
         organisationProjectData,
         filterProjectValue,
         setFilterProjectValue,
-        activeProject,
-        setActiveProject,
         refecthOrganisationUserData,
         refetchActualUserOrganisation,
         refetchOrganisationProjectData,
@@ -40,6 +39,7 @@ const ProjectPage = () => {
         setIsOrganisationClicked,
         isLoadingSearchProject,
         handleOnClickProject,
+        handleOnUpdateColorProject,
     } = useSidebarLogic();
 
     const {
@@ -47,7 +47,6 @@ const ProjectPage = () => {
         setActiveKey,
         projectTerms,
         handleOnSaveTranslations,
-        handleOnCreateTerm,
         handleOnDeleteTerm,
         setSearchFilterValue,
         searchFilterValue,
@@ -64,9 +63,13 @@ const ProjectPage = () => {
         isLoadingUpdateProject,
         isLoadingDeleteProject,
         isLoadingSearchTerms,
+        projectData,
+        handleOnDeleteNewTerm,
+        projectLanguages,
+        isLoadingCreateTerm,
+        isLoadingUpdateTerm,
+        isLoadingDeleteTerm,
     } = useProjectLogic({
-        activeProject,
-        setActiveProject,
         actualOrganisationUser,
         organisationProjectData,
         refecthOrganisationUserData,
@@ -74,6 +77,8 @@ const ProjectPage = () => {
         refetchOrganisationProjectData,
         refetchUserData,
     });
+    const { query } = useRouter();
+    const { id } = query;
 
     // Render
     return (
@@ -95,13 +100,13 @@ const ProjectPage = () => {
                 organisationUserData={organisationUserData}
                 filterProjectValue={filterProjectValue}
                 setFilterProjectValue={setFilterProjectValue}
-                activeProject={activeProject}
-                setActiveProject={setActiveProject}
+                projectData={projectData}
                 isDisableOnCloseProjectModal={isDisableOnCloseProjectModal}
                 isLoadingSearchProject={isLoadingSearchProject}
                 clearNewRowTerm={clearNewRowTerm}
                 setSearchFilterValue={setSearchFilterValue}
                 handleOnClickProject={handleOnClickProject}
+                handleOnUpdateColorProject={handleOnUpdateColorProject}
             />
             <VStack
                 h='full'
@@ -119,7 +124,7 @@ const ProjectPage = () => {
                             ),
                         },
                         {
-                            label: activeProject?.name as string,
+                            label: projectData?.name as string,
                         },
                     ]}
                 />
@@ -132,10 +137,9 @@ const ProjectPage = () => {
                         title={t<string>(tKeys.home.project.tab.glossary.title)}
                     >
                         <Glossary
+                            projectData={projectData}
                             projectTerms={projectTerms}
-                            activeProject={activeProject}
                             handleOnSaveTranslations={handleOnSaveTranslations}
-                            handleOnCreateTerm={handleOnCreateTerm}
                             handleOnDeleteTerm={handleOnDeleteTerm}
                             setSearchFilterValue={setSearchFilterValue}
                             searchFilterValue={searchFilterValue}
@@ -144,17 +148,21 @@ const ProjectPage = () => {
                             setIsDetectDuplicate={setIsDetectDuplicate}
                             isDetectDuplicate={isDetectDuplicate}
                             newRowTerm={newRowTerm}
-                            setNewRowTerm={setNewRowTerm}
-                            clearNewRowTerm={clearNewRowTerm}
                             addNewRowTerm={addNewRowTerm}
                             isLoadingSearchTerms={isLoadingSearchTerms}
+                            handleOnDeleteNewTerm={handleOnDeleteNewTerm}
+                            projectLanguages={projectLanguages}
+                            isLoadingCreateTerm={isLoadingCreateTerm}
+                            isLoadingUpdateTerm={isLoadingUpdateTerm}
+                            isLoadingDeleteTerm={isLoadingDeleteTerm}
                         />
                     </Tab>
                     <Tab
                         title={t<string>(tKeys.home.project.tab.settings.title)}
                     >
                         <Settings
-                            activeProject={activeProject}
+                            projectLanguages={projectLanguages}
+                            projectData={projectData}
                             handleOnUpdateProject={handleOnUpdateProject}
                             handleOnDeleteProject={handleOnDeleteProject}
                             isLoadingUpdateProject={isLoadingUpdateProject}

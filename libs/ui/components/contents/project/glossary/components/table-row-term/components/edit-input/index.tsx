@@ -12,45 +12,50 @@ import Tooltip from '../../../../../../tooltip';
 
 const EditInput = ({
     translation,
+    language,
     updateTranslationsForm,
 }: IEditInputProps) => {
     // Attributes
     const { form } = useEditInputLogic({
         translation,
+        language,
     });
     const { t } = useTranslation();
 
-    // Render
+    // Functions
     return (
         <HStack w='full'>
             <Tooltip
                 label={`${t<string>(
                     tKeys.home.project.tab.glossary.content.table.content.row
                         .input.tooltip,
-                )}: ${translation.language.name}`}
+                )}: ${
+                    translation ? translation.language.name : language?.name
+                }`}
             >
                 <Button
                     pointerEvents={'none'}
                     w='2.5rem'
                     h='2.5rem'
                     border={
-                        translation.language.isSource
+                        translation?.language.isSource || language?.isSource
                             ? 'none'
                             : `0.0625rem solid ${COLORS.Line.value}`
                     }
                     backgroundColor={
-                        translation.language.isSource
+                        translation?.language.isSource || language?.isSource
                             ? COLORS.Localize.Purple.T500.value
                             : COLORS.White.T500.value
                     }
                     color={
-                        translation.language.isSource
+                        translation?.language.isSource || language?.isSource
                             ? COLORS.White.T500.value
                             : COLORS.Text.T400.value
                     }
                     font={FONTS.T1.T14px.SemiBold600.value}
                 >
-                    {translation.language.abbreviation?.toUpperCase()}
+                    {translation?.language.abbreviation?.toUpperCase() ??
+                        language?.abbreviation.toUpperCase()}
                 </Button>
             </Tooltip>
             <Input

@@ -18,6 +18,7 @@ export const useOrganisationSettingsPageLogic =
         // Attributes
         const toast = useToast();
         const { t } = useTranslation();
+
         // Hooks
         const { mutateAsync: deleteOrganisation } = useDeleteOrganisation();
         const {
@@ -30,7 +31,6 @@ export const useOrganisationSettingsPageLogic =
             refetch: refetchActualUserOrganisation,
         } = useGetOrganisation(userData?.organisationId as string);
         const {
-            data: organisationUserData,
             refetch: refecthOrganisationUserData,
         } = useGetOrganisationsForUser(userData?.userId as string);
 

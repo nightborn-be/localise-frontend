@@ -1,5 +1,5 @@
 import {
-    ProjectDTO,
+    LanguagePagingDTO,
     TermDTO,
     TranslationWithMetaDTO,
     TranslationWithMetaPagingDTO,
@@ -8,19 +8,23 @@ import { IDefaultForm, IForm } from 'utils/formik';
 import { ITableRowTermForm } from './types';
 
 export interface ITableRowTermProps {
+    projectLanguages?: LanguagePagingDTO;
     translation?: TranslationWithMetaDTO;
     translations?: TranslationWithMetaPagingDTO;
     term: TermDTO;
-    activeProject?: ProjectDTO;
     isDisabled?: boolean;
     handleOnSaveTranslations: (
         form: IForm<ITableRowTermForm> & IDefaultForm,
     ) => void;
     handleOnDeleteTerm: (termId: string) => void;
-    clearNewRowTerm: () => void;
+    isNewTerm?: boolean;
+    isLoadingCreateTerm: boolean;
+    isLoadingUpdateTerm: boolean;
+    isLoadingDeleteTerm: boolean;
 }
 
 export interface ITableRowTermLogicProps {
     term: TermDTO;
-    activeProject?: ProjectDTO;
+    languages?: LanguagePagingDTO;
+    isNewTerm: boolean;
 }

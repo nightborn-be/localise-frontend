@@ -34,8 +34,7 @@ export const SideBar = ({
     actualOrganisationUser,
     setFilterProjectValue,
     filterProjectValue,
-    activeProject,
-    setActiveProject,
+    projectData,
     createProjectModalDisclosure,
     isDisableOnCloseProjectModal,
     handleToggleIsOrganisationClicked,
@@ -47,6 +46,7 @@ export const SideBar = ({
     handleOnClickProject,
     clearNewRowTerm,
     isLoadingSearchProject,
+    handleOnUpdateColorProject,
 }: ISideBarContentProps) => {
     // Attributes
     const { t } = useTranslation();
@@ -93,6 +93,7 @@ export const SideBar = ({
                         projectIconColor={COLORS.Error.T500.value}
                         notificationNumber={1}
                         startEnhancer={<Icon name='section' />}
+                        handleOnUpdateColorProject={handleOnUpdateColorProject}
                     />
                     <SidebarProject
                         onClick={handleOnOptionClick}
@@ -102,6 +103,7 @@ export const SideBar = ({
                         textColor={COLORS.Text.T400.value}
                         projectIconColor={COLORS.Error.T500.value}
                         startEnhancer={<Icon name='myProfile' />}
+                        handleOnUpdateColorProject={handleOnUpdateColorProject}
                     />
                 </VStack>
                 {/* SECOND MENU PROJECT */}
@@ -184,18 +186,19 @@ export const SideBar = ({
                                         onClick={() =>
                                             handleOnClickProject(
                                                 option,
-                                                activeProject,
+                                                clearNewRowTerm,
                                             )
                                         }
-                                        activeKey={activeProject.name as string}
+                                        activeKey={projectData?.name as string}
                                         text={option.label}
                                         key={option.value}
                                         textFont={
                                             FONTS.T1.T12px.Medium500.value
                                         }
                                         textColor={COLORS.Text.T400.value}
-                                        projectIconColor={
-                                            COLORS.Success.T300.value
+                                        projectIconColor={option.iconColor}
+                                        handleOnUpdateColorProject={
+                                            handleOnUpdateColorProject
                                         }
                                     />
                                 );

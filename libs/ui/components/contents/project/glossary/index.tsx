@@ -21,9 +21,7 @@ import MissingTerms from './components/missing-terms';
 
 export const Glossary = ({
     projectTerms,
-    activeProject,
     handleOnSaveTranslations,
-    handleOnCreateTerm,
     handleOnDeleteTerm,
     setSearchFilterValue,
     searchFilterValue,
@@ -32,10 +30,14 @@ export const Glossary = ({
     setIsDetectDuplicate,
     isDetectDuplicate,
     newRowTerm,
-    setNewRowTerm,
-    clearNewRowTerm,
     addNewRowTerm,
     isLoadingSearchTerms,
+    projectData,
+    handleOnDeleteNewTerm,
+    projectLanguages,
+    isLoadingCreateTerm,
+    isLoadingUpdateTerm,
+    isLoadingDeleteTerm,
 }: IGlossaryProps) => {
     // Attributes
     const { tableRef } = useGlossaryLogic({ addNewRowTerm });
@@ -106,6 +108,21 @@ export const Glossary = ({
                         setIsDetectDuplicate={setIsDetectDuplicate}
                         isDetectDuplicate={isDetectDuplicate}
                     >
+                        {newRowTerm.map((term, i) => (
+                            <TableRowTerm
+                                key={`newTerm_${term.id}`}
+                                isNewTerm={true}
+                                term={term}
+                                handleOnSaveTranslations={
+                                    handleOnSaveTranslations
+                                }
+                                handleOnDeleteTerm={handleOnDeleteNewTerm}
+                                projectLanguages={projectLanguages}
+                                isLoadingCreateTerm={isLoadingCreateTerm}
+                                isLoadingUpdateTerm={isLoadingUpdateTerm}
+                                isLoadingDeleteTerm={isLoadingDeleteTerm}
+                            />
+                        ))}
                         {isLoadingSearchTerms ? (
                             <VStack
                                 justifyContent={'center'}
@@ -127,24 +144,20 @@ export const Glossary = ({
                                         key={term.id}
                                         isDisabled={true}
                                         term={term}
-                                        activeProject={activeProject}
                                         handleOnSaveTranslations={
                                             handleOnSaveTranslations
                                         }
                                         handleOnDeleteTerm={handleOnDeleteTerm}
-                                        clearNewRowTerm={clearNewRowTerm}
-                                    />
-                                ))}
-                                {newRowTerm.map((term, i) => (
-                                    <TableRowTerm
-                                        key={i}
-                                        term={term}
-                                        activeProject={activeProject}
-                                        handleOnSaveTranslations={
-                                            handleOnSaveTranslations
+                                        projectLanguages={projectLanguages}
+                                        isLoadingCreateTerm={
+                                            isLoadingCreateTerm
                                         }
-                                        handleOnDeleteTerm={handleOnDeleteTerm}
-                                        clearNewRowTerm={clearNewRowTerm}
+                                        isLoadingUpdateTerm={
+                                            isLoadingUpdateTerm
+                                        }
+                                        isLoadingDeleteTerm={
+                                            isLoadingDeleteTerm
+                                        }
                                     />
                                 ))}
                             </>
