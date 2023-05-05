@@ -7,7 +7,7 @@ import { useRouter } from 'next/router';
 export const useAuthRedirect = async (route?: string) => {
     // Attributes
     const router = useRouter();
-    let currentRoute = route ?? router.asPath;
+    const currentRoute = route ?? router.asPath;
     const [hasToken, setHasToken] = useState<boolean>(false);
     useGetMe({
         query: {
