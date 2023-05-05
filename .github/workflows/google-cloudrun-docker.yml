@@ -1,15 +1,15 @@
-name: STAGING Build and Deploy to Cloud Run
+name: PRODUCTION Build and Deploy to Cloud Run
 
 on:
     push:
-        tags:
-            - 'stg_v*'
+        branches:
+            - develop
 
 env:
     PROJECT_ID: localize-379823
     GAR_LOCATION: europe-west1
     ARTIFACT_REPO: docker
-    SERVICE: front-end-staging
+    SERVICE: front-end
     REGION: europe-west1
 
 jobs:
