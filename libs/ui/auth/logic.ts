@@ -39,7 +39,6 @@ export const useLogic = () => {
         isLogged: !isFirebaseLoading && getAuth().currentUser != null,
         isAuthLoading: isFirebaseLoading,
         isLoading,
-        setIsLoading,
         signIn,
     };
 };

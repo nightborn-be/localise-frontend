@@ -4,7 +4,6 @@ export interface AuthContextState {
     isAuthLoading: boolean;
     isLoading: boolean;
     userEmail?: string;
-    setIsLoading: (value: boolean) => void;
     signIn: (email: string, password: string) => Promise<void>;
 }
 
