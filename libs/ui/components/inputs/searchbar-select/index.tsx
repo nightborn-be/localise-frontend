@@ -23,6 +23,7 @@ const SearchbarSelect = <T,>({
     value,
     name,
     noValueMsg,
+    labelFont = FONTS.T1.T14px.Medium500.value,
     ...props
 }: ISearchbarSelectProps<T>) => {
     // Attributes
@@ -40,7 +41,7 @@ const SearchbarSelect = <T,>({
                         label={label}
                         description={description}
                         labelColor={COLORS.Text.T400.value}
-                        labelFont={FONTS.T1.T14px.Medium500.value}
+                        labelFont={labelFont}
                     />
                 )}
             </VStack>
@@ -50,7 +51,9 @@ const SearchbarSelect = <T,>({
                     borderRadius={'0.5rem'}
                     padding='0.75rem'
                     h={'2.5rem'}
-                    onClick={() => setShowModal(true)}
+                    onClick={() => {
+                        setShowModal((prev) => !prev);
+                    }}
                     w={'full'}
                 >
                     <Text
@@ -80,7 +83,7 @@ const SearchbarSelect = <T,>({
                     boxShadow={SHADOWS.Elevation.Light.Bottom.T05.value}
                     border={`0.0625rem solid ${COLORS.Line.value}`}
                     padding='0.5rem 0.375rem 0.25rem'
-                    overflowY={'scroll'}
+                    overflowY={'hidden'}
                     alignItems={'flex-start'}
                     display={showModal ? 'visible' : 'none'}
                 >

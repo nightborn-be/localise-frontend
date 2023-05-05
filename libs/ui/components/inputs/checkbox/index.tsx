@@ -16,6 +16,7 @@ const Checkbox = ({ isSelected, label, onSelect }: ICheckBoxProps) => {
             onClick={onSelect}
             _hover={{ bg: COLORS.Tag.value }}
             borderRadius='0.375rem'
+            cursor={'pointer'}
         >
             <Box w='1rem' h='1rem' ms={'0.75rem'}>
                 <Icon name={isSelected ? 'checkboxOn' : 'checkboxOff'} />

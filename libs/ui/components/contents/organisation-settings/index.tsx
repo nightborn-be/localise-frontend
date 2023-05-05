@@ -52,20 +52,22 @@ const OrganisationSettings = ({
                 alignItems='start'
                 justifyContent={'start'}
                 spacing='0rem'
+                overflow={'hidden'}
             >
-                <VStack h='fit-content'>
-                    <SidebarMenuSettingContent
-                        activeMenuSettingKey={activeMenuSettingKey}
-                        setActiveMenuSettingKey={setActiveMenuSettingKey}
-                        informationsRef={informationsRef}
-                        membersRef={membersRef}
-                    />
-                </VStack>
+                <SidebarMenuSettingContent
+                    activeMenuSettingKey={activeMenuSettingKey}
+                    setActiveMenuSettingKey={setActiveMenuSettingKey}
+                    informationsRef={informationsRef}
+                    membersRef={membersRef}
+                />
                 <VStack
                     w={'full'}
+                    h={'full'}
                     alignItems='left'
                     justifyContent={'left'}
                     spacing='0rem'
+                    paddingBottom='37.5rem'
+                    overflowY={'scroll'}
                 >
                     <InformationSettingSection
                         organisationName={actualOrganisationUser?.name ?? ''}

@@ -78,6 +78,8 @@ export const SideBar = ({
                 </HStack>
                 {/* FIRST MENU */}
                 <VStack
+                    // not displayed because not implemented
+                    display={'none'}
                     w={'15.25rem'}
                     spacing='0.5rem'
                     padding='1.25rem 0.5rem'
@@ -123,13 +125,23 @@ export const SideBar = ({
                         handleOnClick={createProjectModalDisclosure.onOpen}
                         size={ButtonSize.XS}
                         bgColor='white'
+                        hoverBackgroundColor={COLORS.Communication.BG.value}
+                        borderRadius='0.5rem'
+                        padding='0.25rem'
+                        gap='0.625rem'
                     >
-                        <Icon
-                            name='add'
-                            stroke={COLORS.InputText.value}
-                            width={'1rem'}
-                            height={'1rem'}
-                        />
+                        {(isHovered) => (
+                            <Icon
+                                name='add'
+                                stroke={
+                                    isHovered
+                                        ? COLORS.Localize.Purple.value
+                                        : COLORS.InputText.value
+                                }
+                                width={'1rem'}
+                                height={'1rem'}
+                            />
+                        )}
                     </ButtonIcon>
                 </HStack>
                 <HStack

@@ -72,7 +72,7 @@ export const Glossary = ({
                             descriptionColor={COLORS.InputText.value}
                             descriptionFont={FONTS.T1.T12px.Regular400.value}
                             spacing='0.5rem'
-                            maxWidth='39.25rem'
+                            maxWidth='28.125rem'
                         />
                         <Box w='full' />
                         <Button
@@ -167,7 +167,7 @@ export const Glossary = ({
                         alignItems={'center'}
                         justifyContent={'right'}
                         position={'absolute'}
-                        bottom='0.625rem'
+                        bottom='2.1875rem'
                         right='2rem'
                     >
                         <Tooltip
@@ -208,6 +208,9 @@ export const Glossary = ({
                                 handleOnClick={() => {
                                     addNewRowTerm({});
                                 }}
+                                shadow={
+                                    SHADOWS.Elevation.Light.Bottom.T04.value
+                                }
                             >
                                 <Icon
                                     name='addCircle'

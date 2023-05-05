@@ -63,6 +63,7 @@ const Searchbar = <T,>({
                     borderRadius={borderRadius}
                     padding={padding}
                     bg={backgroundColor}
+                    paddingInlineStart={'0rem'}
                 >
                     {/* Left input icon */}
                     <InputLeftElement

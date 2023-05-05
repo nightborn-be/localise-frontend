@@ -47,6 +47,7 @@ export default function OrganisationMenu<T>({
                     />
                 )}
                 h='2.5rem'
+                minH={'2.5rem'}
                 justifyContent='left'
                 font={FONTS.T1.T12px.Medium500.value}
                 color={COLORS.Text.T400.value}

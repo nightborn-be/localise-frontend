@@ -44,14 +44,14 @@ export default function TableRowTerm({
             <HStack
                 w='full'
                 h={'2.75rem'}
-                alignItems='flex-start'
+                alignItems='center'
                 border={`0.0625rem solid ${COLORS.Line.value}`}
                 borderRadius={!isOpen ? '0.5rem' : '0rem'}
                 borderTopLeftRadius={'0.5rem'}
                 borderTopRightRadius={'0.5rem'}
                 spacing={0}
-                onClick={toggleIsOpen}
-                cursor={'pointer'}
+                onClick={isNewTerm ? () => {} : toggleIsOpen}
+                cursor={isNewTerm ? 'auto' : 'pointer'}
             >
                 <HStack
                     padding='0.5rem 1.25rem'
@@ -158,6 +158,7 @@ export default function TableRowTerm({
                         gap='0.625rem'
                         backgroundColor={COLORS.White.T500.value}
                         hoverBackgroundColor={COLORS.Stroke.value}
+                        handleOnClick={isNewTerm ? toggleIsOpen : () => {}}
                     >
                         <Icon
                             pointerEvents='none'
