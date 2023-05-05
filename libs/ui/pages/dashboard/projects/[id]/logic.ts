@@ -85,8 +85,8 @@ export const useProjectLogic = ({
         isFetchingNextPage: isFetchingProductsNextPage,
     } = useInfinitePaging({
         useQueryFn: useGetTerms(id as string,
-            { q: searchFilterValue as string, page: 0, size: 0 },),
-        // pathParams: [projectId],
+            { q: searchFilterValue as string }),
+        pathParams: [id as string],
     });
     // Functions
     async function handleOnDeleteTerm(termId: string) {
