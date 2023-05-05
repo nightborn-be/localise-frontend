@@ -13,7 +13,7 @@ export const useOrganisationLogic = (): OrganisationLogicResponse => {
     // Formik
     const { values, ...rest } = useFormik<IOrganisationForm>({
         initialValues: {
-            organizationName: '',
+            organisationName: '',
         },
         onSubmit: handleOnSubmit,
         validationSchema: validationSchema(t),
@@ -26,7 +26,7 @@ export const useOrganisationLogic = (): OrganisationLogicResponse => {
         push({
             pathname: '/auth/sign-up/organisation/picture',
             query: {
-                organizationName: values.organizationName,
+                organisationName: values.organisationName,
             },
         });
     }

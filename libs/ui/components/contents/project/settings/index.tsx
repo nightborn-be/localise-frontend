@@ -17,15 +17,18 @@ import SearchBoxSettingSection from './components/search-box-setting-section/ind
 const Settings = ({
     handleOnUpdateProject,
     handleOnDeleteProject,
-    activeProject,
+    isLoadingUpdateProject,
+    isLoadingDeleteProject,
+    projectData,
+    projectLanguages,
 }: ISettingsProps) => {
     const {
         sourceLanguageActiveKey,
         setSourceLanguageActiveKey,
         filterValue,
         setFilterValue,
-        setActiveKeys,
-        activeKeys,
+        setTargetLanguageChoice,
+        targetLanguageChoice,
         value,
         setValue,
         form,
@@ -42,101 +45,98 @@ const Settings = ({
         sourceLanguageRef,
         targetLanguagesRef,
         optionsSourceLanguage,
-    } = useSettingsLogic({ activeProject });
+    } = useSettingsLogic({ projectData, projectLanguages });
 
     const { t } = useTranslation();
     return (
         <>
-            <VStack
-                h='full'
+            <HStack
                 w='full'
-                alignItems={'left'}
-                padding='0rem'
-                overflowY={'scroll'}
+                alignItems='start'
+                justifyContent={'start'}
+                spacing='0rem'
             >
-                <HStack
+                <SidebarMenuSettingContent
+                    setActiveMenuSettingKey={setActiveMenuSettingKey}
+                    activeMenuSettingKey={activeMenuSettingKey}
+                    informationsRef={informationsRef}
+                    projectColorRef={projectColorRef}
+                    sourceLanguageRef={sourceLanguageRef}
+                    targetLanguagesRef={targetLanguagesRef}
+                />
+                <VStack
                     w='full'
-                    alignItems='start'
-                    justifyContent={'start'}
-                    spacing='0rem'
+                    overflowY={'scroll'}
+                    h='full'
+                    paddingBottom={'37.5rem'}
                 >
-                    <SidebarMenuSettingContent
-                        setActiveMenuSettingKey={setActiveMenuSettingKey}
-                        activeMenuSettingKey={activeMenuSettingKey}
+                    <InformationSettingSection
+                        projectId={projectData?.id as string}
+                        form={form}
+                        deleteProjectDisclosure={deleteProjectDisclosure}
                         informationsRef={informationsRef}
-                        projectColorRef={projectColorRef}
-                        sourceLanguageRef={sourceLanguageRef}
-                        targetLanguagesRef={targetLanguagesRef}
                     />
-                    <VStack w='full'>
-                        <InformationSettingSection
-                            projectId={activeProject?.id as string}
-                            form={form}
-                            deleteProjectDisclosure={deleteProjectDisclosure}
-                            informationsRef={informationsRef}
+                    <LineSeparation />
+                    <ProjectColorsSettingSection
+                        currentSelectedColor={currentSelectedColor}
+                        setCurrentSelectedColor={setCurrentSelectedColor}
+                        projectColorsRef={projectColorRef}
+                    />
+                    <LineSeparation />
+                    <SearchBarSelectSettingSection
+                        sourceLanguageRef={sourceLanguageRef}
+                        filterValue={filterValue}
+                        form={form}
+                        optionsSourceLanguage={optionsSourceLanguage}
+                        setFilterValue={setFilterValue}
+                        setSourceLanguageActiveKey={setSourceLanguageActiveKey}
+                        sourceLanguageActiveKey={sourceLanguageActiveKey}
+                    />
+                    <LineSeparation />
+                    <VStack w='full' spacing={'0rem'}>
+                        <SearchBoxSettingSection
+                            targetLanguagesRef={targetLanguagesRef}
+                            activeKeys={targetLanguageChoice}
+                            filter={filter}
+                            value={value}
+                            onCheck={onCheck}
+                            onTagDelete={onTagDelete}
+                            setValue={setValue}
                         />
-                        <LineSeparation />
-                        <ProjectColorsSettingSection
-                            currentSelectedColor={currentSelectedColor}
-                            setCurrentSelectedColor={setCurrentSelectedColor}
-                            projectColorsRef={projectColorRef}
-                        />
-                        <LineSeparation />
-                        <SearchBarSelectSettingSection
-                            sourceLanguageRef={sourceLanguageRef}
-                            filterValue={filterValue}
-                            form={form}
-                            optionsSourceLanguage={optionsSourceLanguage}
-                            setFilterValue={setFilterValue}
-                            setSourceLanguageActiveKey={
-                                setSourceLanguageActiveKey
-                            }
-                            sourceLanguageActiveKey={sourceLanguageActiveKey}
-                        />
-                        <LineSeparation />
-                        <VStack w='full' spacing={'0rem'}>
-                            <SearchBoxSettingSection
-                                targetLanguagesRef={targetLanguagesRef}
-                                activeKeys={activeKeys}
-                                filter={filter}
-                                value={value}
-                                onCheck={onCheck}
-                                onTagDelete={onTagDelete}
-                                setValue={setValue}
-                            />
-                            <HStack
-                                w={'full'}
-                                padding={'0rem 2rem 2rem'}
-                                justifyContent={'right'}
-                                alignItems={'center'}
+                        <HStack
+                            w={'full'}
+                            padding={'0rem 2rem 2rem'}
+                            justifyContent={'right'}
+                            alignItems={'center'}
+                        >
+                            <Button
+                                isLoading={isLoadingUpdateProject}
+                                backgroundColor={
+                                    COLORS.Localize.Purple.T500.value
+                                }
+                                font={FONTS.T1.T12px.SemiBold600.value}
+                                color={COLORS.White.T500.value}
+                                padding={'0.25rem 0.75rem'}
+                                gap={'0.25rem'}
+                                spacing='0.25rem'
+                                height={'2rem'}
+                                w={'5rem'}
+                                borderRadius={'0.5rem'}
+                                onClick={() => {
+                                    handleOnUpdateProject(form);
+                                }}
                             >
-                                <Button
-                                    backgroundColor={
-                                        COLORS.Localize.Purple.T500.value
-                                    }
-                                    font={FONTS.T1.T12px.SemiBold600.value}
-                                    color={COLORS.White.T500.value}
-                                    padding={'0.25rem 0.75rem'}
-                                    gap={'0.25rem'}
-                                    spacing='0.25rem'
-                                    height={'2rem'}
-                                    w={'5rem'}
-                                    borderRadius={'0.5rem'}
-                                    onClick={() => {
-                                        handleOnUpdateProject(form);
-                                    }}
-                                >
-                                    {t<string>(
-                                        tKeys.home.project.tab.settings.content
-                                            .cta.save,
-                                    )}
-                                </Button>
-                            </HStack>
-                        </VStack>
+                                {t<string>(
+                                    tKeys.home.project.tab.settings.content.cta
+                                        .save,
+                                )}
+                            </Button>
+                        </HStack>
                     </VStack>
-                </HStack>
-            </VStack>
+                </VStack>
+            </HStack>
             <DeleteModal
+                isLoading={isLoadingDeleteProject}
                 isOpen={deleteProjectDisclosure.isOpen}
                 onClose={deleteProjectDisclosure.onClose}
                 handleOnSubmit={handleOnDeleteProject}

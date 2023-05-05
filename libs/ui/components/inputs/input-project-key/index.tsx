@@ -59,6 +59,7 @@ const InputProjectKey = ({
                         paddingLeft='0.75rem'
                         placeholder={placeholder}
                         _placeholder={{
+                            fontFamily: font?.fontFamily,
                             fontSize: font?.fontSize,
                             fontWeight: font?.fontWeight,
                             lineHeight: font?.lineHeight,

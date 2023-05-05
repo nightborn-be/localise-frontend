@@ -5,11 +5,14 @@ export interface IModalProps {
     children?: React.ReactElement | React.ReactElement[];
     title?: string;
     isOpen: boolean;
+    isDisableOnClose?: boolean;
     handleOnSubmit: () => void;
+    isLoading?: boolean;
     onClose: () => void;
     header?: IModalHeaderProps;
     footer?: IModalFooterProps;
     body?: IModalBodyProps;
+    isDisabled?: boolean;
 }
 
 interface IModalHeaderProps {

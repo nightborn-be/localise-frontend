@@ -7,7 +7,5 @@ export const toCreateUserDTO = (
     return {
         email: email,
         password: password,
-        firstName: 'test',
-        lastName: 'test',
     };
 };

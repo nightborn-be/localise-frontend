@@ -1,5 +1,5 @@
 import React, { useState, cloneElement, useRef } from 'react';
-import { Box, HStack } from '@chakra-ui/react';
+import { HStack } from '@chakra-ui/react';
 import COLORS from '../../../constants/colors';
 import Text from '../../contents/text';
 import { ISidebarProps } from './props';
@@ -8,6 +8,7 @@ import Button from '../../inputs/button';
 import ProjectColorPicker from '../project-color-picker';
 import useOnClickOutside from '../../../../utils/hooks';
 import SHADOWS from '../../../constants/shadows';
+
 const SidebarProject = ({
     textFont,
     textColor,
@@ -21,12 +22,11 @@ const SidebarProject = ({
     h = '2.5rem',
     activeKey,
     onClick,
+    handleOnUpdateColorProject,
 }: ISidebarProps) => {
     // Attributes
     const isSelected = activeKey === text;
-    const [currentSelectedColor, setCurrentSelectedColor] = useState<string>(
-        projectIconColor ?? '',
-    );
+
     const [isColorPickerVisible, setIsColorPickerVisible] =
         useState<boolean>(false);
     const ref = useRef<HTMLDivElement>(null);
@@ -49,7 +49,7 @@ const SidebarProject = ({
                     minW='0.5rem'
                     minH='0.5rem'
                     borderRadius='0.125rem'
-                    bg={currentSelectedColor}
+                    bg={projectIconColor}
                     onClick={() => setIsColorPickerVisible(true)}
                 />
             );
@@ -95,8 +95,8 @@ const SidebarProject = ({
                 >
                     <ProjectColorPicker
                         boxShadow={SHADOWS.Menu.value}
-                        selected={currentSelectedColor}
-                        onSelect={setCurrentSelectedColor}
+                        selected={projectIconColor as string}
+                        onSelect={handleOnUpdateColorProject}
                     />
                 </HStack>
             </HStack>

@@ -1,4 +1,5 @@
 import {
+    LanguagePagingDTO,
     ProjectDTO,
     TermDTO,
     TermPagingDTO,
@@ -11,9 +12,8 @@ export interface IGlossaryProps {
     handleOnSaveTranslations: (
         form: IForm<ITableRowTermForm> & IDefaultForm,
     ) => void;
-    handleOnCreateTerm: (projectId: string) => void;
     handleOnDeleteTerm: (termId: string) => void;
-    activeProject?: ProjectDTO;
+    handleOnDeleteNewTerm: (id: string) => void;
     setSearchFilterValue: (value: string) => void;
     searchFilterValue: string;
     setSortValue: (value: string) => void;
@@ -21,9 +21,13 @@ export interface IGlossaryProps {
     setIsDetectDuplicate: (value: boolean) => void;
     isDetectDuplicate: boolean;
     newRowTerm: TermDTO[];
-    setNewRowTerm: (value: TermDTO[]) => void;
-    clearNewRowTerm: () => void;
     addNewRowTerm: (term: TermDTO) => void;
+    isLoadingSearchTerms: boolean;
+    projectData?: ProjectDTO;
+    projectLanguages: LanguagePagingDTO | undefined;
+    isLoadingCreateTerm: boolean;
+    isLoadingUpdateTerm: boolean;
+    isLoadingDeleteTerm: boolean;
 }
 
 export interface IGlossaryLogicProps {

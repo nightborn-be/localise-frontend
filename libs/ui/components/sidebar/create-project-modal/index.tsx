@@ -13,11 +13,13 @@ import languages from '../../../../utils/languages';
 import { useTranslation } from 'react-i18next';
 import { tKeys } from '../../../../i18n/keys';
 
-export const AddProjectModals = ({
+export const CreateProjectModal = ({
     isOpen,
     onClose,
     handleOnSubmit,
+    isDisableOnClose,
 }: ICreateProjectProps) => {
+    // Attributes
     const {
         sourceLanguageActiveKey,
         setSourceLanguageActiveKey,
@@ -38,6 +40,7 @@ export const AddProjectModals = ({
         label: language.name,
     }));
     const { t } = useTranslation();
+    // Render
     return (
         <HStack>
             <Modal
@@ -47,9 +50,14 @@ export const AddProjectModals = ({
                     onClose();
                     resetForm();
                 }}
+                isDisableOnClose={isDisableOnClose}
                 handleOnSubmit={() => {
                     handleOnSubmit(form, resetForm);
                 }}
+                isDisabled={
+                    form.projectName.value == '' ||
+                    form.sourceLanguage.value == ''
+                }
             >
                 <VStack spacing='0'>
                     <HStack
@@ -151,4 +159,4 @@ export const AddProjectModals = ({
     );
 };
 
-export default AddProjectModals;
+export default CreateProjectModal;

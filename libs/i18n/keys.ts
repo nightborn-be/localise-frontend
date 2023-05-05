@@ -325,6 +325,10 @@ export const tKeys = {
                                     cta: {
                                         save: 'home.project.tab.glossary.content.table.content.row.cta.save',
                                     },
+                                    badge: {
+                                        unsaved:
+                                            'home.project.tab.glossary.content.table.content.row.badge.unsaved',
+                                    },
                                 },
                             },
                             row: {

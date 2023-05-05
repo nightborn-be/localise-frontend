@@ -1,5 +1,6 @@
 import { InputProps } from '@chakra-ui/react';
 import { SearchBarOption } from '../searchbar/props';
+import { Font } from '../../../constants/fonts';
 
 export default interface ISearchbarSelectProps<T>
     extends Omit<InputProps, 'onSelect'> {
@@ -14,4 +15,5 @@ export default interface ISearchbarSelectProps<T>
     label?: string;
     description?: string;
     noValueMsg?: string;
+    labelFont?: Font;
 }

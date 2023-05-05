@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { tKeys } from '../../../../../../../i18n/keys';
 import COLORS from '../../../../../../constants/colors';
 import SearchbarSelect from '../../../../../../components/inputs/searchbar-select/index';
+import FONTS from '../../../../../../constants/fonts';
 
 export const SearchBarSelectSettingSection = ({
     sourceLanguageRef,
@@ -56,6 +57,7 @@ export const SearchBarSelectSettingSection = ({
                     tKeys.home.project.tab.settings.content.source_language
                         .title,
                 )}
+                labelFont={FONTS.T1.T16px.SemiBold600.value}
                 description={t<string>(
                     tKeys.home.project.tab.settings.content.source_language
                         .description,

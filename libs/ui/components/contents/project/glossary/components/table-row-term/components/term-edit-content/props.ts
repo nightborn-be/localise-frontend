@@ -1,4 +1,5 @@
 import {
+    LanguagePagingDTO,
     TermDTO,
     TranslationWithMetaPagingDTO,
 } from 'gateways/resource-api/types';
@@ -15,8 +16,11 @@ export interface ITermEditContentProps {
     ) => void;
     updateTranslationsForm: (value: IEditInputForm) => void;
     handleOnDeleteTerm: (termId: string) => void;
-    clearNewRowTerm: () => void;
     toggleIsOpen: () => void;
+    projectLanguages?: LanguagePagingDTO;
+    isLoadingCreateTerm: boolean;
+    isLoadingUpdateTerm: boolean;
+    isLoadingDeleteTerm: boolean;
 }
 
 export interface ITermEditContentLogicProps {

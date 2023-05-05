@@ -52,6 +52,7 @@ const Tabs = ({ children, activeKey, onChange }: ITabsProps) => {
             h='full'
             align='flex-start'
             spacing='0'
+            overflow='hidden'
         >
             {/* Tab bar */}
             <HStack

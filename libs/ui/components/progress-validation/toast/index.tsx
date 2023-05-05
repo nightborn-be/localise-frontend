@@ -107,7 +107,14 @@ const Toast = ({ type, title, description, onClose }: IToastProps) => {
                 w='full'
             >
                 {/* Left */}
-                <HStack spacing='0.5rem' w='full'>
+                <HStack
+                    spacing='0.5rem'
+                    w='full'
+                    justifyContent={
+                        type === ToastType.INFOMRATION ? 'center' : ''
+                    }
+                    alignItems={type === ToastType.INFOMRATION ? 'center' : ''}
+                >
                     {/* Icon */}
                     {renderIcon()}
 

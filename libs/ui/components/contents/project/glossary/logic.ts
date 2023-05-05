@@ -1,6 +1,5 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 import { GlossaryLogicType } from './types';
-import { TermDTO } from 'gateways/resource-api/types';
 import { IGlossaryLogicProps } from './props';
 
 export const useGlossaryLogic = ({

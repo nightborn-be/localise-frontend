@@ -72,6 +72,7 @@ export function getSelectStyle(
                 padding: '0rem 0.375rem 0.25rem 0.375rem',
                 right: menuRightOption,
                 left: menuLeftOption,
+                zIndex: '2000',
             };
         },
         option: (styles: any, { isFocused, isSelected }: any) => {

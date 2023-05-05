@@ -1,5 +1,12 @@
-import { Box, HStack, Image, useDisclosure, VStack } from '@chakra-ui/react';
-import React, { useEffect } from 'react';
+import {
+    Box,
+    HStack,
+    Image,
+    Spinner,
+    useDisclosure,
+    VStack,
+} from '@chakra-ui/react';
+import React from 'react';
 import COLORS from '../../constants/colors';
 import FONTS from '../../constants/fonts';
 import Icon from '../contents/icon';
@@ -11,7 +18,6 @@ import { ButtonSize } from '../inputs/button-icon/types';
 import Searchbar from '../inputs/searchbar';
 import SidebarOrganisation from '../pickers/sidebar-organisation';
 import OrganizationMenu from '../contents/organisation-menu';
-import { useSidebarLogic } from './logic';
 import CreateProjectModal from './create-project-modal/index';
 import CreateOrganisationModal from './create-organisation-modal';
 import { ISideBarContentProps } from './props';
@@ -24,26 +30,29 @@ export const SideBar = ({
     handleOnCreateProject,
     handleOnCreateOrganisation,
     handleSwitchOrgansiation,
-    organisationProjectData,
     organisationUserData,
     actualOrganisationUser,
     setFilterProjectValue,
     filterProjectValue,
-    activeProject,
-    setActiveProject,
+    projectData,
+    createProjectModalDisclosure,
+    isDisableOnCloseProjectModal,
+    handleToggleIsOrganisationClicked,
+    handleOnOptionClick,
+    isOrganisationClicked,
+    options,
+    activeOptionKey,
+    setIsOrganisationClicked,
+    handleOnClickProject,
+    clearNewRowTerm,
+    isLoadingSearchProject,
+    handleOnUpdateColorProject,
 }: ISideBarContentProps) => {
-    const {
-        handleToggleIsOrganisationClicked,
-        handleOnOptionClick,
-        isOrganisationClicked,
-        options,
-        activeOptionKey,
-        setIsOrganisationClicked,
-    } = useSidebarLogic({ organisationProjectData });
+    // Attributes
     const { t } = useTranslation();
-    const { isOpen, onOpen, onClose } = useDisclosure();
-    const createOrganisationModal = useDisclosure();
+    const { onOpen, isOpen, onClose } = useDisclosure();
     const { push } = useRouter();
+    // Render
     return (
         <>
             <VStack w={'15.25rem'} h={'100vh'} spacing='0px'>
@@ -69,6 +78,8 @@ export const SideBar = ({
                 </HStack>
                 {/* FIRST MENU */}
                 <VStack
+                    // not displayed because not implemented
+                    display={'none'}
                     w={'15.25rem'}
                     spacing='0.5rem'
                     padding='1.25rem 0.5rem'
@@ -84,6 +95,7 @@ export const SideBar = ({
                         projectIconColor={COLORS.Error.T500.value}
                         notificationNumber={1}
                         startEnhancer={<Icon name='section' />}
+                        handleOnUpdateColorProject={handleOnUpdateColorProject}
                     />
                     <SidebarProject
                         onClick={handleOnOptionClick}
@@ -93,6 +105,7 @@ export const SideBar = ({
                         textColor={COLORS.Text.T400.value}
                         projectIconColor={COLORS.Error.T500.value}
                         startEnhancer={<Icon name='myProfile' />}
+                        handleOnUpdateColorProject={handleOnUpdateColorProject}
                     />
                 </VStack>
                 {/* SECOND MENU PROJECT */}
@@ -109,16 +122,26 @@ export const SideBar = ({
                         {t<string>(tKeys.sidebar.projects_section.title)}
                     </Text>
                     <ButtonIcon
-                        handleOnClick={onOpen}
+                        handleOnClick={createProjectModalDisclosure.onOpen}
                         size={ButtonSize.XS}
                         bgColor='white'
+                        hoverBackgroundColor={COLORS.Communication.BG.value}
+                        borderRadius='0.5rem'
+                        padding='0.25rem'
+                        gap='0.625rem'
                     >
-                        <Icon
-                            name='add'
-                            stroke={COLORS.InputText.value}
-                            width={'1rem'}
-                            height={'1rem'}
-                        />
+                        {(isHovered) => (
+                            <Icon
+                                name='add'
+                                stroke={
+                                    isHovered
+                                        ? COLORS.Localize.Purple.value
+                                        : COLORS.InputText.value
+                                }
+                                width={'1rem'}
+                                height={'1rem'}
+                            />
+                        )}
                     </ButtonIcon>
                 </HStack>
                 <HStack
@@ -144,35 +167,67 @@ export const SideBar = ({
                         displayModal={false}
                     />
                 </HStack>
-                <VStack
-                    w={'15.25rem'}
-                    padding='0.375rem 0.5rem 1.25rem'
-                    spacing='0.375rem'
-                    height={'full'}
-                    overflowX={'hidden'}
-                    borderRight={`0.0625rem solid ${COLORS.Line.value}`}
-                >
-                    {options?.map((option, index) => {
-                        return (
-                            <SidebarProject
-                                onClick={() => {
-                                    setActiveProject({
-                                        id: option.value,
-                                        name: option.label,
-                                    });
-                                    push(`/projects/${option.value}`);
-                                }}
-                                activeKey={activeProject.name as string}
-                                text={option.label}
-                                key={option.value}
-                                textFont={FONTS.T1.T12px.Medium500.value}
-                                textColor={COLORS.Text.T400.value}
-                                projectIconColor={COLORS.Success.T300.value}
-                            />
-                        );
-                    })}
-                </VStack>
-                ;{/* ORGANISATION MENU */}
+                {isLoadingSearchProject ? (
+                    <VStack
+                        w={'15.25rem'}
+                        h='full'
+                        justifyContent={'center'}
+                        borderRight={`0.0625rem solid ${COLORS.Line.value}`}
+                    >
+                        <Spinner
+                            size='lg'
+                            thickness='0.25rem'
+                            speed='0.65s'
+                            emptyColor={COLORS.Line.value}
+                            color={COLORS.Localize.Purple.T500.value}
+                        />
+                    </VStack>
+                ) : (
+                    <VStack
+                        w={'15.25rem'}
+                        padding='0.375rem 0.5rem 1.25rem'
+                        spacing='0.375rem'
+                        height={'full'}
+                        overflowX={'hidden'}
+                        borderRight={`0.0625rem solid ${COLORS.Line.value}`}
+                    >
+                        {!!options?.length ? (
+                            options?.map((option) => {
+                                return (
+                                    <SidebarProject
+                                        onClick={() =>
+                                            handleOnClickProject(
+                                                option,
+                                                clearNewRowTerm,
+                                            )
+                                        }
+                                        activeKey={projectData?.name as string}
+                                        text={option.label}
+                                        key={option.value}
+                                        textFont={
+                                            FONTS.T1.T12px.Medium500.value
+                                        }
+                                        textColor={COLORS.Text.T400.value}
+                                        projectIconColor={option.iconColor}
+                                        handleOnUpdateColorProject={
+                                            handleOnUpdateColorProject
+                                        }
+                                    />
+                                );
+                            })
+                        ) : (
+                            <Box padding='0rem 0.1875rem 1.25rem'>
+                                <Text color={COLORS.InputText.value}>
+                                    {t<string>(
+                                        tKeys.sidebar.project_section.search
+                                            .not_found,
+                                    )}
+                                </Text>
+                            </Box>
+                        )}
+                    </VStack>
+                )}
+                {/* ORGANISATION MENU */}
                 <HStack
                     w={'15.25rem'}
                     padding={'0.75rem 0.5rem'}
@@ -204,7 +259,7 @@ export const SideBar = ({
                         spacing={'0.75rem'}
                         padding={'0.75rem'}
                         onClick={() => {
-                            push('/settings');
+                            push('/dashboard/settings');
                         }}
                     >
                         {t<string>(
@@ -231,12 +286,9 @@ export const SideBar = ({
                                 options={organisationUserData.data}
                                 value={actualOrganisationUser}
                                 onChange={(organizationValue) => {
-                                    handleSwitchOrgansiation(
-                                        organizationValue,
-                                        setIsOrganisationClicked,
-                                    );
+                                    handleSwitchOrgansiation(organizationValue);
                                 }}
-                                onClick={createOrganisationModal.onOpen}
+                                onClick={onOpen}
                             />
                         )}
                     </Box>
@@ -278,13 +330,14 @@ export const SideBar = ({
                 </VStack>
             </VStack>
             <CreateProjectModal
-                isOpen={isOpen}
-                onClose={onClose}
+                isOpen={createProjectModalDisclosure.isOpen}
+                onClose={createProjectModalDisclosure.onClose}
                 handleOnSubmit={handleOnCreateProject}
+                isDisableOnClose={isDisableOnCloseProjectModal}
             />
             <CreateOrganisationModal
-                isOpen={createOrganisationModal.isOpen}
-                onClose={createOrganisationModal.onClose}
+                isOpen={isOpen}
+                onClose={onClose}
                 handleOnSubmit={handleOnCreateOrganisation}
             />
         </>

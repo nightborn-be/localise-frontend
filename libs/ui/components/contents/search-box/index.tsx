@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { VStack, Wrap, WrapItem } from '@chakra-ui/react';
+import React from 'react';
+import { VStack, Wrap } from '@chakra-ui/react';
 import COLORS from '../../../constants/colors';
 import FONTS from '../../../constants/fonts';
 import Text from '../text';
@@ -22,6 +22,7 @@ const SearchBox = <T,>({
     border = `0.0625rem solid ${COLORS.Line.value}`,
     padding = '1.25rem',
     w = '36.875rem',
+    labelFont = FONTS.T1.T14px.Medium500.value,
 }: ISearchBoxProps<T>) => {
     // Render
     return (
@@ -37,14 +38,11 @@ const SearchBox = <T,>({
                 alignItems={'left'}
             >
                 <VStack align={'left'} w={w} spacing='0.25rem'>
-                    <Text
-                        font={FONTS.T1.T14px.Medium500.value}
-                        color={COLORS.Text.T400.value}
-                    >
+                    <Text font={labelFont} color={COLORS.Text.T400.value}>
                         {title}
                     </Text>
                     <Text
-                        font={FONTS.T1.T10px.Medium500.value}
+                        font={FONTS.T1.T12px.Regular400.value}
                         color={COLORS.InputText.value}
                     >
                         {description}
@@ -70,14 +68,12 @@ const SearchBox = <T,>({
                 {!!activeKeys?.length && (
                     <Wrap spacing={'0.25rem'} pr={'1.125rem'}>
                         {activeKeys.map((tag, index) => (
-                            <WrapItem>
-                                <Tag
-                                    key={`tag-${index}`}
-                                    value={tag}
-                                    font={FONTS.T1.T12px.Medium500.value}
-                                    onDelete={() => onTagDelete(tag)}
-                                />
-                            </WrapItem>
+                            <Tag
+                                key={`tag-${index}`}
+                                value={tag}
+                                font={FONTS.T1.T12px.Medium500.value}
+                                onDelete={() => onTagDelete(tag)}
+                            />
                         ))}
                     </Wrap>
                 )}

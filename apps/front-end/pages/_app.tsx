@@ -7,6 +7,8 @@ import { I18nextProvider } from 'react-i18next';
 import { AuthProvider } from '../../../libs/ui/auth';
 import App from 'next/app';
 import { Inter } from 'next/font/google';
+import Head from 'next/head';
+import Middelwares from '../../../libs/utils/middlewares/index';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -27,17 +29,33 @@ function MyApp({ Component, pageProps }: AppProps) {
 
     // Render
     return (
-        <main className={inter.className}>
-            <I18nextProvider i18n={getI18nInstance()}>
-                <QueryClientProvider client={queryClient}>
-                    <AuthProvider>
-                        <ChakraProvider>
-                            <Component {...pageProps} />
-                        </ChakraProvider>
-                    </AuthProvider>
-                </QueryClientProvider>
-            </I18nextProvider>
-        </main>
+        <>
+            <Head>
+                <link rel='preconnect' href='https://fonts.googleapis.com' />
+                <link
+                    rel='preconnect'
+                    href='https://fonts.gstatic.com'
+                    crossOrigin='use-credentials'
+                />
+                <link
+                    href='https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap'
+                    rel='stylesheet'
+                />
+            </Head>
+            <main className={inter.className}>
+                <I18nextProvider i18n={getI18nInstance()}>
+                    <QueryClientProvider client={queryClient}>
+                        <Middelwares>
+                            <AuthProvider>
+                                <ChakraProvider>
+                                    <Component {...pageProps} />
+                                </ChakraProvider>
+                            </AuthProvider>
+                        </Middelwares>
+                    </QueryClientProvider>
+                </I18nextProvider>
+            </main>
+        </>
     );
 }
 

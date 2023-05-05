@@ -1,7 +1,6 @@
 import { HStack, Image, VStack } from '@chakra-ui/react';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { useDeleteOrganisationLogic } from './logic';
 import { IDeleteOrganisationProps } from './props';
 import Modal from '../modal';
 import { tKeys } from '../../../../i18n/keys';
@@ -17,6 +16,7 @@ export const DeleteModal = ({
     titleModal,
     title,
     description,
+    isLoading,
 }: IDeleteOrganisationProps) => {
     // Attributes
     const { t } = useTranslation();
@@ -27,6 +27,7 @@ export const DeleteModal = ({
             <Modal
                 title={titleModal}
                 isOpen={isOpen}
+                isLoading={isLoading}
                 onClose={() => {
                     onClose();
                 }}
