@@ -126,7 +126,7 @@ export const SideBar = ({
                         hoverBackgroundColor={COLORS.Communication.BG.value}
                         borderRadius='0.5rem'
                         padding='0.25rem'
-                        gap='10px'
+                        gap='0.625rem'
                     >
                         {(isHovered) => (
                             <Icon

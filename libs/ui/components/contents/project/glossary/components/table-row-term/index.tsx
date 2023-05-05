@@ -49,7 +49,7 @@ export default function TableRowTerm({
                 borderTopRightRadius={'0.5rem'}
                 spacing={0}
                 onClick={isNewRow ? () => {} : toggleIsOpen}
-                cursor={isNewRow ? '' : 'pointer'}
+                cursor={isNewRow ? 'auto' : 'pointer'}
             >
                 <HStack
                     padding='0.5rem 1.25rem'

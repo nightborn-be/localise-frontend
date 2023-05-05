@@ -69,7 +69,7 @@ const Searchbar = <T,>({
                     <InputLeftElement
                         w={'1rem'}
                         h={'full'}
-                        ml={'10px'}
+                        ml={'0.625rem'}
                         justifyContent={'center'}
                         alignItems={'center'}
                     >
@@ -92,7 +92,7 @@ const Searchbar = <T,>({
                         border={'0.0625rem solid transprent'}
                         marginRight='0.5rem'
                         onFocus={() => setShowModal(true)}
-                        paddingInlineEnd='5px'
+                        paddingInlineEnd='0.3125rem'
                     />
                 </InputGroup>
             </HStack>

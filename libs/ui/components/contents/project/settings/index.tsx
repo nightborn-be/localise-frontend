@@ -67,7 +67,7 @@ const Settings = ({
                     w='full'
                     overflowY={'scroll'}
                     h='full'
-                    paddingBottom={'600px'}
+                    paddingBottom={'37.5rem'}
                 >
                     <InformationSettingSection
                         projectId={activeProject?.id as string}

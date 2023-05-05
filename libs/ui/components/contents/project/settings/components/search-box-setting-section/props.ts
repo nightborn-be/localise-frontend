@@ -1,6 +1,4 @@
 import { SearchBarOption } from '../../../../../../components/inputs/searchbar/props';
-import { Font } from '../../../../../../constants/fonts';
-
 export interface ISearchBoxSettingSectionProps {
     targetLanguagesRef?: React.RefObject<HTMLDivElement>;
     activeKeys: string[];
