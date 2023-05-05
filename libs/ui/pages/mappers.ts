@@ -20,11 +20,22 @@ export const toUpdateProjectDTO = (
     const res: UpdateProjectDTO = {
         name: projectName,
         sourceLanguage: source,
-        languages: toUpsertProjectLanguageDTOArray()
+        languages: toUpsertProjectLanguageDTOArray(targets)
     };
     return res;
 };
 
-const toUpsertProjectLanguageDTOArray = (): UpsertProjectLanguageDTO[] => {
-    return languages.filter(language => language !== undefined) as UpsertProjectLanguageDTO[]
+const toUpsertProjectLanguageDTOArray = (object: (UpsertProjectLanguageDTO | undefined)[]): UpsertProjectLanguageDTO[] => {
+    if (object === undefined) {
+        return []
+    }
+    let newObject: UpsertProjectLanguageDTO[] = []
+    for (let index = 0; index < object.length; index++) {
+        const element = object[index];
+        if (element) {
+            newObject[index] = element
+        }
+
+    }
+    return newObject;
 }
