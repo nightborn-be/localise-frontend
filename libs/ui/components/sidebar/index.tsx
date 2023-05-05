@@ -50,7 +50,7 @@ export const SideBar = ({
 }: ISideBarContentProps) => {
     // Attributes
     const { t } = useTranslation();
-    const createOrganisationModal = useDisclosure();
+    const { onOpen, isOpen, onClose } = useDisclosure();
     const { push } = useRouter();
     // Render
     return (
@@ -276,7 +276,7 @@ export const SideBar = ({
                                 onChange={(organizationValue) => {
                                     handleSwitchOrgansiation(organizationValue);
                                 }}
-                                onClick={createOrganisationModal.onOpen}
+                                onClick={onOpen}
                             />
                         )}
                     </Box>
@@ -321,11 +321,11 @@ export const SideBar = ({
                 isOpen={createProjectModalDisclosure.isOpen}
                 onClose={createProjectModalDisclosure.onClose}
                 handleOnSubmit={handleOnCreateProject}
-                isDisableOnCloseProjectModal={isDisableOnCloseProjectModal}
+                isDisableOnClose={isDisableOnCloseProjectModal}
             />
             <CreateOrganisationModal
-                isOpen={createOrganisationModal.isOpen}
-                onClose={createOrganisationModal.onClose}
+                isOpen={isOpen}
+                onClose={onClose}
                 handleOnSubmit={handleOnCreateOrganisation}
             />
         </>

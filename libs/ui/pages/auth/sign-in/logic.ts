@@ -36,7 +36,7 @@ export const useSignInLogic = ({
             if (redirectUrl) {
                 push(redirectUrl);
             } else {
-                push('/');
+                push('/dashboard');
             }
         } catch (error) {
             setFieldError(

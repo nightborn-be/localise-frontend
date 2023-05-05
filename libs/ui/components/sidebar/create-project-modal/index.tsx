@@ -13,11 +13,11 @@ import languages from '../../../../utils/languages';
 import { useTranslation } from 'react-i18next';
 import { tKeys } from '../../../../i18n/keys';
 
-export const AddProjectModals = ({
+export const CreateProjectModal = ({
     isOpen,
     onClose,
     handleOnSubmit,
-    isDisableOnCloseProjectModal,
+    isDisableOnClose,
 }: ICreateProjectProps) => {
     // Attributes
     const {
@@ -50,7 +50,7 @@ export const AddProjectModals = ({
                     onClose();
                     resetForm();
                 }}
-                isDisableOnClose={isDisableOnCloseProjectModal}
+                isDisableOnClose={isDisableOnClose}
                 handleOnSubmit={() => {
                     handleOnSubmit(form, resetForm);
                 }}
@@ -159,4 +159,4 @@ export const AddProjectModals = ({
     );
 };
 
-export default AddProjectModals;
+export default CreateProjectModal;

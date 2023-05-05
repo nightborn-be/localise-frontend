@@ -43,5 +43,4 @@ export interface ISideBarContentProps {
     handleOnUpdateColorProject: (iconColor: string) => void;
 }
 export interface ISidebarLogicProps {
-    organisationProjectData?: ProjectPagingDTO;
 }

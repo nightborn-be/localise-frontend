@@ -3,8 +3,11 @@ import OrganisationSettingsPage from '../../../../../libs/ui/pages/dashboard/set
 import { useRouter } from 'next/router';
 
 const OrganisationSettingsWeb = () => {
+    // Attributes
     useRouter();
     useAuthRedirect();
+
+    // Render
     return <OrganisationSettingsPage />;
 };
 

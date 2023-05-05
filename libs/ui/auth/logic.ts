@@ -6,8 +6,8 @@ import { firebaseConfig } from './config';
 import { TokenKey } from '../../utils/token/token-keys';
 export const useLogic = () => {
     // Attributes
-    const [isLoading, setIsLoading] = useState<boolean>(false);
     const [isFirebaseLoading, setIsFirebaseLoading] = useState<boolean>(true);
+    const [isLoading, setIsLoading] = useState<boolean>(false)
 
     // Functions
     async function signIn(email: string, password: string): Promise<void> {
@@ -15,19 +15,18 @@ export const useLogic = () => {
         if (!auth) {
             return;
         }
-        let data;
         try {
-            setIsLoading(true);
-            data = await signInWithEmailAndPassword(auth, email, password);
-            setIsLoading(false);
+            setIsLoading(true)
+            const data = await signInWithEmailAndPassword(auth, email, password);
+            if (data) {
+                auth.currentUser?.getIdToken().then((token) => {
+                    tokenStorage.save({ [TokenKey.ID_TOKEN]: token });
+                    setIsLoading(false)
+                });
+            }
         } catch (e) {
-            setIsLoading(false);
-            throw e;
-        }
-        if (data) {
-            auth.currentUser?.getIdToken().then((token) => {
-                tokenStorage.save({ [TokenKey.ID_TOKEN]: token });
-            });
+            setIsLoading(false)
+            throw e
         }
     }
 

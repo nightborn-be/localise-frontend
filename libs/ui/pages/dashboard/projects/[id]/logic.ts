@@ -186,17 +186,30 @@ export const useProjectLogic = ({
     async function handleOnUpdateProject(
         form: IForm<IUpdateProjectForm> & IDefaultForm,
     ) {
+
+        const projectData = toUpdateProjectDTO(form.projectName.value,
+            form.sourceLanguage.value,
+            form.targetLanguages.value,
+            form.iconColor.value,)
+
+        if (projectData === undefined) {
+            toast({
+                type: ToastType.ERROR,
+                title: t(
+                    tKeys.home.modal.create_project.form
+                        .project_name.form.error,
+                ),
+                delay: 5000,
+            });
+
+            return;
+        }
         try {
             await updateProject(
                 {
-                    data: toUpdateProjectDTO(
-                        form.projectName.value,
-                        form.sourceLanguage.value,
-                        form.targetLanguages.value,
-                        form.iconColor.value,
-                    ),
+                    data: projectData,
                     organisationId: actualOrganisationUser?.id as string,
-                    projectId: projectData?.id as string,
+                    projectId: id as string,
                 },
                 {
                     onSuccess: async () => {

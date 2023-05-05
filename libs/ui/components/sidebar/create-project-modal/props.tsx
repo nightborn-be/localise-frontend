@@ -4,7 +4,7 @@ import { ICreateProjectForm } from './types';
 export interface ICreateProjectProps {
     isOpen: boolean;
     onClose: () => void;
-    isDisableOnCloseProjectModal: boolean;
+    isDisableOnClose: boolean;
     handleOnSubmit: (
         form: IForm<ICreateProjectForm> & IDefaultForm,
         resetForm: () => void,

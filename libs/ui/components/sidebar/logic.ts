@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { SearchBarOption } from '../inputs/searchbar/props';
 import { SearchBarColorOption, SidebarLogicType } from './types';
 import { IDefaultForm, IForm } from 'utils/formik';
@@ -123,7 +123,6 @@ export const useSidebarLogic = (): SidebarLogicType => {
     function handleToggleIsOrganisationClicked() {
         setIsOrganisationClicked((prev) => !prev);
     }
-
     async function handleOnCreateProject(
         form: IForm<ICreateProjectForm> & IDefaultForm,
         resetForm: () => void,

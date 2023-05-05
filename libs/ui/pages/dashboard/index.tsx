@@ -6,7 +6,6 @@ import { useSidebarLogic } from '../../components/sidebar/logic';
 
 const Dashboard = () => {
     // Attributes
-    const {} = useDashboardLogic();
 
     const {
         handleOnCreateProject,
@@ -28,6 +27,10 @@ const Dashboard = () => {
         isLoadingSearchProject,
         handleOnUpdateColorProject,
     } = useSidebarLogic();
+
+    const {} = useDashboardLogic({
+        onOpenProjectModal: createProjectModalDisclosure.onOpen,
+    });
     // Render
     return (
         <Page>

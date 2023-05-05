@@ -9,6 +9,7 @@ import { useAuthHomeLogic } from './logic';
 import { useTranslation } from 'react-i18next';
 import { tKeys } from '../../../i18n/keys';
 import { IAuthHomePageProps } from './props';
+
 export default function AuthHomePage({ redirectUrl }: IAuthHomePageProps) {
     // Attributes
     const { handleSignInRedirection, handleSignUpRedirection } =

@@ -14,6 +14,7 @@ export const useAuthHomeLogic = ({
             router.push(
                 `auth/sign-up?redirectUrl=${encodeURIComponent(redirectUrl)}`,
             );
+            return;
         }
         router.push('/auth/sign-up');
     }
@@ -23,6 +24,7 @@ export const useAuthHomeLogic = ({
             router.push(
                 `auth/sign-in?redirectUrl=${encodeURIComponent(redirectUrl)}`,
             );
+            return;
         }
         router.push('auth/sign-in');
     }
