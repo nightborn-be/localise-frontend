@@ -8,6 +8,7 @@ import { AuthProvider } from '../../../libs/ui/auth';
 import App from 'next/app';
 import { Inter } from 'next/font/google';
 import Head from 'next/head';
+import Middelwares from '../../../libs/utils/middlewares/index';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -41,17 +42,19 @@ function MyApp({ Component, pageProps }: AppProps) {
                     rel='stylesheet'
                 />
             </Head>
-            <main className={inter.className}>
-                <I18nextProvider i18n={getI18nInstance()}>
-                    <QueryClientProvider client={queryClient}>
+        <main className={inter.className}>
+            <I18nextProvider i18n={getI18nInstance()}>
+                <QueryClientProvider client={queryClient}>
+                    <Middelwares>
                         <AuthProvider>
                             <ChakraProvider>
                                 <Component {...pageProps} />
                             </ChakraProvider>
                         </AuthProvider>
-                    </QueryClientProvider>
-                </I18nextProvider>
-            </main>
+                    </Middelwares>
+                </QueryClientProvider>
+            </I18nextProvider>
+        </main>
         </>
     );
 }
