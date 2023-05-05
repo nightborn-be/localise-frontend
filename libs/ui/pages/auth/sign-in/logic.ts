@@ -36,7 +36,6 @@ export const useSignInLogic = ({
         try {
             setIsLoading(true);
             await auth.signIn(values.email, values.password);
-            setIsLoading(false);
             if (redirectUrl) {
                 push(redirectUrl);
             } else {

@@ -67,7 +67,6 @@ export const useSidebarLogic = (): SidebarLogicType => {
         ) {
             const project = organisationProjectData?.data?.at(0);
             if (project !== undefined) {
-                setActiveProject(project);
                 push(`/dashboard/projects/${project.id}`);
                 setIsDisableOnCloseProjectModal(false);
             } else if (filterProjectValue === '' && project === undefined) {
@@ -189,7 +188,7 @@ export const useSidebarLogic = (): SidebarLogicType => {
                 id: option.value,
                 name: option.label,
             });
-            setFilterProjectValue('');
+            setFilterProjectValue('')
             push(`/dashboard/projects/${option.value}`);
         }
     }

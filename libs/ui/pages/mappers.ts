@@ -8,17 +8,23 @@ export const toUpdateProjectDTO = (
     projectName: string,
     sourceLanguage: string,
     targetLanguages: string[],
-): UpdateProjectDTO => {
-    const source = languages.find(
-        (language) => language.name === sourceLanguage,
-    );
-    const targets = targetLanguages.map((language) =>
-        languages.find((lang) => lang.name === language),
-    );
+): UpdateProjectDTO | undefined => {
+    const source = languages.find(language => language.name === sourceLanguage)
+    const targets = targetLanguages.map(language => languages.find(lang => lang.name === language))
+    if (source === undefined) {
+        return undefined
+    }
+    if (targets === undefined) {
+        return undefined
+    }
     const res: UpdateProjectDTO = {
         name: projectName,
-        sourceLanguage: source as UpsertProjectLanguageDTO,
-        languages: targets as UpsertProjectLanguageDTO[],
+        sourceLanguage: source,
+        languages: toUpsertProjectLanguageDTOArray()
     };
     return res;
 };
+
+const toUpsertProjectLanguageDTOArray = (): UpsertProjectLanguageDTO[] => {
+    return languages.filter(language => language !== undefined) as UpsertProjectLanguageDTO[]
+}
