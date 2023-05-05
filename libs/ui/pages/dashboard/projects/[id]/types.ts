@@ -4,8 +4,8 @@ import {
     TermPagingDTO,
 } from 'gateways/resource-api/types';
 import { IDefaultForm, IForm } from 'utils/formik';
-import { ITableRowTermForm } from '../../../components/contents/project/glossary/components/table-row-term/types';
-import { IUpdateProjectForm } from '../../../components/contents/project/settings/types';
+import { ITableRowTermForm } from '../../../../components/contents/project/glossary/components/table-row-term/types';
+import { IUpdateProjectForm } from '../../../../components/contents/project/settings/types';
 export interface ProjectLogicType {
     activeKey?: React.Key;
     setActiveKey: (value?: React.Key) => void;

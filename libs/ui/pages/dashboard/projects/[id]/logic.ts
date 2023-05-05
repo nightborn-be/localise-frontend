@@ -15,13 +15,13 @@ import { AxiosError } from 'axios';
 import { useTranslation } from 'react-i18next';
 import { IDefaultForm, IForm } from 'utils/formik';
 import { useSaveTranslation } from 'gateways/resource-api/translations/translations';
-import { toUpdateProjectDTO } from '../../../pages/mappers';
-import { tKeys } from '../../../../i18n/keys';
+import { toUpdateProjectDTO } from '../../../../pages/mappers';
+import { tKeys } from '../../../../../i18n/keys';
 import { IProjectContentLogicProps } from './props';
-import { IEditInputForm } from '../../../components/contents/project/glossary/components/table-row-term/components/edit-input/types';
-import { ITableRowTermForm } from '../../../components/contents/project/glossary/components/table-row-term/types';
-import { IUpdateProjectForm } from '../../../components/contents/project/settings/types';
-import { toUpdateTermDTO } from '../../../components/contents/project/glossary/components/table-row-term/mappers';
+import { IEditInputForm } from '../../../../components/contents/project/glossary/components/table-row-term/components/edit-input/types';
+import { ITableRowTermForm } from '../../../../components/contents/project/glossary/components/table-row-term/types';
+import { IUpdateProjectForm } from '../../../../components/contents/project/settings/types';
+import { toUpdateTermDTO } from '../../../../components/contents/project/glossary/components/table-row-term/mappers';
 import { ToastType } from 'ui/components/progress-validation/toast/types';
 import useToast from 'ui/components/progress-validation/toast';
 import { useRouter } from 'next/router';
@@ -41,7 +41,6 @@ export const useProjectLogic = ({
     const { t } = useTranslation();
     const router = useRouter();
     const { id } = router.query;
-
     const [activeKey, setActiveKey] = useState<React.Key>();
     const [sortValue, setSortValue] = useState<string>('');
     const [isDetectDuplicate, setIsDetectDuplicate] = useState<boolean>(false);
@@ -64,8 +63,8 @@ export const useProjectLogic = ({
         data: projectTerms,
         refetch: refetchProjectTerms,
         isLoading: isLoadingSearchTerms,
-    } = useGetTerms(id as string, { q: searchFilterValue as string });
 
+    } = useGetTerms(id as string, { q: searchFilterValue as string });
     // Functions
     async function handleOnDeleteTerm(termId: string) {
         try {
@@ -179,14 +178,27 @@ export const useProjectLogic = ({
     async function handleOnUpdateProject(
         form: IForm<IUpdateProjectForm> & IDefaultForm,
     ) {
+
+        const projectData = toUpdateProjectDTO(form.projectName.value,
+            form.sourceLanguage.value,
+            form.targetLanguages.value,)
+
+        if (projectData === undefined) {
+            toast({
+                type: ToastType.ERROR,
+                title: t(
+                    tKeys.home.modal.create_project.form
+                        .project_name.form.error,
+                ),
+                delay: 5000,
+            });
+
+            return;
+        }
         try {
             await updateProject(
                 {
-                    data: toUpdateProjectDTO(
-                        form.projectName.value,
-                        form.sourceLanguage.value,
-                        form.targetLanguages.value,
-                    ),
+                    data: projectData,
                     organisationId: actualOrganisationUser?.id as string,
                     projectId: activeProject.id as string,
                 },

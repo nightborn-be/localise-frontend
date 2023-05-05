@@ -18,7 +18,6 @@ import { ButtonSize } from '../inputs/button-icon/types';
 import Searchbar from '../inputs/searchbar';
 import SidebarOrganisation from '../pickers/sidebar-organisation';
 import OrganizationMenu from '../contents/organisation-menu';
-import { useSidebarLogic } from './logic';
 import CreateProjectModal from './create-project-modal/index';
 import CreateOrganisationModal from './create-organisation-modal';
 import { ISideBarContentProps } from './props';
@@ -31,30 +30,29 @@ export const SideBar = ({
     handleOnCreateProject,
     handleOnCreateOrganisation,
     handleSwitchOrgansiation,
-    organisationProjectData,
     organisationUserData,
     actualOrganisationUser,
     setFilterProjectValue,
     filterProjectValue,
     activeProject,
     setActiveProject,
-    isLoadingSearchProject,
+    createProjectModalDisclosure,
+    isDisableOnCloseProjectModal,
+    handleToggleIsOrganisationClicked,
+    handleOnOptionClick,
+    isOrganisationClicked,
+    options,
+    activeOptionKey,
+    setIsOrganisationClicked,
+    handleOnClickProject,
     clearNewRowTerm,
-    setSearchFilterValue,
+    isLoadingSearchProject,
 }: ISideBarContentProps) => {
-    const {
-        handleToggleIsOrganisationClicked,
-        handleOnOptionClick,
-        isOrganisationClicked,
-        options,
-        activeOptionKey,
-        setIsOrganisationClicked,
-        handleOnClickProject,
-    } = useSidebarLogic({ organisationProjectData });
+    // Attributes
     const { t } = useTranslation();
-    const { isOpen, onOpen, onClose } = useDisclosure();
-    const createOrganisationModal = useDisclosure();
+    const { onOpen, isOpen, onClose } = useDisclosure();
     const { push } = useRouter();
+    // Render
     return (
         <>
             <VStack w={'15.25rem'} h={'100vh'} spacing='0px'>
@@ -120,7 +118,7 @@ export const SideBar = ({
                         {t<string>(tKeys.sidebar.projects_section.title)}
                     </Text>
                     <ButtonIcon
-                        handleOnClick={onOpen}
+                        handleOnClick={createProjectModalDisclosure.onOpen}
                         size={ButtonSize.XS}
                         bgColor='white'
                     >
@@ -186,10 +184,7 @@ export const SideBar = ({
                                         onClick={() =>
                                             handleOnClickProject(
                                                 option,
-                                                clearNewRowTerm,
-                                                setFilterProjectValue,
                                                 activeProject,
-                                                setActiveProject,
                                             )
                                         }
                                         activeKey={activeProject.name as string}
@@ -249,7 +244,7 @@ export const SideBar = ({
                         spacing={'0.75rem'}
                         padding={'0.75rem'}
                         onClick={() => {
-                            push('/settings');
+                            push('/dashboard/settings');
                         }}
                     >
                         {t<string>(
@@ -276,12 +271,9 @@ export const SideBar = ({
                                 options={organisationUserData.data}
                                 value={actualOrganisationUser}
                                 onChange={(organizationValue) => {
-                                    handleSwitchOrgansiation(
-                                        organizationValue,
-                                        setIsOrganisationClicked,
-                                    );
+                                    handleSwitchOrgansiation(organizationValue);
                                 }}
-                                onClick={createOrganisationModal.onOpen}
+                                onClick={onOpen}
                             />
                         )}
                     </Box>
@@ -323,13 +315,14 @@ export const SideBar = ({
                 </VStack>
             </VStack>
             <CreateProjectModal
-                isOpen={isOpen}
-                onClose={onClose}
+                isOpen={createProjectModalDisclosure.isOpen}
+                onClose={createProjectModalDisclosure.onClose}
                 handleOnSubmit={handleOnCreateProject}
+                isDisableOnClose={isDisableOnCloseProjectModal}
             />
             <CreateOrganisationModal
-                isOpen={createOrganisationModal.isOpen}
-                onClose={createOrganisationModal.onClose}
+                isOpen={isOpen}
+                onClose={onClose}
                 handleOnSubmit={handleOnCreateOrganisation}
             />
         </>

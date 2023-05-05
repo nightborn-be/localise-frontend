@@ -1,9 +1,10 @@
 import React from 'react';
 import { useOrganisationSettingsPageLogic } from './logic';
 import Page from 'ui/components/contents/page';
-import { useSidebarPageLogic } from 'ui/components/contents/sidebar-page/logic';
-import SidebarPage from 'ui/components/contents/sidebar-page';
-import OrganisationSettings from '../../components/contents/organisation-settings/index';
+import OrganisationSettings from '../../../components/contents/organisation-settings/index';
+import SideBar from '../../../components/sidebar/index';
+import { useSidebarLogic } from '../../../components/sidebar/logic';
+import { useAuthRedirect } from 'ui/auth/auth-redirect';
 
 const OrganisationSettingsPage = () => {
     // Attributes
@@ -18,30 +19,48 @@ const OrganisationSettingsPage = () => {
         handleSwitchOrgansiation,
         actualOrganisationUser,
         organisationUserData,
-        organisationProjectData,
         filterProjectValue,
         setFilterProjectValue,
         activeProject,
         setActiveProject,
+        createProjectModalDisclosure,
+        isDisableOnCloseProjectModal,
+        handleToggleIsOrganisationClicked,
+        handleOnOptionClick,
+        isOrganisationClicked,
+        options,
+        activeOptionKey,
+        setIsOrganisationClicked,
         isLoadingSearchProject,
-    } = useSidebarPageLogic();
+        handleOnClickProject,
+    } = useSidebarLogic();
+    useAuthRedirect();
+
     // Render
     return (
         <Page>
-            <SidebarPage
-                isLoadingSearchProject={isLoadingSearchProject}
+            <SideBar
+                handleToggleIsOrganisationClicked={
+                    handleToggleIsOrganisationClicked
+                }
+                handleOnOptionClick={handleOnOptionClick}
+                isOrganisationClicked={isOrganisationClicked}
+                options={options}
+                activeOptionKey={activeOptionKey}
+                setIsOrganisationClicked={setIsOrganisationClicked}
+                createProjectModalDisclosure={createProjectModalDisclosure}
                 handleOnCreateProject={handleOnCreateProject}
                 handleOnCreateOrganisation={handleOnCreateOrganisation}
                 handleSwitchOrgansiation={handleSwitchOrgansiation}
                 actualOrganisationUser={actualOrganisationUser}
                 organisationUserData={organisationUserData}
-                organisationProjectData={organisationProjectData}
                 filterProjectValue={filterProjectValue}
                 setFilterProjectValue={setFilterProjectValue}
                 activeProject={activeProject}
                 setActiveProject={setActiveProject}
-                clearNewRowTerm={() => {}}
-                setSearchFilterValue={(value: string) => {}}
+                isDisableOnCloseProjectModal={isDisableOnCloseProjectModal}
+                isLoadingSearchProject={isLoadingSearchProject}
+                handleOnClickProject={handleOnClickProject}
             />
             <OrganisationSettings
                 handleOnDeleteOrganisation={handleOnDeleteOrganisation}

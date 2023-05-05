@@ -1,13 +1,12 @@
 import React, { useEffect } from 'react';
 import Page from 'ui/components/contents/page';
-import { useHomeLogic } from './logic';
-import SideBar from '../components/sidebar';
-import { useSidebarLogic } from '../components/sidebar/logic';
+import { useDashboardLogic } from './logic';
+import SideBar from '../../components/sidebar';
+import { useSidebarLogic } from '../../components/sidebar/logic';
 import { useRouter } from 'next/router';
 
 const Dashboard = () => {
     // Attributes
-    const {} = useHomeLogic();
 
     const {
         handleOnCreateProject,
@@ -27,22 +26,17 @@ const Dashboard = () => {
         options,
         activeOptionKey,
         setIsOrganisationClicked,
-        isLoadingSearchProject,
         handleOnClickProject,
+        isLoadingSearchProject,
     } = useSidebarLogic();
 
+    const {} = useDashboardLogic({
+        onOpenProjectModal: createProjectModalDisclosure.onOpen,
+    });
     // Render
     return (
         <Page>
             <SideBar
-                handleToggleIsOrganisationClicked={
-                    handleToggleIsOrganisationClicked
-                }
-                handleOnOptionClick={handleOnOptionClick}
-                isOrganisationClicked={isOrganisationClicked}
-                options={options}
-                activeOptionKey={activeOptionKey}
-                setIsOrganisationClicked={setIsOrganisationClicked}
                 handleOnCreateProject={handleOnCreateProject}
                 handleOnCreateOrganisation={handleOnCreateOrganisation}
                 handleSwitchOrgansiation={handleSwitchOrgansiation}
@@ -54,8 +48,16 @@ const Dashboard = () => {
                 setActiveProject={setActiveProject}
                 createProjectModalDisclosure={createProjectModalDisclosure}
                 isDisableOnCloseProjectModal={isDisableOnCloseProjectModal}
-                isLoadingSearchProject={isLoadingSearchProject}
+                handleToggleIsOrganisationClicked={
+                    handleToggleIsOrganisationClicked
+                }
+                handleOnOptionClick={handleOnOptionClick}
+                isOrganisationClicked={isOrganisationClicked}
+                options={options}
+                activeOptionKey={activeOptionKey}
+                setIsOrganisationClicked={setIsOrganisationClicked}
                 handleOnClickProject={handleOnClickProject}
+                isLoadingSearchProject={isLoadingSearchProject}
             />
         </Page>
     );

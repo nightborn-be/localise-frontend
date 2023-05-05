@@ -36,6 +36,7 @@ export const CreateOrganisationModal = ({
     } = useCreateOrganisationLogic();
 
     const { t } = useTranslation();
+    // Render
     return (
         <Modal
             title={t<string>(tKeys.home.modal.create_organisation.title)}

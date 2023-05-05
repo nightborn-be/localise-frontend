@@ -6,7 +6,12 @@ import { useTranslation } from 'react-i18next';
 import validationSchema from './validations';
 import { useAuth } from '../../../auth/index';
 import { tKeys } from '../../../../i18n/keys';
-export const useSignInLogic = (): SignInLogicType => {
+import { ISignInPageLogicProps } from './props';
+import { useState } from 'react';
+
+export const useSignInLogic = ({
+    redirectUrl,
+}: ISignInPageLogicProps): SignInLogicType => {
     // Attributes
     const { push } = useRouter();
     const { t } = useTranslation();
@@ -29,7 +34,11 @@ export const useSignInLogic = (): SignInLogicType => {
     async function handleOnSubmit(): Promise<void> {
         try {
             await auth.signIn(values.email, values.password);
-            push('/');
+            if (redirectUrl) {
+                push(redirectUrl);
+            } else {
+                push('/dashboard');
+            }
         } catch (error) {
             setFieldError(
                 'email',

@@ -1,17 +1,32 @@
 import { useRouter } from 'next/router';
 import { AuthHomeLogicResponse } from './types';
+import { useAuth } from 'ui/auth';
+import { IAuthHomeLogicProps } from './props';
 
-export const useAuthHomeLogic = (): AuthHomeLogicResponse => {
+export const useAuthHomeLogic = ({
+    redirectUrl,
+}: IAuthHomeLogicProps): AuthHomeLogicResponse => {
     // Attributes
-    const { push } = useRouter();
-
+    const router = useRouter();
     // Functions
     function handleSignUpRedirection() {
-        push('auth/sign-up');
+        if (redirectUrl) {
+            router.push(
+                `auth/sign-up?redirectUrl=${encodeURIComponent(redirectUrl)}`,
+            );
+            return;
+        }
+        router.push('/auth/sign-up');
     }
 
     function handleSignInRedirection() {
-        push('auth/sign-in');
+        if (redirectUrl) {
+            router.push(
+                `auth/sign-in?redirectUrl=${encodeURIComponent(redirectUrl)}`,
+            );
+            return;
+        }
+        router.push('auth/sign-in');
     }
 
     return {

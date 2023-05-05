@@ -1,17 +1,13 @@
 import { useState, useEffect } from 'react';
-import { FirebaseApp, initializeApp } from 'firebase/app';
-import UserCredential, {
-    getAuth,
-    signInWithEmailAndPassword,
-} from '@firebase/auth';
+import { initializeApp } from 'firebase/app';
+import { getAuth, signInWithEmailAndPassword } from '@firebase/auth';
 import { tokenStorage } from '../../utils/token/token';
 import { firebaseConfig } from './config';
 import { TokenKey } from '../../utils/token/token-keys';
 export const useLogic = () => {
     // Attributes
-    const [isLogged, setIsLogged] = useState<boolean>(false);
-    const [isLoading, setIsLoading] = useState<boolean>(false);
-    const [firebaseUser, setFirebaseUser] = useState<UserCredential.User>();
+    const [isFirebaseLoading, setIsFirebaseLoading] = useState<boolean>(true);
+    const [isLoading, setIsLoading] = useState<boolean>(false)
 
     // Functions
     async function signIn(email: string, password: string): Promise<void> {
@@ -19,28 +15,29 @@ export const useLogic = () => {
         if (!auth) {
             return;
         }
-        setIsLoading(true);
-        const data = await signInWithEmailAndPassword(auth, email, password);
-        setIsLoading(false);
-        if (data) {
-            setIsLogged(true);
-            setFirebaseUser(data.user);
+        try {
+            setIsLoading(true)
+            const data = await signInWithEmailAndPassword(auth, email, password);
+            if (data) {
+                auth.currentUser?.getIdToken().then((token) => {
+                    tokenStorage.save({ [TokenKey.ID_TOKEN]: token });
+                    setIsLoading(false)
+                });
+            }
+        } catch (e) {
+            setIsLoading(false)
+            throw e
         }
     }
-    // Effect
-    useEffect(() => {
-        firebaseUser?.getIdToken().then((token) => {
-            tokenStorage.save({ [TokenKey.ID_TOKEN]: token });
-        });
-    }, [firebaseUser]);
 
     useEffect(() => {
         initializeApp(firebaseConfig);
+        setIsFirebaseLoading(false);
     }, []);
 
     return {
-        isLogged,
-        setIsLogged,
+        isLogged: !isFirebaseLoading && getAuth().currentUser != null,
+        isAuthLoading: isFirebaseLoading,
         isLoading,
         signIn,
     };
