@@ -1,4 +1,4 @@
-import { ProjectDTO } from 'gateways/resource-api/types';
+import { LanguagePagingDTO, ProjectDTO } from 'gateways/resource-api/types';
 import { IDefaultForm, IForm } from 'utils/formik';
 import { IUpdateProjectForm } from './types';
 
@@ -7,11 +7,13 @@ export interface ISettingsProps {
         form: IForm<IUpdateProjectForm> & IDefaultForm,
     ) => void;
     handleOnDeleteProject: () => void;
-    activeProject?: ProjectDTO;
     isLoadingUpdateProject: boolean;
     isLoadingDeleteProject: boolean;
+    projectData?: ProjectDTO;
+    projectLanguages?: LanguagePagingDTO;
 }
 
 export interface ISettingsLogicProps {
-    activeProject?: ProjectDTO;
+    projectData?: ProjectDTO;
+    projectLanguages?: LanguagePagingDTO;
 }

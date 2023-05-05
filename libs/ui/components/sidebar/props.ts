@@ -2,12 +2,11 @@ import {
     OrganisationDTO,
     OrgnanisationPagingDTO,
     ProjectDTO,
-    ProjectPagingDTO,
 } from '../../../gateways/resource-api/types';
 import { IDefaultForm, IForm } from '../../../utils/formik';
-import { SearchBarOption } from '../inputs/searchbar/props';
 import { ICreateOrganisationForm } from './create-organisation-modal/types';
 import { ICreateProjectForm } from './create-project-modal/types';
+import { SearchBarColorOption } from './types';
 
 export interface ISideBarContentProps {
     handleOnCreateProject: (
@@ -23,22 +22,22 @@ export interface ISideBarContentProps {
     organisationUserData?: OrgnanisationPagingDTO;
     setFilterProjectValue: (value: string) => void;
     filterProjectValue: string;
-    activeProject: ProjectDTO;
-    setActiveProject: (value: ProjectDTO) => void;
+    projectData?: ProjectDTO;
     createProjectModalDisclosure: any;
     isDisableOnCloseProjectModal: boolean;
     handleToggleIsOrganisationClicked: () => void;
     handleOnOptionClick: (value: string) => void;
     isOrganisationClicked: boolean;
     setIsOrganisationClicked: (value: boolean) => void;
-    options: SearchBarOption<string>[];
+    options: SearchBarColorOption<string>[];
     activeOptionKey: string;
     isLoadingSearchProject: boolean;
     clearNewRowTerm?: () => void;
     setSearchFilterValue?: (value: string) => void;
     handleOnClickProject: (
-        option: SearchBarOption<string>,
-        activeProject: ProjectDTO,
+        option: SearchBarColorOption<string>,
+        clearNewRowTerm?: () => void,
     ) => void;
+    handleOnUpdateColorProject: (iconColor: string) => void;
 }
 export interface ISidebarLogicProps {}

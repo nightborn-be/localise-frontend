@@ -8,6 +8,7 @@ export const toUpdateProjectDTO = (
     projectName: string,
     sourceLanguage: string,
     targetLanguages: string[],
+    iconColor: string,
 ): UpdateProjectDTO | undefined => {
     const source = languages.find(
         (language) => language.name === sourceLanguage,
@@ -25,7 +26,9 @@ export const toUpdateProjectDTO = (
         name: projectName,
         sourceLanguage: source,
         languages: toUpsertProjectLanguageDTOArray(targets),
+        iconColor: iconColor,
     };
+
     return res;
 };
 

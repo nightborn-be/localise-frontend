@@ -1,5 +1,5 @@
 import React from 'react';
-import { HStack, VStack } from '@chakra-ui/react';
+import { Badge, HStack, VStack } from '@chakra-ui/react';
 import { ITableRowTermProps } from './props';
 import ButtonIcon from '../../../../../inputs/button-icon';
 import { ButtonSize } from '../../../../../inputs/button-icon/types';
@@ -17,12 +17,14 @@ import { TooltipType } from '../../../../tooltip/props';
 
 export default function TableRowTerm({
     term,
+    projectLanguages,
     handleOnSaveTranslations,
     handleOnDeleteTerm,
-    activeProject,
-    clearNewRowTerm,
     isDisabled,
-    isNewRow,
+    isNewTerm = false,
+    isLoadingCreateTerm,
+    isLoadingUpdateTerm,
+    isLoadingDeleteTerm,
 }: ITableRowTermProps) {
     //Attributes
     const {
@@ -33,7 +35,7 @@ export default function TableRowTerm({
         isOpen,
         getSourceLanguage,
         targetLanguagesToDisplayValue,
-    } = useTableRowTermLogic({ term, activeProject });
+    } = useTableRowTermLogic({ term, languages: projectLanguages, isNewTerm });
     const { t } = useTranslation();
 
     //Render
@@ -48,8 +50,8 @@ export default function TableRowTerm({
                 borderTopLeftRadius={'0.5rem'}
                 borderTopRightRadius={'0.5rem'}
                 spacing={0}
-                onClick={isNewRow ? () => {} : toggleIsOpen}
-                cursor={isNewRow ? 'auto' : 'pointer'}
+                onClick={isNewTerm ? () => {} : toggleIsOpen}
+                cursor={isNewTerm ? 'auto' : 'pointer'}
             >
                 <HStack
                     padding='0.5rem 1.25rem'
@@ -100,7 +102,6 @@ export default function TableRowTerm({
                         {targetLanguagesToDisplayValue()}
                     </Text>
                 </HStack>
-
                 <HStack
                     padding='0.5rem 1.25rem'
                     spacing='0.25rem'
@@ -109,6 +110,22 @@ export default function TableRowTerm({
                     alignItems={'center'}
                     justifyContent={'right'}
                 >
+                    {isNewTerm && (
+                        <Badge
+                            mr='0.625rem'
+                            p={'0.25rem'}
+                            pr='0.625rem'
+                            pl='0.625rem'
+                            borderRadius='0.5rem'
+                            colorScheme='purple'
+                            fontSize={'0.625rem'}
+                        >
+                            {t<string>(
+                                tKeys.home.project.tab.glossary.content.table
+                                    .content.row.badge.unsaved,
+                            )}
+                        </Badge>
+                    )}
                     <Tooltip
                         type={TooltipType.DEFAULT}
                         label={t<string>(
@@ -141,7 +158,7 @@ export default function TableRowTerm({
                         gap='0.625rem'
                         backgroundColor={COLORS.White.T500.value}
                         hoverBackgroundColor={COLORS.Stroke.value}
-                        handleOnClick={isNewRow ? toggleIsOpen : () => {}}
+                        handleOnClick={isNewTerm ? toggleIsOpen : () => {}}
                     >
                         <Icon
                             pointerEvents='none'
@@ -154,12 +171,17 @@ export default function TableRowTerm({
             <TermEditContent
                 isOpen={isOpen}
                 translations={translations}
+                projectLanguages={
+                    translations === undefined ? projectLanguages : undefined
+                }
                 form={form}
                 handleOnSaveTranslations={handleOnSaveTranslations}
-                clearNewRowTerm={clearNewRowTerm}
                 updateTranslationsForm={updateTranslationsForm}
                 handleOnDeleteTerm={handleOnDeleteTerm}
                 toggleIsOpen={toggleIsOpen}
+                isLoadingCreateTerm={isLoadingCreateTerm}
+                isLoadingUpdateTerm={isLoadingUpdateTerm}
+                isLoadingDeleteTerm={isLoadingDeleteTerm}
             />
         </VStack>
     );

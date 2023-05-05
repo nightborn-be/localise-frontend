@@ -17,17 +17,18 @@ import SearchBoxSettingSection from './components/search-box-setting-section/ind
 const Settings = ({
     handleOnUpdateProject,
     handleOnDeleteProject,
-    activeProject,
     isLoadingUpdateProject,
     isLoadingDeleteProject,
+    projectData,
+    projectLanguages,
 }: ISettingsProps) => {
     const {
         sourceLanguageActiveKey,
         setSourceLanguageActiveKey,
         filterValue,
         setFilterValue,
-        setActiveKeys,
-        activeKeys,
+        setTargetLanguageChoice,
+        targetLanguageChoice,
         value,
         setValue,
         form,
@@ -44,7 +45,7 @@ const Settings = ({
         sourceLanguageRef,
         targetLanguagesRef,
         optionsSourceLanguage,
-    } = useSettingsLogic({ activeProject });
+    } = useSettingsLogic({ projectData, projectLanguages });
 
     const { t } = useTranslation();
     return (
@@ -70,7 +71,7 @@ const Settings = ({
                     paddingBottom={'37.5rem'}
                 >
                     <InformationSettingSection
-                        projectId={activeProject?.id as string}
+                        projectId={projectData?.id as string}
                         form={form}
                         deleteProjectDisclosure={deleteProjectDisclosure}
                         informationsRef={informationsRef}
@@ -95,7 +96,7 @@ const Settings = ({
                     <VStack w='full' spacing={'0rem'}>
                         <SearchBoxSettingSection
                             targetLanguagesRef={targetLanguagesRef}
-                            activeKeys={activeKeys}
+                            activeKeys={targetLanguageChoice}
                             filter={filter}
                             value={value}
                             onCheck={onCheck}

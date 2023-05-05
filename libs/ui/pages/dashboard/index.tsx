@@ -15,8 +15,6 @@ const Dashboard = () => {
         organisationUserData,
         filterProjectValue,
         setFilterProjectValue,
-        activeProject,
-        setActiveProject,
         createProjectModalDisclosure,
         isDisableOnCloseProjectModal,
         handleToggleIsOrganisationClicked,
@@ -27,6 +25,7 @@ const Dashboard = () => {
         setIsOrganisationClicked,
         handleOnClickProject,
         isLoadingSearchProject,
+        handleOnUpdateColorProject,
     } = useSidebarLogic();
 
     const {} = useDashboardLogic({
@@ -43,8 +42,6 @@ const Dashboard = () => {
                 organisationUserData={organisationUserData}
                 filterProjectValue={filterProjectValue}
                 setFilterProjectValue={setFilterProjectValue}
-                activeProject={activeProject}
-                setActiveProject={setActiveProject}
                 createProjectModalDisclosure={createProjectModalDisclosure}
                 isDisableOnCloseProjectModal={isDisableOnCloseProjectModal}
                 handleToggleIsOrganisationClicked={
@@ -57,6 +54,7 @@ const Dashboard = () => {
                 setIsOrganisationClicked={setIsOrganisationClicked}
                 handleOnClickProject={handleOnClickProject}
                 isLoadingSearchProject={isLoadingSearchProject}
+                handleOnUpdateColorProject={handleOnUpdateColorProject}
             />
         </Page>
     );

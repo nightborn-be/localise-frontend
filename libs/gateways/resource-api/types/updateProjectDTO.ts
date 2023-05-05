@@ -12,6 +12,8 @@ import type { UpsertProjectLanguageDTO } from './upsertProjectLanguageDTO';
 export interface UpdateProjectDTO {
     /** The (unique) name of the project */
     name: string;
+    /** The color of the project */
+    iconColor: string;
     sourceLanguage: UpsertProjectLanguageDTO;
     languages?: UpsertProjectLanguageDTO[];
 }
