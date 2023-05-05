@@ -22,6 +22,7 @@ const SearchBox = <T,>({
     border = `0.0625rem solid ${COLORS.Line.value}`,
     padding = '1.25rem',
     w = '36.875rem',
+    labelFont = FONTS.T1.T14px.Medium500.value,
 }: ISearchBoxProps<T>) => {
     // Render
     return (
@@ -37,10 +38,7 @@ const SearchBox = <T,>({
                 alignItems={'left'}
             >
                 <VStack align={'left'} w={w} spacing='0.25rem'>
-                    <Text
-                        font={FONTS.T1.T14px.Medium500.value}
-                        color={COLORS.Text.T400.value}
-                    >
+                    <Text font={labelFont} color={COLORS.Text.T400.value}>
                         {title}
                     </Text>
                     <Text

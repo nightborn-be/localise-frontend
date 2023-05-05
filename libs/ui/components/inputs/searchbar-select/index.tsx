@@ -23,6 +23,7 @@ const SearchbarSelect = <T,>({
     value,
     name,
     noValueMsg,
+    labelFont = FONTS.T1.T14px.Medium500.value,
     ...props
 }: ISearchbarSelectProps<T>) => {
     // Attributes
@@ -40,7 +41,7 @@ const SearchbarSelect = <T,>({
                         label={label}
                         description={description}
                         labelColor={COLORS.Text.T400.value}
-                        labelFont={FONTS.T1.T14px.Medium500.value}
+                        labelFont={labelFont}
                     />
                 )}
             </VStack>

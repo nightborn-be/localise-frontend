@@ -6,6 +6,7 @@ import COLORS from '../../../../../../constants/colors';
 import SearchbarSelect from '../../../../../../components/inputs/searchbar-select/index';
 import { ISearchBoxSettingSectionProps } from './props';
 import SearchBox from '../../../../../../components/contents/search-box/index';
+import FONTS from '../../../../../../constants/fonts';
 
 export const SearchBoxSettingSection = ({
     targetLanguagesRef,
@@ -48,6 +49,7 @@ export const SearchBoxSettingSection = ({
                 onCheck={onCheck}
                 activeKeys={activeKeys}
                 options={filter(value)}
+                labelFont={FONTS.T1.T16px.SemiBold600.value}
             />
         </Box>
     );
