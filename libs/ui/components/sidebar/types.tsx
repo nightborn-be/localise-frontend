@@ -3,6 +3,7 @@ import {
     OrgnanisationPagingDTO,
     OrganisationDTO,
     ProjectPagingDTO,
+    UserWithMembershipPagingDTO,
 } from '../../../gateways/resource-api/types';
 import { ICreateProjectForm } from './create-project-modal/types';
 import { ICreateOrganisationForm } from './create-organisation-modal/types';
@@ -41,6 +42,7 @@ export interface SidebarLogicType {
     ) => void;
     isLoadingSearchProject: boolean;
     handleOnUpdateColorProject: (iconColor: string) => void;
+    members?: UserWithMembershipPagingDTO;
 }
 
 export type SearchBarColorOption<T> = {

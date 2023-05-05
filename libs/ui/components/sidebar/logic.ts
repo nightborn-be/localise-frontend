@@ -18,6 +18,7 @@ import {
     useCreateOrganisation,
     useGetOrganisation,
     useGetOrganisationsForUser,
+    useGetUsersForOrganisations,
     useSwitchUserOrganisation,
 } from 'gateways/resource-api/organisations/organisations';
 import { useGetMe } from 'gateways/resource-api/users/users';
@@ -28,6 +29,7 @@ import { toCreateOrganisationDTO } from './create-organisation-modal/mappers';
 import { tKeys } from '../../../i18n/keys';
 import { useGetProjectLanguages } from '../../../gateways/resource-api/languages/languages';
 import { toUpdateColorProjectDTO } from './mappers';
+import { getUsersForOrganisations } from '../../../gateways/resource-api/organisations/organisations';
 
 export const useSidebarLogic = (): SidebarLogicType => {
     // Attributes
@@ -48,7 +50,9 @@ export const useSidebarLogic = (): SidebarLogicType => {
     const { mutateAsync: updateProject } = useUpdateProject();
     const { mutateAsync: createOrganisation } = useCreateOrganisation();
     const { mutateAsync: switchUserOrganisation } = useSwitchUserOrganisation();
-    const { data: userData, refetch: refetchUserData } = useGetMe({ query: { retry: 0 } });
+    const { data: userData, refetch: refetchUserData } = useGetMe({
+        query: { retry: 0 },
+    });
     const {
         data: actualOrganisationUser,
         refetch: refetchActualUserOrganisation,
@@ -95,6 +99,8 @@ export const useSidebarLogic = (): SidebarLogicType => {
             },
         },
     );
+
+    const { data: members } = useGetUsersForOrganisations(actualOrganisationUser?.id as string)
 
     const { data: projectData, refetch: refetchProjectData } = useGetProject(
         actualOrganisationUser?.id as string,
@@ -220,6 +226,8 @@ export const useSidebarLogic = (): SidebarLogicType => {
         }
         push(`/dashboard/projects/${option.value}`);
     }
+    console.log(members);
+
     async function handleOnUpdateColorProject(iconColor: string) {
         try {
             await updateProject(
@@ -279,5 +287,6 @@ export const useSidebarLogic = (): SidebarLogicType => {
         handleOnClickProject,
         isLoadingSearchProject,
         handleOnUpdateColorProject,
+        members,
     };
 };

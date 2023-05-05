@@ -20,6 +20,7 @@ const OrganisationSettings = ({
     handleUpdateOrganisation,
     actualOrganisationUser,
     isLoadingUpdateOrganisation,
+    members,
 }: IOrganisationSettingsProps) => {
     const {
         form,
@@ -67,6 +68,7 @@ const OrganisationSettings = ({
                     justifyContent={'left'}
                     spacing='0rem'
                     paddingBottom='37.5rem'
+                    overflowX={'hidden'}
                     overflowY={'scroll'}
                 >
                     <InformationSettingSection
@@ -81,6 +83,7 @@ const OrganisationSettings = ({
                     />
                     <LineSeparation />
                     <MembersSettingSection
+                            members={members}
                         membersRef={membersRef}
                         addMembersDisclosure={addMembersDisclosure}
                     />

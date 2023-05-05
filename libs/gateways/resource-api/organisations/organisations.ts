@@ -14,6 +14,8 @@ import type {
     QueryKey,
 } from '@tanstack/react-query';
 import type {
+    UserWithMembershipPagingDTO,
+    GetUsersForOrganisationsParams,
     OrgnanisationPagingDTO,
     GetOrganisationsForUserParams,
     SwitchUserOrganisationDTO,
@@ -26,6 +28,77 @@ import { customInstance } from '.././config';
 type AwaitedInput<T> = PromiseLike<T> | T;
 
 type Awaited<O> = O extends AwaitedInput<infer T> ? T : never;
+
+/**
+ * Returns the users for an organisation
+ */
+export const getUsersForOrganisations = (
+    organisationId: string,
+    params?: GetUsersForOrganisationsParams,
+    signal?: AbortSignal,
+) => {
+    return customInstance<UserWithMembershipPagingDTO>({
+        url: `/organisations/${organisationId}/users`,
+        method: 'get',
+        params,
+        signal,
+    });
+};
+
+export const getGetUsersForOrganisationsQueryKey = (
+    organisationId: string,
+    params?: GetUsersForOrganisationsParams,
+) =>
+    [
+        `/organisations/${organisationId}/users`,
+        ...(params ? [params] : []),
+    ] as const;
+
+export type GetUsersForOrganisationsQueryResult = NonNullable<
+    Awaited<ReturnType<typeof getUsersForOrganisations>>
+>;
+export type GetUsersForOrganisationsQueryError = unknown;
+
+export const useGetUsersForOrganisations = <
+    TData = Awaited<ReturnType<typeof getUsersForOrganisations>>,
+    TError = unknown,
+>(
+    organisationId: string,
+    params?: GetUsersForOrganisationsParams,
+    options?: {
+        query?: UseQueryOptions<
+            Awaited<ReturnType<typeof getUsersForOrganisations>>,
+            TError,
+            TData
+        >;
+    },
+): UseQueryResult<TData, TError> & { queryKey: QueryKey } => {
+    const { query: queryOptions } = options ?? {};
+
+    const queryKey =
+        queryOptions?.queryKey ??
+        getGetUsersForOrganisationsQueryKey(organisationId, params);
+
+    const queryFn: QueryFunction<
+        Awaited<ReturnType<typeof getUsersForOrganisations>>
+    > = ({ signal }) =>
+        getUsersForOrganisations(organisationId, params, signal);
+
+    const query = useQuery<
+        Awaited<ReturnType<typeof getUsersForOrganisations>>,
+        TError,
+        TData
+    >({
+        queryKey,
+        queryFn,
+        enabled: !!organisationId,
+        ...queryOptions,
+    }) as UseQueryResult<TData, TError> & { queryKey: QueryKey };
+
+    query.queryKey = queryKey;
+
+    return query;
+};
 
 /**
  * Returns the organisations for a user

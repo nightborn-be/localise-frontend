@@ -67,7 +67,7 @@ export const useProjectLogic = ({
         data: projectTerms,
         refetch: refetchProjectTerms,
         isLoading: isLoadingSearchTerms,
-    } = useGetTerms(id as string, { q: searchFilterValue as string });
+    } = useGetTerms(id as string, { q: searchFilterValue as string, size: 100000 });
 
     const { data: projectData, refetch: refetchProjectData } = useGetProject(
         actualOrganisationUser?.id as string,

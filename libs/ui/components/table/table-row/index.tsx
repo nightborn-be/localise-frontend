@@ -13,11 +13,11 @@ export default function TableRow({
     avatarPicture,
     firstName,
     lastName,
+    role,
 }: ITableRowProps) {
     //Attributes
     const [isHovered, setIsHovered] = useState<boolean>(false);
-    const [selectedValue, setSelectedValue] = useState<string>('');
-
+    const [selectedValue, setSelectedValue] = useState<string>(role ?? '');
     //Render
     return (
         <HStack

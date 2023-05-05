@@ -4,6 +4,45 @@ info:
     version: v1
 paths:
     # Organisations
+    /organisations/{organisationId}/users:
+        get:
+            security:
+                - oauth2:
+                      - write:basic
+            description: Returns the users for an organisation
+            tags:
+                - Organisations
+            operationId: GetUsersForOrganisations
+            parameters:
+                - name: organisationId
+                  description: The organisation id
+                  required: true
+                  in: path
+                  schema:
+                      type: string
+                      format: uuid
+                - name: page
+                  in: query
+                  description: The current page
+                  schema:
+                      type: integer
+                - name: size
+                  in: query
+                  description: The current size
+                  schema:
+                      type: integer
+                - name: q
+                  description: The search string
+                  in: query
+                  schema:
+                      type: string
+            responses:
+                "200":
+                    description: Return the organisations for a user
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/UserWithMembershipPagingDTO"
     /users/{userId}/organisations:
         get:
             security:
@@ -978,6 +1017,23 @@ components:
                     type: string
 
         # Users
+        UserWithMembershipDTO:
+            description: A membership with user
+            type: object
+            properties:
+                id:
+                    type: string
+                    format: uuid
+                email:
+                    type: string
+                role:
+                    type: string
+                createdAt:
+                    type: string
+                    format: date-time
+                modifiedAt:
+                    type: string
+                    format: date-time
         UserDTO:
             description: A user
             type: object
@@ -1019,3 +1075,28 @@ components:
                 email:
                     type: string
 
+        UserWithMembershipPagingDTO:
+            type: object
+            description: A paging
+            properties:
+                data:
+                    type: array
+                    description: The users
+                    items:
+                        $ref: "#/components/schemas/UserWithMembershipDTO"
+                nbPages:
+                    type: integer
+                    description: The number of pages
+                    format: int64
+                page:
+                    type: integer
+                    description: The current page
+                    format: int64
+                size:
+                    type: integer
+                    description: The current size
+                    format: int64
+                totalAmount:
+                    type: integer
+                    description: The total amount of users
+                    format: int64
