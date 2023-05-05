@@ -11,6 +11,7 @@ import { strings } from '../../../../utils/strings';
 import { useTranslation } from 'react-i18next';
 import { tKeys } from '../../../../i18n/keys';
 import { useAuth } from '../../../auth';
+import useOnPressKeyEvent from 'utils/pressKeyEvent';
 
 export const useSignUpLogic = (): ISignUpLogicResponse => {
     // Attributes
@@ -18,7 +19,7 @@ export const useSignUpLogic = (): ISignUpLogicResponse => {
     const toast = useToast();
     const { t } = useTranslation();
     const auth = useAuth();
-
+    useOnPressKeyEvent(['Enter', 'NumpadEnter'], handleOnSubmit)
     // Mutations
     const { mutateAsync: createUser, isLoading } = useCreateUser();
 
