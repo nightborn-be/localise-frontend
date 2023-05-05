@@ -1,4 +1,4 @@
-name: STAGING Build and Deploy to App Engine
+name: STAGING Build and Deploy to Cloud Run
 
 on:
     push:
