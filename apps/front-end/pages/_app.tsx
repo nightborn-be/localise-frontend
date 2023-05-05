@@ -42,19 +42,19 @@ function MyApp({ Component, pageProps }: AppProps) {
                     rel='stylesheet'
                 />
             </Head>
-        <main className={inter.className}>
-            <I18nextProvider i18n={getI18nInstance()}>
-                <QueryClientProvider client={queryClient}>
-                    <Middelwares>
-                        <AuthProvider>
-                            <ChakraProvider>
-                                <Component {...pageProps} />
-                            </ChakraProvider>
-                        </AuthProvider>
-                    </Middelwares>
-                </QueryClientProvider>
-            </I18nextProvider>
-        </main>
+            <main className={inter.className}>
+                <I18nextProvider i18n={getI18nInstance()}>
+                    <QueryClientProvider client={queryClient}>
+                        <Middelwares>
+                            <AuthProvider>
+                                <ChakraProvider>
+                                    <Component {...pageProps} />
+                                </ChakraProvider>
+                            </AuthProvider>
+                        </Middelwares>
+                    </QueryClientProvider>
+                </I18nextProvider>
+            </main>
         </>
     );
 }

@@ -188,7 +188,7 @@ export const useSidebarLogic = (): SidebarLogicType => {
                 id: option.value,
                 name: option.label,
             });
-            setFilterProjectValue('')
+            setFilterProjectValue('');
             push(`/dashboard/projects/${option.value}`);
         }
     }

@@ -177,17 +177,18 @@ export const useProjectLogic = ({
     async function handleOnUpdateProject(
         form: IForm<IUpdateProjectForm> & IDefaultForm,
     ) {
-
-        const projectData = toUpdateProjectDTO(form.projectName.value,
+        const projectData = toUpdateProjectDTO(
+            form.projectName.value,
             form.sourceLanguage.value,
-            form.targetLanguages.value,)
+            form.targetLanguages.value,
+        );
 
         if (projectData === undefined) {
             toast({
                 type: ToastType.ERROR,
                 title: t(
-                    tKeys.home.modal.create_project.form
-                        .project_name.form.error,
+                    tKeys.home.modal.create_project.form.project_name.form
+                        .error,
                 ),
                 delay: 5000,
             });

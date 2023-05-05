@@ -6,8 +6,9 @@ import { useRouter } from 'next/router';
 const useResourcesAPIMiddleware = () => {
     // Attributes
     const { push } = useRouter();
-    const [responseInterceptorId, setResponseInterceptorId] =
-        useState<number | undefined>();
+    const [responseInterceptorId, setResponseInterceptorId] = useState<
+        number | undefined
+    >();
 
     // Functions
     // Handle responses from evey request
@@ -31,11 +32,11 @@ const useResourcesAPIMiddleware = () => {
                 if (error.response.status === 401 && !originalConfig._retry) {
                     // Set _retry to true to avoid infinite loop
                     originalConfig._retry = true;
-                    push('/auth')
+                    push('/auth');
                 }
                 if (error.response.status === 500 && !originalConfig._retry) {
                     originalConfig._retry = true;
-                    push('/server-error')
+                    push('/server-error');
                 }
                 // Return the request
                 return axios(originalConfig);
@@ -52,7 +53,9 @@ const useResourcesAPIMiddleware = () => {
         // Clean interceptor handlers
         return () => {
             if (responseInterceptorId) {
-                AXIOS_INSTANCE.interceptors.response.eject(responseInterceptorId);
+                AXIOS_INSTANCE.interceptors.response.eject(
+                    responseInterceptorId,
+                );
             }
         };
     }, []);
