@@ -135,6 +135,8 @@ export default function TableRowTerm({
                         placement={'bottom'}
                     >
                         <ButtonIcon
+                            // not developed for the moment, implement the logic when is developed
+                            display={'none'}
                             aria-label=''
                             borderRadius='0.375rem'
                             size={ButtonSize.SMALL}
