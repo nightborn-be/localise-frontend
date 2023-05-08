@@ -22,6 +22,7 @@ export const InViewLoader = ({ isLoading, onLoad }: IInViewLoaderProps) => {
             w='full'
             justifyContent={'center'}
             alignItems={'center'}
+            paddingBottom={'0.3125rem'}
         >
             {isLoading ? (
                 <Spinner
