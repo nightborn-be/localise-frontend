@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 import useToast from 'ui/components/progress-validation/toast';
 import { useRouter } from 'next/router';
 import { useDisclosure } from '@chakra-ui/react';
-import { OrganisationDTO, ProjectDTO } from 'gateways/resource-api/types';
+import { OrganisationDTO, ProjectDTO, UserWithMembershipPagingDTO } from 'gateways/resource-api/types';
 import {
     useCreateProject,
     useGetProject,
@@ -226,7 +226,6 @@ export const useSidebarLogic = (): SidebarLogicType => {
         }
         push(`/dashboard/projects/${option.value}`);
     }
-    console.log(members);
 
     async function handleOnUpdateColorProject(iconColor: string) {
         try {
@@ -287,6 +286,6 @@ export const useSidebarLogic = (): SidebarLogicType => {
         handleOnClickProject,
         isLoadingSearchProject,
         handleOnUpdateColorProject,
-        members,
+        members: members as UserWithMembershipPagingDTO,
     };
 };

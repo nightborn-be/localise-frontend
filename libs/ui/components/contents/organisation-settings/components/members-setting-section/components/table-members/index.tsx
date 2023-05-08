@@ -19,7 +19,7 @@ const TableMembers = ({ members }: ITableMembersProps) => {
                 thirdColTitle='Role'
             />
             <VStack spacing='0.5rem'>
-                {members?.data?.map((member) => {
+                {members.data?.map((member) => {
                     return (
                         <TableRow
                             avatarPicture='/assets/images/avatar.png'

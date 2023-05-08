@@ -12,7 +12,7 @@ export interface IOrganisationSettingsProps {
     ) => void;
     isLoadingUpdateOrganisation: boolean;
     actualOrganisationUser?: OrganisationDTO;
-    members?: UserWithMembershipPagingDTO;
+    members: UserWithMembershipPagingDTO;
 }
 
 export interface IOrganisationSettingsLogicProps {

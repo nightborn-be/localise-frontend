@@ -42,7 +42,7 @@ export interface SidebarLogicType {
     ) => void;
     isLoadingSearchProject: boolean;
     handleOnUpdateColorProject: (iconColor: string) => void;
-    members?: UserWithMembershipPagingDTO;
+    members: UserWithMembershipPagingDTO;
 }
 
 export type SearchBarColorOption<T> = {
