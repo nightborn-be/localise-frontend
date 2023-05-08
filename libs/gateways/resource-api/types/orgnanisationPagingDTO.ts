@@ -11,13 +11,13 @@ import type { OrganisationDTO } from './organisationDTO';
  */
 export interface OrgnanisationPagingDTO {
     /** The organisations */
-    data?: OrganisationDTO[];
+    data: OrganisationDTO[];
     /** The number of pages */
-    nbPages?: number;
+    nbPages: number;
     /** The current page */
-    page?: number;
+    page: number;
     /** The current size */
-    size?: number;
+    size: number;
     /** The total amount of organisations */
-    totalAmount?: number;
+    totalAmount: number;
 }

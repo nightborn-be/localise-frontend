@@ -19,7 +19,7 @@ export const useSignUpLogic = (): ISignUpLogicResponse => {
     const toast = useToast();
     const { t } = useTranslation();
     const auth = useAuth();
-    useOnPressKeyEvent(['Enter', 'NumpadEnter'], handleOnSubmit)
+    useOnPressKeyEvent(['Enter', 'NumpadEnter'], handleOnSubmit);
     // Mutations
     const { mutateAsync: createUser, isLoading } = useCreateUser();
 

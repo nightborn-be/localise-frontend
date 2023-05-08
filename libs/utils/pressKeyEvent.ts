@@ -1,9 +1,10 @@
 import { useEffect } from 'react';
-export default function useOnPressKeyEvent(keyCode: string[], execute: () => Promise<void> | void) {
+export default function useOnPressKeyEvent(
+    keyCode: string[],
+    execute: () => Promise<void> | void,
+) {
     const handleOnKeyPress = (event: KeyboardEvent) => {
-        if (
-            keyCode.includes(event.code)
-        ) {
+        if (keyCode.includes(event.code)) {
             event.preventDefault();
             execute();
         }
@@ -15,4 +16,4 @@ export default function useOnPressKeyEvent(keyCode: string[], execute: () => Pro
             document.removeEventListener('keydown', handleOnKeyPress);
         };
     }, [handleOnKeyPress]);
-} 
+}

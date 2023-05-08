@@ -7,7 +7,7 @@ import useOnPressKeyEvent from 'utils/pressKeyEvent';
 export const useAddMembersLogic = (): AddMembersLogicType => {
     // Attributes
     const { push } = useRouter();
-    useOnPressKeyEvent(['Enter', 'NumpadEnter'], handleOnSubmit)
+    useOnPressKeyEvent(['Enter', 'NumpadEnter'], handleOnSubmit);
     // Formik
     const { values, ...rest } = useFormik<IAddMembersForm>({
         initialValues: {

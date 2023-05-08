@@ -11,13 +11,13 @@ import type { TermDTO } from './termDTO';
  */
 export interface TermPagingDTO {
     /** The terms */
-    data?: TermDTO[];
+    data: TermDTO[];
     /** The number of pages */
-    nbPages?: number;
+    nbPages: number;
     /** The current page */
-    page?: number;
+    page: number;
     /** The current size */
-    size?: number;
+    size: number;
     /** The total amount of terms */
-    totalAmount?: number;
+    totalAmount: number;
 }

@@ -10,7 +10,7 @@ export const useOrganisationLogic = (): OrganisationLogicResponse => {
     // Attributes
     const { push } = useRouter();
     const { t } = useTranslation();
-    useOnPressKeyEvent(['Enter', 'NumpadEnter'], handleOnSubmit)
+    useOnPressKeyEvent(['Enter', 'NumpadEnter'], handleOnSubmit);
     // Formik
     const { values, ...rest } = useFormik<IOrganisationForm>({
         initialValues: {

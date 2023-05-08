@@ -16,7 +16,7 @@ export const useSignInLogic = ({
     const { push } = useRouter();
     const { t } = useTranslation();
     const auth = useAuth();
-    useOnPressKeyEvent(['Enter', 'NumpadEnter'], handleOnSubmit)
+    useOnPressKeyEvent(['Enter', 'NumpadEnter'], handleOnSubmit);
 
     // Formik
     const { values, ...rest } = useFormik<ISignInFormik>({
@@ -30,7 +30,6 @@ export const useSignInLogic = ({
     });
     const form = createForm(values, rest);
     const { dirty, setFieldError } = rest;
-
 
     // Functions
     async function handleOnSubmit(): Promise<void> {

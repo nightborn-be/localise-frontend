@@ -16,7 +16,7 @@ export const usePictureLogic = (): PictureLogicType => {
     const [pictureBinary, setPictureBinary] = useState<
         string | ArrayBuffer | null
     >();
-    useOnPressKeyEvent(['Enter', 'NumpadEnter'], handleOnContinue)
+    useOnPressKeyEvent(['Enter', 'NumpadEnter'], handleOnContinue);
 
     // Mutations
     const { mutateAsync: createOrganisation, isLoading } =
