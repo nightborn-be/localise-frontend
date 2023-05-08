@@ -7,6 +7,7 @@ import validationSchema from './validations';
 import { useAuth } from '../../../auth/index';
 import { tKeys } from '../../../../i18n/keys';
 import { ISignInPageLogicProps } from './props';
+import useOnPressKeyEvent from 'utils/pressKeyEvent';
 
 export const useSignInLogic = ({
     redirectUrl,
@@ -15,6 +16,7 @@ export const useSignInLogic = ({
     const { push } = useRouter();
     const { t } = useTranslation();
     const auth = useAuth();
+    useOnPressKeyEvent(['Enter', 'NumpadEnter'], handleOnSubmit);
 
     // Formik
     const { values, ...rest } = useFormik<ISignInFormik>({
