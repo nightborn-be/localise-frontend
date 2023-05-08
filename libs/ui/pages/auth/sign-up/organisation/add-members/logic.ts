@@ -3,10 +3,11 @@ import { AddMembersLogicType, IAddMembersForm, IMembersType } from './types';
 import { useFormik } from 'formik';
 import { createForm } from 'utils/formik';
 import { v4 as uuidv4 } from 'uuid';
+import useOnPressKeyEvent from 'utils/pressKeyEvent';
 export const useAddMembersLogic = (): AddMembersLogicType => {
     // Attributes
     const { push } = useRouter();
-
+    useOnPressKeyEvent(['Enter', 'NumpadEnter'], handleOnSubmit)
     // Formik
     const { values, ...rest } = useFormik<IAddMembersForm>({
         initialValues: {
