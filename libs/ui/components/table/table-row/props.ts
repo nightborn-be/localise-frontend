@@ -2,5 +2,5 @@ export default interface ITableRowProps {
     avatarPicture: string;
     firstName: string;
     lastName: string;
-    role?: string;
+    role: string;
 }

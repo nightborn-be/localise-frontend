@@ -18,18 +18,20 @@ const TableMembers = ({ members }: ITableMembersProps) => {
                 secondColTitle='Name'
                 thirdColTitle='Role'
             />
-            <VStack spacing='0.5rem'>
-                {members.data?.map((member) => {
-                    return (
-                        <TableRow
-                            avatarPicture='/assets/images/avatar.png'
-                            firstName={member.email as string}
-                            lastName={''}
-                            role={member.role as string}
-                        />
-                    );
-                })}
-            </VStack>
+            {members && (
+                <VStack spacing='0.5rem'>
+                    {members.data?.map((member) => {
+                        return (
+                            <TableRow
+                                avatarPicture=''
+                                firstName={member.email as string}
+                                lastName={''}
+                                role={member.role as string}
+                            />
+                        );
+                    })}
+                </VStack>
+            )}
         </VStack>
     );
 };

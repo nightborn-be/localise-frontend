@@ -83,7 +83,7 @@ const OrganisationSettings = ({
                     />
                     <LineSeparation />
                     <MembersSettingSection
-                            members={members}
+                        members={members}
                         membersRef={membersRef}
                         addMembersDisclosure={addMembersDisclosure}
                     />

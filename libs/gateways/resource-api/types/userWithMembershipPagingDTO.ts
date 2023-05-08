@@ -11,13 +11,13 @@ import type { UserWithMembershipDTO } from './userWithMembershipDTO';
  */
 export interface UserWithMembershipPagingDTO {
     /** The users */
-    data?: UserWithMembershipDTO[];
+    data: UserWithMembershipDTO[];
     /** The number of pages */
-    nbPages?: number;
+    nbPages: number;
     /** The current page */
-    page?: number;
+    page: number;
     /** The current size */
-    size?: number;
+    size: number;
     /** The total amount of users */
-    totalAmount?: number;
+    totalAmount: number;
 }

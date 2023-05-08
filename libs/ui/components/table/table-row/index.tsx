@@ -17,7 +17,7 @@ export default function TableRow({
 }: ITableRowProps) {
     //Attributes
     const [isHovered, setIsHovered] = useState<boolean>(false);
-    const [selectedValue, setSelectedValue] = useState<string>(role ?? '');
+    const [selectedValue, setSelectedValue] = useState<string>(role);
     //Render
     return (
         <HStack
@@ -39,7 +39,10 @@ export default function TableRow({
                 justifyContent={'right'}
             >
                 <Avatar
-                    name={firstName?.charAt(0) + lastName?.charAt(0)}
+                    name={
+                        firstName?.charAt(0).toUpperCase() +
+                        lastName?.charAt(0).toUpperCase()
+                    }
                     imageSrc={avatarPicture}
                 />
             </HStack>

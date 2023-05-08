@@ -1108,6 +1108,12 @@ components:
         UserWithMembershipPagingDTO:
             type: object
             description: A paging
+            required:
+                - data
+                - page
+                - size
+                - nbPages
+                - totalAmount  
             properties:
                 data:
                     type: array

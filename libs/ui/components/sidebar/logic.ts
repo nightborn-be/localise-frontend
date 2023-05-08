@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { SearchBarOption } from '../inputs/searchbar/props';
 import { SearchBarColorOption, SidebarLogicType } from './types';
 import { IDefaultForm, IForm } from 'utils/formik';
@@ -7,7 +7,11 @@ import { useTranslation } from 'react-i18next';
 import useToast from 'ui/components/progress-validation/toast';
 import { useRouter } from 'next/router';
 import { useDisclosure } from '@chakra-ui/react';
-import { OrganisationDTO, ProjectDTO, UserWithMembershipPagingDTO } from 'gateways/resource-api/types';
+import {
+    OrganisationDTO,
+    ProjectDTO,
+    UserWithMembershipPagingDTO,
+} from 'gateways/resource-api/types';
 import {
     useCreateProject,
     useGetProject,
@@ -29,7 +33,6 @@ import { toCreateOrganisationDTO } from './create-organisation-modal/mappers';
 import { tKeys } from '../../../i18n/keys';
 import { useGetProjectLanguages } from '../../../gateways/resource-api/languages/languages';
 import { toUpdateColorProjectDTO } from './mappers';
-import { getUsersForOrganisations } from '../../../gateways/resource-api/organisations/organisations';
 
 export const useSidebarLogic = (): SidebarLogicType => {
     // Attributes
@@ -100,7 +103,9 @@ export const useSidebarLogic = (): SidebarLogicType => {
         },
     );
 
-    const { data: members } = useGetUsersForOrganisations(actualOrganisationUser?.id as string)
+    const { data: members } = useGetUsersForOrganisations(
+        actualOrganisationUser?.id as string,
+    );
 
     const { data: projectData, refetch: refetchProjectData } = useGetProject(
         actualOrganisationUser?.id as string,
