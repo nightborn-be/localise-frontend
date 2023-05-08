@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { HStack } from '@chakra-ui/react';
-import COLORS from '../../../constants/colors';
-import Text from '../../contents/text';
-import FONTS from '../../../constants/fonts';
+import COLORS from '../../../../../../../constants/colors';
+import Text from '../../../../../text';
+import FONTS from '../../../../../../../constants/fonts';
 import ITableRowProps from './props';
-import ButtonIcon from '../../inputs/button-icon';
-import Icon from '../../contents/icon';
-import { ButtonSize } from '../../inputs/button-icon/types';
-import Avatar from '../../contents/avatar';
-import Role from '../../contents/role';
-export default function TableRow({
+import ButtonIcon from '../../../../../../inputs/button-icon';
+import Icon from '../../../../../icon';
+import { ButtonSize } from '../../../../../../inputs/button-icon/types';
+import Avatar from '../../../../../avatar';
+import Role from '../../../../../role/index';
+export default function TableRowMember({
     avatarPicture,
     firstName,
     lastName,

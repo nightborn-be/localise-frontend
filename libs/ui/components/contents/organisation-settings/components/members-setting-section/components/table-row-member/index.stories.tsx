@@ -1,7 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import Input from '.';
 import React from 'react';
-import Icon from '../../contents/icon';
 import TableRow from '.';
 import ITableRowProps from './props';
 
