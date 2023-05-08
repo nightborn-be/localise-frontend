@@ -4,12 +4,13 @@ import { useRouter } from 'next/router';
 import { createForm } from '../../../../../utils/formik';
 import validationSchema from './validation';
 import { useTranslation } from 'react-i18next';
+import useOnPressKeyEvent from 'utils/pressKeyEvent';
 
 export const useOrganisationLogic = (): OrganisationLogicResponse => {
     // Attributes
     const { push } = useRouter();
     const { t } = useTranslation();
-
+    useOnPressKeyEvent(['Enter', 'NumpadEnter'], handleOnSubmit);
     // Formik
     const { values, ...rest } = useFormik<IOrganisationForm>({
         initialValues: {

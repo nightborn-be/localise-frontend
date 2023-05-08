@@ -411,7 +411,7 @@ paths:
             description: Returns the terms of a project
             tags:
                 - Terms
-            operationId: GetTerms
+            operationId: GetTerms        
             parameters:
                 - name: projectId
                   description: The project id
@@ -675,6 +675,12 @@ components:
         OrgnanisationPagingDTO:
             type: object
             description: A paging
+            required:
+                - data
+                - page
+                - size
+                - nbPages
+                - totalAmount 
             properties:
                 data:
                     type: array
@@ -754,6 +760,12 @@ components:
         ProjectPagingDTO:
             type: object
             description: A paging
+            required:
+                - data
+                - page
+                - size
+                - nbPages
+                - totalAmount  
             properties:
                 data:
                     type: array
@@ -854,6 +866,12 @@ components:
         LanguagePagingDTO:
             type: object
             description: A paging
+            required:
+                - data
+                - page
+                - size
+                - nbPages
+                - totalAmount  
             properties:
                 data:
                     type: array
@@ -902,6 +920,12 @@ components:
         TermPagingDTO:
             type: object
             description: A paging
+            required:
+                - data
+                - page
+                - size
+                - nbPages
+                - totalAmount    
             properties:
                 data:
                     type: array
@@ -986,6 +1010,12 @@ components:
         TranslationWithMetaPagingDTO:
             type: object
             description: A paging
+            required:
+                - data
+                - page
+                - size
+                - nbPages
+                - totalAmount  
             properties:
                 data:
                     type: array

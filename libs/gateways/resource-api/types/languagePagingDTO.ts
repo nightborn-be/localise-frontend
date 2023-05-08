@@ -11,13 +11,13 @@ import type { LanguageDTO } from './languageDTO';
  */
 export interface LanguagePagingDTO {
     /** The languages */
-    data?: LanguageDTO[];
+    data: LanguageDTO[];
     /** The number of pages */
-    nbPages?: number;
+    nbPages: number;
     /** The current page */
-    page?: number;
+    page: number;
     /** The current size */
-    size?: number;
+    size: number;
     /** The total amount of languages */
-    totalAmount?: number;
+    totalAmount: number;
 }

@@ -6,6 +6,7 @@ import { toCreateOrganisationDTO } from '../../../../../components/sidebar/creat
 import useToast from '../../../../../components/progress-validation/toast';
 import { ToastType } from '../../../../../components/progress-validation/toast/types';
 import { AxiosError } from 'axios';
+import useOnPressKeyEvent from 'utils/pressKeyEvent';
 
 export const usePictureLogic = (): PictureLogicType => {
     // Attributes
@@ -15,6 +16,7 @@ export const usePictureLogic = (): PictureLogicType => {
     const [pictureBinary, setPictureBinary] = useState<
         string | ArrayBuffer | null
     >();
+    useOnPressKeyEvent(['Enter', 'NumpadEnter'], handleOnContinue);
 
     // Mutations
     const { mutateAsync: createOrganisation, isLoading } =
