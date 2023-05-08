@@ -2,13 +2,13 @@ import { useMemo } from 'react';
 import {
     IInfinitePagingProps,
     InfinitePagingResponse,
-    Pagination,
 } from './props';
 import {
     FetchNextPageOptions,
     FetchPreviousPageOptions,
     InfiniteQueryObserverResult,
 } from '@tanstack/react-query';
+import { TermPagingDTO } from 'gateways/resource-api/types';
 
 /**
  * Orval configuration needed
@@ -20,42 +20,41 @@ export const useInfinitePaging = <T extends object>({
     pathParams = [],
     queryParams = {},
     options,
-}: IInfinitePagingProps<T>): InfinitePagingResponse<T> => {
+}: IInfinitePagingProps<TermPagingDTO>): InfinitePagingResponse<TermPagingDTO> => {
     // Attributes
     const query = useQueryFn(...pathParams, queryParams, {
         query: {
-            getNextPageParam: (lastPage: Pagination<T[]>) => {
+            getNextPageParam: (lastPage: TermPagingDTO) => {
                 // Check has next page
-                if (lastPage.schema.page + 1 > lastPage.schema.nbPages) {
+                if (!lastPage.page || !lastPage.nbPages) {
+                    return undefined
+                }
+                if (lastPage.page + 1 > lastPage.nbPages) {
                     return undefined;
                 }
 
-                return lastPage.schema.page + 1;
+                return lastPage.page + 1;
             },
             ...options?.query,
         },
     });
 
     // Set pagination attributes
-    const paginationData = useMemo(() => {
-        const data = query.data?.pages?.flatMap(
-            (page: Pagination<T[]>) => page.schema.data,
-        );
-        const lastPage = query.data?.pages?.at(-1)?.schema;
-
-        return {
-            data,
-            nbPages: lastPage?.nbPages,
-            page: lastPage?.page,
-            size: lastPage?.size,
-        };
-    }, [query.data?.pages]);
+    // const paginationData = useMemo((): TermPagingDTO => {
+    //     console.log(query);
+    //     return {
+    //         data: lastPage?.data,
+    //         nbPages: lastPage?.nbPages,
+    //         page: lastPage?.page,
+    //         size: lastPage?.size,
+    //     };
+    // }, [query.data?.pages]);
 
     // Functions
     async function fetchNextPage(
         options?: FetchNextPageOptions | undefined,
     ): Promise<
-        InfiniteQueryObserverResult<Pagination<T[]>, unknown> | undefined
+        InfiniteQueryObserverResult<TermPagingDTO, unknown> | undefined
     > {
         if (!query.hasNextPage) {
             return;
@@ -67,7 +66,7 @@ export const useInfinitePaging = <T extends object>({
     async function fetchPreviousPage(
         options?: FetchPreviousPageOptions | undefined,
     ): Promise<
-        InfiniteQueryObserverResult<Pagination<T[]>, unknown> | undefined
+        InfiniteQueryObserverResult<TermPagingDTO, unknown> | undefined
     > {
         if (!query.hasPreviousPage) {
             return;
@@ -78,7 +77,6 @@ export const useInfinitePaging = <T extends object>({
 
     return {
         ...query,
-        ...paginationData,
         fetchNextPage,
         fetchPreviousPage,
     };

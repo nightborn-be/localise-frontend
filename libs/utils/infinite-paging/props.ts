@@ -6,15 +6,13 @@ import {
     UseInfiniteQueryOptions,
     UseInfiniteQueryResult,
 } from '@tanstack/react-query';
+import { TermDTO, TermPagingDTO } from 'gateways/resource-api/types';
 
-export type Pagination<T extends object> = {
-    schema: any & { data: T };
-};
+
 
 export interface IInfinitePagingProps<T extends object> {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     useQueryFn: (...params: any) => UseInfiniteQueryResult<
-        Pagination<T[]>,
+        TermPagingDTO,
         unknown
     > & {
         queryKey: QueryKey;
@@ -24,10 +22,10 @@ export interface IInfinitePagingProps<T extends object> {
     options?: {
         query?:
         | UseInfiniteQueryOptions<
-            Pagination<T[]>,
+            TermPagingDTO,
             unknown,
-            Pagination<T[]>,
-            Pagination<T[]>,
+            TermPagingDTO,
+            TermPagingDTO,
             QueryKey
         >
         | undefined;
@@ -35,23 +33,24 @@ export interface IInfinitePagingProps<T extends object> {
 }
 
 export type InfinitePagingResponse<T extends object> = Omit<
-    UseInfiniteQueryResult<Pagination<T[]>, unknown>,
+    UseInfiniteQueryResult<TermPagingDTO, unknown>,
     'data' | 'fetchNextPage' | 'fetchPreviousPage'
 > & {
     queryKey: QueryKey;
 } & {
-    data: T[] | undefined;
-    nbPages: number | undefined;
-    page: number | undefined;
-    size: number | undefined;
     fetchNextPage: (
         options?: FetchNextPageOptions | undefined,
     ) => Promise<
-        InfiniteQueryObserverResult<Pagination<T[]>, unknown> | undefined
+        InfiniteQueryObserverResult<TermPagingDTO, unknown> | undefined
     >;
     fetchPreviousPage: (
         options?: FetchPreviousPageOptions | undefined,
     ) => Promise<
-        InfiniteQueryObserverResult<Pagination<T[]>, unknown> | undefined
+        InfiniteQueryObserverResult<TermPagingDTO, unknown> | undefined
     >;
 };
+
+export interface IInViewLoaderProps {
+    isLoading: boolean;
+    onLoad: () => void;
+}

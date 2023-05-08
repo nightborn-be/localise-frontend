@@ -4,7 +4,7 @@
  * Localize Backend API
  * OpenAPI spec version: v1
  */
-import { useQuery, useMutation } from '@tanstack/react-query';
+import { useQuery, useMutation, UseInfiniteQueryResult } from '@tanstack/react-query';
 import type {
     UseQueryOptions,
     UseMutationOptions,
@@ -65,7 +65,7 @@ export const useGetTerms = <
             TData
         >;
     },
-): UseQueryResult<TData, TError> & { queryKey: QueryKey } => {
+): UseInfiniteQueryResult<TData, TError> & { queryKey: QueryKey } => {
     const { query: queryOptions } = options ?? {};
 
     const queryKey =
@@ -77,7 +77,7 @@ export const useGetTerms = <
 
     const query = useQuery<Awaited<ReturnType<typeof getTerms>>, TError, TData>(
         { queryKey, queryFn, enabled: !!projectId, ...queryOptions },
-    ) as UseQueryResult<TData, TError> & { queryKey: QueryKey };
+    ) as UseInfiniteQueryResult<TData, TError> & { queryKey: QueryKey };
 
     query.queryKey = queryKey;
 

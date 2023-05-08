@@ -11,7 +11,7 @@ import {
     useGetTerms,
     useUpdateTerm,
 } from 'gateways/resource-api/terms/terms';
-import { TermDTO } from 'gateways/resource-api/types';
+import { TermDTO, TermPagingDTO } from 'gateways/resource-api/types';
 import { AxiosError } from 'axios';
 import { useTranslation } from 'react-i18next';
 import { IDefaultForm, IForm } from 'utils/formik';
@@ -64,11 +64,11 @@ export const useProjectLogic = ({
     const { mutateAsync: deleteTerm, isLoading: isLoadingDeleteTerm } =
         useDeleteTerm();
     const { mutateAsync: saveTranslation } = useSaveTranslation();
-    const {
-        data: projectTerms,
-        refetch: refetchProjectTerms,
-        isLoading: isLoadingSearchTerms,
-    } = useGetTerms(id as string, { q: searchFilterValue as string });
+    // const {
+    //     data: projectTerms,
+    //     refetch: refetchProjectTerms,
+    //     isLoading: isLoadingSearchTerms,
+    // } = useGetTerms(id as string, { q: searchFilterValue as string, });
 
     const { data: projectData, refetch: refetchProjectData } = useGetProject(
         actualOrganisationUser?.id as string,
@@ -78,16 +78,21 @@ export const useProjectLogic = ({
         useGetProjectLanguages(id as string);
 
     const {
-        data: productsData,
-        isLoading: isProductsLoading,
-        refetch: refetchProducts,
-        fetchNextPage: onFetchProductsNextPage,
-        isFetchingNextPage: isFetchingProductsNextPage,
-    } = useInfinitePaging({
-        useQueryFn: useGetTerms(id as string,
-            { q: searchFilterValue as string }),
+        data: projectTerms,
+        isLoading: isLoadingSearchTerms,
+        refetch: refetchProjectTerms,
+        fetchNextPage: onFetchProjectTermNextPage,
+        isFetchingNextPage: isFetchingProjectTermsNextPage,
+    } = useInfinitePaging<TermPagingDTO>({
+        useQueryFn: useGetTerms,
         pathParams: [id as string],
     });
+
+    function onFetchProjectTermsNextPage() {
+        onFetchProjectTermNextPage();
+        console.log(projectTerms);
+
+    }
     // Functions
     async function handleOnDeleteTerm(termId: string) {
         try {
@@ -312,5 +317,7 @@ export const useProjectLogic = ({
         isLoadingCreateTerm,
         isLoadingUpdateTerm,
         isLoadingDeleteTerm,
+        onFetchProjectTermsNextPage,
+        isFetchingProjectTermsNextPage
     };
 };

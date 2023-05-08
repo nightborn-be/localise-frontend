@@ -18,6 +18,7 @@ import Tooltip from '../../tooltip';
 import { TooltipType } from '../../tooltip/props';
 import Text from '../../text';
 import MissingTerms from './components/missing-terms';
+import { InViewLoader } from 'utils/infinite-paging/in-view-loader';
 
 export const Glossary = ({
     projectTerms,
@@ -38,6 +39,8 @@ export const Glossary = ({
     isLoadingCreateTerm,
     isLoadingUpdateTerm,
     isLoadingDeleteTerm,
+    isFetchingProjectTermsNextPage,
+    onFetchProjectTermsNextPage,
 }: IGlossaryProps) => {
     // Attributes
     const { tableRef } = useGlossaryLogic({ addNewRowTerm });
@@ -221,6 +224,10 @@ export const Glossary = ({
                             </ButtonIcon>
                         </Tooltip>
                     </HStack>
+                    <InViewLoader
+                        isLoading={isFetchingProjectTermsNextPage}
+                        onLoad={onFetchProjectTermsNextPage}
+                    />
                 </VStack>
             ) : (
                 <MissingTerms addNewRowTerm={addNewRowTerm} />
