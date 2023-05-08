@@ -149,7 +149,7 @@ export const useProjectLogic = ({
         await Promise.all(
             form.translations.value.map((elt: IEditInputForm) =>
                 saveTranslation({
-                    termId: form.isNewTerm ? (termId as string) : elt.termId,
+                    termId: form.isNewTerm?.value === true ? (termId as string) : elt.termId,
                     languageId: elt.languageId,
                     data: { translation: elt.translation },
                 }),
