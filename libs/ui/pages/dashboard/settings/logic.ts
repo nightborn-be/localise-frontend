@@ -25,7 +25,9 @@ export const useOrganisationSettingsPageLogic =
             mutateAsync: updateOrganisation,
             isLoading: isLoadingUpdateOrganisation,
         } = useUpdateOrganisation();
-        const { data: userData, refetch: refetchUserData } = useGetMe({ query: { retry: 0 } });
+        const { data: userData, refetch: refetchUserData } = useGetMe({
+            query: { retry: 0 },
+        });
         const {
             data: actualOrganisationUser,
             refetch: refetchActualUserOrganisation,

@@ -4,13 +4,15 @@
  * Localize Backend API
  * OpenAPI spec version: v1
  */
-import { useQuery, useMutation } from '@tanstack/react-query';
+import { useQuery, useInfiniteQuery, useMutation } from '@tanstack/react-query';
 import type {
     UseQueryOptions,
+    UseInfiniteQueryOptions,
     UseMutationOptions,
     QueryFunction,
     MutationFunction,
     UseQueryResult,
+    UseInfiniteQueryResult,
     QueryKey,
 } from '@tanstack/react-query';
 import type { UserDTO, CreateUserDTO, MeDTO } from '.././types';
@@ -72,6 +74,43 @@ export const getMe = (signal?: AbortSignal) => {
 };
 
 export const getGetMeQueryKey = () => [`/me`] as const;
+
+export type GetMeInfiniteQueryResult = NonNullable<
+    Awaited<ReturnType<typeof getMe>>
+>;
+export type GetMeInfiniteQueryError = unknown;
+
+export const useGetMeInfinite = <
+    TData = Awaited<ReturnType<typeof getMe>>,
+    TError = unknown,
+>(options?: {
+    query?: UseInfiniteQueryOptions<
+        Awaited<ReturnType<typeof getMe>>,
+        TError,
+        TData
+    >;
+}): UseInfiniteQueryResult<TData, TError> & { queryKey: QueryKey } => {
+    const { query: queryOptions } = options ?? {};
+
+    const queryKey = queryOptions?.queryKey ?? getGetMeQueryKey();
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof getMe>>> = ({
+        signal,
+    }) => getMe(signal);
+
+    const query = useInfiniteQuery<
+        Awaited<ReturnType<typeof getMe>>,
+        TError,
+        TData
+    >({ queryKey, queryFn, ...queryOptions }) as UseInfiniteQueryResult<
+        TData,
+        TError
+    > & { queryKey: QueryKey };
+
+    query.queryKey = queryKey;
+
+    return query;
+};
 
 export type GetMeQueryResult = NonNullable<Awaited<ReturnType<typeof getMe>>>;
 export type GetMeQueryError = unknown;

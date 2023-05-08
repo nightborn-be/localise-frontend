@@ -2,17 +2,14 @@ import {
     LanguagePagingDTO,
     ProjectDTO,
     TermDTO,
-    TermPagingDTO,
 } from 'gateways/resource-api/types';
 import { IDefaultForm, IForm } from 'utils/formik';
 import { ITableRowTermForm } from '../../../../components/contents/project/glossary/components/table-row-term/types';
 import { IUpdateProjectForm } from '../../../../components/contents/project/settings/types';
-
-import { FetchNextPageOptions, InfiniteQueryObserverResult } from '@tanstack/react-query';
 export interface ProjectLogicType {
     activeKey?: React.Key;
     setActiveKey: (value?: React.Key) => void;
-    projectTerms?: TermPagingDTO;
+    projectTerms?: TermDTO[];
     handleOnSaveTranslations: (
         form: IForm<ITableRowTermForm> & IDefaultForm,
     ) => void;
@@ -40,6 +37,6 @@ export interface ProjectLogicType {
     isLoadingCreateTerm: boolean;
     isLoadingUpdateTerm: boolean;
     isLoadingDeleteTerm: boolean;
-    onFetchProjectTermsNextPage: () => void
+    onFetchProjectTermsNextPage: () => void;
     isFetchingProjectTermsNextPage: boolean;
 }

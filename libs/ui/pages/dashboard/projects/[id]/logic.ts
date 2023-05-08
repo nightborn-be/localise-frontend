@@ -8,10 +8,10 @@ import {
 import {
     useCreateTerm,
     useDeleteTerm,
-    useGetTerms,
+    useGetTermsInfinite,
     useUpdateTerm,
 } from 'gateways/resource-api/terms/terms';
-import { TermDTO, TermPagingDTO } from 'gateways/resource-api/types';
+import { TermDTO } from 'gateways/resource-api/types';
 import { AxiosError } from 'axios';
 import { useTranslation } from 'react-i18next';
 import { IDefaultForm, IForm } from 'utils/formik';
@@ -64,11 +64,6 @@ export const useProjectLogic = ({
     const { mutateAsync: deleteTerm, isLoading: isLoadingDeleteTerm } =
         useDeleteTerm();
     const { mutateAsync: saveTranslation } = useSaveTranslation();
-    // const {
-    //     data: projectTerms,
-    //     refetch: refetchProjectTerms,
-    //     isLoading: isLoadingSearchTerms,
-    // } = useGetTerms(id as string, { q: searchFilterValue as string, });
 
     const { data: projectData, refetch: refetchProjectData } = useGetProject(
         actualOrganisationUser?.id as string,
@@ -81,18 +76,14 @@ export const useProjectLogic = ({
         data: projectTerms,
         isLoading: isLoadingSearchTerms,
         refetch: refetchProjectTerms,
-        fetchNextPage: onFetchProjectTermNextPage,
+        fetchNextPage: onFetchProjectTermsNextPage,
         isFetchingNextPage: isFetchingProjectTermsNextPage,
-    } = useInfinitePaging<TermPagingDTO>({
-        useQueryFn: useGetTerms,
+    } = useInfinitePaging<TermDTO>({
+        useQueryFn: useGetTermsInfinite,
         pathParams: [id as string],
+        queryParams: { q: searchFilterValue },
     });
 
-    function onFetchProjectTermsNextPage() {
-        onFetchProjectTermNextPage();
-        console.log(projectTerms);
-
-    }
     // Functions
     async function handleOnDeleteTerm(termId: string) {
         try {
@@ -318,6 +309,6 @@ export const useProjectLogic = ({
         isLoadingUpdateTerm,
         isLoadingDeleteTerm,
         onFetchProjectTermsNextPage,
-        isFetchingProjectTermsNextPage
+        isFetchingProjectTermsNextPage,
     };
 };

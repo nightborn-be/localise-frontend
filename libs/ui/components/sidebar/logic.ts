@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { SearchBarOption } from '../inputs/searchbar/props';
 import { SearchBarColorOption, SidebarLogicType } from './types';
 import { IDefaultForm, IForm } from 'utils/formik';
@@ -48,7 +48,9 @@ export const useSidebarLogic = (): SidebarLogicType => {
     const { mutateAsync: updateProject } = useUpdateProject();
     const { mutateAsync: createOrganisation } = useCreateOrganisation();
     const { mutateAsync: switchUserOrganisation } = useSwitchUserOrganisation();
-    const { data: userData, refetch: refetchUserData } = useGetMe({ query: { retry: 0 } });
+    const { data: userData, refetch: refetchUserData } = useGetMe({
+        query: { retry: 0 },
+    });
     const {
         data: actualOrganisationUser,
         refetch: refetchActualUserOrganisation,

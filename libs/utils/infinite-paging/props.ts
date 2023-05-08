@@ -6,13 +6,21 @@ import {
     UseInfiniteQueryOptions,
     UseInfiniteQueryResult,
 } from '@tanstack/react-query';
-import { TermDTO, TermPagingDTO } from 'gateways/resource-api/types';
-
-
+export type Pagination<T extends object> = {
+    data: T;
+    /** The number of pages */
+    nbPages: number;
+    /** The current page */
+    page: number;
+    /** The current size */
+    size: number;
+    /** The total amount of terms */
+    totalAmount: number;
+};
 
 export interface IInfinitePagingProps<T extends object> {
     useQueryFn: (...params: any) => UseInfiniteQueryResult<
-        TermPagingDTO,
+        Pagination<T[]>,
         unknown
     > & {
         queryKey: QueryKey;
@@ -22,31 +30,35 @@ export interface IInfinitePagingProps<T extends object> {
     options?: {
         query?:
         | UseInfiniteQueryOptions<
-            TermPagingDTO,
-            unknown,
-            TermPagingDTO,
-            TermPagingDTO,
-            QueryKey
-        >
+                Pagination<T[]>,
+                unknown,
+                Pagination<T[]>,
+                Pagination<T[]>,
+                QueryKey
+            >
         | undefined;
     };
 }
 
 export type InfinitePagingResponse<T extends object> = Omit<
-    UseInfiniteQueryResult<TermPagingDTO, unknown>,
+    UseInfiniteQueryResult<Pagination<T[]>, unknown>,
     'data' | 'fetchNextPage' | 'fetchPreviousPage'
 > & {
     queryKey: QueryKey;
 } & {
+    data: T[] | undefined;
+    nbPages: number | undefined;
+    page: number | undefined;
+    size: number | undefined;
     fetchNextPage: (
         options?: FetchNextPageOptions | undefined,
     ) => Promise<
-        InfiniteQueryObserverResult<TermPagingDTO, unknown> | undefined
+        InfiniteQueryObserverResult<Pagination<T[]>, unknown> | undefined
     >;
     fetchPreviousPage: (
         options?: FetchPreviousPageOptions | undefined,
     ) => Promise<
-        InfiniteQueryObserverResult<TermPagingDTO, unknown> | undefined
+        InfiniteQueryObserverResult<Pagination<T[]>, unknown> | undefined
     >;
 };
 

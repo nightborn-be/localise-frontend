@@ -4,13 +4,15 @@
  * Localize Backend API
  * OpenAPI spec version: v1
  */
-import { useQuery, useMutation } from '@tanstack/react-query';
+import { useQuery, useInfiniteQuery, useMutation } from '@tanstack/react-query';
 import type {
     UseQueryOptions,
+    UseInfiniteQueryOptions,
     UseMutationOptions,
     QueryFunction,
     MutationFunction,
     UseQueryResult,
+    UseInfiniteQueryResult,
     QueryKey,
 } from '@tanstack/react-query';
 import type {
@@ -50,6 +52,52 @@ export const getGetProjectsQueryKey = (
         `/organisations/${organisationId}/projects`,
         ...(params ? [params] : []),
     ] as const;
+
+export type GetProjectsInfiniteQueryResult = NonNullable<
+    Awaited<ReturnType<typeof getProjects>>
+>;
+export type GetProjectsInfiniteQueryError = unknown;
+
+export const useGetProjectsInfinite = <
+    TData = Awaited<ReturnType<typeof getProjects>>,
+    TError = unknown,
+>(
+    organisationId: string,
+    params?: GetProjectsParams,
+    options?: {
+        query?: UseInfiniteQueryOptions<
+            Awaited<ReturnType<typeof getProjects>>,
+            TError,
+            TData
+        >;
+    },
+): UseInfiniteQueryResult<TData, TError> & { queryKey: QueryKey } => {
+    const { query: queryOptions } = options ?? {};
+
+    const queryKey =
+        queryOptions?.queryKey ??
+        getGetProjectsQueryKey(organisationId, params);
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof getProjects>>> = ({
+        signal,
+        pageParam,
+    }) => getProjects(organisationId, { page: pageParam, ...params }, signal);
+
+    const query = useInfiniteQuery<
+        Awaited<ReturnType<typeof getProjects>>,
+        TError,
+        TData
+    >({
+        queryKey,
+        queryFn,
+        enabled: !!organisationId,
+        ...queryOptions,
+    }) as UseInfiniteQueryResult<TData, TError> & { queryKey: QueryKey };
+
+    query.queryKey = queryKey;
+
+    return query;
+};
 
 export type GetProjectsQueryResult = NonNullable<
     Awaited<ReturnType<typeof getProjects>>
@@ -165,6 +213,51 @@ export const getGetProjectQueryKey = (
     organisationId: string,
     projectId: string,
 ) => [`/organisations/${organisationId}/projects/${projectId}`] as const;
+
+export type GetProjectInfiniteQueryResult = NonNullable<
+    Awaited<ReturnType<typeof getProject>>
+>;
+export type GetProjectInfiniteQueryError = unknown;
+
+export const useGetProjectInfinite = <
+    TData = Awaited<ReturnType<typeof getProject>>,
+    TError = unknown,
+>(
+    organisationId: string,
+    projectId: string,
+    options?: {
+        query?: UseInfiniteQueryOptions<
+            Awaited<ReturnType<typeof getProject>>,
+            TError,
+            TData
+        >;
+    },
+): UseInfiniteQueryResult<TData, TError> & { queryKey: QueryKey } => {
+    const { query: queryOptions } = options ?? {};
+
+    const queryKey =
+        queryOptions?.queryKey ??
+        getGetProjectQueryKey(organisationId, projectId);
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof getProject>>> = ({
+        signal,
+    }) => getProject(organisationId, projectId, signal);
+
+    const query = useInfiniteQuery<
+        Awaited<ReturnType<typeof getProject>>,
+        TError,
+        TData
+    >({
+        queryKey,
+        queryFn,
+        enabled: !!(organisationId && projectId),
+        ...queryOptions,
+    }) as UseInfiniteQueryResult<TData, TError> & { queryKey: QueryKey };
+
+    query.queryKey = queryKey;
+
+    return query;
+};
 
 export type GetProjectQueryResult = NonNullable<
     Awaited<ReturnType<typeof getProject>>

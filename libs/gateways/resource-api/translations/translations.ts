@@ -4,13 +4,15 @@
  * Localize Backend API
  * OpenAPI spec version: v1
  */
-import { useQuery, useMutation } from '@tanstack/react-query';
+import { useQuery, useInfiniteQuery, useMutation } from '@tanstack/react-query';
 import type {
     UseQueryOptions,
+    UseInfiniteQueryOptions,
     UseMutationOptions,
     QueryFunction,
     MutationFunction,
     UseQueryResult,
+    UseInfiniteQueryResult,
     QueryKey,
 } from '@tanstack/react-query';
 import type {
@@ -45,6 +47,51 @@ export const getGetTranslationsQueryKey = (
     termId: string,
     params?: GetTranslationsParams,
 ) => [`/terms/${termId}/languages`, ...(params ? [params] : [])] as const;
+
+export type GetTranslationsInfiniteQueryResult = NonNullable<
+    Awaited<ReturnType<typeof getTranslations>>
+>;
+export type GetTranslationsInfiniteQueryError = unknown;
+
+export const useGetTranslationsInfinite = <
+    TData = Awaited<ReturnType<typeof getTranslations>>,
+    TError = unknown,
+>(
+    termId: string,
+    params?: GetTranslationsParams,
+    options?: {
+        query?: UseInfiniteQueryOptions<
+            Awaited<ReturnType<typeof getTranslations>>,
+            TError,
+            TData
+        >;
+    },
+): UseInfiniteQueryResult<TData, TError> & { queryKey: QueryKey } => {
+    const { query: queryOptions } = options ?? {};
+
+    const queryKey =
+        queryOptions?.queryKey ?? getGetTranslationsQueryKey(termId, params);
+
+    const queryFn: QueryFunction<
+        Awaited<ReturnType<typeof getTranslations>>
+    > = ({ signal, pageParam }) =>
+        getTranslations(termId, { page: pageParam, ...params }, signal);
+
+    const query = useInfiniteQuery<
+        Awaited<ReturnType<typeof getTranslations>>,
+        TError,
+        TData
+    >({
+        queryKey,
+        queryFn,
+        enabled: !!termId,
+        ...queryOptions,
+    }) as UseInfiniteQueryResult<TData, TError> & { queryKey: QueryKey };
+
+    query.queryKey = queryKey;
+
+    return query;
+};
 
 export type GetTranslationsQueryResult = NonNullable<
     Awaited<ReturnType<typeof getTranslations>>

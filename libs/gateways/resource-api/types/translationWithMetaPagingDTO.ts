@@ -11,13 +11,13 @@ import type { TranslationWithMetaDTO } from './translationWithMetaDTO';
  */
 export interface TranslationWithMetaPagingDTO {
     /** The translations */
-    data?: TranslationWithMetaDTO[];
+    data: TranslationWithMetaDTO[];
     /** The number of pages */
-    nbPages?: number;
+    nbPages: number;
     /** The current page */
-    page?: number;
+    page: number;
     /** The current size */
-    size?: number;
+    size: number;
     /** The total amount of translations */
-    totalAmount?: number;
+    totalAmount: number;
 }

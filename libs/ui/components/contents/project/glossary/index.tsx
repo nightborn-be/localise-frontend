@@ -18,7 +18,7 @@ import Tooltip from '../../tooltip';
 import { TooltipType } from '../../tooltip/props';
 import Text from '../../text';
 import MissingTerms from './components/missing-terms';
-import { InViewLoader } from 'utils/infinite-paging/in-view-loader';
+import { InViewLoader } from '../../../progress-validation/in-view-loader';
 
 export const Glossary = ({
     projectTerms,
@@ -50,7 +50,7 @@ export const Glossary = ({
     return (
         <>
             {searchFilterValue != '' ||
-            !!projectTerms?.data?.length ||
+            !!projectTerms?.length ||
             !!newRowTerm.length ? (
                 <VStack
                     h='full'
@@ -142,7 +142,7 @@ export const Glossary = ({
                             </VStack>
                         ) : (
                             <>
-                                {projectTerms?.data?.map((term, i) => (
+                                {projectTerms?.map((term, i) => (
                                     <TableRowTerm
                                         key={term.id}
                                         isDisabled={true}
@@ -165,6 +165,10 @@ export const Glossary = ({
                                 ))}
                             </>
                         )}
+                        <InViewLoader
+                            isLoading={isFetchingProjectTermsNextPage}
+                            onLoad={onFetchProjectTermsNextPage}
+                        />
                     </TableTerm>
                     <HStack
                         alignItems={'center'}
@@ -224,10 +228,6 @@ export const Glossary = ({
                             </ButtonIcon>
                         </Tooltip>
                     </HStack>
-                    <InViewLoader
-                        isLoading={isFetchingProjectTermsNextPage}
-                        onLoad={onFetchProjectTermsNextPage}
-                    />
                 </VStack>
             ) : (
                 <MissingTerms addNewRowTerm={addNewRowTerm} />
