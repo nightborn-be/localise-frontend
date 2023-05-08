@@ -69,7 +69,7 @@ export default function TableRowTerm({
                                 .content.row.input.key.placeholder,
                         )}
                         border='transparent'
-                        w={'fit-content'}
+                        w={'full'}
                         color={COLORS.Text.T400.value}
                         font={FONTS.T1.T12px.Regular400.value}
                     />
