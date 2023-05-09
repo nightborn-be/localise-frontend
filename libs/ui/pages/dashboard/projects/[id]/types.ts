@@ -39,4 +39,5 @@ export interface ProjectLogicType {
     isLoadingDeleteTerm: boolean;
     onFetchProjectTermsNextPage: () => void;
     isFetchingProjectTermsNextPage: boolean;
+    hasNextPageTerms?: boolean;
 }

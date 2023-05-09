@@ -6,11 +6,6 @@ import {
 } from 'gateways/resource-api/types';
 import { IDefaultForm, IForm } from 'utils/formik';
 import { ITableRowTermForm } from './components/table-row-term/types';
-import {
-    FetchNextPageOptions,
-    InfiniteQueryObserverResult,
-} from '@tanstack/react-query';
-
 export interface IGlossaryProps {
     projectTerms?: TermDTO[];
     handleOnSaveTranslations: (
@@ -34,8 +29,10 @@ export interface IGlossaryProps {
     isLoadingDeleteTerm: boolean;
     onFetchProjectTermsNextPage: () => void;
     isFetchingProjectTermsNextPage: boolean;
+    hasNextPageTerms?: boolean,
 }
 
 export interface IGlossaryLogicProps {
     addNewRowTerm: (term: TermDTO) => void;
+    onFetchProjectTermsNextPage: () => void
 }

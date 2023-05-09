@@ -6,6 +6,7 @@ import {
     UseInfiniteQueryOptions,
     UseInfiniteQueryResult,
 } from '@tanstack/react-query';
+
 export type Pagination<T extends object> = {
     data: T;
     /** The number of pages */

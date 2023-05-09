@@ -21,6 +21,7 @@ export interface ITableRowTermProps {
     isLoadingCreateTerm: boolean;
     isLoadingUpdateTerm: boolean;
     isLoadingDeleteTerm: boolean;
+    ref?: React.LegacyRef<HTMLDivElement> | undefined
 }
 
 export interface ITableRowTermLogicProps {

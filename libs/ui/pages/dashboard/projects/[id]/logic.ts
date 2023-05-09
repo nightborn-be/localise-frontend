@@ -26,7 +26,7 @@ import { toUpdateTermDTO } from '../../../../components/contents/project/glossar
 import { ToastType } from 'ui/components/progress-validation/toast/types';
 import useToast from 'ui/components/progress-validation/toast';
 import { useRouter } from 'next/router';
-import { useInfinitePaging } from 'utils/infinite-paging/infinite-paging';
+import { useInfinitePaging } from 'utils/infinite-paging';
 import { useGetProjectLanguages } from 'gateways/resource-api/languages/languages';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -78,10 +78,11 @@ export const useProjectLogic = ({
         refetch: refetchProjectTerms,
         fetchNextPage: onFetchProjectTermsNextPage,
         isFetchingNextPage: isFetchingProjectTermsNextPage,
+        hasNextPage: hasNextPageTerms,
     } = useInfinitePaging<TermDTO>({
         useQueryFn: useGetTermsInfinite,
         pathParams: [id as string],
-        queryParams: { q: searchFilterValue },
+        queryParams: { q: searchFilterValue, size: 25 },
     });
 
     // Functions
@@ -310,5 +311,6 @@ export const useProjectLogic = ({
         isLoadingDeleteTerm,
         onFetchProjectTermsNextPage,
         isFetchingProjectTermsNextPage,
+        hasNextPageTerms
     };
 };

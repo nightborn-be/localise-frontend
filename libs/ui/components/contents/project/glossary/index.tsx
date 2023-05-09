@@ -18,7 +18,6 @@ import Tooltip from '../../tooltip';
 import { TooltipType } from '../../tooltip/props';
 import Text from '../../text';
 import MissingTerms from './components/missing-terms';
-import { InViewLoader } from '../../../progress-validation/in-view-loader';
 
 export const Glossary = ({
     projectTerms,
@@ -41,9 +40,13 @@ export const Glossary = ({
     isLoadingDeleteTerm,
     isFetchingProjectTermsNextPage,
     onFetchProjectTermsNextPage,
+    hasNextPageTerms,
 }: IGlossaryProps) => {
     // Attributes
-    const { tableRef } = useGlossaryLogic({ addNewRowTerm });
+    const { tableRef, ref } = useGlossaryLogic({
+        addNewRowTerm,
+        onFetchProjectTermsNextPage,
+    });
     const { t } = useTranslation();
 
     // Renders
@@ -142,33 +145,61 @@ export const Glossary = ({
                             </VStack>
                         ) : (
                             <>
-                                {projectTerms?.map((term, i) => (
-                                    <TableRowTerm
-                                        key={term.id}
-                                        isDisabled={true}
-                                        term={term}
-                                        handleOnSaveTranslations={
-                                            handleOnSaveTranslations
-                                        }
-                                        handleOnDeleteTerm={handleOnDeleteTerm}
-                                        projectLanguages={projectLanguages}
-                                        isLoadingCreateTerm={
-                                            isLoadingCreateTerm
-                                        }
-                                        isLoadingUpdateTerm={
-                                            isLoadingUpdateTerm
-                                        }
-                                        isLoadingDeleteTerm={
-                                            isLoadingDeleteTerm
-                                        }
-                                    />
-                                ))}
+                                {projectTerms?.map((term, i) => {
+                                    const total = (i / 25) * 100;
+                                    let hasRef = false;
+                                    if (total % 50 === 0 && hasNextPageTerms) {
+                                        hasRef = true;
+                                    }
+                                    return (
+                                        <Box
+                                            w='full'
+                                            ref={hasRef ? ref : undefined}
+                                        >
+                                            <TableRowTerm
+                                                key={term.id}
+                                                isDisabled={true}
+                                                term={term}
+                                                handleOnSaveTranslations={
+                                                    handleOnSaveTranslations
+                                                }
+                                                handleOnDeleteTerm={
+                                                    handleOnDeleteTerm
+                                                }
+                                                projectLanguages={
+                                                    projectLanguages
+                                                }
+                                                isLoadingCreateTerm={
+                                                    isLoadingCreateTerm
+                                                }
+                                                isLoadingUpdateTerm={
+                                                    isLoadingUpdateTerm
+                                                }
+                                                isLoadingDeleteTerm={
+                                                    isLoadingDeleteTerm
+                                                }
+                                            />
+                                        </Box>
+                                    );
+                                })}
                             </>
                         )}
-                        <InViewLoader
-                            isLoading={isFetchingProjectTermsNextPage}
-                            onLoad={onFetchProjectTermsNextPage}
-                        />
+                        {isFetchingProjectTermsNextPage && (
+                            <HStack
+                                w='full'
+                                justifyContent={'center'}
+                                alignItems={'center'}
+                                paddingBottom={'0.3125rem'}
+                            >
+                                <Spinner
+                                    size='lg'
+                                    thickness='0.25rem'
+                                    speed='0.65s'
+                                    emptyColor={COLORS.Line.value}
+                                    color={COLORS.Localize.Purple.T500.value}
+                                />
+                            </HStack>
+                        )}
                     </TableTerm>
                     <HStack
                         alignItems={'center'}

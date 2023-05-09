@@ -1,12 +1,15 @@
 import { useCallback, useEffect, useRef } from 'react';
 import { GlossaryLogicType } from './types';
 import { IGlossaryLogicProps } from './props';
+import { useInView } from 'react-intersection-observer';
 
 export const useGlossaryLogic = ({
     addNewRowTerm,
+    onFetchProjectTermsNextPage
 }: IGlossaryLogicProps): GlossaryLogicType => {
     // Attributes
     const tableRef = useRef<HTMLDivElement>(null);
+    const { ref, inView } = useInView();
     const handleOnShortCut = useCallback((event: KeyboardEvent) => {
         if (
             event.code === 'KeyT' &&
@@ -24,5 +27,14 @@ export const useGlossaryLogic = ({
             document.removeEventListener('keydown', handleOnShortCut);
         };
     }, [handleOnShortCut]);
-    return { tableRef };
+
+
+    useEffect(() => {
+        if (!inView) {
+            return;
+        }
+
+        onFetchProjectTermsNextPage();
+    }, [inView]);
+    return { tableRef, ref };
 };

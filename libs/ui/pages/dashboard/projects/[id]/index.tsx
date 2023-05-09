@@ -71,6 +71,7 @@ const ProjectPage = () => {
         isLoadingDeleteTerm,
         isFetchingProjectTermsNextPage,
         onFetchProjectTermsNextPage,
+        hasNextPageTerms,
     } = useProjectLogic({
         actualOrganisationUser,
         organisationProjectData,
@@ -164,6 +165,7 @@ const ProjectPage = () => {
                             onFetchProjectTermsNextPage={
                                 onFetchProjectTermsNextPage
                             }
+                            hasNextPageTerms={hasNextPageTerms}
                         />
                     </Tab>
                     <Tab
