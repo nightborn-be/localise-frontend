@@ -110,22 +110,29 @@ export default function TableRowTerm({
                     alignItems={'center'}
                     justifyContent={'right'}
                 >
-                    {isNewTerm && (
-                        <Badge
-                            mr='0.625rem'
-                            p={'0.25rem'}
-                            pr='0.625rem'
-                            pl='0.625rem'
-                            borderRadius='0.5rem'
-                            colorScheme='purple'
-                            fontSize={'0.625rem'}
-                        >
-                            {t<string>(
-                                tKeys.home.project.tab.glossary.content.table
-                                    .content.row.badge.unsaved,
-                            )}
-                        </Badge>
-                    )}
+                    <Badge
+                        mr='0.625rem'
+                        p={'0.25rem 0.5rem'}
+                        borderRadius='0.25rem'
+                        backgroundColor={
+                            isNewTerm
+                                ? COLORS.Tag.value
+                                : COLORS.Success.T100.value
+                        }
+                        color={
+                            isNewTerm
+                                ? COLORS.Text.T300.value
+                                : COLORS.Success.T600.value
+                        }
+                        fontSize={'0.625rem'}
+                    >
+                        {isNewTerm
+                            ? t<string>(
+                                  tKeys.home.project.tab.glossary.content.table
+                                      .content.row.badge.unsaved,
+                              )
+                            : 'SAVED'}
+                    </Badge>
                     <Tooltip
                         type={TooltipType.DEFAULT}
                         label={t<string>(
