@@ -162,7 +162,7 @@ export default function Input<T>({
                     />
                     <HStack
                         visibility={visibility}
-                        mr={rightElementMarginRight}
+                        mr={`${rightElementMarginRight} !important`}
                         w='fit-content'
                     >
                         {rightElement}
