@@ -37,7 +37,7 @@ const Role = ({ selectedValue, setSelectedValue }: IRoleProps) => {
         }
     }
     function getDefaultValue() {
-        return roleOptions.filter((role) => role.value === selectedValue).at(0);
+        return roleOptions.find((role) => role.value === selectedValue);
     }
     // Render
     return (
