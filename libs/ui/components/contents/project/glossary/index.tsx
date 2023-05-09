@@ -76,6 +76,8 @@ export const Glossary = ({
                         />
                         <Box w='full' />
                         <Button
+                            // not developed for the moment, implement the logic when is developed
+                            display={'none'}
                             w={'fit-content'}
                             minW={'fit-content'}
                             h={'2rem'}
