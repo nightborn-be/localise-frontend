@@ -159,6 +159,7 @@ export default function Input<T>({
                                 ? event.currentTarget.blur()
                                 : ''
                         }
+                        {...props}
                     />
                     <HStack
                         visibility={visibility}
@@ -186,6 +187,7 @@ export default function Input<T>({
                 </HStack>
                 {errorMsg && isTouched ? (
                     <Text
+                        data-cy='errorMsg'
                         font={FONTS.T1.T12px.Regular400.value}
                         color={COLORS.Error.T500.value}
                     >

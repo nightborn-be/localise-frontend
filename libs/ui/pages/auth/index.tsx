@@ -78,6 +78,7 @@ export default function AuthHomePage({ redirectUrl }: IAuthHomePageProps) {
                         borderRadius={'0.5rem'}
                         hoverBackgroundColor={COLORS.Localize.Purple.T600.value}
                         onClick={handleSignInRedirection}
+                        data-cy='loginChoose'
                     >
                         {t<string>(tKeys.auth.home.cta.sign_in)}
                     </Button>

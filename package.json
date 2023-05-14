@@ -16,10 +16,12 @@
         "lint": "turbo run lint",
         "format": "prettier --write \"**/*.{ts,tsx,md}\"",
         "generate:api": "orval --config ./orval.config.js && npm run format",
-        "generate:translations": "node ./scripts/generate-translations.js && npm run format"
+        "generate:translations": "node ./scripts/generate-translations.js && npm run format",
+        "cypress:open": "cypress open"
     },
     "devDependencies": {
         "ajv": "^8.12.0",
+        "cypress": "^12.12.0",
         "eslint-config-custom": "*",
         "prettier": "latest"
     },

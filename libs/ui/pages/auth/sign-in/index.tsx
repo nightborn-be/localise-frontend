@@ -49,6 +49,7 @@ export default function SignInPage({ redirectUrl }: ISignInPageProps) {
                         errorMsg={form.email.meta?.error}
                         isTouched={form.email.meta?.touched}
                         isValid={!form.email.meta?.error}
+                        data-cy='email'
                     />
                     <Input
                         {...form.password}
@@ -69,6 +70,7 @@ export default function SignInPage({ redirectUrl }: ISignInPageProps) {
                         errorMsg={form.password.meta?.error}
                         isTouched={form.password.meta?.touched}
                         isValid={!form.password.meta?.error}
+                        data-cy='password'
                     />
                 </VStack>
                 <Button
@@ -78,6 +80,7 @@ export default function SignInPage({ redirectUrl }: ISignInPageProps) {
                     borderRadius='0.5rem'
                     hoverBackgroundColor={COLORS.Localize.Purple.T600.value}
                     onClick={handleOnSubmit}
+                    data-cy='login'
                 >
                     {t<string>(tKeys.auth.sign_in.cta.sign_in)}
                 </Button>
