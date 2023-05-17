@@ -53,6 +53,7 @@ const Modal = ({
     body = {
         padding: '0rem',
     },
+    ...props
 }: IModalProps) => {
     // Render
     return (
@@ -67,6 +68,7 @@ const Modal = ({
                 w={'39.375rem'}
                 minW={'39.375rem'}
                 borderRadius={'0.75rem'}
+                {...props}
             >
                 <ModalHeader
                     padding='1.25rem'
@@ -87,6 +89,7 @@ const Modal = ({
                             bg: header.closeButtonHoverBgColor,
                         }}
                         top='0.8125rem'
+                        data-cy='modalCloseButton'
                     >
                         <Icon
                             name='removeLarge'
@@ -114,6 +117,7 @@ const Modal = ({
                             _active={{
                                 bg: 'none',
                             }}
+                            data-cy={'modalButtonCancel'}
                         >
                             {footer.firstCtaLabel}
                         </Button>
@@ -141,6 +145,7 @@ const Modal = ({
                                       }
                                     : undefined
                             }
+                            data-cy={'modalButtonCreate'}
                         >
                             {footer.secondCtaLabel}
                         </Button>

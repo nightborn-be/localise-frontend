@@ -14,4 +14,5 @@ export interface ISidebarProps {
     onClick: (value: any) => void;
     activeKey: string;
     handleOnUpdateColorProject: (iconColor: string) => void;
+    datacy?: string;
 }

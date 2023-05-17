@@ -10,25 +10,42 @@ describe('Exemple', () => {
         cy.get('[data-cy=email]').type('chahed.akeche@nightborn.com');
 
         cy.get('[data-cy=password]').should('be.visible');
-        cy.get('[data-cy=password]').type('test1234');
+        cy.get('[data-cy=password]').type('Test123?');
 
         cy.get('[data-cy=login]').should('be.visible');
         cy.get('[data-cy=login]').click();
     });
 
-    it('Testing error email flow sign in ', () => {
-        cy.get('[data-cy=loginChoose]').should('be.visible');
-        cy.get('[data-cy=loginChoose]').click();
+    describe('Testing error cases', () => {
+        it('Testing invalid email', () => {
+            cy.get('[data-cy=loginChoose]').should('be.visible');
+            cy.get('[data-cy=loginChoose]').click();
 
-        cy.get('[data-cy=email]').should('be.visible');
-        cy.get('[data-cy=email]').type('f');
+            cy.get('[data-cy=email]').should('be.visible');
+            cy.get('[data-cy=email]').type('incorrect@email');
 
-        cy.get('[data-cy=password]').should('be.visible');
-        cy.get('[data-cy=password]').type('test1234');
+            cy.get('[data-cy=password]').should('be.visible');
+            cy.get('[data-cy=password]').type('Test123?');
 
-        cy.get('[data-cy=login]').should('be.visible');
-        cy.get('[data-cy=login]').click();
+            cy.get('[data-cy=login]').should('be.visible');
+            cy.get('[data-cy=login]').click();
+            cy.get('[data-cy=errorMsg]').should('be.visible');
+        });
 
-        cy.get('[data-cy=errorMsg]').should('be.visible');
+        it('Testing invalid password', () => {
+            cy.get('[data-cy=loginChoose]').should('be.visible');
+            cy.get('[data-cy=loginChoose]').click();
+
+            cy.get('[data-cy=email]').should('be.visible');
+            cy.get('[data-cy=email]').type('chahed.akeche@nightborn.com');
+
+            cy.get('[data-cy=password]').should('be.visible');
+            cy.get('[data-cy=password]').type('incorrectpassword');
+
+            cy.get('[data-cy=login]').should('be.visible');
+            cy.get('[data-cy=login]').click();
+
+            cy.get('[data-cy=errorMsg]').should('be.visible');
+        });
     });
 });

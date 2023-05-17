@@ -37,6 +37,7 @@ const Searchbar = <T,>({
     activeKeys,
     displayModal = true,
     noValueMsg,
+    datacy,
     ...props
 }: SearchbarProps<T>) => {
     const [showModal, setShowModal] = useState<boolean>(false);
@@ -64,6 +65,8 @@ const Searchbar = <T,>({
                     padding={padding}
                     bg={backgroundColor}
                     paddingInlineStart={'0rem'}
+                    data-cy={datacy}
+                    {...props}
                 >
                     {/* Left input icon */}
                     <InputLeftElement
@@ -93,6 +96,7 @@ const Searchbar = <T,>({
                         marginRight='0.5rem'
                         onFocus={() => setShowModal(true)}
                         paddingInlineEnd='0.3125rem'
+                        data-cy={datacy}
                     />
                 </InputGroup>
             </HStack>
@@ -112,11 +116,13 @@ const Searchbar = <T,>({
                     padding={'0.375rem'}
                     spacing='0.25rem'
                     zIndex={1}
+                    data-cy={'checkBox'}
                 >
                     {!!options?.length ? (
                         options?.map((option, index) => {
                             return (
                                 <Checkbox
+                                    datacy={`checkBoxOption_${index}`}
                                     key={index}
                                     label={option.label}
                                     isSelected={activeKeys?.some(

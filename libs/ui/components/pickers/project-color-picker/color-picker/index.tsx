@@ -11,6 +11,7 @@ const ColorPicker = ({
     onSelect,
     widthIcon,
     heightIcon,
+    ...props
 }: IColorPickerProps) => {
     // Attributes
     const [isHovered, setIsHovered] = useState<boolean>(false);
@@ -36,6 +37,7 @@ const ColorPicker = ({
             onMouseLeave={() => setIsHovered(false)}
             onClick={() => onSelect(color)}
             cursor={'pointer'}
+            {...props}
         >
             <Icon
                 pointerEvents='none'

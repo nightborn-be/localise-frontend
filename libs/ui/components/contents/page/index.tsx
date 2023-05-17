@@ -1,6 +1,6 @@
 import React, { HStack } from '@chakra-ui/react';
 import { PageProps } from './props';
-const Page = ({ children, bg, bgImage }: PageProps) => {
+const Page = ({ children, bg, bgImage, datacy }: PageProps) => {
     // Render
     return (
         <HStack
@@ -10,6 +10,7 @@ const Page = ({ children, bg, bgImage }: PageProps) => {
             overflowY='hidden'
             spacing={'0'}
             overflowX={'hidden'}
+            data-cy={datacy}
         >
             <HStack
                 bg={bg}

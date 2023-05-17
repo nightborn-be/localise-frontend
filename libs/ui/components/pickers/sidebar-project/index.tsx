@@ -23,6 +23,8 @@ const SidebarProject = ({
     activeKey,
     onClick,
     handleOnUpdateColorProject,
+    datacy,
+    ...props
 }: ISidebarProps) => {
     // Attributes
     const isSelected = activeKey === text;
@@ -51,6 +53,7 @@ const SidebarProject = ({
                     borderRadius='0.125rem'
                     bg={projectIconColor}
                     onClick={() => setIsColorPickerVisible(true)}
+                    data-cy={`${datacy}_buttonColor`}
                 />
             );
 
@@ -73,6 +76,8 @@ const SidebarProject = ({
             cursor={'pointer'}
             onClick={() => onClick(text)}
             ref={ref}
+            data-cy={datacy}
+            {...props}
         >
             <HStack w='full' h='2rem' position={'relative'}>
                 {startEnhancerPicker()}
@@ -97,6 +102,7 @@ const SidebarProject = ({
                         boxShadow={SHADOWS.Menu.value}
                         selected={projectIconColor as string}
                         onSelect={handleOnUpdateColorProject}
+                        datacy={`${datacy}_buttonColor`}
                     />
                 </HStack>
             </HStack>

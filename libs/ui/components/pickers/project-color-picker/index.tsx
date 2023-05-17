@@ -17,6 +17,8 @@ const ProjectColorPicker = ({
     boxShadow,
     widthIcon,
     heightIcon,
+    datacy,
+    ...props
 }: IProjectColorPickerProps) => {
     // Attributes
     const colors: string[] = [
@@ -46,6 +48,7 @@ const ProjectColorPicker = ({
                 flexWrap={'wrap'}
                 alignContent={'space-between'}
                 boxShadow={boxShadow}
+                {...props}
             >
                 {colors.map((color, i) => (
                     <ColorPicker
@@ -57,6 +60,7 @@ const ProjectColorPicker = ({
                         onSelect={onSelect}
                         isSelected={selected === color}
                         color={color}
+                        data-cy={`${datacy}_${i}`}
                     />
                 ))}
             </HStack>

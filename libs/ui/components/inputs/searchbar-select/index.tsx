@@ -33,7 +33,13 @@ const SearchbarSelect = <T,>({
 
     // Render
     return (
-        <VStack alignItems={'left'} w={w} spacing='0.75rem' position='relative'>
+        <VStack
+            alignItems={'left'}
+            w={w}
+            spacing='0.75rem'
+            position='relative'
+            {...props}
+        >
             <VStack spacing='0.75rem' alignItems={'left'}>
                 {/* Input label section */}
                 {label && (
@@ -55,6 +61,7 @@ const SearchbarSelect = <T,>({
                         setShowModal((prev) => !prev);
                     }}
                     w={'full'}
+                    data-cy={'searchBarSelect'}
                 >
                     <Text
                         font={FONTS.T1.T12px.Regular400.value}
@@ -115,6 +122,7 @@ const SearchbarSelect = <T,>({
                             border={'0.0625rem solid transprent'}
                             marginInlineStart='0'
                             paddingInlineStart='0'
+                            data-cy='searchBarInput'
                         />
                     </HStack>
                     <VStack
@@ -128,6 +136,7 @@ const SearchbarSelect = <T,>({
                                 const isSelected = activeKey === option.value;
                                 return (
                                     <Stack
+                                        data-cy={`searchBarOption_${index}`}
                                         key={index}
                                         padding='0.75rem'
                                         width='100%'

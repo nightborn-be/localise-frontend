@@ -11,4 +11,5 @@ export interface ISearchBoxProps<T> extends InputProps {
     noValueMsg?: string;
     onTagDelete: (value: T) => void;
     labelFont?: Font;
+    datacy?: string;
 }

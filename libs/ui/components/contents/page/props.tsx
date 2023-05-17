@@ -3,4 +3,5 @@ export interface PageProps {
     children: ReactNode | ReactNode[];
     bg?: string;
     bgImage?: string;
+    datacy?: string;
 }

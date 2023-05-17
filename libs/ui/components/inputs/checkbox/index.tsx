@@ -6,7 +6,7 @@ import FONTS from '../../../constants/fonts';
 import Icon from '../../contents/icon';
 import { ICheckBoxProps } from './props';
 import Text from '../../contents/text';
-const Checkbox = ({ isSelected, label, onSelect }: ICheckBoxProps) => {
+const Checkbox = ({ isSelected, label, onSelect, datacy }: ICheckBoxProps) => {
     // Render
     return (
         <HStack
@@ -17,6 +17,7 @@ const Checkbox = ({ isSelected, label, onSelect }: ICheckBoxProps) => {
             _hover={{ bg: COLORS.Tag.value }}
             borderRadius='0.375rem'
             cursor={'pointer'}
+            data-cy={datacy}
         >
             <Box w='1rem' h='1rem' ms={'0.75rem'}>
                 <Icon name={isSelected ? 'checkboxOn' : 'checkboxOff'} />

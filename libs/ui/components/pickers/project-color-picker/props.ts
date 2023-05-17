@@ -11,4 +11,5 @@ export interface IProjectColorPickerProps {
     boxShadow?: string;
     widthIcon?: string;
     heightIcon?: string;
+    datacy?: string;
 }

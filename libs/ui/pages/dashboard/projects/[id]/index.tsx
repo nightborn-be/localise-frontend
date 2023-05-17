@@ -82,7 +82,7 @@ const ProjectPage = () => {
 
     // Render
     return (
-        <Page>
+        <Page datacy='dashboard'>
             <SideBar
                 handleToggleIsOrganisationClicked={
                     handleToggleIsOrganisationClicked

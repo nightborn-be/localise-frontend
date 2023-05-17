@@ -23,6 +23,8 @@ const SearchBox = <T,>({
     padding = '1.25rem',
     w = '36.875rem',
     labelFont = FONTS.T1.T14px.Medium500.value,
+    datacy,
+    ...props
 }: ISearchBoxProps<T>) => {
     // Render
     return (
@@ -64,6 +66,7 @@ const SearchBox = <T,>({
                     activeKeys={activeKeys}
                     options={options}
                     noValueMsg={noValueMsg}
+                    data-cy={`${datacy}_searchBar`}
                 />
                 {!!activeKeys?.length && (
                     <Wrap spacing={'0.25rem'} pr={'1.125rem'}>

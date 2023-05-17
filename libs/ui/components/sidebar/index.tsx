@@ -129,6 +129,7 @@ export const SideBar = ({
                         borderRadius='0.5rem'
                         padding='0.25rem'
                         gap='0.625rem'
+                        data-cy='addProjectButton'
                     >
                         {(isHovered) => (
                             <Icon
@@ -165,6 +166,7 @@ export const SideBar = ({
                             setFilterProjectValue(event.target.value)
                         }
                         displayModal={false}
+                        data-cy='searchBarSide'
                     />
                 </HStack>
                 {isLoadingSearchProject ? (
@@ -192,7 +194,7 @@ export const SideBar = ({
                         borderRight={`0.0625rem solid ${COLORS.Line.value}`}
                     >
                         {!!options?.length ? (
-                            options?.map((option) => {
+                            options?.map((option, index) => {
                                 return (
                                     <SidebarProject
                                         onClick={() =>
@@ -212,6 +214,7 @@ export const SideBar = ({
                                         handleOnUpdateColorProject={
                                             handleOnUpdateColorProject
                                         }
+                                        datacy={`buttonSideBar_${index}`}
                                     />
                                 );
                             })

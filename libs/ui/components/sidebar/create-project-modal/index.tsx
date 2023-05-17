@@ -58,6 +58,7 @@ export const CreateProjectModal = ({
                     form.projectName.value == '' ||
                     form.sourceLanguage.value == ''
                 }
+                data-cy='modalCreateProject'
             >
                 <VStack spacing='0'>
                     <HStack
@@ -79,6 +80,7 @@ export const CreateProjectModal = ({
                             labelColor={COLORS.Text.T500.value}
                             labelFont={FONTS.T1.T14px.Medium500.value}
                             {...form.projectName}
+                            data-cy='modalInputProjectName'
                         />
                     </HStack>
                     <VStack padding={'0.75rem 1.25rem'} spacing='1rem'>
@@ -151,6 +153,7 @@ export const CreateProjectModal = ({
                             onCheck={onCheck}
                             activeKeys={activeKeys}
                             options={filter(value)}
+                            datacy='searchBox'
                         />
                     </VStack>
                 </VStack>

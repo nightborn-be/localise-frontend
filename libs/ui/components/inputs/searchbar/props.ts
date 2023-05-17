@@ -10,6 +10,7 @@ export default interface SearchbarProps<T> extends InputProps {
     onCheck?: (values: T) => void;
     displayModal?: boolean;
     noValueMsg?: string;
+    datacy?: string;
 }
 
 export type SearchBarOption<T> = {
