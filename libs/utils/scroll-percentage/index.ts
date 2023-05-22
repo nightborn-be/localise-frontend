@@ -29,7 +29,7 @@ export default function useScrollPercentage(): [
     return [scrollRef, Number.isNaN(scrollPercentage) ? 0 : scrollPercentage];
 }
 
-function getScrollPercentage(element) {
+function getScrollPercentage(element: HTMLDivElement | null) {
     if (element === null) {
         return NaN;
     }
