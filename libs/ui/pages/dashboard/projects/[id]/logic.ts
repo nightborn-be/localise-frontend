@@ -39,6 +39,7 @@ export const useProjectLogic = ({
     organisationProjectData,
 }: IProjectContentLogicProps): ProjectLogicType => {
     // Attributes
+    const TermsFetchSize = 25;
     const toast = useToast();
     const { t } = useTranslation();
     const router = useRouter();
@@ -82,7 +83,7 @@ export const useProjectLogic = ({
     } = useInfinitePaging<TermDTO>({
         useQueryFn: useGetTermsInfinite,
         pathParams: [id as string],
-        queryParams: { q: searchFilterValue, size: 25 },
+        queryParams: { q: searchFilterValue, size: TermsFetchSize },
     });
 
     // Functions

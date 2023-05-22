@@ -43,15 +43,16 @@ export const Glossary = ({
     hasNextPageTerms,
 }: IGlossaryProps) => {
     // Attributes
-    const { tableRef, ref } = useGlossaryLogic({
+    const { tableRef, scrollRef } = useGlossaryLogic({
         addNewRowTerm,
         onFetchProjectTermsNextPage,
+        hasNextPageTerms,
     });
     const { t } = useTranslation();
 
     // Renders
     return (
-        <>
+        <Box w='full' ref={scrollRef} overflowY='scroll'>
             {searchFilterValue != '' ||
             !!projectTerms?.length ||
             !!newRowTerm.length ? (
@@ -61,7 +62,6 @@ export const Glossary = ({
                     alignItems={'left'}
                     padding='2rem'
                     spacing='2rem'
-                    overflowY='scroll'
                     paddingBottom={'0.4375rem'}
                 >
                     <HStack>
@@ -145,19 +145,10 @@ export const Glossary = ({
                             </VStack>
                         ) : (
                             <>
-                                {projectTerms?.map((term, i) => {
-                                    const total = (i / 25) * 100;
-                                    let hasRef = false;
-                                    if (total % 50 === 0 && hasNextPageTerms) {
-                                        hasRef = true;
-                                    }
+                                {projectTerms?.map((term) => {
                                     return (
-                                        <Box
-                                            w='full'
-                                            ref={hasRef ? ref : undefined}
-                                        >
+                                        <Box w='full' key={term.id}>
                                             <TableRowTerm
-                                                key={term.id}
                                                 isDisabled={true}
                                                 term={term}
                                                 handleOnSaveTranslations={
@@ -263,6 +254,6 @@ export const Glossary = ({
             ) : (
                 <MissingTerms addNewRowTerm={addNewRowTerm} />
             )}
-        </>
+        </Box>
     );
 };

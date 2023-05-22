@@ -1,15 +1,17 @@
 import { useCallback, useEffect, useRef } from 'react';
 import { GlossaryLogicType } from './types';
 import { IGlossaryLogicProps } from './props';
-import { useInView } from 'react-intersection-observer';
+import useScrollPercentage from 'utils/scroll-percentage';
 
 export const useGlossaryLogic = ({
     addNewRowTerm,
-    onFetchProjectTermsNextPage
+    onFetchProjectTermsNextPage,
+    hasNextPageTerms
 }: IGlossaryLogicProps): GlossaryLogicType => {
     // Attributes
     const tableRef = useRef<HTMLDivElement>(null);
-    const { ref, inView } = useInView();
+    const [scrollRef, scrollPercentage] = useScrollPercentage();
+
     const handleOnShortCut = useCallback((event: KeyboardEvent) => {
         if (
             event.code === 'KeyT' &&
@@ -28,13 +30,11 @@ export const useGlossaryLogic = ({
         };
     }, [handleOnShortCut]);
 
-
     useEffect(() => {
-        if (!inView) {
-            return;
+        if (scrollPercentage > 70 && hasNextPageTerms) {
+            onFetchProjectTermsNextPage();
         }
+    }, [scrollPercentage]);
 
-        onFetchProjectTermsNextPage();
-    }, [inView]);
-    return { tableRef, ref };
+    return { tableRef, scrollRef };
 };

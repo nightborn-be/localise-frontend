@@ -2,7 +2,6 @@ import {
     LanguagePagingDTO,
     ProjectDTO,
     TermDTO,
-    TermPagingDTO,
 } from 'gateways/resource-api/types';
 import { IDefaultForm, IForm } from 'utils/formik';
 import { ITableRowTermForm } from './components/table-row-term/types';
@@ -35,4 +34,5 @@ export interface IGlossaryProps {
 export interface IGlossaryLogicProps {
     addNewRowTerm: (term: TermDTO) => void;
     onFetchProjectTermsNextPage: () => void
+    hasNextPageTerms?: boolean
 }
