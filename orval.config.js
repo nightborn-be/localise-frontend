@@ -14,6 +14,10 @@ module.exports = {
                     path: 'libs/gateways/resource-api/config.ts',
                     name: 'customInstance',
                 },
+                query: {
+                    useInfinite: true,
+                    useInfiniteQueryParam: 'page',
+                },
             },
         },
     },

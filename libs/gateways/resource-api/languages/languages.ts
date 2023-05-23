@@ -4,11 +4,13 @@
  * Localize Backend API
  * OpenAPI spec version: v1
  */
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useInfiniteQuery } from '@tanstack/react-query';
 import type {
     UseQueryOptions,
+    UseInfiniteQueryOptions,
     QueryFunction,
     UseQueryResult,
+    UseInfiniteQueryResult,
     QueryKey,
 } from '@tanstack/react-query';
 import type { LanguagePagingDTO, GetProjectLanguagesParams } from '.././types';
@@ -38,6 +40,52 @@ export const getGetProjectLanguagesQueryKey = (
     projectId: string,
     params?: GetProjectLanguagesParams,
 ) => [`/projects/${projectId}/languages`, ...(params ? [params] : [])] as const;
+
+export type GetProjectLanguagesInfiniteQueryResult = NonNullable<
+    Awaited<ReturnType<typeof getProjectLanguages>>
+>;
+export type GetProjectLanguagesInfiniteQueryError = unknown;
+
+export const useGetProjectLanguagesInfinite = <
+    TData = Awaited<ReturnType<typeof getProjectLanguages>>,
+    TError = unknown,
+>(
+    projectId: string,
+    params?: GetProjectLanguagesParams,
+    options?: {
+        query?: UseInfiniteQueryOptions<
+            Awaited<ReturnType<typeof getProjectLanguages>>,
+            TError,
+            TData
+        >;
+    },
+): UseInfiniteQueryResult<TData, TError> & { queryKey: QueryKey } => {
+    const { query: queryOptions } = options ?? {};
+
+    const queryKey =
+        queryOptions?.queryKey ??
+        getGetProjectLanguagesQueryKey(projectId, params);
+
+    const queryFn: QueryFunction<
+        Awaited<ReturnType<typeof getProjectLanguages>>
+    > = ({ signal, pageParam }) =>
+        getProjectLanguages(projectId, { page: pageParam, ...params }, signal);
+
+    const query = useInfiniteQuery<
+        Awaited<ReturnType<typeof getProjectLanguages>>,
+        TError,
+        TData
+    >({
+        queryKey,
+        queryFn,
+        enabled: !!projectId,
+        ...queryOptions,
+    }) as UseInfiniteQueryResult<TData, TError> & { queryKey: QueryKey };
+
+    query.queryKey = queryKey;
+
+    return query;
+};
 
 export type GetProjectLanguagesQueryResult = NonNullable<
     Awaited<ReturnType<typeof getProjectLanguages>>

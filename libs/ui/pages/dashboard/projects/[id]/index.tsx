@@ -69,6 +69,9 @@ const ProjectPage = () => {
         isLoadingCreateTerm,
         isLoadingUpdateTerm,
         isLoadingDeleteTerm,
+        isFetchingProjectTermsNextPage,
+        onFetchProjectTermsNextPage,
+        hasNextPageTerms,
     } = useProjectLogic({
         actualOrganisationUser,
         organisationProjectData,
@@ -156,6 +159,13 @@ const ProjectPage = () => {
                             isLoadingCreateTerm={isLoadingCreateTerm}
                             isLoadingUpdateTerm={isLoadingUpdateTerm}
                             isLoadingDeleteTerm={isLoadingDeleteTerm}
+                            isFetchingProjectTermsNextPage={
+                                isFetchingProjectTermsNextPage
+                            }
+                            onFetchProjectTermsNextPage={
+                                onFetchProjectTermsNextPage
+                            }
+                            hasNextPageTerms={hasNextPageTerms}
                         />
                     </Tab>
                     <Tab

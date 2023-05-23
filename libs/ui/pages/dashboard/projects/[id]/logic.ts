@@ -8,7 +8,7 @@ import {
 import {
     useCreateTerm,
     useDeleteTerm,
-    useGetTerms,
+    useGetTermsInfinite,
     useUpdateTerm,
 } from 'gateways/resource-api/terms/terms';
 import { TermDTO } from 'gateways/resource-api/types';
@@ -26,8 +26,11 @@ import { toUpdateTermDTO } from '../../../../components/contents/project/glossar
 import { ToastType } from 'ui/components/progress-validation/toast/types';
 import useToast from 'ui/components/progress-validation/toast';
 import { useRouter } from 'next/router';
+import { useInfinitePaging } from 'utils/infinite-paging';
 import { useGetProjectLanguages } from 'gateways/resource-api/languages/languages';
 import { v4 as uuidv4 } from 'uuid';
+
+const TERMSFETCHSIZE = 25;
 
 export const useProjectLogic = ({
     actualOrganisationUser,
@@ -63,14 +66,6 @@ export const useProjectLogic = ({
     const { mutateAsync: deleteTerm, isLoading: isLoadingDeleteTerm } =
         useDeleteTerm();
     const { mutateAsync: saveTranslation } = useSaveTranslation();
-    const {
-        data: projectTerms,
-        refetch: refetchProjectTerms,
-        isLoading: isLoadingSearchTerms,
-    } = useGetTerms(id as string, {
-        q: searchFilterValue as string,
-        size: 100,
-    });
 
     const { data: projectData, refetch: refetchProjectData } = useGetProject(
         actualOrganisationUser?.id as string,
@@ -78,6 +73,19 @@ export const useProjectLogic = ({
     );
     const { data: projectLanguages, refetch: refetchProjectLanguages } =
         useGetProjectLanguages(id as string);
+
+    const {
+        data: projectTerms,
+        isLoading: isLoadingSearchTerms,
+        refetch: refetchProjectTerms,
+        fetchNextPage: onFetchProjectTermsNextPage,
+        isFetchingNextPage: isFetchingProjectTermsNextPage,
+        hasNextPage: hasNextPageTerms,
+    } = useInfinitePaging<TermDTO>({
+        useQueryFn: useGetTermsInfinite,
+        pathParams: [id as string],
+        queryParams: { q: searchFilterValue, size: TERMSFETCHSIZE },
+    });
 
     // Functions
     async function handleOnDeleteTerm(termId: string) {
@@ -303,5 +311,8 @@ export const useProjectLogic = ({
         isLoadingCreateTerm,
         isLoadingUpdateTerm,
         isLoadingDeleteTerm,
+        onFetchProjectTermsNextPage,
+        isFetchingProjectTermsNextPage,
+        hasNextPageTerms
     };
 };

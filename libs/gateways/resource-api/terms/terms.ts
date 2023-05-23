@@ -4,13 +4,15 @@
  * Localize Backend API
  * OpenAPI spec version: v1
  */
-import { useQuery, useMutation } from '@tanstack/react-query';
+import { useQuery, useInfiniteQuery, useMutation } from '@tanstack/react-query';
 import type {
     UseQueryOptions,
+    UseInfiniteQueryOptions,
     UseMutationOptions,
     QueryFunction,
     MutationFunction,
     UseQueryResult,
+    UseInfiniteQueryResult,
     QueryKey,
 } from '@tanstack/react-query';
 import type {
@@ -46,6 +48,51 @@ export const getGetTermsQueryKey = (
     projectId: string,
     params?: GetTermsParams,
 ) => [`/projects/${projectId}/terms`, ...(params ? [params] : [])] as const;
+
+export type GetTermsInfiniteQueryResult = NonNullable<
+    Awaited<ReturnType<typeof getTerms>>
+>;
+export type GetTermsInfiniteQueryError = unknown;
+
+export const useGetTermsInfinite = <
+    TData = Awaited<ReturnType<typeof getTerms>>,
+    TError = unknown,
+>(
+    projectId: string,
+    params?: GetTermsParams,
+    options?: {
+        query?: UseInfiniteQueryOptions<
+            Awaited<ReturnType<typeof getTerms>>,
+            TError,
+            TData
+        >;
+    },
+): UseInfiniteQueryResult<TData, TError> & { queryKey: QueryKey } => {
+    const { query: queryOptions } = options ?? {};
+
+    const queryKey =
+        queryOptions?.queryKey ?? getGetTermsQueryKey(projectId, params);
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof getTerms>>> = ({
+        signal,
+        pageParam,
+    }) => getTerms(projectId, { page: pageParam, ...params }, signal);
+
+    const query = useInfiniteQuery<
+        Awaited<ReturnType<typeof getTerms>>,
+        TError,
+        TData
+    >({
+        queryKey,
+        queryFn,
+        enabled: !!projectId,
+        ...queryOptions,
+    }) as UseInfiniteQueryResult<TData, TError> & { queryKey: QueryKey };
+
+    query.queryKey = queryKey;
+
+    return query;
+};
 
 export type GetTermsQueryResult = NonNullable<
     Awaited<ReturnType<typeof getTerms>>

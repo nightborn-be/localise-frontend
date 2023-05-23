@@ -4,13 +4,15 @@
  * Localize Backend API
  * OpenAPI spec version: v1
  */
-import { useQuery, useMutation } from '@tanstack/react-query';
+import { useQuery, useInfiniteQuery, useMutation } from '@tanstack/react-query';
 import type {
     UseQueryOptions,
+    UseInfiniteQueryOptions,
     UseMutationOptions,
     QueryFunction,
     MutationFunction,
     UseQueryResult,
+    UseInfiniteQueryResult,
     QueryKey,
 } from '@tanstack/react-query';
 import type {
@@ -120,6 +122,52 @@ export const getGetOrganisationsForUserQueryKey = (
     userId: string,
     params?: GetOrganisationsForUserParams,
 ) => [`/users/${userId}/organisations`, ...(params ? [params] : [])] as const;
+
+export type GetOrganisationsForUserInfiniteQueryResult = NonNullable<
+    Awaited<ReturnType<typeof getOrganisationsForUser>>
+>;
+export type GetOrganisationsForUserInfiniteQueryError = unknown;
+
+export const useGetOrganisationsForUserInfinite = <
+    TData = Awaited<ReturnType<typeof getOrganisationsForUser>>,
+    TError = unknown,
+>(
+    userId: string,
+    params?: GetOrganisationsForUserParams,
+    options?: {
+        query?: UseInfiniteQueryOptions<
+            Awaited<ReturnType<typeof getOrganisationsForUser>>,
+            TError,
+            TData
+        >;
+    },
+): UseInfiniteQueryResult<TData, TError> & { queryKey: QueryKey } => {
+    const { query: queryOptions } = options ?? {};
+
+    const queryKey =
+        queryOptions?.queryKey ??
+        getGetOrganisationsForUserQueryKey(userId, params);
+
+    const queryFn: QueryFunction<
+        Awaited<ReturnType<typeof getOrganisationsForUser>>
+    > = ({ signal, pageParam }) =>
+        getOrganisationsForUser(userId, { page: pageParam, ...params }, signal);
+
+    const query = useInfiniteQuery<
+        Awaited<ReturnType<typeof getOrganisationsForUser>>,
+        TError,
+        TData
+    >({
+        queryKey,
+        queryFn,
+        enabled: !!userId,
+        ...queryOptions,
+    }) as UseInfiniteQueryResult<TData, TError> & { queryKey: QueryKey };
+
+    query.queryKey = queryKey;
+
+    return query;
+};
 
 export type GetOrganisationsForUserQueryResult = NonNullable<
     Awaited<ReturnType<typeof getOrganisationsForUser>>
@@ -281,6 +329,49 @@ export const getOrganisation = (
 
 export const getGetOrganisationQueryKey = (organisationId: string) =>
     [`/organisations/${organisationId}`] as const;
+
+export type GetOrganisationInfiniteQueryResult = NonNullable<
+    Awaited<ReturnType<typeof getOrganisation>>
+>;
+export type GetOrganisationInfiniteQueryError = unknown;
+
+export const useGetOrganisationInfinite = <
+    TData = Awaited<ReturnType<typeof getOrganisation>>,
+    TError = unknown,
+>(
+    organisationId: string,
+    options?: {
+        query?: UseInfiniteQueryOptions<
+            Awaited<ReturnType<typeof getOrganisation>>,
+            TError,
+            TData
+        >;
+    },
+): UseInfiniteQueryResult<TData, TError> & { queryKey: QueryKey } => {
+    const { query: queryOptions } = options ?? {};
+
+    const queryKey =
+        queryOptions?.queryKey ?? getGetOrganisationQueryKey(organisationId);
+
+    const queryFn: QueryFunction<
+        Awaited<ReturnType<typeof getOrganisation>>
+    > = ({ signal }) => getOrganisation(organisationId, signal);
+
+    const query = useInfiniteQuery<
+        Awaited<ReturnType<typeof getOrganisation>>,
+        TError,
+        TData
+    >({
+        queryKey,
+        queryFn,
+        enabled: !!organisationId,
+        ...queryOptions,
+    }) as UseInfiniteQueryResult<TData, TError> & { queryKey: QueryKey };
+
+    query.queryKey = queryKey;
+
+    return query;
+};
 
 export type GetOrganisationQueryResult = NonNullable<
     Awaited<ReturnType<typeof getOrganisation>>

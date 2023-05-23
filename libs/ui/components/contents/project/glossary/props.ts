@@ -2,13 +2,11 @@ import {
     LanguagePagingDTO,
     ProjectDTO,
     TermDTO,
-    TermPagingDTO,
 } from 'gateways/resource-api/types';
 import { IDefaultForm, IForm } from 'utils/formik';
 import { ITableRowTermForm } from './components/table-row-term/types';
-
 export interface IGlossaryProps {
-    projectTerms?: TermPagingDTO;
+    projectTerms?: TermDTO[];
     handleOnSaveTranslations: (
         form: IForm<ITableRowTermForm> & IDefaultForm,
     ) => void;
@@ -28,8 +26,13 @@ export interface IGlossaryProps {
     isLoadingCreateTerm: boolean;
     isLoadingUpdateTerm: boolean;
     isLoadingDeleteTerm: boolean;
+    onFetchProjectTermsNextPage: () => void;
+    isFetchingProjectTermsNextPage: boolean;
+    hasNextPageTerms?: boolean,
 }
 
 export interface IGlossaryLogicProps {
     addNewRowTerm: (term: TermDTO) => void;
+    onFetchProjectTermsNextPage: () => void
+    hasNextPageTerms?: boolean
 }
