@@ -25,6 +25,7 @@ import { getInitialeName } from 'utils/functions';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'react-i18next';
 import { tKeys } from '../../../i18n/keys';
+import { useAuth } from '../../auth/index';
 
 export const SideBar = ({
     handleOnCreateProject,
@@ -52,6 +53,7 @@ export const SideBar = ({
     const { t } = useTranslation();
     const { onOpen, isOpen, onClose } = useDisclosure();
     const { push } = useRouter();
+    const auth = useAuth();
     // Render
     return (
         <>
@@ -77,6 +79,18 @@ export const SideBar = ({
                     </Text>
                 </HStack>
                 {/* FIRST MENU */}
+                <SidebarProject
+                    onClick={() => {
+                        auth.signOut();
+                    }}
+                    activeKey={activeOptionKey}
+                    text={'Disconnect'}
+                    textFont={FONTS.T1.T12px.Medium500.value}
+                    textColor={COLORS.Text.T400.value}
+                    projectIconColor={COLORS.Error.T500.value}
+                    startEnhancer={<Icon name='myProfile' />}
+                    handleOnUpdateColorProject={handleOnUpdateColorProject}
+                />
                 <VStack
                     // not displayed because not implemented
                     display={'none'}

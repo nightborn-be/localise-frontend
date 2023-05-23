@@ -5,6 +5,7 @@ export interface AuthContextState {
     isLoading: boolean;
     userEmail?: string;
     signIn: (email: string, password: string) => Promise<void>;
+    signOut: () => Promise<void>
 }
 
 export const AuthContext = createContext<AuthContextState | null>(null);
