@@ -62,20 +62,12 @@ export default function TableRowMembers({
                 w='full'
                 h='2.75rem'
                 alignItems={'center'}
-            ></HStack>
-            <HStack
-                padding='0.5rem 1.25rem'
-                spacing='0.625rem'
-                w='full'
-                h='2.75rem'
-                alignItems={'center'}
             >
                 <Role
                     selectedValue={selectedValue}
                     setSelectedValue={setSelectedValue}
                 />
             </HStack>
-
             <HStack
                 padding='0.5rem 0.5rem 0.5rem 1.25rem'
                 spacing='0.25rem'

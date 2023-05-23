@@ -5,7 +5,6 @@ import { ITableMembersProps } from './props';
 import TableRowMembers from '../table-row-members';
 
 const TableMembers = ({ members }: ITableMembersProps) => {
-    if (members) members.data.push({ role: 'Developer' });
     // Render
     return (
         <VStack
@@ -14,13 +13,12 @@ const TableMembers = ({ members }: ITableMembersProps) => {
             padding='0rem 2rem 2rem 1.25rem'
             spacing={0}
         >
-            <TableHeaderMembers firstColTitle='Email' thirdColTitle='Role' />
+            <TableHeaderMembers />
             {members && (
                 <VStack spacing='0.5rem'>
                     {members.data?.map((member) => {
                         return (
                             <TableRowMembers
-                                avatarPicture=''
                                 email={member.email as string}
                                 role={member.role as string}
                             />

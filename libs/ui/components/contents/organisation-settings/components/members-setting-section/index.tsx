@@ -21,8 +21,8 @@ export const MembersSettingSection = ({
     // Render
     return (
         <Box
-            // not developed for the moment, implement the logic when is developed. remplace this box per <></> when is implemented
-            display='none'
+        // not developed for the moment, implement the logic when is developed. remplace this box per <></> when is implemented
+        // display='none'
         >
             <VStack
                 position={'relative'}
