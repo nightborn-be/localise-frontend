@@ -38,6 +38,30 @@ export default function TableRowTerm({
     } = useTableRowTermLogic({ term, languages: projectLanguages, isNewTerm });
     const { t } = useTranslation();
 
+
+    function getBgColor(): string {
+        if (isNewTerm) {
+            return COLORS.Tag.value;
+        }
+        return COLORS.Success.T100.value;
+    }
+
+    function getColor(): string {
+        if (isNewTerm) {
+            return COLORS.Text.T300.value;
+        }
+        return COLORS.Success.T600.value;
+    }
+
+    function getBadgeText(): string {
+        if (isNewTerm) {
+            return t<string>(
+                tKeys.home.project.tab.glossary.content.table.content.row.badge
+                    .unsaved,
+            );
+        }
+        return 'SAVED';
+    }
     //Render
     return (
         <VStack w='full' spacing={0}>
@@ -110,22 +134,16 @@ export default function TableRowTerm({
                     alignItems={'center'}
                     justifyContent={'right'}
                 >
-                    {isNewTerm && (
-                        <Badge
-                            mr='0.625rem'
-                            p={'0.25rem'}
-                            pr='0.625rem'
-                            pl='0.625rem'
-                            borderRadius='0.5rem'
-                            colorScheme='purple'
-                            fontSize={'0.625rem'}
-                        >
-                            {t<string>(
-                                tKeys.home.project.tab.glossary.content.table
-                                    .content.row.badge.unsaved,
-                            )}
-                        </Badge>
-                    )}
+                    <Badge
+                        mr='0.625rem'
+                        p={'0.25rem 0.5rem'}
+                        borderRadius='0.25rem'
+                        backgroundColor={getBgColor()}
+                        color={getColor()}
+                        fontSize={'0.625rem'}
+                    >
+                        {getBadgeText()}
+                    </Badge>
                     <Tooltip
                         type={TooltipType.DEFAULT}
                         label={t<string>(
