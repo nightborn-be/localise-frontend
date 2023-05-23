@@ -5,10 +5,20 @@ import FONTS from '../../../../constants/fonts';
 import { Box, Flex, VStack } from '@chakra-ui/react';
 import { ITabTitleProps } from './props';
 
-export const TabTitle = ({ title, onSelect, active }: ITabTitleProps) => {
+export const TabTitle = ({
+    title,
+    onSelect,
+    active,
+    datacy,
+}: ITabTitleProps) => {
     // Render
     return (
-        <VStack justify='space-between' cursor='pointer' onClick={onSelect}>
+        <VStack
+            justify='space-between'
+            cursor='pointer'
+            onClick={onSelect}
+            data-cy={datacy}
+        >
             <Text
                 font={FONTS.T1.T12px.Medium500.value}
                 color={active ? COLORS.Text.T400.value : COLORS.InputText.value}

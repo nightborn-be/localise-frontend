@@ -13,6 +13,7 @@ export default function SidebarMenuSettingItem({
     h = '2rem',
     isSelected,
     onSelect,
+    datacy,
 }: ISidebarMenuSettingItemProps) {
     //Attributes
     const [isHovered, setIsHovered] = useState<boolean>(false);
@@ -48,6 +49,7 @@ export default function SidebarMenuSettingItem({
                 onClick={onSelect}
                 cursor={'pointer'}
                 spacing='0.875rem'
+                data-cy={datacy}
             >
                 <Box
                     w='0.125rem'

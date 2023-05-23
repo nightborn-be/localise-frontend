@@ -49,6 +49,7 @@ export const SearchBoxSettingSection = ({
                 activeKeys={activeKeys}
                 options={filter(value)}
                 labelFont={FONTS.T1.T16px.SemiBold600.value}
+                datacy='searchBoxSetting'
             />
         </Box>
     );

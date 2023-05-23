@@ -50,6 +50,7 @@ export const ProjectColorsSettingSection = ({
                 colorPickerSize='2.5rem'
                 selected={currentSelectedColor}
                 onSelect={setCurrentSelectedColor}
+                datacy='colorPickerSetting'
             />
         </VStack>
     );

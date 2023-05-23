@@ -57,6 +57,7 @@ export const InformationSettingSection = ({
                     labelColor={COLORS.Text.T500.value}
                     labelFont={FONTS.T1.T14px.Medium500.value}
                     {...form.projectName}
+                    data-cy='projectNameSetting'
                 />
                 <InputProjectKey
                     color={COLORS.Text.T500.value}
@@ -95,6 +96,7 @@ export const InformationSettingSection = ({
                 />
             </VStack>
             <Button
+                data-cy={'deleteProjectButton'}
                 onClick={deleteProjectDisclosure.onOpen}
                 color={COLORS.InputText.value}
                 font={FONTS.T1.T12px.Medium500.value}

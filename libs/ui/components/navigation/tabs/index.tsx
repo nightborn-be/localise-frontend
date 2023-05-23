@@ -21,6 +21,7 @@ const Tabs = ({ children, activeKey, onChange }: ITabsProps) => {
                             active={`${key}` === `${activeKey ?? ''}`}
                             onSelect={() => onChange?.(key)}
                             title={child.props.title}
+                            datacy={`tab_${key}`}
                         />
                     );
                 });

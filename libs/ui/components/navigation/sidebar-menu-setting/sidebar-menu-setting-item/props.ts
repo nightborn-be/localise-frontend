@@ -9,4 +9,5 @@ export interface ISidebarMenuSettingItemProps {
     hoverBackgroundColor?: string;
     isSelected?: boolean;
     onSelect?: () => void;
+    datacy?: string;
 }

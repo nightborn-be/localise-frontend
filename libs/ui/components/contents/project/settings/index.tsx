@@ -125,6 +125,7 @@ const Settings = ({
                                 onClick={() => {
                                     handleOnUpdateProject(form);
                                 }}
+                                data-cy='saveSettingButton'
                             >
                                 {t<string>(
                                     tKeys.home.project.tab.settings.content.cta

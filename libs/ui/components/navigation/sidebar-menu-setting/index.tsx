@@ -17,6 +17,7 @@ export default function SidebarMenuSetting<T>({
                         text={option.title}
                         isSelected={value === option.value}
                         onSelect={() => onChange?.(option.value)}
+                        datacy={`sideBarMenuSettingItem_${index}`}
                     />
                 ))}
             </VStack>
