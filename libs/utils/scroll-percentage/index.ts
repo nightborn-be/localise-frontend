@@ -8,8 +8,8 @@ export default function useScrollPercentage(): [
     const [scrollPercentage, setScrollPercentage] = useState(NaN);
 
     // This function get the event on param and update the state
-    const reportScroll = (e) => {
-        setScrollPercentage(getScrollPercentage(e.target));
+    const reportScroll = (e: Event) => {
+        setScrollPercentage(getScrollPercentage(e.target as HTMLDivElement));
     };
 
     useEffect(() => {
