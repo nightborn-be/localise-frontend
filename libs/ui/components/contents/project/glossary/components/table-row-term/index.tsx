@@ -25,7 +25,6 @@ export default function TableRowTerm({
     isLoadingCreateTerm,
     isLoadingUpdateTerm,
     isLoadingDeleteTerm,
-    ref,
 }: ITableRowTermProps) {
     //Attributes
     const {
@@ -53,7 +52,6 @@ export default function TableRowTerm({
                 spacing={0}
                 onClick={isNewTerm ? () => {} : toggleIsOpen}
                 cursor={isNewTerm ? 'auto' : 'pointer'}
-                ref={ref}
             >
                 <HStack
                     padding='0.5rem 1.25rem'

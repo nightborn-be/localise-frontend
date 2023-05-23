@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import InputLabel from '../../../inputs/input-label/index';
 import COLORS from '../../../../constants/colors';
 import FONTS from '../../../../constants/fonts';
@@ -50,210 +50,207 @@ export const Glossary = ({
     });
     const { t } = useTranslation();
 
+    function render(): ReactElement {
+        if (
+            projectTerms?.length === 0 &&
+            newRowTerm.length === 0 &&
+            searchFilterValue === ''
+        ) {
+            return <MissingTerms addNewRowTerm={addNewRowTerm} />;
+        }
+        return (
+            <VStack
+                h='full'
+                w='full'
+                alignItems={'left'}
+                padding='2rem'
+                spacing='2rem'
+                paddingBottom={'0.4375rem'}
+            >
+                <HStack>
+                    <InputLabel
+                        label={t<string>(
+                            tKeys.home.project.tab.glossary.content.title,
+                        )}
+                        labelColor={COLORS.Text.T400.value}
+                        labelFont={FONTS.T1.T20px.SemiBold600.value}
+                        description={t<string>(
+                            tKeys.home.project.tab.glossary.content.description,
+                        )}
+                        descriptionColor={COLORS.InputText.value}
+                        descriptionFont={FONTS.T1.T12px.Regular400.value}
+                        spacing='0.5rem'
+                        maxWidth='28.125rem'
+                    />
+                    <Box w='full' />
+                    <Button
+                        w={'fit-content'}
+                        minW={'fit-content'}
+                        h={'2rem'}
+                        minH={'2rem'}
+                        padding={'0.25rem 0.75rem 0.25rem 0.5rem'}
+                        borderRadius={'0.5rem'}
+                        spacing='0.25rem'
+                        font={FONTS.T1.T12px.SemiBold600.value}
+                        color={COLORS.Text.T400.value}
+                        bg={COLORS.White.T500.value}
+                        hoverBackgroundColor={COLORS.Tag.value}
+                        startEnhancer={() => (
+                            <Icon
+                                name='upload'
+                                stroke={COLORS.Text.T400.value}
+                            />
+                        )}
+                    >
+                        {t<string>(
+                            tKeys.home.project.tab.glossary.content.export,
+                        )}
+                    </Button>
+                </HStack>
+                <TableTerm
+                    ref={tableRef}
+                    setSearchFilterValue={setSearchFilterValue}
+                    searchFilterValue={searchFilterValue}
+                    setSortValue={setSortValue}
+                    sortValue={sortValue}
+                    setIsDetectDuplicate={setIsDetectDuplicate}
+                    isDetectDuplicate={isDetectDuplicate}
+                >
+                    {newRowTerm.map((term, i) => (
+                        <TableRowTerm
+                            key={`newTerm_${term.id}`}
+                            isNewTerm={true}
+                            term={term}
+                            handleOnSaveTranslations={handleOnSaveTranslations}
+                            handleOnDeleteTerm={handleOnDeleteNewTerm}
+                            projectLanguages={projectLanguages}
+                            isLoadingCreateTerm={isLoadingCreateTerm}
+                            isLoadingUpdateTerm={isLoadingUpdateTerm}
+                            isLoadingDeleteTerm={isLoadingDeleteTerm}
+                        />
+                    ))}
+                    {isLoadingSearchTerms ? (
+                        <VStack
+                            justifyContent={'center'}
+                            alignItems={'center'}
+                            height={'full'}
+                        >
+                            <Spinner
+                                size='xl'
+                                thickness='0.25rem'
+                                speed='0.65s'
+                                emptyColor={COLORS.Line.value}
+                                color={COLORS.Localize.Purple.T500.value}
+                            />
+                        </VStack>
+                    ) : (
+                        <>
+                            {projectTerms?.map((term) => {
+                                return (
+                                    <Box w='full' key={term.id}>
+                                        <TableRowTerm
+                                            isDisabled={true}
+                                            term={term}
+                                            handleOnSaveTranslations={
+                                                handleOnSaveTranslations
+                                            }
+                                            handleOnDeleteTerm={
+                                                handleOnDeleteTerm
+                                            }
+                                            projectLanguages={projectLanguages}
+                                            isLoadingCreateTerm={
+                                                isLoadingCreateTerm
+                                            }
+                                            isLoadingUpdateTerm={
+                                                isLoadingUpdateTerm
+                                            }
+                                            isLoadingDeleteTerm={
+                                                isLoadingDeleteTerm
+                                            }
+                                        />
+                                    </Box>
+                                );
+                            })}
+                        </>
+                    )}
+                    {isFetchingProjectTermsNextPage && (
+                        <HStack
+                            w='full'
+                            justifyContent={'center'}
+                            alignItems={'center'}
+                            paddingBottom={'0.3125rem'}
+                        >
+                            <Spinner
+                                size='lg'
+                                thickness='0.25rem'
+                                speed='0.65s'
+                                emptyColor={COLORS.Line.value}
+                                color={COLORS.Localize.Purple.T500.value}
+                            />
+                        </HStack>
+                    )}
+                </TableTerm>
+                <HStack
+                    alignItems={'center'}
+                    justifyContent={'right'}
+                    position={'absolute'}
+                    bottom='2.1875rem'
+                    right='2rem'
+                >
+                    <Tooltip
+                        type={TooltipType.COMMAND}
+                        command={
+                            <Text
+                                font={FONTS.T1.T10px.Regular400.value}
+                                color={COLORS.InputText.value}
+                            >
+                                {t<string>(
+                                    tKeys.home.project.tab.glossary.content.cta
+                                        .add.tooltip.shortcut,
+                                )}
+                            </Text>
+                        }
+                        label={t<string>(
+                            tKeys.home.project.tab.glossary.content.cta.add
+                                .tooltip.value,
+                        )}
+                        placement={'top'}
+                        marginRight={'4.25rem'}
+                        left='2.125rem'
+                    >
+                        <ButtonIcon
+                            borderRadius='6.25rem'
+                            size={ButtonSize.XXL}
+                            backgroundColor={COLORS.Localize.Purple.T500.value}
+                            hoverBackgroundColor={
+                                COLORS.Localize.Purple.T600.value
+                            }
+                            boxShadow={
+                                SHADOWS.Elevation.Light.Bottom.T04 +
+                                ',' +
+                                SHADOWS.Elevation.Light.Bottom.T04
+                            }
+                            handleOnClick={() => {
+                                addNewRowTerm({});
+                            }}
+                            shadow={SHADOWS.Elevation.Light.Bottom.T04.value}
+                        >
+                            <Icon
+                                name='addCircle'
+                                stroke={COLORS.White.T500.value}
+                                width={28}
+                                height={28}
+                            />
+                        </ButtonIcon>
+                    </Tooltip>
+                </HStack>
+            </VStack>
+        );
+    }
     // Renders
     return (
         <Box w='full' ref={scrollRef} overflowY='scroll'>
-            {searchFilterValue != '' ||
-            !!projectTerms?.length ||
-            !!newRowTerm.length ? (
-                <VStack
-                    h='full'
-                    w='full'
-                    alignItems={'left'}
-                    padding='2rem'
-                    spacing='2rem'
-                    paddingBottom={'0.4375rem'}
-                >
-                    <HStack>
-                        <InputLabel
-                            label={t<string>(
-                                tKeys.home.project.tab.glossary.content.title,
-                            )}
-                            labelColor={COLORS.Text.T400.value}
-                            labelFont={FONTS.T1.T20px.SemiBold600.value}
-                            description={t<string>(
-                                tKeys.home.project.tab.glossary.content
-                                    .description,
-                            )}
-                            descriptionColor={COLORS.InputText.value}
-                            descriptionFont={FONTS.T1.T12px.Regular400.value}
-                            spacing='0.5rem'
-                            maxWidth='28.125rem'
-                        />
-                        <Box w='full' />
-                        <Button
-                            w={'fit-content'}
-                            minW={'fit-content'}
-                            h={'2rem'}
-                            minH={'2rem'}
-                            padding={'0.25rem 0.75rem 0.25rem 0.5rem'}
-                            borderRadius={'0.5rem'}
-                            spacing='0.25rem'
-                            font={FONTS.T1.T12px.SemiBold600.value}
-                            color={COLORS.Text.T400.value}
-                            bg={COLORS.White.T500.value}
-                            hoverBackgroundColor={COLORS.Tag.value}
-                            startEnhancer={() => (
-                                <Icon
-                                    name='upload'
-                                    stroke={COLORS.Text.T400.value}
-                                />
-                            )}
-                        >
-                            {t<string>(
-                                tKeys.home.project.tab.glossary.content.export,
-                            )}
-                        </Button>
-                    </HStack>
-                    <TableTerm
-                        ref={tableRef}
-                        setSearchFilterValue={setSearchFilterValue}
-                        searchFilterValue={searchFilterValue}
-                        setSortValue={setSortValue}
-                        sortValue={sortValue}
-                        setIsDetectDuplicate={setIsDetectDuplicate}
-                        isDetectDuplicate={isDetectDuplicate}
-                    >
-                        {newRowTerm.map((term, i) => (
-                            <TableRowTerm
-                                key={`newTerm_${term.id}`}
-                                isNewTerm={true}
-                                term={term}
-                                handleOnSaveTranslations={
-                                    handleOnSaveTranslations
-                                }
-                                handleOnDeleteTerm={handleOnDeleteNewTerm}
-                                projectLanguages={projectLanguages}
-                                isLoadingCreateTerm={isLoadingCreateTerm}
-                                isLoadingUpdateTerm={isLoadingUpdateTerm}
-                                isLoadingDeleteTerm={isLoadingDeleteTerm}
-                            />
-                        ))}
-                        {isLoadingSearchTerms ? (
-                            <VStack
-                                justifyContent={'center'}
-                                alignItems={'center'}
-                                height={'full'}
-                            >
-                                <Spinner
-                                    size='xl'
-                                    thickness='0.25rem'
-                                    speed='0.65s'
-                                    emptyColor={COLORS.Line.value}
-                                    color={COLORS.Localize.Purple.T500.value}
-                                />
-                            </VStack>
-                        ) : (
-                            <>
-                                {projectTerms?.map((term) => {
-                                    return (
-                                        <Box w='full' key={term.id}>
-                                            <TableRowTerm
-                                                isDisabled={true}
-                                                term={term}
-                                                handleOnSaveTranslations={
-                                                    handleOnSaveTranslations
-                                                }
-                                                handleOnDeleteTerm={
-                                                    handleOnDeleteTerm
-                                                }
-                                                projectLanguages={
-                                                    projectLanguages
-                                                }
-                                                isLoadingCreateTerm={
-                                                    isLoadingCreateTerm
-                                                }
-                                                isLoadingUpdateTerm={
-                                                    isLoadingUpdateTerm
-                                                }
-                                                isLoadingDeleteTerm={
-                                                    isLoadingDeleteTerm
-                                                }
-                                            />
-                                        </Box>
-                                    );
-                                })}
-                            </>
-                        )}
-                        {isFetchingProjectTermsNextPage && (
-                            <HStack
-                                w='full'
-                                justifyContent={'center'}
-                                alignItems={'center'}
-                                paddingBottom={'0.3125rem'}
-                            >
-                                <Spinner
-                                    size='lg'
-                                    thickness='0.25rem'
-                                    speed='0.65s'
-                                    emptyColor={COLORS.Line.value}
-                                    color={COLORS.Localize.Purple.T500.value}
-                                />
-                            </HStack>
-                        )}
-                    </TableTerm>
-                    <HStack
-                        alignItems={'center'}
-                        justifyContent={'right'}
-                        position={'absolute'}
-                        bottom='2.1875rem'
-                        right='2rem'
-                    >
-                        <Tooltip
-                            type={TooltipType.COMMAND}
-                            command={
-                                <Text
-                                    font={FONTS.T1.T10px.Regular400.value}
-                                    color={COLORS.InputText.value}
-                                >
-                                    {t<string>(
-                                        tKeys.home.project.tab.glossary.content
-                                            .cta.add.tooltip.shortcut,
-                                    )}
-                                </Text>
-                            }
-                            label={t<string>(
-                                tKeys.home.project.tab.glossary.content.cta.add
-                                    .tooltip.value,
-                            )}
-                            placement={'top'}
-                            marginRight={'4.25rem'}
-                            left='2.125rem'
-                        >
-                            <ButtonIcon
-                                borderRadius='6.25rem'
-                                size={ButtonSize.XXL}
-                                backgroundColor={
-                                    COLORS.Localize.Purple.T500.value
-                                }
-                                hoverBackgroundColor={
-                                    COLORS.Localize.Purple.T600.value
-                                }
-                                boxShadow={
-                                    SHADOWS.Elevation.Light.Bottom.T04 +
-                                    ',' +
-                                    SHADOWS.Elevation.Light.Bottom.T04
-                                }
-                                handleOnClick={() => {
-                                    addNewRowTerm({});
-                                }}
-                                shadow={
-                                    SHADOWS.Elevation.Light.Bottom.T04.value
-                                }
-                            >
-                                <Icon
-                                    name='addCircle'
-                                    stroke={COLORS.White.T500.value}
-                                    width={28}
-                                    height={28}
-                                />
-                            </ButtonIcon>
-                        </Tooltip>
-                    </HStack>
-                </VStack>
-            ) : (
-                <MissingTerms addNewRowTerm={addNewRowTerm} />
-            )}
+            {render()}
         </Box>
     );
 };

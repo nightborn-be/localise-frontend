@@ -30,6 +30,8 @@ import { useInfinitePaging } from 'utils/infinite-paging';
 import { useGetProjectLanguages } from 'gateways/resource-api/languages/languages';
 import { v4 as uuidv4 } from 'uuid';
 
+const TERMSFETCHSIZE = 25;
+
 export const useProjectLogic = ({
     actualOrganisationUser,
     refecthOrganisationUserData,
@@ -39,7 +41,6 @@ export const useProjectLogic = ({
     organisationProjectData,
 }: IProjectContentLogicProps): ProjectLogicType => {
     // Attributes
-    const TermsFetchSize = 25;
     const toast = useToast();
     const { t } = useTranslation();
     const router = useRouter();
@@ -83,7 +84,7 @@ export const useProjectLogic = ({
     } = useInfinitePaging<TermDTO>({
         useQueryFn: useGetTermsInfinite,
         pathParams: [id as string],
-        queryParams: { q: searchFilterValue, size: TermsFetchSize },
+        queryParams: { q: searchFilterValue, size: TERMSFETCHSIZE },
     });
 
     // Functions
