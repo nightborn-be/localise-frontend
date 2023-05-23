@@ -7,6 +7,12 @@ import COLORS from '../../../constants/colors';
 import { Options } from '../../inputs/input-select/props';
 import { SingleValue } from 'react-select';
 const Role = ({ selectedValue, setSelectedValue }: IRoleProps) => {
+    // Attributes
+    const roleOptions: Options[] = [
+        { value: 'Admin', label: 'Admin' },
+        { value: 'Developer', label: 'Developer' },
+        { value: 'Translator', label: 'Translator' },
+    ];
     // Functions
     function getColor() {
         switch (selectedValue) {
@@ -30,7 +36,9 @@ const Role = ({ selectedValue, setSelectedValue }: IRoleProps) => {
                 return COLORS.Localize.Purple.T100.value;
         }
     }
-
+    function getDefaultValue() {
+        return roleOptions.find((role) => role.value === selectedValue);
+    }
     // Render
     return (
         <>
@@ -48,17 +56,14 @@ const Role = ({ selectedValue, setSelectedValue }: IRoleProps) => {
                     dropdownArrowColor={COLORS.Localize.Purple.T500.value}
                     background={COLORS.White.T500.value}
                     border='transparent'
-                    options={[
-                        { value: 'Admin', label: 'Admin' },
-                        { value: 'Developer', label: 'Developer' },
-                        { value: 'Translator', label: 'Translator' },
-                    ]}
+                    options={roleOptions}
+                    defaultValue={getDefaultValue()}
                     dropdownIndicator={undefined}
                     placeholder='Admin'
                     menuOptionWidth='12.5rem'
-                    onChange={(event: SingleValue<Options>) =>
-                        setSelectedValue(event?.value ?? '')
-                    }
+                    onChange={(event: SingleValue<Options>) => {
+                        setSelectedValue(event?.value ?? '');
+                    }}
                 />
             </HStack>
         </>

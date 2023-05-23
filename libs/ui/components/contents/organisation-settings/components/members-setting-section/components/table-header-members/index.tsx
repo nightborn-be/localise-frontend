@@ -1,15 +1,11 @@
 import React, { useState } from 'react';
 import { HStack } from '@chakra-ui/react';
-import COLORS from '../../../constants/colors';
-import Text from '../../contents/text';
-import FONTS from '../../../constants/fonts';
-import ITableHeaderProps from './props';
-import SearchInput from '../../inputs/search-icon';
-export default function TableHeader({
-    firstColTitle,
-    secondColTitle,
-    thirdColTitle,
-}: ITableHeaderProps) {
+import COLORS from '../../../../../../../constants/colors';
+import Text from '../../../../../text';
+import FONTS from '../../../../../../../constants/fonts';
+import ITableHeaderMembersProps from './props';
+import SearchInput from '../../../../../../inputs/search-icon';
+export default function TableHeaderMembers({}: ITableHeaderMembersProps) {
     //Attributes
     const [value, setValue] = useState<string>('');
 
@@ -41,7 +37,7 @@ export default function TableHeader({
                     font={FONTS.T1.T12px.SemiBold600.value}
                     color={COLORS.InputText.value}
                 >
-                    {firstColTitle}
+                    Email
                 </Text>
             </HStack>
             <HStack
@@ -55,21 +51,7 @@ export default function TableHeader({
                     font={FONTS.T1.T12px.SemiBold600.value}
                     color={COLORS.InputText.value}
                 >
-                    {secondColTitle}
-                </Text>
-            </HStack>
-            <HStack
-                padding='0.5rem 1.25rem'
-                spacing='0.625rem'
-                w='full'
-                h='2.75rem'
-                alignItems={'center'}
-            >
-                <Text
-                    font={FONTS.T1.T12px.SemiBold600.value}
-                    color={COLORS.InputText.value}
-                >
-                    {thirdColTitle}
+                    Role
                 </Text>
             </HStack>
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { VStack } from '@chakra-ui/react';
-import Select, { MultiValue, SingleValue } from 'react-select';
+import Select from 'react-select';
 import COLORS from '../../../constants/colors';
 import { IInputSelectProps, Options } from './props';
 import InputLabel from '../input-label';
@@ -42,6 +42,7 @@ const InputSelect = ({
     isMultiple,
     font,
     paddingContainer,
+    defaultValue,
     onChange,
 }: IInputSelectProps) => {
     // Render
@@ -53,6 +54,7 @@ const InputSelect = ({
             {/* Input select section */}
             {options && (
                 <Select
+                    defaultValue={defaultValue}
                     isMulti={isMultiple}
                     isSearchable={isSearchable}
                     controlShouldRenderValue={isMultiple ? false : true}

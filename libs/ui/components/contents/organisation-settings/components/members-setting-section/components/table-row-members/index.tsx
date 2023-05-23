@@ -1,23 +1,22 @@
 import React, { useState } from 'react';
 import { HStack } from '@chakra-ui/react';
-import COLORS from '../../../constants/colors';
-import Text from '../../contents/text';
-import FONTS from '../../../constants/fonts';
-import ITableRowProps from './props';
-import ButtonIcon from '../../inputs/button-icon';
-import Icon from '../../contents/icon';
-import { ButtonSize } from '../../inputs/button-icon/types';
-import Avatar from '../../contents/avatar';
-import Role from '../../contents/role';
-export default function TableRow({
+import COLORS from '../../../../../../../constants/colors';
+import Text from '../../../../../../contents/text';
+import FONTS from '../../../../../../../constants/fonts';
+import ButtonIcon from '../../../../../../inputs/button-icon';
+import Icon from '../../../../../../contents/icon';
+import { ButtonSize } from '../../../../../../inputs/button-icon/types';
+import Avatar from '../../../../../../contents/avatar';
+import Role from '../../../../../../contents/role';
+import ITableRowMembersProps from './props';
+export default function TableRowMembers({
     avatarPicture,
-    firstName,
-    lastName,
-}: ITableRowProps) {
+    email,
+    role,
+}: ITableRowMembersProps) {
     //Attributes
     const [isHovered, setIsHovered] = useState<boolean>(false);
-    const [selectedValue, setSelectedValue] = useState<string>('');
-
+    const [selectedValue, setSelectedValue] = useState<string>(role);
     //Render
     return (
         <HStack
@@ -39,7 +38,7 @@ export default function TableRow({
                 justifyContent={'right'}
             >
                 <Avatar
-                    name={firstName?.charAt(0) + lastName?.charAt(0)}
+                    name={email?.charAt(0).toUpperCase()}
                     imageSrc={avatarPicture}
                 />
             </HStack>
@@ -54,21 +53,7 @@ export default function TableRow({
                     font={FONTS.T1.T12px.Regular400.value}
                     color={COLORS.Text.T400.value}
                 >
-                    {firstName}
-                </Text>
-            </HStack>
-            <HStack
-                padding='0.5rem 1.25rem'
-                spacing='0.625rem'
-                w='full'
-                h='2.75rem'
-                alignItems={'center'}
-            >
-                <Text
-                    font={FONTS.T1.T12px.Regular400.value}
-                    color={COLORS.Text.T400.value}
-                >
-                    {lastName}
+                    {email}
                 </Text>
             </HStack>
             <HStack
@@ -83,7 +68,6 @@ export default function TableRow({
                     setSelectedValue={setSelectedValue}
                 />
             </HStack>
-
             <HStack
                 padding='0.5rem 0.5rem 0.5rem 1.25rem'
                 spacing='0.25rem'

@@ -21,7 +21,7 @@ type SelectProps =
           ) => void;
       };
 
-export type IInputSelectProps = Omit<InputProps, 'onChange'> &
+export type IInputSelectProps = Omit<InputProps, 'onChange' | 'defaultValue'> &
     SelectProps & {
         label?: string;
         description?: string;
@@ -44,6 +44,7 @@ export type IInputSelectProps = Omit<InputProps, 'onChange'> &
         isMultiple?: boolean;
         font?: Font;
         paddingContainer?: string;
+    defaultValue?: Options
     };
 
 export type Options = {

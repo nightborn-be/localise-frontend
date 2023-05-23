@@ -13,6 +13,7 @@ import TableMembers from './components/table-members';
 export const MembersSettingSection = ({
     membersRef,
     addMembersDisclosure,
+    members,
 }: IMembersSettingSectionProps) => {
     // Attributes
     const { t } = useTranslation();
@@ -74,7 +75,7 @@ export const MembersSettingSection = ({
                     </Button>
                 </HStack>
             </VStack>
-            <TableMembers />
+            <TableMembers members={members} />
         </Box>
     );
 };

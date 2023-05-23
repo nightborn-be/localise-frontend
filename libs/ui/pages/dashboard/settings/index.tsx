@@ -31,6 +31,7 @@ const OrganisationSettingsPage = () => {
         isLoadingSearchProject,
         handleOnClickProject,
         handleOnUpdateColorProject,
+        members,
     } = useSidebarLogic();
 
     // Render
@@ -63,6 +64,7 @@ const OrganisationSettingsPage = () => {
                 handleUpdateOrganisation={handleUpdateOrganisation}
                 actualOrganisationUser={actualOrganisationUser}
                 isLoadingUpdateOrganisation={isLoadingUpdateOrganisation}
+                members={members}
             />
         </Page>
     );
