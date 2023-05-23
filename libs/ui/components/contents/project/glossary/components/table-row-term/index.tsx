@@ -38,6 +38,30 @@ export default function TableRowTerm({
     } = useTableRowTermLogic({ term, languages: projectLanguages, isNewTerm });
     const { t } = useTranslation();
 
+
+    function getBgColor(): string {
+        if (isNewTerm) {
+            return COLORS.Tag.value;
+        }
+        return COLORS.Success.T100.value;
+    }
+
+    function getColor(): string {
+        if (isNewTerm) {
+            return COLORS.Text.T300.value;
+        }
+        return COLORS.Success.T600.value;
+    }
+
+    function getBadgeText(): string {
+        if (isNewTerm) {
+            return t<string>(
+                tKeys.home.project.tab.glossary.content.table.content.row.badge
+                    .unsaved,
+            );
+        }
+        return 'SAVED';
+    }
     //Render
     return (
         <VStack w='full' spacing={0}>
@@ -114,24 +138,11 @@ export default function TableRowTerm({
                         mr='0.625rem'
                         p={'0.25rem 0.5rem'}
                         borderRadius='0.25rem'
-                        backgroundColor={
-                            isNewTerm
-                                ? COLORS.Tag.value
-                                : COLORS.Success.T100.value
-                        }
-                        color={
-                            isNewTerm
-                                ? COLORS.Text.T300.value
-                                : COLORS.Success.T600.value
-                        }
+                        backgroundColor={getBgColor()}
+                        color={getColor()}
                         fontSize={'0.625rem'}
                     >
-                        {isNewTerm
-                            ? t<string>(
-                                  tKeys.home.project.tab.glossary.content.table
-                                      .content.row.badge.unsaved,
-                              )
-                            : 'SAVED'}
+                        {getBadgeText()}
                     </Badge>
                     <Tooltip
                         type={TooltipType.DEFAULT}
