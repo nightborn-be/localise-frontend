@@ -1,9 +1,10 @@
 import React from 'react';
 import { VStack } from '@chakra-ui/react';
-import TableHeader from '../../../../../../../components/table/table-header';
-import TableRow from '../../../../../../../components/table/table-row';
+import TableHeaderMembers from '../table-header-members';
+import { ITableMembersProps } from './props';
+import TableRowMembers from '../table-row-members';
 
-const TableMembers = () => {
+const TableMembers = ({ members }: ITableMembersProps) => {
     // Render
     return (
         <VStack
@@ -12,23 +13,19 @@ const TableMembers = () => {
             padding='0rem 2rem 2rem 1.25rem'
             spacing={0}
         >
-            <TableHeader
-                firstColTitle='First name'
-                secondColTitle='Name'
-                thirdColTitle='Role'
-            />
-            <VStack spacing='0.5rem'>
-                <TableRow
-                    avatarPicture='/assets/images/avatar.png'
-                    firstName='Pierre'
-                    lastName='De Moor'
-                />
-                <TableRow
-                    avatarPicture='/assets/images/avatar.png'
-                    firstName='Pierre'
-                    lastName='De Moor'
-                />
-            </VStack>
+            <TableHeaderMembers />
+            {members && (
+                <VStack spacing='0.5rem'>
+                    {members.data?.map((member) => {
+                        return (
+                            <TableRowMembers
+                                email={member.email as string}
+                                role={member.role as string}
+                            />
+                        );
+                    })}
+                </VStack>
+            )}
         </VStack>
     );
 };

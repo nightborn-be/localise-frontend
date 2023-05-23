@@ -1,6 +1,9 @@
 import { IDefaultForm, IForm } from 'utils/formik';
 import { IOrganisationSettingsForm } from './types';
-import { OrganisationDTO } from 'gateways/resource-api/types';
+import {
+    OrganisationDTO,
+    UserWithMembershipPagingDTO,
+} from 'gateways/resource-api/types';
 
 export interface IOrganisationSettingsProps {
     handleOnDeleteOrganisation: () => void;
@@ -9,6 +12,7 @@ export interface IOrganisationSettingsProps {
     ) => void;
     isLoadingUpdateOrganisation: boolean;
     actualOrganisationUser?: OrganisationDTO;
+    members: UserWithMembershipPagingDTO;
 }
 
 export interface IOrganisationSettingsLogicProps {

@@ -25,12 +25,15 @@ const SidebarMenuSettingContent = ({
                         ),
                         value: MenuItemValue.INFORMATIONS,
                     },
+                    /*
+                      // not developed for the moment, implement the logic when is developed
                     {
                         title: t<string>(
                             tKeys.home.organisation_settings.menu_item.members,
                         ),
                         value: MenuItemValue.MEMBERS,
                     },
+                    */
                 ]}
                 value={activeMenuSettingKey}
                 onChange={(value) => {

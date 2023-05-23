@@ -1,5 +1,5 @@
 import React from 'react';
-import { HStack, VStack } from '@chakra-ui/react';
+import { Box, HStack, VStack } from '@chakra-ui/react';
 import InputLabel from '../../../../../components/inputs/input-label';
 import { tKeys } from '../../../../../../i18n/keys';
 import { useTranslation } from 'react-i18next';
@@ -13,13 +13,17 @@ import TableMembers from './components/table-members';
 export const MembersSettingSection = ({
     membersRef,
     addMembersDisclosure,
+    members,
 }: IMembersSettingSectionProps) => {
     // Attributes
     const { t } = useTranslation();
 
     // Render
     return (
-        <>
+        <Box
+            // not developed for the moment, implement the logic when is developed. remplace this box per <></> when is implemented
+            display='none'
+        >
             <VStack
                 position={'relative'}
                 alignItems={'left'}
@@ -71,8 +75,8 @@ export const MembersSettingSection = ({
                     </Button>
                 </HStack>
             </VStack>
-            <TableMembers />
-        </>
+            <TableMembers members={members} />
+        </Box>
     );
 };
 

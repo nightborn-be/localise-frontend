@@ -69,7 +69,7 @@ export default function TableRowTerm({
                                 .content.row.input.key.placeholder,
                         )}
                         border='transparent'
-                        w={'fit-content'}
+                        w={'full'}
                         color={COLORS.Text.T400.value}
                         font={FONTS.T1.T12px.Regular400.value}
                     />
@@ -135,6 +135,8 @@ export default function TableRowTerm({
                         placement={'bottom'}
                     >
                         <ButtonIcon
+                            // not developed for the moment, implement the logic when is developed
+                            display={'none'}
                             aria-label=''
                             borderRadius='0.375rem'
                             size={ButtonSize.SMALL}

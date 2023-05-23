@@ -4,10 +4,14 @@ import { getAuth, signInWithEmailAndPassword } from '@firebase/auth';
 import { tokenStorage } from '../../utils/token/token';
 import { firebaseConfig } from './config';
 import { TokenKey } from '../../utils/token/token-keys';
+import { storage } from 'utils/storage/storage';
+import { StorageKey } from '../../utils/storage/storage-keys';
+import { useRouter } from 'next/router';
 export const useLogic = () => {
     // Attributes
     const [isFirebaseLoading, setIsFirebaseLoading] = useState<boolean>(true);
     const [isLoading, setIsLoading] = useState<boolean>(false);
+    const { push } = useRouter()
 
     // Functions
     async function signIn(email: string, password: string): Promise<void> {
@@ -34,6 +38,17 @@ export const useLogic = () => {
         }
     }
 
+
+    async function signOut(): Promise<void> {
+        const auth = getAuth();
+
+        if (!auth) {
+            return;
+        }
+        await auth.signOut();
+        storage.remove(StorageKey.ID_TOKEN)
+        push('/auth')
+    }
     useEffect(() => {
         initializeApp(firebaseConfig);
         setIsFirebaseLoading(false);
@@ -44,5 +59,6 @@ export const useLogic = () => {
         isAuthLoading: isFirebaseLoading,
         isLoading,
         signIn,
+        signOut,
     };
 };

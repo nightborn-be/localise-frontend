@@ -4,6 +4,7 @@ import COLORS from '../../../constants/colors';
 import Text from '../text';
 import FONTS from '../../../constants/fonts';
 import { IAvatarProps } from './props';
+import Icon from '../icon';
 
 const Avatar = ({ name, imageSrc }: IAvatarProps) => {
     // Render
@@ -29,12 +30,16 @@ const Avatar = ({ name, imageSrc }: IAvatarProps) => {
                     backgroundColor={COLORS.Line.value}
                     borderRadius='100%'
                 >
-                    <Text
-                        font={FONTS.T1.T10px.SemiBold600.value}
-                        color={COLORS.InputText.value}
-                    >
-                        {name}
-                    </Text>
+                    {name ? (
+                        <Text
+                            font={FONTS.T1.T10px.SemiBold600.value}
+                            color={COLORS.InputText.value}
+                        >
+                            {name}
+                        </Text>
+                    ) : (
+                        <Icon name='myProfile' />
+                    )}
                 </HStack>
             )}
         </>

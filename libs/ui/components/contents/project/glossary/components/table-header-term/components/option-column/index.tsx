@@ -40,45 +40,52 @@ const OptionColumn = ({
                 value={searchFilterValue}
                 onChange={(event) => setSearchFilterValue(event.target.value)}
             />
-            <InputSelectSort
-                options={[
-                    {
-                        value: 'None',
-                        label: t<string>(
-                            tKeys.home.project.tab.glossary.content.table.header
-                                .column.param.sort.none,
-                        ),
-                    },
-                    {
-                        value: 'Name',
-                        label: t<string>(
-                            tKeys.home.project.tab.glossary.content.table.header
-                                .column.param.sort.name,
-                        ),
-                        icon: <Icon name='sortName' />,
-                    },
-                    {
-                        value: 'Author',
-                        label: t<string>(
-                            tKeys.home.project.tab.glossary.content.table.header
-                                .column.param.sort.author,
-                        ),
-                        icon: <Icon name='sort' />,
-                    },
-                    {
-                        value: 'Date',
-                        label: t<string>(
-                            tKeys.home.project.tab.glossary.content.table.header
-                                .column.param.sort.date,
-                        ),
-                        icon: <Icon name='date' />,
-                    },
-                ]}
-                onClick={setSortValue}
-                valueSelected={sortValue}
-            />
+            <Box
+                // not developed for the moment, remove Box component when is developed
+                display={'none'}
+            >
+                <InputSelectSort
+                    options={[
+                        {
+                            value: 'None',
+                            label: t<string>(
+                                tKeys.home.project.tab.glossary.content.table
+                                    .header.column.param.sort.none,
+                            ),
+                        },
+                        {
+                            value: 'Name',
+                            label: t<string>(
+                                tKeys.home.project.tab.glossary.content.table
+                                    .header.column.param.sort.name,
+                            ),
+                            icon: <Icon name='sortName' />,
+                        },
+                        {
+                            value: 'Author',
+                            label: t<string>(
+                                tKeys.home.project.tab.glossary.content.table
+                                    .header.column.param.sort.author,
+                            ),
+                            icon: <Icon name='sort' />,
+                        },
+                        {
+                            value: 'Date',
+                            label: t<string>(
+                                tKeys.home.project.tab.glossary.content.table
+                                    .header.column.param.sort.date,
+                            ),
+                            icon: <Icon name='date' />,
+                        },
+                    ]}
+                    onClick={setSortValue}
+                    valueSelected={sortValue}
+                />
+            </Box>
             <VStack position={'relative'}>
                 <ButtonIcon
+                    // not developed for the moment, implement the logic when is developed
+                    display={'none'}
                     aria-label=''
                     borderRadius='0.375rem'
                     size={ButtonSize.SMALL}

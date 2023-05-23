@@ -70,6 +70,8 @@ export const CreateOrganisationModal = ({
                     />
                 </VStack>
                 <VStack
+                    // not developed for the moment, implement the logic when is developed
+                    display={'none'}
                     padding={'0.75rem 1.25rem'}
                     spacing='1.25rem'
                     alignItems={'left'}
@@ -162,6 +164,8 @@ export const CreateOrganisationModal = ({
                     )}
                 </VStack>
                 <VStack
+                    // not developed for the moment, implement the logic when is developed
+                    display={'none'}
                     w={'full'}
                     alignItems={'left'}
                     padding='0.75rem 1.25rem'
