@@ -110,7 +110,7 @@ export const Glossary = ({
                         setIsDetectDuplicate={setIsDetectDuplicate}
                         isDetectDuplicate={isDetectDuplicate}
                     >
-                        {newRowTerm.map((term, i) => (
+                        {newRowTerm.map((term, index) => (
                             <TableRowTerm
                                 key={`newTerm_${term.id}`}
                                 isNewTerm={true}
@@ -123,6 +123,7 @@ export const Glossary = ({
                                 isLoadingCreateTerm={isLoadingCreateTerm}
                                 isLoadingUpdateTerm={isLoadingUpdateTerm}
                                 isLoadingDeleteTerm={isLoadingDeleteTerm}
+                                datacy={`${index}_newRowTerm`}
                             />
                         ))}
                         {isLoadingSearchTerms ? (
@@ -141,7 +142,7 @@ export const Glossary = ({
                             </VStack>
                         ) : (
                             <>
-                                {projectTerms?.data?.map((term, i) => (
+                                {projectTerms?.data?.map((term, index) => (
                                     <TableRowTerm
                                         key={term.id}
                                         isDisabled={true}
@@ -160,6 +161,7 @@ export const Glossary = ({
                                         isLoadingDeleteTerm={
                                             isLoadingDeleteTerm
                                         }
+                                        datacy={`${index}_projectTerm`}
                                     />
                                 ))}
                             </>
@@ -194,6 +196,7 @@ export const Glossary = ({
                             left='2.125rem'
                         >
                             <ButtonIcon
+                                data-cy='addNewRowTermButton'
                                 borderRadius='6.25rem'
                                 size={ButtonSize.XXL}
                                 backgroundColor={

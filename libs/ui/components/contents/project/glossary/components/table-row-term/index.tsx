@@ -25,6 +25,7 @@ export default function TableRowTerm({
     isLoadingCreateTerm,
     isLoadingUpdateTerm,
     isLoadingDeleteTerm,
+    datacy,
 }: ITableRowTermProps) {
     //Attributes
     const {
@@ -72,6 +73,7 @@ export default function TableRowTerm({
                         w={'full'}
                         color={COLORS.Text.T400.value}
                         font={FONTS.T1.T12px.Regular400.value}
+                        data-cy={`${datacy}_addNewKeyInput`}
                     />
                 </HStack>
                 <HStack
@@ -119,6 +121,7 @@ export default function TableRowTerm({
                             borderRadius='0.5rem'
                             colorScheme='purple'
                             fontSize={'0.625rem'}
+                            data-cy={'unSavedBadge'}
                         >
                             {t<string>(
                                 tKeys.home.project.tab.glossary.content.table
@@ -161,6 +164,7 @@ export default function TableRowTerm({
                         backgroundColor={COLORS.White.T500.value}
                         hoverBackgroundColor={COLORS.Stroke.value}
                         handleOnClick={isNewTerm ? toggleIsOpen : () => {}}
+                        data-cy={`${datacy}_expandButton`}
                     >
                         <Icon
                             pointerEvents='none'

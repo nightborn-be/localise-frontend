@@ -103,6 +103,7 @@ export const TermEditContent = ({
                             handleOnSaveTranslations(form);
                             toggleIsOpen();
                         }}
+                        data-cy='saveAddNewKey'
                     >
                         {t<string>(
                             tKeys.home.project.tab.glossary.content.table
@@ -161,6 +162,7 @@ export const TermEditContent = ({
                             </Text>
                         </>
                     }
+                    data-cy='addNewKeyDescriptionInput'
                 />
             </HStack>
 
@@ -172,20 +174,22 @@ export const TermEditContent = ({
                 alignItems={'flex-start'}
             >
                 {translations !== undefined &&
-                    translations?.data?.map((t) => {
+                    translations?.data?.map((t, index) => {
                         return (
                             <EditInput
                                 translation={t}
                                 updateTranslationsForm={updateTranslationsForm}
+                                datacy={`translationsInput_${index}`}
                             />
                         );
                     })}
                 {projectLanguages !== undefined &&
-                    projectLanguages?.data?.map((l) => {
+                    projectLanguages?.data?.map((l, index) => {
                         return (
                             <EditInput
                                 language={l}
                                 updateTranslationsForm={updateTranslationsForm}
+                                datacy={`projectLanguagesInput_${index}`}
                             />
                         );
                     })}

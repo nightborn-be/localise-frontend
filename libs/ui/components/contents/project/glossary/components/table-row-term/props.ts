@@ -21,6 +21,7 @@ export interface ITableRowTermProps {
     isLoadingCreateTerm: boolean;
     isLoadingUpdateTerm: boolean;
     isLoadingDeleteTerm: boolean;
+    datacy?: string;
 }
 
 export interface ITableRowTermLogicProps {

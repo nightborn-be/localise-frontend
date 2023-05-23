@@ -102,6 +102,7 @@ export default function InputTextAreaField<T>({
                 onKeyDown={(event) =>
                     event.key === 'Enter' ? event.currentTarget.blur() : null
                 }
+                {...props}
             />
             <Flex
                 position={'absolute'}

@@ -40,6 +40,7 @@ const MissingTerms = ({ addNewRowTerm }: IMissingTermsProps) => {
                 </Text>
             </VStack>
             <Button
+                data-cy='addNewRowMissingTermButton'
                 width={'8.75rem'}
                 minW={'8.75rem'}
                 height={'2.25rem'}

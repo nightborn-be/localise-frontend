@@ -8,6 +8,7 @@ export interface IEditInputProps {
     translation?: TranslationWithMetaDTO;
     language?: LanguageDTO;
     updateTranslationsForm: (value: IEditInputForm) => void;
+    datacy?: string;
 }
 export interface IEditInputLogicProps {
     translation?: TranslationWithMetaDTO;

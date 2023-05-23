@@ -14,6 +14,7 @@ const EditInput = ({
     translation,
     language,
     updateTranslationsForm,
+    datacy,
 }: IEditInputProps) => {
     // Attributes
     const { form } = useEditInputLogic({
@@ -80,6 +81,7 @@ const EditInput = ({
                         translation: form.translation.value,
                     });
                 }}
+                data-cy={datacy}
             />
         </HStack>
     );
