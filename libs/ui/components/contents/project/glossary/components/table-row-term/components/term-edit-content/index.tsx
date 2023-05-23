@@ -121,6 +121,7 @@ export const TermEditContent = ({
                         handleOnClick={() => {
                             handleOnDeleteTerm(form.termId.value);
                         }}
+                        data-cy='deleteKey'
                     >
                         <Icon
                             name='trashSmall'
