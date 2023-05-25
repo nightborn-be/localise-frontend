@@ -50,8 +50,10 @@ const EditOrganisationContent = ({
                 labelColor={COLORS.Text.T500.value}
                 labelFont={FONTS.T1.T14px.Medium500.value}
                 {...form.organisationName}
+                data-cy='organisationNameInput'
             />
             <Button
+                data-cy='deleteOrganisation'
                 onClick={deleteOrganisationDisclosure.onOpen}
                 color={COLORS.InputText.value}
                 font={FONTS.T1.T12px.Medium500.value}

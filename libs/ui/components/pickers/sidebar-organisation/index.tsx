@@ -29,6 +29,7 @@ const SidebarOrganisation = ({
             bg={COLORS.White.T500.value}
             onClick={onClick}
             cursor='pointer'
+            data-cy='organisationSideBar'
         >
             <HStack w='full' h='2rem'>
                 <HStack

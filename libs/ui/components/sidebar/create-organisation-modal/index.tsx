@@ -67,6 +67,7 @@ export const CreateOrganisationModal = ({
                         labelColor={COLORS.Text.T500.value}
                         labelFont={FONTS.T1.T14px.Medium500.value}
                         {...form.organisationName}
+                        data-cy='organisationNameInput'
                     />
                 </VStack>
                 <VStack

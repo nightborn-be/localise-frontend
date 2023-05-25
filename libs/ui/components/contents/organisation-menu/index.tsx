@@ -55,6 +55,7 @@ export default function OrganisationMenu<T>({
                 backgroundColor={'transparent'}
                 hoverBackgroundColor={COLORS.Tag.value}
                 onClick={onClick}
+                data-cy='createNewOrganisation'
             >
                 Create new organisation
             </Button>

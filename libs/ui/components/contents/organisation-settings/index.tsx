@@ -90,6 +90,7 @@ const OrganisationSettings = ({
                         padding='0rem 2rem 2rem 1.25rem'
                     >
                         <Button
+                            data-cy='saveOrganisationSetting'
                             isLoading={isLoadingUpdateOrganisation}
                             padding='0.25rem 0.75rem 0.25rem 0.75rem'
                             backgroundColor={COLORS.Localize.Purple.T500.value}

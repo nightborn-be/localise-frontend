@@ -264,6 +264,7 @@ export const SideBar = ({
                         onClick={() => {
                             push('/dashboard/settings');
                         }}
+                        data-cy='organisationSetting'
                     >
                         {t<string>(
                             tKeys.sidebar.organisation_section
