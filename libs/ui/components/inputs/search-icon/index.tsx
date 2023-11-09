@@ -84,6 +84,7 @@ const SearchInput = <T extends object>({
                         }}
                     >
                         <Input
+                            autoFocus={launchAnime}
                             variant={'unstyled'}
                             value={value}
                             onChange={onChange}
