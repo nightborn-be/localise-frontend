@@ -14,6 +14,7 @@ import { ISettingsProps } from './props';
 import { DeleteModal } from '../../../../components/surface/delete-modal';
 import SearchBarSelectSettingSection from './components/searchbar-select-setting-section/index';
 import SearchBoxSettingSection from './components/search-box-setting-section/index';
+
 const Settings = ({
     handleOnUpdateProject,
     handleOnDeleteProject,
@@ -68,7 +69,6 @@ const Settings = ({
                     w='full'
                     overflowY={'scroll'}
                     h='full'
-                    paddingBottom={'37.5rem'}
                 >
                     <InformationSettingSection
                         projectId={projectData?.id as string}

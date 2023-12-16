@@ -1,5 +1,6 @@
 import React, { HStack } from '@chakra-ui/react';
 import { PageProps } from './props';
+
 const Page = ({ children, bg, bgImage }: PageProps) => {
     // Render
     return (

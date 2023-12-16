@@ -249,7 +249,7 @@ export const Glossary = ({
     }
     // Renders
     return (
-        <Box w='full' ref={scrollRef} overflowY='scroll'>
+        <Box w='full' ref={scrollRef} overflowY='scroll' overflowX="hidden">
             {render()}
         </Box>
     );
